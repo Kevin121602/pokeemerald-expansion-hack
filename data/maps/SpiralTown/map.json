@@ -1,0 +1,89 @@
+{
+  "id": "MAP_SPIRAL_TOWN",
+  "name": "SpiralTown",
+  "layout": "LAYOUT_SPIRAL_TOWN",
+  "music": "MUS_LITTLEROOT",
+  "region_map_section": "MAPSEC_SPIRAL_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_TOWN",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_ROUTE_ONE",
+      "offset": 0,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_ROUTE_TWO",
+      "offset": 0,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_ROUTE_THREE",
+      "offset": 0,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_LONE_TREE_CAPE",
+      "offset": -20,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_CRATER_POND",
+      "offset": -20,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_AMPERE_MEADOW",
+      "offset": -25,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_ROUTE_FOUR",
+      "offset": 20,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_SEASHELL_BEACH",
+      "offset": 0,
+      "direction": "down"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 14,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 5,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 7,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

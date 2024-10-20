@@ -1,0 +1,95 @@
+{
+  "id": "MAP_ROUTE_THREE",
+  "name": "RouteThree",
+  "layout": "LAYOUT_ROUTE_THREE",
+  "music": "MUS_PETALBURG",
+  "region_map_section": "MAPSEC_ROUTE_THREE",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_SPIRAL_TOWN",
+      "offset": 0,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_ROUTE_TWO",
+      "offset": 25,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_LONE_TREE_CAPE",
+      "offset": 5,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_AMPERE_MEADOW",
+      "offset": 0,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_SEASHELL_BEACH",
+      "offset": 25,
+      "direction": "down"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 10,
+      "y": 19,
+      "elevation": 0,
+      "dest_map": "MAP_PETALBURG_CITY_HOUSE1",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 7,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_PETALBURG_CITY_WALLYS_HOUSE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 15,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_PETALBURG_CITY_GYM",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 20,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_PETALBURG_CITY_POKEMON_CENTER_1F",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 20,
+      "y": 24,
+      "elevation": 0,
+      "dest_map": "MAP_PETALBURG_CITY_HOUSE2",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 25,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_PETALBURG_CITY_MART",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

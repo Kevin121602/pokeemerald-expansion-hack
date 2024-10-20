@@ -1,0 +1,41 @@
+{
+  "id": "MAP_FRIGID_PATH",
+  "name": "FrigidPath",
+  "layout": "LAYOUT_FRIGID_PATH",
+  "music": "MUS_PETALBURG_WOODS",
+  "region_map_section": "MAPSEC_FRIGID_PATH",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 4,
+      "y": 10,
+      "elevation": 3,
+      "dest_map": "MAP_ROUTE_FOUR",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 30,
+      "y": 9,
+      "elevation": 3,
+      "dest_map": "MAP_ROUTE_FIVE",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

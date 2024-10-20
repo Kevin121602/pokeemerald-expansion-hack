@@ -1,0 +1,74 @@
+{
+  "id": "MAP_ROUTE_ONE",
+  "name": "RouteOne",
+  "layout": "LAYOUT_ROUTE_ONE",
+  "music": "MUS_ROUTE101",
+  "region_map_section": "MAPSEC_ROUTE_ONE",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_CRATER_POND",
+      "offset": 0,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_SPIRAL_TOWN",
+      "offset": 0,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_ROUTE_TWO",
+      "offset": -20,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_ROUTE_FOUR",
+      "offset": 0,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_SEASHELL_BEACH",
+      "offset": -20,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_ROUTE_FIVE",
+      "offset": 19,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_ROUTE_SIX",
+      "offset": -40,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_ROUTE_TWO",
+      "offset": -20,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_SEASHELL_BEACH",
+      "offset": -20,
+      "direction": "down"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}
