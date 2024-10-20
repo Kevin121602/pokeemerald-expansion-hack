@@ -1,7 +1,7 @@
 {
-  "id": "MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB",
-  "name": "LittlerootTown_ProfessorBirchsLab",
-  "layout": "LAYOUT_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB",
+  "id": "MAP_CENTER_TOWN_LAB",
+  "name": "CenterTown_Lab",
+  "layout": "LAYOUT_CENTER_TOWN_LAB",
   "music": "MUS_BIRCH_LAB",
   "region_map_section": "MAPSEC_CENTER_TOWN",
   "requires_flash": false,
@@ -12,7 +12,10 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
+  "object_events": [
+
+  ],
   "warp_events": [
     {
       "x": 6,
@@ -28,5 +31,11 @@
       "dest_map": "MAP_CENTER_TOWN",
       "dest_warp_id": "2"
     }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
   ]
 }

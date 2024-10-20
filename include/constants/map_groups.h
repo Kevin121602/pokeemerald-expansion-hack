@@ -66,10 +66,10 @@
 #define MAP_PORYTILES_TEST_MAP  (57 | (0 << 8))
 
 // gMapGroup_IndoorCenter
-#define MAP_CENTER_TOWN_PLAYERS_HOUSE_1F         (0 | (1 << 8))
-#define MAP_CENTER_TOWN_PLAYERS_HOUSE_2F         (1 | (1 << 8))
-#define MAP_CENTER_TOWN_HOUSE_1                  (2 | (1 << 8))
-#define MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB (3 | (1 << 8))
+#define MAP_CENTER_TOWN_PLAYERS_HOUSE_1F (0 | (1 << 8))
+#define MAP_CENTER_TOWN_PLAYERS_HOUSE_2F (1 | (1 << 8))
+#define MAP_CENTER_TOWN_HOUSE_1          (2 | (1 << 8))
+#define MAP_CENTER_TOWN_LAB              (3 | (1 << 8))
 
 // gMapGroup_IndoorOldale
 #define MAP_OLDALE_TOWN_HOUSE1            (0 | (2 << 8))

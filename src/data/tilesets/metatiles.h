@@ -216,3 +216,6 @@ const u16 gMetatileAttributes_PorytilesPrimaryTest[] = INCBIN_U16("data/tilesets
 
 const u16 gMetatiles_PlayerHouse[] = INCBIN_U16("data/tilesets/secondary/player_house/metatiles.bin");
 const u16 gMetatileAttributes_PlayerHouse[] = INCBIN_U16("data/tilesets/secondary/player_house/metatile_attributes.bin");
+
+const u16 gMetatiles_CenterLab[] = INCBIN_U16("data/tilesets/secondary/center_lab/metatiles.bin");
+const u16 gMetatileAttributes_CenterLab[] = INCBIN_U16("data/tilesets/secondary/center_lab/metatile_attributes.bin");

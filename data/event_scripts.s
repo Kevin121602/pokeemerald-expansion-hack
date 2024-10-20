@@ -165,7 +165,7 @@ gStdScripts_End::
 	.include "data/maps/CenterTown_PlayersHouse_2F/scripts.inc"
 	.include "data/maps/CenterTown_House_1/scripts.inc"
 	.include "data/maps/LittlerootTown_MaysHouse_2F/scripts.inc"
-	.include "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.inc"
+	.include "data/maps/CenterTown_Lab/scripts.inc"
 	.include "data/maps/OldaleTown_House1/scripts.inc"
 	.include "data/maps/OldaleTown_House2/scripts.inc"
 	.include "data/maps/OldaleTown_PokemonCenter_1F/scripts.inc"
