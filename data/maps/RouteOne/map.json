@@ -57,6 +57,11 @@
       "map": "MAP_SEASHELL_BEACH",
       "offset": -20,
       "direction": "down"
+    },
+    {
+      "map": "MAP_ROUTE_FOUR",
+      "offset": 0,
+      "direction": "down"
     }
   ],
   "object_events": [
