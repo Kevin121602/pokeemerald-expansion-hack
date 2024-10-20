@@ -889,8 +889,8 @@ Edit [src/data/wild_encounters.json](https://github.com/rh-hideout/pokeemerald-e
 
 ```diff
          {
-           "map": "MAP_PETALBURG_WOODS",
-           "base_label": "gPetalburgWoods",
+           "map": "MAP_SPIRAL_WOODS",
+           "base_label": "gSpiralWoods",
            "land_mons": {
              "encounter_rate": 20,
              "mons": [

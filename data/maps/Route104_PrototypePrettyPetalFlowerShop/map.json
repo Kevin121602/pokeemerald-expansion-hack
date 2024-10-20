@@ -3,7 +3,7 @@
   "name": "Route104_PrototypePrettyPetalFlowerShop",
   "layout": "LAYOUT_ROUTE104_PRETTY_PETAL_FLOWER_SHOP",
   "music": "MUS_ROUTE104",
-  "region_map_section": "MAPSEC_ROUTE_104",
+  "region_map_section": "MAPSEC_AMPERE_MEADOW",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -13,8 +13,5 @@
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
-  "warp_events": [],
-  "coord_events": [],
-  "bg_events": []
+  "warp_events": []
 }

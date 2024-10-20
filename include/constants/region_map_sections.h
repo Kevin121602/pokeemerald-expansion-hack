@@ -1,14 +1,14 @@
 #ifndef GUARD_REGIONMAPSEC_H
 #define GUARD_REGIONMAPSEC_H
 
-#define MAPSEC_LITTLEROOT_TOWN              0x00
-#define MAPSEC_OLDALE_TOWN                  0x01
+#define MAPSEC_SPIRAL_TOWN                  0x00
+#define MAPSEC_CRATER_POND                  0x01
 #define MAPSEC_DEWFORD_TOWN                 0x02
 #define MAPSEC_LAVARIDGE_TOWN               0x03
 #define MAPSEC_FALLARBOR_TOWN               0x04
 #define MAPSEC_VERDANTURF_TOWN              0x05
 #define MAPSEC_PACIFIDLOG_TOWN              0x06
-#define MAPSEC_PETALBURG_CITY               0x07
+#define MAPSEC_ROUTE_THREE                  0x07
 #define MAPSEC_SLATEPORT_CITY               0x08
 #define MAPSEC_MAUVILLE_CITY                0x09
 #define MAPSEC_RUSTBORO_CITY                0x0A
@@ -17,15 +17,15 @@
 #define MAPSEC_MOSSDEEP_CITY                0x0D
 #define MAPSEC_SOOTOPOLIS_CITY              0x0E
 #define MAPSEC_EVER_GRANDE_CITY             0x0F
-#define MAPSEC_ROUTE_101                    0x10
-#define MAPSEC_ROUTE_102                    0x11
-#define MAPSEC_ROUTE_103                    0x12
-#define MAPSEC_ROUTE_104                    0x13
+#define MAPSEC_ROUTE_ONE                    0x10
+#define MAPSEC_ROUTE_TWO                    0x11
+#define MAPSEC_LONE_TREE_CAPE               0x12
+#define MAPSEC_AMPERE_MEADOW                0x13
 #define MAPSEC_ROUTE_105                    0x14
-#define MAPSEC_ROUTE_106                    0x15
-#define MAPSEC_ROUTE_107                    0x16
-#define MAPSEC_ROUTE_108                    0x17
-#define MAPSEC_ROUTE_109                    0x18
+#define MAPSEC_ROUTE_FOUR                   0x15
+#define MAPSEC_SEASHELL_BEACH               0x16
+#define MAPSEC_ROUTE_FIVE                   0x17
+#define MAPSEC_ROUTE_SIX                    0x18
 #define MAPSEC_ROUTE_110                    0x19
 #define MAPSEC_ROUTE_111                    0x1A
 #define MAPSEC_ROUTE_112                    0x1B
@@ -60,8 +60,8 @@
 #define MAPSEC_MT_CHIMNEY                   0x38
 #define MAPSEC_SAFARI_ZONE                  0x39
 #define MAPSEC_BATTLE_FRONTIER              0x3A
-#define MAPSEC_PETALBURG_WOODS              0x3B
-#define MAPSEC_RUSTURF_TUNNEL               0x3C
+#define MAPSEC_SPIRAL_WOODS                 0x3B
+#define MAPSEC_FRIGID_PATH                  0x3C
 #define MAPSEC_ABANDONED_SHIP               0x3D
 #define MAPSEC_NEW_MAUVILLE                 0x3E
 #define MAPSEC_METEOR_FALLS                 0x3F

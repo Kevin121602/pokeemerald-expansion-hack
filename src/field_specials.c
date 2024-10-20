@@ -1421,8 +1421,8 @@ bool8 Special_AreLeadMonEVsMaxedOut(void)
 u8 TryUpdateRusturfTunnelState(void)
 {
     if (!FlagGet(FLAG_RUSTURF_TUNNEL_OPENED)
-        && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(RUSTURF_TUNNEL)
-        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(RUSTURF_TUNNEL))
+        && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(FRIGID_PATH)
+        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(FRIGID_PATH))
     {
         if (FlagGet(FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1))
         {
@@ -3808,11 +3808,11 @@ void GetBattlePyramidHint(void)
 }
 
 // Used to avoid a potential softlock if the player respawns on Dewford with no way off
-void ResetHealLocationFromDewford(void)
+/*avoid ResetHealLocationFromDewford(void)
 {
     if (gSaveBlock1Ptr->lastHealLocation.mapGroup == MAP_GROUP(DEWFORD_TOWN) && gSaveBlock1Ptr->lastHealLocation.mapNum == MAP_NUM(DEWFORD_TOWN))
         SetLastHealLocationWarp(HEAL_LOCATION_PETALBURG_CITY);
-}
+}*/
 
 bool8 InPokemonCenter(void)
 {

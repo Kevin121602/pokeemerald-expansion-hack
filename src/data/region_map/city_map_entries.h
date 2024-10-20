@@ -1,12 +1,12 @@
 static const struct CityMapEntry sPokenavCityMaps[NUM_CITY_MAPS] =
 {
     {
-        .mapSecId = MAPSEC_LITTLEROOT_TOWN,
+        .mapSecId = MAPSEC_SPIRAL_TOWN,
         .index = 0,
         .tilemap = gPokenavCityMap_Littleroot_0,
     },
     {
-        .mapSecId = MAPSEC_OLDALE_TOWN,
+        .mapSecId = MAPSEC_CRATER_POND,
         .index = 0,
         .tilemap = gPokenavCityMap_Oldale_0,
     },
@@ -36,7 +36,7 @@ static const struct CityMapEntry sPokenavCityMaps[NUM_CITY_MAPS] =
         .tilemap = gPokenavCityMap_Pacifidlog_0,
     },
     {
-        .mapSecId = MAPSEC_PETALBURG_CITY,
+        .mapSecId = MAPSEC_ROUTE_THREE,
         .index = 0,
         .tilemap = gPokenavCityMap_Petalburg_0,
     },

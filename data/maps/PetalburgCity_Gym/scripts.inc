@@ -190,7 +190,7 @@ PetalburgCity_Gym_EventScript_BeginWallyTutorial::
 	clearflag FLAG_HIDE_PETALBURG_GYM_WALLY
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
 	special InitBirchState
-	warp MAP_PETALBURG_CITY, 15, 8
+	warp MAP_ROUTE_THREE, 15, 8
 	waitstate
 	release
 	end
@@ -381,7 +381,6 @@ PetalburgCity_Gym_EventScript_NormanBattle::
 	setflag FLAG_DEFEATED_PETALBURG_GYM
 	setvar VAR_PETALBURG_GYM_STATE, 7
 	setflag FLAG_BADGE05_GET
-	special ResetHealLocationFromDewford
 	call EventScript_HideMrBriney
 	setflag FLAG_HIDE_MAUVILLE_GYM_WATTSON
 	clearflag FLAG_HIDE_MAUVILLE_CITY_WATTSON
@@ -451,7 +450,7 @@ PetalburgCity_Gym_EventScript_WallysDadArrives::
 	removeobject LOCALID_WALLYS_DAD
 	setvar VAR_PETALBURG_CITY_STATE, 4
 	clearflag FLAG_HIDE_PETALBURG_CITY_WALLYS_DAD
-	warp MAP_PETALBURG_CITY, 15, 8
+	warp MAP_ROUTE_THREE, 15, 8
 	waitstate
 	release
 	end

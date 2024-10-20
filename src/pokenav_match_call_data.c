@@ -200,7 +200,7 @@ static const match_call_text_data_t sNormanTextScripts[] = {
 static const struct MatchCallStructTrainer sNormanMatchCallHeader =
 {
     .type = MC_TYPE_LEADER,
-    .mapSec = MAPSEC_PETALBURG_CITY,
+    .mapSec = MAPSEC_ROUTE_THREE,
     .flag = FLAG_ENABLE_NORMAN_MATCH_CALL,
     .rematchTableIdx = REMATCH_NORMAN,
     .desc = gText_NormanMatchCallDesc,
@@ -227,7 +227,7 @@ static const match_call_text_data_t sMomTextScripts[] = {
 static const struct MatchCallStructNPC sMomMatchCallHeader =
 {
     .type = MC_TYPE_NPC,
-    .mapSec = MAPSEC_LITTLEROOT_TOWN,
+    .mapSec = MAPSEC_SPIRAL_TOWN,
     .flag = FLAG_ENABLE_MOM_MATCH_CALL,
     .desc = gText_MomMatchCallDesc,
     .name = gText_MomMatchCallName,

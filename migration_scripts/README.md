@@ -318,7 +318,7 @@ Modifies all item ball scripts defined using to original Game Freak method to th
 	end
 ```
 
-#### [data/maps/Route102/map.json](../data/maps/Route102/map.json)
+#### [data/maps/RouteTwo/map.json](../data/maps/RouteTwo/map.json)
 ```diff
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
