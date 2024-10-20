@@ -29,7 +29,7 @@
       "direction": "down"
     },
     {
-      "map": "MAP_SPIRAL_TOWN",
+      "map": "MAP_CENTER_TOWN",
       "offset": 20,
       "direction": "down"
     }

@@ -2,7 +2,7 @@
 .set LOCALID_RIVAL_MOM, 4
 .set LOCALID_RIVAL, 7
 
-LittlerootTown_BrendansHouse_1F_MapScripts::
+CenterTown_PlayersHouse_1F_MapScripts::
 	.byte 0
 
 LittlerootTown_BrendansHouse_1F_OnLoad:
@@ -60,7 +60,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock::
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_1F_Movement_PushTowardStairs
 	applymovement LOCALID_MOM, LittlerootTown_BrendansHouse_1F_Movement_PushTowardStairs
 	waitmovement 0
-	warp MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F, 7, 1
+	warp MAP_CENTER_TOWN_PLAYERS_HOUSE_2F, 7, 1
 	waitstate
 	releaseall
 	end

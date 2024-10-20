@@ -92,14 +92,14 @@
       "blockdata_filepath": "data/layouts/EverGrandeCity/map.bin"
     },
     {
-      "id": "LAYOUT_SPIRAL_TOWN",
-      "name": "SpiralTown_Layout",
+      "id": "LAYOUT_CENTER_TOWN",
+      "name": "CenterTown_Layout",
       "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
-      "border_filepath": "data/layouts/SpiralTown/border.bin",
-      "blockdata_filepath": "data/layouts/SpiralTown/map.bin"
+      "border_filepath": "data/layouts/CenterTown/border.bin",
+      "blockdata_filepath": "data/layouts/CenterTown/map.bin"
     },
     {
       "id": "LAYOUT_CRATER_POND",
@@ -532,34 +532,34 @@
       "blockdata_filepath": "data/layouts/Underwater_Route128/map.bin"
     },
     {
-      "id": "LAYOUT_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F",
-      "name": "LittlerootTown_BrendansHouse_1F_Layout",
+      "id": "LAYOUT_CENTER_TOWN_PLAYERS_HOUSE_1F",
+      "name": "CenterTown_PlayersHouse_1F_Layout",
       "width": 11,
       "height": 10,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_PlayerHouse",
-      "border_filepath": "data/layouts/LittlerootTown_BrendansHouse_1F/border.bin",
-      "blockdata_filepath": "data/layouts/LittlerootTown_BrendansHouse_1F/map.bin"
+      "border_filepath": "data/layouts/CenterTown_PlayersHouse_1F/border.bin",
+      "blockdata_filepath": "data/layouts/CenterTown_PlayersHouse_1F/map.bin"
     },
     {
-      "id": "LAYOUT_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F",
-      "name": "LittlerootTown_BrendansHouse_2F_Layout",
+      "id": "LAYOUT_CENTER_TOWN_PLAYERS_HOUSE_2F",
+      "name": "CenterTown_PlayersHouse_2F_Layout",
       "width": 10,
       "height": 10,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_PlayerHouse",
-      "border_filepath": "data/layouts/LittlerootTown_BrendansHouse_2F/border.bin",
-      "blockdata_filepath": "data/layouts/LittlerootTown_BrendansHouse_2F/map.bin"
+      "border_filepath": "data/layouts/CenterTown_PlayersHouse_1F/border.bin",
+      "blockdata_filepath": "data/layouts/CenterTown_PlayersHouse_2F/map.bin"
     },
     {
-      "id": "LAYOUT_LITTLEROOT_TOWN_MAYS_HOUSE_1F",
-      "name": "LittlerootTown_MaysHouse_1F_Layout",
-      "width": 11,
-      "height": 9,
+      "id": "LAYOUT_CENTER_TOWN_HOUSE_1",
+      "name": "CenterTown_House_1_Layout",
+      "width": 8,
+      "height": 8,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_BrendansMaysHouse",
-      "border_filepath": "data/layouts/LittlerootTown_MaysHouse_1F/border.bin",
-      "blockdata_filepath": "data/layouts/LittlerootTown_MaysHouse_1F/map.bin"
+      "secondary_tileset": "gTileset_PlayerHouse",
+      "border_filepath": "data/layouts/CenterTown_House_1/border.bin",
+      "blockdata_filepath": "data/layouts/CenterTown_House_1/map.bin"
     },
     {
       "id": "LAYOUT_LITTLEROOT_TOWN_MAYS_HOUSE_2F",

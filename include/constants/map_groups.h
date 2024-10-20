@@ -15,7 +15,7 @@
 #define MAP_MOSSDEEP_CITY       (6 | (0 << 8))
 #define MAP_SOOTOPOLIS_CITY     (7 | (0 << 8))
 #define MAP_EVER_GRANDE_CITY    (8 | (0 << 8))
-#define MAP_SPIRAL_TOWN         (9 | (0 << 8))
+#define MAP_CENTER_TOWN         (9 | (0 << 8))
 #define MAP_CRATER_POND         (10 | (0 << 8))
 #define MAP_DEWFORD_TOWN        (11 | (0 << 8))
 #define MAP_LAVARIDGE_TOWN      (12 | (0 << 8))
@@ -65,12 +65,11 @@
 #define MAP_UNDERWATER_ROUTE125 (56 | (0 << 8))
 #define MAP_PORYTILES_TEST_MAP  (57 | (0 << 8))
 
-// gMapGroup_IndoorOrigin
-#define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))
-#define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F    (1 | (1 << 8))
-#define MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F        (2 | (1 << 8))
-#define MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F        (3 | (1 << 8))
-#define MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB (4 | (1 << 8))
+// gMapGroup_IndoorCenter
+#define MAP_CENTER_TOWN_PLAYERS_HOUSE_1F         (0 | (1 << 8))
+#define MAP_CENTER_TOWN_PLAYERS_HOUSE_2F         (1 | (1 << 8))
+#define MAP_CENTER_TOWN_HOUSE_1                  (2 | (1 << 8))
+#define MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB (3 | (1 << 8))
 
 // gMapGroup_IndoorOldale
 #define MAP_OLDALE_TOWN_HOUSE1            (0 | (2 << 8))

@@ -19,7 +19,7 @@
       "direction": "right"
     },
     {
-      "map": "MAP_SPIRAL_TOWN",
+      "map": "MAP_CENTER_TOWN",
       "offset": 0,
       "direction": "up"
     },

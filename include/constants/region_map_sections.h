@@ -1,7 +1,7 @@
 #ifndef GUARD_REGIONMAPSEC_H
 #define GUARD_REGIONMAPSEC_H
 
-#define MAPSEC_SPIRAL_TOWN                  0x00
+#define MAPSEC_CENTER_TOWN                  0x00
 #define MAPSEC_CRATER_POND                  0x01
 #define MAPSEC_DEWFORD_TOWN                 0x02
 #define MAPSEC_LAVARIDGE_TOWN               0x03

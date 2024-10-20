@@ -21,7 +21,7 @@
       "x": 8,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_SPIRAL_TOWN",
+      "dest_map": "MAP_CENTER_TOWN",
       "dest_warp_id": "1"
     }
   ],

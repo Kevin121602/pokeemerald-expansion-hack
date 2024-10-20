@@ -1,7 +1,7 @@
 {
   "group_order": [
     "gMapGroup_TownsAndRoutes",
-    "gMapGroup_IndoorOrigin",
+    "gMapGroup_IndoorCenter",
     "gMapGroup_IndoorOldale",
     "gMapGroup_IndoorDewford",
     "gMapGroup_IndoorLavaridge",
@@ -45,7 +45,7 @@
     "MossdeepCity",
     "SootopolisCity",
     "EverGrandeCity",
-    "SpiralTown",
+    "CenterTown",
     "CraterPond",
     "DewfordTown",
     "LavaridgeTown",
@@ -95,11 +95,10 @@
     "Underwater_Route125",
     "PorytilesTestMap"
   ],
-  "gMapGroup_IndoorOrigin": [
-    "LittlerootTown_BrendansHouse_1F",
-    "LittlerootTown_BrendansHouse_2F",
-    "LittlerootTown_MaysHouse_1F",
-    "LittlerootTown_MaysHouse_2F",
+  "gMapGroup_IndoorCenter": [
+    "CenterTown_PlayersHouse_1F",
+    "CenterTown_PlayersHouse_2F",
+    "CenterTown_House_1",
     "LittlerootTown_ProfessorBirchsLab"
   ],
   "gMapGroup_IndoorOldale": [

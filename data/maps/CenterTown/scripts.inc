@@ -3,7 +3,7 @@
 .set LOCALID_RIVAL, 7
 .set LOCALID_BIRCH, 8
 
-SpiralTown_MapScripts::
+CenterTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, LittlerootTown_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LittlerootTown_OnWarp
@@ -40,7 +40,7 @@ SpiralTown_MapScripts::
 
 
 LittlerootTown_OnTransition:
-	setflag FLAG_VISITED_SPIRAL_TOWN
+	setflag FLAG_VISITED_CENTER_TOWN
 	call Common_EventScript_SetupRivalGfxId
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, LittlerootTown_EventScript_MoveMomToMaysDoor
 	call_if_unset FLAG_RESCUED_BIRCH, LittlerootTown_EventScript_SetTwinPos
@@ -118,7 +118,7 @@ LittlerootTown_EventScript_StepOffTruckMale::
 	setvar VAR_0x8005, 8
 	call LittlerootTown_EventScript_GoInsideWithMom
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK
-	warpsilent MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F, 8, 8
+	warpsilent MAP_CENTER_TOWN_PLAYERS_HOUSE_1F, 8, 8
 	waitstate
 	releaseall
 	end
@@ -129,7 +129,6 @@ LittlerootTown_EventScript_StepOffTruckFemale::
 	setvar VAR_0x8005, 8
 	call LittlerootTown_EventScript_GoInsideWithMom
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_TRUCK
-	warpsilent MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F, 2, 8
 	waitstate
 	releaseall
 	end
@@ -632,7 +631,7 @@ LittlerootTown_EventScript_MomReturnHomeMale2::
 	waitdooranim
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomExitThroughDoor
 	waitmovement 0
-	hideobjectat LOCALID_MOM, MAP_SPIRAL_TOWN
+	hideobjectat LOCALID_MOM, MAP_CENTER_TOWN
 	closedoor VAR_0x8009, VAR_0x800A
 	waitdooranim
 	return
@@ -644,7 +643,7 @@ LittlerootTown_EventScript_MomReturnHomeMale3::
 	waitdooranim
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomExitThroughDoor
 	waitmovement 0
-	hideobjectat LOCALID_MOM, MAP_SPIRAL_TOWN
+	hideobjectat LOCALID_MOM, MAP_CENTER_TOWN
 	closedoor VAR_0x8009, VAR_0x800A
 	waitdooranim
 	return
@@ -656,7 +655,7 @@ LittlerootTown_EventScript_MomReturnHomeMale4::
 	waitdooranim
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomExitThroughDoor
 	waitmovement 0
-	hideobjectat LOCALID_MOM, MAP_SPIRAL_TOWN
+	hideobjectat LOCALID_MOM, MAP_CENTER_TOWN
 	closedoor VAR_0x8009, VAR_0x800A
 	waitdooranim
 	return
@@ -668,7 +667,7 @@ LittlerootTown_EventScript_MomReturnHomeMale5::
 	waitdooranim
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomExitThroughDoor
 	waitmovement 0
-	hideobjectat LOCALID_MOM, MAP_SPIRAL_TOWN
+	hideobjectat LOCALID_MOM, MAP_CENTER_TOWN
 	closedoor VAR_0x8009, VAR_0x800A
 	waitdooranim
 	return
@@ -680,7 +679,7 @@ LittlerootTown_EventScript_MomReturnHomeFemale2::
 	waitdooranim
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomExitThroughDoor
 	waitmovement 0
-	hideobjectat LOCALID_MOM, MAP_SPIRAL_TOWN
+	hideobjectat LOCALID_MOM, MAP_CENTER_TOWN
 	closedoor VAR_0x8009, VAR_0x800A
 	waitdooranim
 	return
@@ -692,7 +691,7 @@ LittlerootTown_EventScript_MomReturnHomeFemale3::
 	waitdooranim
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomExitThroughDoor
 	waitmovement 0
-	hideobjectat LOCALID_MOM, MAP_SPIRAL_TOWN
+	hideobjectat LOCALID_MOM, MAP_CENTER_TOWN
 	closedoor VAR_0x8009, VAR_0x800A
 	waitdooranim
 	return
@@ -704,7 +703,7 @@ LittlerootTown_EventScript_MomReturnHomeFemale4::
 	waitdooranim
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomExitThroughDoor
 	waitmovement 0
-	hideobjectat LOCALID_MOM, MAP_SPIRAL_TOWN
+	hideobjectat LOCALID_MOM, MAP_CENTER_TOWN
 	closedoor VAR_0x8009, VAR_0x800A
 	waitdooranim
 	return
@@ -716,7 +715,7 @@ LittlerootTown_EventScript_MomReturnHomeFemale5::
 	waitdooranim
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomExitThroughDoor
 	waitmovement 0
-	hideobjectat LOCALID_MOM, MAP_SPIRAL_TOWN
+	hideobjectat LOCALID_MOM, MAP_CENTER_TOWN
 	closedoor VAR_0x8009, VAR_0x800A
 	waitdooranim
 	return
@@ -884,7 +883,7 @@ LittlerootTown_EventScript_Mom::
 	waitdooranim
 	applymovement LOCALID_MOM, LittlerootTown_Movement_MomExitThroughDoor
 	waitmovement 0
-	hideobjectat LOCALID_MOM, MAP_SPIRAL_TOWN
+	hideobjectat LOCALID_MOM, MAP_CENTER_TOWN
 	closedoor VAR_0x8009, VAR_0x800A
 	waitdooranim
 	goto LittlerootTown_EventScript_SetReceivedRunningShoes

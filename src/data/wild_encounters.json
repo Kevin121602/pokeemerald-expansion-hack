@@ -14136,8 +14136,8 @@
           "base_label": "gRouteOne"
         },
         {
-          "map": "MAP_SPIRAL_TOWN",
-          "base_label": "gSpiralTown",
+          "map": "MAP_CENTER_TOWN",
+          "base_label": "gCenterTown",
           "fishing_mons": {
             "encounter_rate": 30,
             "mons": [

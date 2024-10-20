@@ -1,8 +1,8 @@
 {
   "map_sections": [
     {
-      "map_section": "MAPSEC_SPIRAL_TOWN",
-      "name": "SPIRAL TOWN",
+      "map_section": "MAPSEC_CENTER_TOWN",
+      "name": "CENTER TOWN",
       "x": 4,
       "y": 11,
       "width": 1,

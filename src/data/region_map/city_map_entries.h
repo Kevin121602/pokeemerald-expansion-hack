@@ -1,7 +1,7 @@
 static const struct CityMapEntry sPokenavCityMaps[NUM_CITY_MAPS] =
 {
     {
-        .mapSecId = MAPSEC_SPIRAL_TOWN,
+        .mapSecId = MAPSEC_CENTER_TOWN,
         .index = 0,
         .tilemap = gPokenavCityMap_Littleroot_0,
     },
