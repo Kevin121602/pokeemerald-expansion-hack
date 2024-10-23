@@ -1710,3 +1710,41 @@ const u16 gTilesetPalettes_CenterLab[][16] =
 };
 
 const u32 gTilesetTiles_CenterLab[] = INCBIN_U32("data/tilesets/secondary/center_lab/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_NewOverworld[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/new_overworld/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/new_overworld/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/new_overworld/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/new_overworld/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/new_overworld/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/new_overworld/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/new_overworld/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/new_overworld/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/new_overworld/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/new_overworld/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/new_overworld/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/new_overworld/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/new_overworld/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_NewOverworld[] = INCBIN_U32("data/tilesets/primary/new_overworld/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_CenterTown[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/center_town/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/center_town/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/center_town/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/center_town/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/center_town/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/center_town/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/center_town/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/center_town/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/center_town/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/center_town/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/center_town/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/center_town/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/center_town/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_CenterTown[] = INCBIN_U32("data/tilesets/secondary/center_town/tiles.4bpp.lz");

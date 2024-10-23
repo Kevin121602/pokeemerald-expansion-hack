@@ -66,14 +66,14 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 5,
+      "x": 6,
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_CENTER_TOWN_PLAYERS_HOUSE_1F",
       "dest_warp_id": "1"
     },
     {
-      "x": 7,
+      "x": 6,
       "y": 16,
       "elevation": 0,
       "dest_map": "MAP_CENTER_TOWN_LAB",

@@ -219,3 +219,9 @@ const u16 gMetatileAttributes_PlayerHouse[] = INCBIN_U16("data/tilesets/secondar
 
 const u16 gMetatiles_CenterLab[] = INCBIN_U16("data/tilesets/secondary/center_lab/metatiles.bin");
 const u16 gMetatileAttributes_CenterLab[] = INCBIN_U16("data/tilesets/secondary/center_lab/metatile_attributes.bin");
+
+const u16 gMetatiles_NewOverworld[] = INCBIN_U16("data/tilesets/primary/new_overworld/metatiles.bin");
+const u16 gMetatileAttributes_NewOverworld[] = INCBIN_U16("data/tilesets/primary/new_overworld/metatile_attributes.bin");
+
+const u16 gMetatiles_CenterTown[] = INCBIN_U16("data/tilesets/secondary/center_town/metatiles.bin");
+const u16 gMetatileAttributes_CenterTown[] = INCBIN_U16("data/tilesets/secondary/center_town/metatile_attributes.bin");
