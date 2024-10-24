@@ -17,13 +17,41 @@
       "map": "MAP_UNDERWATER_ROUTE105",
       "offset": 0,
       "direction": "dive"
+    },
+    {
+      "map": "MAP_LONE_TREE_CAPE",
+      "offset": 0,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_ROUTE_THREE",
+      "offset": 39,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_AMPERE_MEADOW",
+      "offset": 59,
+      "direction": "right"
     }
   ],
   "object_events": [
 
   ],
   "warp_events": [
-
+    {
+      "x": 9,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_SPIRAL_WOODS",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 10,
+      "y": 16,
+      "elevation": 0,
+      "dest_map": "MAP_SPIRAL_WOODS",
+      "dest_warp_id": "1"
+    }
   ],
   "coord_events": [
 

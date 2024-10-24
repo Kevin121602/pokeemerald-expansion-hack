@@ -391,7 +391,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_RUN_AWAY] =
     {
         .name = _("Run Away"),
-        .description = COMPOUND_STRING("Makes escaping easier."),
+        .description = COMPOUND_STRING("Not trapped and faster switching."),
         .aiRating = 0,
     },
 
@@ -457,7 +457,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_FORECAST] =
     {
         .name = _("Forecast"),
-        .description = COMPOUND_STRING("Changes with the weather."),
+        .description = COMPOUND_STRING("Powers up in weather."),
         .aiRating = 6,
         .cantBeCopied = TRUE,
         .cantBeTraced = TRUE,
@@ -590,7 +590,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_TANGLED_FEET] =
     {
         .name = _("Tangled Feet"),
-        .description = COMPOUND_STRING("Ups evasion if confused."),
+        .description = COMPOUND_STRING("Lowered stats up Speed."),
         .aiRating = 2,
         .breakable = TRUE,
     },
@@ -1126,7 +1126,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_ILLUSION] =
     {
         .name = _("Illusion"),
-        .description = COMPOUND_STRING("Appears as a partner."),
+        .description = COMPOUND_STRING("Powers up while disguised."),
         .aiRating = 8,
         .cantBeCopied = TRUE,
         .cantBeSwapped = TRUE,
@@ -1496,7 +1496,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     #else
         .name = _("WtrCmpaction"),
     #endif
-        .description = COMPOUND_STRING("Water boosts Defense."),
+        .description = COMPOUND_STRING("Water protection."),
         .aiRating = 4,
     },
 
@@ -2606,5 +2606,37 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .cantBeCopied = TRUE,
         .cantBeSwapped = TRUE,
         .cantBeTraced = TRUE,
+    },
+
+    [ABILITY_STRIKER] =
+    {
+        .name = _("Striker"),
+        .description = COMPOUND_STRING("Boosts kicking moves."),
+        .aiRating = 10,
+    },
+
+    [ABILITY_BAD_COMPANY] =
+    {
+        .name = _("Bad Company"),
+        .description = COMPOUND_STRING("Cannot lower own stats."),
+        .aiRating = 10,
+    },
+
+    [ABILITY_FATAL_PRECISION] =
+    {
+    #if B_EXPANDED_ABILITY_NAMES == TRUE
+        .name = _("Fatal Precision"),
+    #else
+        .name = _("FtlPrecision"),
+    #endif
+        .description = COMPOUND_STRING("Ups “supereffective” and can't miss."),
+        .aiRating = 10,
+    },
+
+    [ABILITY_MYSTIC_CHARM] =
+    {
+        .name = _("Mystic Charm"),
+        .description = COMPOUND_STRING("Special moves drop speed."),
+        .aiRating = 10,
     },
 };

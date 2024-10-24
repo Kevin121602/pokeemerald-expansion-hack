@@ -18,29 +18,29 @@
   ],
   "warp_events": [
     {
-      "x": 14,
-      "y": 5,
+      "x": 9,
+      "y": 14,
       "elevation": 0,
-      "dest_map": "MAP_AMPERE_MEADOW",
-      "dest_warp_id": "2"
+      "dest_map": "MAP_ROUTE105",
+      "dest_warp_id": "0"
     },
     {
-      "x": 15,
-      "y": 5,
+      "x": 10,
+      "y": 14,
       "elevation": 0,
-      "dest_map": "MAP_AMPERE_MEADOW",
-      "dest_warp_id": "3"
+      "dest_map": "MAP_ROUTE105",
+      "dest_warp_id": "1"
     },
     {
-      "x": 16,
-      "y": 38,
+      "x": 111,
+      "y": 14,
       "elevation": 0,
       "dest_map": "MAP_ROUTE_SIX",
       "dest_warp_id": "0"
     },
     {
-      "x": 17,
-      "y": 38,
+      "x": 112,
+      "y": 14,
       "elevation": 0,
       "dest_map": "MAP_ROUTE_SIX",
       "dest_warp_id": "1"
@@ -58,6 +58,13 @@
       "elevation": 0,
       "dest_map": "MAP_AMPERE_MEADOW",
       "dest_warp_id": "7"
+    },
+    {
+      "x": 108,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_SPIRAL_WOODS",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

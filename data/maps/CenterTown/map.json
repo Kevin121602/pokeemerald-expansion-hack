@@ -30,12 +30,12 @@
     },
     {
       "map": "MAP_LONE_TREE_CAPE",
-      "offset": -20,
+      "offset": -25,
       "direction": "up"
     },
     {
       "map": "MAP_CRATER_POND",
-      "offset": -20,
+      "offset": -39,
       "direction": "right"
     },
     {

@@ -25,7 +25,7 @@
     },
     {
       "map": "MAP_LONE_TREE_CAPE",
-      "offset": 5,
+      "offset": 0,
       "direction": "up"
     },
     {
@@ -37,6 +37,11 @@
       "map": "MAP_SEASHELL_BEACH",
       "offset": 25,
       "direction": "down"
+    },
+    {
+      "map": "MAP_ROUTE105",
+      "offset": -39,
+      "direction": "left"
     }
   ],
   "object_events": [

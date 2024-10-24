@@ -25,12 +25,12 @@
     },
     {
       "map": "MAP_CENTER_TOWN",
-      "offset": 20,
+      "offset": 39,
       "direction": "left"
     },
     {
       "map": "MAP_ROUTE_SIX",
-      "offset": -20,
+      "offset": -1,
       "direction": "right"
     }
   ],
