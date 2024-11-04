@@ -29,9 +29,14 @@
       "direction": "right"
     },
     {
-      "map": "MAP_ROUTE105",
+      "map": "MAP_ROUTE_SEVEN",
       "offset": -59,
       "direction": "left"
+    },
+    {
+      "map": "MAP_ROUTE_EIGHT",
+      "offset": 0,
+      "direction": "down"
     }
   ],
   "object_events": [

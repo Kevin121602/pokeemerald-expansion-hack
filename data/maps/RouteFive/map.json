@@ -22,6 +22,16 @@
       "map": "MAP_ROUTE_SIX",
       "offset": 0,
       "direction": "up"
+    },
+    {
+      "map": "MAP_ROUTE_EIGHT",
+      "offset": -70,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_SPIRAL_CITY",
+      "offset": -34,
+      "direction": "right"
     }
   ],
   "object_events": [

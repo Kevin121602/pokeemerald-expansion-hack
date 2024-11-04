@@ -21,14 +21,14 @@
       "x": 9,
       "y": 14,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE105",
+      "dest_map": "MAP_ROUTE_SEVEN",
       "dest_warp_id": "0"
     },
     {
       "x": 10,
       "y": 14,
       "elevation": 0,
-      "dest_map": "MAP_ROUTE105",
+      "dest_map": "MAP_ROUTE_SEVEN",
       "dest_warp_id": "1"
     },
     {

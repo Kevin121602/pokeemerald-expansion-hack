@@ -1284,7 +1284,7 @@ static u8 Debug_CheckToggleFlags(u8 id)
                 FlagGet(FLAG_VISITED_PETALBURG_CITY) &&
                 FlagGet(FLAG_VISITED_SLATEPORT_CITY) &&
                 FlagGet(FLAG_VISITED_MAUVILLE_CITY) &&
-                FlagGet(FLAG_VISITED_RUSTBORO_CITY) &&
+                FlagGet(FLAG_VISITED_SPIRAL_CITY) &&
                 FlagGet(FLAG_VISITED_FORTREE_CITY) &&
                 FlagGet(FLAG_VISITED_LILYCOVE_CITY) &&
                 FlagGet(FLAG_VISITED_MOSSDEEP_CITY) &&
@@ -2791,7 +2791,7 @@ static void DebugAction_FlagsVars_ToggleFlyFlags(u8 taskId)
         FlagClear(FLAG_VISITED_PETALBURG_CITY);
         FlagClear(FLAG_VISITED_SLATEPORT_CITY);
         FlagClear(FLAG_VISITED_MAUVILLE_CITY);
-        FlagClear(FLAG_VISITED_RUSTBORO_CITY);
+        FlagClear(FLAG_VISITED_SPIRAL_CITY);
         FlagClear(FLAG_VISITED_FORTREE_CITY);
         FlagClear(FLAG_VISITED_LILYCOVE_CITY);
         FlagClear(FLAG_VISITED_MOSSDEEP_CITY);
@@ -2813,7 +2813,7 @@ static void DebugAction_FlagsVars_ToggleFlyFlags(u8 taskId)
         FlagSet(FLAG_VISITED_PETALBURG_CITY);
         FlagSet(FLAG_VISITED_SLATEPORT_CITY);
         FlagSet(FLAG_VISITED_MAUVILLE_CITY);
-        FlagSet(FLAG_VISITED_RUSTBORO_CITY);
+        FlagSet(FLAG_VISITED_SPIRAL_CITY);
         FlagSet(FLAG_VISITED_FORTREE_CITY);
         FlagSet(FLAG_VISITED_LILYCOVE_CITY);
         FlagSet(FLAG_VISITED_MOSSDEEP_CITY);

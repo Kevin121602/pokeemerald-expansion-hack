@@ -81,8 +81,8 @@
       "height": 1
     },
     {
-      "map_section": "MAPSEC_RUSTBORO_CITY",
-      "name": "RUSTBORO CITY",
+      "map_section": "MAPSEC_SPIRAL_CITY",
+      "name": "SPIRAL CITY",
       "x": 0,
       "y": 5,
       "width": 1,
@@ -161,8 +161,8 @@
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_105",
-      "name": "ROUTE 105",
+      "map_section": "MAPSEC_ROUTE_SEVEN",
+      "name": "ROUTE 7",
       "x": 0,
       "y": 10,
       "width": 1,
@@ -201,8 +201,8 @@
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_110",
-      "name": "ROUTE 110",
+      "map_section": "MAPSEC_ROUTE_EIGHT",
+      "name": "ROUTE 8",
       "x": 8,
       "y": 7,
       "width": 1,
@@ -441,8 +441,8 @@
       "height": 1
     },
     {
-      "map_section": "MAPSEC_GRANITE_CAVE",
-      "name": "GRANITE CAVE",
+      "map_section": "MAPSEC_SPIRAL_CAVE",
+      "name": "SPIRAL CAVE",
       "x": 1,
       "y": 13,
       "width": 1,
@@ -1706,6 +1706,14 @@
     {
       "map_section": "MAPSEC_TRAINER_HILL",
       "name": "TRAINER HILL",
+      "x": 8,
+      "y": 4,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_HELIX_MUSEUM",
+      "name": "HELIX MUSEUM",
       "x": 8,
       "y": 4,
       "width": 1,

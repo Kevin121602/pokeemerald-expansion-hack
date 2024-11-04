@@ -12,7 +12,10 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
+  "object_events": [
+
+  ],
   "warp_events": [
     {
       "x": 8,
@@ -35,5 +38,11 @@
       "dest_map": "MAP_DESERT_RUINS",
       "dest_warp_id": "1"
     }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
   ]
 }

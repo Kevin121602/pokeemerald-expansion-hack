@@ -11,7 +11,7 @@
 #define MAPSEC_ROUTE_THREE                  0x07
 #define MAPSEC_SLATEPORT_CITY               0x08
 #define MAPSEC_MAUVILLE_CITY                0x09
-#define MAPSEC_RUSTBORO_CITY                0x0A
+#define MAPSEC_SPIRAL_CITY                  0x0A
 #define MAPSEC_FORTREE_CITY                 0x0B
 #define MAPSEC_LILYCOVE_CITY                0x0C
 #define MAPSEC_MOSSDEEP_CITY                0x0D
@@ -21,12 +21,12 @@
 #define MAPSEC_ROUTE_TWO                    0x11
 #define MAPSEC_LONE_TREE_CAPE               0x12
 #define MAPSEC_AMPERE_MEADOW                0x13
-#define MAPSEC_ROUTE_105                    0x14
+#define MAPSEC_ROUTE_SEVEN                  0x14
 #define MAPSEC_ROUTE_FOUR                   0x15
 #define MAPSEC_SEASHELL_BEACH               0x16
 #define MAPSEC_ROUTE_FIVE                   0x17
 #define MAPSEC_ROUTE_SIX                    0x18
-#define MAPSEC_ROUTE_110                    0x19
+#define MAPSEC_ROUTE_EIGHT                  0x19
 #define MAPSEC_ROUTE_111                    0x1A
 #define MAPSEC_ROUTE_112                    0x1B
 #define MAPSEC_ROUTE_113                    0x1C
@@ -56,7 +56,7 @@
 #define MAPSEC_UNDERWATER_127               0x34
 #define MAPSEC_UNDERWATER_128               0x35
 #define MAPSEC_UNDERWATER_SOOTOPOLIS        0x36
-#define MAPSEC_GRANITE_CAVE                 0x37
+#define MAPSEC_SPIRAL_CAVE                  0x37
 #define MAPSEC_MT_CHIMNEY                   0x38
 #define MAPSEC_SAFARI_ZONE                  0x39
 #define MAPSEC_BATTLE_FRONTIER              0x3A
@@ -214,7 +214,8 @@
 #define MAPSEC_ALTERING_CAVE                0xD2
 #define MAPSEC_NAVEL_ROCK                   0xD3
 #define MAPSEC_TRAINER_HILL                 0xD4
-#define MAPSEC_NONE                         0xD5
+#define MAPSEC_HELIX_MUSEUM                 0xD5
+#define MAPSEC_NONE                         0xD6
 
 #define METLOC_SPECIAL_EGG                  0xFD
 #define METLOC_IN_GAME_TRADE                0xFE

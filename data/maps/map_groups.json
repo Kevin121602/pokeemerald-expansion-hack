@@ -2,7 +2,6 @@
   "group_order": [
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorCenter",
-    "gMapGroup_IndoorOldale",
     "gMapGroup_IndoorDewford",
     "gMapGroup_IndoorLavaridge",
     "gMapGroup_IndoorFallarbor",
@@ -11,7 +10,7 @@
     "gMapGroup_IndoorPetalburg",
     "gMapGroup_IndoorSlateport",
     "gMapGroup_IndoorMauville",
-    "gMapGroup_IndoorRustboro",
+    "gMapGroup_IndoorSpiral",
     "gMapGroup_IndoorFortree",
     "gMapGroup_IndoorLilycove",
     "gMapGroup_IndoorMossdeep",
@@ -29,7 +28,6 @@
     "gMapGroup_SpecialArea",
     "gMapGroup_IndoorRoute104Prototype",
     "gMapGroup_IndoorRoute109",
-    "gMapGroup_IndoorRoute110",
     "gMapGroup_IndoorRoute113",
     "gMapGroup_IndoorRoute123",
     "gMapGroup_IndoorRoute119",
@@ -39,7 +37,7 @@
     "RouteThree",
     "SlateportCity",
     "MauvilleCity",
-    "RustboroCity",
+    "SpiralCity",
     "FortreeCity",
     "LilycoveCity",
     "MossdeepCity",
@@ -56,12 +54,12 @@
     "RouteTwo",
     "LoneTreeCape",
     "AmpereMeadow",
-    "Route105",
+    "RouteSeven",
     "RouteFour",
     "SeashellBeach",
     "RouteFive",
     "RouteSix",
-    "Route110",
+    "RouteEight",
     "Route111",
     "Route112",
     "Route113",
@@ -190,24 +188,10 @@
     "MauvilleCity_PokemonCenter_2F",
     "MauvilleCity_Mart"
   ],
-  "gMapGroup_IndoorRustboro": [
-    "RustboroCity_DevonCorp_1F",
-    "RustboroCity_DevonCorp_2F",
-    "RustboroCity_DevonCorp_3F",
-    "RustboroCity_Gym",
-    "RustboroCity_PokemonSchool",
-    "RustboroCity_PokemonCenter_1F",
-    "RustboroCity_PokemonCenter_2F",
-    "RustboroCity_Mart",
-    "RustboroCity_Flat1_1F",
-    "RustboroCity_Flat1_2F",
-    "RustboroCity_House1",
-    "RustboroCity_CuttersHouse",
-    "RustboroCity_House2",
-    "RustboroCity_Flat2_1F",
-    "RustboroCity_Flat2_2F",
-    "RustboroCity_Flat2_3F",
-    "RustboroCity_House3"
+  "gMapGroup_IndoorSpiral": [
+    "SpiralCity_HelixMuseum",
+    "SpiralCity_House1",
+    "SpiralCity_House2"
   ],
   "gMapGroup_IndoorFortree": [
     "FortreeCity_House1",
@@ -329,7 +313,7 @@
     "FrigidPath",
     "Underwater_SootopolisCity",
     "DesertRuins",
-    "GraniteCave_1F",
+    "SpiralCave",
     "GraniteCave_B1F",
     "GraniteCave_B2F",
     "GraniteCave_StevensRoom",
@@ -591,21 +575,6 @@
   ],
   "gMapGroup_IndoorRoute109": [
     "Route109_SeashoreHouse"
-  ],
-  "gMapGroup_IndoorRoute110": [
-    "Route110_TrickHouseEntrance",
-    "Route110_TrickHouseEnd",
-    "Route110_TrickHouseCorridor",
-    "Route110_TrickHousePuzzle1",
-    "Route110_TrickHousePuzzle2",
-    "Route110_TrickHousePuzzle3",
-    "Route110_TrickHousePuzzle4",
-    "Route110_TrickHousePuzzle5",
-    "Route110_TrickHousePuzzle6",
-    "Route110_TrickHousePuzzle7",
-    "Route110_TrickHousePuzzle8",
-    "Route110_SeasideCyclingRoadNorthEntrance",
-    "Route110_SeasideCyclingRoadSouthEntrance"
   ],
   "gMapGroup_IndoorRoute113": [
     "Route113_GlassWorkshop"
