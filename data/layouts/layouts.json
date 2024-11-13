@@ -192,14 +192,14 @@
       "blockdata_filepath": "data/layouts/LoneTreeCape/map.bin"
     },
     {
-      "id": "LAYOUT_AMPERE_MEADOW",
-      "name": "AmpereMeadow_Layout",
+      "id": "LAYOUT_LIGHTNING_MEADOW",
+      "name": "LightningMeadow_Layout",
       "width": 25,
       "height": 25,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
-      "border_filepath": "data/layouts/AmpereMeadow/border.bin",
-      "blockdata_filepath": "data/layouts/AmpereMeadow/map.bin"
+      "border_filepath": "data/layouts/LightningMeadow/border.bin",
+      "blockdata_filepath": "data/layouts/LightningMeadow/map.bin"
     },
     {
       "id": "LAYOUT_ROUTE_SEVEN",

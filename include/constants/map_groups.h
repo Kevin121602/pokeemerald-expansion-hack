@@ -25,7 +25,7 @@
 #define MAP_ROUTE_ONE           (16 | (0 << 8))
 #define MAP_ROUTE_TWO           (17 | (0 << 8))
 #define MAP_LONE_TREE_CAPE      (18 | (0 << 8))
-#define MAP_AMPERE_MEADOW       (19 | (0 << 8))
+#define MAP_LIGHTNING_MEADOW    (19 | (0 << 8))
 #define MAP_ROUTE_SEVEN         (20 | (0 << 8))
 #define MAP_ROUTE_FOUR          (21 | (0 << 8))
 #define MAP_SEASHELL_BEACH      (22 | (0 << 8))

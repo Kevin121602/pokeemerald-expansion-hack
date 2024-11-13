@@ -14,9 +14,9 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_CENTER_TOWN",
+      "map": "MAP_LONE_TREE_CAPE",
       "offset": 0,
-      "direction": "right"
+      "direction": "up"
     },
     {
       "map": "MAP_ROUTE_TWO",
@@ -25,11 +25,11 @@
     },
     {
       "map": "MAP_LONE_TREE_CAPE",
-      "offset": 0,
+      "offset": -26,
       "direction": "up"
     },
     {
-      "map": "MAP_AMPERE_MEADOW",
+      "map": "MAP_LIGHTNING_MEADOW",
       "offset": 0,
       "direction": "down"
     },
@@ -42,6 +42,11 @@
       "map": "MAP_ROUTE_SEVEN",
       "offset": -39,
       "direction": "left"
+    },
+    {
+      "map": "MAP_CENTER_TOWN",
+      "offset": 0,
+      "direction": "right"
     }
   ],
   "object_events": [

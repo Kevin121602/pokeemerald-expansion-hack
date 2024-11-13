@@ -32,6 +32,11 @@
       "map": "MAP_SPIRAL_CITY",
       "offset": -34,
       "direction": "right"
+    },
+    {
+      "map": "MAP_ROUTE_ONE",
+      "offset": -19,
+      "direction": "left"
     }
   ],
   "object_events": [

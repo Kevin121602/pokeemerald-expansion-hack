@@ -20,7 +20,7 @@
 #define MAPSEC_ROUTE_ONE                    0x10
 #define MAPSEC_ROUTE_TWO                    0x11
 #define MAPSEC_LONE_TREE_CAPE               0x12
-#define MAPSEC_AMPERE_MEADOW                0x13
+#define MAPSEC_LIGHTNING_MEADOW             0x13
 #define MAPSEC_ROUTE_SEVEN                  0x14
 #define MAPSEC_ROUTE_FOUR                   0x15
 #define MAPSEC_SEASHELL_BEACH               0x16

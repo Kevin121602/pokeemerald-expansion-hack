@@ -53,7 +53,7 @@
     "RouteOne",
     "RouteTwo",
     "LoneTreeCape",
-    "AmpereMeadow",
+    "LightningMeadow",
     "RouteSeven",
     "RouteFour",
     "SeashellBeach",
@@ -98,13 +98,6 @@
     "CenterTown_PlayersHouse_2F",
     "CenterTown_House_1",
     "CenterTown_Lab"
-  ],
-  "gMapGroup_IndoorOldale": [
-    "OldaleTown_House1",
-    "OldaleTown_House2",
-    "OldaleTown_PokemonCenter_1F",
-    "OldaleTown_PokemonCenter_2F",
-    "OldaleTown_Mart"
   ],
   "gMapGroup_IndoorDewford": [
     "DewfordTown_House1",

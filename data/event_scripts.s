@@ -123,7 +123,7 @@ gStdScripts_End::
 	.include "data/maps/RouteOne/scripts.inc"
 	.include "data/maps/RouteTwo/scripts.inc"
 	.include "data/maps/LoneTreeCape/scripts.inc"
-	.include "data/maps/AmpereMeadow/scripts.inc"
+	.include "data/maps/LightningMeadow/scripts.inc"
 	.include "data/maps/RouteSeven/scripts.inc"
 	.include "data/maps/RouteFour/scripts.inc"
 	.include "data/maps/SeashellBeach/scripts.inc"

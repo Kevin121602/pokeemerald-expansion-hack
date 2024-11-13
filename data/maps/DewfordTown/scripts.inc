@@ -136,11 +136,11 @@ DewfordTown_EventScript_SailToPetalburg::
 	applymovement LOCALID_BOAT_DEWFORD, DewfordTown_Movement_SailToPetalburg
 	applymovement OBJ_EVENT_ID_PLAYER, DewfordTown_Movement_SailToPetalburg
 	waitmovement 0
-	showobjectat OBJ_EVENT_ID_PLAYER, MAP_AMPERE_MEADOW
+	showobjectat OBJ_EVENT_ID_PLAYER, MAP_LIGHTNING_MEADOW
 	call Common_EventScript_StopBrineysBoatMusic
 	applymovement OBJ_EVENT_ID_PLAYER, DewfordTown_Movement_ExitBoatPetalburg
 	waitmovement 0
-	showobjectat OBJ_EVENT_ID_PLAYER, MAP_AMPERE_MEADOW
+	showobjectat OBJ_EVENT_ID_PLAYER, MAP_LIGHTNING_MEADOW
 	clearflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
 	clearflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
 	clearflag FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT
