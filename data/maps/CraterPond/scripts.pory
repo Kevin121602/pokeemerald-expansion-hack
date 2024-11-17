@@ -1,11 +1,22 @@
+mapscripts CraterPond_MapScripts {}
+
+script CraterPond_ExpShare {
+	lock
+	faceplayer
+	if(!flag(FLAG_RECEIVED_EXP_SHARE)){
+		msgbox(format("All my Pokémon overleveled..."))
+		giveitem(ITEM_EXP_SHARE)
+		setflag(FLAG_RECEIVED_EXP_SHARE)
+	}
+	msgbox(format("Don't make the same mistake as me."))
+	release
+}
+
 raw `
 .set LOCALID_MART_EMPLOYEE, 2
 .set LOCALID_FOOTPRINTS_MAN, 3
 .set LOCALID_RIVAL, 4
 
-CraterPond_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, OldaleTown_OnTransition
-	.byte 0
 
 OldaleTown_OnTransition:
 	call Common_EventScript_SetupRivalGfxId

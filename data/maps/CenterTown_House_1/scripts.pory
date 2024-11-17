@@ -2,6 +2,7 @@ mapscripts CenterTownHouse1_MapScripts {}
 
 script CenterTown_House_1_HeartScales {
 	lock
+	faceplayer
 	if(!flag(FLAG_RECEIVED_HEART_SCALES)){
 		msgbox(format("I'm rooting for you, {PLAYER}, take these!"))
 		giveitem(ITEM_HEART_SCALE, 2)

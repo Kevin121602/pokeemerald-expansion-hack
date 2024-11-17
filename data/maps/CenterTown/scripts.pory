@@ -1,12 +1,25 @@
+mapscripts CenterTown_MapScripts {}
+
+script CenterTown_SuperRod {
+	lock
+	faceplayer
+	if(!flag(FLAG_RECEIVED_SUPER_ROD)){
+		msgbox(format("Fishing has always been my passion, but I haven't caught anything decent in this pond..."))
+		giveitem(ITEM_SUPER_ROD)
+		msgbox(format("Maybe you'll have better luck."))
+	}
+	if(flag(FLAG_RECEIVED_SUPER_ROD)){
+		msgbox(format("How are the fish biting?"))
+	}
+	setflag(FLAG_RECEIVED_SUPER_ROD)
+	release
+}
+
 raw `
 .set LOCALID_TWIN, 1
 .set LOCALID_MOM, 4
 .set LOCALID_RIVAL, 7
 .set LOCALID_BIRCH, 8
-
-CenterTown_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_OnTransition
-	.byte 0
 
 	@ State descriptions for VAR_LITTLEROOT_TOWN_STATE
 	@ 1: Met Rival

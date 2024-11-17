@@ -5947,11 +5947,25 @@ Pic: Youngster
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Poochyena
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Bidoof @ Berry Juice
+Level: 10
+Ability: Simple
+-Defense Curl
+-Rollout
+
+Rattata @ Focus Sash
+Level: 10
+Ability: Guts
+-Endeavor
+-Quick Attack
+
+SPECIES_RATTATA_ALOLAN @ Salac Berry
+Level: 10
+Ability: Gluttony
+-Hyper Fang
+-Bite
 
 === TRAINER_BILLY ===
 Name: BILLY
