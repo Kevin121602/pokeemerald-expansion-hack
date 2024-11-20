@@ -407,11 +407,11 @@ Route103_EventScript_RouteSign::
 # 204 "data/maps/LoneTreeCape/scripts.pory"
 
 # 205 "data/maps/LoneTreeCape/scripts.pory"
-Route103_EventScript_Daisy::
+Route103_EventScript_Tiana::
 # 206 "data/maps/LoneTreeCape/scripts.pory"
-	trainerbattle_single TRAINER_DAISY, Route103_Text_DaisyIntro, Route103_Text_DaisyDefeated
+	trainerbattle_single TRAINER_TIANA, Route103_Text_TianaIntro, Route103_Text_TianaDefeated
 # 207 "data/maps/LoneTreeCape/scripts.pory"
-	msgbox Route103_Text_DaisyPostBattle, MSGBOX_AUTOCLOSE
+	msgbox Route103_Text_TianaPostBattle, MSGBOX_AUTOCLOSE
 # 208 "data/maps/LoneTreeCape/scripts.pory"
 	end
 # 209 "data/maps/LoneTreeCape/scripts.pory"

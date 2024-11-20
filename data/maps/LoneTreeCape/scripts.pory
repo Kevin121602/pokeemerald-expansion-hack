@@ -202,9 +202,9 @@ Route103_EventScript_RouteSign::
 	msgbox Route103_Text_RouteSign, MSGBOX_SIGN
 	end
 
-Route103_EventScript_Daisy::
-	trainerbattle_single TRAINER_DAISY, Route103_Text_DaisyIntro, Route103_Text_DaisyDefeated
-	msgbox Route103_Text_DaisyPostBattle, MSGBOX_AUTOCLOSE
+Route103_EventScript_Tiana::
+	trainerbattle_single TRAINER_TIANA, Route103_Text_TianaIntro, Route103_Text_TianaDefeated
+	msgbox Route103_Text_TianaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route103_EventScript_Amy::

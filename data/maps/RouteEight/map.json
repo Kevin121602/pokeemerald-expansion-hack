@@ -117,29 +117,29 @@
   "coord_events": [
     {
       "type": "weather",
-      "x": 101,
-      "y": 16,
+      "x": 109,
+      "y": 24,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_SANDSTORM"
     },
     {
       "type": "weather",
-      "x": 101,
-      "y": 18,
+      "x": 107,
+      "y": 24,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_SANDSTORM"
     },
     {
       "type": "weather",
-      "x": 101,
-      "y": 17,
+      "x": 108,
+      "y": 24,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_SANDSTORM"
     },
     {
       "type": "weather",
-      "x": 101,
-      "y": 19,
+      "x": 106,
+      "y": 24,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_SANDSTORM"
     },
@@ -194,29 +194,29 @@
     },
     {
       "type": "weather",
-      "x": 100,
-      "y": 19,
+      "x": 106,
+      "y": 23,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_SUNNY"
     },
     {
       "type": "weather",
-      "x": 100,
-      "y": 18,
+      "x": 107,
+      "y": 23,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_SUNNY"
     },
     {
       "type": "weather",
-      "x": 100,
-      "y": 17,
+      "x": 108,
+      "y": 23,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_SUNNY"
     },
     {
       "type": "weather",
-      "x": 100,
-      "y": 16,
+      "x": 109,
+      "y": 23,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_SUNNY"
     },

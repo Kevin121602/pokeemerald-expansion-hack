@@ -69,14 +69,14 @@ Route102_Text_TianaPostBattle:
 	.string "To keep winning my way up, I see that\n"
 	.string "I have to catch more POKéMON.$"
 
-Route103_Text_DaisyIntro:
+Route103_Text_TianaIntro:
 	.string "Did you feel the tug of our\n"
 	.string "soul-soothing fragrance?$"
 
-Route103_Text_DaisyDefeated:
+Route103_Text_TianaDefeated:
 	.string "You weren't led astray by our aroma…$"
 
-Route103_Text_DaisyPostBattle:
+Route103_Text_TianaPostBattle:
 	.string "Aromatherapy is a form of mental\n"
 	.string "healing that works with fragrances.$"
 

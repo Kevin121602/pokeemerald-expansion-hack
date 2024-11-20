@@ -57,14 +57,6 @@ Route113_EventScript_Dillon::
 	msgbox Route113_Text_DillonPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route113_EventScript_Madeline::
-	trainerbattle_single TRAINER_MADELINE_1, Route113_Text_MadelineIntro, Route113_Text_MadelineDefeat, Route113_EventScript_RegisterMadeline
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route113_EventScript_RematchMadeline
-	msgbox Route113_Text_MadelinePostBattle, MSGBOX_DEFAULT
-	release
-	end
-
 Route113_EventScript_RegisterMadeline::
 	special PlayerFaceTrainerAfterBattle
 	waitmovement 0

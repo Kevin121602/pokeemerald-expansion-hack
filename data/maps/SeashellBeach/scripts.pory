@@ -2,6 +2,11 @@ raw `
 SeashellBeach_MapScripts::
 	.byte 0
 
+RustboroCity_Gym_EventScript_Josh::
+	trainerbattle_single TRAINER_JOSH, RustboroCity_Gym_Text_JoshIntro, RustboroCity_Gym_Text_JoshDefeat
+	msgbox RustboroCity_Gym_Text_JoshPostBattle, MSGBOX_AUTOCLOSE
+	end
+
 Route107_EventScript_Darrin::
 	trainerbattle_single TRAINER_DARRIN, Route107_Text_DarrinIntro, Route107_Text_DarrinDefeated
 	msgbox Route107_Text_DarrinPostBattle, MSGBOX_AUTOCLOSE

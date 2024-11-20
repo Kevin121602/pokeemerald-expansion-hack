@@ -2,6 +2,12 @@ raw `
 RouteFour_MapScripts::
 	.byte 0
 
+Route113_EventScript_Madeline::
+	trainerbattle_single TRAINER_MADELINE_1, Route113_Text_MadelineIntro, Route113_Text_MadelineDefeat
+	msgbox Route113_Text_MadelinePostBattle, MSGBOX_DEFAULT
+	release
+	end
+	
 Route106_EventScript_TrainerTipsSign::
 	msgbox Route106_Text_TrainerTips, MSGBOX_SIGN
 	end
