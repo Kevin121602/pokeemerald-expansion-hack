@@ -213,7 +213,7 @@
 #define MAX_IV_MASK 31
 #define USE_RANDOM_IVS (MAX_PER_STAT_IVS + 1)
 #define MAX_PER_STAT_EVS ((P_EV_CAP >= GEN_6) ? 252 : 255)
-#define MAX_TOTAL_EVS 510
+#define MAX_TOTAL_EVS 0
 #define EV_ITEM_RAISE_LIMIT ((I_VITAMIN_EV_CAP >= GEN_8) ? MAX_PER_STAT_EVS : 100)
 
 // Move category defines.
@@ -298,6 +298,9 @@
 #define EVO_ITEM_COUNT_999                50     // Pokémon levels up after trainer has collected 999 of a specific item
 #define EVO_DEFEAT_THREE_WITH_ITEM        51     // Pokémon levels up after having defeat 3 Pokémon of the same species holding the specified item
 #define EVO_OVERWORLD_STEPS               52     // Pokémon levels up after having taken a specific amount of steps in the overworld (or as the party lead if OW_FOLLOWERS_ENABLED is FALSE) without switching
+#define EVO_LEVEL_FEMALE_ATK_GT_SPA       53     // Wormadam Sandy Evo
+#define EVO_LEVEL_FEMALE_ATK_EQ_SPA       54     // Wormadam Trash Evo
+#define EVO_LEVEL_FEMALE_ATK_LS_SPA       55     // Wormadam Plant Evo
 
 // Evolution 'modes,' for GetEvolutionTargetSpecies
 #define EVO_MODE_NORMAL            0
