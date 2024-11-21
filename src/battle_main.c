@@ -4303,7 +4303,10 @@ static void HandleTurnActionSelectionState(void)
                     }
                     break;
                 case B_ACTION_USE_ITEM:
-                    if (FlagGet(B_FLAG_NO_BAG_USE))
+                    if (FlagGet(FLAG_DISABLE_BAG) || gBattleTypeFlags & (BATTLE_TYPE_LINK
+                                            | BATTLE_TYPE_FRONTIER_NO_PYRAMID
+                                            | BATTLE_TYPE_EREADER_TRAINER
+                                            | BATTLE_TYPE_RECORDED_LINK))
                     {
                         RecordedBattle_ClearBattlerAction(battler, 1);
                         gSelectionBattleScripts[battler] = BattleScript_ActionSelectionItemsCantBeUsed;

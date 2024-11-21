@@ -54,8 +54,7 @@ movement MomMovement2 {
 script CenterTown_PlayersHouse_1F_MomItems {
 	msgbox(format("MOM: Good luck, {PLAYER}! You'll need these items before you go."))
 	giveitem(ITEM_RARE_CANDY, 999)
-	giveitem(ITEM_FULL_RESTORE, 99)
-	giveitem(ITEM_MASTER_BALL, 99)
+	giveitem(ITEM_POKE_BALL, 99)
 	playfanfare(MUS_OBTAIN_ITEM)
 	msgbox(format("{PLAYER} switched shoes with the Running Shoes!"))
 	waitmessage
@@ -87,19 +86,13 @@ script CenterTown_PlayersHouse_1F_MomPokeballs {
 	lock
 	faceplayer
 	msgbox("Here's some more money, {PLAYER}!")
-	msgbox("Do you need more Pokéballs?")
+	msgbox("Do you need more Pokéballs?", MSGBOX_YESNO)
 	waitmessage
-	pokemart(MomItems)
+	if(var(VAR_RESULT) == YES){
+		giveitem(ITEM_POKE_BALL, 99)
+	}
 	msgbox("Good luck, dear!")
 	release
-}
-
-mart MomItems {
-	ITEM_POKE_BALL
-	ITEM_GREAT_BALL
-	ITEM_ULTRA_BALL
-	ITEM_TIMER_BALL
-	ITEM_MASTER_BALL
 }
 
 
