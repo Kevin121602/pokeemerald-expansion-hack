@@ -268,7 +268,7 @@ BattleScript_EffectChillyReception::
 	call BattleScript_EffectChillyReceptionPlayAnimation
 	setfieldweather ENUM_WEATHER_SNOW
 	call BattleScript_MoveWeatherChangeRet
-	goto BattleScript_MoveSwitch
+	goto BattleScript_MoveSwitchChillyReception
 BattleScript_EffectChillyReceptionPlayAnimation:
 	attackstring
 	attackanimation
@@ -277,15 +277,15 @@ BattleScript_EffectChillyReceptionPlayAnimation:
 BattleScript_EffectChillyReceptionBlockedByPrimalSun:
 	call BattleScript_EffectChillyReceptionTrySwitchWeatherFailed
 	call BattleScript_ExtremelyHarshSunlightWasNotLessenedRet
-	goto BattleScript_MoveSwitch
+	goto BattleScript_MoveSwitchChillyReception
 BattleScript_EffectChillyReceptionBlockedByPrimalRain:
 	call BattleScript_EffectChillyReceptionTrySwitchWeatherFailed
 	call BattleScript_NoReliefFromHeavyRainRet
-	goto BattleScript_MoveSwitch
+	goto BattleScript_MoveSwitchChillyReception
 BattleScript_EffectChillyReceptionBlockedByStrongWinds:
 	call BattleScript_EffectChillyReceptionTrySwitchWeatherFailed
 	call BattleScript_MysteriousAirCurrentBlowsOnRet
-	goto BattleScript_MoveSwitch
+	goto BattleScript_MoveSwitchChillyReception
 BattleScript_EffectChillyReceptionTrySwitchWeatherFailed:
 	jumpifbattletype BATTLE_TYPE_ARENA, BattleScript_FailedFromAtkString
 	jumpifcantswitch SWITCH_IGNORE_ESCAPE_PREVENTION | BS_ATTACKER, BattleScript_FailedFromAtkString
@@ -298,12 +298,21 @@ BattleScript_CheckPrimalWeather:
 	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_MysteriousAirCurrentBlowsOn
 	return
 
+BattleScript_MoveSwitchChillyReception:
+	jumpifbattletype BATTLE_TYPE_ARENA, BattleScript_MoveSwitchEnd
+	jumpifcantswitch SWITCH_IGNORE_ESCAPE_PREVENTION | BS_ATTACKER, BattleScript_MoveSwitchEnd
+	printstring STRINGID_PKMNWENTBACK
+	waitmessage B_WAIT_TIME_SHORT
+	goto BattleScript_MoveSwitchOpenPartyScreen
+
 BattleScript_MoveSwitch:
 	jumpifbattletype BATTLE_TYPE_ARENA, BattleScript_MoveSwitchEnd
 	jumpifcantswitch SWITCH_IGNORE_ESCAPE_PREVENTION | BS_ATTACKER, BattleScript_MoveSwitchEnd
 	printstring STRINGID_PKMNWENTBACK
 	waitmessage B_WAIT_TIME_SHORT
-BattleScript_MoveSwitchOpenPartyScreen:
+	jumpifnopursuitswitchdmg BattleScript_MoveSwitchOpenPartyScreen
+	end
+BattleScript_MoveSwitchOpenPartyScreen::
 	openpartyscreen BS_ATTACKER, BattleScript_MoveSwitchEnd
 	switchoutabilities BS_ATTACKER
 	waitstate
@@ -5782,25 +5791,14 @@ BattleScript_PrintFullBox::
 
 BattleScript_ActionSwitch::
 	hpthresholds2 BS_ATTACKER
-	saveattacker
 	printstring STRINGID_RETURNMON
-	jumpifbattletype BATTLE_TYPE_DOUBLE, BattleScript_PursuitSwitchDmgSetMultihit
-	setmultihit 1
-	goto BattleScript_PursuitSwitchDmgLoop
-BattleScript_PursuitSwitchDmgSetMultihit::
-	setmultihit 2
-BattleScript_PursuitSwitchDmgLoop::
 	jumpifnopursuitswitchdmg BattleScript_DoSwitchOut
-	swapattackerwithtarget
-	trysetdestinybondtohappen
-	call BattleScript_PursuitDmgOnSwitchOut
-	swapattackerwithtarget
+	end2
+
 BattleScript_DoSwitchOut::
-	decrementmultihit BattleScript_PursuitSwitchDmgLoop
 	switchoutabilities BS_ATTACKER
 	updatedynamax
 	waitstate
-	restoreattacker
 	returnatktoball
 	waitstate
 	drawpartystatussummary BS_ATTACKER
@@ -5818,34 +5816,6 @@ BattleScript_DoSwitchOut::
 	moveendcase MOVEEND_STATUS_IMMUNITY_ABILITIES
 	moveendcase MOVEEND_MIRROR_MOVE
 	end2
-
-BattleScript_PursuitDmgOnSwitchOut::
-	pause B_WAIT_TIME_SHORT
-	orword gHitMarker, HITMARKER_OBEYS
-	attackstring
-	ppreduce
-	critcalc
-	damagecalc
-	adjustdamage
-	attackanimation
-	waitanimation
-	effectivenesssound
-	hitanimation BS_TARGET
-	waitstate
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	critmessage
-	waitmessage B_WAIT_TIME_LONG
-	resultmessage
-	waitmessage B_WAIT_TIME_LONG
-	tryfaintmon BS_TARGET
-	moveendfromto MOVEEND_ABILITIES, MOVEEND_ATTACKER_INVISIBLE @ MOVEEND_CHOICE_MOVE has to be included
-	jumpiffainted BS_TARGET, FALSE, BattleScript_PursuitDmgOnSwitchOutRet
-	setbyte sGIVEEXP_STATE, 0
-	getexp BS_TARGET
-BattleScript_PursuitDmgOnSwitchOutRet:
-	bicword gHitMarker, HITMARKER_OBEYS
-	return
 
 BattleScript_Pausex20::
 	pause B_WAIT_TIME_SHORT
@@ -9753,6 +9723,7 @@ BattleScript_PastelVeilEnd:
 	end3
 
 BattleScript_NeutralizingGasExits::
+	saveattacker
 	savetarget
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_NEUTRALIZINGGASOVER
@@ -9762,6 +9733,7 @@ BattleScript_NeutralizingGasExitsLoop:
 	switchinabilities BS_TARGET
 	addbyte gBattlerTarget, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_NeutralizingGasExitsLoop
+	restoreattacker
 	restoretarget
 	return
 

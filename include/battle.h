@@ -808,6 +808,9 @@ struct BattleStruct
     u8 obedienceResult:3;
     u8 redCardActivates:1;
     u8 usedMicleBerry;
+    u8 pursuitTarget:4; // Each battler as a bit.
+    u8 pursuitSwitchByMove:1;
+    u8 pursuitStoredSwitch; // Stored id for the Pursuit target's switch
 };
 
 // The palaceFlags member of struct BattleStruct contains 1 flag per move to indicate which moves the AI should consider,
