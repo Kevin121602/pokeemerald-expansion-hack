@@ -1543,7 +1543,7 @@ static bool32 AccuracyCalcHelper(u16 move)
         JumpIfMoveFailed(7, move);
         return TRUE;
     }
-    else if (gBattleStruct->pursuitTarget & (1 << gBattlerTarget))
+    else if (gBattleStruct->pursuitTarget & (1u << gBattlerTarget))
     {
         JumpIfMoveFailed(7, move);
         return TRUE;
@@ -6517,7 +6517,7 @@ static void Cmd_moveend(void)
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_PURSUIT_NEXT_ACTION:
-            if (gBattleStruct->pursuitTarget & (1 << gBattlerTarget))
+            if (gBattleStruct->pursuitTarget & (1u << gBattlerTarget))
             {
                 u32 storedTarget = gBattlerTarget;
                 if (SetTargetToNextPursuiter(gBattlerTarget))
@@ -13779,7 +13779,7 @@ static void Cmd_jumpifnopursuitswitchdmg(void)
     if (SetTargetToNextPursuiter(gBattlerAttacker))
     {
         ChangeOrderTargetAfterAttacker();
-        gBattleStruct->pursuitTarget = 1 << gBattlerAttacker;
+        gBattleStruct->pursuitTarget = 1u << gBattlerAttacker;
         gBattleStruct->pursuitSwitchByMove = gActionsByTurnOrder[gCurrentTurnActionNumber] == B_ACTION_USE_MOVE;
         gBattleStruct->pursuitStoredSwitch = gBattleStruct->monToSwitchIntoId[gBattlerAttacker];
         *(gBattleStruct->moveTarget + gBattlerTarget) = gBattlerAttacker;
