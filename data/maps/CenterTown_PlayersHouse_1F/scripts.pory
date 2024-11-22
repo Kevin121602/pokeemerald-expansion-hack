@@ -85,7 +85,6 @@ script NicknamePartyMon{
 script CenterTown_PlayersHouse_1F_MomPokeballs {
 	lock
 	faceplayer
-	msgbox("Here's some more money, {PLAYER}!")
 	msgbox("Do you need more Pokéballs?", MSGBOX_YESNO)
 	waitmessage
 	if(var(VAR_RESULT) == YES){
