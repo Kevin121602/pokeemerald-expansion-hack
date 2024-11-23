@@ -2,7 +2,7 @@
   "id": "MAP_ROUTE_THREE",
   "name": "RouteThree",
   "layout": "LAYOUT_ROUTE_THREE",
-  "music": "MUS_PETALBURG",
+  "music": "MUS_DP_ROUTE203_DAY",
   "region_map_section": "MAPSEC_ROUTE_THREE",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",

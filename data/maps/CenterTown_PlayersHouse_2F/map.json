@@ -2,7 +2,7 @@
   "id": "MAP_CENTER_TOWN_PLAYERS_HOUSE_2F",
   "name": "CenterTown_PlayersHouse_2F",
   "layout": "LAYOUT_CENTER_TOWN_PLAYERS_HOUSE_2F",
-  "music": "MUS_LITTLEROOT",
+  "music": "MUS_DP_TWINLEAF_DAY",
   "region_map_section": "MAPSEC_CENTER_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

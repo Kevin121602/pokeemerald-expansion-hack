@@ -2,7 +2,7 @@
   "id": "MAP_CENTER_TOWN_HOUSE_1",
   "name": "CenterTown_House_1",
   "layout": "LAYOUT_CENTER_TOWN_HOUSE_1",
-  "music": "MUS_LITTLEROOT",
+  "music": "MUS_DP_TWINLEAF_DAY",
   "region_map_section": "MAPSEC_CENTER_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

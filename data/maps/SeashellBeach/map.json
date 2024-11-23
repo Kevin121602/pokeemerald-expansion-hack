@@ -2,7 +2,7 @@
   "id": "MAP_SEASHELL_BEACH",
   "name": "SeashellBeach",
   "layout": "LAYOUT_SEASHELL_BEACH",
-  "music": "MUS_ROUTE104",
+  "music": "MUS_DP_ROUTE201_DAY",
   "region_map_section": "MAPSEC_SEASHELL_BEACH",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",

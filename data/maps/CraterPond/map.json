@@ -2,7 +2,7 @@
   "id": "MAP_CRATER_POND",
   "name": "CraterPond",
   "layout": "LAYOUT_CRATER_POND",
-  "music": "MUS_OLDALE",
+  "music": "MUS_DP_LAKE",
   "region_map_section": "MAPSEC_CRATER_POND",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",

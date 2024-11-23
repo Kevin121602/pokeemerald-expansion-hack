@@ -2,7 +2,7 @@
   "id": "MAP_LONE_TREE_CAPE",
   "name": "LoneTreeCape",
   "layout": "LAYOUT_LONE_TREE_CAPE",
-  "music": "MUS_ROUTE101",
+  "music": "MUS_DP_JUBILIFE_DAY",
   "region_map_section": "MAPSEC_LONE_TREE_CAPE",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",

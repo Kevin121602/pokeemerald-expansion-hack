@@ -2,7 +2,7 @@
   "id": "MAP_CENTER_TOWN_LAB",
   "name": "CenterTown_Lab",
   "layout": "LAYOUT_CENTER_TOWN_LAB",
-  "music": "MUS_BIRCH_LAB",
+  "music": "MUS_DP_ROWAN_LAB",
   "region_map_section": "MAPSEC_CENTER_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
