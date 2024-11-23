@@ -4421,12 +4421,13 @@ static void Cmd_getexp(void)
                     {
                         u32 growthRate = gSpeciesInfo[GetMonData(&gPlayerParty[*expMonId], MON_DATA_SPECIES)].growthRate;
                         u32 currentExp = GetMonData(&gPlayerParty[*expMonId], MON_DATA_EXP);
+                        //prevents exp gain if 1 above mon level cap
                         u32 levelCap = GetCurrentLevelCap();
 
-                        if (GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL) >= levelCap)
+                        if (GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL) >= (levelCap+1))
                             gBattleMoveDamage = 0;
-                        else if (gExperienceTables[growthRate][levelCap] < currentExp + gBattleMoveDamage)
-                            gBattleMoveDamage = gExperienceTables[growthRate][levelCap] - currentExp;
+                        else if (gExperienceTables[growthRate][(levelCap+1)] < currentExp + gBattleMoveDamage)
+                            gBattleMoveDamage = gExperienceTables[growthRate][(levelCap+1)] - currentExp;
                     }
 
                     if (IsTradedMon(&gPlayerParty[*expMonId]))

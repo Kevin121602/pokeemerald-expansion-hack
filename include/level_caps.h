@@ -15,6 +15,7 @@
 #endif
 
 u32 GetCurrentLevelCap(void);
+u32 GetIndividualLevelCap(u32 monLevelCap);
 u32 GetSoftLevelCapExpValue(u32 level, u32 expValue);
 
 #endif /* GUARD_LEVEL_CAP_H */

@@ -116,6 +116,7 @@ enum {
     MON_DATA_GIGANTAMAX_FACTOR,
     MON_DATA_TERA_TYPE,
     MON_DATA_EVOLUTION_TRACKER,
+    MON_DATA_LEVEL_CAP,
 };
 
 struct PokemonSubstruct0

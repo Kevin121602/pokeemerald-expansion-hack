@@ -9,8 +9,8 @@ u32 GetCurrentLevelCap(void)
 {
     static const u32 sLevelCapFlagMap[][2] =
     {
-        {FLAG_DEFEATED_GALACTIC_GRUNT, 18},
-        {FLAG_DEFEATED_WALLY, 20},
+        {FLAG_DEFEATED_GALACTIC_GRUNT, 18}, //17
+        {FLAG_DEFEATED_WALLY, 20}, //19
         {FLAG_BADGE03_GET, 24},
         {FLAG_BADGE04_GET, 29},
         {FLAG_BADGE05_GET, 31},
@@ -36,6 +36,18 @@ u32 GetCurrentLevelCap(void)
     }
 
     return MAX_LEVEL;
+}
+
+u32 GetIndividualLevelCap(u32 monLevelCap)
+{
+    u32 gameLevelcap = GetCurrentLevelCap();
+    u32 levelcap = monLevelCap + gameLevelcap;
+    if(levelcap >= 100){
+        return 100;
+    }
+    else {
+        return levelcap;
+    }
 }
 
 u32 GetSoftLevelCapExpValue(u32 level, u32 expValue)
