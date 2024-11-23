@@ -60,6 +60,8 @@ script CenterTown_PlayersHouse_1F_MomItems {
 	waitmessage
 	waitfanfare
 	setflag(FLAG_SYS_B_DASH)
+	setflag(FLAG_DISABLE_EXP)
+	setflag(FLAG_DISABLE_EXP)
 	msgbox(format("Here, take this Pokémon with you, it's the mascot of this island!"))
 	givemon(SPECIES_SPINDA, 5)
 	playfanfare(MUS_OBTAIN_ITEM)

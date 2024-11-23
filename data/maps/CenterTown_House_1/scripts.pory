@@ -12,6 +12,27 @@ script CenterTown_House_1_HeartScales {
 	release
 }
 
+script CenterTown_House_1_Test {
+	lock
+	faceplayer
+	if(flag(FLAG_DISABLE_EXP)){
+		setflag(FLAG_UNUSED_0x021)
+	}
+	if(!flag(FLAG_DISABLE_EXP)){
+		clearflag(FLAG_UNUSED_0x021)
+	}
+	if(flag(FLAG_UNUSED_0x021)){
+		clearflag(FLAG_DISABLE_EXP)
+		msgbox(format("Exp Enabled"))
+	}
+	if(!flag(FLAG_UNUSED_0x021)){
+		setflag(FLAG_DISABLE_EXP)
+		msgbox(format("Exp Disabled"))
+	}
+	release
+}
+
+
 raw `
 .set LOCALID_MOM, 1
 .set LOCALID_RIVAL_MOM, 4

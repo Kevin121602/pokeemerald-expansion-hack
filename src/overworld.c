@@ -428,6 +428,7 @@ static void Overworld_ResetStateAfterWhiteOut(void)
 {
     ResetInitialPlayerAvatarState();
     FlagClear(FLAG_DISABLE_BAG);
+    FlagClear(FLAG_DISABLE_EXP);
     FlagClear(FLAG_SYS_CYCLING_ROAD);
     FlagClear(FLAG_SYS_CRUISE_MODE);
     FlagClear(FLAG_SYS_SAFARI_MODE);

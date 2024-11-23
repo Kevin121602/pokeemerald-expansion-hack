@@ -4281,6 +4281,10 @@ static void Cmd_getexp(void)
         {
             gBattleScripting.getexpState = 6; // goto last case
         }
+        else if(FlagGet(FLAG_DISABLE_EXP))
+        {
+            gBattleScripting.getexpState = 6; // goto last case
+        }
         else
         {
             gBattleScripting.getexpState++;
