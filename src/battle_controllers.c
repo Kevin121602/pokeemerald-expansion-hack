@@ -1604,6 +1604,7 @@ static u32 GetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId, u8 *
         battleMon.otId = GetMonData(&party[monId], MON_DATA_OT_ID);
         battleMon.metLevel = GetMonData(&party[monId], MON_DATA_MET_LEVEL);
         battleMon.isShiny = GetMonData(&party[monId], MON_DATA_IS_SHINY);
+        battleMon.levelCap = GetMonData(&party[monId], MON_DATA_LEVEL_CAP);
         GetMonData(&party[monId], MON_DATA_NICKNAME, nickname);
         StringCopy_Nickname(battleMon.nickname, nickname);
         GetMonData(&party[monId], MON_DATA_OT_NAME, battleMon.otName);
@@ -1852,7 +1853,7 @@ static u32 GetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId, u8 *
         dst[0] = GetMonData(&party[monId], MON_DATA_SHEEN);
         size = 1;
         break;
-    case REQUEST_COOL_RIBBON_BATTLE:
+    /*case REQUEST_COOL_RIBBON_BATTLE:
         dst[0] = GetMonData(&party[monId], MON_DATA_COOL_RIBBON);
         size = 1;
         break;
@@ -1871,7 +1872,7 @@ static u32 GetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId, u8 *
     case REQUEST_TOUGH_RIBBON_BATTLE:
         dst[0] = GetMonData(&party[monId], MON_DATA_TOUGH_RIBBON);
         size = 1;
-        break;
+        break;*/
     }
 
     return size;
@@ -2075,7 +2076,7 @@ static void SetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId)
     case REQUEST_SHEEN_BATTLE:
         SetMonData(&party[monId], MON_DATA_SHEEN, &gBattleResources->bufferA[battler][3]);
         break;
-    case REQUEST_COOL_RIBBON_BATTLE:
+    /*case REQUEST_COOL_RIBBON_BATTLE:
         SetMonData(&party[monId], MON_DATA_COOL_RIBBON, &gBattleResources->bufferA[battler][3]);
         break;
     case REQUEST_BEAUTY_RIBBON_BATTLE:
@@ -2089,7 +2090,7 @@ static void SetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId)
         break;
     case REQUEST_TOUGH_RIBBON_BATTLE:
         SetMonData(&party[monId], MON_DATA_TOUGH_RIBBON, &gBattleResources->bufferA[battler][3]);
-        break;
+        break;*/
     }
 
     if (GetBattlerSide(battler) == B_SIDE_PLAYER)

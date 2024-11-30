@@ -3064,7 +3064,7 @@ u8 GetContestEntryEligibility(struct Pokemon *pkmn)
         return CANT_ENTER_CONTEST_EGG;
     if (GetMonData(pkmn, MON_DATA_HP) == 0)
         return CANT_ENTER_CONTEST_FAINTED;
-    switch (gSpecialVar_ContestCategory)
+    /*switch (gSpecialVar_ContestCategory)
     {
     case CONTEST_CATEGORY_COOL:
         ribbon = GetMonData(pkmn, MON_DATA_COOL_RIBBON);
@@ -3081,9 +3081,9 @@ u8 GetContestEntryEligibility(struct Pokemon *pkmn)
     case CONTEST_CATEGORY_TOUGH:
         ribbon = GetMonData(pkmn, MON_DATA_TOUGH_RIBBON);
         break;
-    default:
+    default:*/
         return CANT_ENTER_CONTEST;
-    }
+    //}
 
     // Couldn't get this to match any other way.
     // Returns 2, 1, or 0 respectively if ribbon's rank is above, equal, or below

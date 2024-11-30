@@ -2787,10 +2787,10 @@ static void AwardBattleTowerRibbons(void)
     u8 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
     u8 monCount = GetMonCountForBattleMode(battleMode);
 
-    if (lvlMode != FRONTIER_LVL_50)
-        ribbonType = MON_DATA_VICTORY_RIBBON;
-    else
-        ribbonType = MON_DATA_WINNING_RIBBON;
+    //if (lvlMode != FRONTIER_LVL_50)
+    //    ribbonType = MON_DATA_VICTORY_RIBBON;
+    //else
+    //    ribbonType = MON_DATA_WINNING_RIBBON;
 
     gSpecialVar_Result = FALSE;
 

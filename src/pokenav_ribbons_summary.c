@@ -431,10 +431,7 @@ static u32 GetCurrMonRibbonCount(void)
     struct PokenavMonList *mons = list->monList;
     struct PokenavMonListItem *monInfo = &mons->monData[mons->currIndex];
 
-    if (monInfo->boxId == TOTAL_BOXES_COUNT)
-        return GetMonData(&gPlayerParty[monInfo->monId], MON_DATA_RIBBON_COUNT);
-    else
-        return GetBoxMonDataAt(monInfo->boxId, monInfo->monId, MON_DATA_RIBBON_COUNT);
+    return 0;
 }
 
 static void GetMonRibbons(struct Pokenav_RibbonsSummaryList *list)
@@ -444,10 +441,11 @@ static void GetMonRibbons(struct Pokenav_RibbonsSummaryList *list)
     struct PokenavMonList *mons = list->monList;
     struct PokenavMonListItem *monInfo = &mons->monData[mons->currIndex];
 
-    if (monInfo->boxId == TOTAL_BOXES_COUNT)
+    /*if (monInfo->boxId == TOTAL_BOXES_COUNT)
         ribbonFlags = GetMonData(&gPlayerParty[monInfo->monId], MON_DATA_RIBBONS);
     else
-        ribbonFlags = GetBoxMonDataAt(monInfo->boxId, monInfo->monId, MON_DATA_RIBBONS);
+        ribbonFlags = GetBoxMonDataAt(monInfo->boxId, monInfo->monId, MON_DATA_RIBBONS);*/
+    ribbonFlags = 0;
 
     list->numNormalRibbons = 0;
     list->numGiftRibbons = 0;

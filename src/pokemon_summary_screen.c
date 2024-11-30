@@ -1533,7 +1533,7 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
         sum->friendship = GetMonData(mon, MON_DATA_FRIENDSHIP);
         break;
     default:
-        sum->ribbonCount = GetMonData(mon, MON_DATA_RIBBON_COUNT);
+        //sum->ribbonCount = GetMonData(mon, MON_DATA_RIBBON_COUNT);
         sum->teraType = GetMonData(mon, MON_DATA_TERA_TYPE);
         sum->isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
         return TRUE;

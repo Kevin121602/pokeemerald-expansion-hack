@@ -34,7 +34,7 @@ void Task_LinkContest_StartCommunicationEm(u8 taskId)
 {
     int gameCleared;
 
-    switch (gTasks[taskId].tCategory)
+    /*switch (gTasks[taskId].tCategory)
     {
     case CONTEST_CATEGORY_COOL:
         gHighestRibbonRank = GetMonData(&gPlayerParty[gContestMonPartyIndex], MON_DATA_COOL_RIBBON);
@@ -52,7 +52,9 @@ void Task_LinkContest_StartCommunicationEm(u8 taskId)
     default:
         gHighestRibbonRank = GetMonData(&gPlayerParty[gContestMonPartyIndex], MON_DATA_TOUGH_RIBBON);
         break;
-    }
+    }*/
+
+    gHighestRibbonRank = 0;
 
     gContestMons[gContestPlayerMonIndex].highestRank = gHighestRibbonRank;
     gameCleared = FlagGet(FLAG_SYS_GAME_CLEAR) > 0;

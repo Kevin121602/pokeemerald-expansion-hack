@@ -2625,7 +2625,7 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
         case MON_DATA_ABILITY_NUM:
             retVal = substruct3->abilityNum;
             break;
-        case MON_DATA_COOL_RIBBON:
+        /*case MON_DATA_COOL_RIBBON:
             retVal = substruct3->coolRibbon;
             break;
         case MON_DATA_BEAUTY_RIBBON:
@@ -2675,7 +2675,7 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             break;
         case MON_DATA_WORLD_RIBBON:
             retVal = substruct3->worldRibbon;
-            break;
+            break;*/
         case MON_DATA_MODERN_FATEFUL_ENCOUNTER:
             retVal = substruct3->modernFatefulEncounter;
             break;
@@ -2710,7 +2710,7 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
                 }
             }
             break;
-        case MON_DATA_RIBBON_COUNT:
+        /*case MON_DATA_RIBBON_COUNT:
             retVal = 0;
             if (substruct0->species && !substruct3->isEgg)
             {
@@ -2732,8 +2732,8 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
                 retVal += substruct3->earthRibbon;
                 retVal += substruct3->worldRibbon;
             }
-            break;
-        case MON_DATA_RIBBONS:
+            break;*/
+        /*case MON_DATA_RIBBONS:
             retVal = 0;
             if (substruct0->species && !substruct3->isEgg)
             {
@@ -2755,7 +2755,7 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
                     | (substruct3->earthRibbon << 25)
                     | (substruct3->worldRibbon << 26);
             }
-            break;
+            break;*/
         case MON_DATA_HYPER_TRAINED_HP:
             retVal = substruct1->hyperTrainedHP;
             break;
@@ -3130,7 +3130,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         case MON_DATA_ABILITY_NUM:
             SET8(substruct3->abilityNum);
             break;
-        case MON_DATA_COOL_RIBBON:
+        /*case MON_DATA_COOL_RIBBON:
             SET8(substruct3->coolRibbon);
             break;
         case MON_DATA_BEAUTY_RIBBON:
@@ -3180,7 +3180,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             break;
         case MON_DATA_WORLD_RIBBON:
             SET8(substruct3->worldRibbon);
-            break;
+            break;*/
         case MON_DATA_MODERN_FATEFUL_ENCOUNTER:
             SET8(substruct3->modernFatefulEncounter);
             break;

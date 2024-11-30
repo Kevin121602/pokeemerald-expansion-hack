@@ -69,11 +69,11 @@ enum {
     MON_DATA_TOUGH,
     MON_DATA_SHEEN,
     MON_DATA_OT_GENDER,
-    MON_DATA_COOL_RIBBON,
-    MON_DATA_BEAUTY_RIBBON,
-    MON_DATA_CUTE_RIBBON,
-    MON_DATA_SMART_RIBBON,
-    MON_DATA_TOUGH_RIBBON,
+    //MON_DATA_COOL_RIBBON,
+    //MON_DATA_BEAUTY_RIBBON,
+    //MON_DATA_CUTE_RIBBON,
+    //MON_DATA_SMART_RIBBON,
+    //MON_DATA_TOUGH_RIBBON,
     MON_DATA_LEVEL,
     MON_DATA_MAX_HP,
     MON_DATA_ATK,
@@ -84,22 +84,22 @@ enum {
     MON_DATA_MAIL,
     MON_DATA_SPECIES_OR_EGG,
     MON_DATA_IVS,
-    MON_DATA_CHAMPION_RIBBON,
-    MON_DATA_WINNING_RIBBON,
-    MON_DATA_VICTORY_RIBBON,
-    MON_DATA_ARTIST_RIBBON,
-    MON_DATA_EFFORT_RIBBON,
-    MON_DATA_MARINE_RIBBON,
-    MON_DATA_LAND_RIBBON,
-    MON_DATA_SKY_RIBBON,
-    MON_DATA_COUNTRY_RIBBON,
-    MON_DATA_NATIONAL_RIBBON,
-    MON_DATA_EARTH_RIBBON,
-    MON_DATA_WORLD_RIBBON,
+    //MON_DATA_CHAMPION_RIBBON,
+    //MON_DATA_WINNING_RIBBON,
+    //MON_DATA_VICTORY_RIBBON,
+    //MON_DATA_ARTIST_RIBBON,
+    //MON_DATA_EFFORT_RIBBON,
+    //MON_DATA_MARINE_RIBBON,
+    //MON_DATA_LAND_RIBBON,
+    //MON_DATA_SKY_RIBBON,
+    //MON_DATA_COUNTRY_RIBBON,
+    //MON_DATA_NATIONAL_RIBBON,
+    //MON_DATA_EARTH_RIBBON,
+    //MON_DATA_WORLD_RIBBON,
     MON_DATA_MODERN_FATEFUL_ENCOUNTER,
     MON_DATA_KNOWN_MOVES,
-    MON_DATA_RIBBON_COUNT,
-    MON_DATA_RIBBONS,
+    //MON_DATA_RIBBON_COUNT,
+    //MON_DATA_RIBBONS,
     MON_DATA_ATK2,
     MON_DATA_DEF2,
     MON_DATA_SPEED2,
@@ -132,7 +132,7 @@ struct PokemonSubstruct0
     u8 friendship;
     u16 pokeball:6; // 63 balls.
     u16 nickname12:8; // 12th character of nickname.
-    u16 unused_0A:2;
+    u8 unused_0A:2;
 };
 
 struct PokemonSubstruct1
@@ -189,7 +189,7 @@ struct PokemonSubstruct3
     u32 spDefenseIV:5;
     u32 isEgg:1;
     u32 gigantamaxFactor:1;
-    u32 coolRibbon:3;     // Stores the highest contest rank achieved in the Cool category.
+    /*u32 coolRibbon:3;     // Stores the highest contest rank achieved in the Cool category.
     u32 beautyRibbon:3;   // Stores the highest contest rank achieved in the Beauty category.
     u32 cuteRibbon:3;     // Stores the highest contest rank achieved in the Cute category.
     u32 smartRibbon:3;    // Stores the highest contest rank achieved in the Smart category.
@@ -205,9 +205,9 @@ struct PokemonSubstruct3
     u32 countryRibbon:1;  // Distributed during Pokémon Festa '04 and '05 to tournament winners.
     u32 nationalRibbon:1; // Given to purified Shadow Pokémon in Colosseum/XD.
     u32 earthRibbon:1;    // Given to teams that have beaten Mt. Battle's 100-battle challenge in Colosseum/XD.
-    u32 worldRibbon:1;    // Distributed during Pokémon Festa '04 and '05 to tournament winners.
+    u32 worldRibbon:1;    // Distributed during Pokémon Festa '04 and '05 to tournament winners.*/
     u32 isShadow:1;
-    u32 unused_0B:1;
+    u8 levelCap;
     u32 abilityNum:2;
 
     // The functionality of this bit changed in FRLG:
@@ -341,6 +341,7 @@ struct BattlePokemon
     /*0x55*/ u32 otId;
     /*0x59*/ u8 metLevel;
     /*0x5A*/ bool8 isShiny;
+    /*0x5B*/ u8 levelCap;
 };
 
 struct Evolution
