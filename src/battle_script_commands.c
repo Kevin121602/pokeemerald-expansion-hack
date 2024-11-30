@@ -4300,6 +4300,7 @@ static void Cmd_getexp(void)
             u32 expShareBits = 0;
             s32 viaSentIn = 0;
             s32 viaExpShare = 0;
+            u32 levelCap = GetCurrentLevelCap();
 
             for (i = 0; i < PARTY_SIZE; i++)
             {
@@ -4309,7 +4310,7 @@ static void Cmd_getexp(void)
                     viaSentIn++;
 
                 holdEffect = GetMonHoldEffect(&gPlayerParty[i]);
-                if (holdEffect == HOLD_EFFECT_EXP_SHARE || IsGen6ExpShareEnabled())
+                if ((holdEffect == HOLD_EFFECT_EXP_SHARE && (GetMonData(&gPlayerParty[i], MON_DATA_LEVEL) < (levelCap))) || IsGen6ExpShareEnabled())
                 {
                     expShareBits |= gBitTable[i];
                     viaExpShare++;
@@ -4407,13 +4408,15 @@ static void Cmd_getexp(void)
                 }
 
                 if (IsValidForBattle(&gPlayerParty[*expMonId]))
-                {
+                {      
+                    u32 levelCap = GetCurrentLevelCap();
+
                     if (wasSentOut)
                         gBattleMoveDamage = GetSoftLevelCapExpValue(gPlayerParty[*expMonId].level, gBattleStruct->expValue);
                     else
                         gBattleMoveDamage = 0;
 
-                    if ((holdEffect == HOLD_EFFECT_EXP_SHARE || IsGen6ExpShareEnabled())
+                    if (((holdEffect == HOLD_EFFECT_EXP_SHARE && (GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL) < (levelCap))) || IsGen6ExpShareEnabled())
                         && (B_SPLIT_EXP < GEN_6 || gBattleMoveDamage == 0)) // only give exp share bonus in later gens if the mon wasn't sent out
                     {
                         gBattleMoveDamage += GetSoftLevelCapExpValue(gPlayerParty[*expMonId].level, gBattleStruct->expShareExpValue);;
@@ -4425,10 +4428,8 @@ static void Cmd_getexp(void)
                     {
                         u32 growthRate = gSpeciesInfo[GetMonData(&gPlayerParty[*expMonId], MON_DATA_SPECIES)].growthRate;
                         u32 currentExp = GetMonData(&gPlayerParty[*expMonId], MON_DATA_EXP);
-                        //prevents exp gain if 1 above mon level cap
-                        u32 levelCap = GetCurrentLevelCap();
 
-                        if (GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL) >= (levelCap+1))
+                        if (GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL) >= (levelCap))
                             gBattleMoveDamage = 0;
                         else if (gExperienceTables[growthRate][(levelCap+1)] < currentExp + gBattleMoveDamage)
                             gBattleMoveDamage = gExperienceTables[growthRate][(levelCap+1)] - currentExp;

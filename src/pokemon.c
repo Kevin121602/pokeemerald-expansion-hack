@@ -1072,6 +1072,7 @@ void ZeroMonData(struct Pokemon *mon)
     SetMonData(mon, MON_DATA_SPEED, &arg);
     SetMonData(mon, MON_DATA_SPATK, &arg);
     SetMonData(mon, MON_DATA_SPDEF, &arg);
+    SetMonData(mon, MON_DATA_LEVEL_CAP, &arg);
     arg = MAIL_NONE;
     SetMonData(mon, MON_DATA_MAIL, &arg);
 }
@@ -2903,6 +2904,9 @@ void SetMonData(struct Pokemon *mon, s32 field, const void *dataArg)
     case MON_DATA_LEVEL:
         SET8(mon->level);
         break;
+    case MON_DATA_LEVEL_CAP:
+        SET8(mon->levelCap);
+        break;
     case MON_DATA_HP:
     {
         u32 hpLost;
@@ -3683,6 +3687,7 @@ void PokemonToBattleMon(struct Pokemon *src, struct BattlePokemon *dst)
     dst->spDefense = GetMonData(src, MON_DATA_SPDEF, NULL);
     dst->abilityNum = GetMonData(src, MON_DATA_ABILITY_NUM, NULL);
     dst->otId = GetMonData(src, MON_DATA_OT_ID, NULL);
+    dst->levelCap = GetMonData(src, MON_DATA_LEVEL_CAP, NULL);
     dst->types[0] = gSpeciesInfo[dst->species].types[0];
     dst->types[1] = gSpeciesInfo[dst->species].types[1];
     dst->types[2] = TYPE_MYSTERY;

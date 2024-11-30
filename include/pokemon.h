@@ -278,6 +278,7 @@ struct Pokemon
     u16 speed;
     u16 spAttack;
     u16 spDefense;
+    u8 levelCap;
 };
 
 struct MonSpritesGfxManager
