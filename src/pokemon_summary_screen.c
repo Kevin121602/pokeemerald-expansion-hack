@@ -173,6 +173,7 @@ static EWRAM_DATA struct PokemonSummaryScreenData
         u32 OTID; // 0x48
         u8 teraType;
         u8 mintNature;
+        u8 levelCap;
     } summary;
     u16 bgTilemapBuffers[PSS_PAGE_COUNT][2][0x400];
     u8 mode;
@@ -3525,7 +3526,7 @@ static void PrintLevelCap(void)
     int x;
     u32 levelcap;
     
-    levelcap = GetCurrentLevelCap();
+    levelcap = GetIndividualLevelCap(sMonSummaryScreen->summary.levelCap);
     levelcap--;
 
 
