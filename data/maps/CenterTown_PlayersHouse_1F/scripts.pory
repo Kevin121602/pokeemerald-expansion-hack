@@ -55,14 +55,14 @@ script CenterTown_PlayersHouse_1F_MomItems {
 	msgbox(format("MOM: Good luck, {PLAYER}! You'll need these items before you go."))
 	giveitem(ITEM_RARE_CANDY, 999)
 	giveitem(ITEM_POKE_BALL, 99)
-	playfanfare(MUS_OBTAIN_ITEM)
+	playfanfare(MUS_DP_OBTAIN_ITEM)
 	msgbox(format("{PLAYER} switched shoes with the Running Shoes!"))
 	waitmessage
 	waitfanfare
 	setflag(FLAG_SYS_B_DASH)
 	msgbox(format("Here, take this Pokémon with you, it's the mascot of this island!"))
 	givemon(SPECIES_SPINDA, 5)
-	playfanfare(MUS_OBTAIN_ITEM)
+	playfanfare(MUS_DP_OBTAIN_ITEM)
 	msgbox("{PLAYER} recieved Spinda!")
 	waitmessage
 	waitfanfare

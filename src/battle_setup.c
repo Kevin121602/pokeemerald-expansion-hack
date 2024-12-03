@@ -1571,46 +1571,88 @@ void PlayTrainerEncounterMusic(void)
         switch (GetTrainerEncounterMusicId(trainerId))
         {
         case TRAINER_ENCOUNTER_MUSIC_MALE:
-            music = MUS_ENCOUNTER_MALE;
+            music = MUS_DP_ENCOUNTER_BOY;
             break;
         case TRAINER_ENCOUNTER_MUSIC_FEMALE:
-            music = MUS_ENCOUNTER_FEMALE;
+            music = MUS_DP_ENCOUNTER_LADY;
             break;
         case TRAINER_ENCOUNTER_MUSIC_GIRL:
-            music = MUS_ENCOUNTER_GIRL;
+            music = MUS_DP_ENCOUNTER_GIRL;
             break;
         case TRAINER_ENCOUNTER_MUSIC_INTENSE:
-            music = MUS_ENCOUNTER_INTENSE;
+            music = MUS_DP_ENCOUNTER_INTENSE;
             break;
         case TRAINER_ENCOUNTER_MUSIC_COOL:
-            music = MUS_ENCOUNTER_COOL;
+            music = MUS_DP_ENCOUNTER_ACE_TRAINER;
             break;
         case TRAINER_ENCOUNTER_MUSIC_AQUA:
-            music = MUS_ENCOUNTER_AQUA;
+            music = MUS_DP_ENCOUNTER_GALACTIC;
             break;
         case TRAINER_ENCOUNTER_MUSIC_MAGMA:
             music = MUS_ENCOUNTER_MAGMA;
             break;
         case TRAINER_ENCOUNTER_MUSIC_SWIMMER:
-            music = MUS_ENCOUNTER_SWIMMER;
+            music = MUS_DP_ENCOUNTER_SAILOR;
             break;
         case TRAINER_ENCOUNTER_MUSIC_TWINS:
-            music = MUS_ENCOUNTER_TWINS;
+            music = MUS_DP_ENCOUNTER_TWINS;
             break;
         case TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR:
-            music = MUS_ENCOUNTER_ELITE_FOUR;
+            music = MUS_DP_ENCOUNTER_ELITE_FOUR;
             break;
         case TRAINER_ENCOUNTER_MUSIC_HIKER:
-            music = MUS_ENCOUNTER_HIKER;
+            music = MUS_DP_ENCOUNTER_HIKER;
             break;
         case TRAINER_ENCOUNTER_MUSIC_INTERVIEWER:
-            music = MUS_ENCOUNTER_INTERVIEWER;
+            music = MUS_DP_ENCOUNTER_CYCLIST;
             break;
         case TRAINER_ENCOUNTER_MUSIC_RICH:
-            music = MUS_ENCOUNTER_RICH;
+            music = MUS_DP_ENCOUNTER_RICH;
             break;
+        /*case TRAINER_ENCOUNTER_MUSIC_DP_BOY:
+            music = MUS_DP_ENCOUNTER_BOY;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_DP_TWINS:
+            music = MUS_DP_ENCOUNTER_TWINS;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_DP_INTENSE:
+            music = MUS_DP_ENCOUNTER_INTENSE;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_DP_GALACTIC:
+            music = MUS_DP_ENCOUNTER_GALACTIC;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_DP_LADY:
+            music = MUS_DP_ENCOUNTER_LADY;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_DP_HIKER:
+            music = MUS_DP_ENCOUNTER_HIKER;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_DP_RICH:
+            music = MUS_DP_ENCOUNTER_RICH;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_DP_SAILOR:
+            music = MUS_DP_ENCOUNTER_SAILOR;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_DP_ACE:
+            music = MUS_DP_ENCOUNTER_ACE_TRAINER;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_DP_GIRL:
+            music = MUS_DP_ENCOUNTER_GIRL;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_DP_CYCLIST:
+            music = MUS_DP_ENCOUNTER_CYCLIST;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_DP_ARTIST:
+            music = MUS_DP_ENCOUNTER_ARTIST;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_DP_ELITE_FOUR:
+            music = MUS_DP_ENCOUNTER_ELITE_FOUR;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_DP_CHAMPION:
+            music = MUS_DP_ENCOUNTER_CHAMPION;
+            break;*/
         default:
-            music = MUS_ENCOUNTER_SUSPICIOUS;
+            music = MUS_DP_ENCOUNTER_SUSPICIOUS;
         }
         PlayNewMapMusic(music);
     }

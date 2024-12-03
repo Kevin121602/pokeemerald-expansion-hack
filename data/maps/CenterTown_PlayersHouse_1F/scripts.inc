@@ -104,7 +104,7 @@ CenterTown_PlayersHouse_1F_MomItems::
 # 57 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
 	giveitem ITEM_POKE_BALL, 99
 # 58 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
+	playfanfare MUS_DP_OBTAIN_ITEM
 # 59 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
 	msgbox CenterTown_PlayersHouse_1F_MomItems_Text_1
 # 60 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
@@ -118,7 +118,7 @@ CenterTown_PlayersHouse_1F_MomItems::
 # 64 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
 	givemon SPECIES_SPINDA, 5
 # 65 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
+	playfanfare MUS_DP_OBTAIN_ITEM
 # 66 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
 	msgbox CenterTown_PlayersHouse_1F_MomItems_Text_3
 # 67 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"

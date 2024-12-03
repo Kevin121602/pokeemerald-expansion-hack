@@ -5713,13 +5713,13 @@ u16 GetBattleBGM(void)
         case SPECIES_REGIGIGAS:
         case SPECIES_REGIELEKI:
         case SPECIES_REGIDRAGO:
-            return MUS_VS_REGI;
+            return MUS_DP_VS_UXIE_MESPRIT_AZELF;
         default:
-            return MUS_RG_VS_LEGEND;
+            return MUS_DP_VS_UXIE_MESPRIT_AZELF;
         }
     }
     else if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK))
-        return MUS_VS_TRAINER;
+        return MUS_DP_VS_TRAINER;
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
     {
         u8 trainerClass;
@@ -5742,17 +5742,17 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_MAGMA_ADMIN:
             return MUS_VS_AQUA_MAGMA;
         case TRAINER_CLASS_LEADER:
-            return MUS_VS_GYM_LEADER;
+            return MUS_DP_VS_GYM_LEADER;
         case TRAINER_CLASS_CHAMPION:
-            return MUS_VS_CHAMPION;
+            return MUS_DP_VS_CHAMPION;
         case TRAINER_CLASS_RIVAL:
             if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
-                return MUS_VS_RIVAL;
+                return MUS_DP_VS_RIVAL;
             if (!StringCompare(GetTrainerNameFromId(gTrainerBattleOpponent_A), gText_BattleWallyName))
-                return MUS_VS_TRAINER;
-            return MUS_VS_RIVAL;
+                return MUS_DP_VS_TRAINER;
+            return MUS_DP_VS_RIVAL;
         case TRAINER_CLASS_ELITE_FOUR:
-            return MUS_VS_ELITE_FOUR;
+            return MUS_DP_VS_ELITE_FOUR;
         case TRAINER_CLASS_SALON_MAIDEN:
         case TRAINER_CLASS_DOME_ACE:
         case TRAINER_CLASS_PALACE_MAVEN:
@@ -5760,9 +5760,9 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_FACTORY_HEAD:
         case TRAINER_CLASS_PIKE_QUEEN:
         case TRAINER_CLASS_PYRAMID_KING:
-            return MUS_VS_FRONTIER_BRAIN;
+            return MUS_PL_VS_FRONTIER_BRAIN;
         default:
-            return MUS_VS_TRAINER;
+            return MUS_DP_VS_TRAINER;
         }
     }
     else
@@ -5777,7 +5777,7 @@ u16 GetBattleBGM(void)
         case SPECIES_ZAPDOS_GALARIAN:
         case SPECIES_MOLTRES_GALARIAN:
         #endif
-            return MUS_RG_VS_LEGEND;
+            return MUS_DP_VS_UXIE_MESPRIT_AZELF;
         case SPECIES_MEWTWO:
         #ifdef POKEMON_EXPANSION
         case SPECIES_MEWTWO_MEGA_X:
@@ -5787,11 +5787,11 @@ u16 GetBattleBGM(void)
         case SPECIES_MEW:
             return MUS_VS_MEW;
         case SPECIES_RAIKOU:
-            return MUS_HG_VS_RAIKOU;
+            return MUS_DP_VS_UXIE_MESPRIT_AZELF;
         case SPECIES_ENTEI:
-            return MUS_HG_VS_ENTEI;
+            return MUS_DP_VS_UXIE_MESPRIT_AZELF;
         case SPECIES_SUICUNE:
-            return MUS_HG_VS_SUICUNE;
+            return MUS_DP_VS_UXIE_MESPRIT_AZELF;
         case SPECIES_LUGIA:
             return MUS_HG_VS_LUGIA;
         case SPECIES_HO_OH:
@@ -5806,7 +5806,7 @@ u16 GetBattleBGM(void)
         case SPECIES_REGIELEKI:
         case SPECIES_REGIDRAGO:
         #endif
-            return MUS_VS_REGI;
+            return MUS_DP_VS_UXIE_MESPRIT_AZELF;
         case SPECIES_LATIAS:
         case SPECIES_LATIOS:
         #ifdef POKEMON_EXPANSION
@@ -5849,7 +5849,7 @@ u16 GetBattleBGM(void)
         case SPECIES_HEATRAN:
         case SPECIES_MANAPHY:
         case SPECIES_DARKRAI:
-            return MUS_DP_VS_LEGEND;
+            return MUS_DP_VS_WILD;
         case SPECIES_GIRATINA:
         case SPECIES_GIRATINA_ORIGIN:
             return MUS_PL_VS_GIRATINA;
@@ -5879,7 +5879,7 @@ u16 GetBattleBGM(void)
             return MUS_DP_VS_ARCEUS;
         #endif
         default:
-            return MUS_VS_WILD;
+            return MUS_DP_VS_WILD;
         }
     }
 }
