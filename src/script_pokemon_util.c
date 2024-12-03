@@ -31,6 +31,7 @@
 static void CB2_ReturnFromChooseHalfParty(void);
 static void CB2_ReturnFromChooseBattleFrontierParty(void);
 static void HealPlayerBoxes(void);
+static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv);
 
 void HealPlayerParty(void)
 {
@@ -325,6 +326,46 @@ static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, u
     u32 i;
     u8 genderRatio = gSpeciesInfo[species].genderRatio;
     u16 targetSpecies;
+    u8 availableIVs[NUM_STATS];
+    u8 selectedIvs[LEGENDARY_PERFECT_IV_COUNT];
+    u8 iv = MAX_PER_STAT_IVS;
+            // Initialize a list of IV indices.
+            for (i = 0; i < NUM_STATS; i++)
+            {
+                availableIVs[i] = i;
+            }
+
+            // Select the 3 IVs that will be perfected.
+            for (i = 0; i < LEGENDARY_PERFECT_IV_COUNT; i++)
+            {
+                u8 index = Random() % (NUM_STATS - i);
+                selectedIvs[i] = availableIVs[index];
+                RemoveIVIndexFromList(availableIVs, index);
+            }
+            for (i = 0; i < LEGENDARY_PERFECT_IV_COUNT; i++)
+            {
+                switch (selectedIvs[i])
+                {
+                case STAT_HP:
+                    ivs[0] = iv;
+                    break;
+                case STAT_ATK:
+                    ivs[1] = iv;
+                    break;
+                case STAT_DEF:
+                    ivs[2] = iv;
+                    break;
+                case STAT_SPEED:
+                    ivs[3] = iv;
+                    break;
+                case STAT_SPATK:
+                    ivs[4] = iv;
+                    break;
+                case STAT_SPDEF:
+                    ivs[5] = iv;
+                    break;
+                }
+            }
 
     // check whether to use a specific nature or a random one
     if (nature >= NUM_NATURES)
@@ -559,5 +600,24 @@ void Script_SetStatus1(struct ScriptContext *ctx)
     else
     {
         SetMonData(&gPlayerParty[slot], MON_DATA_STATUS, &status1);
+    }
+}
+
+static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv)
+{
+    s32 i, j;
+    u8 temp[NUM_STATS];
+
+    ivs[selectedIv] = 0xFF;
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        temp[i] = ivs[i];
+    }
+
+    j = 0;
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        if (temp[i] != 0xFF)
+            ivs[j++] = temp[i];
     }
 }
