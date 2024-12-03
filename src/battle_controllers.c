@@ -1581,7 +1581,7 @@ static u32 GetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId, u8 *
             battleMon.moves[size] = GetMonData(&party[monId], MON_DATA_MOVE1 + size);
             battleMon.pp[size] = GetMonData(&party[monId], MON_DATA_PP1 + size);
         }
-        battleMon.ppBonuses = GetMonData(&party[monId], MON_DATA_PP_BONUSES);
+        //battleMon.ppBonuses = GetMonData(&party[monId], MON_DATA_PP_BONUSES);
         battleMon.friendship = GetMonData(&party[monId], MON_DATA_FRIENDSHIP);
         battleMon.experience = GetMonData(&party[monId], MON_DATA_EXP);
         battleMon.hpIV = GetMonData(&party[monId], MON_DATA_HP_IV);
@@ -1639,7 +1639,7 @@ static u32 GetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId, u8 *
             moveData.moves[size] = GetMonData(&party[monId], MON_DATA_MOVE1 + size);
             moveData.pp[size] = GetMonData(&party[monId], MON_DATA_PP1 + size);
         }
-        moveData.ppBonuses = GetMonData(&party[monId], MON_DATA_PP_BONUSES);
+        //moveData.ppBonuses = GetMonData(&party[monId], MON_DATA_PP_BONUSES);
         src = (u8 *)(&moveData);
         for (size = 0; size < sizeof(moveData); size++)
             dst[size] = src[size];
@@ -1897,7 +1897,7 @@ static void SetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId)
                 SetMonData(&party[monId], MON_DATA_MOVE1 + i, &battlePokemon->moves[i]);
                 SetMonData(&party[monId], MON_DATA_PP1 + i, &battlePokemon->pp[i]);
             }
-            SetMonData(&party[monId], MON_DATA_PP_BONUSES, &battlePokemon->ppBonuses);
+            //SetMonData(&party[monId], MON_DATA_PP_BONUSES, &battlePokemon->ppBonuses);
             SetMonData(&party[monId], MON_DATA_FRIENDSHIP, &battlePokemon->friendship);
             SetMonData(&party[monId], MON_DATA_EXP, &battlePokemon->experience);
             iv = battlePokemon->hpIV;
@@ -1936,7 +1936,7 @@ static void SetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId)
             SetMonData(&party[monId], MON_DATA_MOVE1 + i, &moveData->moves[i]);
             SetMonData(&party[monId], MON_DATA_PP1 + i, &moveData->pp[i]);
         }
-        SetMonData(&party[monId], MON_DATA_PP_BONUSES, &moveData->ppBonuses);
+        //SetMonData(&party[monId], MON_DATA_PP_BONUSES, &moveData->ppBonuses);
         break;
     case REQUEST_MOVE1_BATTLE:
     case REQUEST_MOVE2_BATTLE:

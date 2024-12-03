@@ -4413,14 +4413,14 @@ static void Cmd_getexp(void)
                 {      
 
                     if (wasSentOut)
-                        gBattleMoveDamage = GetSoftLevelCapExpValue(gPlayerParty[*expMonId].level, gBattleStruct->expValue);
+                        gBattleMoveDamage = GetSoftLevelCapExpValue(gPlayerParty[*expMonId].level, GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL_CAP), gBattleStruct->expValue);
                     else
                         gBattleMoveDamage = 0;
 
                     if ((holdEffect == HOLD_EFFECT_EXP_SHARE || IsGen6ExpShareEnabled())
                         && (B_SPLIT_EXP < GEN_6 || gBattleMoveDamage == 0)) // only give exp share bonus in later gens if the mon wasn't sent out
                     {
-                        gBattleMoveDamage += GetSoftLevelCapExpValue(gPlayerParty[*expMonId].level, gBattleStruct->expShareExpValue);;
+                        gBattleMoveDamage += GetSoftLevelCapExpValue(gPlayerParty[*expMonId].level, GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL_CAP), gBattleStruct->expShareExpValue);;
                     }
 
                     ApplyExperienceMultipliers(&gBattleMoveDamage, *expMonId, gBattlerFainted);
@@ -9608,10 +9608,10 @@ static void Cmd_various(void)
         VARIOUS_ARGS();
         for (i = 0; i < 4; i++)
         {
-            gBattleMons[battler].pp[i] = CalculatePPWithBonus(gBattleMons[battler].moves[i], gBattleMons[battler].ppBonuses, i);
+            gBattleMons[battler].pp[i] = CalculatePPWithBonus(gBattleMons[battler].moves[i], 0, i);
             data[i] = gBattleMons[battler].pp[i];
         }
-        data[i] = gBattleMons[battler].ppBonuses;
+        //data[i] = gBattleMons[battler].ppBonuses;
         BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_PP_DATA_BATTLE, 0, 5, data);
         MarkBattlerForControllerExec(battler);
         break;
@@ -13117,7 +13117,7 @@ static void Cmd_copymovepermanently(void)
                 movePpData.moves[i] = gBattleMons[gBattlerAttacker].moves[i];
                 movePpData.pp[i] = gBattleMons[gBattlerAttacker].pp[i];
             }
-            movePpData.ppBonuses = gBattleMons[gBattlerAttacker].ppBonuses;
+            //movePpData.ppBonuses = gBattleMons[gBattlerAttacker].ppBonuses;
 
             BtlController_EmitSetMonData(gBattlerAttacker, BUFFER_A, REQUEST_MOVES_PP_BATTLE, 0, sizeof(movePpData), &movePpData);
             MarkBattlerForControllerExec(gBattlerAttacker);

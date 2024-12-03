@@ -69,6 +69,7 @@
 #include "constants/metatile_labels.h"
 #include "palette.h"
 #include "battle_util.h"
+#include "level_caps.h"
 
 #define TAG_ITEM_ICON 5500
 
@@ -4263,4 +4264,22 @@ void PreparePartyForSkyBattle(void)
     }
     VarSet(B_VAR_SKY_BATTLE,participatingPokemonSlot);
     CompactPartySlots();
+}
+
+void IncreaseLevelCap(void)
+{
+    
+    u8 levelCap;
+
+    levelCap = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_LEVEL_CAP);
+    if(GetIndividualLevelCap(levelCap) >= 100){
+        return;
+    } 
+    else {
+        levelCap++;
+        SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_LEVEL_CAP, &levelCap);
+    }
+
+
+    ConvertIntToDecimalStringN(gStringVar1, levelCap, STR_CONV_MODE_LEFT_ALIGN, 3);
 }

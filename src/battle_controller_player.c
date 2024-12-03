@@ -1005,18 +1005,18 @@ static void HandleMoveSwitching(u32 battler)
 
             MoveSelectionDisplayMoveNames(battler);
 
-            for (i = 0; i < MAX_MON_MOVES; i++)
-                perMovePPBonuses[i] = (gBattleMons[battler].ppBonuses & (3 << (i * 2))) >> (i * 2);
+            //for (i = 0; i < MAX_MON_MOVES; i++)
+            //    perMovePPBonuses[i] = (gBattleMons[battler].ppBonuses & (3 << (i * 2))) >> (i * 2);
 
-            totalPPBonuses = perMovePPBonuses[gMoveSelectionCursor[battler]];
-            perMovePPBonuses[gMoveSelectionCursor[battler]] = perMovePPBonuses[gMultiUsePlayerCursor];
-            perMovePPBonuses[gMultiUsePlayerCursor] = totalPPBonuses;
+            totalPPBonuses = 0;
+            //perMovePPBonuses[gMoveSelectionCursor[battler]] = perMovePPBonuses[gMultiUsePlayerCursor];
+            //perMovePPBonuses[gMultiUsePlayerCursor] = totalPPBonuses;
 
             totalPPBonuses = 0;
             for (i = 0; i < MAX_MON_MOVES; i++)
                 totalPPBonuses |= perMovePPBonuses[i] << (i * 2);
 
-            gBattleMons[battler].ppBonuses = totalPPBonuses;
+            //gBattleMons[battler].ppBonuses = totalPPBonuses;
 
             for (i = 0; i < MAX_MON_MOVES; i++)
             {
@@ -1032,7 +1032,7 @@ static void HandleMoveSwitching(u32 battler)
                     moveStruct.currentPp[i] = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_PP1 + i);
                 }
 
-                totalPPBonuses = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_PP_BONUSES);
+                totalPPBonuses = 0;
                 for (i = 0; i < MAX_MON_MOVES; i++)
                     perMovePPBonuses[i] = (totalPPBonuses & (3 << (i * 2))) >> (i * 2);
 
@@ -1058,7 +1058,7 @@ static void HandleMoveSwitching(u32 battler)
                     SetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_PP1 + i, &moveStruct.currentPp[i]);
                 }
 
-                SetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_PP_BONUSES, &totalPPBonuses);
+                //SetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_PP_BONUSES, &totalPPBonuses);
             }
         }
 

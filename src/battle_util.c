@@ -6911,7 +6911,7 @@ static u32 ItemRestorePp(u32 battler, u32 itemId, bool32 execute)
     {
         u32 move = GetMonData(mon, MON_DATA_MOVE1 + i);
         u32 currentPP = GetMonData(mon, MON_DATA_PP1 + i);
-        u32 ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES);
+        u32 ppBonuses = 0;
         u32 maxPP = CalculatePPWithBonus(move, ppBonuses, i);
         if (move && (currentPP == 0 || (gBattleScripting.overrideBerryRequirements && currentPP != maxPP)))
         {

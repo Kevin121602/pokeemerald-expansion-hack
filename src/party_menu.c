@@ -7755,7 +7755,7 @@ static void ShiftMoveSlot(struct Pokemon *mon, u8 slotTo, u8 slotFrom)
     u16 move0 = GetMonData(mon, MON_DATA_MOVE1 + slotFrom);
     u8 pp1 = GetMonData(mon, MON_DATA_PP1 + slotTo);
     u8 pp0 = GetMonData(mon, MON_DATA_PP1 + slotFrom);
-    u8 ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES);
+    u8 ppBonuses = 0;
     u8 ppBonusMask1 = gPPUpGetMask[slotTo];
     u8 ppBonusMove1 = (ppBonuses & ppBonusMask1) >> (slotTo * 2);
     u8 ppBonusMask2 = gPPUpGetMask[slotFrom];

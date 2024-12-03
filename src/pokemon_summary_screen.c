@@ -167,7 +167,7 @@ static EWRAM_DATA struct PokemonSummaryScreenData
         u16 friendship; // 0x30
         u8 OTGender; // 0x32
         u8 nature; // 0x33
-        u8 ppBonuses; // 0x34
+        //u8 ppBonuses; // 0x34
         u8 sanity; // 0x35
         u8 OTName[17]; // 0x36
         u32 OTID; // 0x48
@@ -1494,7 +1494,7 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
             sum->moves[i] = GetMonData(mon, MON_DATA_MOVE1+i);
             sum->pp[i] = GetMonData(mon, MON_DATA_PP1+i);
         }
-        sum->ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES);
+        //sum->ppBonuses = 0;
         break;
     case 2:
         if (sMonSummaryScreen->monList.mons == gPlayerParty || sMonSummaryScreen->mode == SUMMARY_MODE_BOX || sMonSummaryScreen->handleDeoxys == TRUE)
@@ -1532,6 +1532,7 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
         sum->metLevel = GetMonData(mon, MON_DATA_MET_LEVEL);
         sum->metGame = GetMonData(mon, MON_DATA_MET_GAME);
         sum->friendship = GetMonData(mon, MON_DATA_FRIENDSHIP);
+        sum->levelCap = GetMonData(mon, MON_DATA_LEVEL_CAP);
         break;
     default:
         //sum->ribbonCount = GetMonData(mon, MON_DATA_RIBBON_COUNT);
@@ -2252,7 +2253,7 @@ static void SwapMonMoves(struct Pokemon *mon, u8 moveIndex1, u8 moveIndex2)
     u16 move2 = summary->moves[moveIndex2];
     u8 move1pp = summary->pp[moveIndex1];
     u8 move2pp = summary->pp[moveIndex2];
-    u8 ppBonuses = summary->ppBonuses;
+    u8 ppBonuses = 0;
 
     // Calculate PP bonuses
     u8 ppUpMask1 = gPPUpGetMask[moveIndex1];
@@ -2268,7 +2269,7 @@ static void SwapMonMoves(struct Pokemon *mon, u8 moveIndex1, u8 moveIndex2)
     SetMonData(mon, MON_DATA_MOVE1 + moveIndex2, &move1);
     SetMonData(mon, MON_DATA_PP1 + moveIndex1, &move2pp);
     SetMonData(mon, MON_DATA_PP1 + moveIndex2, &move1pp);
-    SetMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
+    //SetMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
 
     summary->moves[moveIndex1] = move2;
     summary->moves[moveIndex2] = move1;
@@ -2276,7 +2277,7 @@ static void SwapMonMoves(struct Pokemon *mon, u8 moveIndex1, u8 moveIndex2)
     summary->pp[moveIndex1] = move2pp;
     summary->pp[moveIndex2] = move1pp;
 
-    summary->ppBonuses = ppBonuses;
+    //summary->ppBonuses = ppBonuses;
 }
 
 static void SwapBoxMonMoves(struct BoxPokemon *mon, u8 moveIndex1, u8 moveIndex2)
@@ -2287,7 +2288,7 @@ static void SwapBoxMonMoves(struct BoxPokemon *mon, u8 moveIndex1, u8 moveIndex2
     u16 move2 = summary->moves[moveIndex2];
     u8 move1pp = summary->pp[moveIndex1];
     u8 move2pp = summary->pp[moveIndex2];
-    u8 ppBonuses = summary->ppBonuses;
+    u8 ppBonuses = 0;
 
     // Calculate PP bonuses
     u8 ppUpMask1 = gPPUpGetMask[moveIndex1];
@@ -2303,7 +2304,7 @@ static void SwapBoxMonMoves(struct BoxPokemon *mon, u8 moveIndex1, u8 moveIndex2
     SetBoxMonData(mon, MON_DATA_MOVE1 + moveIndex2, &move1);
     SetBoxMonData(mon, MON_DATA_PP1 + moveIndex1, &move2pp);
     SetBoxMonData(mon, MON_DATA_PP1 + moveIndex2, &move1pp);
-    SetBoxMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
+    //SetBoxMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
 
     summary->moves[moveIndex1] = move2;
     summary->moves[moveIndex2] = move1;
@@ -2311,7 +2312,7 @@ static void SwapBoxMonMoves(struct BoxPokemon *mon, u8 moveIndex1, u8 moveIndex2
     summary->pp[moveIndex1] = move2pp;
     summary->pp[moveIndex2] = move1pp;
 
-    summary->ppBonuses = ppBonuses;
+    //summary->ppBonuses = ppBonuses;
 }
 
 static void Task_SetHandleReplaceMoveInput(u8 taskId)
@@ -3775,7 +3776,7 @@ static void PrintMoveNameAndPP(u8 moveIndex)
 
     if (move != 0)
     {
-        pp = CalculatePPWithBonus(move, summary->ppBonuses, moveIndex);
+        pp = CalculatePPWithBonus(move, 0, moveIndex);
         PrintTextOnWindowToFit(moveNameWindowId, GetMoveName(move), 0, moveIndex * 16 + 1, 0, 1);
         ConvertIntToDecimalStringN(gStringVar1, summary->pp[moveIndex], STR_CONV_MODE_RIGHT_ALIGN, 2);
         ConvertIntToDecimalStringN(gStringVar2, pp, STR_CONV_MODE_RIGHT_ALIGN, 2);

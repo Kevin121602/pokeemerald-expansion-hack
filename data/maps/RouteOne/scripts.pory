@@ -1,8 +1,23 @@
+mapscripts RouteOne_MapScripts {}
+
+script RouteOne_LevelCapTest{
+	lock
+	faceplayer
+	msgbox(format("Increase a Pokémon's level cap?"), MSGBOX_YESNO)
+	if(var(VAR_RESULT) == YES){
+		special(ChoosePartyMon)
+		waitstate
+		special(IncreaseLevelCap)
+		msgbox(format("This Pokémon has had its level cap increased by {STR_VAR_1}."))
+	}
+	release
+}
+
 raw `
 .set LOCALID_BIRCH, 2
 .set LOCALID_ZIGZAGOON, 4
 
-RouteOne_MapScripts::
+Route101_MapScripts::
 	.byte 0
 
 Route101_OnTransition:

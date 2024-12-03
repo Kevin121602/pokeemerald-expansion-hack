@@ -41,22 +41,22 @@ u32 GetCurrentLevelCap(void)
 u32 GetIndividualLevelCap(u32 monLevelCap)
 {
     u32 gameLevelcap = GetCurrentLevelCap();
-    u32 levelcap = monLevelCap + gameLevelcap;
-    if(levelcap >= 100){
-        return 100;
+    u32 levelCap = (monLevelCap + gameLevelcap);
+    if(levelCap >= 101){
+        return 101;
     }
     else {
-        return levelcap;
+        return levelCap;
     }
 }
 
-u32 GetSoftLevelCapExpValue(u32 level, u32 expValue)
+u32 GetSoftLevelCapExpValue(u32 level, u32 levelCap, u32 expValue)
 {
     static const u32 sExpScalingDown[5] = { 4, 8, 16, 32, 64 };
     static const u32 sExpScalingUp[5]   = { 16, 8, 4, 2, 1 };
 
     u32 levelDifference;
-    u32 currentLevelCap = GetCurrentLevelCap();
+    u32 currentLevelCap = GetIndividualLevelCap(levelCap);
 
     if (B_EXP_CAP_TYPE == EXP_CAP_NONE)
         return expValue;
