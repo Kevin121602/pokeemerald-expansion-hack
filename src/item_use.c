@@ -1498,4 +1498,5 @@ void Task_ItemUse_CloseMessageBoxAndReturnToField_VsSeeker(u8 taskId)
     Task_CloseCantUseKeyItemMessage(taskId);
 }
 
+
 #undef tUsingRegisteredKeyItem

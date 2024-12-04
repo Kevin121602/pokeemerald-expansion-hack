@@ -100,7 +100,7 @@ CenterTown_PlayersHouse_1F_MomItems::
 # 55 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
 	msgbox CenterTown_PlayersHouse_1F_MomItems_Text_0
 # 56 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
-	giveitem ITEM_RARE_CANDY, 999
+	giveitem ITEM_RARE_CANDY
 # 57 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
 	giveitem ITEM_POKE_BALL, 99
 # 58 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"

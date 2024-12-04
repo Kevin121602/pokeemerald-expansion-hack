@@ -53,7 +53,7 @@ movement MomMovement2 {
 
 script CenterTown_PlayersHouse_1F_MomItems {
 	msgbox(format("MOM: Good luck, {PLAYER}! You'll need these items before you go."))
-	giveitem(ITEM_RARE_CANDY, 999)
+	giveitem(ITEM_RARE_CANDY)
 	giveitem(ITEM_POKE_BALL, 99)
 	playfanfare(MUS_DP_OBTAIN_ITEM)
 	msgbox(format("{PLAYER} switched shoes with the Running Shoes!"))
