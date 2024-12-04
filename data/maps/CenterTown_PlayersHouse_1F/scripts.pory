@@ -62,6 +62,7 @@ script CenterTown_PlayersHouse_1F_MomItems {
 	setflag(FLAG_SYS_B_DASH)
 	msgbox(format("Here, take this Pokémon with you, it's the mascot of this island!"))
 	givemon(SPECIES_SPINDA, 5)
+	setmonmetlocation(0, 0xFF)
 	playfanfare(MUS_DP_OBTAIN_ITEM)
 	msgbox("{PLAYER} recieved Spinda!")
 	waitmessage

@@ -996,7 +996,7 @@
 
 	@ Gives the player a Pokémon of the specified species and level, and allows to customize extra parameters.
 	@ VAR_RESULT will be set to MON_GIVEN_TO_PARTY, MON_GIVEN_TO_PC, or MON_CANT_GIVE depending on the outcome.
-	.macro givemon species:req, level:req, item, ball, nature, abilityNum, gender, hpEv, atkEv, defEv, speedEv, spAtkEv, spDefEv, hpIv, atkIv, defIv, speedIv, spAtkIv, spDefIv, move1, move2, move3, move4, isShiny, ggMaxFactor, teraType
+	.macro givemon species:req, level:req, item, ball, nature, abilityNum, gender, hpEv, atkEv, defEv, speedEv, spAtkEv, spDefEv, hpIv, atkIv, defIv, speedIv, spAtkIv, spDefIv, move1, move2, move3, move4, isShiny, fatefulEncounter, teraType
 	callnative ScrCmd_createmon
 	.byte 0
 	.byte 6	@ PARTY_SIZE - assign to first empty slot
@@ -1025,7 +1025,7 @@
 	.ifnb \move3; .set givemon_flags, givemon_flags | (1 << 19); .endif
 	.ifnb \move4; .set givemon_flags, givemon_flags | (1 << 20); .endif
 	.ifnb \isShiny; .set givemon_flags, givemon_flags | (1 << 21); .endif
-	.ifnb \ggMaxFactor; .set givemon_flags, givemon_flags | (1 << 22); .endif
+	.ifnb \fatefulEncounter; .set givemon_flags, givemon_flags | (1 << 22); .endif
 	.ifnb \teraType; .set givemon_flags, givemon_flags | (1 << 23); .endif
 	.4byte givemon_flags
 	.ifnb \item; .2byte \item; .endif
@@ -1050,7 +1050,7 @@
 	.ifnb \move3; .2byte \move3; .endif
 	.ifnb \move4; .2byte \move4; .endif
 	.ifnb \isShiny; .2byte \isShiny; .endif
-	.ifnb \ggMaxFactor; .2byte \ggMaxFactor; .endif
+	.ifnb \fatefulEncounter; .2byte \fatefulEncounter; .endif
 	.ifnb \teraType; .2byte \teraType; .endif
 	.endm
 
