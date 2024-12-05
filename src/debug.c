@@ -5410,14 +5410,14 @@ static void DebugAction_BerryFunctions_Pests(u8 taskId)
         return;
     }
 
-    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
-    {
-        if (gObjectEvents[i].movementType == MOVEMENT_TYPE_BERRY_TREE_GROWTH)
-        {
-            if (gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(i)].stage != BERRY_STAGE_PLANTED)
-                gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(i)].pests = TRUE;
-        }
-    }
+    //for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    //{
+    //    if (gObjectEvents[i].movementType == MOVEMENT_TYPE_BERRY_TREE_GROWTH)
+    //    {
+    //        if (gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(i)].stage != BERRY_STAGE_PLANTED)
+    //            gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(i)].pests = TRUE;
+    //    }
+    //}
 
     ScriptContext_Enable();
     Debug_DestroyMenu_Full(taskId);

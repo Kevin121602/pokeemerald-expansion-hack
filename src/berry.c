@@ -59,8 +59,8 @@ const struct Berry gBerries[] =
         .firmness = BERRY_FIRMNESS_SOFT,
         .color = BERRY_COLOR_RED,
         .size = 20,
-        .maxYield = YIELD_RATE(3, 5, 15, 20),
-        .minYield = YIELD_RATE(2, 2, 4, 4),
+        .maxYield = YIELD_RATE(90, 90, 90, 90),
+        .minYield = YIELD_RATE(60, 60, 60, 60),
         .description1 = COMPOUND_STRING("Blooms with delicate pretty flowers."),
         .description2 = COMPOUND_STRING("The bright red Berry is very spicy."),
         .growthDuration = GROWTH_DURATION(12, 12, 18, 24, 16, 24),
@@ -82,8 +82,8 @@ const struct Berry gBerries[] =
         .firmness = BERRY_FIRMNESS_SUPER_HARD,
         .color = BERRY_COLOR_PURPLE,
         .size = 80,
-        .maxYield = YIELD_RATE(3, 5, 15, 20),
-        .minYield = YIELD_RATE(2, 2, 4, 4),
+        .maxYield = YIELD_RATE(90, 90, 90, 90),
+        .minYield = YIELD_RATE(60, 60, 60, 60),
         .description1 = COMPOUND_STRING("The Berry's thick skin and fruit are"),
         .description2 = COMPOUND_STRING("very tough. It is dry-tasting all over."),
         .growthDuration = GROWTH_DURATION(12, 12, 18, 24, 16, 24),
@@ -105,8 +105,8 @@ const struct Berry gBerries[] =
         .firmness = BERRY_FIRMNESS_VERY_SOFT,
         .color = BERRY_COLOR_PINK,
         .size = 40,
-        .maxYield = YIELD_RATE(3, 5, 15, 20),
-        .minYield = YIELD_RATE(2, 2, 4, 4),
+        .maxYield = YIELD_RATE(90, 90, 90, 90),
+        .minYield = YIELD_RATE(60, 60, 60, 60),
         .description1 = COMPOUND_STRING("Very sweet and delicious."),
         .description2 = COMPOUND_STRING("Also very tender - handle with care."),
         .growthDuration = GROWTH_DURATION(12, 12, 18, 24, 16, 24),
@@ -128,8 +128,8 @@ const struct Berry gBerries[] =
         .firmness = BERRY_FIRMNESS_HARD,
         .color = BERRY_COLOR_GREEN,
         .size = 32,
-        .maxYield = YIELD_RATE(3, 5, 15, 20),
-        .minYield = YIELD_RATE(2, 2, 4, 4),
+        .maxYield = YIELD_RATE(90, 90, 90, 90),
+        .minYield = YIELD_RATE(60, 60, 60, 60),
         .description1 = COMPOUND_STRING("If the leaves grow long and curly,"),
         .description2 = COMPOUND_STRING("the Berry seems to grow very bitter."),
         .growthDuration = GROWTH_DURATION(12, 12, 18, 24, 16, 24),
@@ -151,8 +151,8 @@ const struct Berry gBerries[] =
         .firmness = BERRY_FIRMNESS_SUPER_HARD,
         .color = BERRY_COLOR_YELLOW,
         .size = 50,
-        .maxYield = YIELD_RATE(3, 5, 15, 20),
-        .minYield = YIELD_RATE(2, 2, 4, 4),
+        .maxYield = YIELD_RATE(90, 90, 90, 90),
+        .minYield = YIELD_RATE(60, 60, 60, 60),
         .description1 = COMPOUND_STRING("The hard Berry is dense with a rich"),
         .description2 = COMPOUND_STRING("juice. It is quite sour."),
         .growthDuration = GROWTH_DURATION(12, 12, 18, 24, 16, 24),
@@ -174,8 +174,8 @@ const struct Berry gBerries[] =
         .firmness = BERRY_FIRMNESS_VERY_HARD,
         .color = BERRY_COLOR_RED,
         .size = 28,
-        .maxYield = YIELD_RATE(3, 5, 15, 22),
-        .minYield = YIELD_RATE(2, 2, 2, 2),
+        .maxYield = YIELD_RATE(90, 90, 90, 90),
+        .minYield = YIELD_RATE(60, 60, 60, 60),
         .description1 = COMPOUND_STRING("Grows slower than Cheri and others."),
         .description2 = COMPOUND_STRING("The smaller the Berry, the tastier."),
         .growthDuration = GROWTH_DURATION(16, 16, 24, 24, 16, 24),
@@ -197,8 +197,8 @@ const struct Berry gBerries[] =
         .firmness = BERRY_FIRMNESS_SUPER_HARD,
         .color = BERRY_COLOR_BLUE,
         .size = 35,
-        .maxYield = YIELD_RATE(3, 5, 15, 20),
-        .minYield = YIELD_RATE(2, 2, 4, 4),
+        .maxYield = 90,
+        .minYield = 60,
         .description1 = COMPOUND_STRING("A peculiar Berry with a mix of flavors."),
         .description2 = COMPOUND_STRING("Berries grow in half a day."),
         .growthDuration = GROWTH_DURATION(12, 16, 24, 24, 16, 24),
@@ -220,8 +220,8 @@ const struct Berry gBerries[] =
         .firmness = BERRY_FIRMNESS_HARD,
         .color = BERRY_COLOR_PINK,
         .size = 47,
-        .maxYield = YIELD_RATE(3, 5, 15, 20),
-        .minYield = YIELD_RATE(2, 2, 4, 4),
+        .maxYield = YIELD_RATE(90, 90, 90, 90),
+        .minYield = YIELD_RATE(60, 60, 60, 60),
         .description1 = COMPOUND_STRING("Loves sunlight. The Berry's color"),
         .description2 = COMPOUND_STRING("grows vivid when exposed to the sun."),
         .growthDuration = GROWTH_DURATION(12, 16, 24, 24, 16, 24),
@@ -1733,7 +1733,7 @@ bool32 ObjectEventInteractionWaterBerryTree(void)
 {
     struct BerryTree *tree = GetBerryTreeInfo(GetObjectEventBerryTreeId(gSelectedObjectEvent));
 
-    if (OW_BERRY_MOISTURE)
+    /*if (OW_BERRY_MOISTURE)
     {
         tree->moistureLevel = 100;
         if (OW_BERRY_ALWAYS_WATERABLE)
@@ -1741,23 +1741,23 @@ bool32 ObjectEventInteractionWaterBerryTree(void)
             return TRUE;
         }
         AddTreeBonus(tree, GetWaterBonusByBerryType(tree->berry));
-    }
+    }*/
 
     switch (tree->stage)
     {
     case BERRY_STAGE_PLANTED:
-        tree->watered |= (1 << 0);
+        //tree->watered |= (1 << 0);
         break;
     case BERRY_STAGE_SPROUTED:
-        tree->watered |= (1 << 1);
+        //tree->watered |= (1 << 1);
         break;
     case BERRY_STAGE_TALLER:
     case BERRY_STAGE_TRUNK:
     case BERRY_STAGE_BUDDING:
-        tree->watered |= (1 << 2);
+        //tree->watered |= (1 << 2);
         break;
     case BERRY_STAGE_FLOWERING:
-        tree->watered |= (1 << 3);
+        //tree->watered |= (1 << 3);
         break;
     default:
         return FALSE;
@@ -1817,12 +1817,12 @@ bool32 BerryTreeGrow(struct BerryTree *tree)
         tree->stage = BERRY_STAGE_BERRIES;
         break;
     case BERRY_STAGE_BERRIES:
-        tree->watered = 0;
+        //tree->watered = 0;
         tree->berryYield = 0;
         tree->stage = BERRY_STAGE_SPROUTED;
-        tree->moistureLevel = 100;
-        if (++tree->regrowthCount == ((tree->mulch == ITEM_TO_MULCH(ITEM_GOOEY_MULCH)) ? 15 : 10))
-            *tree = gBlankBerryTree;
+        //tree->moistureLevel = 100;
+        //if (++tree->regrowthCount == ((tree->mulch == ITEM_TO_MULCH(ITEM_GOOEY_MULCH)) ? 15 : 10))
+        //    *tree = gBlankBerryTree;
         break;
     }
     return TRUE;
@@ -1862,9 +1862,9 @@ void BerryTreeTimeUpdate(s32 minutes)
                 // Check moisture gradient, pests and weeds
                 while (time > 0 && tree->stage != BERRY_STAGE_BERRIES)
                 {
-                    tree->moistureClock += 1;
+                    //tree->moistureClock += 1;
                     time -= 1;
-                    if (tree->moistureClock % 60 == 0)
+                    /*if (tree->moistureClock % 60 == 0)
                     {
                         if (OW_BERRY_MOISTURE)
                         {
@@ -1878,19 +1878,19 @@ void BerryTreeTimeUpdate(s32 minutes)
                                 if (tree->mulch == ITEM_TO_MULCH(ITEM_BOOST_MULCH) || tree->mulch == ITEM_TO_MULCH(ITEM_AMAZE_MULCH))
                                     drainVal = 25;
                             }
-                            if (OW_BERRY_ALWAYS_WATERABLE && tree->moistureLevel == 0)
+                            if (OW_BERRY_ALWAYS_WATERABLE/* && tree->moistureLevel == 0*//*)
                             {
                                 if (tree->berryYield > GetBerryInfo(tree->berry)->minYield + GetBerryInfo(tree->berry)->maxYield / 5)
                                     tree->berryYield -= GetBerryInfo(tree->berry)->maxYield / 5;
                                 else
                                     tree->berryYield = GetBerryInfo(tree->berry)->minYield;
                             }
-                            else if (tree->moistureLevel <= drainVal)
-                                tree->moistureLevel = 0;
-                            else
-                                tree->moistureLevel -= drainVal;
-                            if (OW_BERRY_DRAIN_RATE == GEN_6_XY && tree->moistureLevel <= 4) // Without variable drain rate (and without mulches), this needs to trigger after 24 hours, hence the extra check
-                                tree->moistureLevel = 0;
+                            //else if (tree->moistureLevel <= drainVal)
+                            //    tree->moistureLevel = 0;
+                            //else
+                            //    tree->moistureLevel -= drainVal;
+                            //if (OW_BERRY_DRAIN_RATE == GEN_6_XY && tree->moistureLevel <= 4) // Without variable drain rate (and without mulches), this needs to trigger after 24 hours, hence the extra check
+                            //    tree->moistureLevel = 0;
                         }
                         if (tree->moistureClock == 120)
                         {
@@ -1898,7 +1898,7 @@ void BerryTreeTimeUpdate(s32 minutes)
                             TryForPests(tree);
                             tree->moistureClock = 0;
                         }
-                    }
+                    }*/
                 }
 
                 // Check Berry growth
@@ -1930,7 +1930,7 @@ void PlantBerryTree(u8 id, u8 berry, u8 stage, bool8 allowGrowth)
     tree->berry = berry;
     tree->minutesUntilNextStage = GetMulchAffectedGrowthRate(GetStageDurationByBerryType(berry), tree->mulch, stage);
     tree->stage = stage;
-    tree->moistureLevel = 100;
+    //tree->moistureLevel = 100;
     if (OW_BERRY_ALWAYS_WATERABLE)
         tree->berryYield = GetBerryInfo(berry)->maxYield;
     if (stage == BERRY_STAGE_BERRIES)
@@ -2002,14 +2002,14 @@ static u8 BerryTreeGetNumStagesWatered(struct BerryTree *tree)
 {
     u8 count = 0;
 
-    if (tree->watered & (1 << 0))
-        count++;
-    if (tree->watered & (1 << 1))
-        count++;
-    if (tree->watered & (1 << 2))
-        count++;
-    if (tree->watered & (1 << 3))
-        count++;
+    //if (tree->watered & (1 << 0))
+    //    count++;
+    //if (tree->watered & (1 << 1))
+    //    count++;
+    //if (tree->watered & (1 << 2))
+    //    count++;
+    //if (tree->watered & (1 << 3))
+    //    count++;
     return count;
 }
 
@@ -2029,38 +2029,18 @@ static u8 GetNumStagesWateredByBerryTreeId(u8 id)
 // and bug fix: https://gist.github.com/hondew/0f0164e5b9dadfd72d24f30f2c049a0b.
 static u8 CalcBerryYieldInternal(u16 max, u16 min, u8 water)
 {
-    u32 randMin;
-    u32 randMax;
     u32 rand;
-    u32 extraYield;
+    rand = Random() % (max - min + 1) + min;
+    return rand;
 
-    if (water == 0 || OW_BERRY_MOISTURE)
-        return min;
-    else
-    {
-        randMin = (max - min) * (water - 1);
-        randMax = (max - min) * (water);
-        rand = randMin + Random() % (randMax - randMin + 1);
-
-        // Round upwards
-        if ((rand % NUM_WATER_STAGES) >= NUM_WATER_STAGES / 2)
-            extraYield = rand / NUM_WATER_STAGES + 1;
-        else
-            extraYield = rand / NUM_WATER_STAGES;
-        return extraYield + min;
-    }
 }
 
 static u8 CalcBerryYield(struct BerryTree *tree)
 {
     const struct Berry *berry = GetBerryInfo(tree->berry);
-    u8 min = tree->berryYield;
+    u8 min = berry->minYield;
     u8 max = berry->maxYield;
     u8 result;
-    if (OW_BERRY_MULCH_USAGE && (tree->mulch == ITEM_TO_MULCH(ITEM_RICH_MULCH) || tree->mulch == ITEM_TO_MULCH(ITEM_AMAZE_MULCH)))
-        min += 2;
-    if (!(OW_BERRY_MOISTURE && OW_BERRY_ALWAYS_WATERABLE))
-        min += berry->minYield;
     if (min >= max)
         result = max;
     else
@@ -2103,9 +2083,9 @@ static u8 GetPestsBonusByBerryType(u8 berry)
 
 bool8 CanWaterBerryPlot(void)
 {
-    if (!OW_BERRY_MOISTURE || OW_BERRY_ALWAYS_WATERABLE)
+    //if (!OW_BERRY_MOISTURE || OW_BERRY_ALWAYS_WATERABLE)
         return TRUE;
-    return (gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].moistureLevel == 0);
+    //return (gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].moistureLevel == 0);
 }
 
 void ObjectEventInteractionGetBerryTreeData(void)
@@ -2215,7 +2195,7 @@ void ObjectEventInteractionPullBerryWeed(void)
 void ObjectEventInteractionClearBerryPests(void)
 {
     struct BerryTree *tree = GetBerryTreeInfo(GetObjectEventBerryTreeId(gSelectedObjectEvent));
-    tree->pests = FALSE;
+    //tree->pests = FALSE;
     AddTreeBonus(tree, GetPestsBonusByBerryType(tree->berry));
 }
 
@@ -2231,15 +2211,15 @@ bool8 ObjectEventInteractionBerryHasWeed(void)
 
 bool8 ObjectEventInteractionBerryHasPests(void)
 {
-    u16 species;
-    if (!OW_BERRY_PESTS || !gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].pests)
+    //u16 species;
+    //if (!OW_BERRY_PESTS || !gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].pests)
         return FALSE;
-    species = GetBerryPestSpecies(gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].berry);
-    if (species == SPECIES_NONE)
-        return FALSE;
-    CreateScriptedWildMon(species, 14 + Random() % 3, ITEM_NONE);
-    gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].pests = FALSE;
-    return TRUE;
+    //species = GetBerryPestSpecies(gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].berry);
+    //if (species == SPECIES_NONE)
+    //    return FALSE;
+    //CreateScriptedWildMon(species, 14 + Random() % 3, ITEM_NONE);
+    //gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].pests = FALSE;
+    //return TRUE;
 }
 
 // Berry tree growth is frozen at their initial stage (usually, fully grown) until the player has seen the tree
@@ -2448,19 +2428,19 @@ static void TryForWeeds(struct BerryTree *tree)
 
 static void TryForPests(struct BerryTree *tree)
 {
-    if (!OW_BERRY_WEEDS)
+    //if (!OW_BERRY_WEEDS)
         return;
-    if (tree->pests == TRUE)
-        return;
-    if (Random() % 100 < BERRY_PESTS_CHANCE && tree->stage > BERRY_STAGE_PLANTED)
-        tree->pests = TRUE;
+    //if (tree->pests == TRUE)
+    //    return;
+    //if (Random() % 100 < BERRY_PESTS_CHANCE && tree->stage > BERRY_STAGE_PLANTED)
+    //    tree->pests = TRUE;
 }
 
 static void AddTreeBonus(struct BerryTree *tree, u8 bonus)
 {
     if (OW_BERRY_MOISTURE) // use watered field to save track of intermediate bonuses
     {
-        tree->watered += bonus;
+        /*tree->watered += bonus;
         while (tree->watered > 10)
         {
             tree->watered -= 10;
@@ -2468,7 +2448,7 @@ static void AddTreeBonus(struct BerryTree *tree, u8 bonus)
             if (bonus > GetBerryInfo(tree->berry)->maxYield)
                 bonus = GetBerryInfo(tree->berry)->maxYield;
             tree->berryYield = bonus;
-        }
+        }*/
     }
     else
     {
