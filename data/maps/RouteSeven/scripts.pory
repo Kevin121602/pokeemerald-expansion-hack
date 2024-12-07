@@ -1,5 +1,79 @@
+mapscripts RouteSeven_MapScripts{}
+
+script RouteSeven_EventScript_Tommy{
+	trainerbattle_single (TRAINER_TOMMY, RouteSeven_Text_TommyIntro, RouteSeven_Text_TommyDefeat)
+	msgbox (RouteSeven_Text_TommyPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text RouteSeven_Text_TommyIntro{
+	format("If you can't beat me, you won't stand a chance against stronger trainers!")
+}
+
+text RouteSeven_Text_TommyDefeat{
+	format("Wow! You've got some potential!")
+}
+
+text RouteSeven_Text_TommyPostBattle{
+	format("Wally is stronger than me by several times. You'd better be on your guard!")
+}
+
+script RouteSeven_EventScript_Janice{
+	trainerbattle_single (TRAINER_JANICE, RouteSeven_Text_JaniceIntro, RouteSeven_Text_JaniceDefeat)
+	msgbox (RouteSeven_Text_JanicePostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text RouteSeven_Text_JaniceIntro{
+	format("Let me teach you how strong my adorable Pokémon is!")
+}
+
+text RouteSeven_Text_JaniceDefeat{
+	format("You're a notch above me…")
+}
+
+text RouteSeven_Text_JanicePostBattle{
+	format("Pokémon that possess cuteness and power, that's ideal, I think.")
+}
+
+script RouteSeven_EventScript_Calvin{
+	trainerbattle_single (TRAINER_CALVIN_1, RouteSeven_Text_CalvinIntro, RouteSeven_Text_CalvinDefeat)
+	msgbox (RouteSeven_Text_CalvinPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text RouteSeven_Text_CalvinIntro{
+	format("If you have Pokémon with you, then you're an official Pokémon Trainer! You can't say no to my challenge!")
+}
+
+text RouteSeven_Text_CalvinDefeat{
+	format("Arrgh, I lost… I should have trained mine more…")
+}
+
+text RouteSeven_Text_CalvinPostBattle{
+	format("Listen, you. If you're strong, you should have told me before!")
+}
+
+script RouteSeven_EventScript_Sally{
+	trainerbattle_single (TRAINER_SALLY, RouteSeven_Text_SallyIntro, RouteSeven_Text_SallyDefeat)
+	msgbox (RouteSeven_Text_SallyPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text RouteSeven_Text_SallyIntro{
+	format("I'll hack and slash my way to victory with the Aerial Ace we just learned!")
+}
+
+text RouteSeven_Text_SallyDefeat{
+	format("Why are you so serious?")
+}
+
+text RouteSeven_Text_SallyPostBattle{
+	format("I never get tired of hacking and slashing!")
+}
+
 raw `
-RouteSeven_MapScripts::
+Route105_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, Route105_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, Route105_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route105_OnFrame

@@ -1,7 +1,28 @@
+mapscripts LoneTreeCape_MapScripts{}
+
+script LoneTreeCape_EventScript_Tiana{
+	trainerbattle_single (TRAINER_TIANA, LoneTreeCape_Text_TianaIntro, LoneTreeCape_Text_TianaDefeated)
+	msgbox (LoneTreeCape_Text_TianaPostBattle, MSGBOX_AUTOCLOSE)
+	release
+	end
+}
+
+text LoneTreeCape_Text_TianaIntro{
+	format("Did you feel the tug of our soul-soothing fragrance?")
+}
+
+text LoneTreeCape_Text_TianaDefeated{
+	format("You weren't led astray by our aroma…")
+}
+
+text LoneTreeCape_Text_TianaPostBattle{
+	format("Aromatherapy is a form of mental healing that works with fragrances.")
+}
+
 raw `
 .set LOCALID_RIVAL, 2
 
-LoneTreeCape_MapScripts::
+Route103_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route103_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Route103_OnLoad
 	.byte 0
@@ -203,8 +224,6 @@ Route103_EventScript_RouteSign::
 	end
 
 Route103_EventScript_Tiana::
-	trainerbattle_single TRAINER_TIANA, Route103_Text_TianaIntro, Route103_Text_TianaDefeated
-	msgbox Route103_Text_TianaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route103_EventScript_Amy::

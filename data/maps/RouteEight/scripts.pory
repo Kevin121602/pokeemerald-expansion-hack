@@ -1,10 +1,175 @@
+mapscripts RouteEight_MapScripts{}
+
+const GRUNT_ID = 12
+
+script RouteEight_EventScript_Ben{
+	trainerbattle_single (TRAINER_BEN, RouteEight_Text_BenIntro, RouteEight_Text_BenDefeat)
+	msgbox (RouteEight_Text_BenPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text RouteEight_Text_BenIntro{
+	format("Did you just become a Trainer? We're both beginners!")
+}
+
+text RouteEight_Text_BenDefeat{
+	format("I called you because I thought I could beat you…")
+}
+
+text RouteEight_Text_BenPostBattle{
+	format("I haven't won once yet… I wish I would win soon…")
+}
+
+script RouteEight_EventScript_Dusty{
+	trainerbattle_single (TRAINER_DUSTY_1, RouteEight_Text_DustyIntro, RouteEight_Text_DustyDefeat)
+	msgbox (RouteEight_Text_DustyPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text RouteEight_Text_DustyIntro{
+	format("For thirty years I have searched for ancient ruins! I am to be challenged?")
+}
+
+text RouteEight_Text_DustyDefeat{
+	format("While I have searched for ruins, I've not searched for strong Pokémon.")
+}
+
+text RouteEight_Text_DustyPostBattle{
+	format("For thirty years I have searched for ancient ruins! No, wait, was that forty years? Which was it now?")
+}
+
+script RouteEight_EventScript_Beau{
+	trainerbattle_single (TRAINER_BEAU, RouteEight_Text_BeauIntro, RouteEight_Text_BeauDefeat)
+	msgbox (RouteEight_Text_BeauPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text RouteEight_Text_BeauIntro{
+	format("I can't go any farther… The sand gets in my eyes!")
+}
+
+text RouteEight_Text_BeauDefeat{
+	format("I can't win on spirit alone…")
+}
+
+text RouteEight_Text_BeauPostBattle{
+	format("I'm going to be a real hero one day. I'm going to work harder to make me and my Pokémon stronger.")
+}
+
+script RouteEight_EventScript_Heidi{
+	trainerbattle_single (TRAINER_HEIDI, RouteEight_Text_HeidiIntro, RouteEight_Text_HeidiDefeat)
+	msgbox (RouteEight_Text_HeidiPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text RouteEight_Text_HeidiIntro{
+	format("I'm having a picnic in the desert. You can always find a Trainer, so I can enjoy a battle here, too!")
+}
+
+text RouteEight_Text_HeidiDefeat{
+	format("Ohhh! You're mean!")
+}
+
+text RouteEight_Text_HeidiPostBattle{
+	format("When you're battling in a sandstorm, watch out for your Pokémon's HP. It can faint if you don't keep an eye on it!")
+}
+
+script RouteEight_EventScript_Chip{
+	trainerbattle_single (TRAINER_CHIP, RouteEight_Text_ChipIntro, RouteEight_Text_ChipDefeat)
+	msgbox (RouteEight_Text_ChipPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text RouteEight_Text_ChipIntro{
+	format("Who might you be? Are you perhaps searching for ancient ruins that are rumored to possibly exist according to legend?")
+}
+
+text RouteEight_Text_ChipDefeat{
+	format("What a disgraceful setback…")
+}
+
+text RouteEight_Text_ChipPostBattle{
+	format("That giant rock… I would like to believe it may indeed contain ancient ruins. But I see no entrance.")
+}
+
+script RouteEight_EventScript_GruntNorth{
+	lock
+	playbgm(MUS_DP_ENCOUNTER_GALACTIC, FALSE)
+	setflag(FLAG_DISABLE_EXP)
+	applymovement(GRUNT_ID, GruntMovementNorth)
+	waitmovement(0)
+	msgbox(format("test."))
+	closemessage
+	applymovement(GRUNT_ID, GruntMovementLeavingNorth)
+	waitmovement(0)
+	playbgm(MUS_DP_ROUTE206_DAY, FALSE)
+	clearflag(FLAG_DISABLE_EXP)
+	setvar(VAR_ROUTE_EIGHT_STATE, 1)
+	setflag(FLAG_DEFEATED_GALACTIC_GRUNT)
+	setflag(FLAG_HIDE_ROUTE_EIGHT_GALACTIC_GRUNT)
+	removeobject (GRUNT_ID)
+	releaseall
+	end
+}
+
+script RouteEight_EventScript_GruntSouth{
+	lock
+	playbgm(MUS_DP_ENCOUNTER_GALACTIC, FALSE)
+	setflag(FLAG_DISABLE_EXP)
+	applymovement(GRUNT_ID, GruntMovementSouth)
+	waitmovement(0)
+	msgbox(format("test."))
+	closemessage
+	applymovement(GRUNT_ID, GruntMovementLeavingSouth)
+	waitmovement(0)
+	playbgm(MUS_DP_ROUTE206_DAY, FALSE)
+	clearflag(FLAG_DISABLE_EXP)
+	setvar(VAR_ROUTE_EIGHT_STATE, 1)
+	setflag(FLAG_DEFEATED_GALACTIC_GRUNT)
+	setflag(FLAG_HIDE_ROUTE_EIGHT_GALACTIC_GRUNT)
+	removeobject (GRUNT_ID)
+	releaseall
+	end
+}
+
+movement GruntMovementNorth{
+	walk_left * 7
+}
+
+movement GruntMovementSouth{
+	face_down
+	walk_down
+	face_left
+	walk_left * 7
+}
+
+movement GruntMovementLeavingNorth{
+	face_down
+	walk_down
+	face_left
+	walk_left * 10
+}
+
+movement GruntMovementLeavingSouth{
+	face_up
+	walk_up
+	face_left
+	walk_left * 10
+}
+
+script RouteEight_EventScript_FindWiseGlasses{
+	finditem (ITEM_WISE_GLASSES)
+	end
+}
+
+
 raw `
 .set LOCALID_CHALLENGE_BIKER, 21
 .set LOCALID_RIVAL, 28
 .set LOCALID_RIVAL_ON_BIKE, 29
 .set LOCALID_BIRCH, 36
 
-RouteEight_MapScripts::
+Route110_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, Route110_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, Route110_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route110_OnFrame
@@ -481,7 +646,7 @@ Route110_EventScript_RivalExit::
 	call_if_eq VAR_0x8008, 2, Route110_EventScript_RivalExit2
 	call_if_eq VAR_0x8008, 3, Route110_EventScript_RivalExit3
 	removeobject LOCALID_RIVAL_ON_BIKE
-	setvar VAR_ROUTE110_STATE, 1
+	setvar VAR_ROUTE_EIGHT_STATE, 1
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	releaseall

@@ -159,11 +159,11 @@ LittlerootTown_MaysHouse_1F_EventScript_MoveMomToDoor::
 # 78 "data/maps/CenterTown_House_1/scripts.pory"
 LittlerootTown_MaysHouse_1F_OnFrame:
 # 79 "data/maps/CenterTown_House_1/scripts.pory"
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_MaysHouse_1F_EventScript_EnterHouseMovingIn
+	map_script_2 VAR_CENTER_INTRO_STATE, 3, LittlerootTown_MaysHouse_1F_EventScript_EnterHouseMovingIn
 # 80 "data/maps/CenterTown_House_1/scripts.pory"
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_MaysHouse_1F_EventScript_GoUpstairsToSetClock
+	map_script_2 VAR_CENTER_INTRO_STATE, 5, LittlerootTown_MaysHouse_1F_EventScript_GoUpstairsToSetClock
 # 81 "data/maps/CenterTown_House_1/scripts.pory"
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_MaysHouse_1F_EventScript_PetalburgGymReport
+	map_script_2 VAR_CENTER_INTRO_STATE, 6, LittlerootTown_MaysHouse_1F_EventScript_PetalburgGymReport
 # 82 "data/maps/CenterTown_House_1/scripts.pory"
 	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 1, LittlerootTown_MaysHouse_1F_EventScript_YoureNewNeighbor
 # 83 "data/maps/CenterTown_House_1/scripts.pory"

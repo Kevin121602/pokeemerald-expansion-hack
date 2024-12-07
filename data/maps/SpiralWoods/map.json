@@ -2,7 +2,7 @@
   "id": "MAP_SPIRAL_WOODS",
   "name": "SpiralWoods",
   "layout": "LAYOUT_SPIRAL_WOODS",
-  "music": "MUS_PETALBURG_WOODS",
+  "music": "MUS_DP_ETERNA_FOREST",
   "region_map_section": "MAPSEC_SPIRAL_WOODS",
   "requires_flash": false,
   "weather": "WEATHER_SHADE",
@@ -22,9 +22,9 @@
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "SpiralWoods_EventScript_Davis",
       "flag": "0"
     },
     {
@@ -35,9 +35,9 @@
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "SpiralWoods_EventScript_Brent",
       "flag": "0"
     },
     {
@@ -45,12 +45,12 @@
       "x": 35,
       "y": 8,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "6",
+      "script": "SpiralWoods_EventScript_Rick",
       "flag": "0"
     },
     {
@@ -58,12 +58,25 @@
       "x": 22,
       "y": 2,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "SpiralWoods_EventScript_Donald",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "x": 112,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "SpiralWoods_BerryJuice",
       "flag": "0"
     }
   ],
@@ -109,13 +122,6 @@
       "elevation": 0,
       "dest_map": "MAP_LIGHTNING_MEADOW",
       "dest_warp_id": "7"
-    },
-    {
-      "x": 108,
-      "y": 21,
-      "elevation": 0,
-      "dest_map": "MAP_SPIRAL_WOODS",
-      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

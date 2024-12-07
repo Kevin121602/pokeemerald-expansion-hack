@@ -1,9 +1,29 @@
+mapscripts LightningMeadow_MapScripts{}
+
+script LightningMeadow_EventScript_Flint{
+	trainerbattle_single (TRAINER_FLINT, LightningMeadow_Text_FlintIntro, LightningMeadow_Text_FlintDefeat)
+	msgbox (LightningMeadow_Text_FlintPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text LightningMeadow_Text_FlintIntro{
+	format("There's no need to go any farther, I'm plenty good enough for you!")
+}
+
+text LightningMeadow_Text_FlintDefeat{
+	"I lost!$"
+}
+
+text LightningMeadow_Text_FlintPostBattle{
+	format("Wow, you're strong!")
+} 
+
 raw `
 @ NOTE: Route 104's sail to Dewford script references local IDs from Dewford's map.
 @  These are labeled in DewfordTown/scripts.inc
 .set LOCALID_RIVAL, 34
 
-LightningMeadow_MapScripts::
+Route104_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route104_OnFrame
 	map_script MAP_SCRIPT_ON_TRANSITION, Route104_OnTransition
 	.byte 0

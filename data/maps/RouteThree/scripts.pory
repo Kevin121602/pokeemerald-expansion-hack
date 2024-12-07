@@ -1,3 +1,23 @@
+mapscripts RouteThree_MapScripts{}
+
+script RouteThree_EventScript_Billy{
+	trainerbattle_single (TRAINER_BILLY, RouteThree_Text_BillyIntro, RouteThree_Text_BillyDefeat)
+	msgbox (RouteThree_Text_BillyPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text RouteThree_Text_BillyIntro{
+	format("Leaving footprints in the dirt is so fun!")
+}
+
+text RouteThree_Text_BillyDefeat{
+	format("Waah! I got dirt in my runners! They're all gritty!")
+}
+
+text RouteThree_Text_BillyPostBattle{
+	format("I want to leave my footprints in the dirt everywhere, but they don't appear…")
+}
+
 raw `
 .set LOCALID_WALLY, 2
 .set LOCALID_BOY, 3
@@ -5,7 +25,7 @@ raw `
 .set LOCALID_GYM_BOY, 8
 .set LOCALID_SCOTT, 9
 
-RouteThree_MapScripts::
+PetalburgCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgCity_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, PetalburgCity_OnFrame
 	.byte 0

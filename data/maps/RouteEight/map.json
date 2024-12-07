@@ -2,7 +2,7 @@
   "id": "MAP_ROUTE_EIGHT",
   "name": "RouteEight",
   "layout": "LAYOUT_ROUTE_EIGHT",
-  "music": "MUS_ROUTE110",
+  "music": "MUS_DP_ROUTE206_DAY",
   "region_map_section": "MAPSEC_ROUTE_EIGHT",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -53,9 +53,9 @@
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "RouteEight_EventScript_Chip",
       "flag": "0"
     },
     {
@@ -63,12 +63,12 @@
       "x": 114,
       "y": 27,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "5",
+      "script": "RouteEight_EventScript_Heidi",
       "flag": "0"
     },
     {
@@ -79,9 +79,9 @@
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "5",
+      "script": "RouteEight_EventScript_Beau",
       "flag": "0"
     },
     {
@@ -89,12 +89,12 @@
       "x": 73,
       "y": 11,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "RouteEight_EventScript_Dusty",
       "flag": "0"
     },
     {
@@ -105,9 +105,9 @@
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "5",
+      "script": "RouteEight_EventScript_Ben",
       "flag": "0"
     },
     {
@@ -187,6 +187,32 @@
       "trainer_sight_or_berry_tree_id": "BERRY_TREE_ROUTE_EIGHT_PERSIM",
       "script": "BerryTreeScript",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
+      "x": 60,
+      "y": 28,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_HIDE_ROUTE_EIGHT_GALACTIC_GRUNT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 74,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "RouteEight_EventScript_FindWiseGlasses",
+      "flag": "FLAG_ITEM_ROUTE_EIGHT_WISE_GLASSES"
     }
   ],
   "warp_events": [
@@ -346,6 +372,24 @@
       "y": 18,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_SANDSTORM"
+    },
+    {
+      "type": "trigger",
+      "x": 52,
+      "y": 29,
+      "elevation": 0,
+      "var": "VAR_ROUTE_EIGHT_STATE",
+      "var_value": "0",
+      "script": "RouteEight_EventScript_GruntSouth"
+    },
+    {
+      "type": "trigger",
+      "x": 52,
+      "y": 28,
+      "elevation": 0,
+      "var": "VAR_ROUTE_EIGHT_STATE",
+      "var_value": "0",
+      "script": "RouteEight_EventScript_GruntNorth"
     }
   ],
   "bg_events": [

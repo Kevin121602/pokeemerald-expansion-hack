@@ -1,5 +1,26 @@
+mapscripts RouteTwo_MapScripts{}
+
+script RouteTwo_EventScript_Joey{
+	trainerbattle_single(TRAINER_JOEY, RouteTwo_Text_JoeyIntro, RouteTwo_Text_JoeyDefeated)
+	msgbox(RouteTwo_Text_JoeyPostBattle, MSGBOX_AUTOCLOSE)
+	release
+	end
+}
+
+text RouteTwo_Text_JoeyIntro{
+	format("I have two top percentage Rattata's, You can't say no to my challenge!")
+}
+
+text RouteTwo_Text_JoeyDefeated{
+	format("Arrgh, I lost… I should have trained mine more…")
+}
+
+text RouteTwo_Text_JoeyPostBattle{
+	format("Listen, you. If you're strong, you should have told me before!")
+}
+
 raw `
-RouteTwo_MapScripts::
+Route102_MapScripts::
 	.byte 0
 
 Route102_EventScript_LittleBoy::

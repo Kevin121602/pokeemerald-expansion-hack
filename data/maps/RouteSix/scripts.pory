@@ -1,8 +1,51 @@
+mapscripts RouteSix_MapScripts{}
+
+script RouteSix_EventScript_Autumn{
+	trainerbattle_single (TRAINER_AUTUMN, RouteSix_Text_AutumnIntro, RouteSix_Text_AutumnDefeat)
+	msgbox (RouteSix_Text_AutumnPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text RouteSix_Text_AutumnIntro{
+	format("I climb this hill every day. I have confidence in my strength!")
+}
+
+text RouteSix_Text_AutumnDefeat{
+	format("Hmm… What went wrong?")
+}
+
+text RouteSix_Text_AutumnPostBattle{
+	format("What is that odd rock protrusion a little to the north?")
+}
+
+script RouteSix_EventScript_Drew{
+	trainerbattle_single (TRAINER_DREW, RouteSix_Text_DrewIntro, RouteSix_Text_DrewDefeat)
+	msgbox (RouteSix_Text_DrewPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text RouteSix_Text_DrewIntro{
+	format("Did you just become a Trainer? We're both beginners!")
+}
+
+text RouteSix_Text_DrewDefeat{
+	format("I called you because I thought I could beat you…")
+}
+
+text RouteSix_Text_DrewPostBattle{
+	format("I haven't won once yet… I wish I would win soon…")
+}
+
+script RouteSix_EventScript_FindMuscleBand{
+	finditem (ITEM_MUSCLE_BAND)
+	end
+}
+
 raw `
 @ NOTE: Route 109's sail to Dewford script references local IDs from Dewford's map.
 @  These are labeled in DewfordTown/scripts.inc
 
-RouteSix_MapScripts::
+Route109_MapScripts::
 	.byte 0
 
 Route109_EventScript_StartDepartForDewford::

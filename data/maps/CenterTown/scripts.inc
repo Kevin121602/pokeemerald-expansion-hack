@@ -59,7 +59,7 @@ CenterTown_SuperRod_5:
 # 29 "data/maps/CenterTown/scripts.pory"
 
 # 30 "data/maps/CenterTown/scripts.pory"
-	@ State descriptions for VAR_LITTLEROOT_INTRO_STATE
+	@ State descriptions for VAR_CENTER_INTRO_STATE
 # 31 "data/maps/CenterTown/scripts.pory"
 	@ 1: In truck male
 # 32 "data/maps/CenterTown/scripts.pory"
@@ -321,7 +321,7 @@ LittlerootTown_EventScript_GoInsideWithMom::
 # 160 "data/maps/CenterTown/scripts.pory"
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
 # 161 "data/maps/CenterTown/scripts.pory"
-	setvar VAR_LITTLEROOT_INTRO_STATE, 3
+	setvar VAR_CENTER_INTRO_STATE, 3
 # 162 "data/maps/CenterTown/scripts.pory"
 	hideobjectat OBJ_EVENT_ID_PLAYER, 0
 # 163 "data/maps/CenterTown/scripts.pory"

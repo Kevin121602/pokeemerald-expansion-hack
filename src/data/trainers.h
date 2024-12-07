@@ -15179,10 +15179,10 @@ F_TRAINER_FEMALE |
         },
     },
 #line 6108
-    [TRAINER_CALVIN_1] =
+    [TRAINER_JOEY] =
     {
 #line 6109
-        .trainerName = _("CALVIN"),
+        .trainerName = _("JOEY"),
 #line 6110
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 6111
@@ -15527,10 +15527,10 @@ F_TRAINER_FEMALE |
         },
     },
 #line 6240
-    [TRAINER_JOEY] =
+    [TRAINER_CALVIN_1] =
     {
 #line 6241
-        .trainerName = _("JOEY"),
+        .trainerName = _("CALVIN"),
 #line 6242
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
 #line 6243

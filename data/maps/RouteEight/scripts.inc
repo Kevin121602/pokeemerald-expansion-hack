@@ -1,623 +1,517 @@
-# 1 "data/maps/RouteEight/scripts.pory"
-
-# 2 "data/maps/RouteEight/scripts.pory"
-.set LOCALID_CHALLENGE_BIKER, 21
-# 3 "data/maps/RouteEight/scripts.pory"
-.set LOCALID_RIVAL, 28
-# 4 "data/maps/RouteEight/scripts.pory"
-.set LOCALID_RIVAL_ON_BIKE, 29
-# 5 "data/maps/RouteEight/scripts.pory"
-.set LOCALID_BIRCH, 36
-# 6 "data/maps/RouteEight/scripts.pory"
-
-# 7 "data/maps/RouteEight/scripts.pory"
 RouteEight_MapScripts::
-# 8 "data/maps/RouteEight/scripts.pory"
-	map_script MAP_SCRIPT_ON_RESUME, Route110_OnResume
-# 9 "data/maps/RouteEight/scripts.pory"
-	map_script MAP_SCRIPT_ON_TRANSITION, Route110_OnTransition
-# 10 "data/maps/RouteEight/scripts.pory"
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route110_OnFrame
-# 11 "data/maps/RouteEight/scripts.pory"
 	.byte 0
-# 12 "data/maps/RouteEight/scripts.pory"
 
-# 13 "data/maps/RouteEight/scripts.pory"
-Route110_OnResume:
-# 14 "data/maps/RouteEight/scripts.pory"
-	special UpdateCyclingRoadState
-# 15 "data/maps/RouteEight/scripts.pory"
+
+RouteEight_EventScript_Ben::
+# 6 "data/maps/RouteEight/scripts.pory"
+	trainerbattle_single TRAINER_BEN, RouteEight_Text_BenIntro, RouteEight_Text_BenDefeat
+# 7 "data/maps/RouteEight/scripts.pory"
+	msgbox RouteEight_Text_BenPostBattle, MSGBOX_AUTOCLOSE
 	end
-# 16 "data/maps/RouteEight/scripts.pory"
 
-# 17 "data/maps/RouteEight/scripts.pory"
-Route110_OnTransition:
-# 18 "data/maps/RouteEight/scripts.pory"
-	call Common_EventScript_SetupRivalGfxId
-# 19 "data/maps/RouteEight/scripts.pory"
-	call Common_EventScript_SetupRivalOnBikeGfxId
-# 20 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_CYCLING_CHALLENGE_STATE, 1, Route110_EventScript_SaveCyclingMusic
-# 21 "data/maps/RouteEight/scripts.pory"
-	end
-# 22 "data/maps/RouteEight/scripts.pory"
 
-# 23 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_SaveCyclingMusic::
+RouteEight_EventScript_Dusty::
 # 24 "data/maps/RouteEight/scripts.pory"
-	savebgm MUS_CYCLING
+	trainerbattle_single TRAINER_DUSTY_1, RouteEight_Text_DustyIntro, RouteEight_Text_DustyDefeat
 # 25 "data/maps/RouteEight/scripts.pory"
-	return
-# 26 "data/maps/RouteEight/scripts.pory"
+	msgbox RouteEight_Text_DustyPostBattle, MSGBOX_AUTOCLOSE
+	end
 
-# 27 "data/maps/RouteEight/scripts.pory"
-Route110_OnFrame:
-# 28 "data/maps/RouteEight/scripts.pory"
-	map_script_2 VAR_CYCLING_CHALLENGE_STATE, 1, Route110_EventScript_BeginCylcingRoadChallenge
-# 29 "data/maps/RouteEight/scripts.pory"
-	.2byte 0
-# 30 "data/maps/RouteEight/scripts.pory"
 
-# 31 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BeginCylcingRoadChallenge::
-# 32 "data/maps/RouteEight/scripts.pory"
-	special Special_BeginCyclingRoadChallenge
-# 33 "data/maps/RouteEight/scripts.pory"
-	setvar VAR_CYCLING_CHALLENGE_STATE, 2
-# 34 "data/maps/RouteEight/scripts.pory"
-	return
-# 35 "data/maps/RouteEight/scripts.pory"
-
-# 36 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_AquaGrunt1::
-# 37 "data/maps/RouteEight/scripts.pory"
-	lock
-# 38 "data/maps/RouteEight/scripts.pory"
-	faceplayer
-# 39 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_WeCantTalkAboutAquaActivities, MSGBOX_DEFAULT
-# 40 "data/maps/RouteEight/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-# 41 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+RouteEight_EventScript_Beau::
 # 42 "data/maps/RouteEight/scripts.pory"
-	release
+	trainerbattle_single TRAINER_BEAU, RouteEight_Text_BeauIntro, RouteEight_Text_BeauDefeat
 # 43 "data/maps/RouteEight/scripts.pory"
+	msgbox RouteEight_Text_BeauPostBattle, MSGBOX_AUTOCLOSE
 	end
-# 44 "data/maps/RouteEight/scripts.pory"
 
-# 45 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_AquaGrunt2::
-# 46 "data/maps/RouteEight/scripts.pory"
-	lock
-# 47 "data/maps/RouteEight/scripts.pory"
-	faceplayer
-# 48 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_KickUpARuckus, MSGBOX_DEFAULT
-# 49 "data/maps/RouteEight/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-# 50 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
-# 51 "data/maps/RouteEight/scripts.pory"
-	release
-# 52 "data/maps/RouteEight/scripts.pory"
-	end
-# 53 "data/maps/RouteEight/scripts.pory"
 
-# 54 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_AquaGrunt3::
-# 55 "data/maps/RouteEight/scripts.pory"
-	lock
-# 56 "data/maps/RouteEight/scripts.pory"
-	faceplayer
-# 57 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_MyFirstJobInAqua, MSGBOX_DEFAULT
-# 58 "data/maps/RouteEight/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-# 59 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+RouteEight_EventScript_Heidi::
 # 60 "data/maps/RouteEight/scripts.pory"
-	release
+	trainerbattle_single TRAINER_HEIDI, RouteEight_Text_HeidiIntro, RouteEight_Text_HeidiDefeat
 # 61 "data/maps/RouteEight/scripts.pory"
+	msgbox RouteEight_Text_HeidiPostBattle, MSGBOX_AUTOCLOSE
 	end
-# 62 "data/maps/RouteEight/scripts.pory"
 
-# 63 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_AquaGrunt4::
-# 64 "data/maps/RouteEight/scripts.pory"
-	lock
-# 65 "data/maps/RouteEight/scripts.pory"
-	faceplayer
-# 66 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_AquaActionsBringSmiles, MSGBOX_DEFAULT
-# 67 "data/maps/RouteEight/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-# 68 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
-# 69 "data/maps/RouteEight/scripts.pory"
-	release
-# 70 "data/maps/RouteEight/scripts.pory"
-	end
-# 71 "data/maps/RouteEight/scripts.pory"
 
-# 72 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Boy1::
-# 73 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_RideBikeAtFullSpeed, MSGBOX_NPC
-# 74 "data/maps/RouteEight/scripts.pory"
-	end
-# 75 "data/maps/RouteEight/scripts.pory"
-
-# 76 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_CyclingGirl1::
-# 77 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_HairStreamsBehindMe, MSGBOX_NPC
+RouteEight_EventScript_Chip::
 # 78 "data/maps/RouteEight/scripts.pory"
-	end
+	trainerbattle_single TRAINER_CHIP, RouteEight_Text_ChipIntro, RouteEight_Text_ChipDefeat
 # 79 "data/maps/RouteEight/scripts.pory"
-
-# 80 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_CyclingGuy1::
-# 81 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_YouGotBikeFromRydel, MSGBOX_NPC
-# 82 "data/maps/RouteEight/scripts.pory"
+	msgbox RouteEight_Text_ChipPostBattle, MSGBOX_AUTOCLOSE
 	end
-# 83 "data/maps/RouteEight/scripts.pory"
 
-# 84 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_OldMan::
-# 85 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_TwoRoads, MSGBOX_NPC
-# 86 "data/maps/RouteEight/scripts.pory"
-	end
-# 87 "data/maps/RouteEight/scripts.pory"
 
-# 88 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_OldWoman::
-# 89 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_WalkOnTheLowRoad, MSGBOX_NPC
-# 90 "data/maps/RouteEight/scripts.pory"
-	end
-# 91 "data/maps/RouteEight/scripts.pory"
-
-# 92 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_CyclingGuy2::
-# 93 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_BikeTechniques, MSGBOX_NPC
-# 94 "data/maps/RouteEight/scripts.pory"
-	end
-# 95 "data/maps/RouteEight/scripts.pory"
-
+RouteEight_EventScript_GruntNorth::
 # 96 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Boy2::
-# 97 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_WhichShouldIChoose, MSGBOX_NPC
-# 98 "data/maps/RouteEight/scripts.pory"
-	end
-# 99 "data/maps/RouteEight/scripts.pory"
-
-# 100 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_SlateportCitySign::
-# 101 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_SlateportCitySign, MSGBOX_SIGN
-# 102 "data/maps/RouteEight/scripts.pory"
-	end
-# 103 "data/maps/RouteEight/scripts.pory"
-
-# 104 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_CyclingRoadSign::
-# 105 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_CyclingRoadSign, MSGBOX_SIGN
-# 106 "data/maps/RouteEight/scripts.pory"
-	end
-# 107 "data/maps/RouteEight/scripts.pory"
-
-# 108 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_VandalizedSign::
-# 109 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_AquaWasHere, MSGBOX_SIGN
-# 110 "data/maps/RouteEight/scripts.pory"
-	end
-# 111 "data/maps/RouteEight/scripts.pory"
-
-# 112 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Route103Sign::
-# 113 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_Route103Sign, MSGBOX_SIGN
-# 114 "data/maps/RouteEight/scripts.pory"
-	end
-# 115 "data/maps/RouteEight/scripts.pory"
-
-# 116 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_SeasideParkingSign::
-# 117 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_SeasideParkingSign, MSGBOX_SIGN
-# 118 "data/maps/RouteEight/scripts.pory"
-	end
-# 119 "data/maps/RouteEight/scripts.pory"
-
-# 120 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_MauvilleCitySign::
-# 121 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_MauvilleCitySign, MSGBOX_SIGN
-# 122 "data/maps/RouteEight/scripts.pory"
-	end
-# 123 "data/maps/RouteEight/scripts.pory"
-
-# 124 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_TrainerTipsPrlzSleep::
-# 125 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_TrainerTipsPrlzSleep, MSGBOX_SIGN
-# 126 "data/maps/RouteEight/scripts.pory"
-	end
-# 127 "data/maps/RouteEight/scripts.pory"
-
-# 128 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_TrainerTipsRegisterItems::
-# 129 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_TrainerTipsRegisterItems, MSGBOX_SIGN
-# 130 "data/maps/RouteEight/scripts.pory"
-	end
-# 131 "data/maps/RouteEight/scripts.pory"
-
-# 132 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_TrickHouseSign::
-# 133 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_TrickHouseSign, MSGBOX_SIGN
-# 134 "data/maps/RouteEight/scripts.pory"
-	end
-# 135 "data/maps/RouteEight/scripts.pory"
-
-# 136 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_CyclingRoadResultsSign::
-# 137 "data/maps/RouteEight/scripts.pory"
-	lockall
-# 138 "data/maps/RouteEight/scripts.pory"
-	specialvar VAR_RESULT, GetRecordedCyclingRoadResults
-# 139 "data/maps/RouteEight/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, Route110_EventScript_NoRecordSet
-# 140 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_BestRecord, MSGBOX_DEFAULT
-# 141 "data/maps/RouteEight/scripts.pory"
-	releaseall
-# 142 "data/maps/RouteEight/scripts.pory"
-	end
-# 143 "data/maps/RouteEight/scripts.pory"
-
-# 144 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_NoRecordSet::
-# 145 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_ThereIsNoRecord, MSGBOX_DEFAULT
-# 146 "data/maps/RouteEight/scripts.pory"
-	releaseall
-# 147 "data/maps/RouteEight/scripts.pory"
-	end
-# 148 "data/maps/RouteEight/scripts.pory"
-
-# 149 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_ChallengeGuy::
-# 150 "data/maps/RouteEight/scripts.pory"
 	lock
-# 151 "data/maps/RouteEight/scripts.pory"
-	faceplayer
-# 152 "data/maps/RouteEight/scripts.pory"
-	specialvar VAR_RESULT, GetPlayerAvatarBike
-# 153 "data/maps/RouteEight/scripts.pory"
-	goto_if_eq VAR_RESULT, 1, Route110_EventScript_PlayerRidingAcroBike
-# 154 "data/maps/RouteEight/scripts.pory"
-	goto_if_eq VAR_CYCLING_CHALLENGE_STATE, 0, Route110_EventScript_PlayerNotRidingBike
-# 155 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_AlwaysAimHigher, MSGBOX_DEFAULT
-# 156 "data/maps/RouteEight/scripts.pory"
-	release
-# 157 "data/maps/RouteEight/scripts.pory"
-	end
-# 158 "data/maps/RouteEight/scripts.pory"
-
-# 159 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_PlayerNotRidingBike::
-# 160 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_RatedForNumberOfCollisions, MSGBOX_DEFAULT
-# 161 "data/maps/RouteEight/scripts.pory"
-	release
-# 162 "data/maps/RouteEight/scripts.pory"
-	end
-# 163 "data/maps/RouteEight/scripts.pory"
-
-# 164 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_PlayerRidingAcroBike::
-# 165 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_AcroBikesDoNotQualify, MSGBOX_DEFAULT
-# 166 "data/maps/RouteEight/scripts.pory"
-	release
-# 167 "data/maps/RouteEight/scripts.pory"
-	end
-# 168 "data/maps/RouteEight/scripts.pory"
-
-# 169 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Edward::
-# 170 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_single TRAINER_EDWARD, Route110_Text_EdwardIntro, Route110_Text_EdwardDefeated
-# 171 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_EdwardPostBattle, MSGBOX_AUTOCLOSE
-# 172 "data/maps/RouteEight/scripts.pory"
-	end
-# 173 "data/maps/RouteEight/scripts.pory"
-
-# 174 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Jaclyn::
-# 175 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_single TRAINER_JACLYN, Route110_Text_JaclynIntro, Route110_Text_JaclynDefeated
-# 176 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_JaclynPostBattle, MSGBOX_AUTOCLOSE
-# 177 "data/maps/RouteEight/scripts.pory"
-	end
-# 178 "data/maps/RouteEight/scripts.pory"
-
-# 179 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Edwin::
-# 180 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_single TRAINER_EDWIN_1, Route110_Text_EdwinIntro, Route110_Text_EdwinDefeated, Route110_EventScript_EdwinRegisterMatchCallAfterBattle
-# 181 "data/maps/RouteEight/scripts.pory"
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-# 182 "data/maps/RouteEight/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_EdwinRematch
-# 183 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_EdwinPostBattle, MSGBOX_DEFAULT
-# 184 "data/maps/RouteEight/scripts.pory"
-	release
-# 185 "data/maps/RouteEight/scripts.pory"
-	end
-# 186 "data/maps/RouteEight/scripts.pory"
-
-# 187 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_EdwinRegisterMatchCallAfterBattle::
-# 188 "data/maps/RouteEight/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
-# 189 "data/maps/RouteEight/scripts.pory"
+# 97 "data/maps/RouteEight/scripts.pory"
+	playbgm MUS_DP_ENCOUNTER_GALACTIC, FALSE
+# 98 "data/maps/RouteEight/scripts.pory"
+	setflag FLAG_DISABLE_EXP
+# 99 "data/maps/RouteEight/scripts.pory"
+	applymovement 12, GruntMovementNorth
+# 100 "data/maps/RouteEight/scripts.pory"
 	waitmovement 0
+# 101 "data/maps/RouteEight/scripts.pory"
+	msgbox RouteEight_EventScript_GruntNorth_Text_0
+# 102 "data/maps/RouteEight/scripts.pory"
+	closemessage
+# 103 "data/maps/RouteEight/scripts.pory"
+	applymovement 12, GruntMovementLeavingNorth
+# 104 "data/maps/RouteEight/scripts.pory"
+	waitmovement 0
+# 105 "data/maps/RouteEight/scripts.pory"
+	playbgm MUS_DP_ROUTE206_DAY, FALSE
+# 106 "data/maps/RouteEight/scripts.pory"
+	clearflag FLAG_DISABLE_EXP
+# 107 "data/maps/RouteEight/scripts.pory"
+	setvar VAR_ROUTE_EIGHT_STATE, 1
+# 108 "data/maps/RouteEight/scripts.pory"
+	setflag FLAG_DEFEATED_GALACTIC_GRUNT
+# 109 "data/maps/RouteEight/scripts.pory"
+	setflag FLAG_HIDE_ROUTE_EIGHT_GALACTIC_GRUNT
+# 110 "data/maps/RouteEight/scripts.pory"
+	removeobject 12
+# 111 "data/maps/RouteEight/scripts.pory"
+	releaseall
+	end
+
+
+RouteEight_EventScript_GruntSouth::
+# 116 "data/maps/RouteEight/scripts.pory"
+	lock
+# 117 "data/maps/RouteEight/scripts.pory"
+	playbgm MUS_DP_ENCOUNTER_GALACTIC, FALSE
+# 118 "data/maps/RouteEight/scripts.pory"
+	setflag FLAG_DISABLE_EXP
+# 119 "data/maps/RouteEight/scripts.pory"
+	applymovement 12, GruntMovementSouth
+# 120 "data/maps/RouteEight/scripts.pory"
+	waitmovement 0
+# 121 "data/maps/RouteEight/scripts.pory"
+	msgbox RouteEight_EventScript_GruntNorth_Text_0
+# 122 "data/maps/RouteEight/scripts.pory"
+	closemessage
+# 123 "data/maps/RouteEight/scripts.pory"
+	applymovement 12, GruntMovementLeavingSouth
+# 124 "data/maps/RouteEight/scripts.pory"
+	waitmovement 0
+# 125 "data/maps/RouteEight/scripts.pory"
+	playbgm MUS_DP_ROUTE206_DAY, FALSE
+# 126 "data/maps/RouteEight/scripts.pory"
+	clearflag FLAG_DISABLE_EXP
+# 127 "data/maps/RouteEight/scripts.pory"
+	setvar VAR_ROUTE_EIGHT_STATE, 1
+# 128 "data/maps/RouteEight/scripts.pory"
+	setflag FLAG_DEFEATED_GALACTIC_GRUNT
+# 129 "data/maps/RouteEight/scripts.pory"
+	setflag FLAG_HIDE_ROUTE_EIGHT_GALACTIC_GRUNT
+# 130 "data/maps/RouteEight/scripts.pory"
+	removeobject 12
+# 131 "data/maps/RouteEight/scripts.pory"
+	releaseall
+	end
+
+
+# 135 "data/maps/RouteEight/scripts.pory"
+GruntMovementNorth:
+# 136 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 136 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 136 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 136 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 136 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 136 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 136 "data/maps/RouteEight/scripts.pory"
+	walk_left
+	step_end
+
+# 139 "data/maps/RouteEight/scripts.pory"
+GruntMovementSouth:
+# 140 "data/maps/RouteEight/scripts.pory"
+	face_down
+# 141 "data/maps/RouteEight/scripts.pory"
+	walk_down
+# 142 "data/maps/RouteEight/scripts.pory"
+	face_left
+# 143 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 143 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 143 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 143 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 143 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 143 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 143 "data/maps/RouteEight/scripts.pory"
+	walk_left
+	step_end
+
+# 146 "data/maps/RouteEight/scripts.pory"
+GruntMovementLeavingNorth:
+# 147 "data/maps/RouteEight/scripts.pory"
+	face_down
+# 148 "data/maps/RouteEight/scripts.pory"
+	walk_down
+# 149 "data/maps/RouteEight/scripts.pory"
+	face_left
+# 150 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 150 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 150 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 150 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 150 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 150 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 150 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 150 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 150 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 150 "data/maps/RouteEight/scripts.pory"
+	walk_left
+	step_end
+
+# 153 "data/maps/RouteEight/scripts.pory"
+GruntMovementLeavingSouth:
+# 154 "data/maps/RouteEight/scripts.pory"
+	face_up
+# 155 "data/maps/RouteEight/scripts.pory"
+	walk_up
+# 156 "data/maps/RouteEight/scripts.pory"
+	face_left
+# 157 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 157 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 157 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 157 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 157 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 157 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 157 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 157 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 157 "data/maps/RouteEight/scripts.pory"
+	walk_left
+# 157 "data/maps/RouteEight/scripts.pory"
+	walk_left
+	step_end
+
+RouteEight_EventScript_FindWiseGlasses::
+# 161 "data/maps/RouteEight/scripts.pory"
+	finditem ITEM_WISE_GLASSES
+	end
+
+
+# 166 "data/maps/RouteEight/scripts.pory"
+
+# 167 "data/maps/RouteEight/scripts.pory"
+.set LOCALID_CHALLENGE_BIKER, 21
+# 168 "data/maps/RouteEight/scripts.pory"
+.set LOCALID_RIVAL, 28
+# 169 "data/maps/RouteEight/scripts.pory"
+.set LOCALID_RIVAL_ON_BIKE, 29
+# 170 "data/maps/RouteEight/scripts.pory"
+.set LOCALID_BIRCH, 36
+# 171 "data/maps/RouteEight/scripts.pory"
+
+# 172 "data/maps/RouteEight/scripts.pory"
+Route110_MapScripts::
+# 173 "data/maps/RouteEight/scripts.pory"
+	map_script MAP_SCRIPT_ON_RESUME, Route110_OnResume
+# 174 "data/maps/RouteEight/scripts.pory"
+	map_script MAP_SCRIPT_ON_TRANSITION, Route110_OnTransition
+# 175 "data/maps/RouteEight/scripts.pory"
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route110_OnFrame
+# 176 "data/maps/RouteEight/scripts.pory"
+	.byte 0
+# 177 "data/maps/RouteEight/scripts.pory"
+
+# 178 "data/maps/RouteEight/scripts.pory"
+Route110_OnResume:
+# 179 "data/maps/RouteEight/scripts.pory"
+	special UpdateCyclingRoadState
+# 180 "data/maps/RouteEight/scripts.pory"
+	end
+# 181 "data/maps/RouteEight/scripts.pory"
+
+# 182 "data/maps/RouteEight/scripts.pory"
+Route110_OnTransition:
+# 183 "data/maps/RouteEight/scripts.pory"
+	call Common_EventScript_SetupRivalGfxId
+# 184 "data/maps/RouteEight/scripts.pory"
+	call Common_EventScript_SetupRivalOnBikeGfxId
+# 185 "data/maps/RouteEight/scripts.pory"
+	call_if_eq VAR_CYCLING_CHALLENGE_STATE, 1, Route110_EventScript_SaveCyclingMusic
+# 186 "data/maps/RouteEight/scripts.pory"
+	end
+# 187 "data/maps/RouteEight/scripts.pory"
+
+# 188 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_SaveCyclingMusic::
+# 189 "data/maps/RouteEight/scripts.pory"
+	savebgm MUS_CYCLING
 # 190 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_EdwinRegister, MSGBOX_DEFAULT
+	return
 # 191 "data/maps/RouteEight/scripts.pory"
-	register_matchcall TRAINER_EDWIN_1
+
 # 192 "data/maps/RouteEight/scripts.pory"
-	release
+Route110_OnFrame:
 # 193 "data/maps/RouteEight/scripts.pory"
-	end
+	map_script_2 VAR_CYCLING_CHALLENGE_STATE, 1, Route110_EventScript_BeginCylcingRoadChallenge
 # 194 "data/maps/RouteEight/scripts.pory"
-
+	.2byte 0
 # 195 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_EdwinRematch::
+
 # 196 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_rematch TRAINER_EDWIN_1, Route110_Text_EdwinRematchIntro, Route110_Text_EdwinRematchDefeated
+Route110_EventScript_BeginCylcingRoadChallenge::
 # 197 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_EdwinRematchPostBattle, MSGBOX_AUTOCLOSE
+	special Special_BeginCyclingRoadChallenge
 # 198 "data/maps/RouteEight/scripts.pory"
-	end
+	setvar VAR_CYCLING_CHALLENGE_STATE, 2
 # 199 "data/maps/RouteEight/scripts.pory"
-
+	return
 # 200 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Dale::
-# 201 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_single TRAINER_DALE, Route110_Text_DaleIntro, Route110_Text_DaleDefeated
-# 202 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_DalePostBattle, MSGBOX_AUTOCLOSE
-# 203 "data/maps/RouteEight/scripts.pory"
-	end
-# 204 "data/maps/RouteEight/scripts.pory"
 
+# 201 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_AquaGrunt1::
+# 202 "data/maps/RouteEight/scripts.pory"
+	lock
+# 203 "data/maps/RouteEight/scripts.pory"
+	faceplayer
+# 204 "data/maps/RouteEight/scripts.pory"
+	msgbox Route110_Text_WeCantTalkAboutAquaActivities, MSGBOX_DEFAULT
 # 205 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Jacob::
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 # 206 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_single TRAINER_JACOB, Route110_Text_JacobIntro, Route110_Text_JacobDefeated
+	waitmovement 0
 # 207 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_JacobPostBattle, MSGBOX_AUTOCLOSE
+	release
 # 208 "data/maps/RouteEight/scripts.pory"
 	end
 # 209 "data/maps/RouteEight/scripts.pory"
 
 # 210 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Anthony::
+Route110_EventScript_AquaGrunt2::
 # 211 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_single TRAINER_ANTHONY, Route110_Text_AnthonyIntro, Route110_Text_AnthonyDefeated
+	lock
 # 212 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_AnthonyPostBattle, MSGBOX_AUTOCLOSE
+	faceplayer
 # 213 "data/maps/RouteEight/scripts.pory"
-	end
+	msgbox Route110_Text_KickUpARuckus, MSGBOX_DEFAULT
 # 214 "data/maps/RouteEight/scripts.pory"
-
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 # 215 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Benjamin::
-# 216 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_single TRAINER_BENJAMIN_1, Route110_Text_BenjaminIntro, Route110_Text_BenjaminDefeated, Route110_EventScript_BenjaminRegisterMatchCallAfterBattle
-# 217 "data/maps/RouteEight/scripts.pory"
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-# 218 "data/maps/RouteEight/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_BenjaminRematch
-# 219 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_BenjaminPostBattle, MSGBOX_DEFAULT
-# 220 "data/maps/RouteEight/scripts.pory"
-	release
-# 221 "data/maps/RouteEight/scripts.pory"
-	end
-# 222 "data/maps/RouteEight/scripts.pory"
-
-# 223 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BenjaminRegisterMatchCallAfterBattle::
-# 224 "data/maps/RouteEight/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
-# 225 "data/maps/RouteEight/scripts.pory"
 	waitmovement 0
-# 226 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_BenjaminRegister, MSGBOX_DEFAULT
-# 227 "data/maps/RouteEight/scripts.pory"
-	register_matchcall TRAINER_BENJAMIN_1
-# 228 "data/maps/RouteEight/scripts.pory"
+# 216 "data/maps/RouteEight/scripts.pory"
 	release
+# 217 "data/maps/RouteEight/scripts.pory"
+	end
+# 218 "data/maps/RouteEight/scripts.pory"
+
+# 219 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_AquaGrunt3::
+# 220 "data/maps/RouteEight/scripts.pory"
+	lock
+# 221 "data/maps/RouteEight/scripts.pory"
+	faceplayer
+# 222 "data/maps/RouteEight/scripts.pory"
+	msgbox Route110_Text_MyFirstJobInAqua, MSGBOX_DEFAULT
+# 223 "data/maps/RouteEight/scripts.pory"
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+# 224 "data/maps/RouteEight/scripts.pory"
+	waitmovement 0
+# 225 "data/maps/RouteEight/scripts.pory"
+	release
+# 226 "data/maps/RouteEight/scripts.pory"
+	end
+# 227 "data/maps/RouteEight/scripts.pory"
+
+# 228 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_AquaGrunt4::
 # 229 "data/maps/RouteEight/scripts.pory"
-	end
+	lock
 # 230 "data/maps/RouteEight/scripts.pory"
-
+	faceplayer
 # 231 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BenjaminRematch::
+	msgbox Route110_Text_AquaActionsBringSmiles, MSGBOX_DEFAULT
 # 232 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_rematch TRAINER_BENJAMIN_1, Route110_Text_BenjaminRematchIntro, Route110_Text_BenjaminRematchDefeated
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 # 233 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_BenjaminRematchPostBattle, MSGBOX_AUTOCLOSE
+	waitmovement 0
 # 234 "data/maps/RouteEight/scripts.pory"
-	end
+	release
 # 235 "data/maps/RouteEight/scripts.pory"
-
+	end
 # 236 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Jasmine::
+
 # 237 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_single TRAINER_JASMINE, Route110_Text_JasmineIntro, Route110_Text_JasmineDefeated
+Route110_EventScript_Boy1::
 # 238 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_JasminePostBattle, MSGBOX_AUTOCLOSE
+	msgbox Route110_Text_RideBikeAtFullSpeed, MSGBOX_NPC
 # 239 "data/maps/RouteEight/scripts.pory"
 	end
 # 240 "data/maps/RouteEight/scripts.pory"
 
 # 241 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Abigail::
+Route110_EventScript_CyclingGirl1::
 # 242 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_single TRAINER_ABIGAIL_1, Route110_Text_AbigailIntro, Route110_Text_AbigailDefeated, Route110_EventScript_AbigailRegisterMatchCallAfterBattle
+	msgbox Route110_Text_HairStreamsBehindMe, MSGBOX_NPC
 # 243 "data/maps/RouteEight/scripts.pory"
-	specialvar VAR_RESULT, ShouldTryRematchBattle
+	end
 # 244 "data/maps/RouteEight/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_AbigailRematch
+
 # 245 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_AbigailPostBattle, MSGBOX_DEFAULT
+Route110_EventScript_CyclingGuy1::
 # 246 "data/maps/RouteEight/scripts.pory"
-	release
+	msgbox Route110_Text_YouGotBikeFromRydel, MSGBOX_NPC
 # 247 "data/maps/RouteEight/scripts.pory"
 	end
 # 248 "data/maps/RouteEight/scripts.pory"
 
 # 249 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_AbigailRegisterMatchCallAfterBattle::
+Route110_EventScript_OldMan::
 # 250 "data/maps/RouteEight/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
+	msgbox Route110_Text_TwoRoads, MSGBOX_NPC
 # 251 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+	end
 # 252 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_AbigailRegister, MSGBOX_DEFAULT
+
 # 253 "data/maps/RouteEight/scripts.pory"
-	register_matchcall TRAINER_ABIGAIL_1
+Route110_EventScript_OldWoman::
 # 254 "data/maps/RouteEight/scripts.pory"
-	release
+	msgbox Route110_Text_WalkOnTheLowRoad, MSGBOX_NPC
 # 255 "data/maps/RouteEight/scripts.pory"
 	end
 # 256 "data/maps/RouteEight/scripts.pory"
 
 # 257 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_AbigailRematch::
+Route110_EventScript_CyclingGuy2::
 # 258 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_rematch TRAINER_ABIGAIL_1, Route110_Text_AbigailRematchIntro, Route110_Text_AbigailRematchDefeated
+	msgbox Route110_Text_BikeTechniques, MSGBOX_NPC
 # 259 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_AbigailRematchPostBattle, MSGBOX_AUTOCLOSE
+	end
 # 260 "data/maps/RouteEight/scripts.pory"
-	end
+
 # 261 "data/maps/RouteEight/scripts.pory"
-
+Route110_EventScript_Boy2::
 # 262 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Isabel::
+	msgbox Route110_Text_WhichShouldIChoose, MSGBOX_NPC
 # 263 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_single TRAINER_ISABEL_1, Route110_Text_IsabelIntro, Route110_Text_IsabelDefeated, Route110_EventScript_IsabelRegisterMatchCallAfterBattle
+	end
 # 264 "data/maps/RouteEight/scripts.pory"
-	specialvar VAR_RESULT, ShouldTryRematchBattle
+
 # 265 "data/maps/RouteEight/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_IsabelRematch
+Route110_EventScript_SlateportCitySign::
 # 266 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_IsabelPostBattle, MSGBOX_DEFAULT
+	msgbox Route110_Text_SlateportCitySign, MSGBOX_SIGN
 # 267 "data/maps/RouteEight/scripts.pory"
-	release
+	end
 # 268 "data/maps/RouteEight/scripts.pory"
-	end
+
 # 269 "data/maps/RouteEight/scripts.pory"
-
+Route110_EventScript_CyclingRoadSign::
 # 270 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_IsabelRegisterMatchCallAfterBattle::
+	msgbox Route110_Text_CyclingRoadSign, MSGBOX_SIGN
 # 271 "data/maps/RouteEight/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
+	end
 # 272 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+
 # 273 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_IsabelRegister, MSGBOX_DEFAULT
+Route110_EventScript_VandalizedSign::
 # 274 "data/maps/RouteEight/scripts.pory"
-	register_matchcall TRAINER_ISABEL_1
+	msgbox Route110_Text_AquaWasHere, MSGBOX_SIGN
 # 275 "data/maps/RouteEight/scripts.pory"
-	release
+	end
 # 276 "data/maps/RouteEight/scripts.pory"
-	end
+
 # 277 "data/maps/RouteEight/scripts.pory"
-
+Route110_EventScript_Route103Sign::
 # 278 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_IsabelRematch::
+	msgbox Route110_Text_Route103Sign, MSGBOX_SIGN
 # 279 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_rematch TRAINER_ISABEL_1, Route110_Text_IsabelRematchIntro, Route110_Text_IsabelRematchDefeated
+	end
 # 280 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_IsabelRematchPostBattle, MSGBOX_AUTOCLOSE
+
 # 281 "data/maps/RouteEight/scripts.pory"
-	end
+Route110_EventScript_SeasideParkingSign::
 # 282 "data/maps/RouteEight/scripts.pory"
-
+	msgbox Route110_Text_SeasideParkingSign, MSGBOX_SIGN
 # 283 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Timmy::
+	end
 # 284 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_single TRAINER_TIMMY, Route110_Text_TimmyIntro, Route110_Text_TimmyDefeated
+
 # 285 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_TimmyPostBattle, MSGBOX_AUTOCLOSE
+Route110_EventScript_MauvilleCitySign::
 # 286 "data/maps/RouteEight/scripts.pory"
-	end
+	msgbox Route110_Text_MauvilleCitySign, MSGBOX_SIGN
 # 287 "data/maps/RouteEight/scripts.pory"
-
+	end
 # 288 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Unused::
+
 # 289 "data/maps/RouteEight/scripts.pory"
-	end
+Route110_EventScript_TrainerTipsPrlzSleep::
 # 290 "data/maps/RouteEight/scripts.pory"
-
+	msgbox Route110_Text_TrainerTipsPrlzSleep, MSGBOX_SIGN
 # 291 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Kaleb::
-# 292 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_single TRAINER_KALEB, Route110_Text_KalebIntro, Route110_Text_KalebDefeated
-# 293 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_KalebPostBattle, MSGBOX_AUTOCLOSE
-# 294 "data/maps/RouteEight/scripts.pory"
 	end
-# 295 "data/maps/RouteEight/scripts.pory"
+# 292 "data/maps/RouteEight/scripts.pory"
 
+# 293 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_TrainerTipsRegisterItems::
+# 294 "data/maps/RouteEight/scripts.pory"
+	msgbox Route110_Text_TrainerTipsRegisterItems, MSGBOX_SIGN
+# 295 "data/maps/RouteEight/scripts.pory"
+	end
 # 296 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Joseph::
+
 # 297 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_single TRAINER_JOSEPH, Route110_Text_JosephIntro, Route110_Text_JosephDefeated
+Route110_EventScript_TrickHouseSign::
 # 298 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_JosephPostBattle, MSGBOX_AUTOCLOSE
+	msgbox Route110_Text_TrickHouseSign, MSGBOX_SIGN
 # 299 "data/maps/RouteEight/scripts.pory"
 	end
 # 300 "data/maps/RouteEight/scripts.pory"
 
 # 301 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_Alyssa::
+Route110_EventScript_CyclingRoadResultsSign::
 # 302 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_single TRAINER_ALYSSA, Route110_Text_AlyssaIntro, Route110_Text_AlyssaDefeated
-# 303 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_AlyssaPostBattle, MSGBOX_AUTOCLOSE
-# 304 "data/maps/RouteEight/scripts.pory"
-	end
-# 305 "data/maps/RouteEight/scripts.pory"
-
-# 306 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_CyclingChallengeEnd::
-# 307 "data/maps/RouteEight/scripts.pory"
 	lockall
+# 303 "data/maps/RouteEight/scripts.pory"
+	specialvar VAR_RESULT, GetRecordedCyclingRoadResults
+# 304 "data/maps/RouteEight/scripts.pory"
+	goto_if_eq VAR_RESULT, FALSE, Route110_EventScript_NoRecordSet
+# 305 "data/maps/RouteEight/scripts.pory"
+	msgbox Route110_Text_BestRecord, MSGBOX_DEFAULT
+# 306 "data/maps/RouteEight/scripts.pory"
+	releaseall
+# 307 "data/maps/RouteEight/scripts.pory"
+	end
 # 308 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_CHALLENGE_BIKER, Common_Movement_WalkInPlaceFasterRight
+
 # 309 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+Route110_EventScript_NoRecordSet::
 # 310 "data/maps/RouteEight/scripts.pory"
-	call Route110_EventScript_CyclingChallengeResults
+	msgbox Route110_Text_ThereIsNoRecord, MSGBOX_DEFAULT
 # 311 "data/maps/RouteEight/scripts.pory"
 	releaseall
 # 312 "data/maps/RouteEight/scripts.pory"
@@ -625,1364 +519,1777 @@ Route110_EventScript_CyclingChallengeEnd::
 # 313 "data/maps/RouteEight/scripts.pory"
 
 # 314 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_CyclingChallengeResults::
+Route110_EventScript_ChallengeGuy::
 # 315 "data/maps/RouteEight/scripts.pory"
-	special FinishCyclingRoadChallenge
+	lock
 # 316 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_CyclingChallengeResultSummary, MSGBOX_DEFAULT
+	faceplayer
 # 317 "data/maps/RouteEight/scripts.pory"
-	switch VAR_RESULT
+	specialvar VAR_RESULT, GetPlayerAvatarBike
 # 318 "data/maps/RouteEight/scripts.pory"
-	case 10, Route110_EventScript_ChallengeReactionBest
+	goto_if_eq VAR_RESULT, 1, Route110_EventScript_PlayerRidingAcroBike
 # 319 "data/maps/RouteEight/scripts.pory"
-	case 9, Route110_EventScript_ChallengeReactionGood
+	goto_if_eq VAR_CYCLING_CHALLENGE_STATE, 0, Route110_EventScript_PlayerNotRidingBike
 # 320 "data/maps/RouteEight/scripts.pory"
-	case 8, Route110_EventScript_ChallengeReactionGood
+	msgbox Route110_Text_AlwaysAimHigher, MSGBOX_DEFAULT
 # 321 "data/maps/RouteEight/scripts.pory"
-	case 7, Route110_EventScript_ChallengeReactionGood
+	release
 # 322 "data/maps/RouteEight/scripts.pory"
-	case 6, Route110_EventScript_ChallengeReactionOk
+	end
 # 323 "data/maps/RouteEight/scripts.pory"
-	case 5, Route110_EventScript_ChallengeReactionOk
+
 # 324 "data/maps/RouteEight/scripts.pory"
-	case 4, Route110_EventScript_ChallengeReactionOk
+Route110_EventScript_PlayerNotRidingBike::
 # 325 "data/maps/RouteEight/scripts.pory"
-	case 3, Route110_EventScript_ChallengeReactionBad
+	msgbox Route110_Text_RatedForNumberOfCollisions, MSGBOX_DEFAULT
 # 326 "data/maps/RouteEight/scripts.pory"
-	case 2, Route110_EventScript_ChallengeReactionBad
+	release
 # 327 "data/maps/RouteEight/scripts.pory"
-	case 1, Route110_EventScript_ChallengeReactionBad
+	end
 # 328 "data/maps/RouteEight/scripts.pory"
-	case 0, Route110_EventScript_ChallengeReactionWorst
+
 # 329 "data/maps/RouteEight/scripts.pory"
-	end
+Route110_EventScript_PlayerRidingAcroBike::
 # 330 "data/maps/RouteEight/scripts.pory"
-
+	msgbox Route110_Text_AcroBikesDoNotQualify, MSGBOX_DEFAULT
 # 331 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_ChallengeReactionBest::
+	release
 # 332 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_ChallengeReactionBest, MSGBOX_DEFAULT
+	end
 # 333 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_EndChallenge
+
 # 334 "data/maps/RouteEight/scripts.pory"
-	end
+Route110_EventScript_Edward::
 # 335 "data/maps/RouteEight/scripts.pory"
-
+	trainerbattle_single TRAINER_EDWARD, Route110_Text_EdwardIntro, Route110_Text_EdwardDefeated
 # 336 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_ChallengeReactionGood::
+	msgbox Route110_Text_EdwardPostBattle, MSGBOX_AUTOCLOSE
 # 337 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_ChallengeReactionGood, MSGBOX_DEFAULT
+	end
 # 338 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_EndChallenge
+
 # 339 "data/maps/RouteEight/scripts.pory"
-	end
+Route110_EventScript_Jaclyn::
 # 340 "data/maps/RouteEight/scripts.pory"
-
+	trainerbattle_single TRAINER_JACLYN, Route110_Text_JaclynIntro, Route110_Text_JaclynDefeated
 # 341 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_ChallengeReactionOk::
+	msgbox Route110_Text_JaclynPostBattle, MSGBOX_AUTOCLOSE
 # 342 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_ChallengeReactionOk, MSGBOX_DEFAULT
+	end
 # 343 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_EndChallenge
+
 # 344 "data/maps/RouteEight/scripts.pory"
-	end
+Route110_EventScript_Edwin::
 # 345 "data/maps/RouteEight/scripts.pory"
-
+	trainerbattle_single TRAINER_EDWIN_1, Route110_Text_EdwinIntro, Route110_Text_EdwinDefeated, Route110_EventScript_EdwinRegisterMatchCallAfterBattle
 # 346 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_ChallengeReactionBad::
+	specialvar VAR_RESULT, ShouldTryRematchBattle
 # 347 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_ChallengeReactionBad, MSGBOX_DEFAULT
+	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_EdwinRematch
 # 348 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_EndChallenge
+	msgbox Route110_Text_EdwinPostBattle, MSGBOX_DEFAULT
 # 349 "data/maps/RouteEight/scripts.pory"
-	end
+	release
 # 350 "data/maps/RouteEight/scripts.pory"
-
+	end
 # 351 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_ChallengeReactionWorst::
+
 # 352 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_ChallengeReactionWorst, MSGBOX_DEFAULT
+Route110_EventScript_EdwinRegisterMatchCallAfterBattle::
 # 353 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_EndChallenge
+	special PlayerFaceTrainerAfterBattle
 # 354 "data/maps/RouteEight/scripts.pory"
-	end
+	waitmovement 0
 # 355 "data/maps/RouteEight/scripts.pory"
-
+	msgbox Route110_Text_EdwinRegister, MSGBOX_DEFAULT
 # 356 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_EndChallenge::
+	register_matchcall TRAINER_EDWIN_1
 # 357 "data/maps/RouteEight/scripts.pory"
-	setvar VAR_CYCLING_CHALLENGE_STATE, 3
+	release
 # 358 "data/maps/RouteEight/scripts.pory"
-	savebgm MUS_DUMMY
+	end
 # 359 "data/maps/RouteEight/scripts.pory"
-	fadedefaultbgm
+
 # 360 "data/maps/RouteEight/scripts.pory"
-	return
+Route110_EventScript_EdwinRematch::
 # 361 "data/maps/RouteEight/scripts.pory"
-
+	trainerbattle_rematch TRAINER_EDWIN_1, Route110_Text_EdwinRematchIntro, Route110_Text_EdwinRematchDefeated
 # 362 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_RivalTrigger1::
+	msgbox Route110_Text_EdwinRematchPostBattle, MSGBOX_AUTOCLOSE
 # 363 "data/maps/RouteEight/scripts.pory"
-	setvar VAR_0x8008, 1
+	end
 # 364 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_RivalScene
+
 # 365 "data/maps/RouteEight/scripts.pory"
-	end
+Route110_EventScript_Dale::
 # 366 "data/maps/RouteEight/scripts.pory"
-
+	trainerbattle_single TRAINER_DALE, Route110_Text_DaleIntro, Route110_Text_DaleDefeated
 # 367 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_RivalTrigger2::
+	msgbox Route110_Text_DalePostBattle, MSGBOX_AUTOCLOSE
 # 368 "data/maps/RouteEight/scripts.pory"
-	setvar VAR_0x8008, 2
+	end
 # 369 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_RivalScene
+
 # 370 "data/maps/RouteEight/scripts.pory"
-	end
+Route110_EventScript_Jacob::
 # 371 "data/maps/RouteEight/scripts.pory"
-
+	trainerbattle_single TRAINER_JACOB, Route110_Text_JacobIntro, Route110_Text_JacobDefeated
 # 372 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_RivalTrigger3::
+	msgbox Route110_Text_JacobPostBattle, MSGBOX_AUTOCLOSE
 # 373 "data/maps/RouteEight/scripts.pory"
-	setvar VAR_0x8008, 3
+	end
 # 374 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_RivalScene
+
 # 375 "data/maps/RouteEight/scripts.pory"
-	end
+Route110_EventScript_Anthony::
 # 376 "data/maps/RouteEight/scripts.pory"
-
+	trainerbattle_single TRAINER_ANTHONY, Route110_Text_AnthonyIntro, Route110_Text_AnthonyDefeated
 # 377 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_RivalScene::
+	msgbox Route110_Text_AnthonyPostBattle, MSGBOX_AUTOCLOSE
 # 378 "data/maps/RouteEight/scripts.pory"
-	lockall
-# 379 "data/maps/RouteEight/scripts.pory"
-	checkplayergender
-# 380 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_RESULT, MALE, Route110_EventScript_PlayMayMusic
-# 381 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_RESULT, FEMALE, Route110_EventScript_PlayBrendanMusic
-# 382 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterDown
-# 383 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
-# 384 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
-# 385 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
-# 386 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_RIVAL, Common_Movement_Delay48
-# 387 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
-# 388 "data/maps/RouteEight/scripts.pory"
-	delay 30
-# 389 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 1, Route110_EventScript_RivalApproachPlayer1
-# 390 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 2, Route110_EventScript_RivalApproachPlayer2
-# 391 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 3, Route110_EventScript_RivalApproachPlayer3
-# 392 "data/maps/RouteEight/scripts.pory"
-	checkplayergender
-# 393 "data/maps/RouteEight/scripts.pory"
-	goto_if_eq VAR_RESULT, MALE, Route110_EventScript_MayBattle
-# 394 "data/maps/RouteEight/scripts.pory"
-	goto_if_eq VAR_RESULT, FEMALE, Route110_EventScript_BrendanBattle
-# 395 "data/maps/RouteEight/scripts.pory"
-	releaseall
-# 396 "data/maps/RouteEight/scripts.pory"
 	end
+# 379 "data/maps/RouteEight/scripts.pory"
+
+# 380 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_Benjamin::
+# 381 "data/maps/RouteEight/scripts.pory"
+	trainerbattle_single TRAINER_BENJAMIN_1, Route110_Text_BenjaminIntro, Route110_Text_BenjaminDefeated, Route110_EventScript_BenjaminRegisterMatchCallAfterBattle
+# 382 "data/maps/RouteEight/scripts.pory"
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+# 383 "data/maps/RouteEight/scripts.pory"
+	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_BenjaminRematch
+# 384 "data/maps/RouteEight/scripts.pory"
+	msgbox Route110_Text_BenjaminPostBattle, MSGBOX_DEFAULT
+# 385 "data/maps/RouteEight/scripts.pory"
+	release
+# 386 "data/maps/RouteEight/scripts.pory"
+	end
+# 387 "data/maps/RouteEight/scripts.pory"
+
+# 388 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_BenjaminRegisterMatchCallAfterBattle::
+# 389 "data/maps/RouteEight/scripts.pory"
+	special PlayerFaceTrainerAfterBattle
+# 390 "data/maps/RouteEight/scripts.pory"
+	waitmovement 0
+# 391 "data/maps/RouteEight/scripts.pory"
+	msgbox Route110_Text_BenjaminRegister, MSGBOX_DEFAULT
+# 392 "data/maps/RouteEight/scripts.pory"
+	register_matchcall TRAINER_BENJAMIN_1
+# 393 "data/maps/RouteEight/scripts.pory"
+	release
+# 394 "data/maps/RouteEight/scripts.pory"
+	end
+# 395 "data/maps/RouteEight/scripts.pory"
+
+# 396 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_BenjaminRematch::
 # 397 "data/maps/RouteEight/scripts.pory"
-
+	trainerbattle_rematch TRAINER_BENJAMIN_1, Route110_Text_BenjaminRematchIntro, Route110_Text_BenjaminRematchDefeated
 # 398 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_PlayMayMusic::
+	msgbox Route110_Text_BenjaminRematchPostBattle, MSGBOX_AUTOCLOSE
 # 399 "data/maps/RouteEight/scripts.pory"
-	playbgm MUS_ENCOUNTER_MAY, TRUE
+	end
 # 400 "data/maps/RouteEight/scripts.pory"
-	return
-# 401 "data/maps/RouteEight/scripts.pory"
 
+# 401 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_Jasmine::
 # 402 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_PlayBrendanMusic::
+	trainerbattle_single TRAINER_JASMINE, Route110_Text_JasmineIntro, Route110_Text_JasmineDefeated
 # 403 "data/maps/RouteEight/scripts.pory"
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	msgbox Route110_Text_JasminePostBattle, MSGBOX_AUTOCLOSE
 # 404 "data/maps/RouteEight/scripts.pory"
-	return
+	end
 # 405 "data/maps/RouteEight/scripts.pory"
 
 # 406 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_MayBattle::
+Route110_EventScript_Abigail::
 # 407 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+	trainerbattle_single TRAINER_ABIGAIL_1, Route110_Text_AbigailIntro, Route110_Text_AbigailDefeated, Route110_EventScript_AbigailRegisterMatchCallAfterBattle
 # 408 "data/maps/RouteEight/scripts.pory"
-	switch VAR_STARTER_MON
+	specialvar VAR_RESULT, ShouldTryRematchBattle
 # 409 "data/maps/RouteEight/scripts.pory"
-	case 0, Route110_EventScript_MayBattleTreecko
+	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_AbigailRematch
 # 410 "data/maps/RouteEight/scripts.pory"
-	case 1, Route110_EventScript_MayBattleTorchic
+	msgbox Route110_Text_AbigailPostBattle, MSGBOX_DEFAULT
 # 411 "data/maps/RouteEight/scripts.pory"
-	case 2, Route110_EventScript_MayBattleMudkip
+	release
 # 412 "data/maps/RouteEight/scripts.pory"
 	end
 # 413 "data/maps/RouteEight/scripts.pory"
 
 # 414 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_MayBattleTreecko::
+Route110_EventScript_AbigailRegisterMatchCallAfterBattle::
 # 415 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TREECKO, Route110_Text_MayDefeated
+	special PlayerFaceTrainerAfterBattle
 # 416 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_MayDefeated
+	waitmovement 0
 # 417 "data/maps/RouteEight/scripts.pory"
-	end
+	msgbox Route110_Text_AbigailRegister, MSGBOX_DEFAULT
 # 418 "data/maps/RouteEight/scripts.pory"
-
+	register_matchcall TRAINER_ABIGAIL_1
 # 419 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_MayBattleTorchic::
+	release
 # 420 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TORCHIC, Route110_Text_MayDefeated
+	end
 # 421 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_MayDefeated
+
 # 422 "data/maps/RouteEight/scripts.pory"
-	end
+Route110_EventScript_AbigailRematch::
 # 423 "data/maps/RouteEight/scripts.pory"
-
+	trainerbattle_rematch TRAINER_ABIGAIL_1, Route110_Text_AbigailRematchIntro, Route110_Text_AbigailRematchDefeated
 # 424 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_MayBattleMudkip::
+	msgbox Route110_Text_AbigailRematchPostBattle, MSGBOX_AUTOCLOSE
 # 425 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_MUDKIP, Route110_Text_MayDefeated
+	end
 # 426 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_MayDefeated
+
 # 427 "data/maps/RouteEight/scripts.pory"
-	end
+Route110_EventScript_Isabel::
 # 428 "data/maps/RouteEight/scripts.pory"
-
+	trainerbattle_single TRAINER_ISABEL_1, Route110_Text_IsabelIntro, Route110_Text_IsabelDefeated, Route110_EventScript_IsabelRegisterMatchCallAfterBattle
 # 429 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_MayDefeated::
+	specialvar VAR_RESULT, ShouldTryRematchBattle
 # 430 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_MayTakeThis, MSGBOX_DEFAULT
+	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_IsabelRematch
 # 431 "data/maps/RouteEight/scripts.pory"
-	call Route110_EventScript_GiveItemfinder
+	msgbox Route110_Text_IsabelPostBattle, MSGBOX_DEFAULT
 # 432 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_MayExplainItemfinder, MSGBOX_DEFAULT
+	release
 # 433 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_RivalExit
+	end
 # 434 "data/maps/RouteEight/scripts.pory"
-	end
+
 # 435 "data/maps/RouteEight/scripts.pory"
-
+Route110_EventScript_IsabelRegisterMatchCallAfterBattle::
 # 436 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BrendanBattle::
+	special PlayerFaceTrainerAfterBattle
 # 437 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	waitmovement 0
 # 438 "data/maps/RouteEight/scripts.pory"
-	switch VAR_STARTER_MON
+	msgbox Route110_Text_IsabelRegister, MSGBOX_DEFAULT
 # 439 "data/maps/RouteEight/scripts.pory"
-	case 0, Route110_EventScript_BrendanBattleTreecko
+	register_matchcall TRAINER_ISABEL_1
 # 440 "data/maps/RouteEight/scripts.pory"
-	case 1, Route110_EventScript_BrendanBattleTorchic
+	release
 # 441 "data/maps/RouteEight/scripts.pory"
-	case 2, Route110_EventScript_BrendanBattleMudkip
+	end
 # 442 "data/maps/RouteEight/scripts.pory"
-	end
+
 # 443 "data/maps/RouteEight/scripts.pory"
-
+Route110_EventScript_IsabelRematch::
 # 444 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BrendanBattleTreecko::
+	trainerbattle_rematch TRAINER_ISABEL_1, Route110_Text_IsabelRematchIntro, Route110_Text_IsabelRematchDefeated
 # 445 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TREECKO, Route110_Text_BrendanDefeated
+	msgbox Route110_Text_IsabelRematchPostBattle, MSGBOX_AUTOCLOSE
 # 446 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_BrendanDefeated
+	end
 # 447 "data/maps/RouteEight/scripts.pory"
-	end
+
 # 448 "data/maps/RouteEight/scripts.pory"
-
+Route110_EventScript_Timmy::
 # 449 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BrendanBattleTorchic::
+	trainerbattle_single TRAINER_TIMMY, Route110_Text_TimmyIntro, Route110_Text_TimmyDefeated
 # 450 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TORCHIC, Route110_Text_BrendanDefeated
+	msgbox Route110_Text_TimmyPostBattle, MSGBOX_AUTOCLOSE
 # 451 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_BrendanDefeated
+	end
 # 452 "data/maps/RouteEight/scripts.pory"
-	end
+
 # 453 "data/maps/RouteEight/scripts.pory"
-
+Route110_EventScript_Unused::
 # 454 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BrendanBattleMudkip::
-# 455 "data/maps/RouteEight/scripts.pory"
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_MUDKIP, Route110_Text_BrendanDefeated
-# 456 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_BrendanDefeated
-# 457 "data/maps/RouteEight/scripts.pory"
 	end
-# 458 "data/maps/RouteEight/scripts.pory"
+# 455 "data/maps/RouteEight/scripts.pory"
 
+# 456 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_Kaleb::
+# 457 "data/maps/RouteEight/scripts.pory"
+	trainerbattle_single TRAINER_KALEB, Route110_Text_KalebIntro, Route110_Text_KalebDefeated
+# 458 "data/maps/RouteEight/scripts.pory"
+	msgbox Route110_Text_KalebPostBattle, MSGBOX_AUTOCLOSE
 # 459 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BrendanDefeated::
+	end
 # 460 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_BrendanTakeThis, MSGBOX_DEFAULT
+
 # 461 "data/maps/RouteEight/scripts.pory"
-	call Route110_EventScript_GiveItemfinder
+Route110_EventScript_Joseph::
 # 462 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_BrendanExplainItemfinder, MSGBOX_DEFAULT
+	trainerbattle_single TRAINER_JOSEPH, Route110_Text_JosephIntro, Route110_Text_JosephDefeated
 # 463 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_RivalExit
+	msgbox Route110_Text_JosephPostBattle, MSGBOX_AUTOCLOSE
 # 464 "data/maps/RouteEight/scripts.pory"
 	end
 # 465 "data/maps/RouteEight/scripts.pory"
 
 # 466 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_GiveItemfinder::
+Route110_EventScript_Alyssa::
 # 467 "data/maps/RouteEight/scripts.pory"
-	giveitem ITEM_DOWSING_MACHINE
+	trainerbattle_single TRAINER_ALYSSA, Route110_Text_AlyssaIntro, Route110_Text_AlyssaDefeated
 # 468 "data/maps/RouteEight/scripts.pory"
-	return
+	msgbox Route110_Text_AlyssaPostBattle, MSGBOX_AUTOCLOSE
 # 469 "data/maps/RouteEight/scripts.pory"
-
-# 470 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_RivalExit::
-# 471 "data/maps/RouteEight/scripts.pory"
-	closemessage
-# 472 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 1, Route110_EventScript_MoveRival1
-# 473 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 2, Route110_EventScript_MoveRival2
-# 474 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 3, Route110_EventScript_MoveRival3
-# 475 "data/maps/RouteEight/scripts.pory"
-	setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_FACE_RIGHT
-# 476 "data/maps/RouteEight/scripts.pory"
-	setobjectmovementtype LOCALID_RIVAL_ON_BIKE, MOVEMENT_TYPE_FACE_RIGHT
-# 477 "data/maps/RouteEight/scripts.pory"
-	removeobject LOCALID_RIVAL
-# 478 "data/maps/RouteEight/scripts.pory"
-	addobject LOCALID_RIVAL_ON_BIKE
-# 479 "data/maps/RouteEight/scripts.pory"
-	delay 45
-# 480 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 1, Route110_EventScript_RivalExit1
-# 481 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 2, Route110_EventScript_RivalExit2
-# 482 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 3, Route110_EventScript_RivalExit3
-# 483 "data/maps/RouteEight/scripts.pory"
-	removeobject LOCALID_RIVAL_ON_BIKE
-# 484 "data/maps/RouteEight/scripts.pory"
-	setvar VAR_ROUTE110_STATE, 1
-# 485 "data/maps/RouteEight/scripts.pory"
-	savebgm MUS_DUMMY
-# 486 "data/maps/RouteEight/scripts.pory"
-	fadedefaultbgm
-# 487 "data/maps/RouteEight/scripts.pory"
-	releaseall
-# 488 "data/maps/RouteEight/scripts.pory"
 	end
+# 470 "data/maps/RouteEight/scripts.pory"
+
+# 471 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_CyclingChallengeEnd::
+# 472 "data/maps/RouteEight/scripts.pory"
+	lockall
+# 473 "data/maps/RouteEight/scripts.pory"
+	applymovement LOCALID_CHALLENGE_BIKER, Common_Movement_WalkInPlaceFasterRight
+# 474 "data/maps/RouteEight/scripts.pory"
+	waitmovement 0
+# 475 "data/maps/RouteEight/scripts.pory"
+	call Route110_EventScript_CyclingChallengeResults
+# 476 "data/maps/RouteEight/scripts.pory"
+	releaseall
+# 477 "data/maps/RouteEight/scripts.pory"
+	end
+# 478 "data/maps/RouteEight/scripts.pory"
+
+# 479 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_CyclingChallengeResults::
+# 480 "data/maps/RouteEight/scripts.pory"
+	special FinishCyclingRoadChallenge
+# 481 "data/maps/RouteEight/scripts.pory"
+	msgbox Route110_Text_CyclingChallengeResultSummary, MSGBOX_DEFAULT
+# 482 "data/maps/RouteEight/scripts.pory"
+	switch VAR_RESULT
+# 483 "data/maps/RouteEight/scripts.pory"
+	case 10, Route110_EventScript_ChallengeReactionBest
+# 484 "data/maps/RouteEight/scripts.pory"
+	case 9, Route110_EventScript_ChallengeReactionGood
+# 485 "data/maps/RouteEight/scripts.pory"
+	case 8, Route110_EventScript_ChallengeReactionGood
+# 486 "data/maps/RouteEight/scripts.pory"
+	case 7, Route110_EventScript_ChallengeReactionGood
+# 487 "data/maps/RouteEight/scripts.pory"
+	case 6, Route110_EventScript_ChallengeReactionOk
+# 488 "data/maps/RouteEight/scripts.pory"
+	case 5, Route110_EventScript_ChallengeReactionOk
 # 489 "data/maps/RouteEight/scripts.pory"
-
+	case 4, Route110_EventScript_ChallengeReactionOk
 # 490 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_RivalApproachPlayer1::
+	case 3, Route110_EventScript_ChallengeReactionBad
 # 491 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_RIVAL, Route110_Movement_RivalApproachPlayer1
+	case 2, Route110_EventScript_ChallengeReactionBad
 # 492 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+	case 1, Route110_EventScript_ChallengeReactionBad
 # 493 "data/maps/RouteEight/scripts.pory"
-	return
+	case 0, Route110_EventScript_ChallengeReactionWorst
 # 494 "data/maps/RouteEight/scripts.pory"
-
+	end
 # 495 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_RivalApproachPlayer2::
+
 # 496 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_RIVAL, Route110_Movement_RivalApproachPlayer2
+Route110_EventScript_ChallengeReactionBest::
 # 497 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+	msgbox Route110_Text_ChallengeReactionBest, MSGBOX_DEFAULT
 # 498 "data/maps/RouteEight/scripts.pory"
-	return
+	goto Route110_EventScript_EndChallenge
 # 499 "data/maps/RouteEight/scripts.pory"
-
+	end
 # 500 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_RivalApproachPlayer3::
+
 # 501 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_RIVAL, Route110_Movement_RivalApproachPlayer3
+Route110_EventScript_ChallengeReactionGood::
 # 502 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+	msgbox Route110_Text_ChallengeReactionGood, MSGBOX_DEFAULT
 # 503 "data/maps/RouteEight/scripts.pory"
-	return
+	goto Route110_EventScript_EndChallenge
 # 504 "data/maps/RouteEight/scripts.pory"
-
+	end
 # 505 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_RivalExit1::
+
 # 506 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_RIVAL_ON_BIKE, Route110_Movement_RivalExit1
+Route110_EventScript_ChallengeReactionOk::
 # 507 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+	msgbox Route110_Text_ChallengeReactionOk, MSGBOX_DEFAULT
 # 508 "data/maps/RouteEight/scripts.pory"
-	return
+	goto Route110_EventScript_EndChallenge
 # 509 "data/maps/RouteEight/scripts.pory"
-
+	end
 # 510 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_RivalExit2::
+
 # 511 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_RIVAL_ON_BIKE, Route110_Movement_RivalExit2
+Route110_EventScript_ChallengeReactionBad::
 # 512 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+	msgbox Route110_Text_ChallengeReactionBad, MSGBOX_DEFAULT
 # 513 "data/maps/RouteEight/scripts.pory"
-	return
+	goto Route110_EventScript_EndChallenge
 # 514 "data/maps/RouteEight/scripts.pory"
-
+	end
 # 515 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_RivalExit3::
+
 # 516 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_RIVAL_ON_BIKE, Route110_Movement_RivalExit3
+Route110_EventScript_ChallengeReactionWorst::
 # 517 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+	msgbox Route110_Text_ChallengeReactionWorst, MSGBOX_DEFAULT
 # 518 "data/maps/RouteEight/scripts.pory"
-	return
+	goto Route110_EventScript_EndChallenge
 # 519 "data/maps/RouteEight/scripts.pory"
-
+	end
 # 520 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_MoveRival1::
+
 # 521 "data/maps/RouteEight/scripts.pory"
-	setobjectxyperm LOCALID_RIVAL_ON_BIKE, 33, 55
+Route110_EventScript_EndChallenge::
 # 522 "data/maps/RouteEight/scripts.pory"
-	return
+	setvar VAR_CYCLING_CHALLENGE_STATE, 3
 # 523 "data/maps/RouteEight/scripts.pory"
-
+	savebgm MUS_DUMMY
 # 524 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_MoveRival2::
+	fadedefaultbgm
 # 525 "data/maps/RouteEight/scripts.pory"
-	setobjectxyperm LOCALID_RIVAL_ON_BIKE, 34, 55
+	return
 # 526 "data/maps/RouteEight/scripts.pory"
-	return
-# 527 "data/maps/RouteEight/scripts.pory"
 
+# 527 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_RivalTrigger1::
 # 528 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_MoveRival3::
+	setvar VAR_0x8008, 1
 # 529 "data/maps/RouteEight/scripts.pory"
-	setobjectxyperm LOCALID_RIVAL_ON_BIKE, 35, 55
+	goto Route110_EventScript_RivalScene
 # 530 "data/maps/RouteEight/scripts.pory"
-	return
+	end
 # 531 "data/maps/RouteEight/scripts.pory"
 
 # 532 "data/maps/RouteEight/scripts.pory"
-Route110_Movement_RivalApproachPlayer1:
+Route110_EventScript_RivalTrigger2::
 # 533 "data/maps/RouteEight/scripts.pory"
-	walk_down
+	setvar VAR_0x8008, 2
 # 534 "data/maps/RouteEight/scripts.pory"
-	walk_left
+	goto Route110_EventScript_RivalScene
 # 535 "data/maps/RouteEight/scripts.pory"
-	walk_in_place_faster_down
+	end
 # 536 "data/maps/RouteEight/scripts.pory"
-	step_end
-# 537 "data/maps/RouteEight/scripts.pory"
 
+# 537 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_RivalTrigger3::
 # 538 "data/maps/RouteEight/scripts.pory"
-Route110_Movement_RivalApproachPlayer2:
+	setvar VAR_0x8008, 3
 # 539 "data/maps/RouteEight/scripts.pory"
-	walk_down
+	goto Route110_EventScript_RivalScene
 # 540 "data/maps/RouteEight/scripts.pory"
-	step_end
+	end
 # 541 "data/maps/RouteEight/scripts.pory"
 
 # 542 "data/maps/RouteEight/scripts.pory"
-Route110_Movement_RivalApproachPlayer3:
+Route110_EventScript_RivalScene::
 # 543 "data/maps/RouteEight/scripts.pory"
-	walk_down
+	lockall
 # 544 "data/maps/RouteEight/scripts.pory"
-	walk_right
+	checkplayergender
 # 545 "data/maps/RouteEight/scripts.pory"
-	walk_in_place_faster_down
+	call_if_eq VAR_RESULT, MALE, Route110_EventScript_PlayMayMusic
 # 546 "data/maps/RouteEight/scripts.pory"
-	step_end
+	call_if_eq VAR_RESULT, FEMALE, Route110_EventScript_PlayBrendanMusic
 # 547 "data/maps/RouteEight/scripts.pory"
-
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterDown
 # 548 "data/maps/RouteEight/scripts.pory"
-Route110_Movement_RivalExit1:
+	waitmovement 0
 # 549 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 # 550 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+	waitmovement 0
 # 551 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+	applymovement LOCALID_RIVAL, Common_Movement_Delay48
 # 552 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+	waitmovement 0
 # 553 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+	delay 30
 # 554 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+	call_if_eq VAR_0x8008, 1, Route110_EventScript_RivalApproachPlayer1
 # 555 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+	call_if_eq VAR_0x8008, 2, Route110_EventScript_RivalApproachPlayer2
 # 556 "data/maps/RouteEight/scripts.pory"
-	step_end
+	call_if_eq VAR_0x8008, 3, Route110_EventScript_RivalApproachPlayer3
 # 557 "data/maps/RouteEight/scripts.pory"
-
+	checkplayergender
 # 558 "data/maps/RouteEight/scripts.pory"
-Route110_Movement_RivalExit2:
+	goto_if_eq VAR_RESULT, MALE, Route110_EventScript_MayBattle
 # 559 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+	goto_if_eq VAR_RESULT, FEMALE, Route110_EventScript_BrendanBattle
 # 560 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+	releaseall
 # 561 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+	end
 # 562 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
-# 563 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
-# 564 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
-# 565 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
-# 566 "data/maps/RouteEight/scripts.pory"
-	walk_fast_down
-# 567 "data/maps/RouteEight/scripts.pory"
-	step_end
-# 568 "data/maps/RouteEight/scripts.pory"
 
+# 563 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_PlayMayMusic::
+# 564 "data/maps/RouteEight/scripts.pory"
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+# 565 "data/maps/RouteEight/scripts.pory"
+	return
+# 566 "data/maps/RouteEight/scripts.pory"
+
+# 567 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_PlayBrendanMusic::
+# 568 "data/maps/RouteEight/scripts.pory"
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
 # 569 "data/maps/RouteEight/scripts.pory"
-Route110_Movement_RivalExit3:
+	return
 # 570 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+
 # 571 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+Route110_EventScript_MayBattle::
 # 572 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 # 573 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+	switch VAR_STARTER_MON
 # 574 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+	case 0, Route110_EventScript_MayBattleTreecko
 # 575 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+	case 1, Route110_EventScript_MayBattleTorchic
 # 576 "data/maps/RouteEight/scripts.pory"
-	walk_fast_up
+	case 2, Route110_EventScript_MayBattleMudkip
 # 577 "data/maps/RouteEight/scripts.pory"
-	step_end
+	end
 # 578 "data/maps/RouteEight/scripts.pory"
 
 # 579 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BirchScene1::
+Route110_EventScript_MayBattleTreecko::
 # 580 "data/maps/RouteEight/scripts.pory"
-	lockall
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TREECKO, Route110_Text_MayDefeated
 # 581 "data/maps/RouteEight/scripts.pory"
-	setvar VAR_0x8008, 1
+	goto Route110_EventScript_MayDefeated
 # 582 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_BirchScene
+	end
 # 583 "data/maps/RouteEight/scripts.pory"
 
 # 584 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BirchScene2::
+Route110_EventScript_MayBattleTorchic::
 # 585 "data/maps/RouteEight/scripts.pory"
-	lockall
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TORCHIC, Route110_Text_MayDefeated
 # 586 "data/maps/RouteEight/scripts.pory"
-	setvar VAR_0x8008, 2
+	goto Route110_EventScript_MayDefeated
 # 587 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_BirchScene
+	end
 # 588 "data/maps/RouteEight/scripts.pory"
 
 # 589 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BirchScene3::
+Route110_EventScript_MayBattleMudkip::
 # 590 "data/maps/RouteEight/scripts.pory"
-	lockall
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_MUDKIP, Route110_Text_MayDefeated
 # 591 "data/maps/RouteEight/scripts.pory"
-	setvar VAR_0x8008, 3
+	goto Route110_EventScript_MayDefeated
 # 592 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_BirchScene
+	end
 # 593 "data/maps/RouteEight/scripts.pory"
 
 # 594 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BirchScene4::
+Route110_EventScript_MayDefeated::
 # 595 "data/maps/RouteEight/scripts.pory"
-	lockall
+	msgbox Route110_Text_MayTakeThis, MSGBOX_DEFAULT
 # 596 "data/maps/RouteEight/scripts.pory"
-	setvar VAR_0x8008, 4
+	call Route110_EventScript_GiveItemfinder
 # 597 "data/maps/RouteEight/scripts.pory"
-	goto Route110_EventScript_BirchScene
+	msgbox Route110_Text_MayExplainItemfinder, MSGBOX_DEFAULT
 # 598 "data/maps/RouteEight/scripts.pory"
-
+	goto Route110_EventScript_RivalExit
 # 599 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BirchScene::
-# 600 "data/maps/RouteEight/scripts.pory"
-	addobject LOCALID_BIRCH
-# 601 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_BIRCH, Route110_Movement_BirchEntrance
-# 602 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
-# 603 "data/maps/RouteEight/scripts.pory"
-	playse SE_PIN
-# 604 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_BIRCH, Common_Movement_ExclamationMark
-# 605 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
-# 606 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_BIRCH, Common_Movement_Delay48
-# 607 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
-# 608 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 1, Route110_EventScript_BirchApproachPlayer1
-# 609 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 2, Route110_EventScript_BirchApproachPlayer2
-# 610 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 3, Route110_EventScript_BirchApproachPlayer3
-# 611 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 4, Route110_EventScript_BirchApproachPlayer4
-# 612 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_ImagineSeeingYouHere, MSGBOX_DEFAULT
-# 613 "data/maps/RouteEight/scripts.pory"
-	closemessage
-# 614 "data/maps/RouteEight/scripts.pory"
-	delay 20
-# 615 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterLeft
-# 616 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
-# 617 "data/maps/RouteEight/scripts.pory"
-	delay 10
-# 618 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
-# 619 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
-# 620 "data/maps/RouteEight/scripts.pory"
-	delay 20
-# 621 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterDown
-# 622 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
-# 623 "data/maps/RouteEight/scripts.pory"
-	delay 30
-# 624 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_HeardYouInstallMatchCall, MSGBOX_DEFAULT
-# 625 "data/maps/RouteEight/scripts.pory"
-	closemessage
-# 626 "data/maps/RouteEight/scripts.pory"
-	delay 30
-# 627 "data/maps/RouteEight/scripts.pory"
-	playfanfare MUS_REGISTER_MATCH_CALL
-# 628 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_RegisteredBirchInPokenav, MSGBOX_DEFAULT
-# 629 "data/maps/RouteEight/scripts.pory"
-	waitfanfare
-# 630 "data/maps/RouteEight/scripts.pory"
-	closemessage
-# 631 "data/maps/RouteEight/scripts.pory"
-	delay 30
-# 632 "data/maps/RouteEight/scripts.pory"
-	setflag FLAG_ENABLE_PROF_BIRCH_MATCH_CALL
-# 633 "data/maps/RouteEight/scripts.pory"
-	msgbox Route110_Text_KeepAnEyeOutForRival, MSGBOX_DEFAULT
-# 634 "data/maps/RouteEight/scripts.pory"
-	closemessage
-# 635 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 1, Route110_EventScript_BirchExit1
-# 636 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 2, Route110_EventScript_BirchExit2
-# 637 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 3, Route110_EventScript_BirchExit3
-# 638 "data/maps/RouteEight/scripts.pory"
-	call_if_eq VAR_0x8008, 4, Route110_EventScript_BirchExit4
-# 639 "data/maps/RouteEight/scripts.pory"
-	removeobject LOCALID_BIRCH
-# 640 "data/maps/RouteEight/scripts.pory"
-	setvar VAR_REGISTER_BIRCH_STATE, 2
-# 641 "data/maps/RouteEight/scripts.pory"
-	releaseall
-# 642 "data/maps/RouteEight/scripts.pory"
 	end
+# 600 "data/maps/RouteEight/scripts.pory"
+
+# 601 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_BrendanBattle::
+# 602 "data/maps/RouteEight/scripts.pory"
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+# 603 "data/maps/RouteEight/scripts.pory"
+	switch VAR_STARTER_MON
+# 604 "data/maps/RouteEight/scripts.pory"
+	case 0, Route110_EventScript_BrendanBattleTreecko
+# 605 "data/maps/RouteEight/scripts.pory"
+	case 1, Route110_EventScript_BrendanBattleTorchic
+# 606 "data/maps/RouteEight/scripts.pory"
+	case 2, Route110_EventScript_BrendanBattleMudkip
+# 607 "data/maps/RouteEight/scripts.pory"
+	end
+# 608 "data/maps/RouteEight/scripts.pory"
+
+# 609 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_BrendanBattleTreecko::
+# 610 "data/maps/RouteEight/scripts.pory"
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TREECKO, Route110_Text_BrendanDefeated
+# 611 "data/maps/RouteEight/scripts.pory"
+	goto Route110_EventScript_BrendanDefeated
+# 612 "data/maps/RouteEight/scripts.pory"
+	end
+# 613 "data/maps/RouteEight/scripts.pory"
+
+# 614 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_BrendanBattleTorchic::
+# 615 "data/maps/RouteEight/scripts.pory"
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TORCHIC, Route110_Text_BrendanDefeated
+# 616 "data/maps/RouteEight/scripts.pory"
+	goto Route110_EventScript_BrendanDefeated
+# 617 "data/maps/RouteEight/scripts.pory"
+	end
+# 618 "data/maps/RouteEight/scripts.pory"
+
+# 619 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_BrendanBattleMudkip::
+# 620 "data/maps/RouteEight/scripts.pory"
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_MUDKIP, Route110_Text_BrendanDefeated
+# 621 "data/maps/RouteEight/scripts.pory"
+	goto Route110_EventScript_BrendanDefeated
+# 622 "data/maps/RouteEight/scripts.pory"
+	end
+# 623 "data/maps/RouteEight/scripts.pory"
+
+# 624 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_BrendanDefeated::
+# 625 "data/maps/RouteEight/scripts.pory"
+	msgbox Route110_Text_BrendanTakeThis, MSGBOX_DEFAULT
+# 626 "data/maps/RouteEight/scripts.pory"
+	call Route110_EventScript_GiveItemfinder
+# 627 "data/maps/RouteEight/scripts.pory"
+	msgbox Route110_Text_BrendanExplainItemfinder, MSGBOX_DEFAULT
+# 628 "data/maps/RouteEight/scripts.pory"
+	goto Route110_EventScript_RivalExit
+# 629 "data/maps/RouteEight/scripts.pory"
+	end
+# 630 "data/maps/RouteEight/scripts.pory"
+
+# 631 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_GiveItemfinder::
+# 632 "data/maps/RouteEight/scripts.pory"
+	giveitem ITEM_DOWSING_MACHINE
+# 633 "data/maps/RouteEight/scripts.pory"
+	return
+# 634 "data/maps/RouteEight/scripts.pory"
+
+# 635 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_RivalExit::
+# 636 "data/maps/RouteEight/scripts.pory"
+	closemessage
+# 637 "data/maps/RouteEight/scripts.pory"
+	call_if_eq VAR_0x8008, 1, Route110_EventScript_MoveRival1
+# 638 "data/maps/RouteEight/scripts.pory"
+	call_if_eq VAR_0x8008, 2, Route110_EventScript_MoveRival2
+# 639 "data/maps/RouteEight/scripts.pory"
+	call_if_eq VAR_0x8008, 3, Route110_EventScript_MoveRival3
+# 640 "data/maps/RouteEight/scripts.pory"
+	setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_FACE_RIGHT
+# 641 "data/maps/RouteEight/scripts.pory"
+	setobjectmovementtype LOCALID_RIVAL_ON_BIKE, MOVEMENT_TYPE_FACE_RIGHT
+# 642 "data/maps/RouteEight/scripts.pory"
+	removeobject LOCALID_RIVAL
 # 643 "data/maps/RouteEight/scripts.pory"
-
+	addobject LOCALID_RIVAL_ON_BIKE
 # 644 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BirchApproachPlayer1::
+	delay 45
 # 645 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_BIRCH, Route110_Movement_BirchApproachPlayer1
+	call_if_eq VAR_0x8008, 1, Route110_EventScript_RivalExit1
 # 646 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+	call_if_eq VAR_0x8008, 2, Route110_EventScript_RivalExit2
 # 647 "data/maps/RouteEight/scripts.pory"
-	return
+	call_if_eq VAR_0x8008, 3, Route110_EventScript_RivalExit3
 # 648 "data/maps/RouteEight/scripts.pory"
-
+	removeobject LOCALID_RIVAL_ON_BIKE
 # 649 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BirchApproachPlayer2::
+	setvar VAR_ROUTE_EIGHT_STATE, 1
 # 650 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_BIRCH, Route110_Movement_BirchApproachPlayer2
+	savebgm MUS_DUMMY
 # 651 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+	fadedefaultbgm
 # 652 "data/maps/RouteEight/scripts.pory"
-	return
+	releaseall
 # 653 "data/maps/RouteEight/scripts.pory"
-
+	end
 # 654 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BirchApproachPlayer3::
+
 # 655 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_BIRCH, Route110_Movement_BirchApproachPlayer3
+Route110_EventScript_RivalApproachPlayer1::
 # 656 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+	applymovement LOCALID_RIVAL, Route110_Movement_RivalApproachPlayer1
 # 657 "data/maps/RouteEight/scripts.pory"
-	return
+	waitmovement 0
 # 658 "data/maps/RouteEight/scripts.pory"
-
+	return
 # 659 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BirchApproachPlayer4::
+
 # 660 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_BIRCH, Route110_Movement_BirchApproachPlayer4
+Route110_EventScript_RivalApproachPlayer2::
 # 661 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+	applymovement LOCALID_RIVAL, Route110_Movement_RivalApproachPlayer2
 # 662 "data/maps/RouteEight/scripts.pory"
-	return
+	waitmovement 0
 # 663 "data/maps/RouteEight/scripts.pory"
-
+	return
 # 664 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BirchExit1::
+
 # 665 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_BIRCH, Route110_Movement_BirchExit1
+Route110_EventScript_RivalApproachPlayer3::
 # 666 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+	applymovement LOCALID_RIVAL, Route110_Movement_RivalApproachPlayer3
 # 667 "data/maps/RouteEight/scripts.pory"
-	return
+	waitmovement 0
 # 668 "data/maps/RouteEight/scripts.pory"
-
+	return
 # 669 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BirchExit2::
+
 # 670 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_BIRCH, Route110_Movement_BirchExit2
+Route110_EventScript_RivalExit1::
 # 671 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+	applymovement LOCALID_RIVAL_ON_BIKE, Route110_Movement_RivalExit1
 # 672 "data/maps/RouteEight/scripts.pory"
-	return
+	waitmovement 0
 # 673 "data/maps/RouteEight/scripts.pory"
-
+	return
 # 674 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BirchExit3::
+
 # 675 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_BIRCH, Route110_Movement_BirchExit3
+Route110_EventScript_RivalExit2::
 # 676 "data/maps/RouteEight/scripts.pory"
-	waitmovement 0
+	applymovement LOCALID_RIVAL_ON_BIKE, Route110_Movement_RivalExit2
 # 677 "data/maps/RouteEight/scripts.pory"
-	return
-# 678 "data/maps/RouteEight/scripts.pory"
-
-# 679 "data/maps/RouteEight/scripts.pory"
-Route110_EventScript_BirchExit4::
-# 680 "data/maps/RouteEight/scripts.pory"
-	applymovement LOCALID_BIRCH, Route110_Movement_BirchExit4
-# 681 "data/maps/RouteEight/scripts.pory"
 	waitmovement 0
-# 682 "data/maps/RouteEight/scripts.pory"
+# 678 "data/maps/RouteEight/scripts.pory"
 	return
+# 679 "data/maps/RouteEight/scripts.pory"
+
+# 680 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_RivalExit3::
+# 681 "data/maps/RouteEight/scripts.pory"
+	applymovement LOCALID_RIVAL_ON_BIKE, Route110_Movement_RivalExit3
+# 682 "data/maps/RouteEight/scripts.pory"
+	waitmovement 0
 # 683 "data/maps/RouteEight/scripts.pory"
-
+	return
 # 684 "data/maps/RouteEight/scripts.pory"
-Route110_Movement_BirchEntrance:
-# 685 "data/maps/RouteEight/scripts.pory"
-	walk_down
-# 686 "data/maps/RouteEight/scripts.pory"
-	walk_down
-# 687 "data/maps/RouteEight/scripts.pory"
-	walk_down
-# 688 "data/maps/RouteEight/scripts.pory"
-	step_end
-# 689 "data/maps/RouteEight/scripts.pory"
 
+# 685 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_MoveRival1::
+# 686 "data/maps/RouteEight/scripts.pory"
+	setobjectxyperm LOCALID_RIVAL_ON_BIKE, 33, 55
+# 687 "data/maps/RouteEight/scripts.pory"
+	return
+# 688 "data/maps/RouteEight/scripts.pory"
+
+# 689 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_MoveRival2::
 # 690 "data/maps/RouteEight/scripts.pory"
-Route110_Movement_BirchApproachPlayer1:
+	setobjectxyperm LOCALID_RIVAL_ON_BIKE, 34, 55
 # 691 "data/maps/RouteEight/scripts.pory"
-	walk_down
+	return
 # 692 "data/maps/RouteEight/scripts.pory"
-	walk_left
+
 # 693 "data/maps/RouteEight/scripts.pory"
-	walk_left
+Route110_EventScript_MoveRival3::
 # 694 "data/maps/RouteEight/scripts.pory"
-	walk_down
+	setobjectxyperm LOCALID_RIVAL_ON_BIKE, 35, 55
 # 695 "data/maps/RouteEight/scripts.pory"
-	step_end
+	return
 # 696 "data/maps/RouteEight/scripts.pory"
 
 # 697 "data/maps/RouteEight/scripts.pory"
-Route110_Movement_BirchApproachPlayer2:
+Route110_Movement_RivalApproachPlayer1:
 # 698 "data/maps/RouteEight/scripts.pory"
 	walk_down
 # 699 "data/maps/RouteEight/scripts.pory"
 	walk_left
 # 700 "data/maps/RouteEight/scripts.pory"
-	walk_down
+	walk_in_place_faster_down
 # 701 "data/maps/RouteEight/scripts.pory"
 	step_end
 # 702 "data/maps/RouteEight/scripts.pory"
 
 # 703 "data/maps/RouteEight/scripts.pory"
-Route110_Movement_BirchApproachPlayer3:
+Route110_Movement_RivalApproachPlayer2:
 # 704 "data/maps/RouteEight/scripts.pory"
 	walk_down
 # 705 "data/maps/RouteEight/scripts.pory"
-	walk_down
+	step_end
 # 706 "data/maps/RouteEight/scripts.pory"
-	step_end
+
 # 707 "data/maps/RouteEight/scripts.pory"
-
+Route110_Movement_RivalApproachPlayer3:
 # 708 "data/maps/RouteEight/scripts.pory"
-Route110_Movement_BirchApproachPlayer4:
+	walk_down
 # 709 "data/maps/RouteEight/scripts.pory"
-	walk_down
+	walk_right
 # 710 "data/maps/RouteEight/scripts.pory"
-	walk_right
+	walk_in_place_faster_down
 # 711 "data/maps/RouteEight/scripts.pory"
-	walk_down
-# 712 "data/maps/RouteEight/scripts.pory"
 	step_end
-# 713 "data/maps/RouteEight/scripts.pory"
+# 712 "data/maps/RouteEight/scripts.pory"
 
+# 713 "data/maps/RouteEight/scripts.pory"
+Route110_Movement_RivalExit1:
 # 714 "data/maps/RouteEight/scripts.pory"
-Route110_Movement_BirchExit1:
+	walk_fast_up
 # 715 "data/maps/RouteEight/scripts.pory"
-	walk_up
+	walk_fast_up
 # 716 "data/maps/RouteEight/scripts.pory"
-	walk_up
+	walk_fast_up
 # 717 "data/maps/RouteEight/scripts.pory"
-	walk_right
+	walk_fast_up
 # 718 "data/maps/RouteEight/scripts.pory"
-	walk_up
+	walk_fast_up
 # 719 "data/maps/RouteEight/scripts.pory"
-	walk_up
+	walk_fast_up
 # 720 "data/maps/RouteEight/scripts.pory"
-	walk_up
+	walk_fast_up
 # 721 "data/maps/RouteEight/scripts.pory"
 	step_end
 # 722 "data/maps/RouteEight/scripts.pory"
 
 # 723 "data/maps/RouteEight/scripts.pory"
-Route110_Movement_BirchExit2:
+Route110_Movement_RivalExit2:
 # 724 "data/maps/RouteEight/scripts.pory"
-	walk_up
+	walk_fast_up
 # 725 "data/maps/RouteEight/scripts.pory"
-	walk_up
+	walk_fast_up
 # 726 "data/maps/RouteEight/scripts.pory"
-	walk_up
+	walk_fast_up
 # 727 "data/maps/RouteEight/scripts.pory"
-	walk_up
+	walk_fast_up
 # 728 "data/maps/RouteEight/scripts.pory"
-	walk_up
+	walk_fast_up
 # 729 "data/maps/RouteEight/scripts.pory"
-	step_end
+	walk_fast_up
 # 730 "data/maps/RouteEight/scripts.pory"
-
+	walk_fast_up
 # 731 "data/maps/RouteEight/scripts.pory"
-Route110_Movement_BirchExit3:
+	walk_fast_down
 # 732 "data/maps/RouteEight/scripts.pory"
-	walk_up
+	step_end
 # 733 "data/maps/RouteEight/scripts.pory"
-	walk_up
+
 # 734 "data/maps/RouteEight/scripts.pory"
-	walk_up
+Route110_Movement_RivalExit3:
 # 735 "data/maps/RouteEight/scripts.pory"
-	walk_up
+	walk_fast_up
 # 736 "data/maps/RouteEight/scripts.pory"
-	walk_up
+	walk_fast_up
 # 737 "data/maps/RouteEight/scripts.pory"
-	step_end
+	walk_fast_up
 # 738 "data/maps/RouteEight/scripts.pory"
-
+	walk_fast_up
 # 739 "data/maps/RouteEight/scripts.pory"
-Route110_Movement_BirchExit4:
+	walk_fast_up
 # 740 "data/maps/RouteEight/scripts.pory"
-	walk_up
+	walk_fast_up
 # 741 "data/maps/RouteEight/scripts.pory"
-	walk_up
+	walk_fast_up
 # 742 "data/maps/RouteEight/scripts.pory"
-	walk_up
-# 743 "data/maps/RouteEight/scripts.pory"
-	walk_up
-# 744 "data/maps/RouteEight/scripts.pory"
-	walk_up
-# 745 "data/maps/RouteEight/scripts.pory"
 	step_end
+# 743 "data/maps/RouteEight/scripts.pory"
+
+# 744 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_BirchScene1::
+# 745 "data/maps/RouteEight/scripts.pory"
+	lockall
 # 746 "data/maps/RouteEight/scripts.pory"
-
+	setvar VAR_0x8008, 1
 # 747 "data/maps/RouteEight/scripts.pory"
-Route110_Text_WeCantTalkAboutAquaActivities:
+	goto Route110_EventScript_BirchScene
 # 748 "data/maps/RouteEight/scripts.pory"
-	.string "TEAM AQUA's activities…\n"
+
 # 749 "data/maps/RouteEight/scripts.pory"
-	.string "We can't talk about them yet.$"
+Route110_EventScript_BirchScene2::
 # 750 "data/maps/RouteEight/scripts.pory"
-
+	lockall
 # 751 "data/maps/RouteEight/scripts.pory"
-Route110_Text_KickUpARuckus:
+	setvar VAR_0x8008, 2
 # 752 "data/maps/RouteEight/scripts.pory"
-	.string "I want to get going to SLATEPORT and\n"
+	goto Route110_EventScript_BirchScene
 # 753 "data/maps/RouteEight/scripts.pory"
-	.string "kick up a ruckus!$"
-# 754 "data/maps/RouteEight/scripts.pory"
 
+# 754 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_BirchScene3::
 # 755 "data/maps/RouteEight/scripts.pory"
-Route110_Text_MyFirstJobInAqua:
+	lockall
 # 756 "data/maps/RouteEight/scripts.pory"
-	.string "This is my first job after joining\n"
+	setvar VAR_0x8008, 3
 # 757 "data/maps/RouteEight/scripts.pory"
-	.string "TEAM AQUA. It's a little scary.$"
+	goto Route110_EventScript_BirchScene
 # 758 "data/maps/RouteEight/scripts.pory"
 
 # 759 "data/maps/RouteEight/scripts.pory"
-Route110_Text_AquaActionsBringSmiles:
+Route110_EventScript_BirchScene4::
 # 760 "data/maps/RouteEight/scripts.pory"
-	.string "TEAM AQUA's actions should bring\n"
+	lockall
 # 761 "data/maps/RouteEight/scripts.pory"
-	.string "smiles to people's faces!$"
+	setvar VAR_0x8008, 4
 # 762 "data/maps/RouteEight/scripts.pory"
-
+	goto Route110_EventScript_BirchScene
 # 763 "data/maps/RouteEight/scripts.pory"
-Route110_Text_MayLetsBattle:
+
 # 764 "data/maps/RouteEight/scripts.pory"
-	.string "MAY: Hi, {PLAYER}{KUN}, long time no see!\p"
+Route110_EventScript_BirchScene::
 # 765 "data/maps/RouteEight/scripts.pory"
-	.string "While I was searching for other\n"
+	addobject LOCALID_BIRCH
 # 766 "data/maps/RouteEight/scripts.pory"
-	.string "POKéMON, my POKéMON grew stronger.\p"
+	applymovement LOCALID_BIRCH, Route110_Movement_BirchEntrance
 # 767 "data/maps/RouteEight/scripts.pory"
-	.string "So…\n"
+	waitmovement 0
 # 768 "data/maps/RouteEight/scripts.pory"
-	.string "How about a little battle?$"
+	playse SE_PIN
 # 769 "data/maps/RouteEight/scripts.pory"
-
+	applymovement LOCALID_BIRCH, Common_Movement_ExclamationMark
 # 770 "data/maps/RouteEight/scripts.pory"
-Route110_Text_MayDefeated:
+	waitmovement 0
 # 771 "data/maps/RouteEight/scripts.pory"
-	.string "Yikes!\n"
+	applymovement LOCALID_BIRCH, Common_Movement_Delay48
 # 772 "data/maps/RouteEight/scripts.pory"
-	.string "You're better than I expected!$"
+	waitmovement 0
 # 773 "data/maps/RouteEight/scripts.pory"
-
+	call_if_eq VAR_0x8008, 1, Route110_EventScript_BirchApproachPlayer1
 # 774 "data/maps/RouteEight/scripts.pory"
-Route110_Text_MayTakeThis:
+	call_if_eq VAR_0x8008, 2, Route110_EventScript_BirchApproachPlayer2
 # 775 "data/maps/RouteEight/scripts.pory"
-	.string "MAY: {PLAYER}{KUN}, you've been busy\n"
+	call_if_eq VAR_0x8008, 3, Route110_EventScript_BirchApproachPlayer3
 # 776 "data/maps/RouteEight/scripts.pory"
-	.string "training, too, haven't you?\p"
+	call_if_eq VAR_0x8008, 4, Route110_EventScript_BirchApproachPlayer4
 # 777 "data/maps/RouteEight/scripts.pory"
-	.string "I think you deserve a reward!\n"
+	msgbox Route110_Text_ImagineSeeingYouHere, MSGBOX_DEFAULT
 # 778 "data/maps/RouteEight/scripts.pory"
-	.string "This is from me!$"
+	closemessage
 # 779 "data/maps/RouteEight/scripts.pory"
-
+	delay 20
 # 780 "data/maps/RouteEight/scripts.pory"
-Route110_Text_MayExplainItemfinder:
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterLeft
 # 781 "data/maps/RouteEight/scripts.pory"
-	.string "MAY: That's an ITEMFINDER.\p"
+	waitmovement 0
 # 782 "data/maps/RouteEight/scripts.pory"
-	.string "Try it out. If there is an item that's\n"
+	delay 10
 # 783 "data/maps/RouteEight/scripts.pory"
-	.string "not visible, it emits a sound.\p"
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
 # 784 "data/maps/RouteEight/scripts.pory"
-	.string "Okay, {PLAYER}{KUN}, let's meet again!\p"
+	waitmovement 0
 # 785 "data/maps/RouteEight/scripts.pory"
-	.string "I know it's a little silly coming from\n"
+	delay 20
 # 786 "data/maps/RouteEight/scripts.pory"
-	.string "me, but I think you should train a lot\l"
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterDown
 # 787 "data/maps/RouteEight/scripts.pory"
-	.string "harder for the next time.$"
+	waitmovement 0
 # 788 "data/maps/RouteEight/scripts.pory"
-
+	delay 30
 # 789 "data/maps/RouteEight/scripts.pory"
-Route110_Text_BrendanLetsBattle:
+	msgbox Route110_Text_HeardYouInstallMatchCall, MSGBOX_DEFAULT
 # 790 "data/maps/RouteEight/scripts.pory"
-	.string "BRENDAN: Hey, {PLAYER}.\n"
+	closemessage
 # 791 "data/maps/RouteEight/scripts.pory"
-	.string "So this is where you were.\l"
+	delay 30
 # 792 "data/maps/RouteEight/scripts.pory"
-	.string "How's it going?\p"
+	playfanfare MUS_REGISTER_MATCH_CALL
 # 793 "data/maps/RouteEight/scripts.pory"
-	.string "Have you been raising your POKéMON?\n"
+	msgbox Route110_Text_RegisteredBirchInPokenav, MSGBOX_DEFAULT
 # 794 "data/maps/RouteEight/scripts.pory"
-	.string "I'll check for you.$"
+	waitfanfare
 # 795 "data/maps/RouteEight/scripts.pory"
-
+	closemessage
 # 796 "data/maps/RouteEight/scripts.pory"
-Route110_Text_BrendanDefeated:
+	delay 30
 # 797 "data/maps/RouteEight/scripts.pory"
-	.string "Hmm…\n"
+	setflag FLAG_ENABLE_PROF_BIRCH_MATCH_CALL
 # 798 "data/maps/RouteEight/scripts.pory"
-	.string "You're pretty good.$"
+	msgbox Route110_Text_KeepAnEyeOutForRival, MSGBOX_DEFAULT
 # 799 "data/maps/RouteEight/scripts.pory"
-
+	closemessage
 # 800 "data/maps/RouteEight/scripts.pory"
-Route110_Text_BrendanTakeThis:
+	call_if_eq VAR_0x8008, 1, Route110_EventScript_BirchExit1
 # 801 "data/maps/RouteEight/scripts.pory"
-	.string "BRENDAN: {PLAYER}, you've trained\n"
+	call_if_eq VAR_0x8008, 2, Route110_EventScript_BirchExit2
 # 802 "data/maps/RouteEight/scripts.pory"
-	.string "without me noticing…\p"
+	call_if_eq VAR_0x8008, 3, Route110_EventScript_BirchExit3
 # 803 "data/maps/RouteEight/scripts.pory"
-	.string "Good enough!\n"
+	call_if_eq VAR_0x8008, 4, Route110_EventScript_BirchExit4
 # 804 "data/maps/RouteEight/scripts.pory"
-	.string "Here, take this.$"
+	removeobject LOCALID_BIRCH
 # 805 "data/maps/RouteEight/scripts.pory"
-
+	setvar VAR_REGISTER_BIRCH_STATE, 2
 # 806 "data/maps/RouteEight/scripts.pory"
-Route110_Text_BrendanExplainItemfinder:
+	releaseall
 # 807 "data/maps/RouteEight/scripts.pory"
-	.string "BRENDAN: That's an ITEMFINDER.\p"
+	end
 # 808 "data/maps/RouteEight/scripts.pory"
-	.string "Use it to root around for items that\n"
-# 809 "data/maps/RouteEight/scripts.pory"
-	.string "aren't visible.\p"
-# 810 "data/maps/RouteEight/scripts.pory"
-	.string "If it senses something, it emits\n"
-# 811 "data/maps/RouteEight/scripts.pory"
-	.string "a sound.\p"
-# 812 "data/maps/RouteEight/scripts.pory"
-	.string "Anyway, I'm off to look for new\n"
-# 813 "data/maps/RouteEight/scripts.pory"
-	.string "POKéMON.$"
-# 814 "data/maps/RouteEight/scripts.pory"
 
+# 809 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_BirchApproachPlayer1::
+# 810 "data/maps/RouteEight/scripts.pory"
+	applymovement LOCALID_BIRCH, Route110_Movement_BirchApproachPlayer1
+# 811 "data/maps/RouteEight/scripts.pory"
+	waitmovement 0
+# 812 "data/maps/RouteEight/scripts.pory"
+	return
+# 813 "data/maps/RouteEight/scripts.pory"
+
+# 814 "data/maps/RouteEight/scripts.pory"
+Route110_EventScript_BirchApproachPlayer2::
 # 815 "data/maps/RouteEight/scripts.pory"
-Route110_Text_RideBikeAtFullSpeed:
+	applymovement LOCALID_BIRCH, Route110_Movement_BirchApproachPlayer2
 # 816 "data/maps/RouteEight/scripts.pory"
-	.string "Wouldn't it be great to ride a BIKE\n"
+	waitmovement 0
 # 817 "data/maps/RouteEight/scripts.pory"
-	.string "at full speed on CYCLING ROAD?$"
+	return
 # 818 "data/maps/RouteEight/scripts.pory"
 
 # 819 "data/maps/RouteEight/scripts.pory"
-Route110_Text_HairStreamsBehindMe:
+Route110_EventScript_BirchApproachPlayer3::
 # 820 "data/maps/RouteEight/scripts.pory"
-	.string "How do you like the way my raven-\n"
+	applymovement LOCALID_BIRCH, Route110_Movement_BirchApproachPlayer3
 # 821 "data/maps/RouteEight/scripts.pory"
-	.string "colored hair streams behind me?\p"
+	waitmovement 0
 # 822 "data/maps/RouteEight/scripts.pory"
-	.string "I grew my hair out just for that.$"
+	return
 # 823 "data/maps/RouteEight/scripts.pory"
 
 # 824 "data/maps/RouteEight/scripts.pory"
-Route110_Text_YouGotBikeFromRydel:
+Route110_EventScript_BirchApproachPlayer4::
 # 825 "data/maps/RouteEight/scripts.pory"
-	.string "Oh, hey, you got that BIKE from RYDEL!\p"
+	applymovement LOCALID_BIRCH, Route110_Movement_BirchApproachPlayer4
 # 826 "data/maps/RouteEight/scripts.pory"
-	.string "Oh, it's glaringly obvious.\n"
+	waitmovement 0
 # 827 "data/maps/RouteEight/scripts.pory"
-	.string "It says right on your bike…\p"
+	return
 # 828 "data/maps/RouteEight/scripts.pory"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
+
 # 829 "data/maps/RouteEight/scripts.pory"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
+Route110_EventScript_BirchExit1::
 # 830 "data/maps/RouteEight/scripts.pory"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
+	applymovement LOCALID_BIRCH, Route110_Movement_BirchExit1
 # 831 "data/maps/RouteEight/scripts.pory"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
+	waitmovement 0
 # 832 "data/maps/RouteEight/scripts.pory"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
+	return
 # 833 "data/maps/RouteEight/scripts.pory"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
+
 # 834 "data/maps/RouteEight/scripts.pory"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
+Route110_EventScript_BirchExit2::
 # 835 "data/maps/RouteEight/scripts.pory"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
+	applymovement LOCALID_BIRCH, Route110_Movement_BirchExit2
 # 836 "data/maps/RouteEight/scripts.pory"
-	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL…\n"
+	waitmovement 0
 # 837 "data/maps/RouteEight/scripts.pory"
-	.string "That name's everywhere.\p"
+	return
 # 838 "data/maps/RouteEight/scripts.pory"
-	.string "You should ride it around all over\n"
+
 # 839 "data/maps/RouteEight/scripts.pory"
-	.string "the place--it's good advertising!$"
+Route110_EventScript_BirchExit3::
 # 840 "data/maps/RouteEight/scripts.pory"
-
+	applymovement LOCALID_BIRCH, Route110_Movement_BirchExit3
 # 841 "data/maps/RouteEight/scripts.pory"
-Route110_Text_TwoRoads:
+	waitmovement 0
 # 842 "data/maps/RouteEight/scripts.pory"
-	.string "The two roads, one above, one below…\p"
+	return
 # 843 "data/maps/RouteEight/scripts.pory"
-	.string "A road each for people and POKéMON.\n"
+
 # 844 "data/maps/RouteEight/scripts.pory"
-	.string "Perhaps that is right and fair.$"
+Route110_EventScript_BirchExit4::
 # 845 "data/maps/RouteEight/scripts.pory"
-
+	applymovement LOCALID_BIRCH, Route110_Movement_BirchExit4
 # 846 "data/maps/RouteEight/scripts.pory"
-Route110_Text_WalkOnTheLowRoad:
+	waitmovement 0
 # 847 "data/maps/RouteEight/scripts.pory"
-	.string "I don't have a BIKE, so I'll take\n"
+	return
 # 848 "data/maps/RouteEight/scripts.pory"
-	.string "a leisurely walk on the low road.$"
+
 # 849 "data/maps/RouteEight/scripts.pory"
-
+Route110_Movement_BirchEntrance:
 # 850 "data/maps/RouteEight/scripts.pory"
-Route110_Text_BikeTechniques:
+	walk_down
 # 851 "data/maps/RouteEight/scripts.pory"
-	.string "Learning techniques will make BIKE\n"
+	walk_down
 # 852 "data/maps/RouteEight/scripts.pory"
-	.string "riding even more fun.\p"
+	walk_down
 # 853 "data/maps/RouteEight/scripts.pory"
-	.string "There are some places that you can\n"
+	step_end
 # 854 "data/maps/RouteEight/scripts.pory"
-	.string "reach only by using a BIKE technique.$"
-# 855 "data/maps/RouteEight/scripts.pory"
 
+# 855 "data/maps/RouteEight/scripts.pory"
+Route110_Movement_BirchApproachPlayer1:
 # 856 "data/maps/RouteEight/scripts.pory"
-Route110_Text_WhichShouldIChoose:
+	walk_down
 # 857 "data/maps/RouteEight/scripts.pory"
-	.string "Which should I choose?\p"
+	walk_left
 # 858 "data/maps/RouteEight/scripts.pory"
-	.string "Make a beeline for MAUVILLE on\n"
+	walk_left
 # 859 "data/maps/RouteEight/scripts.pory"
-	.string "CYCLING ROAD, or take the low road\l"
+	walk_down
 # 860 "data/maps/RouteEight/scripts.pory"
-	.string "and look for POKéMON?$"
+	step_end
 # 861 "data/maps/RouteEight/scripts.pory"
 
 # 862 "data/maps/RouteEight/scripts.pory"
-Route110_Text_CyclingChallengeResultSummary:
+Route110_Movement_BirchApproachPlayer2:
 # 863 "data/maps/RouteEight/scripts.pory"
-	.string "Number of collisions:\n"
+	walk_down
 # 864 "data/maps/RouteEight/scripts.pory"
-	.string "… … {STR_VAR_1}!\p"
+	walk_left
 # 865 "data/maps/RouteEight/scripts.pory"
-	.string "Total time:\n"
+	walk_down
 # 866 "data/maps/RouteEight/scripts.pory"
-	.string "… … {STR_VAR_2}!$"
+	step_end
 # 867 "data/maps/RouteEight/scripts.pory"
 
 # 868 "data/maps/RouteEight/scripts.pory"
-Route110_Text_ChallengeReactionBest:
+Route110_Movement_BirchApproachPlayer3:
 # 869 "data/maps/RouteEight/scripts.pory"
-	.string "Bravo! Splendid showing!\p"
+	walk_down
 # 870 "data/maps/RouteEight/scripts.pory"
-	.string "Your love of cycling comes from deep\n"
+	walk_down
 # 871 "data/maps/RouteEight/scripts.pory"
-	.string "within your heart.\l"
+	step_end
 # 872 "data/maps/RouteEight/scripts.pory"
-	.string "You've shaken me to my very soul!$"
-# 873 "data/maps/RouteEight/scripts.pory"
 
+# 873 "data/maps/RouteEight/scripts.pory"
+Route110_Movement_BirchApproachPlayer4:
 # 874 "data/maps/RouteEight/scripts.pory"
-Route110_Text_ChallengeReactionGood:
+	walk_down
 # 875 "data/maps/RouteEight/scripts.pory"
-	.string "Your technique is remarkable.\p"
+	walk_right
 # 876 "data/maps/RouteEight/scripts.pory"
-	.string "I suggest you speed up a bit while\n"
+	walk_down
 # 877 "data/maps/RouteEight/scripts.pory"
-	.string "still avoiding collisions.$"
+	step_end
 # 878 "data/maps/RouteEight/scripts.pory"
 
 # 879 "data/maps/RouteEight/scripts.pory"
-Route110_Text_ChallengeReactionOk:
+Route110_Movement_BirchExit1:
 # 880 "data/maps/RouteEight/scripts.pory"
-	.string "I would consider you a work in\n"
+	walk_up
 # 881 "data/maps/RouteEight/scripts.pory"
-	.string "progress.\p"
+	walk_up
 # 882 "data/maps/RouteEight/scripts.pory"
-	.string "Still, I hope you don't forget the\n"
+	walk_right
 # 883 "data/maps/RouteEight/scripts.pory"
-	.string "sheer pleasure of cycling.$"
+	walk_up
 # 884 "data/maps/RouteEight/scripts.pory"
-
+	walk_up
 # 885 "data/maps/RouteEight/scripts.pory"
-Route110_Text_ChallengeReactionBad:
+	walk_up
 # 886 "data/maps/RouteEight/scripts.pory"
-	.string "My word… Your cycling skills border\n"
+	step_end
 # 887 "data/maps/RouteEight/scripts.pory"
-	.string "on terrifying.\p"
+
 # 888 "data/maps/RouteEight/scripts.pory"
-	.string "Most certainly, you need much more\n"
+Route110_Movement_BirchExit2:
 # 889 "data/maps/RouteEight/scripts.pory"
-	.string "practice riding.$"
+	walk_up
 # 890 "data/maps/RouteEight/scripts.pory"
-
+	walk_up
 # 891 "data/maps/RouteEight/scripts.pory"
-Route110_Text_ChallengeReactionWorst:
+	walk_up
 # 892 "data/maps/RouteEight/scripts.pory"
-	.string "…I am aghast…\p"
+	walk_up
 # 893 "data/maps/RouteEight/scripts.pory"
-	.string "You're perhaps not cut out for this\n"
+	walk_up
 # 894 "data/maps/RouteEight/scripts.pory"
-	.string "unfortunate cycling business.\p"
+	step_end
 # 895 "data/maps/RouteEight/scripts.pory"
-	.string "You ought to give serious thought to\n"
+
 # 896 "data/maps/RouteEight/scripts.pory"
-	.string "returning that BIKE to RYDEL.$"
+Route110_Movement_BirchExit3:
 # 897 "data/maps/RouteEight/scripts.pory"
-
+	walk_up
 # 898 "data/maps/RouteEight/scripts.pory"
-Route110_Text_RatedForNumberOfCollisions:
+	walk_up
 # 899 "data/maps/RouteEight/scripts.pory"
-	.string "This is CYCLING ROAD.\p"
+	walk_up
 # 900 "data/maps/RouteEight/scripts.pory"
-	.string "If you were to ride from MAUVILLE to\n"
+	walk_up
 # 901 "data/maps/RouteEight/scripts.pory"
-	.string "SLATEPORT on a MACH BIKE, you would\l"
+	walk_up
 # 902 "data/maps/RouteEight/scripts.pory"
-	.string "be rated for the number of collisions\l"
+	step_end
 # 903 "data/maps/RouteEight/scripts.pory"
-	.string "and your total time.$"
+
 # 904 "data/maps/RouteEight/scripts.pory"
-
+Route110_Movement_BirchExit4:
 # 905 "data/maps/RouteEight/scripts.pory"
-Route110_Text_AlwaysAimHigher:
+	walk_up
 # 906 "data/maps/RouteEight/scripts.pory"
-	.string "Regardless of the results, I count on\n"
+	walk_up
 # 907 "data/maps/RouteEight/scripts.pory"
-	.string "seeing more challenges from you.\l"
+	walk_up
 # 908 "data/maps/RouteEight/scripts.pory"
-	.string "Always aim higher!$"
+	walk_up
 # 909 "data/maps/RouteEight/scripts.pory"
-
+	walk_up
 # 910 "data/maps/RouteEight/scripts.pory"
-Route110_Text_AcroBikesDoNotQualify:
+	step_end
 # 911 "data/maps/RouteEight/scripts.pory"
-	.string "On this CYCLING ROAD, those riding\n"
+
 # 912 "data/maps/RouteEight/scripts.pory"
-	.string "MACH BIKES are rated for their number\l"
+Route110_Text_WeCantTalkAboutAquaActivities:
 # 913 "data/maps/RouteEight/scripts.pory"
-	.string "of collisions and their total times.\p"
+	.string "TEAM AQUA's activities…\n"
 # 914 "data/maps/RouteEight/scripts.pory"
-	.string "ACRO BIKES do not qualify for rating.\n"
+	.string "We can't talk about them yet.$"
 # 915 "data/maps/RouteEight/scripts.pory"
-	.string "They are easy to turn, so it's not fair.$"
+
 # 916 "data/maps/RouteEight/scripts.pory"
-
+Route110_Text_KickUpARuckus:
 # 917 "data/maps/RouteEight/scripts.pory"
-Route110_Text_SlateportCitySign:
+	.string "I want to get going to SLATEPORT and\n"
 # 918 "data/maps/RouteEight/scripts.pory"
-	.string "ROUTE 110\n"
+	.string "kick up a ruckus!$"
 # 919 "data/maps/RouteEight/scripts.pory"
-	.string "{DOWN_ARROW} SLATEPORT CITY$"
-# 920 "data/maps/RouteEight/scripts.pory"
 
+# 920 "data/maps/RouteEight/scripts.pory"
+Route110_Text_MyFirstJobInAqua:
 # 921 "data/maps/RouteEight/scripts.pory"
-Route110_Text_CyclingRoadSign:
+	.string "This is my first job after joining\n"
 # 922 "data/maps/RouteEight/scripts.pory"
-	.string "SEASIDE CYCLING ROAD$"
+	.string "TEAM AQUA. It's a little scary.$"
 # 923 "data/maps/RouteEight/scripts.pory"
 
 # 924 "data/maps/RouteEight/scripts.pory"
-Route110_Text_AquaWasHere:
+Route110_Text_AquaActionsBringSmiles:
 # 925 "data/maps/RouteEight/scripts.pory"
-	.string "“TEAM AQUA was here!”\p"
+	.string "TEAM AQUA's actions should bring\n"
 # 926 "data/maps/RouteEight/scripts.pory"
-	.string "Someone painted that onto this sign,\n"
+	.string "smiles to people's faces!$"
 # 927 "data/maps/RouteEight/scripts.pory"
-	.string "but then someone else painted over it.\p"
-# 928 "data/maps/RouteEight/scripts.pory"
-	.string "“TEAM MAGMA rules!” is what it\n"
-# 929 "data/maps/RouteEight/scripts.pory"
-	.string "says now.$"
-# 930 "data/maps/RouteEight/scripts.pory"
 
+# 928 "data/maps/RouteEight/scripts.pory"
+Route110_Text_MayLetsBattle:
+# 929 "data/maps/RouteEight/scripts.pory"
+	.string "MAY: Hi, {PLAYER}{KUN}, long time no see!\p"
+# 930 "data/maps/RouteEight/scripts.pory"
+	.string "While I was searching for other\n"
 # 931 "data/maps/RouteEight/scripts.pory"
-Route110_Text_Route103Sign:
+	.string "POKéMON, my POKéMON grew stronger.\p"
 # 932 "data/maps/RouteEight/scripts.pory"
-	.string "ROUTE 110\n"
+	.string "So…\n"
 # 933 "data/maps/RouteEight/scripts.pory"
-	.string "{LEFT_ARROW} ROUTE 103$"
+	.string "How about a little battle?$"
 # 934 "data/maps/RouteEight/scripts.pory"
 
 # 935 "data/maps/RouteEight/scripts.pory"
-Route110_Text_SeasideParkingSign:
+Route110_Text_MayDefeated:
 # 936 "data/maps/RouteEight/scripts.pory"
-	.string "SEASIDE PARKING$"
+	.string "Yikes!\n"
 # 937 "data/maps/RouteEight/scripts.pory"
-
+	.string "You're better than I expected!$"
 # 938 "data/maps/RouteEight/scripts.pory"
-Route110_Text_MauvilleCitySign:
+
 # 939 "data/maps/RouteEight/scripts.pory"
-	.string "ROUTE 110\n"
+Route110_Text_MayTakeThis:
 # 940 "data/maps/RouteEight/scripts.pory"
-	.string "{UP_ARROW} MAUVILLE CITY$"
+	.string "MAY: {PLAYER}{KUN}, you've been busy\n"
 # 941 "data/maps/RouteEight/scripts.pory"
-
+	.string "training, too, haven't you?\p"
 # 942 "data/maps/RouteEight/scripts.pory"
-Route110_Text_TrainerTipsPrlzSleep:
+	.string "I think you deserve a reward!\n"
 # 943 "data/maps/RouteEight/scripts.pory"
-	.string "TRAINER TIPS\p"
+	.string "This is from me!$"
 # 944 "data/maps/RouteEight/scripts.pory"
-	.string "The foe can be made helpless by\n"
-# 945 "data/maps/RouteEight/scripts.pory"
-	.string "paralyzing it or causing it to sleep.\p"
-# 946 "data/maps/RouteEight/scripts.pory"
-	.string "It is an important technique for\n"
-# 947 "data/maps/RouteEight/scripts.pory"
-	.string "POKéMON battles.$"
-# 948 "data/maps/RouteEight/scripts.pory"
 
+# 945 "data/maps/RouteEight/scripts.pory"
+Route110_Text_MayExplainItemfinder:
+# 946 "data/maps/RouteEight/scripts.pory"
+	.string "MAY: That's an ITEMFINDER.\p"
+# 947 "data/maps/RouteEight/scripts.pory"
+	.string "Try it out. If there is an item that's\n"
+# 948 "data/maps/RouteEight/scripts.pory"
+	.string "not visible, it emits a sound.\p"
 # 949 "data/maps/RouteEight/scripts.pory"
-Route110_Text_TrainerTipsRegisterItems:
+	.string "Okay, {PLAYER}{KUN}, let's meet again!\p"
 # 950 "data/maps/RouteEight/scripts.pory"
-	.string "TRAINER TIPS\p"
+	.string "I know it's a little silly coming from\n"
 # 951 "data/maps/RouteEight/scripts.pory"
-	.string "The items in the BAG can be reorganized\n"
+	.string "me, but I think you should train a lot\l"
 # 952 "data/maps/RouteEight/scripts.pory"
-	.string "by pressing SELECT.$"
+	.string "harder for the next time.$"
 # 953 "data/maps/RouteEight/scripts.pory"
 
 # 954 "data/maps/RouteEight/scripts.pory"
-Route110_Text_TrickHouseSign:
+Route110_Text_BrendanLetsBattle:
 # 955 "data/maps/RouteEight/scripts.pory"
-	.string "“Three steps {RIGHT_ARROW} and two steps {UP_ARROW}\n"
+	.string "BRENDAN: Hey, {PLAYER}.\n"
 # 956 "data/maps/RouteEight/scripts.pory"
-	.string "to reach the wondrous TRICK HOUSE.”$"
+	.string "So this is where you were.\l"
 # 957 "data/maps/RouteEight/scripts.pory"
-
+	.string "How's it going?\p"
 # 958 "data/maps/RouteEight/scripts.pory"
-Route110_Text_BestRecord:
+	.string "Have you been raising your POKéMON?\n"
 # 959 "data/maps/RouteEight/scripts.pory"
-	.string "THE BEST RECORD TO DATE…\p"
+	.string "I'll check for you.$"
 # 960 "data/maps/RouteEight/scripts.pory"
-	.string "No. of collisions: {STR_VAR_1}\p"
+
 # 961 "data/maps/RouteEight/scripts.pory"
-	.string "Elapsed time: {STR_VAR_2}$"
+Route110_Text_BrendanDefeated:
 # 962 "data/maps/RouteEight/scripts.pory"
-
+	.string "Hmm…\n"
 # 963 "data/maps/RouteEight/scripts.pory"
-Route110_Text_ThereIsNoRecord:
+	.string "You're pretty good.$"
 # 964 "data/maps/RouteEight/scripts.pory"
-	.string "THE BEST RECORD TO DATE…\p"
+
 # 965 "data/maps/RouteEight/scripts.pory"
-	.string "No one seems to have taken the\n"
+Route110_Text_BrendanTakeThis:
 # 966 "data/maps/RouteEight/scripts.pory"
-	.string "challenge. There is no record…$"
+	.string "BRENDAN: {PLAYER}, you've trained\n"
 # 967 "data/maps/RouteEight/scripts.pory"
-
+	.string "without me noticing…\p"
 # 968 "data/maps/RouteEight/scripts.pory"
-Route110_Text_ImagineSeeingYouHere:
+	.string "Good enough!\n"
 # 969 "data/maps/RouteEight/scripts.pory"
-	.string "PROF. BIRCH: Oh, {PLAYER}{KUN}!\n"
+	.string "Here, take this.$"
 # 970 "data/maps/RouteEight/scripts.pory"
-	.string "Imagine seeing you here!\p"
+
 # 971 "data/maps/RouteEight/scripts.pory"
-	.string "And where might my {RIVAL} be?$"
+Route110_Text_BrendanExplainItemfinder:
 # 972 "data/maps/RouteEight/scripts.pory"
-
+	.string "BRENDAN: That's an ITEMFINDER.\p"
 # 973 "data/maps/RouteEight/scripts.pory"
-Route110_Text_HeardYouInstallMatchCall:
+	.string "Use it to root around for items that\n"
 # 974 "data/maps/RouteEight/scripts.pory"
-	.string "Oh, I see!\n"
+	.string "aren't visible.\p"
 # 975 "data/maps/RouteEight/scripts.pory"
-	.string "You two are running separately.\l"
+	.string "If it senses something, it emits\n"
 # 976 "data/maps/RouteEight/scripts.pory"
-	.string "Well, that's fine.\p"
+	.string "a sound.\p"
 # 977 "data/maps/RouteEight/scripts.pory"
-	.string "Oh, yes, I heard that your POKéNAV\n"
+	.string "Anyway, I'm off to look for new\n"
 # 978 "data/maps/RouteEight/scripts.pory"
-	.string "had the MATCH CALL system installed.\p"
+	.string "POKéMON.$"
 # 979 "data/maps/RouteEight/scripts.pory"
-	.string "Well, then, I should register you in\n"
-# 980 "data/maps/RouteEight/scripts.pory"
-	.string "my POKéNAV as well.\p"
-# 981 "data/maps/RouteEight/scripts.pory"
-	.string "That way, even when we're apart,\n"
-# 982 "data/maps/RouteEight/scripts.pory"
-	.string "I can rate your POKéDEX anytime.\p"
-# 983 "data/maps/RouteEight/scripts.pory"
-	.string "… … … … … …$"
-# 984 "data/maps/RouteEight/scripts.pory"
 
+# 980 "data/maps/RouteEight/scripts.pory"
+Route110_Text_RideBikeAtFullSpeed:
+# 981 "data/maps/RouteEight/scripts.pory"
+	.string "Wouldn't it be great to ride a BIKE\n"
+# 982 "data/maps/RouteEight/scripts.pory"
+	.string "at full speed on CYCLING ROAD?$"
+# 983 "data/maps/RouteEight/scripts.pory"
+
+# 984 "data/maps/RouteEight/scripts.pory"
+Route110_Text_HairStreamsBehindMe:
 # 985 "data/maps/RouteEight/scripts.pory"
-Route110_Text_RegisteredBirchInPokenav:
+	.string "How do you like the way my raven-\n"
 # 986 "data/maps/RouteEight/scripts.pory"
-	.string "Registered PROF. BIRCH\n"
+	.string "colored hair streams behind me?\p"
 # 987 "data/maps/RouteEight/scripts.pory"
-	.string "in the POKéNAV.$"
+	.string "I grew my hair out just for that.$"
 # 988 "data/maps/RouteEight/scripts.pory"
 
 # 989 "data/maps/RouteEight/scripts.pory"
-Route110_Text_KeepAnEyeOutForRival:
+Route110_Text_YouGotBikeFromRydel:
 # 990 "data/maps/RouteEight/scripts.pory"
-	.string "PROF. BIRCH: {PLAYER}{KUN}…\p"
+	.string "Oh, hey, you got that BIKE from RYDEL!\p"
 # 991 "data/maps/RouteEight/scripts.pory"
-	.string "Please keep an eye out for my {RIVAL}.\n"
+	.string "Oh, it's glaringly obvious.\n"
 # 992 "data/maps/RouteEight/scripts.pory"
-	.string "… … … … … …\p"
+	.string "It says right on your bike…\p"
 # 993 "data/maps/RouteEight/scripts.pory"
-	.string "Well, I had better get going.\n"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
 # 994 "data/maps/RouteEight/scripts.pory"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
+# 995 "data/maps/RouteEight/scripts.pory"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
+# 996 "data/maps/RouteEight/scripts.pory"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
+# 997 "data/maps/RouteEight/scripts.pory"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
+# 998 "data/maps/RouteEight/scripts.pory"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
+# 999 "data/maps/RouteEight/scripts.pory"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\n"
+# 1000 "data/maps/RouteEight/scripts.pory"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL,\p"
+# 1001 "data/maps/RouteEight/scripts.pory"
+	.string "RYDEL, RYDEL, RYDEL, RYDEL, RYDEL…\n"
+# 1002 "data/maps/RouteEight/scripts.pory"
+	.string "That name's everywhere.\p"
+# 1003 "data/maps/RouteEight/scripts.pory"
+	.string "You should ride it around all over\n"
+# 1004 "data/maps/RouteEight/scripts.pory"
+	.string "the place--it's good advertising!$"
+# 1005 "data/maps/RouteEight/scripts.pory"
+
+# 1006 "data/maps/RouteEight/scripts.pory"
+Route110_Text_TwoRoads:
+# 1007 "data/maps/RouteEight/scripts.pory"
+	.string "The two roads, one above, one below…\p"
+# 1008 "data/maps/RouteEight/scripts.pory"
+	.string "A road each for people and POKéMON.\n"
+# 1009 "data/maps/RouteEight/scripts.pory"
+	.string "Perhaps that is right and fair.$"
+# 1010 "data/maps/RouteEight/scripts.pory"
+
+# 1011 "data/maps/RouteEight/scripts.pory"
+Route110_Text_WalkOnTheLowRoad:
+# 1012 "data/maps/RouteEight/scripts.pory"
+	.string "I don't have a BIKE, so I'll take\n"
+# 1013 "data/maps/RouteEight/scripts.pory"
+	.string "a leisurely walk on the low road.$"
+# 1014 "data/maps/RouteEight/scripts.pory"
+
+# 1015 "data/maps/RouteEight/scripts.pory"
+Route110_Text_BikeTechniques:
+# 1016 "data/maps/RouteEight/scripts.pory"
+	.string "Learning techniques will make BIKE\n"
+# 1017 "data/maps/RouteEight/scripts.pory"
+	.string "riding even more fun.\p"
+# 1018 "data/maps/RouteEight/scripts.pory"
+	.string "There are some places that you can\n"
+# 1019 "data/maps/RouteEight/scripts.pory"
+	.string "reach only by using a BIKE technique.$"
+# 1020 "data/maps/RouteEight/scripts.pory"
+
+# 1021 "data/maps/RouteEight/scripts.pory"
+Route110_Text_WhichShouldIChoose:
+# 1022 "data/maps/RouteEight/scripts.pory"
+	.string "Which should I choose?\p"
+# 1023 "data/maps/RouteEight/scripts.pory"
+	.string "Make a beeline for MAUVILLE on\n"
+# 1024 "data/maps/RouteEight/scripts.pory"
+	.string "CYCLING ROAD, or take the low road\l"
+# 1025 "data/maps/RouteEight/scripts.pory"
+	.string "and look for POKéMON?$"
+# 1026 "data/maps/RouteEight/scripts.pory"
+
+# 1027 "data/maps/RouteEight/scripts.pory"
+Route110_Text_CyclingChallengeResultSummary:
+# 1028 "data/maps/RouteEight/scripts.pory"
+	.string "Number of collisions:\n"
+# 1029 "data/maps/RouteEight/scripts.pory"
+	.string "… … {STR_VAR_1}!\p"
+# 1030 "data/maps/RouteEight/scripts.pory"
+	.string "Total time:\n"
+# 1031 "data/maps/RouteEight/scripts.pory"
+	.string "… … {STR_VAR_2}!$"
+# 1032 "data/maps/RouteEight/scripts.pory"
+
+# 1033 "data/maps/RouteEight/scripts.pory"
+Route110_Text_ChallengeReactionBest:
+# 1034 "data/maps/RouteEight/scripts.pory"
+	.string "Bravo! Splendid showing!\p"
+# 1035 "data/maps/RouteEight/scripts.pory"
+	.string "Your love of cycling comes from deep\n"
+# 1036 "data/maps/RouteEight/scripts.pory"
+	.string "within your heart.\l"
+# 1037 "data/maps/RouteEight/scripts.pory"
+	.string "You've shaken me to my very soul!$"
+# 1038 "data/maps/RouteEight/scripts.pory"
+
+# 1039 "data/maps/RouteEight/scripts.pory"
+Route110_Text_ChallengeReactionGood:
+# 1040 "data/maps/RouteEight/scripts.pory"
+	.string "Your technique is remarkable.\p"
+# 1041 "data/maps/RouteEight/scripts.pory"
+	.string "I suggest you speed up a bit while\n"
+# 1042 "data/maps/RouteEight/scripts.pory"
+	.string "still avoiding collisions.$"
+# 1043 "data/maps/RouteEight/scripts.pory"
+
+# 1044 "data/maps/RouteEight/scripts.pory"
+Route110_Text_ChallengeReactionOk:
+# 1045 "data/maps/RouteEight/scripts.pory"
+	.string "I would consider you a work in\n"
+# 1046 "data/maps/RouteEight/scripts.pory"
+	.string "progress.\p"
+# 1047 "data/maps/RouteEight/scripts.pory"
+	.string "Still, I hope you don't forget the\n"
+# 1048 "data/maps/RouteEight/scripts.pory"
+	.string "sheer pleasure of cycling.$"
+# 1049 "data/maps/RouteEight/scripts.pory"
+
+# 1050 "data/maps/RouteEight/scripts.pory"
+Route110_Text_ChallengeReactionBad:
+# 1051 "data/maps/RouteEight/scripts.pory"
+	.string "My word… Your cycling skills border\n"
+# 1052 "data/maps/RouteEight/scripts.pory"
+	.string "on terrifying.\p"
+# 1053 "data/maps/RouteEight/scripts.pory"
+	.string "Most certainly, you need much more\n"
+# 1054 "data/maps/RouteEight/scripts.pory"
+	.string "practice riding.$"
+# 1055 "data/maps/RouteEight/scripts.pory"
+
+# 1056 "data/maps/RouteEight/scripts.pory"
+Route110_Text_ChallengeReactionWorst:
+# 1057 "data/maps/RouteEight/scripts.pory"
+	.string "…I am aghast…\p"
+# 1058 "data/maps/RouteEight/scripts.pory"
+	.string "You're perhaps not cut out for this\n"
+# 1059 "data/maps/RouteEight/scripts.pory"
+	.string "unfortunate cycling business.\p"
+# 1060 "data/maps/RouteEight/scripts.pory"
+	.string "You ought to give serious thought to\n"
+# 1061 "data/maps/RouteEight/scripts.pory"
+	.string "returning that BIKE to RYDEL.$"
+# 1062 "data/maps/RouteEight/scripts.pory"
+
+# 1063 "data/maps/RouteEight/scripts.pory"
+Route110_Text_RatedForNumberOfCollisions:
+# 1064 "data/maps/RouteEight/scripts.pory"
+	.string "This is CYCLING ROAD.\p"
+# 1065 "data/maps/RouteEight/scripts.pory"
+	.string "If you were to ride from MAUVILLE to\n"
+# 1066 "data/maps/RouteEight/scripts.pory"
+	.string "SLATEPORT on a MACH BIKE, you would\l"
+# 1067 "data/maps/RouteEight/scripts.pory"
+	.string "be rated for the number of collisions\l"
+# 1068 "data/maps/RouteEight/scripts.pory"
+	.string "and your total time.$"
+# 1069 "data/maps/RouteEight/scripts.pory"
+
+# 1070 "data/maps/RouteEight/scripts.pory"
+Route110_Text_AlwaysAimHigher:
+# 1071 "data/maps/RouteEight/scripts.pory"
+	.string "Regardless of the results, I count on\n"
+# 1072 "data/maps/RouteEight/scripts.pory"
+	.string "seeing more challenges from you.\l"
+# 1073 "data/maps/RouteEight/scripts.pory"
+	.string "Always aim higher!$"
+# 1074 "data/maps/RouteEight/scripts.pory"
+
+# 1075 "data/maps/RouteEight/scripts.pory"
+Route110_Text_AcroBikesDoNotQualify:
+# 1076 "data/maps/RouteEight/scripts.pory"
+	.string "On this CYCLING ROAD, those riding\n"
+# 1077 "data/maps/RouteEight/scripts.pory"
+	.string "MACH BIKES are rated for their number\l"
+# 1078 "data/maps/RouteEight/scripts.pory"
+	.string "of collisions and their total times.\p"
+# 1079 "data/maps/RouteEight/scripts.pory"
+	.string "ACRO BIKES do not qualify for rating.\n"
+# 1080 "data/maps/RouteEight/scripts.pory"
+	.string "They are easy to turn, so it's not fair.$"
+# 1081 "data/maps/RouteEight/scripts.pory"
+
+# 1082 "data/maps/RouteEight/scripts.pory"
+Route110_Text_SlateportCitySign:
+# 1083 "data/maps/RouteEight/scripts.pory"
+	.string "ROUTE 110\n"
+# 1084 "data/maps/RouteEight/scripts.pory"
+	.string "{DOWN_ARROW} SLATEPORT CITY$"
+# 1085 "data/maps/RouteEight/scripts.pory"
+
+# 1086 "data/maps/RouteEight/scripts.pory"
+Route110_Text_CyclingRoadSign:
+# 1087 "data/maps/RouteEight/scripts.pory"
+	.string "SEASIDE CYCLING ROAD$"
+# 1088 "data/maps/RouteEight/scripts.pory"
+
+# 1089 "data/maps/RouteEight/scripts.pory"
+Route110_Text_AquaWasHere:
+# 1090 "data/maps/RouteEight/scripts.pory"
+	.string "“TEAM AQUA was here!”\p"
+# 1091 "data/maps/RouteEight/scripts.pory"
+	.string "Someone painted that onto this sign,\n"
+# 1092 "data/maps/RouteEight/scripts.pory"
+	.string "but then someone else painted over it.\p"
+# 1093 "data/maps/RouteEight/scripts.pory"
+	.string "“TEAM MAGMA rules!” is what it\n"
+# 1094 "data/maps/RouteEight/scripts.pory"
+	.string "says now.$"
+# 1095 "data/maps/RouteEight/scripts.pory"
+
+# 1096 "data/maps/RouteEight/scripts.pory"
+Route110_Text_Route103Sign:
+# 1097 "data/maps/RouteEight/scripts.pory"
+	.string "ROUTE 110\n"
+# 1098 "data/maps/RouteEight/scripts.pory"
+	.string "{LEFT_ARROW} ROUTE 103$"
+# 1099 "data/maps/RouteEight/scripts.pory"
+
+# 1100 "data/maps/RouteEight/scripts.pory"
+Route110_Text_SeasideParkingSign:
+# 1101 "data/maps/RouteEight/scripts.pory"
+	.string "SEASIDE PARKING$"
+# 1102 "data/maps/RouteEight/scripts.pory"
+
+# 1103 "data/maps/RouteEight/scripts.pory"
+Route110_Text_MauvilleCitySign:
+# 1104 "data/maps/RouteEight/scripts.pory"
+	.string "ROUTE 110\n"
+# 1105 "data/maps/RouteEight/scripts.pory"
+	.string "{UP_ARROW} MAUVILLE CITY$"
+# 1106 "data/maps/RouteEight/scripts.pory"
+
+# 1107 "data/maps/RouteEight/scripts.pory"
+Route110_Text_TrainerTipsPrlzSleep:
+# 1108 "data/maps/RouteEight/scripts.pory"
+	.string "TRAINER TIPS\p"
+# 1109 "data/maps/RouteEight/scripts.pory"
+	.string "The foe can be made helpless by\n"
+# 1110 "data/maps/RouteEight/scripts.pory"
+	.string "paralyzing it or causing it to sleep.\p"
+# 1111 "data/maps/RouteEight/scripts.pory"
+	.string "It is an important technique for\n"
+# 1112 "data/maps/RouteEight/scripts.pory"
+	.string "POKéMON battles.$"
+# 1113 "data/maps/RouteEight/scripts.pory"
+
+# 1114 "data/maps/RouteEight/scripts.pory"
+Route110_Text_TrainerTipsRegisterItems:
+# 1115 "data/maps/RouteEight/scripts.pory"
+	.string "TRAINER TIPS\p"
+# 1116 "data/maps/RouteEight/scripts.pory"
+	.string "The items in the BAG can be reorganized\n"
+# 1117 "data/maps/RouteEight/scripts.pory"
+	.string "by pressing SELECT.$"
+# 1118 "data/maps/RouteEight/scripts.pory"
+
+# 1119 "data/maps/RouteEight/scripts.pory"
+Route110_Text_TrickHouseSign:
+# 1120 "data/maps/RouteEight/scripts.pory"
+	.string "“Three steps {RIGHT_ARROW} and two steps {UP_ARROW}\n"
+# 1121 "data/maps/RouteEight/scripts.pory"
+	.string "to reach the wondrous TRICK HOUSE.”$"
+# 1122 "data/maps/RouteEight/scripts.pory"
+
+# 1123 "data/maps/RouteEight/scripts.pory"
+Route110_Text_BestRecord:
+# 1124 "data/maps/RouteEight/scripts.pory"
+	.string "THE BEST RECORD TO DATE…\p"
+# 1125 "data/maps/RouteEight/scripts.pory"
+	.string "No. of collisions: {STR_VAR_1}\p"
+# 1126 "data/maps/RouteEight/scripts.pory"
+	.string "Elapsed time: {STR_VAR_2}$"
+# 1127 "data/maps/RouteEight/scripts.pory"
+
+# 1128 "data/maps/RouteEight/scripts.pory"
+Route110_Text_ThereIsNoRecord:
+# 1129 "data/maps/RouteEight/scripts.pory"
+	.string "THE BEST RECORD TO DATE…\p"
+# 1130 "data/maps/RouteEight/scripts.pory"
+	.string "No one seems to have taken the\n"
+# 1131 "data/maps/RouteEight/scripts.pory"
+	.string "challenge. There is no record…$"
+# 1132 "data/maps/RouteEight/scripts.pory"
+
+# 1133 "data/maps/RouteEight/scripts.pory"
+Route110_Text_ImagineSeeingYouHere:
+# 1134 "data/maps/RouteEight/scripts.pory"
+	.string "PROF. BIRCH: Oh, {PLAYER}{KUN}!\n"
+# 1135 "data/maps/RouteEight/scripts.pory"
+	.string "Imagine seeing you here!\p"
+# 1136 "data/maps/RouteEight/scripts.pory"
+	.string "And where might my {RIVAL} be?$"
+# 1137 "data/maps/RouteEight/scripts.pory"
+
+# 1138 "data/maps/RouteEight/scripts.pory"
+Route110_Text_HeardYouInstallMatchCall:
+# 1139 "data/maps/RouteEight/scripts.pory"
+	.string "Oh, I see!\n"
+# 1140 "data/maps/RouteEight/scripts.pory"
+	.string "You two are running separately.\l"
+# 1141 "data/maps/RouteEight/scripts.pory"
+	.string "Well, that's fine.\p"
+# 1142 "data/maps/RouteEight/scripts.pory"
+	.string "Oh, yes, I heard that your POKéNAV\n"
+# 1143 "data/maps/RouteEight/scripts.pory"
+	.string "had the MATCH CALL system installed.\p"
+# 1144 "data/maps/RouteEight/scripts.pory"
+	.string "Well, then, I should register you in\n"
+# 1145 "data/maps/RouteEight/scripts.pory"
+	.string "my POKéNAV as well.\p"
+# 1146 "data/maps/RouteEight/scripts.pory"
+	.string "That way, even when we're apart,\n"
+# 1147 "data/maps/RouteEight/scripts.pory"
+	.string "I can rate your POKéDEX anytime.\p"
+# 1148 "data/maps/RouteEight/scripts.pory"
+	.string "… … … … … …$"
+# 1149 "data/maps/RouteEight/scripts.pory"
+
+# 1150 "data/maps/RouteEight/scripts.pory"
+Route110_Text_RegisteredBirchInPokenav:
+# 1151 "data/maps/RouteEight/scripts.pory"
+	.string "Registered PROF. BIRCH\n"
+# 1152 "data/maps/RouteEight/scripts.pory"
+	.string "in the POKéNAV.$"
+# 1153 "data/maps/RouteEight/scripts.pory"
+
+# 1154 "data/maps/RouteEight/scripts.pory"
+Route110_Text_KeepAnEyeOutForRival:
+# 1155 "data/maps/RouteEight/scripts.pory"
+	.string "PROF. BIRCH: {PLAYER}{KUN}…\p"
+# 1156 "data/maps/RouteEight/scripts.pory"
+	.string "Please keep an eye out for my {RIVAL}.\n"
+# 1157 "data/maps/RouteEight/scripts.pory"
+	.string "… … … … … …\p"
+# 1158 "data/maps/RouteEight/scripts.pory"
+	.string "Well, I had better get going.\n"
+# 1159 "data/maps/RouteEight/scripts.pory"
 	.string "See you again, {PLAYER}{KUN}!$"
+
+RouteEight_EventScript_GruntNorth_Text_0:
+# 101 "data/maps/RouteEight/scripts.pory"
+	.string "test.$"
+
+RouteEight_Text_BenIntro::
+# 11 "data/maps/RouteEight/scripts.pory"
+	.string "Did you just become a Trainer? We're\n"
+	.string "both beginners!$"
+
+RouteEight_Text_BenDefeat::
+# 15 "data/maps/RouteEight/scripts.pory"
+	.string "I called you because I thought I could\n"
+	.string "beat you…$"
+
+RouteEight_Text_BenPostBattle::
+# 19 "data/maps/RouteEight/scripts.pory"
+	.string "I haven't won once yet… I wish I would\n"
+	.string "win soon…$"
+
+RouteEight_Text_DustyIntro::
+# 29 "data/maps/RouteEight/scripts.pory"
+	.string "For thirty years I have searched for\n"
+	.string "ancient ruins! I am to be challenged?$"
+
+RouteEight_Text_DustyDefeat::
+# 33 "data/maps/RouteEight/scripts.pory"
+	.string "While I have searched for ruins, I've\n"
+	.string "not searched for strong Pokémon.$"
+
+RouteEight_Text_DustyPostBattle::
+# 37 "data/maps/RouteEight/scripts.pory"
+	.string "For thirty years I have searched for\n"
+	.string "ancient ruins! No, wait, was that forty\l"
+	.string "years? Which was it now?$"
+
+RouteEight_Text_BeauIntro::
+# 47 "data/maps/RouteEight/scripts.pory"
+	.string "I can't go any farther… The sand gets\n"
+	.string "in my eyes!$"
+
+RouteEight_Text_BeauDefeat::
+# 51 "data/maps/RouteEight/scripts.pory"
+	.string "I can't win on spirit alone…$"
+
+RouteEight_Text_BeauPostBattle::
+# 55 "data/maps/RouteEight/scripts.pory"
+	.string "I'm going to be a real hero one day. I'm\n"
+	.string "going to work harder to make me and my\l"
+	.string "Pokémon stronger.$"
+
+RouteEight_Text_HeidiIntro::
+# 65 "data/maps/RouteEight/scripts.pory"
+	.string "I'm having a picnic in the desert. You\n"
+	.string "can always find a Trainer, so I can\l"
+	.string "enjoy a battle here, too!$"
+
+RouteEight_Text_HeidiDefeat::
+# 69 "data/maps/RouteEight/scripts.pory"
+	.string "Ohhh! You're mean!$"
+
+RouteEight_Text_HeidiPostBattle::
+# 73 "data/maps/RouteEight/scripts.pory"
+	.string "When you're battling in a sandstorm,\n"
+	.string "watch out for your Pokémon's HP. It can\l"
+	.string "faint if you don't keep an eye on it!$"
+
+RouteEight_Text_ChipIntro::
+# 83 "data/maps/RouteEight/scripts.pory"
+	.string "Who might you be? Are you perhaps\n"
+	.string "searching for ancient ruins that are\l"
+	.string "rumored to possibly exist according to\l"
+	.string "legend?$"
+
+RouteEight_Text_ChipDefeat::
+# 87 "data/maps/RouteEight/scripts.pory"
+	.string "What a disgraceful setback…$"
+
+RouteEight_Text_ChipPostBattle::
+# 91 "data/maps/RouteEight/scripts.pory"
+	.string "That giant rock… I would like to believe\n"
+	.string "it may indeed contain ancient ruins. But\l"
+	.string "I see no entrance.$"

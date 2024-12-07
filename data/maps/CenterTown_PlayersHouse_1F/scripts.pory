@@ -71,7 +71,7 @@ script CenterTown_PlayersHouse_1F_MomItems {
 	msgbox(format("Our next door neighbours have a gift for you, pay them a visit before you leave. Come back home if you need any more Pokéballs or money, and stop by Professor Birch's lab if you have any questions!"))
 	setflag(FLAG_SYS_POKEMON_GET)
 	setflag(FLAG_SYS_POKEDEX_GET)
-	setvar(VAR_LITTLEROOT_INTRO_STATE, 1)
+	setvar(VAR_CENTER_INTRO_STATE, 1)
 	setrespawn(HEAL_LOCATION_CENTER_TOWN)
 	release
 }
@@ -122,9 +122,9 @@ LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual::
 	return
 
 LittlerootTown_BrendansHouse_1F_OnTransition:
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV
+	call_if_eq VAR_CENTER_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor
+	call_if_eq VAR_CENTER_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs
+	call_if_eq VAR_CENTER_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs::

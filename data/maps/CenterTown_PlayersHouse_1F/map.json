@@ -57,7 +57,7 @@
       "x": 9,
       "y": 3,
       "elevation": 0,
-      "var": "VAR_LITTLEROOT_INTRO_STATE",
+      "var": "VAR_CENTER_INTRO_STATE",
       "var_value": "0",
       "script": "CenterTown_PlayersHouse_1F_MomItems2"
     },
@@ -66,7 +66,7 @@
       "x": 8,
       "y": 4,
       "elevation": 0,
-      "var": "VAR_LITTLEROOT_INTRO_STATE",
+      "var": "VAR_CENTER_INTRO_STATE",
       "var_value": "0",
       "script": "CenterTown_PlayersHouse_1F_MomItems1"
     },
@@ -75,7 +75,7 @@
       "x": 7,
       "y": 3,
       "elevation": 0,
-      "var": "VAR_LITTLEROOT_INTRO_STATE",
+      "var": "VAR_CENTER_INTRO_STATE",
       "var_value": "0",
       "script": "CenterTown_PlayersHouse_1F_MomItems0"
     }

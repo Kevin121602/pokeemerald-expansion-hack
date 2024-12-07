@@ -1,277 +1,217 @@
-# 1 "data/maps/RouteSix/scripts.pory"
-
-# 2 "data/maps/RouteSix/scripts.pory"
-@ NOTE: Route 109's sail to Dewford script references local IDs from Dewford's map.
-# 3 "data/maps/RouteSix/scripts.pory"
-@  These are labeled in DewfordTown/scripts.inc
-# 4 "data/maps/RouteSix/scripts.pory"
-
-# 5 "data/maps/RouteSix/scripts.pory"
 RouteSix_MapScripts::
-# 6 "data/maps/RouteSix/scripts.pory"
 	.byte 0
-# 7 "data/maps/RouteSix/scripts.pory"
 
-# 8 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_StartDepartForDewford::
-# 9 "data/maps/RouteSix/scripts.pory"
-	call EventScript_BackupMrBrineyLocation
-# 10 "data/maps/RouteSix/scripts.pory"
-	setobjectsubpriority LOCALID_BRINEY_R109, MAP_ROUTE_SIX, 0
-# 11 "data/maps/RouteSix/scripts.pory"
-	setobjectsubpriority OBJ_EVENT_ID_PLAYER, MAP_ROUTE_SIX, 0
-# 12 "data/maps/RouteSix/scripts.pory"
-	applymovement LOCALID_BRINEY_R109, Route109_Movement_BrineyEnterBoat
-# 13 "data/maps/RouteSix/scripts.pory"
-	waitmovement 0
-# 14 "data/maps/RouteSix/scripts.pory"
-	removeobject LOCALID_BRINEY_R109
-# 15 "data/maps/RouteSix/scripts.pory"
-	switch VAR_FACING
-# 16 "data/maps/RouteSix/scripts.pory"
-	case DIR_SOUTH, Route109_EventScript_EnterBoatSouth
-# 17 "data/maps/RouteSix/scripts.pory"
-	case DIR_WEST, Route109_EventScript_EnterBoatWest
-# 18 "data/maps/RouteSix/scripts.pory"
-	case DIR_EAST, Route109_EventScript_EnterBoatEast
-# 19 "data/maps/RouteSix/scripts.pory"
+
+RouteSix_EventScript_Autumn::
+# 4 "data/maps/RouteSix/scripts.pory"
+	trainerbattle_single TRAINER_AUTUMN, RouteSix_Text_AutumnIntro, RouteSix_Text_AutumnDefeat
+# 5 "data/maps/RouteSix/scripts.pory"
+	msgbox RouteSix_Text_AutumnPostBattle, MSGBOX_AUTOCLOSE
 	end
-# 20 "data/maps/RouteSix/scripts.pory"
 
-# 21 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_EnterBoatSouth::
+
+RouteSix_EventScript_Drew::
 # 22 "data/maps/RouteSix/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Route109_Movement_PlayerEnterBoatSouth
+	trainerbattle_single TRAINER_DREW, RouteSix_Text_DrewIntro, RouteSix_Text_DrewDefeat
 # 23 "data/maps/RouteSix/scripts.pory"
-	waitmovement 0
-# 24 "data/maps/RouteSix/scripts.pory"
-	goto Route109_EventScript_DoSailToDewford
-# 25 "data/maps/RouteSix/scripts.pory"
+	msgbox RouteSix_Text_DrewPostBattle, MSGBOX_AUTOCLOSE
 	end
-# 26 "data/maps/RouteSix/scripts.pory"
 
-# 27 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_EnterBoatEast::
-# 28 "data/maps/RouteSix/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Route109_Movement_PlayerEnterBoatEast
-# 29 "data/maps/RouteSix/scripts.pory"
-	waitmovement 0
-# 30 "data/maps/RouteSix/scripts.pory"
-	goto Route109_EventScript_DoSailToDewford
-# 31 "data/maps/RouteSix/scripts.pory"
-	end
-# 32 "data/maps/RouteSix/scripts.pory"
 
-# 33 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_EnterBoatWest::
-# 34 "data/maps/RouteSix/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Route109_Movement_PlayerEnterBoatWest
-# 35 "data/maps/RouteSix/scripts.pory"
-	waitmovement 0
-# 36 "data/maps/RouteSix/scripts.pory"
-	goto Route109_EventScript_DoSailToDewford
-# 37 "data/maps/RouteSix/scripts.pory"
-	end
-# 38 "data/maps/RouteSix/scripts.pory"
-
-# 39 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_DoSailToDewford::
+RouteSix_EventScript_FindMuscleBand::
 # 40 "data/maps/RouteSix/scripts.pory"
-	hideobjectat OBJ_EVENT_ID_PLAYER, MAP_ROUTE_SIX
-# 41 "data/maps/RouteSix/scripts.pory"
-	call Common_EventScript_PlayBrineysBoatMusic
-# 42 "data/maps/RouteSix/scripts.pory"
-	applymovement LOCALID_BOAT_R109, Route109_Movement_SailToDewford
-# 43 "data/maps/RouteSix/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Route109_Movement_SailToDewford
+	finditem ITEM_MUSCLE_BAND
+	end
+
+
 # 44 "data/maps/RouteSix/scripts.pory"
-	waitmovement 0
+
 # 45 "data/maps/RouteSix/scripts.pory"
-	delay 50
+@ NOTE: Route 109's sail to Dewford script references local IDs from Dewford's map.
 # 46 "data/maps/RouteSix/scripts.pory"
-	call Common_EventScript_StopBrineysBoatMusic
+@  These are labeled in DewfordTown/scripts.inc
 # 47 "data/maps/RouteSix/scripts.pory"
-	showobjectat OBJ_EVENT_ID_PLAYER, MAP_DEWFORD_TOWN
+
 # 48 "data/maps/RouteSix/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Route109_Movement_PlayerExitBoat
+Route109_MapScripts::
 # 49 "data/maps/RouteSix/scripts.pory"
-	waitmovement 0
+	.byte 0
 # 50 "data/maps/RouteSix/scripts.pory"
-	addobject LOCALID_BOAT_DEWFORD
+
 # 51 "data/maps/RouteSix/scripts.pory"
-	clearflag FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN
+Route109_EventScript_StartDepartForDewford::
 # 52 "data/maps/RouteSix/scripts.pory"
-	setobjectxyperm LOCALID_BRINEY_DEWFORD, 12, 8
+	call EventScript_BackupMrBrineyLocation
 # 53 "data/maps/RouteSix/scripts.pory"
-	addobject LOCALID_BRINEY_DEWFORD
+	setobjectsubpriority LOCALID_BRINEY_R109, MAP_ROUTE_SIX, 0
 # 54 "data/maps/RouteSix/scripts.pory"
-	setobjectsubpriority LOCALID_BRINEY_DEWFORD, MAP_DEWFORD_TOWN, 0
+	setobjectsubpriority OBJ_EVENT_ID_PLAYER, MAP_ROUTE_SIX, 0
 # 55 "data/maps/RouteSix/scripts.pory"
-	applymovement LOCALID_BRINEY_DEWFORD, Route109_Movement_BrineyExitBoat
+	applymovement LOCALID_BRINEY_R109, Route109_Movement_BrineyEnterBoat
 # 56 "data/maps/RouteSix/scripts.pory"
 	waitmovement 0
 # 57 "data/maps/RouteSix/scripts.pory"
-	clearflag FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
+	removeobject LOCALID_BRINEY_R109
 # 58 "data/maps/RouteSix/scripts.pory"
-	setflag FLAG_HIDE_ROUTE_109_MR_BRINEY_BOAT
+	switch VAR_FACING
 # 59 "data/maps/RouteSix/scripts.pory"
-	hideobjectat LOCALID_BOAT_R109, MAP_ROUTE_SIX
+	case DIR_SOUTH, Route109_EventScript_EnterBoatSouth
 # 60 "data/maps/RouteSix/scripts.pory"
-	msgbox DewfordTown_Text_BrineyLandedInDewford, MSGBOX_DEFAULT
+	case DIR_WEST, Route109_EventScript_EnterBoatWest
 # 61 "data/maps/RouteSix/scripts.pory"
-	closemessage
+	case DIR_EAST, Route109_EventScript_EnterBoatEast
 # 62 "data/maps/RouteSix/scripts.pory"
-	copyvar VAR_BRINEY_LOCATION, VAR_0x8008
-# 63 "data/maps/RouteSix/scripts.pory"
-	resetobjectsubpriority OBJ_EVENT_ID_PLAYER, MAP_ROUTE_SIX
-# 64 "data/maps/RouteSix/scripts.pory"
-	resetobjectsubpriority LOCALID_BRINEY_DEWFORD, MAP_DEWFORD_TOWN
-# 65 "data/maps/RouteSix/scripts.pory"
-	copyobjectxytoperm LOCALID_BRINEY_DEWFORD
-# 66 "data/maps/RouteSix/scripts.pory"
-	release
-# 67 "data/maps/RouteSix/scripts.pory"
 	end
-# 68 "data/maps/RouteSix/scripts.pory"
+# 63 "data/maps/RouteSix/scripts.pory"
 
+# 64 "data/maps/RouteSix/scripts.pory"
+Route109_EventScript_EnterBoatSouth::
+# 65 "data/maps/RouteSix/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Route109_Movement_PlayerEnterBoatSouth
+# 66 "data/maps/RouteSix/scripts.pory"
+	waitmovement 0
+# 67 "data/maps/RouteSix/scripts.pory"
+	goto Route109_EventScript_DoSailToDewford
+# 68 "data/maps/RouteSix/scripts.pory"
+	end
 # 69 "data/maps/RouteSix/scripts.pory"
-Route109_Movement_SailToDewford:
+
 # 70 "data/maps/RouteSix/scripts.pory"
-	walk_in_place_faster_down
+Route109_EventScript_EnterBoatEast::
 # 71 "data/maps/RouteSix/scripts.pory"
-	walk_down
+	applymovement OBJ_EVENT_ID_PLAYER, Route109_Movement_PlayerEnterBoatEast
 # 72 "data/maps/RouteSix/scripts.pory"
-	walk_down
+	waitmovement 0
 # 73 "data/maps/RouteSix/scripts.pory"
-	walk_fast_down
+	goto Route109_EventScript_DoSailToDewford
 # 74 "data/maps/RouteSix/scripts.pory"
-	walk_fast_down
+	end
 # 75 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+
 # 76 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+Route109_EventScript_EnterBoatWest::
 # 77 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+	applymovement OBJ_EVENT_ID_PLAYER, Route109_Movement_PlayerEnterBoatWest
 # 78 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+	waitmovement 0
 # 79 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+	goto Route109_EventScript_DoSailToDewford
 # 80 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+	end
 # 81 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+
 # 82 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+Route109_EventScript_DoSailToDewford::
 # 83 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+	hideobjectat OBJ_EVENT_ID_PLAYER, MAP_ROUTE_SIX
 # 84 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+	call Common_EventScript_PlayBrineysBoatMusic
 # 85 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+	applymovement LOCALID_BOAT_R109, Route109_Movement_SailToDewford
 # 86 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+	applymovement OBJ_EVENT_ID_PLAYER, Route109_Movement_SailToDewford
 # 87 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+	waitmovement 0
 # 88 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+	delay 50
 # 89 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+	call Common_EventScript_StopBrineysBoatMusic
 # 90 "data/maps/RouteSix/scripts.pory"
-	walk_faster_down
+	showobjectat OBJ_EVENT_ID_PLAYER, MAP_DEWFORD_TOWN
 # 91 "data/maps/RouteSix/scripts.pory"
-	walk_fast_down
+	applymovement OBJ_EVENT_ID_PLAYER, Route109_Movement_PlayerExitBoat
 # 92 "data/maps/RouteSix/scripts.pory"
-	walk_fast_down
+	waitmovement 0
 # 93 "data/maps/RouteSix/scripts.pory"
-	walk_fast_left
+	addobject LOCALID_BOAT_DEWFORD
 # 94 "data/maps/RouteSix/scripts.pory"
-	walk_fast_left
+	clearflag FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN
 # 95 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	setobjectxyperm LOCALID_BRINEY_DEWFORD, 12, 8
 # 96 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	addobject LOCALID_BRINEY_DEWFORD
 # 97 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	setobjectsubpriority LOCALID_BRINEY_DEWFORD, MAP_DEWFORD_TOWN, 0
 # 98 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	applymovement LOCALID_BRINEY_DEWFORD, Route109_Movement_BrineyExitBoat
 # 99 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	waitmovement 0
 # 100 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	clearflag FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
 # 101 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	setflag FLAG_HIDE_ROUTE_109_MR_BRINEY_BOAT
 # 102 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	hideobjectat LOCALID_BOAT_R109, MAP_ROUTE_SIX
 # 103 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	msgbox DewfordTown_Text_BrineyLandedInDewford, MSGBOX_DEFAULT
 # 104 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	closemessage
 # 105 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	copyvar VAR_BRINEY_LOCATION, VAR_0x8008
 # 106 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	resetobjectsubpriority OBJ_EVENT_ID_PLAYER, MAP_ROUTE_SIX
 # 107 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	resetobjectsubpriority LOCALID_BRINEY_DEWFORD, MAP_DEWFORD_TOWN
 # 108 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	copyobjectxytoperm LOCALID_BRINEY_DEWFORD
 # 109 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	release
 # 110 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	end
 # 111 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+
 # 112 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+Route109_Movement_SailToDewford:
 # 113 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_in_place_faster_down
 # 114 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_down
 # 115 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_down
 # 116 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_fast_down
 # 117 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_fast_down
 # 118 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 119 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 120 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 121 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 122 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 123 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 124 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 125 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 126 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 127 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 128 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 129 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 130 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 131 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 132 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 133 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_faster_down
 # 134 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_fast_down
 # 135 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_fast_down
 # 136 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_fast_left
 # 137 "data/maps/RouteSix/scripts.pory"
-	walk_faster_left
+	walk_fast_left
 # 138 "data/maps/RouteSix/scripts.pory"
 	walk_faster_left
 # 139 "data/maps/RouteSix/scripts.pory"
@@ -459,672 +399,787 @@ Route109_Movement_SailToDewford:
 # 230 "data/maps/RouteSix/scripts.pory"
 	walk_faster_left
 # 231 "data/maps/RouteSix/scripts.pory"
-	walk_fast_left
+	walk_faster_left
 # 232 "data/maps/RouteSix/scripts.pory"
-	walk_fast_left
+	walk_faster_left
 # 233 "data/maps/RouteSix/scripts.pory"
-	walk_fast_left
+	walk_faster_left
 # 234 "data/maps/RouteSix/scripts.pory"
-	walk_fast_left
+	walk_faster_left
 # 235 "data/maps/RouteSix/scripts.pory"
-	walk_fast_left
+	walk_faster_left
 # 236 "data/maps/RouteSix/scripts.pory"
-	walk_fast_left
+	walk_faster_left
 # 237 "data/maps/RouteSix/scripts.pory"
-	walk_fast_left
+	walk_faster_left
 # 238 "data/maps/RouteSix/scripts.pory"
-	walk_fast_left
+	walk_faster_left
 # 239 "data/maps/RouteSix/scripts.pory"
-	walk_fast_left
+	walk_faster_left
 # 240 "data/maps/RouteSix/scripts.pory"
-	walk_left
+	walk_faster_left
 # 241 "data/maps/RouteSix/scripts.pory"
-	walk_left
+	walk_faster_left
 # 242 "data/maps/RouteSix/scripts.pory"
-	walk_in_place_faster_down
+	walk_faster_left
 # 243 "data/maps/RouteSix/scripts.pory"
-	step_end
+	walk_faster_left
 # 244 "data/maps/RouteSix/scripts.pory"
-
+	walk_faster_left
 # 245 "data/maps/RouteSix/scripts.pory"
-Route109_Movement_PlayerEnterBoatSouth:
+	walk_faster_left
 # 246 "data/maps/RouteSix/scripts.pory"
-	walk_down
+	walk_faster_left
 # 247 "data/maps/RouteSix/scripts.pory"
-	walk_down
+	walk_faster_left
 # 248 "data/maps/RouteSix/scripts.pory"
-	step_end
+	walk_faster_left
 # 249 "data/maps/RouteSix/scripts.pory"
-
+	walk_faster_left
 # 250 "data/maps/RouteSix/scripts.pory"
-Route109_Movement_PlayerExitBoat:
+	walk_faster_left
 # 251 "data/maps/RouteSix/scripts.pory"
-	walk_down
+	walk_faster_left
 # 252 "data/maps/RouteSix/scripts.pory"
-	walk_down
+	walk_faster_left
 # 253 "data/maps/RouteSix/scripts.pory"
-	walk_left
+	walk_faster_left
 # 254 "data/maps/RouteSix/scripts.pory"
-	walk_in_place_faster_right
+	walk_faster_left
 # 255 "data/maps/RouteSix/scripts.pory"
-	step_end
+	walk_faster_left
 # 256 "data/maps/RouteSix/scripts.pory"
-
+	walk_faster_left
 # 257 "data/maps/RouteSix/scripts.pory"
-Route109_Movement_PlayerEnterBoatEast:
+	walk_faster_left
 # 258 "data/maps/RouteSix/scripts.pory"
-	walk_right
+	walk_faster_left
 # 259 "data/maps/RouteSix/scripts.pory"
-	walk_down
+	walk_faster_left
 # 260 "data/maps/RouteSix/scripts.pory"
-	step_end
+	walk_faster_left
 # 261 "data/maps/RouteSix/scripts.pory"
-
+	walk_faster_left
 # 262 "data/maps/RouteSix/scripts.pory"
-Route109_Movement_PlayerEnterBoatWest:
+	walk_faster_left
 # 263 "data/maps/RouteSix/scripts.pory"
-	walk_left
+	walk_faster_left
 # 264 "data/maps/RouteSix/scripts.pory"
-	walk_down
+	walk_faster_left
 # 265 "data/maps/RouteSix/scripts.pory"
-	step_end
+	walk_faster_left
 # 266 "data/maps/RouteSix/scripts.pory"
-
+	walk_faster_left
 # 267 "data/maps/RouteSix/scripts.pory"
-Route109_Movement_BrineyEnterBoat:
+	walk_faster_left
 # 268 "data/maps/RouteSix/scripts.pory"
-	walk_down
+	walk_faster_left
 # 269 "data/maps/RouteSix/scripts.pory"
-	step_end
+	walk_faster_left
 # 270 "data/maps/RouteSix/scripts.pory"
-
+	walk_faster_left
 # 271 "data/maps/RouteSix/scripts.pory"
-Route109_Movement_BrineyExitBoat:
+	walk_faster_left
 # 272 "data/maps/RouteSix/scripts.pory"
-	walk_down
+	walk_faster_left
 # 273 "data/maps/RouteSix/scripts.pory"
-	walk_in_place_faster_left
+	walk_faster_left
 # 274 "data/maps/RouteSix/scripts.pory"
-	step_end
+	walk_fast_left
 # 275 "data/maps/RouteSix/scripts.pory"
-
+	walk_fast_left
 # 276 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_MrBriney::
+	walk_fast_left
 # 277 "data/maps/RouteSix/scripts.pory"
-	lock
+	walk_fast_left
 # 278 "data/maps/RouteSix/scripts.pory"
-	faceplayer
+	walk_fast_left
 # 279 "data/maps/RouteSix/scripts.pory"
-	goto_if_unset FLAG_DELIVERED_DEVON_GOODS, Route109_EventScript_HaveNotDeliveredDevonGood
+	walk_fast_left
 # 280 "data/maps/RouteSix/scripts.pory"
-	goto Route109_EventScript_DeliveredDevonGoods
+	walk_fast_left
 # 281 "data/maps/RouteSix/scripts.pory"
-	end
+	walk_fast_left
 # 282 "data/maps/RouteSix/scripts.pory"
-
+	walk_fast_left
 # 283 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_HaveNotDeliveredDevonGood::
+	walk_left
 # 284 "data/maps/RouteSix/scripts.pory"
-	message Route109_Text_BrineySailToDewfordQuestion
+	walk_left
 # 285 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_BrineySailToDewfordQuestion, MSGBOX_YESNO
+	walk_in_place_faster_down
 # 286 "data/maps/RouteSix/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, Route109_EventScript_StayHere
+	step_end
 # 287 "data/maps/RouteSix/scripts.pory"
-	goto Route109_EventScript_SailToDewford
-# 288 "data/maps/RouteSix/scripts.pory"
-	end
-# 289 "data/maps/RouteSix/scripts.pory"
 
+# 288 "data/maps/RouteSix/scripts.pory"
+Route109_Movement_PlayerEnterBoatSouth:
+# 289 "data/maps/RouteSix/scripts.pory"
+	walk_down
 # 290 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_DeliveredDevonGoods::
+	walk_down
 # 291 "data/maps/RouteSix/scripts.pory"
-	message Route109_Text_BrineyWhereAreWeBound
+	step_end
 # 292 "data/maps/RouteSix/scripts.pory"
-	waitmessage
+
 # 293 "data/maps/RouteSix/scripts.pory"
-	multichoicedefault 21, 8, MULTI_BRINEY_OFF_DEWFORD, 1, FALSE
+Route109_Movement_PlayerExitBoat:
 # 294 "data/maps/RouteSix/scripts.pory"
-	switch VAR_RESULT
+	walk_down
 # 295 "data/maps/RouteSix/scripts.pory"
-	case 0, Route109_EventScript_SailToDewford
+	walk_down
 # 296 "data/maps/RouteSix/scripts.pory"
-	case 1, Route109_EventScript_ChoseNotToSail
+	walk_left
 # 297 "data/maps/RouteSix/scripts.pory"
-	case MULTI_B_PRESSED, Route109_EventScript_ChoseNotToSail
+	walk_in_place_faster_right
 # 298 "data/maps/RouteSix/scripts.pory"
-	end
+	step_end
 # 299 "data/maps/RouteSix/scripts.pory"
 
 # 300 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_SailToDewford::
+Route109_Movement_PlayerEnterBoatEast:
 # 301 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_BrineyDewfordItIs, MSGBOX_DEFAULT
+	walk_right
 # 302 "data/maps/RouteSix/scripts.pory"
-	closemessage
+	walk_down
 # 303 "data/maps/RouteSix/scripts.pory"
-	goto Route109_EventScript_StartDepartForDewford
+	step_end
 # 304 "data/maps/RouteSix/scripts.pory"
-	end
+
 # 305 "data/maps/RouteSix/scripts.pory"
-
+Route109_Movement_PlayerEnterBoatWest:
 # 306 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_StayHere::
+	walk_left
 # 307 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_BrineyDeliverDevonGoods, MSGBOX_DEFAULT
+	walk_down
 # 308 "data/maps/RouteSix/scripts.pory"
-	release
+	step_end
 # 309 "data/maps/RouteSix/scripts.pory"
-	end
+
 # 310 "data/maps/RouteSix/scripts.pory"
-
+Route109_Movement_BrineyEnterBoat:
 # 311 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_ChoseNotToSail::
+	walk_down
 # 312 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_BrineyTellMeWhenYouNeedToSail, MSGBOX_DEFAULT
+	step_end
 # 313 "data/maps/RouteSix/scripts.pory"
-	release
+
 # 314 "data/maps/RouteSix/scripts.pory"
-	end
+Route109_Movement_BrineyExitBoat:
 # 315 "data/maps/RouteSix/scripts.pory"
-
+	walk_down
 # 316 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_SeashoreHouseGirl::
+	walk_in_place_faster_left
 # 317 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_ChillAtMyPapasSpot, MSGBOX_NPC
+	step_end
 # 318 "data/maps/RouteSix/scripts.pory"
-	end
+
 # 319 "data/maps/RouteSix/scripts.pory"
-
+Route109_EventScript_MrBriney::
 # 320 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_SandCastleBoy::
+	lock
 # 321 "data/maps/RouteSix/scripts.pory"
-	lock
+	faceplayer
 # 322 "data/maps/RouteSix/scripts.pory"
-	faceplayer
+	goto_if_unset FLAG_DELIVERED_DEVON_GOODS, Route109_EventScript_HaveNotDeliveredDevonGood
 # 323 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_SandCastleTakingLongTime, MSGBOX_DEFAULT
+	goto Route109_EventScript_DeliveredDevonGoods
 # 324 "data/maps/RouteSix/scripts.pory"
-	closemessage
+	end
 # 325 "data/maps/RouteSix/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+
 # 326 "data/maps/RouteSix/scripts.pory"
-	waitmovement 0
+Route109_EventScript_HaveNotDeliveredDevonGood::
 # 327 "data/maps/RouteSix/scripts.pory"
-	release
+	message Route109_Text_BrineySailToDewfordQuestion
 # 328 "data/maps/RouteSix/scripts.pory"
-	end
+	msgbox Route109_Text_BrineySailToDewfordQuestion, MSGBOX_YESNO
 # 329 "data/maps/RouteSix/scripts.pory"
-
+	goto_if_eq VAR_RESULT, NO, Route109_EventScript_StayHere
 # 330 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_SoftSandGirl::
+	goto Route109_EventScript_SailToDewford
 # 331 "data/maps/RouteSix/scripts.pory"
-	lock
+	end
 # 332 "data/maps/RouteSix/scripts.pory"
-	faceplayer
+
 # 333 "data/maps/RouteSix/scripts.pory"
-	special GetPlayerBigGuyGirlString
+Route109_EventScript_DeliveredDevonGoods::
 # 334 "data/maps/RouteSix/scripts.pory"
-	goto_if_set FLAG_RECEIVED_SOFT_SAND, Route109_EventScript_AlreadyReceivedSoftSand
+	message Route109_Text_BrineyWhereAreWeBound
 # 335 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_YouCanHaveThis, MSGBOX_DEFAULT
+	waitmessage
 # 336 "data/maps/RouteSix/scripts.pory"
-	giveitem ITEM_SOFT_SAND
+	multichoicedefault 21, 8, MULTI_BRINEY_OFF_DEWFORD, 1, FALSE
 # 337 "data/maps/RouteSix/scripts.pory"
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	switch VAR_RESULT
 # 338 "data/maps/RouteSix/scripts.pory"
-	closemessage
+	case 0, Route109_EventScript_SailToDewford
 # 339 "data/maps/RouteSix/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	case 1, Route109_EventScript_ChoseNotToSail
 # 340 "data/maps/RouteSix/scripts.pory"
-	waitmovement 0
+	case MULTI_B_PRESSED, Route109_EventScript_ChoseNotToSail
 # 341 "data/maps/RouteSix/scripts.pory"
-	setflag FLAG_RECEIVED_SOFT_SAND
+	end
 # 342 "data/maps/RouteSix/scripts.pory"
-	release
+
 # 343 "data/maps/RouteSix/scripts.pory"
-	end
+Route109_EventScript_SailToDewford::
 # 344 "data/maps/RouteSix/scripts.pory"
-
+	msgbox Route109_Text_BrineyDewfordItIs, MSGBOX_DEFAULT
 # 345 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_AlreadyReceivedSoftSand::
+	closemessage
 # 346 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_WereGoingToMakeBigCastle, MSGBOX_DEFAULT
+	goto Route109_EventScript_StartDepartForDewford
 # 347 "data/maps/RouteSix/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	end
 # 348 "data/maps/RouteSix/scripts.pory"
-	waitmovement 0
+
 # 349 "data/maps/RouteSix/scripts.pory"
-	release
+Route109_EventScript_StayHere::
 # 350 "data/maps/RouteSix/scripts.pory"
-	end
+	msgbox Route109_Text_BrineyDeliverDevonGoods, MSGBOX_DEFAULT
 # 351 "data/maps/RouteSix/scripts.pory"
-
-# 352 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_Woman::
-# 353 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_LittleKidsDartAround, MSGBOX_NPC
-# 354 "data/maps/RouteSix/scripts.pory"
-	end
-# 355 "data/maps/RouteSix/scripts.pory"
-
-# 356 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_OldMan::
-# 357 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_ZigzagoonPicksUpLitter, MSGBOX_NPC
-# 358 "data/maps/RouteSix/scripts.pory"
-	end
-# 359 "data/maps/RouteSix/scripts.pory"
-
-# 360 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_Zigzagoon::
-# 361 "data/maps/RouteSix/scripts.pory"
-	lock
-# 362 "data/maps/RouteSix/scripts.pory"
-	faceplayer
-# 363 "data/maps/RouteSix/scripts.pory"
-	waitse
-# 364 "data/maps/RouteSix/scripts.pory"
-	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL
-# 365 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_ZigzagoonCry, MSGBOX_DEFAULT
-# 366 "data/maps/RouteSix/scripts.pory"
-	waitmoncry
-# 367 "data/maps/RouteSix/scripts.pory"
 	release
+# 352 "data/maps/RouteSix/scripts.pory"
+	end
+# 353 "data/maps/RouteSix/scripts.pory"
+
+# 354 "data/maps/RouteSix/scripts.pory"
+Route109_EventScript_ChoseNotToSail::
+# 355 "data/maps/RouteSix/scripts.pory"
+	msgbox Route109_Text_BrineyTellMeWhenYouNeedToSail, MSGBOX_DEFAULT
+# 356 "data/maps/RouteSix/scripts.pory"
+	release
+# 357 "data/maps/RouteSix/scripts.pory"
+	end
+# 358 "data/maps/RouteSix/scripts.pory"
+
+# 359 "data/maps/RouteSix/scripts.pory"
+Route109_EventScript_SeashoreHouseGirl::
+# 360 "data/maps/RouteSix/scripts.pory"
+	msgbox Route109_Text_ChillAtMyPapasSpot, MSGBOX_NPC
+# 361 "data/maps/RouteSix/scripts.pory"
+	end
+# 362 "data/maps/RouteSix/scripts.pory"
+
+# 363 "data/maps/RouteSix/scripts.pory"
+Route109_EventScript_SandCastleBoy::
+# 364 "data/maps/RouteSix/scripts.pory"
+	lock
+# 365 "data/maps/RouteSix/scripts.pory"
+	faceplayer
+# 366 "data/maps/RouteSix/scripts.pory"
+	msgbox Route109_Text_SandCastleTakingLongTime, MSGBOX_DEFAULT
+# 367 "data/maps/RouteSix/scripts.pory"
+	closemessage
 # 368 "data/maps/RouteSix/scripts.pory"
-	end
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 # 369 "data/maps/RouteSix/scripts.pory"
-
+	waitmovement 0
 # 370 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_SeashoreHouseSign::
+	release
 # 371 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_SeashoreHouseSign, MSGBOX_SIGN
+	end
 # 372 "data/maps/RouteSix/scripts.pory"
-	end
+
 # 373 "data/maps/RouteSix/scripts.pory"
-
+Route109_EventScript_SoftSandGirl::
 # 374 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_TrainerTipsSign::
+	lock
 # 375 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_TrainerTipsSign, MSGBOX_SIGN
+	faceplayer
 # 376 "data/maps/RouteSix/scripts.pory"
-	end
+	special GetPlayerBigGuyGirlString
 # 377 "data/maps/RouteSix/scripts.pory"
-
+	goto_if_set FLAG_RECEIVED_SOFT_SAND, Route109_EventScript_AlreadyReceivedSoftSand
 # 378 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_David::
+	msgbox Route109_Text_YouCanHaveThis, MSGBOX_DEFAULT
 # 379 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_single TRAINER_DAVID, Route109_Text_DavidIntro, Route109_Text_DavidDefeated
+	giveitem ITEM_SOFT_SAND
 # 380 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_DavidPostBattle, MSGBOX_AUTOCLOSE
+	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
 # 381 "data/maps/RouteSix/scripts.pory"
-	end
+	closemessage
 # 382 "data/maps/RouteSix/scripts.pory"
-
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 # 383 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_Alice::
+	waitmovement 0
 # 384 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_single TRAINER_ALICE, Route109_Text_AliceIntro, Route109_Text_AliceDefeated
+	setflag FLAG_RECEIVED_SOFT_SAND
 # 385 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_AlicePostBattle, MSGBOX_AUTOCLOSE
+	release
 # 386 "data/maps/RouteSix/scripts.pory"
 	end
 # 387 "data/maps/RouteSix/scripts.pory"
 
 # 388 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_Huey::
+Route109_EventScript_AlreadyReceivedSoftSand::
 # 389 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_single TRAINER_HUEY, Route109_Text_HueyIntro, Route109_Text_HueyDefeated
+	msgbox Route109_Text_WereGoingToMakeBigCastle, MSGBOX_DEFAULT
 # 390 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_HueyPostBattle, MSGBOX_AUTOCLOSE
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 # 391 "data/maps/RouteSix/scripts.pory"
-	end
+	waitmovement 0
 # 392 "data/maps/RouteSix/scripts.pory"
-
+	release
 # 393 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_Edmond::
+	end
 # 394 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_single TRAINER_EDMOND, Route109_Text_EdmondIntro, Route109_Text_EdmondDefeated
+
 # 395 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_EdmondPostBattle, MSGBOX_AUTOCLOSE
+Route109_EventScript_Woman::
 # 396 "data/maps/RouteSix/scripts.pory"
-	end
+	msgbox Route109_Text_LittleKidsDartAround, MSGBOX_NPC
 # 397 "data/maps/RouteSix/scripts.pory"
-
+	end
 # 398 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_Ricky::
+
 # 399 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_single TRAINER_RICKY_1, Route109_Text_RickyIntro, Route109_Text_RickyDefeated, Route109_EventScript_RickyRegisterMatchCallAfterBattle
+Route109_EventScript_OldMan::
 # 400 "data/maps/RouteSix/scripts.pory"
-	specialvar VAR_RESULT, ShouldTryRematchBattle
+	msgbox Route109_Text_ZigzagoonPicksUpLitter, MSGBOX_NPC
 # 401 "data/maps/RouteSix/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, Route109_EventScript_RickyRematch
+	end
 # 402 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_RickyPostBattle, MSGBOX_DEFAULT
+
 # 403 "data/maps/RouteSix/scripts.pory"
-	release
+Route109_EventScript_Zigzagoon::
 # 404 "data/maps/RouteSix/scripts.pory"
-	end
+	lock
 # 405 "data/maps/RouteSix/scripts.pory"
-
+	faceplayer
 # 406 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_RickyRegisterMatchCallAfterBattle::
+	waitse
 # 407 "data/maps/RouteSix/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
+	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL
 # 408 "data/maps/RouteSix/scripts.pory"
-	waitmovement 0
+	msgbox Route109_Text_ZigzagoonCry, MSGBOX_DEFAULT
 # 409 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_RickyRegister, MSGBOX_DEFAULT
+	waitmoncry
 # 410 "data/maps/RouteSix/scripts.pory"
-	register_matchcall TRAINER_RICKY_1
+	release
 # 411 "data/maps/RouteSix/scripts.pory"
-	release
+	end
 # 412 "data/maps/RouteSix/scripts.pory"
-	end
+
 # 413 "data/maps/RouteSix/scripts.pory"
-
+Route109_EventScript_SeashoreHouseSign::
 # 414 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_RickyRematch::
+	msgbox Route109_Text_SeashoreHouseSign, MSGBOX_SIGN
 # 415 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_rematch TRAINER_RICKY_1, Route109_Text_RickyRematchIntro, Route109_Text_RickyRematchDefeated
+	end
 # 416 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_RickyRematchPostBattle, MSGBOX_AUTOCLOSE
+
 # 417 "data/maps/RouteSix/scripts.pory"
-	end
+Route109_EventScript_TrainerTipsSign::
 # 418 "data/maps/RouteSix/scripts.pory"
-
+	msgbox Route109_Text_TrainerTipsSign, MSGBOX_SIGN
 # 419 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_Lola::
+	end
 # 420 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_single TRAINER_LOLA_1, Route109_Text_LolaIntro, Route109_Text_LolaDefeated, Route109_EventScript_LolaRegisterMatchCallAfterBattle
+
 # 421 "data/maps/RouteSix/scripts.pory"
-	specialvar VAR_RESULT, ShouldTryRematchBattle
+Route109_EventScript_David::
 # 422 "data/maps/RouteSix/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, Route109_EventScript_LolaRematch
+	trainerbattle_single TRAINER_DAVID, Route109_Text_DavidIntro, Route109_Text_DavidDefeated
 # 423 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_LolaPostBattle, MSGBOX_DEFAULT
+	msgbox Route109_Text_DavidPostBattle, MSGBOX_AUTOCLOSE
 # 424 "data/maps/RouteSix/scripts.pory"
-	release
+	end
 # 425 "data/maps/RouteSix/scripts.pory"
-	end
+
 # 426 "data/maps/RouteSix/scripts.pory"
-
+Route109_EventScript_Alice::
 # 427 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_LolaRegisterMatchCallAfterBattle::
+	trainerbattle_single TRAINER_ALICE, Route109_Text_AliceIntro, Route109_Text_AliceDefeated
 # 428 "data/maps/RouteSix/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
+	msgbox Route109_Text_AlicePostBattle, MSGBOX_AUTOCLOSE
 # 429 "data/maps/RouteSix/scripts.pory"
-	waitmovement 0
+	end
 # 430 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_LolaRegister, MSGBOX_DEFAULT
+
 # 431 "data/maps/RouteSix/scripts.pory"
-	register_matchcall TRAINER_LOLA_1
+Route109_EventScript_Huey::
 # 432 "data/maps/RouteSix/scripts.pory"
-	release
+	trainerbattle_single TRAINER_HUEY, Route109_Text_HueyIntro, Route109_Text_HueyDefeated
 # 433 "data/maps/RouteSix/scripts.pory"
-	end
+	msgbox Route109_Text_HueyPostBattle, MSGBOX_AUTOCLOSE
 # 434 "data/maps/RouteSix/scripts.pory"
-
+	end
 # 435 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_LolaRematch::
+
 # 436 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_rematch TRAINER_LOLA_1, Route109_Text_LolaRematchIntro, Route109_Text_LolaRematchDefeated
+Route109_EventScript_Edmond::
 # 437 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_LolaRematchPostBattle, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_EDMOND, Route109_Text_EdmondIntro, Route109_Text_EdmondDefeated
 # 438 "data/maps/RouteSix/scripts.pory"
-	end
+	msgbox Route109_Text_EdmondPostBattle, MSGBOX_AUTOCLOSE
 # 439 "data/maps/RouteSix/scripts.pory"
-
+	end
 # 440 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_Austina::
+
 # 441 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_single TRAINER_AUSTINA, Route109_Text_AustinaIntro, Route109_Text_AustinaDefeated
+Route109_EventScript_Ricky::
 # 442 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_AustinaPostBattle, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_RICKY_1, Route109_Text_RickyIntro, Route109_Text_RickyDefeated, Route109_EventScript_RickyRegisterMatchCallAfterBattle
 # 443 "data/maps/RouteSix/scripts.pory"
-	end
+	specialvar VAR_RESULT, ShouldTryRematchBattle
 # 444 "data/maps/RouteSix/scripts.pory"
-
+	goto_if_eq VAR_RESULT, TRUE, Route109_EventScript_RickyRematch
 # 445 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_Gwen::
+	msgbox Route109_Text_RickyPostBattle, MSGBOX_DEFAULT
 # 446 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_single TRAINER_GWEN, Route109_Text_GwenIntro, Route109_Text_GwenDefeated
+	release
 # 447 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_GwenPostBattle, MSGBOX_AUTOCLOSE
+	end
 # 448 "data/maps/RouteSix/scripts.pory"
-	end
+
 # 449 "data/maps/RouteSix/scripts.pory"
-
+Route109_EventScript_RickyRegisterMatchCallAfterBattle::
 # 450 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_Carter::
+	special PlayerFaceTrainerAfterBattle
 # 451 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_single TRAINER_CARTER, Route109_Text_CarterIntro, Route109_Text_CarterDefeated
+	waitmovement 0
 # 452 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_CarterPostBattle, MSGBOX_AUTOCLOSE
+	msgbox Route109_Text_RickyRegister, MSGBOX_DEFAULT
 # 453 "data/maps/RouteSix/scripts.pory"
-	end
+	register_matchcall TRAINER_RICKY_1
 # 454 "data/maps/RouteSix/scripts.pory"
-
+	release
 # 455 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_Paul::
+	end
 # 456 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_double TRAINER_MEL_AND_PAUL, Route109_Text_PaulIntro, Route109_Text_PaulDefeated, Route109_Text_PaulNotEnoughPokemon
+
 # 457 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_PaulPostBattle, MSGBOX_AUTOCLOSE
+Route109_EventScript_RickyRematch::
 # 458 "data/maps/RouteSix/scripts.pory"
-	end
+	trainerbattle_rematch TRAINER_RICKY_1, Route109_Text_RickyRematchIntro, Route109_Text_RickyRematchDefeated
 # 459 "data/maps/RouteSix/scripts.pory"
-
+	msgbox Route109_Text_RickyRematchPostBattle, MSGBOX_AUTOCLOSE
 # 460 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_Mel::
-# 461 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_double TRAINER_MEL_AND_PAUL, Route109_Text_MelIntro, Route109_Text_MelDefeated, Route109_Text_MelNotEnoughPokemon
-# 462 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_MelPostBattle, MSGBOX_AUTOCLOSE
-# 463 "data/maps/RouteSix/scripts.pory"
 	end
-# 464 "data/maps/RouteSix/scripts.pory"
+# 461 "data/maps/RouteSix/scripts.pory"
 
+# 462 "data/maps/RouteSix/scripts.pory"
+Route109_EventScript_Lola::
+# 463 "data/maps/RouteSix/scripts.pory"
+	trainerbattle_single TRAINER_LOLA_1, Route109_Text_LolaIntro, Route109_Text_LolaDefeated, Route109_EventScript_LolaRegisterMatchCallAfterBattle
+# 464 "data/maps/RouteSix/scripts.pory"
+	specialvar VAR_RESULT, ShouldTryRematchBattle
 # 465 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_Chandler::
+	goto_if_eq VAR_RESULT, TRUE, Route109_EventScript_LolaRematch
 # 466 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_single TRAINER_CHANDLER, Route109_Text_ChandlerIntro, Route109_Text_ChandlerDefeated
+	msgbox Route109_Text_LolaPostBattle, MSGBOX_DEFAULT
 # 467 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_ChandlerPostBattle, MSGBOX_AUTOCLOSE
+	release
 # 468 "data/maps/RouteSix/scripts.pory"
 	end
 # 469 "data/maps/RouteSix/scripts.pory"
 
 # 470 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_Hailey::
+Route109_EventScript_LolaRegisterMatchCallAfterBattle::
 # 471 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_single TRAINER_HAILEY, Route109_Text_HaileyIntro, Route109_Text_HaileyDefeated
+	special PlayerFaceTrainerAfterBattle
 # 472 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_HaileyPostBattle, MSGBOX_AUTOCLOSE
+	waitmovement 0
 # 473 "data/maps/RouteSix/scripts.pory"
-	end
+	msgbox Route109_Text_LolaRegister, MSGBOX_DEFAULT
 # 474 "data/maps/RouteSix/scripts.pory"
-
+	register_matchcall TRAINER_LOLA_1
 # 475 "data/maps/RouteSix/scripts.pory"
-Route109_EventScript_Elijah::
+	release
 # 476 "data/maps/RouteSix/scripts.pory"
-	trainerbattle_single TRAINER_ELIJAH, Route109_Text_ElijahIntro, Route109_Text_ElijahDefeated
-# 477 "data/maps/RouteSix/scripts.pory"
-	msgbox Route109_Text_ElijahPostBattle, MSGBOX_AUTOCLOSE
-# 478 "data/maps/RouteSix/scripts.pory"
 	end
+# 477 "data/maps/RouteSix/scripts.pory"
+
+# 478 "data/maps/RouteSix/scripts.pory"
+Route109_EventScript_LolaRematch::
 # 479 "data/maps/RouteSix/scripts.pory"
-
+	trainerbattle_rematch TRAINER_LOLA_1, Route109_Text_LolaRematchIntro, Route109_Text_LolaRematchDefeated
 # 480 "data/maps/RouteSix/scripts.pory"
-DewfordTown_Text_BrineyLandedInSlateportDeliverGoods:
+	msgbox Route109_Text_LolaRematchPostBattle, MSGBOX_AUTOCLOSE
 # 481 "data/maps/RouteSix/scripts.pory"
-	.string "MR. BRINEY: Ahoy!\n"
+	end
 # 482 "data/maps/RouteSix/scripts.pory"
-	.string "We've made land in SLATEPORT!\p"
+
 # 483 "data/maps/RouteSix/scripts.pory"
-	.string "I suppose you're going to visit CAPT.\n"
+Route109_EventScript_Austina::
 # 484 "data/maps/RouteSix/scripts.pory"
-	.string "STERN and deliver the DEVON GOODS?$"
+	trainerbattle_single TRAINER_AUSTINA, Route109_Text_AustinaIntro, Route109_Text_AustinaDefeated
 # 485 "data/maps/RouteSix/scripts.pory"
-
+	msgbox Route109_Text_AustinaPostBattle, MSGBOX_AUTOCLOSE
 # 486 "data/maps/RouteSix/scripts.pory"
-Route109_Text_BrineySailToDewfordQuestion:
+	end
 # 487 "data/maps/RouteSix/scripts.pory"
-	.string "MR. BRINEY: I thought you're supposed\n"
+
 # 488 "data/maps/RouteSix/scripts.pory"
-	.string "to deliver the DEVON GOODS.\p"
+Route109_EventScript_Gwen::
 # 489 "data/maps/RouteSix/scripts.pory"
-	.string "Would you like to sail back to\n"
+	trainerbattle_single TRAINER_GWEN, Route109_Text_GwenIntro, Route109_Text_GwenDefeated
 # 490 "data/maps/RouteSix/scripts.pory"
-	.string "DEWFORD, then?$"
+	msgbox Route109_Text_GwenPostBattle, MSGBOX_AUTOCLOSE
 # 491 "data/maps/RouteSix/scripts.pory"
-
+	end
 # 492 "data/maps/RouteSix/scripts.pory"
-Route109_Text_BrineyDewfordItIs:
+
 # 493 "data/maps/RouteSix/scripts.pory"
-	.string "MR. BRINEY: DEWFORD it is, then!\p"
+Route109_EventScript_Carter::
 # 494 "data/maps/RouteSix/scripts.pory"
-	.string "Anchors aweigh!\n"
+	trainerbattle_single TRAINER_CARTER, Route109_Text_CarterIntro, Route109_Text_CarterDefeated
 # 495 "data/maps/RouteSix/scripts.pory"
-	.string "PEEKO, we're setting sail, my darling!$"
+	msgbox Route109_Text_CarterPostBattle, MSGBOX_AUTOCLOSE
 # 496 "data/maps/RouteSix/scripts.pory"
-
+	end
 # 497 "data/maps/RouteSix/scripts.pory"
-Route109_Text_BrineyDeliverDevonGoods:
+
 # 498 "data/maps/RouteSix/scripts.pory"
-	.string "MR. BRINEY: Then you go on and deliver\n"
+Route109_EventScript_Paul::
 # 499 "data/maps/RouteSix/scripts.pory"
-	.string "the DEVON GOODS. I'll be waiting.$"
+	trainerbattle_double TRAINER_MEL_AND_PAUL, Route109_Text_PaulIntro, Route109_Text_PaulDefeated, Route109_Text_PaulNotEnoughPokemon
 # 500 "data/maps/RouteSix/scripts.pory"
-
+	msgbox Route109_Text_PaulPostBattle, MSGBOX_AUTOCLOSE
 # 501 "data/maps/RouteSix/scripts.pory"
-DewfordTown_Text_BrineyLandedInSlateport:
+	end
 # 502 "data/maps/RouteSix/scripts.pory"
-	.string "MR. BRINEY: Ahoy! We've made land in\n"
+
 # 503 "data/maps/RouteSix/scripts.pory"
-	.string "SLATEPORT!\p"
+Route109_EventScript_Mel::
 # 504 "data/maps/RouteSix/scripts.pory"
-	.string "You just go on and tell me whenever\n"
+	trainerbattle_double TRAINER_MEL_AND_PAUL, Route109_Text_MelIntro, Route109_Text_MelDefeated, Route109_Text_MelNotEnoughPokemon
 # 505 "data/maps/RouteSix/scripts.pory"
-	.string "you want to set sail again!$"
+	msgbox Route109_Text_MelPostBattle, MSGBOX_AUTOCLOSE
 # 506 "data/maps/RouteSix/scripts.pory"
-
+	end
 # 507 "data/maps/RouteSix/scripts.pory"
-Route109_Text_BrineyWhereAreWeBound:
+
 # 508 "data/maps/RouteSix/scripts.pory"
-	.string "MR. BRINEY: Ahoy!\n"
+Route109_EventScript_Chandler::
 # 509 "data/maps/RouteSix/scripts.pory"
-	.string "For you, I'll go out to sea anytime!\p"
+	trainerbattle_single TRAINER_CHANDLER, Route109_Text_ChandlerIntro, Route109_Text_ChandlerDefeated
 # 510 "data/maps/RouteSix/scripts.pory"
-	.string "Now, my friend, where are we bound?$"
+	msgbox Route109_Text_ChandlerPostBattle, MSGBOX_AUTOCLOSE
 # 511 "data/maps/RouteSix/scripts.pory"
-
+	end
 # 512 "data/maps/RouteSix/scripts.pory"
-Route109_Text_BrineyTellMeWhenYouNeedToSail:
+
 # 513 "data/maps/RouteSix/scripts.pory"
-	.string "MR. BRINEY: You just tell me whenever\n"
+Route109_EventScript_Hailey::
 # 514 "data/maps/RouteSix/scripts.pory"
-	.string "you need to set sail again!$"
+	trainerbattle_single TRAINER_HAILEY, Route109_Text_HaileyIntro, Route109_Text_HaileyDefeated
 # 515 "data/maps/RouteSix/scripts.pory"
-
+	msgbox Route109_Text_HaileyPostBattle, MSGBOX_AUTOCLOSE
 # 516 "data/maps/RouteSix/scripts.pory"
-Route109_Text_ChillAtMyPapasSpot:
+	end
 # 517 "data/maps/RouteSix/scripts.pory"
-	.string "Yo, TRAINERS!\n"
-# 518 "data/maps/RouteSix/scripts.pory"
-	.string "Whether you're hot to trot,\l"
-# 519 "data/maps/RouteSix/scripts.pory"
-	.string "or cool cat not,\l"
-# 520 "data/maps/RouteSix/scripts.pory"
-	.string "chill at my papa's spot!$"
-# 521 "data/maps/RouteSix/scripts.pory"
 
+# 518 "data/maps/RouteSix/scripts.pory"
+Route109_EventScript_Elijah::
+# 519 "data/maps/RouteSix/scripts.pory"
+	trainerbattle_single TRAINER_ELIJAH, Route109_Text_ElijahIntro, Route109_Text_ElijahDefeated
+# 520 "data/maps/RouteSix/scripts.pory"
+	msgbox Route109_Text_ElijahPostBattle, MSGBOX_AUTOCLOSE
+# 521 "data/maps/RouteSix/scripts.pory"
+	end
 # 522 "data/maps/RouteSix/scripts.pory"
-Route109_Text_LittleKidsDartAround:
+
 # 523 "data/maps/RouteSix/scripts.pory"
-	.string "Little kids can dart around so quickly…\p"
+DewfordTown_Text_BrineyLandedInSlateportDeliverGoods:
 # 524 "data/maps/RouteSix/scripts.pory"
-	.string "You don't dare take your eyes off them\n"
+	.string "MR. BRINEY: Ahoy!\n"
 # 525 "data/maps/RouteSix/scripts.pory"
-	.string "for an instant. It's very taxing.\p"
+	.string "We've made land in SLATEPORT!\p"
 # 526 "data/maps/RouteSix/scripts.pory"
-	.string "Mine are with my POKéMON, so they\n"
+	.string "I suppose you're going to visit CAPT.\n"
 # 527 "data/maps/RouteSix/scripts.pory"
-	.string "should be okay, but…$"
+	.string "STERN and deliver the DEVON GOODS?$"
 # 528 "data/maps/RouteSix/scripts.pory"
 
 # 529 "data/maps/RouteSix/scripts.pory"
-Route109_Text_SandCastleTakingLongTime:
+Route109_Text_BrineySailToDewfordQuestion:
 # 530 "data/maps/RouteSix/scripts.pory"
-	.string "Our sand castle's taking a long time\n"
+	.string "MR. BRINEY: I thought you're supposed\n"
 # 531 "data/maps/RouteSix/scripts.pory"
-	.string "to make.$"
+	.string "to deliver the DEVON GOODS.\p"
 # 532 "data/maps/RouteSix/scripts.pory"
-
+	.string "Would you like to sail back to\n"
 # 533 "data/maps/RouteSix/scripts.pory"
-Route109_Text_YouCanHaveThis:
+	.string "DEWFORD, then?$"
 # 534 "data/maps/RouteSix/scripts.pory"
-	.string "You can have this!$"
+
 # 535 "data/maps/RouteSix/scripts.pory"
-
+Route109_Text_BrineyDewfordItIs:
 # 536 "data/maps/RouteSix/scripts.pory"
-Route109_Text_WereGoingToMakeBigCastle:
+	.string "MR. BRINEY: DEWFORD it is, then!\p"
 # 537 "data/maps/RouteSix/scripts.pory"
-	.string "We're going to get all the sand from\n"
+	.string "Anchors aweigh!\n"
 # 538 "data/maps/RouteSix/scripts.pory"
-	.string "the beach and make a big castle!\p"
+	.string "PEEKO, we're setting sail, my darling!$"
 # 539 "data/maps/RouteSix/scripts.pory"
-	.string "And then we're going to be a king and\n"
+
 # 540 "data/maps/RouteSix/scripts.pory"
-	.string "queen.\p"
+Route109_Text_BrineyDeliverDevonGoods:
 # 541 "data/maps/RouteSix/scripts.pory"
-	.string "We'll let you be a servant.$"
+	.string "MR. BRINEY: Then you go on and deliver\n"
 # 542 "data/maps/RouteSix/scripts.pory"
-
+	.string "the DEVON GOODS. I'll be waiting.$"
 # 543 "data/maps/RouteSix/scripts.pory"
-Route109_Text_ZigzagoonPicksUpLitter:
-# 544 "data/maps/RouteSix/scripts.pory"
-	.string "The water around these parts is clean.\p"
-# 545 "data/maps/RouteSix/scripts.pory"
-	.string "But, I get my ZIGZAGOON to pick up\n"
-# 546 "data/maps/RouteSix/scripts.pory"
-	.string "litter from the shoreline at times.\p"
-# 547 "data/maps/RouteSix/scripts.pory"
-	.string "Dirty water becomes rain and joins our\n"
-# 548 "data/maps/RouteSix/scripts.pory"
-	.string "rivers, which we drink from…\p"
-# 549 "data/maps/RouteSix/scripts.pory"
-	.string "If we pollute the sea, it all comes\n"
-# 550 "data/maps/RouteSix/scripts.pory"
-	.string "back to haunt us eventually.$"
-# 551 "data/maps/RouteSix/scripts.pory"
 
+# 544 "data/maps/RouteSix/scripts.pory"
+DewfordTown_Text_BrineyLandedInSlateport:
+# 545 "data/maps/RouteSix/scripts.pory"
+	.string "MR. BRINEY: Ahoy! We've made land in\n"
+# 546 "data/maps/RouteSix/scripts.pory"
+	.string "SLATEPORT!\p"
+# 547 "data/maps/RouteSix/scripts.pory"
+	.string "You just go on and tell me whenever\n"
+# 548 "data/maps/RouteSix/scripts.pory"
+	.string "you want to set sail again!$"
+# 549 "data/maps/RouteSix/scripts.pory"
+
+# 550 "data/maps/RouteSix/scripts.pory"
+Route109_Text_BrineyWhereAreWeBound:
+# 551 "data/maps/RouteSix/scripts.pory"
+	.string "MR. BRINEY: Ahoy!\n"
 # 552 "data/maps/RouteSix/scripts.pory"
-Route109_Text_ZigzagoonCry:
+	.string "For you, I'll go out to sea anytime!\p"
 # 553 "data/maps/RouteSix/scripts.pory"
-	.string "ZIGZAGOON: Guguu?$"
+	.string "Now, my friend, where are we bound?$"
 # 554 "data/maps/RouteSix/scripts.pory"
 
 # 555 "data/maps/RouteSix/scripts.pory"
-Route109_Text_SeashoreHouseSign:
+Route109_Text_BrineyTellMeWhenYouNeedToSail:
 # 556 "data/maps/RouteSix/scripts.pory"
-	.string "SEASHORE HOUSE\p"
+	.string "MR. BRINEY: You just tell me whenever\n"
 # 557 "data/maps/RouteSix/scripts.pory"
-	.string "“May hot battles rage on hot sands!\n"
+	.string "you need to set sail again!$"
 # 558 "data/maps/RouteSix/scripts.pory"
-	.string "The place for hot TRAINERS!”$"
-# 559 "data/maps/RouteSix/scripts.pory"
 
+# 559 "data/maps/RouteSix/scripts.pory"
+Route109_Text_ChillAtMyPapasSpot:
 # 560 "data/maps/RouteSix/scripts.pory"
-Route109_Text_TrainerTipsSign:
+	.string "Yo, TRAINERS!\n"
 # 561 "data/maps/RouteSix/scripts.pory"
-	.string "TRAINER TIPS\p"
+	.string "Whether you're hot to trot,\l"
 # 562 "data/maps/RouteSix/scripts.pory"
-	.string "POKéMON at the same level may not\n"
+	.string "or cool cat not,\l"
 # 563 "data/maps/RouteSix/scripts.pory"
-	.string "always have identical stats.\p"
+	.string "chill at my papa's spot!$"
 # 564 "data/maps/RouteSix/scripts.pory"
-	.string "POKéMON raised by TRAINERS are said\n"
+
 # 565 "data/maps/RouteSix/scripts.pory"
+Route109_Text_LittleKidsDartAround:
+# 566 "data/maps/RouteSix/scripts.pory"
+	.string "Little kids can dart around so quickly…\p"
+# 567 "data/maps/RouteSix/scripts.pory"
+	.string "You don't dare take your eyes off them\n"
+# 568 "data/maps/RouteSix/scripts.pory"
+	.string "for an instant. It's very taxing.\p"
+# 569 "data/maps/RouteSix/scripts.pory"
+	.string "Mine are with my POKéMON, so they\n"
+# 570 "data/maps/RouteSix/scripts.pory"
+	.string "should be okay, but…$"
+# 571 "data/maps/RouteSix/scripts.pory"
+
+# 572 "data/maps/RouteSix/scripts.pory"
+Route109_Text_SandCastleTakingLongTime:
+# 573 "data/maps/RouteSix/scripts.pory"
+	.string "Our sand castle's taking a long time\n"
+# 574 "data/maps/RouteSix/scripts.pory"
+	.string "to make.$"
+# 575 "data/maps/RouteSix/scripts.pory"
+
+# 576 "data/maps/RouteSix/scripts.pory"
+Route109_Text_YouCanHaveThis:
+# 577 "data/maps/RouteSix/scripts.pory"
+	.string "You can have this!$"
+# 578 "data/maps/RouteSix/scripts.pory"
+
+# 579 "data/maps/RouteSix/scripts.pory"
+Route109_Text_WereGoingToMakeBigCastle:
+# 580 "data/maps/RouteSix/scripts.pory"
+	.string "We're going to get all the sand from\n"
+# 581 "data/maps/RouteSix/scripts.pory"
+	.string "the beach and make a big castle!\p"
+# 582 "data/maps/RouteSix/scripts.pory"
+	.string "And then we're going to be a king and\n"
+# 583 "data/maps/RouteSix/scripts.pory"
+	.string "queen.\p"
+# 584 "data/maps/RouteSix/scripts.pory"
+	.string "We'll let you be a servant.$"
+# 585 "data/maps/RouteSix/scripts.pory"
+
+# 586 "data/maps/RouteSix/scripts.pory"
+Route109_Text_ZigzagoonPicksUpLitter:
+# 587 "data/maps/RouteSix/scripts.pory"
+	.string "The water around these parts is clean.\p"
+# 588 "data/maps/RouteSix/scripts.pory"
+	.string "But, I get my ZIGZAGOON to pick up\n"
+# 589 "data/maps/RouteSix/scripts.pory"
+	.string "litter from the shoreline at times.\p"
+# 590 "data/maps/RouteSix/scripts.pory"
+	.string "Dirty water becomes rain and joins our\n"
+# 591 "data/maps/RouteSix/scripts.pory"
+	.string "rivers, which we drink from…\p"
+# 592 "data/maps/RouteSix/scripts.pory"
+	.string "If we pollute the sea, it all comes\n"
+# 593 "data/maps/RouteSix/scripts.pory"
+	.string "back to haunt us eventually.$"
+# 594 "data/maps/RouteSix/scripts.pory"
+
+# 595 "data/maps/RouteSix/scripts.pory"
+Route109_Text_ZigzagoonCry:
+# 596 "data/maps/RouteSix/scripts.pory"
+	.string "ZIGZAGOON: Guguu?$"
+# 597 "data/maps/RouteSix/scripts.pory"
+
+# 598 "data/maps/RouteSix/scripts.pory"
+Route109_Text_SeashoreHouseSign:
+# 599 "data/maps/RouteSix/scripts.pory"
+	.string "SEASHORE HOUSE\p"
+# 600 "data/maps/RouteSix/scripts.pory"
+	.string "“May hot battles rage on hot sands!\n"
+# 601 "data/maps/RouteSix/scripts.pory"
+	.string "The place for hot TRAINERS!”$"
+# 602 "data/maps/RouteSix/scripts.pory"
+
+# 603 "data/maps/RouteSix/scripts.pory"
+Route109_Text_TrainerTipsSign:
+# 604 "data/maps/RouteSix/scripts.pory"
+	.string "TRAINER TIPS\p"
+# 605 "data/maps/RouteSix/scripts.pory"
+	.string "POKéMON at the same level may not\n"
+# 606 "data/maps/RouteSix/scripts.pory"
+	.string "always have identical stats.\p"
+# 607 "data/maps/RouteSix/scripts.pory"
+	.string "POKéMON raised by TRAINERS are said\n"
+# 608 "data/maps/RouteSix/scripts.pory"
 	.string "to grow stronger than wild POKéMON.$"
+
+RouteSix_Text_AutumnIntro::
+# 9 "data/maps/RouteSix/scripts.pory"
+	.string "I climb this hill every day. I have\n"
+	.string "confidence in my strength!$"
+
+RouteSix_Text_AutumnDefeat::
+# 13 "data/maps/RouteSix/scripts.pory"
+	.string "Hmm… What went wrong?$"
+
+RouteSix_Text_AutumnPostBattle::
+# 17 "data/maps/RouteSix/scripts.pory"
+	.string "What is that odd rock protrusion a\n"
+	.string "little to the north?$"
+
+RouteSix_Text_DrewIntro::
+# 27 "data/maps/RouteSix/scripts.pory"
+	.string "Did you just become a Trainer? We're\n"
+	.string "both beginners!$"
+
+RouteSix_Text_DrewDefeat::
+# 31 "data/maps/RouteSix/scripts.pory"
+	.string "I called you because I thought I could\n"
+	.string "beat you…$"
+
+RouteSix_Text_DrewPostBattle::
+# 35 "data/maps/RouteSix/scripts.pory"
+	.string "I haven't won once yet… I wish I would\n"
+	.string "win soon…$"

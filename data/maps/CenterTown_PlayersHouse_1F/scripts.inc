@@ -136,7 +136,7 @@ CenterTown_PlayersHouse_1F_MomItems::
 # 73 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
 	setflag FLAG_SYS_POKEDEX_GET
 # 74 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
-	setvar VAR_LITTLEROOT_INTRO_STATE, 1
+	setvar VAR_CENTER_INTRO_STATE, 1
 # 75 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
 	setrespawn HEAL_LOCATION_CENTER_TOWN
 # 76 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
@@ -234,11 +234,11 @@ LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual::
 # 124 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
 LittlerootTown_BrendansHouse_1F_OnTransition:
 # 125 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor
+	call_if_eq VAR_CENTER_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor
 # 126 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs
+	call_if_eq VAR_CENTER_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs
 # 127 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV
+	call_if_eq VAR_CENTER_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV
 # 128 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"
 	end
 # 129 "data/maps/CenterTown_PlayersHouse_1F/scripts.pory"

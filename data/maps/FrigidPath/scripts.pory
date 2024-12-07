@@ -1,3 +1,28 @@
+mapscripts FrigidPath_MapScripts{}
+
+script FrigidPath_EventScript_Sawyer{
+	trainerbattle_single (TRAINER_SAWYER_1, FrigidPath_Text_SawyerIntro, FrigidPath_Text_SawyerDefeat)
+	msgbox (FrigidPath_Text_SawyerPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text FrigidPath_Text_SawyerIntro{
+	format("This is one fine cave! It's plenty chilly!")
+}
+
+text FrigidPath_Text_SawyerDefeat{
+	format("Oh, you're real cool, too!")
+}
+
+text FrigidPath_Text_SawyerPostBattle{
+	format("I think I need a dip in Seashell Beach!")
+}
+
+script FrigidPath_EventScript_FindEscapeRope{
+	finditem (ITEM_ESCAPE_ROPE)
+	end
+}
+
 raw `
 .equ LOCALID_WANDAS_BF, 1
 .set LOCALID_BRINEY, 5
@@ -5,7 +30,7 @@ raw `
 .set LOCALID_PEEKO, 7
 .equ LOCALID_WANDA, 10
 
-FrigidPath_MapScripts::
+RusturfTunnel_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, RusturfTunnel_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, RusturfTunnel_OnFrame
 	.byte 0

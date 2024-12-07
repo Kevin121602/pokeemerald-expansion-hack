@@ -502,7 +502,7 @@ Route101_EventScript_BirchsBag::
 # 251 "data/maps/RouteOne/scripts.pory"
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
 # 252 "data/maps/RouteOne/scripts.pory"
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+	setflag FLAG_HIDE_ROUTE_EIGHT_GALACTIC_GRUNT
 # 253 "data/maps/RouteOne/scripts.pory"
 	setvar VAR_BIRCH_LAB_STATE, 2
 # 254 "data/maps/RouteOne/scripts.pory"

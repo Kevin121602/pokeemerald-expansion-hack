@@ -6105,8 +6105,8 @@ Hariyama
 Level: 39
 IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
 
-=== TRAINER_CALVIN_1 ===
-Name: CALVIN
+=== TRAINER_JOEY ===
+Name: JOEY
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -6237,8 +6237,8 @@ Ability: Poison Point
 -Sucker Punch
 -Sand Attack
 
-=== TRAINER_JOEY ===
-Name: JOEY
+=== TRAINER_CALVIN_1 ===
+Name: CALVIN
 Class: Youngster
 Pic: Youngster
 Gender: Male

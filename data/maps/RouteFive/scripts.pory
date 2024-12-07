@@ -1,5 +1,25 @@
+mapscripts RouteFive_MapScripts{}
+
+script RouteFive_EventScript_Haley{
+	trainerbattle_single (TRAINER_HALEY_1, RouteFive_Text_HaleyIntro, RouteFive_Text_HaleyDefeat)
+	msgbox (RouteFive_Text_HaleyPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text RouteFive_Text_HaleyIntro{
+	format("Should I… Or shouldn't I? Okay, sure, I will battle!")
+}
+
+text RouteFive_Text_HaleyDefeat{
+	format("I shouldn't have battled…")
+}
+
+text RouteFive_Text_HaleyPostBattle{
+	format("If you're faced with a decision and you let someone else choose for you, you will regret it, however things turn out.")
+}
+
 raw `
-RouteFive_MapScripts::
+Route108_MapScripts::
 	.byte 0
 
 Route108_EventScript_Jerome::

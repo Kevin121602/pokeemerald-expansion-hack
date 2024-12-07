@@ -1087,7 +1087,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         {
             if (weather & B_WEATHER_SUN_PRIMAL)
             {
-                if (moveType == TYPE_WATER)
+                //Hydro Steam usable in primordial sun
+                if (moveType == TYPE_WATER && move != MOVE_HYDRO_STEAM)
                     RETURN_SCORE_MINUS(30);
             }
             else if (weather & B_WEATHER_RAIN_PRIMAL)

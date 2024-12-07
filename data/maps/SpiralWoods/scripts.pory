@@ -1,8 +1,97 @@
+mapscripts SpiralWoods_MapScripts{}
+
+script SpiralWoods_EventScript_Davis{
+	trainerbattle_single (TRAINER_DAVIS, SpiralWoods_Text_DavisIntro, SpiralWoods_Text_DavisDefeat)
+	msgbox (SpiralWoods_Text_DavisPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text SpiralWoods_Text_DavisIntro{
+	format("This is my awesome Bug Pokémon! My big brother got it for me.")
+}
+
+text SpiralWoods_Text_DavisDefeat{
+	format("Waaaah!  You meanie!")
+}
+
+text SpiralWoods_Text_DavisPostBattle{
+	format("Don't tell my brother I lost. You have to keep it a secret!")
+}
+
+script SpiralWoods_EventScript_Brent{
+	trainerbattle_single (TRAINER_BRENT, SpiralWoods_Text_BrentIntro, SpiralWoods_Text_BrentDefeat)
+	msgbox (SpiralWoods_Text_BrentPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text SpiralWoods_Text_BrentIntro{
+	format("Hey! Did you beat my little brother?")
+}
+
+text SpiralWoods_Text_BrentDefeat{
+	format("Whoopsie! I lost!")
+}
+
+text SpiralWoods_Text_BrentPostBattle{
+	format("Looks like you beat me too…")
+}
+
+script SpiralWoods_EventScript_Rick{
+	trainerbattle_single (TRAINER_RICK, SpiralWoods_Text_RickIntro, SpiralWoods_Text_RickDefeat)
+	msgbox (SpiralWoods_Text_RickPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text SpiralWoods_Text_RickIntro{
+	format("Hahah! Our eyes met! I'll take you on with my Bug Pokémon!")
+}
+
+text SpiralWoods_Text_RickDefeat{
+	format("Ow! Down and out!")
+}
+
+text SpiralWoods_Text_RickPostBattle{
+	format("If you lock eyes with a Trainer, you have to challenge! It's a rule!")
+}
+
+script SpiralWoods_EventScript_Donald{
+	trainerbattle_single (TRAINER_DONALD, SpiralWoods_Text_DonaldIntro, SpiralWoods_Text_DonaldDefeat)
+	msgbox (SpiralWoods_Text_DonaldPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text SpiralWoods_Text_DonaldIntro{
+	format("So, we finally meet! My Bug Pokémon will keep you company!")
+}
+
+text SpiralWoods_Text_DonaldDefeat{
+	format("I wish we'd never met…")
+}
+
+text SpiralWoods_Text_DonaldPostBattle{
+	format("I want to catch some more bugs… Can you hurry up and move?")
+}
+
+script SpiralWoods_BerryJuice {
+	lock
+	faceplayer
+	if(flag(FLAG_RECEIVED_BERRY_JUICE)){
+		msgbox(format("That Berry Juice is rich in Vitamin C."))
+	}
+	if(!flag(FLAG_RECEIVED_BERRY_JUICE)){
+		msgbox(format("Are you a Trainer? I've been looking for someone to give this to."))
+		giveitem(ITEM_BERRY_JUICE)
+		setflag(FLAG_RECEIVED_BERRY_JUICE)
+		msgbox(format("It's rich in Vitamin C!"))
+	}
+	release
+}
+
 raw `
 .set LOCALID_GRUNT, 3
 .set LOCALID_DEVON_EMPLOYEE, 4
 
-SpiralWoods_MapScripts::
+PetalburgWoods_MapScripts::
 	.byte 0
 
 PetalburgWoods_EventScript_DevonResearcherLeft::

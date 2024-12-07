@@ -1,5 +1,25 @@
+mapscripts SeashellBeach_MapScripts{}
+
+script SeashellBeach_EventScript_Josh{
+	trainerbattle_single (TRAINER_JOSH, SeashellBeach_Text_JoshIntro, SeashellBeach_Text_JoshDefeat)
+	msgbox (SeashellBeach_Text_JoshPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text SeashellBeach_Text_JoshIntro{
+	format("Don't take us Youngsters lightly! I'll show you why we're better!")
+}
+
+text SeashellBeach_Text_JoshDefeat{
+	format("You were too good for me…")
+}
+
+text SeashellBeach_Text_JoshPostBattle{
+	format("You haven't seen anything of the Normal type's terrifying power!")
+}
+
 raw `
-SeashellBeach_MapScripts::
+Route107_MapScripts::
 	.byte 0
 
 RustboroCity_Gym_EventScript_Josh::

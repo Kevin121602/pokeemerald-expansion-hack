@@ -51,7 +51,7 @@ InsideOfTruck_EventScript_SetIntroFlagsMale::
 # 26 "data/maps/InsideOfTruck/scripts.pory"
 	setrespawn HEAL_LOCATION_CENTER_TOWN_PLAYERS_HOUSE_2F
 # 27 "data/maps/InsideOfTruck/scripts.pory"
-	setvar VAR_LITTLEROOT_INTRO_STATE, 1
+	setvar VAR_CENTER_INTRO_STATE, 1
 # 28 "data/maps/InsideOfTruck/scripts.pory"
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_MOM
 # 29 "data/maps/InsideOfTruck/scripts.pory"
@@ -77,7 +77,7 @@ InsideOfTruck_EventScript_SetIntroFlagsFemale::
 # 39 "data/maps/InsideOfTruck/scripts.pory"
 	setrespawn HEAL_LOCATION_CENTER_TOWN_PLAYERS_HOUSE_2F
 # 40 "data/maps/InsideOfTruck/scripts.pory"
-	setvar VAR_LITTLEROOT_INTRO_STATE, 2
+	setvar VAR_CENTER_INTRO_STATE, 2
 # 41 "data/maps/InsideOfTruck/scripts.pory"
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM
 # 42 "data/maps/InsideOfTruck/scripts.pory"

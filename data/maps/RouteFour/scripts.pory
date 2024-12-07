@@ -1,5 +1,25 @@
+mapscripts RouteFour_MapScripts{}
+
+script RouteFour_EventScript_Madeline{
+	trainerbattle_single (TRAINER_MADELINE_1, RouteFour_Text_MadelineIntro, RouteFour_Text_MadelineDefeat)
+	msgbox (RouteFour_Text_MadelinePostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text RouteFour_Text_MadelineIntro{
+	format("I use this parasol to keep myself dry from the rain!")
+}
+
+text RouteFour_Text_MadelineDefeat{
+	format("Huff, huff… I am exhausted…")
+}
+
+text RouteFour_Text_MadelinePostBattle{
+	format("You're very good at this. I must say I'm impressed!")
+}
+
 raw `
-RouteFour_MapScripts::
+Route106_MapScripts::
 	.byte 0
 
 Route113_EventScript_Madeline::
