@@ -5582,7 +5582,6 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .expYield = CORSOLA_EXP_YIELD,
         .evYield_Defense = 1,
         .evYield_SpDefense = 1,
-        .itemRare = ITEM_LUMINOUS_MOSS,
         .genderRatio = PERCENT_FEMALE(75),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -7378,7 +7377,6 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .expYield = 64,
     #endif
         .evYield_HP = 3,
-        .itemCommon = ITEM_LUM_BERRY,
         .itemRare = ITEM_LUM_BERRY,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,

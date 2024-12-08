@@ -88,7 +88,7 @@ Pic: Hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Smoochum @ Berry Juice
 Level: 12
@@ -251,10 +251,10 @@ Pic: Aqua Grunt M
 Gender: Male
 Music: Aqua
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Glimmet @ Assault Vest
-Level: 17
+Level: 16
 Nature: Timid
 Ability: Toxic Debris
 -Venoshock
@@ -272,7 +272,7 @@ Ability: Mystic Charm
 -Confuse Ray
 
 Baltoy @ Berry Juice
-Level: 16
+Level: 17
 Nature: Timid
 Ability: Levitate
 -Mud Shot
@@ -296,7 +296,7 @@ Gender: Male
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Manectric
 Level: 29
@@ -566,7 +566,7 @@ Pic: Expert M
 Gender: Male
 Music: Intense
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Makuhita
 Level: 30
@@ -584,7 +584,7 @@ Gender: Male
 Music: Aqua
 Items: Super Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Mightyena
 Level: 34
@@ -614,7 +614,7 @@ Pic: Aqua Admin F
 Gender: Female
 Music: Aqua
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Carvanha
 Level: 28
@@ -631,7 +631,7 @@ Pic: Aqua Admin F
 Gender: Female
 Music: Aqua
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Sharpedo
 Level: 37
@@ -649,7 +649,7 @@ Gender: Male
 Music: Aqua
 Items: Super Potion / Super Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Mightyena
 Level: 41
@@ -722,7 +722,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Medicham
 Level: 43
@@ -839,7 +839,7 @@ Pic: Ruin Maniac
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Geodude @ Red Card
 Level: 16
@@ -879,7 +879,7 @@ Pic: Ruin Maniac
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Vullaby @ Berry Juice
 Level: 16
@@ -1344,7 +1344,7 @@ Gender: Male
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Swellow
 Level: 26
@@ -1361,7 +1361,7 @@ Gender: Male
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Spinda
 Level: 26
@@ -1378,7 +1378,7 @@ Gender: Male
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Slakoth @ Sitrus Berry
 Level: 26
@@ -1395,7 +1395,7 @@ Gender: Male
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Vigoroth
 Level: 26
@@ -1411,7 +1411,7 @@ Gender: Male
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Swellow
 Level: 28
@@ -1461,7 +1461,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Sableye
 Level: 44
@@ -1483,7 +1483,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Mawile
 Level: 46
@@ -1501,7 +1501,7 @@ Gender: Male
 Music: Cool
 Items: Super Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Electrike
 Level: 17
@@ -1523,7 +1523,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Cacturne
 Level: 43
@@ -1541,7 +1541,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Magneton
 Level: 43
@@ -1559,7 +1559,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Swellow
 Level: 42
@@ -1581,7 +1581,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Dodrio
 Level: 42
@@ -1607,7 +1607,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Kecleon
 Level: 42
@@ -1629,7 +1629,7 @@ Gender: Male
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Electrike
 Level: 26
@@ -1651,7 +1651,7 @@ Gender: Male
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Manectric
 Level: 29
@@ -1673,7 +1673,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Manectric
 Level: 32
@@ -1695,7 +1695,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Manectric
 Level: 35
@@ -1717,7 +1717,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Graveler
 Level: 33
@@ -1735,7 +1735,7 @@ Gender: Female
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Delcatty
 Level: 26
@@ -1751,7 +1751,7 @@ Gender: Female
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Wigglytuff
 Level: 26
@@ -1836,7 +1836,7 @@ Gender: Female
 Music: Cool
 Items: Super Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Wingull
 Level: 17
@@ -1858,7 +1858,7 @@ Gender: Female
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Sableye
 Level: 30
@@ -1872,7 +1872,7 @@ Gender: Female
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Roselia
 Level: 45
@@ -1886,7 +1886,7 @@ Gender: Female
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Claydol
 Level: 45
@@ -1900,7 +1900,7 @@ Gender: Female
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Torkoal
 Level: 42
@@ -1922,7 +1922,7 @@ Gender: Female
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Skarmory
 Level: 43
@@ -1940,7 +1940,7 @@ Gender: Female
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Sandslash
 Level: 42
@@ -1962,7 +1962,7 @@ Gender: Female
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Wingull
 Level: 26
@@ -1984,7 +1984,7 @@ Gender: Female
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Pelipper
 Level: 29
@@ -2006,7 +2006,7 @@ Gender: Female
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Pelipper
 Level: 32
@@ -2028,7 +2028,7 @@ Gender: Female
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Pelipper
 Level: 34
@@ -3782,7 +3782,7 @@ Pic: Camper
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Sunkern @ Eviolite
 Level: 13
@@ -3817,7 +3817,7 @@ Pic: Camper
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Thwackey @ Lum Berry
 Level: 16
@@ -3922,7 +3922,7 @@ Pic: Picnicker
 Gender: Female
 Music: Girl
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Blitzle @ Expert Belt
 Level: 12
@@ -4044,7 +4044,7 @@ Pic: Bug Maniac
 Gender: Male
 Music: Suspicious
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Dottler @ Light Clay
 Level: 13
@@ -4080,7 +4080,7 @@ Pic: Bug Maniac
 Gender: Male
 Music: Suspicious
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Beautifly @ Lum Berry
 Level: 14
@@ -4758,7 +4758,7 @@ Gender: Male
 Music: Elite Four
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability / Setup First Turn
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware / Setup First Turn
 Mugshot: Purple
 
 Mightyena
@@ -4809,7 +4809,7 @@ Gender: Female
 Music: Elite Four
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 Mugshot: Green
 
 Dusclops
@@ -4860,7 +4860,7 @@ Gender: Female
 Music: Elite Four
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 Mugshot: Pink
 
 Sealeo
@@ -4911,7 +4911,7 @@ Gender: Male
 Music: Elite Four
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 Mugshot: Blue
 
 Shelgon
@@ -4962,7 +4962,7 @@ Gender: Female
 Music: Female
 Items: Potion / Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Geodude
 Level: 12
@@ -4996,7 +4996,7 @@ Gender: Male
 Music: Male
 Items: Super Potion / Super Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Machop
 Level: 16
@@ -5030,7 +5030,7 @@ Gender: Male
 Music: Male
 Items: Super Potion / Super Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Voltorb
 Level: 20
@@ -5072,7 +5072,7 @@ Gender: Female
 Music: Female
 Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Numel
 Level: 24
@@ -5114,7 +5114,7 @@ Gender: Male
 Music: Male
 Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Spinda
 Level: 27
@@ -5156,7 +5156,7 @@ Gender: Female
 Music: Female
 Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability / Risky
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware / Risky
 
 Swablu
 Level: 29
@@ -5206,7 +5206,7 @@ Gender: Male
 Music: Female
 Items: Hyper Potion / Hyper Potion / Hyper Potion / Hyper Potion
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Claydol
 Level: 41
@@ -5248,7 +5248,7 @@ Gender: Male
 Music: Male
 Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Luvdisc
 Level: 41
@@ -5930,7 +5930,7 @@ Pic: Expert M
 Gender: Male
 Music: Intense
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Hariyama
 Level: 27
@@ -5943,7 +5943,7 @@ Pic: Expert M
 Gender: Male
 Music: Intense
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Hariyama
 Level: 33
@@ -5960,7 +5960,7 @@ Pic: Expert M
 Gender: Male
 Music: Intense
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Hariyama
 Level: 36
@@ -5977,7 +5977,7 @@ Pic: Expert M
 Gender: Male
 Music: Intense
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Hariyama
 Level: 39
@@ -5994,7 +5994,7 @@ Pic: Expert M
 Gender: Male
 Music: Intense
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Hariyama
 Level: 42
@@ -6011,7 +6011,7 @@ Pic: Expert F
 Gender: Female
 Music: Intense
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Meditite
 Level: 18
@@ -6028,7 +6028,7 @@ Pic: Expert F
 Gender: Female
 Music: Intense
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Meditite
 Level: 21
@@ -6045,7 +6045,7 @@ Pic: Expert F
 Gender: Female
 Music: Intense
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Meditite
 Level: 30
@@ -6062,7 +6062,7 @@ Pic: Expert F
 Gender: Female
 Music: Intense
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Medicham
 Level: 33
@@ -6079,7 +6079,7 @@ Pic: Expert F
 Gender: Female
 Music: Intense
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Medicham
 Level: 36
@@ -6096,7 +6096,7 @@ Pic: Expert F
 Gender: Female
 Music: Intense
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Medicham
 Level: 39
@@ -6113,7 +6113,7 @@ Pic: Youngster
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Bidoof @ Berry Juice
 Level: 10
@@ -6143,7 +6143,7 @@ Pic: Youngster
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Tarountula @ Red Card
 Level: 10
@@ -6176,7 +6176,7 @@ Pic: Youngster
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Bunnelby @ Focus Sash
 Level: 11
@@ -6210,7 +6210,7 @@ Pic: Youngster
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Doduo @ Silk Scarf
 Level: 14
@@ -6245,7 +6245,7 @@ Pic: Youngster
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Pichu @ Eviolite
 Level: 15
@@ -6281,7 +6281,7 @@ Pic: Youngster
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Croagunk @ Poison Barb
 Level: 16
@@ -6318,7 +6318,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Slaking
 Level: 43
@@ -6344,7 +6344,7 @@ Gender: Female
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Gardevoir
 Level: 43
@@ -6519,7 +6519,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore / Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 Mugshot: Yellow
 
 Wailord
@@ -8246,7 +8246,7 @@ Pic: Parasol Lady
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Luvdisc @ Berry Juice
 Level: 11
@@ -8818,7 +8818,7 @@ Pic: Picnicker
 Gender: Female
 Music: Girl
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Solosis @ Light Clay
 Level: 16
@@ -9069,7 +9069,7 @@ Pic: Twins
 Gender: Male
 Music: Twins
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Plusle @ Focus Sash
 Level: 18
@@ -9515,7 +9515,7 @@ Gender: Female
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Absol
 Level: 27
@@ -9528,7 +9528,7 @@ Pic: Ninja Boy
 Gender: Male
 Music: Suspicious
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Koffing
 Level: 31
@@ -9597,7 +9597,7 @@ Gender: Female
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Manectric
 Level: 34
@@ -9785,7 +9785,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Altaria
 Level: 44
@@ -9834,7 +9834,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Treecko
 Level: 5
@@ -9847,7 +9847,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Slugma
 Level: 18
@@ -9868,7 +9868,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Slugma
 Level: 29
@@ -9902,7 +9902,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Wingull
 Level: 18
@@ -9923,7 +9923,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Pelipper
 Level: 29
@@ -9944,7 +9944,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Mudkip
 Level: 5
@@ -9957,7 +9957,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Lombre
 Level: 18
@@ -9978,7 +9978,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Lombre
 Level: 29
@@ -9999,7 +9999,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Treecko
 Level: 5
@@ -10012,7 +10012,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Wingull
 Level: 18
@@ -10033,7 +10033,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Slugma
 Level: 29
@@ -10054,7 +10054,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Torchic
 Level: 5
@@ -10067,7 +10067,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Wingull
 Level: 18
@@ -10088,7 +10088,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Pelipper
 Level: 29
@@ -10109,7 +10109,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Mudkip
 Level: 5
@@ -10122,7 +10122,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Lombre
 Level: 18
@@ -10143,7 +10143,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Lombre
 Level: 29
@@ -10197,7 +10197,7 @@ Pic: Bug Catcher
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Pineco @ Custap Berry
 Level: 13
@@ -10234,7 +10234,7 @@ Pic: Cooltrainer M
 Gender: Male
 Music: Cool
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Lunatone
 Level: 43
@@ -10425,7 +10425,7 @@ Gender: Female
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Sableye
 Level: 43
@@ -10588,7 +10588,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Breloom
 Level: 27
@@ -10602,7 +10602,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Seedot
 Level: 28
@@ -10624,7 +10624,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Cacturne
 Level: 39
@@ -10652,7 +10652,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Breloom
 Level: 34
@@ -10680,7 +10680,7 @@ Gender: Male
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Kecleon
 Level: 39
@@ -10738,7 +10738,7 @@ Gender: Female
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Swablu
 Level: 38
@@ -10774,7 +10774,7 @@ Gender: Female
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Gloom
 Level: 33
@@ -10810,7 +10810,7 @@ Gender: Female
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Bellossom
 Level: 39
@@ -10991,7 +10991,7 @@ Gender: Female
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Manectric
 Level: 32
@@ -11233,7 +11233,7 @@ Pic: Expert M
 Gender: Male
 Music: Intense
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Swellow
 Level: 33
@@ -11280,7 +11280,7 @@ Pic: Magma Admin
 Gender: Male
 Music: Magma
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Numel
 Level: 18
@@ -11323,7 +11323,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Slugma
 Level: 13
@@ -11358,7 +11358,7 @@ Gender: Male
 Music: Magma
 Items: Super Potion / Super Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Mightyena
 Level: 37
@@ -11380,7 +11380,7 @@ Gender: Male
 Music: Magma
 Items: Super Potion / Super Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Mightyena
 Level: 24
@@ -11401,7 +11401,7 @@ Pic: Lass
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Spearow @ Berry Juice
 Level: 10
@@ -11430,7 +11430,7 @@ Pic: Lass
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Goldeen @ Focus Sash
 Level: 12
@@ -11464,7 +11464,7 @@ Pic: Lass
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Shroomish @ Loaded Dice
 Level: 15
@@ -11500,7 +11500,7 @@ Pic: Lass
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Marill
 Level: 15
@@ -11593,7 +11593,7 @@ Pic: Lass
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Steenee @ Assault Vest
 Level: 15
@@ -11679,7 +11679,7 @@ Pic: Bug Catcher
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Venonat @ Black Sludge
 Level: 14
@@ -12310,7 +12310,7 @@ Gender: Male
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Kecleon
 Level: 23
@@ -12444,7 +12444,7 @@ Pic: Camper
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Pikipek @ Berry Juice
 Level: 11
@@ -12500,7 +12500,7 @@ Pic: Wally
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Ralts
 Level: 16
@@ -12514,7 +12514,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Altaria
 Level: 47
@@ -12564,7 +12564,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Altaria
 Level: 50
@@ -12614,7 +12614,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Altaria
 Level: 53
@@ -12664,7 +12664,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Altaria
 Level: 56
@@ -12713,7 +12713,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Tropius
 Level: 31
@@ -12738,7 +12738,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Tropius
 Level: 31
@@ -12763,7 +12763,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Tropius
 Level: 31
@@ -12788,7 +12788,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Tropius
 Level: 31
@@ -12813,7 +12813,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Tropius
 Level: 31
@@ -12838,7 +12838,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Tropius
 Level: 31
@@ -12923,7 +12923,7 @@ Gender: Female
 Music: Cool
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Gloom
 Level: 34
@@ -12941,7 +12941,7 @@ Gender: Male
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Shiftry
 Level: 34
@@ -13131,7 +13131,7 @@ Pic: Old Couple
 Gender: Male
 Music: Intense
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Medicham
 Level: 39
@@ -13156,7 +13156,7 @@ Pic: Old Couple
 Gender: Male
 Music: Intense
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Medicham
 Level: 43
@@ -13181,7 +13181,7 @@ Pic: Old Couple
 Gender: Male
 Music: Intense
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Medicham
 Level: 46
@@ -13231,7 +13231,7 @@ Pic: Old Couple
 Gender: Male
 Music: Intense
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Medicham
 Level: 52
@@ -13977,7 +13977,7 @@ Gender: Female
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Pelipper
 Level: 33
@@ -13994,7 +13994,7 @@ Pic: Magma Leader Maxie
 Gender: Male
 Music: Magma
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Mightyena
 Level: 42
@@ -14110,7 +14110,7 @@ Gender: Female
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Manectric
 Level: 24
@@ -14392,7 +14392,7 @@ Gender: Female
 Music: Intense
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Roselia
 Level: 33
@@ -14453,7 +14453,7 @@ Gender: Male
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Manectric
 Level: 30
@@ -14570,7 +14570,7 @@ Gender: Female
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Loudred
 Level: 29
@@ -14587,7 +14587,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Lotad
 Level: 13
@@ -14604,7 +14604,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Torkoal
 Level: 13
@@ -14622,7 +14622,7 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Golem
 Level: 32
@@ -14664,7 +14664,7 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Omanyte
 Level: 37
@@ -14714,7 +14714,7 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Omastar
 Level: 42
@@ -14764,7 +14764,7 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Aerodactyl
 Level: 47
@@ -14822,7 +14822,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Machamp @ Sitrus Berry
 Level: 33
@@ -14864,7 +14864,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Machamp @ Sitrus Berry
 Level: 38
@@ -14906,7 +14906,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Hitmonchan
 Level: 40
@@ -14956,7 +14956,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Hitmonlee
 Level: 46
@@ -15014,7 +15014,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Mareep
 Level: 36
@@ -15056,7 +15056,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Pikachu
 Level: 39
@@ -15106,7 +15106,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Raichu
 Level: 44
@@ -15156,7 +15156,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Electabuzz
 Level: 50
@@ -15214,7 +15214,7 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Magcargo @ White Herb
 Level: 38
@@ -15256,7 +15256,7 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Growlithe
 Level: 41
@@ -15306,7 +15306,7 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Houndour
 Level: 46
@@ -15364,7 +15364,7 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Arcanine
 Level: 51
@@ -15422,7 +15422,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Chansey
 Level: 42
@@ -15464,7 +15464,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Slaking @ Sitrus Berry
 Level: 47
@@ -15514,7 +15514,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Slaking @ Sitrus Berry
 Level: 52
@@ -15564,7 +15564,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Slaking @ Sitrus Berry
 Level: 57
@@ -15622,7 +15622,7 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability / Risky
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware / Risky
 
 Dratini @ Sitrus Berry
 Level: 40
@@ -15672,7 +15672,7 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability / Risky
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware / Risky
 
 Hoothoot
 Level: 43
@@ -15730,7 +15730,7 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability / Risky
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware / Risky
 
 Noctowl
 Level: 48
@@ -15788,7 +15788,7 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability / Risky
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware / Risky
 
 Noctowl
 Level: 53
@@ -15846,7 +15846,7 @@ Gender: Male
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Slowpoke
 Level: 48
@@ -15896,7 +15896,7 @@ Gender: Male
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Drowzee
 Level: 53
@@ -15954,7 +15954,7 @@ Gender: Male
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Hypno
 Level: 58
@@ -16012,7 +16012,7 @@ Gender: Male
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Hypno
 Level: 63
@@ -16070,7 +16070,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Poliwag
 Level: 46
@@ -16120,7 +16120,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Poliwhirl
 Level: 50
@@ -16170,7 +16170,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Lapras
 Level: 56
@@ -16228,7 +16228,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Lapras
 Level: 61
@@ -16285,7 +16285,7 @@ Pic: Bug Maniac
 Gender: Male
 Music: Suspicious
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Illumise
 Level: 17
@@ -16308,7 +16308,7 @@ Pic: Bird Keeper
 Gender: Male
 Music: Cool
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Tropius
 Level: 30
@@ -16322,7 +16322,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore / Full Restore
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Skarmory
 Level: 77
@@ -16379,7 +16379,7 @@ Pic: Salon Maiden Anabel
 Gender: Female
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Beldum
 Level: 5
@@ -16392,7 +16392,7 @@ Pic: Dome Ace Tucker
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Beldum
 Level: 5
@@ -16405,7 +16405,7 @@ Pic: Palace Maven Spenser
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Beldum
 Level: 5
@@ -16418,7 +16418,7 @@ Pic: Arena Tycoon Greta
 Gender: Female
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Beldum
 Level: 5
@@ -16431,7 +16431,7 @@ Pic: Factory Head Noland
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Beldum
 Level: 5
@@ -16444,7 +16444,7 @@ Pic: Pike Queen Lucy
 Gender: Female
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Beldum
 Level: 5
@@ -16457,7 +16457,7 @@ Pic: Pyramid King Brandon
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Beldum
 Level: 5
@@ -16795,7 +16795,7 @@ Gender: Female
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Loudred
 Level: 35
@@ -16813,7 +16813,7 @@ Gender: Female
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Spinda
 Level: 37
@@ -16835,7 +16835,7 @@ Gender: Female
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Spinda
 Level: 39
@@ -16857,7 +16857,7 @@ Gender: Female
 Music: Cool
 Items: Hyper Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Spinda
 Level: 41
@@ -16962,7 +16962,7 @@ Pic: Hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Geodude
 Level: 26
@@ -16979,7 +16979,7 @@ Pic: Hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Machop
 Level: 28
@@ -17000,7 +17000,7 @@ Pic: Hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Machop
 Level: 30
@@ -17021,7 +17021,7 @@ Pic: Hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Prefer Strongest Move / Powerful Status / HP Aware
 
 Machoke
 Level: 33
