@@ -244,7 +244,7 @@ Taillow
 Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_PETALBURG_WOODS ===
+=== TRAINER_GRUNT_ROUTE_EIGHT ===
 Name: GRUNT
 Class: Team Aqua
 Pic: Aqua Grunt M
@@ -267,9 +267,9 @@ Level: 16
 Nature: Timid
 Ability: Mystic Charm
 -Incinerate
--Extrasensory
 -Hex
--Will-O-Wisp
+-Fire Spin
+-Confuse Ray
 
 Baltoy @ Berry Juice
 Level: 16
@@ -278,6 +278,7 @@ Ability: Levitate
 -Mud Shot
 -Psybeam
 -Ancient Power
+-Heal Block
 
 Poipole @ Lum Berry
 Level: 17

@@ -98,16 +98,14 @@ script RouteEight_EventScript_GruntNorth{
 	setflag(FLAG_DISABLE_EXP)
 	applymovement(GRUNT_ID, GruntMovementNorth)
 	waitmovement(0)
-	msgbox(format("test."))
+	msgbox(format("Outta my way, kid! I just stole something from the next town over!"))
+	trainerbattle_no_intro(TRAINER_GRUNT_ROUTE_EIGHT, RouteEight_Text_GalacticDefeated)
+	giveitem(ITEM_DEVON_GOODS)
+	msgbox(format("This isn't the last you'll see of me…"))
 	closemessage
 	applymovement(GRUNT_ID, GruntMovementLeavingNorth)
 	waitmovement(0)
-	playbgm(MUS_DP_ROUTE206_DAY, FALSE)
-	clearflag(FLAG_DISABLE_EXP)
-	setvar(VAR_ROUTE_EIGHT_STATE, 1)
-	setflag(FLAG_DEFEATED_GALACTIC_GRUNT)
-	setflag(FLAG_HIDE_ROUTE_EIGHT_GALACTIC_GRUNT)
-	removeobject (GRUNT_ID)
+	goto (RouteEight_EventScript_PostGalacticBattle)
 	releaseall
 	end
 }
@@ -118,16 +116,14 @@ script RouteEight_EventScript_GruntSouth{
 	setflag(FLAG_DISABLE_EXP)
 	applymovement(GRUNT_ID, GruntMovementSouth)
 	waitmovement(0)
-	msgbox(format("test."))
+	msgbox(format("Outta my way, kid! I just stole something from the next town over!"))
+	trainerbattle_no_intro(TRAINER_GRUNT_ROUTE_EIGHT, RouteEight_Text_GalacticDefeated)
+	giveitem(ITEM_DEVON_GOODS)
+	msgbox(format("This isn't the last you'll see of me…"))
 	closemessage
 	applymovement(GRUNT_ID, GruntMovementLeavingSouth)
 	waitmovement(0)
-	playbgm(MUS_DP_ROUTE206_DAY, FALSE)
-	clearflag(FLAG_DISABLE_EXP)
-	setvar(VAR_ROUTE_EIGHT_STATE, 1)
-	setflag(FLAG_DEFEATED_GALACTIC_GRUNT)
-	setflag(FLAG_HIDE_ROUTE_EIGHT_GALACTIC_GRUNT)
-	removeobject (GRUNT_ID)
+	goto (RouteEight_EventScript_PostGalacticBattle)
 	releaseall
 	end
 }
@@ -155,6 +151,29 @@ movement GruntMovementLeavingSouth{
 	walk_up
 	face_left
 	walk_left * 10
+}
+
+script RouteEight_EventScript_SetUpGalacticBattle{
+	msgbox(format("Outta my way, kid! I just stole something from the next town over!"))
+	trainerbattle_no_intro(TRAINER_GRUNT_ROUTE_EIGHT, RouteEight_Text_GalacticDefeated)
+	giveitem(ITEM_DEVON_GOODS)
+	msgbox(format("This isn't the last you'll see of me…"))
+	closemessage
+
+}
+
+script RouteEight_EventScript_PostGalacticBattle{
+	clearflag(FLAG_DISABLE_EXP)
+	setvar(VAR_ROUTE_EIGHT_STATE, 1)
+	setflag(FLAG_DEFEATED_GALACTIC_GRUNT)
+	setflag(FLAG_HIDE_ROUTE_EIGHT_GALACTIC_GRUNT)
+	removeobject (GRUNT_ID)
+	releaseall
+	end
+}
+
+text RouteEight_Text_GalacticDefeated{
+	format("Just like in Sinnoh…")
 }
 
 script RouteEight_EventScript_FindWiseGlasses{
