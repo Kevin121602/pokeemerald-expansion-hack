@@ -4554,6 +4554,21 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                     if (GetMonData(mon, MON_DATA_ATK, 0) < GetMonData(mon, MON_DATA_DEF, 0))
                         targetSpecies = evolutions[i].targetSpecies;
                 break;
+            case EVO_LEVEL_FEMALE_ATK_GT_SPA:
+                if (evolutions[i].param <= level)
+                    if ((GetMonData(mon, MON_DATA_ATK, 0) > GetMonData(mon, MON_DATA_SPATK, 0)) && GetMonGender(mon) == MON_FEMALE)
+                        targetSpecies = evolutions[i].targetSpecies;
+                break;
+            case EVO_LEVEL_FEMALE_ATK_EQ_SPA:
+                if (evolutions[i].param <= level)
+                    if ((GetMonData(mon, MON_DATA_ATK, 0) == GetMonData(mon, MON_DATA_SPATK, 0)) && GetMonGender(mon) == MON_FEMALE)
+                        targetSpecies = evolutions[i].targetSpecies;
+                break;
+            case EVO_LEVEL_FEMALE_ATK_LT_SPA:
+                if (evolutions[i].param <= level)
+                    if ((GetMonData(mon, MON_DATA_ATK, 0) < GetMonData(mon, MON_DATA_SPATK, 0)) && GetMonGender(mon) == MON_FEMALE)
+                        targetSpecies = evolutions[i].targetSpecies;
+                break;
             case EVO_LEVEL_SILCOON:
                 if (evolutions[i].param <= level && (upperPersonality % 10) <= 4)
                     targetSpecies = evolutions[i].targetSpecies;

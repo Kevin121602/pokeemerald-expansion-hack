@@ -253,6 +253,9 @@ static const u8 sText_EVO_DEFEAT_THREE_WITH_ITEM[] = _("{LV}{UP_ARROW} defeating
 static const u8 sText_EVO_OVERWORLD_STEPS[] = _("{LV}{UP_ARROW} after {STR_VAR_2} steps");
 static const u8 sText_EVO_UNKNOWN[] = _("Method unknown");
 static const u8 sText_EVO_NONE[] = _("{STR_VAR_1} has no evolution.");
+static const u8 sText_EVO_LEVEL_FEMALE_ATK_GT_SPA[] = _("{LV}{UP_ARROW} to {STR_VAR_2}, is female, Atk > Spa");
+static const u8 sText_EVO_LEVEL_FEMALE_ATK_EQ_SPA[] = _("{LV}{UP_ARROW} to {STR_VAR_2}, is female, Atk = Spa");
+static const u8 sText_EVO_LEVEL_FEMALE_ATK_LT_SPA[] = _("{LV}{UP_ARROW} to {STR_VAR_2}, is female, Atk < Spa");
 
 static const u8 sText_FORMS_Buttons_PE[] = _("{A_BUTTON}FORM MODE  {START_BUTTON}EVOs");
 static const u8 sText_FORMS_Buttons_Decapped_PE[] = _("{START_BUTTON}Evos");
@@ -6490,6 +6493,18 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 dept
         case EVO_LEVEL_ATK_LT_DEF:
             ConvertIntToDecimalStringN(gStringVar2, evolutions[i].param, STR_CONV_MODE_LEADING_ZEROS, EVO_SCREEN_LVL_DIGITS); //level
             StringExpandPlaceholders(gStringVar4, sText_EVO_LEVEL_ATK_LT_DEF );
+            break;
+        case EVO_LEVEL_FEMALE_ATK_GT_SPA:
+            ConvertIntToDecimalStringN(gStringVar2, evolutions[i].param, STR_CONV_MODE_LEADING_ZEROS, EVO_SCREEN_LVL_DIGITS); //level
+            StringExpandPlaceholders(gStringVar4, sText_EVO_LEVEL_FEMALE_ATK_GT_SPA );
+            break;
+        case EVO_LEVEL_FEMALE_ATK_EQ_SPA:
+            ConvertIntToDecimalStringN(gStringVar2, evolutions[i].param, STR_CONV_MODE_LEADING_ZEROS, EVO_SCREEN_LVL_DIGITS); //level
+            StringExpandPlaceholders(gStringVar4, sText_EVO_LEVEL_FEMALE_ATK_EQ_SPA );
+            break;
+        case EVO_LEVEL_FEMALE_ATK_LT_SPA:
+            ConvertIntToDecimalStringN(gStringVar2, evolutions[i].param, STR_CONV_MODE_LEADING_ZEROS, EVO_SCREEN_LVL_DIGITS); //level
+            StringExpandPlaceholders(gStringVar4, sText_EVO_LEVEL_FEMALE_ATK_LT_SPA );
             break;
         case EVO_LEVEL_SILCOON:
             ConvertIntToDecimalStringN(gStringVar2, evolutions[i].param, STR_CONV_MODE_LEADING_ZEROS, EVO_SCREEN_LVL_DIGITS); //level

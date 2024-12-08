@@ -300,7 +300,7 @@
 #define EVO_OVERWORLD_STEPS               52     // Pokémon levels up after having taken a specific amount of steps in the overworld (or as the party lead if OW_FOLLOWERS_ENABLED is FALSE) without switching
 #define EVO_LEVEL_FEMALE_ATK_GT_SPA       53     // Wormadam Sandy Evo
 #define EVO_LEVEL_FEMALE_ATK_EQ_SPA       54     // Wormadam Trash Evo
-#define EVO_LEVEL_FEMALE_ATK_LS_SPA       55     // Wormadam Plant Evo
+#define EVO_LEVEL_FEMALE_ATK_LT_SPA       55     // Wormadam Plant Evo
 
 // Evolution 'modes,' for GetEvolutionTargetSpecies
 #define EVO_MODE_NORMAL            0
