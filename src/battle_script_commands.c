@@ -3349,6 +3349,9 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                     flags = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN;
                 else
                     flags = 0;
+                if(affectsUser && (GetBattlerAbility(gBattlerAttacker) == ABILITY_BAD_COMPANY)){
+                    break;
+                }
                 if (mirrorArmorReflected)
                     flags |= (STAT_CHANGE_ALLOW_PTR * !affectsUser);
                 else
@@ -3402,6 +3405,9 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                     flags = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_CERTAIN;
                 else
                     flags = 0;
+                if(affectsUser && (GetBattlerAbility(gBattlerAttacker) == ABILITY_BAD_COMPANY)){
+                    break;
+                }
                 if (mirrorArmorReflected && !affectsUser)
                     flags |= STAT_CHANGE_ALLOW_PTR;
                 if (ChangeStatBuffs(SET_STAT_BUFF_VALUE(2) | STAT_BUFF_NEGATIVE,
@@ -3476,14 +3482,14 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                 gBattlescriptCurrInstr = BattleScript_RapidSpinAway;
                 break;
             case MOVE_EFFECT_ATK_DEF_DOWN: // SuperPower
-                if (!NoAliveMonsForEitherParty())
+                if (!NoAliveMonsForEitherParty() && (GetBattlerAbility(gBattlerAttacker) != ABILITY_BAD_COMPANY))
                 {
                     BattleScriptPush(gBattlescriptCurrInstr + 1);
                     gBattlescriptCurrInstr = BattleScript_AtkDefDown;
                 }
                 break;
             case MOVE_EFFECT_DEF_SPDEF_DOWN: // Close Combat
-                if (!NoAliveMonsForEitherParty())
+                if (!NoAliveMonsForEitherParty() && (GetBattlerAbility(gBattlerAttacker) != ABILITY_BAD_COMPANY))
                 {
                     BattleScriptPush(gBattlescriptCurrInstr + 1);
                     gBattlescriptCurrInstr = BattleScript_DefSpDefDown;
@@ -3606,7 +3612,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                 }
                 break;
             case MOVE_EFFECT_V_CREATE:
-                if (!NoAliveMonsForEitherParty())
+                if (!NoAliveMonsForEitherParty() && (GetBattlerAbility(gBattlerAttacker) != ABILITY_BAD_COMPANY))
                 {
                     BattleScriptPush(gBattlescriptCurrInstr + 1);
                     gBattlescriptCurrInstr = BattleScript_VCreateStatLoss;
