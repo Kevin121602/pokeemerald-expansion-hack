@@ -1528,6 +1528,12 @@ static bool32 AccuracyCalcHelper(u16 move)
             RecordAbilityBattle(gBattlerTarget, ABILITY_NO_GUARD);
         return TRUE;
     }
+    else if ((GetBattlerAbility(gBattlerAttacker) == ABILITY_FATAL_PRECISION) && (CalcTypeEffectivenessMultiplier(move, gMovesInfo[move].type, gBattlerAttacker, gBattlerTarget, GetBattlerAbility(gBattlerTarget), FALSE) >= UQ_4_12(2.0)))
+    {
+        if (!JumpIfMoveFailed(7, move))
+            RecordAbilityBattle(gBattlerAttacker, ABILITY_FATAL_PRECISION);
+        return TRUE;
+    }
     // If the target is under the effects of Telekinesis, and the move isn't a OH-KO move, move hits.
     else if (gStatuses3[gBattlerTarget] & STATUS3_TELEKINESIS
              && !(gStatuses3[gBattlerTarget] & STATUS3_SEMI_INVULNERABLE)
@@ -12430,7 +12436,8 @@ static void Cmd_tryKO(void)
         if ((((gStatuses3[gBattlerTarget] & STATUS3_ALWAYS_HITS)
                 && gDisableStructs[gBattlerTarget].battlerWithSureHit == gBattlerAttacker)
             || GetBattlerAbility(gBattlerAttacker) == ABILITY_NO_GUARD
-            || targetAbility == ABILITY_NO_GUARD)
+            || targetAbility == ABILITY_NO_GUARD
+            ||((GetBattlerAbility(gBattlerAttacker) == ABILITY_FATAL_PRECISION) && (CalcTypeEffectivenessMultiplier(gCurrentMove, gMovesInfo[gCurrentMove].type, gBattlerAttacker, gBattlerTarget, targetAbility, FALSE) >= UQ_4_12(2.0))))
             && gBattleMons[gBattlerAttacker].level >= gBattleMons[gBattlerTarget].level)
         {
             lands = TRUE;
