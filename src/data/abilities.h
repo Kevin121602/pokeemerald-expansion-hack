@@ -2630,7 +2630,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     #else
         .name = _("FtlPrecision"),
     #endif
-        .description = COMPOUND_STRING("Ups “supereffective” and can't miss."),
+        .description = COMPOUND_STRING("Strong moves can't miss."),
         .aiRating = 10,
     },
 
