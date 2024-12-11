@@ -171,38 +171,7 @@ void SaveBattlerData(u32 battlerId)
 
 static bool32 ShouldFailForIllusion(u32 illusionSpecies, u32 battlerId)
 {
-    u32 i, j;
-    const struct LevelUpMove *learnset;
-
-    if (BATTLE_HISTORY->abilities[battlerId] == ABILITY_ILLUSION)
-        return FALSE;
-
-    // Don't fall for Illusion if the mon used a move it cannot know.
-    for (i = 0; i < MAX_MON_MOVES; i++)
-    {
-        u32 move = BATTLE_HISTORY->usedMoves[battlerId][i];
-        if (move == MOVE_NONE)
-            continue;
-
-        learnset = GetSpeciesLevelUpLearnset(illusionSpecies);
-        for (j = 0; learnset[j].move != MOVE_UNAVAILABLE; j++)
-        {
-            if (learnset[j].move == move)
-                break;
-        }
-        // The used move is in the learnsets of the fake species.
-        if (learnset[j].move != MOVE_UNAVAILABLE)
-            continue;
-
-        // The used move can be learned from Tm/Hm or Move Tutors.
-        if (CanLearnTeachableMove(illusionSpecies, move))
-            continue;
-
-        // 'Illegal move', AI won't fail for the illusion.
-        return FALSE;
-    }
-
-    return TRUE;
+    return FALSE;
 }
 
 void SetBattlerData(u32 battlerId)

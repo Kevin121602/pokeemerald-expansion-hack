@@ -9256,6 +9256,10 @@ static inline u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 
     case ABILITY_SUPREME_OVERLORD:
         modifier = uq4_12_multiply(modifier, GetSupremeOverlordModifier(battlerAtk));
         break;
+    case ABILITY_ILLUSION:
+        if(gBattleStruct->illusion[battlerAtk].on && (moveType == TYPE_DARK || moveType == TYPE_GHOST || moveType == TYPE_NORMAL))
+            modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
+        break;
     }
 
     // field abilities
