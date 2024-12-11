@@ -9127,7 +9127,8 @@ static inline u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 
     case EFFECT_KNOCK_OFF:
         if (B_KNOCK_OFF_DMG >= GEN_6
             && gBattleMons[battlerDef].item != ITEM_NONE
-            && CanBattlerGetOrLoseItem(battlerDef, gBattleMons[battlerDef].item))
+            && CanBattlerGetOrLoseItem(battlerDef, gBattleMons[battlerDef].item)
+            && gBattleMons[battlerDef].ability != ABILITY_STICKY_HOLD)
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
     }
