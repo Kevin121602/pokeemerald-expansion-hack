@@ -9555,6 +9555,12 @@ static inline u32 CalcAttackStat(u32 move, u32 battlerAtk, u32 battlerDef, u32 m
         if (gBattleMons[battlerAtk].species == SPECIES_CHERRIM_SUNSHINE && IsBattlerWeatherAffected(battlerAtk, B_WEATHER_SUN))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
         break;
+    case ABILITY_FORECAST:
+        if ((((gBattleMons[battlerAtk].species == SPECIES_CASTFORM_SUNNY && (IsBattlerWeatherAffected(battlerAtk, B_WEATHER_SUN) || IsBattlerWeatherAffected(battlerAtk, B_WEATHER_SUN_PRIMAL))))
+            || (gBattleMons[battlerAtk].species == SPECIES_CASTFORM_RAINY && (IsBattlerWeatherAffected(battlerAtk, B_WEATHER_RAIN) || IsBattlerWeatherAffected(battlerAtk, B_WEATHER_RAIN_PRIMAL)))
+            || (gBattleMons[battlerAtk].species == SPECIES_CASTFORM_SNOWY && (IsBattlerWeatherAffected(battlerAtk, B_WEATHER_SNOW) || IsBattlerWeatherAffected(battlerAtk, B_WEATHER_HAIL)))) && IS_MOVE_SPECIAL(move))
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
+        break;
     case ABILITY_HUSTLE:
         if (IS_MOVE_PHYSICAL(move))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
