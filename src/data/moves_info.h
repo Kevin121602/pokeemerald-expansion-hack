@@ -14396,7 +14396,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .battleAnimScript = Move_DRAINING_KISS,
     },
 
-    //make protect -attack on contact
     [MOVE_CRAFTY_SHIELD] =
     {
         .name = HANDLE_EXPANDED_MOVE_NAME("CraftyShield", "Crafty Shield"),
@@ -14428,15 +14427,15 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
     {
         .name = HANDLE_EXPANDED_MOVE_NAME("FlowerShield", "Flower Shield"),
         .description = COMPOUND_STRING(
-            "Raises the Defense of\n"
-            "Grass-type Pokémon."),
-        .effect = EFFECT_FLOWER_SHIELD,
+            "Protects itself, lowering\n"
+            "Sp. Def on contact."),
+        .effect = EFFECT_PROTECT,
         .power = 0,
         .type = TYPE_FAIRY,
         .accuracy = 0,
         .pp = 10,
-        .target = MOVE_TARGET_ALL_BATTLERS,
-        .priority = 0,
+        .target = MOVE_TARGET_USER,
+        .priority = 4,
         .category = DAMAGE_CATEGORY_STATUS,
         .zMove = { .effect = Z_EFFECT_DEF_UP_1 },
         .ignoresProtect = TRUE,

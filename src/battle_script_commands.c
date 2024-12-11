@@ -3560,6 +3560,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                     gProtectStructs[gBattlerTarget].obstructed = FALSE;
                     gProtectStructs[gBattlerTarget].silkTrapped = FALSE;
                     gProtectStructs[gBattlerAttacker].burningBulwarked = FALSE;
+                    gProtectStructs[gBattlerAttacker].flowerShielded = FALSE;
                     BattleScriptPush(gBattlescriptCurrInstr + 1);
                     if (gCurrentMove == MOVE_HYPERSPACE_FURY)
                         gBattlescriptCurrInstr = BattleScript_HyperspaceFuryRemoveProtect;
@@ -5529,6 +5530,17 @@ static void Cmd_moveend(void)
                     PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_BURNING_BULWARK);
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_BanefulBunkerEffect;
+                    effect = 1;
+                }
+                else if (gProtectStructs[gBattlerTarget].flowerShielded)
+                {
+                    gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
+                    i = gBattlerAttacker;
+                    gBattlerAttacker = gBattlerTarget;
+                    gBattlerTarget = i; // gBattlerTarget and gBattlerAttacker are swapped in order to activate Defiant, if applicable
+                    gBattleScripting.moveEffect = MOVE_EFFECT_SP_DEF_MINUS_1;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_KingsShieldEffect;
                     effect = 1;
                 }
                 // Not strictly a protect effect, but works the same way
@@ -11048,7 +11060,7 @@ static void Cmd_setprotectlike(void)
                 gProtectStructs[gBattlerAttacker].endured = TRUE;
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_BRACED_ITSELF;
             }
-            else if (gCurrentMove == MOVE_DETECT || gCurrentMove == MOVE_PROTECT)
+            else if (gCurrentMove == MOVE_DETECT || gCurrentMove == MOVE_PROTECT || gCurrentMove == MOVE_DEFEND_ORDER)
             {
                 gProtectStructs[gBattlerAttacker].protected = TRUE;
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_PROTECTED_ITSELF;
@@ -11086,6 +11098,11 @@ static void Cmd_setprotectlike(void)
             else if (gCurrentMove == MOVE_BURNING_BULWARK)
             {
                 gProtectStructs[gBattlerAttacker].burningBulwarked = TRUE;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_PROTECTED_ITSELF;
+            }
+            else if (gCurrentMove == MOVE_FLOWER_SHIELD)
+            {
+                gProtectStructs[gBattlerAttacker].flowerShielded = TRUE;
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_PROTECTED_ITSELF;
             }
 

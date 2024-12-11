@@ -8568,6 +8568,8 @@ bool32 IsBattlerProtected(u32 battlerAtk, u32 battlerDef, u32 move)
         return TRUE;
     else if (gProtectStructs[battlerDef].maxGuarded)
         return TRUE;
+    else if (gProtectStructs[battlerDef].flowerShielded)
+        return TRUE;
     else if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_QUICK_GUARD
              && GetChosenMovePriority(gBattlerAttacker) > 0)
         return TRUE;

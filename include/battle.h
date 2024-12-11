@@ -198,6 +198,7 @@ struct ProtectStruct
     u16 maxGuarded:1;
     u16 silkTrapped:1;
     u16 burningBulwarked:1;
+    u16 flowerShielded:1;
     u16 eatMirrorHerb:1;
     u16 activateOpportunist:2; // 2 - to copy stats. 1 - stats copied (do not repeat). 0 - no stats to copy
     u16 usedAllySwitch:1;
@@ -861,7 +862,8 @@ STATIC_ASSERT(sizeof(((struct BattleStruct *)0)->palaceFlags) * 8 >= MAX_BATTLER
                                         || gProtectStructs[battlerId].banefulBunkered                                  \
                                         || gProtectStructs[battlerId].burningBulwarked                                 \
                                         || gProtectStructs[battlerId].obstructed                                       \
-                                        || gProtectStructs[battlerId].silkTrapped)
+                                        || gProtectStructs[battlerId].silkTrapped                                      \
+                                        || gProtectStructs[battlerId].flowerShielded)
 
 #define GET_STAT_BUFF_ID(n) ((n & 7))              // first three bits 0x1, 0x2, 0x4
 #define GET_STAT_BUFF_VALUE_WITH_SIGN(n) ((n & 0xF8))
