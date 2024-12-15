@@ -3252,23 +3252,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_ACCURACY_DOWN:
     case EFFECT_ACCURACY_DOWN_2:
         if (ShouldLowerAccuracy(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
-            ADJUST_SCORE(-2);
-        if ((aiData->hpPercents[battlerAtk] < 70 || aiData->hpPercents[battlerDef] < 70) && AI_RandLessThan(100))
-            ADJUST_SCORE(-1);
-        if (gBattleMons[battlerDef].statStages[STAT_ACC] <= 4 && !AI_RandLessThan(80))
-            ADJUST_SCORE(-2);
-        if (gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY && !AI_RandLessThan(70))
             ADJUST_SCORE(DECENT_EFFECT);
-        if (gStatuses3[battlerDef] & STATUS3_LEECHSEED && !AI_RandLessThan(70))
-            ADJUST_SCORE(DECENT_EFFECT);
-        if (gStatuses3[battlerDef] & STATUS3_ROOTED && AI_RandLessThan(128))
-            ADJUST_SCORE(WEAK_EFFECT);
-        if (gBattleMons[battlerDef].status2 & STATUS2_CURSED && !AI_RandLessThan(70))
-            ADJUST_SCORE(DECENT_EFFECT);
-        if (aiData->hpPercents[battlerAtk] > 70 || gBattleMons[battlerDef].statStages[STAT_ACC] < DEFAULT_STAT_STAGE)
-            break;
-        else if (aiData->hpPercents[battlerAtk] < 40 || aiData->hpPercents[battlerDef] < 40 || !AI_RandLessThan(70))
-            ADJUST_SCORE(-2);
         break;
     case EFFECT_EVASION_DOWN:
     case EFFECT_EVASION_DOWN_2:
@@ -3682,9 +3666,12 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         break;
     //create use case for rollout if doesnt already exist
     case EFFECT_DEFENSE_CURL:
-        if (HasMoveEffect(battlerAtk, EFFECT_ROLLOUT) && !(gBattleMons[battlerAtk].status2 & STATUS2_DEFENSE_CURL))
+        if (HasMoveEffect(battlerAtk, EFFECT_ROLLOUT) && !(gBattleMons[battlerAtk].status2 & STATUS2_DEFENSE_CURL)){
             ADJUST_SCORE(DECENT_EFFECT + WEAK_EFFECT);
-        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
+            break;
+        }
+        else
+            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
         break;
     case EFFECT_FIRST_TURN_ONLY:
         if (ShouldFakeOut(battlerAtk, battlerDef, move) && MoveHasAdditionalEffectWithChance(move, MOVE_EFFECT_FLINCH, 100))
