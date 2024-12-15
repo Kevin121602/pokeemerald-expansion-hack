@@ -570,7 +570,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
         }
 
         critChanceIndex = CalcCritChanceStageArgs(battlerAtk, battlerDef, move, FALSE, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], aiData->holdEffects[battlerAtk]);
-        if (critChanceIndex > 1) // Consider crit damage only if a move has at least +2 crit chance
+        /*if (critChanceIndex > 1) // Consider crit damage only if a move has at least +2 crit chance
         {
             s32 nonCritDmg = CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                      effectivenessMultiplier, weather, FALSE,
@@ -589,7 +589,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
             else
                 simDamage.minimum = LowestRollDmg(nonCritDmg);
         }
-        else if (critChanceIndex == -2) // Guaranteed critical
+        else */if (critChanceIndex == -2) // Guaranteed critical
         {
             s32 critDmg = CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                   effectivenessMultiplier, weather, TRUE,
@@ -1148,7 +1148,9 @@ u32 GetBestDmgMoveFromBattler(u32 battlerAtk, u32 battlerDef)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE && !(unusable & gBitTable[i])
-            && bestDmg < AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected)
+            && bestDmg < AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected
+            && gMovesInfo[moves[i]].effect != EFFECT_EXPLOSION
+            && gMovesInfo[moves[i]].effect != EFFECT_FINAL_GAMBIT)
         {
             bestDmg = AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected;
             move = moves[i];
@@ -1169,7 +1171,9 @@ u32 GetBestDmgFromBattler(u32 battler, u32 battlerTarget)
         if (moves[i] != MOVE_NONE
          && moves[i] != MOVE_UNAVAILABLE
          && !(unusable & gBitTable[i])
-         && bestDmg < AI_DATA->simulatedDmg[battler][battlerTarget][i].expected)
+         && bestDmg < AI_DATA->simulatedDmg[battler][battlerTarget][i].expected
+         && gMovesInfo[moves[i]].effect != EFFECT_EXPLOSION
+         && gMovesInfo[moves[i]].effect != EFFECT_FINAL_GAMBIT)
         {
             bestDmg = AI_DATA->simulatedDmg[battler][battlerTarget][i].expected;
         }
@@ -3151,7 +3155,8 @@ bool32 ShouldRecover(u32 battlerAtk, u32 battlerDef, u32 move, u32 healPercent)
     u16 *moves = GetMovesArray(battlerDef);
     //s32 damage = AI_DATA->simulatedDmg[battlerAtk][battlerDef][AI_THINKING_STRUCT->movesetIndex].expected;
     s32 healAmount = (healPercent * gBattleMons[battlerAtk].maxHP) / 100;
-    for (i = 0; i < MAX_MON_MOVES; i++)
+    if (!CanTargetFaintAi(battlerDef, battlerAtk) && AI_DATA->hpPercents[battlerAtk] < 70){
+        for (i = 0; i < MAX_MON_MOVES; i++)
         {
             if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE && !(unusable & gBitTable[i])
                 && AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected >= healAmount)
@@ -3161,8 +3166,9 @@ bool32 ShouldRecover(u32 battlerAtk, u32 battlerDef, u32 move, u32 healPercent)
         }
     if ((gStatuses3[battlerAtk] & STATUS3_HEAL_BLOCK))
         return FALSE;
-    else if (!CanTargetFaintAi(battlerDef, battlerAtk) && AI_DATA->hpPercents[battlerAtk] < 70)
-        return TRUE;    // target can't faint attacker at all, attacker health is about 2/3rds
+    else
+        return TRUE; 
+    } // target can't faint attacker at all, attacker health is about 2/3rds
     return FALSE;
 }
 

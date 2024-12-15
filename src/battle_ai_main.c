@@ -3120,10 +3120,12 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     struct AiLogicData *aiData = AI_DATA;
     u32 movesetIndex = AI_THINKING_STRUCT->movesetIndex;
     u32 effectiveness = aiData->effectiveness[battlerAtk][battlerDef][movesetIndex];
+    u32 dmg = aiData->simulatedDmg[battlerAtk][battlerDef][movesetIndex].expected;
 
     s32 score = 0;
     u32 predictedMove = aiData->predictedMoves[battlerDef];
     u32 predictedMoveSlot = GetMoveSlot(GetMovesArray(battlerDef), predictedMove);
+    u32 moveSlot = GetMoveSlot(GetMovesArray(battlerDef), move);
     bool32 isDoubleBattle = IsValidDoubleBattle(battlerAtk);
     u32 i;
 
@@ -3143,12 +3145,44 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         IncreaseSleepScore(battlerAtk, battlerDef, move, &score);
         break;
     case EFFECT_EXPLOSION:
-    case EFFECT_MEMENTO:
-    //This case is likely handled in HP aware, but make this HP tier based if not
-        if (aiData->hpPercents[battlerAtk] < 50 && AI_RandLessThan(128))
-            ADJUST_SCORE(DECENT_EFFECT);
-    //80% to go for it if player has slow kill, 50% if highest damage, dont go for it if slower, or if not highest damage
+        if(dmg > GetBestDmgFromBattler(battlerAtk, battlerDef)){
+            if (aiData->hpPercents[battlerAtk] > 70){
+                if(Random() % 100 < 40)
+                    ADJUST_SCORE(WEAK_EFFECT);
+                break;
+            } 
+            else if(aiData->hpPercents[battlerAtk] > 50){
+                ADJUST_SCORE(WEAK_EFFECT);
+                if(Random() % 100 < 10)
+                    ADJUST_SCORE(WEAK_EFFECT);
+                break;
+            }
+            else if(aiData->hpPercents[battlerAtk] > 20){
+                ADJUST_SCORE(DECENT_EFFECT);
+                if(Random() % 100 < 20)
+                    ADJUST_SCORE(WEAK_EFFECT);
+                break;
+            }
+            else{
+                ADJUST_SCORE(DECENT_EFFECT + WEAK_EFFECT);
+                if(Random() % 100 < 50)
+                    ADJUST_SCORE(WEAK_EFFECT);
+                break;
+            }
+        }
+        break;
+    //80% to go for it if highest damage, dont go for it if slower, or if not highest damage
     case EFFECT_FINAL_GAMBIT:
+        if(dmg > GetBestDmgFromBattler(battlerAtk, battlerDef)){
+            if(AI_IsFaster(battlerAtk, battlerDef, move)){
+                if(Random() % 100 < 80)
+                    ADJUST_SCORE(BEST_EFFECT);
+                break;
+            }
+            else{
+                RETURN_SCORE_MINUS(NO_INCREASE);
+            }
+        }
         break;
     case EFFECT_MIRROR_MOVE:
         if (predictedMove != MOVE_NONE)
@@ -4247,7 +4281,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         if (!MoveEffectIsGuaranteed(battlerAtk, aiData->abilities[battlerAtk], &gMovesInfo[move].additionalEffects[i]))
             continue;
 
-        // Only consider effects with a guaranteed chance to happen
+        // dont increment score if move already highest damage
         if (GetBestDmgMoveFromBattler(battlerAtk, battlerDef) == move)
             continue;
 
