@@ -218,7 +218,7 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_HOPPIP"
+                "species": "SPECIES_PANSAGE"
               },
               {
                 "min_level": 5,
@@ -1849,7 +1849,7 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_BONSLY"
+                "species": "SPECIES_ZUBAT"
               },
               {
                 "min_level": 5,
@@ -1864,7 +1864,7 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_ROCKRUFF"
+                "species": "SPECIES_GEODUDE"
               },
               {
                 "min_level": 5,
@@ -1894,7 +1894,7 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_GEODUDE"
+                "species": "SPECIES_DUNSPARCE"
               },
               {
                 "min_level": 5,
@@ -2868,22 +2868,22 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_PANSAGE"
+                "species": "SPECIES_HOPPIP"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_PANSEAR"
+                "species": "SPECIES_BONSLY"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_PANPOUR"
+                "species": "SPECIES_MIME_JR"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_DUNSPARCE"
+                "species": "SPECIES_ROCKRUFF"
               },
               {
                 "min_level": 5,
@@ -3056,12 +3056,12 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_MIME_JR"
+                "species": "SPECIES_MUNNA"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_MUNNA"
+                "species": "SPECIES_RALTS"
               },
               {
                 "min_level": 5,
@@ -3086,7 +3086,7 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_RALTS"
+                "species": "SPECIES_ABRA"
               }
             ]
           }
@@ -10490,7 +10490,7 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_FLETCHLING"
+                "species": "SPECIES_PANSEAR"
               },
               {
                 "min_level": 5,
@@ -13430,17 +13430,17 @@
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_TENTACOOL"
+                "species": "SPECIES_PANPOUR"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_QWILFISH"
+                "species": "SPECIES_POLIWAG"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_QWILFISH"
+                "species": "SPECIES_PANPOUR"
               }
             ]
           }

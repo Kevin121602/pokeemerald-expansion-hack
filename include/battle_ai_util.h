@@ -13,6 +13,7 @@ enum DamageRollType
     DMG_ROLL_LOWEST,
     DMG_ROLL_DEFAULT,
     DMG_ROLL_HIGHEST,
+    DMG_ROLL_RANDOM,
 };
 
 bool32 AI_IsFaster(u32 battlerAi, u32 battlerDef, u32 move);
