@@ -3236,9 +3236,12 @@ void SwitchInClearSetData(u32 battler)
     gBattleStruct->lastTakenMoveFrom[battler][1] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][2] = 0;
     gBattleStruct->lastTakenMoveFrom[battler][3] = 0;
-    gBattleStruct->lastMoveFailed &= ~(gBitTable[battler]);
-    gBattleStruct->palaceFlags &= ~(gBitTable[battler]);
-    gBattleStruct->boosterEnergyActivates &= ~(gBitTable[battler]);
+    gBattleStruct->pursuitTarget = 0;
+    gBattleStruct->pursuitSwitchByMove = FALSE;
+    gBattleStruct->pursuitStoredSwitch = 0;
+    gBattleStruct->lastMoveFailed &= ~(1u << battler);
+    gBattleStruct->palaceFlags &= ~(1u << battler);
+    gBattleStruct->boosterEnergyActivates &= ~(1u << battler);
     gBattleStruct->canPickupItem &= ~(1u << battler);
 
     for (i = 0; i < ARRAY_COUNT(gSideTimers); i++)

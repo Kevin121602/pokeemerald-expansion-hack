@@ -498,4 +498,61 @@ SINGLE_BATTLE_TEST("Pursuit becomes a locked move after being used on switch-out
     }
 }
 
+SINGLE_BATTLE_TEST("Pursuit attacks a switching foe and switchin is correctly stored")
+{
+    u32 switchin;
+    PARAMETRIZE { switchin = 1; }
+    PARAMETRIZE { switchin = 2; }
+    PARAMETRIZE { switchin = 3; }
+    PARAMETRIZE { switchin = 4; }
+
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_ZIGZAGOON);
+        PLAYER(SPECIES_AIPOM);
+        PLAYER(SPECIES_ABRA);
+        PLAYER(SPECIES_VENIPEDE);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { SWITCH(player, switchin); MOVE(opponent, MOVE_PURSUIT); }
+    } SCENE {
+        SWITCH_OUT_MESSAGE("Wobbuffet");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
+        switch (switchin)
+        {
+            case 1:
+                SEND_IN_MESSAGE("Zigzagoon");
+                break;
+            case 2:
+                SEND_IN_MESSAGE("Aipom");
+                break;
+            case 3:
+                SEND_IN_MESSAGE("Abra");
+                break;
+            case 4:
+                SEND_IN_MESSAGE("Venipede");
+                break;
+        }  
+    }
+}
+
+SINGLE_BATTLE_TEST("Pursuit doesn't cause mon with Emergency Exit to switch twice")
+{
+    GIVEN {
+        PLAYER(SPECIES_GOLISOPOD) { HP(101); MaxHP(200); Ability(ABILITY_EMERGENCY_EXIT); }
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_VOLTORB);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { SWITCH(player, 1); MOVE(opponent, MOVE_PURSUIT); SEND_OUT(player, 2); }
+    } SCENE {
+        SWITCH_OUT_MESSAGE("Golisopod");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
+        ABILITY_POPUP(player, ABILITY_EMERGENCY_EXIT);
+        SEND_IN_MESSAGE("Voltorb");
+    } THEN {
+        EXPECT_EQ(player->species, SPECIES_VOLTORB);
+    }
+}
+
 TO_DO_BATTLE_TEST("Baton Pass doesn't cause Pursuit to increase its power or priority");
