@@ -555,4 +555,25 @@ SINGLE_BATTLE_TEST("Pursuit doesn't cause mon with Emergency Exit to switch twic
     }
 }
 
+SINGLE_BATTLE_TEST("Pursuit user gets forced out by Red Card and still causes target to finish switch")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_RED_CARD); }
+        PLAYER(SPECIES_VOLTORB);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_VOLTORB);
+    } WHEN {
+        TURN { SWITCH(player, 1); MOVE(opponent, MOVE_PURSUIT); }
+    } SCENE {
+        SWITCH_OUT_MESSAGE("Wobbuffet");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
+        MESSAGE("The opposing Voltorb was dragged out!");
+        SEND_IN_MESSAGE("Voltorb");
+    } THEN {
+        EXPECT_EQ(player->species, SPECIES_VOLTORB);
+        EXPECT_EQ(opponent->species, SPECIES_VOLTORB);
+    }
+}
+
 TO_DO_BATTLE_TEST("Baton Pass doesn't cause Pursuit to increase its power or priority");
