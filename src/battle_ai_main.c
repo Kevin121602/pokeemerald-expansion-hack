@@ -518,8 +518,9 @@ static bool32 AI_SwitchMonIfSuitable(u32 battler, bool32 doubleBattle)
 static bool32 AI_ShouldSwitchIfBadMoves(u32 battler, bool32 doubleBattle)
 {
     u32 i, j;
+    //causes crashes, fix later
     // If can switch.
-    if (CountUsablePartyMons(battler) > 0
+    /*if (CountUsablePartyMons(battler) > 0
         && !IsBattlerTrapped(battler, TRUE)
         && !(gBattleTypeFlags & (BATTLE_TYPE_ARENA | BATTLE_TYPE_PALACE))
         && AI_THINKING_STRUCT->aiFlags[battler] & (AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_PREFER_BATON_PASS)
@@ -540,7 +541,7 @@ static bool32 AI_ShouldSwitchIfBadMoves(u32 battler, bool32 doubleBattle)
 
         }
 
-    }
+    }*/
     return FALSE;
 }
 
@@ -3145,7 +3146,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         IncreaseSleepScore(battlerAtk, battlerDef, move, &score);
         break;
     case EFFECT_EXPLOSION:
-        if(dmg > GetBestDmgFromBattler(battlerAtk, battlerDef)){
+        if((dmg * 2) > GetBestDmgFromBattler(battlerAtk, battlerDef)){
             if (aiData->hpPercents[battlerAtk] > 70){
                 if(Random() % 100 < 40)
                     ADJUST_SCORE(WEAK_EFFECT);

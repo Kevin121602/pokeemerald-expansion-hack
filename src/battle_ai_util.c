@@ -85,11 +85,7 @@ bool32 BattlerHasAi(u32 battlerId)
 
 bool32 IsAiBattlerAware(u32 battlerId)
 {
-    if (AI_THINKING_STRUCT->aiFlags[B_POSITION_OPPONENT_LEFT] & AI_FLAG_OMNISCIENT
-     || AI_THINKING_STRUCT->aiFlags[B_POSITION_OPPONENT_RIGHT] & AI_FLAG_OMNISCIENT)
-        return TRUE;
-
-    return BattlerHasAi(battlerId);
+    return TRUE;
 }
 
 void ClearBattlerMoveHistory(u32 battlerId)
@@ -1195,7 +1191,7 @@ bool32 CanAIFaintTarget(u32 battlerAtk, u32 battlerDef, u32 numHits)
         if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE && !(moveLimitations & gBitTable[i]))
         {
             // Use the pre-calculated value in simulatedDmg instead of re-calculating it
-            dmg = AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected;
+            dmg = AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].minimum;
 
             if (numHits)
                 dmg *= numHits;
@@ -1937,10 +1933,7 @@ bool32 CanIndexMoveFaintTarget(u32 battlerAtk, u32 battlerDef, u32 index, u32 nu
 
 u16 *GetMovesArray(u32 battler)
 {
-    if (IsAiBattlerAware(battler) || IsAiBattlerAware(BATTLE_PARTNER(battler)))
-        return gBattleMons[battler].moves;
-    else
-        return gBattleResources->battleHistory->usedMoves[battler];
+    return gBattleMons[battler].moves;
 }
 
 bool32 HasOnlyMovesWithCategory(u32 battlerId, u32 category, bool32 onlyOffensive)
@@ -3155,7 +3148,7 @@ bool32 ShouldRecover(u32 battlerAtk, u32 battlerDef, u32 move, u32 healPercent)
     u16 *moves = GetMovesArray(battlerDef);
     //s32 damage = AI_DATA->simulatedDmg[battlerAtk][battlerDef][AI_THINKING_STRUCT->movesetIndex].expected;
     s32 healAmount = (healPercent * gBattleMons[battlerAtk].maxHP) / 100;
-    if (!CanTargetFaintAi(battlerDef, battlerAtk) && AI_DATA->hpPercents[battlerAtk] < 70){
+    if (AI_DATA->hpPercents[battlerAtk] < 70){
         for (i = 0; i < MAX_MON_MOVES; i++)
         {
             if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE && !(unusable & gBitTable[i])

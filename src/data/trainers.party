@@ -3855,6 +3855,13 @@ Ability: Grass Pelt
 -Leech Seed
 -Milk Drink
 
+Unown @ Choice Specs
+Level: 16
+Nature: Modest
+Ability: Levitate
+IVs: 30 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 30 Spe
+-Hidden Power
+
 === TRAINER_LARRY ===
 Name: LARRY
 Class: Camper
@@ -4044,7 +4051,7 @@ Pic: Bug Maniac
 Gender: Male
 Music: Suspicious
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
+AI: Check Bad Move / Try To Faint / Check Viability / Omniscient
 
 Dottler @ Light Clay
 Level: 13

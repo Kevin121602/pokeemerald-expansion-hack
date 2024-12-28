@@ -358,156 +358,12 @@ static bool32 ShouldSwitchIfGameStatePrompt(u32 battler, bool32 emitResult)
         && gDisableStructs[battler].perishSongTimer == 0
         && monAbility != ABILITY_SOUNDPROOF)
         switchMon = TRUE;
-
-    if (AI_THINKING_STRUCT->aiFlags[battler] & AI_FLAG_SMART_SWITCHING)
-    {
-        //Yawn
-        if (gStatuses3[battler] & STATUS3_YAWN
-            && CanBeSlept(battler, monAbility)
-            && gBattleMons[battler].hp > gBattleMons[battler].maxHP / 3)
-        {
-            switchMon = TRUE;
-
-            //Double Battles
-            //Check if partner can prevent sleep
-            if (IsDoubleBattle())
-            {
-                if (IsBattlerAlive(BATTLE_PARTNER(battler))
-                    && (GetAIChosenMove(BATTLE_PARTNER(battler)) == MOVE_UPROAR)
-                    )
-                    switchMon = FALSE;
-
-                if (IsBattlerAlive(BATTLE_PARTNER(battler))
-                    && (gMovesInfo[AI_DATA->partnerMove].effect == EFFECT_MISTY_TERRAIN
-                        || gMovesInfo[AI_DATA->partnerMove].effect == EFFECT_ELECTRIC_TERRAIN)
-                    && IsBattlerGrounded(battler)
-                    )
-                    switchMon = FALSE;
-
-                if (*(gBattleStruct->AI_monToSwitchIntoId + BATTLE_PARTNER(battler)) != PARTY_SIZE) //Partner is switching
-                    {
-                        GetAIPartyIndexes(battler, &firstId, &lastId);
-
-                        if (GetBattlerSide(battler) == B_SIDE_PLAYER)
-                            party = gPlayerParty;
-
-                        for (i = firstId; i < lastId; i++)
-                        {
-                            if (IsAceMon(battler, i))
-                                continue;
-
-                            //Look for mon in party that is able to be switched into and has ability that sets terrain
-                            if (IsValidForBattle(&party[i])
-                                && i != gBattlerPartyIndexes[battler]
-                                && i != gBattlerPartyIndexes[BATTLE_PARTNER(battler)]
-                                && IsBattlerGrounded(battler)
-                                && (GetMonAbility(&party[i]) == ABILITY_MISTY_SURGE
-                                    || GetMonAbility(&party[i]) == ABILITY_ELECTRIC_SURGE)) //Ally has Misty or Electric Surge
-                                {
-                                    *(gBattleStruct->AI_monToSwitchIntoId + BATTLE_PARTNER(battler)) = i;
-                                    if (emitResult)
-                                        BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
-                                    switchMon = FALSE;
-                                    break;
-                                }
-                        }
-                    }
-            }
-
-            //Check if Active Pokemon can KO opponent instead of switching
-            //Will still fall asleep, but take out opposing Pokemon first
-            if (AiExpectsToFaintPlayer(battler))
-                switchMon = FALSE;
-
-            //Checks to see if active Pokemon can do something against sleep
-            if ((monAbility == ABILITY_NATURAL_CURE
-                || monAbility == ABILITY_SHED_SKIN
-                || monAbility == ABILITY_EARLY_BIRD)
-                || holdEffect == (HOLD_EFFECT_CURE_SLP | HOLD_EFFECT_CURE_STATUS)
-                || HasMove(battler, MOVE_SLEEP_TALK)
-                || (HasMoveEffect(battler, MOVE_SNORE) && AI_GetTypeEffectiveness(MOVE_SNORE, battler, opposingBattler) >= UQ_4_12(1.0))
-                || (IsBattlerGrounded(battler)
-                    && (HasMove(battler, MOVE_MISTY_TERRAIN) || HasMove(battler, MOVE_ELECTRIC_TERRAIN)))
-                )
-                switchMon = FALSE;
-
-            //Check if Active Pokemon evasion boosted and might be able to dodge until awake
-            if (gBattleMons[battler].statStages[STAT_EVASION] > (DEFAULT_STAT_STAGE + 3)
-                && AI_DATA->abilities[opposingBattler] != ABILITY_UNAWARE
-                && AI_DATA->abilities[opposingBattler] != ABILITY_KEEN_EYE
-                && AI_DATA->abilities[opposingBattler] != ABILITY_MINDS_EYE
-                && (B_ILLUMINATE_EFFECT >= GEN_9 && AI_DATA->abilities[opposingBattler] != ABILITY_ILLUMINATE)
-                && !(gBattleMons[battler].status2 & STATUS2_FORESIGHT)
-                && !(gStatuses3[battler] & STATUS3_MIRACLE_EYED))
-                switchMon = FALSE;
-
-        }
-
-        //Secondary Damage
-        if (monAbility != ABILITY_MAGIC_GUARD
-            && !AiExpectsToFaintPlayer(battler))
-        {
-            //Toxic
-            moduloChance = 2; //50%
-            if (((gBattleMons[battler].status1 & STATUS1_TOXIC_COUNTER) >= STATUS1_TOXIC_TURN(2))
-                && gBattleMons[battler].hp >= (gBattleMons[battler].maxHP / 3)
-                && (Random() % (moduloChance*chanceReducer)) == 0)
-                switchMon = TRUE;
-
-            //Cursed
-            moduloChance = 2; //50%
-            if (gBattleMons[battler].status2 & STATUS2_CURSED
-                && (Random() % (moduloChance*chanceReducer)) == 0)
-                switchMon = TRUE;
-
-            //Nightmare
-            moduloChance = 3; //33.3%
-            if (gBattleMons[battler].status2 & STATUS2_NIGHTMARE
-                && (Random() % (moduloChance*chanceReducer)) == 0)
-                switchMon = TRUE;
-
-            //Leech Seed
-            moduloChance = 4; //25%
-            if (gStatuses3[battler] & STATUS3_LEECHSEED
-                && (Random() % (moduloChance*chanceReducer)) == 0)
-                switchMon = TRUE;
-        }
-
-        //Infatuation
-        if (gBattleMons[battler].status2 & STATUS2_INFATUATION
-            && !AiExpectsToFaintPlayer(battler))
-            switchMon = TRUE;
-
-        //Todo
-        //Pass Wish Heal
-
-        //Semi-Invulnerable
-        if (gStatuses3[opposingBattler] & STATUS3_SEMI_INVULNERABLE)
-        {
-            if (FindMonThatAbsorbsOpponentsMove(battler, FALSE)) // Switch if absorber found. Note: FindMonThatAbsorbsOpponentsMove already provides id of the mon to switch into to gBattleStruct->AI_monToSwitchIntoId.
-                switchMon = TRUE, monIdChosen = TRUE;
-            if (!AI_OpponentCanFaintAiWithMod(battler, 0)
-                && AnyStatIsRaised(battler))
-                switchMon = FALSE;
-            if (AiExpectsToFaintPlayer(battler)
-                && AI_IsSlower(battler, opposingBattler, 0)
-                && !AI_OpponentCanFaintAiWithMod(battler, 0))
-                switchMon = FALSE;
-        }
-    }
-
-    if (switchMon)
-    {
-        if (!monIdChosen)
-            gBattleStruct->AI_monToSwitchIntoId[battler] = PARTY_SIZE;
-        if (emitResult)
-            BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
-        return TRUE;
-    }
     else
     {
-        return FALSE;
+        switchMon = FALSE;
     }
+
+    return switchMon;
 }
 
 static bool32 ShouldSwitchIfAbilityBenefit(u32 battler, bool32 emitResult)
@@ -910,37 +766,37 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     //Since the order is sequencial, and some of these functions prompt switch to specific party members.
 
     //These Functions can prompt switch to specific party members
-    if (ShouldSwitchIfWonderGuard(battler, emitResult))
-        return TRUE;
+    //if (ShouldSwitchIfWonderGuard(battler, emitResult))
+    //    return TRUE;
     if (ShouldSwitchIfGameStatePrompt(battler, emitResult))
         return TRUE;
-    if (FindMonThatTrapsOpponent(battler, emitResult))
-        return TRUE;
-    if (FindMonThatAbsorbsOpponentsMove(battler, emitResult))
-        return TRUE;
+    //if (FindMonThatTrapsOpponent(battler, emitResult))
+    //    return TRUE;
+    //if (FindMonThatAbsorbsOpponentsMove(battler, emitResult))
+    //    return TRUE;
 
     //These Functions can prompt switch to generic pary members
-    if ((AI_THINKING_STRUCT->aiFlags[battler] & AI_FLAG_SMART_SWITCHING) && (CanMonSurviveHazardSwitchin(battler) == FALSE))
+    if ((CanMonSurviveHazardSwitchin(battler) == FALSE))
         return FALSE;
-    if (ShouldSwitchIfAllBadMoves(battler, emitResult))
-        return TRUE;
-    if (ShouldSwitchIfAbilityBenefit(battler, emitResult))
-        return TRUE;
-    if (HasBadOdds(battler, emitResult))
-        return TRUE;
-    if (ShouldSwitchIfEncored(battler, emitResult))
-        return TRUE;
-    if (ShouldSwitchIfBadChoiceLock(battler, emitResult))
-        return TRUE;
-    if (AreAttackingStatsLowered(battler, emitResult))
-        return TRUE;
+    //if (ShouldSwitchIfAllBadMoves(battler, emitResult))
+    //    return TRUE;
+    //if (ShouldSwitchIfAbilityBenefit(battler, emitResult))
+    //    return TRUE;
+    //if (HasBadOdds(battler, emitResult))
+    //    return TRUE;
+    //if (ShouldSwitchIfEncored(battler, emitResult))
+    //    return TRUE;
+    //if (ShouldSwitchIfBadChoiceLock(battler, emitResult))
+    //    return TRUE;
+    //if (AreAttackingStatsLowered(battler, emitResult))
+    //    return TRUE;
 
     // Removing switch capabilites under specific conditions
     // These Functions prevent the "FindMonWithFlagsAndSuperEffective" from getting out of hand.
-    if (HasSuperEffectiveMoveAgainstOpponents(battler, FALSE))
-        return FALSE;
-    if (AreStatsRaised(battler))
-        return FALSE;
+    //if (HasSuperEffectiveMoveAgainstOpponents(battler, FALSE))
+    //    return FALSE;
+    //if (AreStatsRaised(battler))
+    //    return FALSE;
 
     //Default Function
     //Can prompt switch if AI has a pokemon in party that resists current opponent & has super effective move
