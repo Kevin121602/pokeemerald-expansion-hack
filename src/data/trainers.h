@@ -9467,21 +9467,41 @@ F_TRAINER_FEMALE |
         {
             {
 #line 3822
-            .species = SPECIES_THWACKEY,
+            .species = SPECIES_UNOWN,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 3822
-            .heldItem = ITEM_LUM_BERRY,
+            .heldItem = ITEM_CHOICE_SPECS,
 #line 3826
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+            .iv = TRAINER_PARTY_IVS(30, 31, 31, 30, 31, 31),
 #line 3825
-            .ability = ABILITY_GRASSY_SURGE,
+            .ability = ABILITY_LEVITATE,
 #line 3823
             .lvl = 16,
 #line 3824
+            .nature = NATURE_MODEST,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 3827
+                MOVE_HIDDEN_POWER,
+            },
+            },
+            {
+#line 3829
+            .species = SPECIES_THWACKEY,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 3829
+            .heldItem = ITEM_LUM_BERRY,
+#line 3833
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 3832
+            .ability = ABILITY_GRASSY_SURGE,
+#line 3830
+            .lvl = 16,
+#line 3831
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3826
+#line 3833
                 MOVE_FAKE_OUT,
                 MOVE_GRASSY_GLIDE,
                 MOVE_LOW_KICK,
@@ -9489,22 +9509,22 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3831
+#line 3838
             .species = SPECIES_SALANDIT,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3831
+#line 3838
             .heldItem = ITEM_BLACK_SLUDGE,
-#line 3835
+#line 3842
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3834
+#line 3841
             .ability = ABILITY_CORROSION,
-#line 3832
+#line 3839
             .lvl = 16,
-#line 3833
+#line 3840
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3835
+#line 3842
                 MOVE_VENOSHOCK,
                 MOVE_INCINERATE,
                 MOVE_TOXIC,
@@ -9512,68 +9532,48 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3840
+#line 3847
             .species = SPECIES_VOLTORB,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3840
+#line 3847
             .heldItem = ITEM_BERRY_JUICE,
-#line 3844
+#line 3851
             .iv = TRAINER_PARTY_IVS(31, 30, 31, 31, 30, 31),
-#line 3843
+#line 3850
             .ability = ABILITY_STATIC,
-#line 3841
+#line 3848
             .lvl = 17,
-#line 3842
+#line 3849
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3845
+#line 3852
                 MOVE_SHOCK_WAVE,
                 MOVE_HIDDEN_POWER,
                 MOVE_SONIC_BOOM,
             },
             },
             {
-#line 3849
+#line 3856
             .species = SPECIES_SKIDDO,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3849
+#line 3856
             .heldItem = ITEM_LEFTOVERS,
-#line 3853
+#line 3860
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3852
+#line 3859
             .ability = ABILITY_GRASS_PELT,
-#line 3850
+#line 3857
             .lvl = 16,
-#line 3851
+#line 3858
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3853
+#line 3860
                 MOVE_RAZOR_LEAF,
                 MOVE_STOMPING_TANTRUM,
                 MOVE_LEECH_SEED,
                 MOVE_MILK_DRINK,
-            },
-            },
-            {
-#line 3858
-            .species = SPECIES_UNOWN,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3858
-            .heldItem = ITEM_CHOICE_SPECS,
-#line 3862
-            .iv = TRAINER_PARTY_IVS(30, 31, 31, 30, 31, 31),
-#line 3861
-            .ability = ABILITY_LEVITATE,
-#line 3859
-            .lvl = 16,
-#line 3860
-            .nature = NATURE_MODEST,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 3863
-                MOVE_HIDDEN_POWER,
             },
             },
         },

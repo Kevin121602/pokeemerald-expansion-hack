@@ -30,6 +30,8 @@ static bool32 AI_ShouldHeal(u32 battler, u32 healAmount);
 static bool32 AI_OpponentCanFaintAiWithMod(u32 battler, u32 healAmount);
 static u32 GetSwitchinHazardsDamage(u32 battler, struct BattlePokemon *battleMon);
 static bool32 CanAbilityTrapOpponent(u16 ability, u32 opponent);
+static bool32 AI_ShouldSwitchIfBadMoves(u32 battler, bool32 emitResult);
+static bool32 AI_SwitchMonIfSuitable(u32 battler, bool32 doubleBattle);
 
 static void InitializeSwitchinCandidate(struct Pokemon *mon)
 {
@@ -363,7 +365,79 @@ static bool32 ShouldSwitchIfGameStatePrompt(u32 battler, bool32 emitResult)
         switchMon = FALSE;
     }
 
-    return switchMon;
+    if (switchMon)
+    {
+        if (!monIdChosen)
+            gBattleStruct->AI_monToSwitchIntoId[battler] = PARTY_SIZE;
+        if (emitResult)
+            BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+}
+
+static bool32 AI_SwitchMonIfSuitable(u32 battler, bool32 doubleBattle)
+{
+    u32 monToSwitchId = AI_DATA->mostSuitableMonId[battler];
+    if (monToSwitchId != PARTY_SIZE && IsValidForBattle(&GetBattlerParty(battler)[monToSwitchId]))
+    {
+        gBattleMoveDamage = monToSwitchId;
+        // Never Switches out in Doubles
+        if (doubleBattle)
+        {
+            return FALSE;
+        }
+        AI_DATA->shouldSwitchMon |= gBitTable[battler];
+        AI_DATA->monToSwitchId[battler] = monToSwitchId;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+static bool32 AI_ShouldSwitchIfBadMoves(u32 battler, bool32 emitResult)
+{
+    u32 i, j;
+    bool32 switchMon = FALSE;
+    bool32 monIdChosen = FALSE; // Id of the mon to switch into.
+    bool32 doubleBattle = FALSE;
+    //causes crashes, fix later
+    // If can switch.
+    if (CountUsablePartyMons(battler) > 0
+        && !IsBattlerTrapped(battler, TRUE)
+        && !(gBattleTypeFlags & (BATTLE_TYPE_ARENA | BATTLE_TYPE_PALACE))
+        && !(AI_THINKING_STRUCT->aiFlags[battler] & AI_FLAG_SEQUENCE_SWITCHING))
+    {
+        // Consider switching if all moves are worthless to use.
+        if (gBattleMons[battler].hp >= gBattleMons[battler].maxHP / 2) // Mon has more than 50% of its HP
+        {
+            s32 cap = 99;
+            for (i = 0; i < MAX_MON_MOVES; i++)
+            {
+                if (AI_THINKING_STRUCT->score[i] > cap)
+                    break;
+            }
+
+                if (i == MAX_MON_MOVES && AI_SwitchMonIfSuitable(battler, doubleBattle) && Random() % 100 < 50)
+                    switchMon = TRUE;
+
+        }
+
+    }
+    if (switchMon)
+    {
+        if (!monIdChosen)
+            gBattleStruct->AI_monToSwitchIntoId[battler] = PARTY_SIZE;
+        if (emitResult)
+            BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
 }
 
 static bool32 ShouldSwitchIfAbilityBenefit(u32 battler, bool32 emitResult)
@@ -765,10 +839,16 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     //NOTE: The sequence of the below functions matter! Do not change unless you have carefully considered the outcome.
     //Since the order is sequencial, and some of these functions prompt switch to specific party members.
 
+    if ((CanMonSurviveHazardSwitchin(battler) == FALSE))
+        return FALSE;
+
     //These Functions can prompt switch to specific party members
     //if (ShouldSwitchIfWonderGuard(battler, emitResult))
     //    return TRUE;
     if (ShouldSwitchIfGameStatePrompt(battler, emitResult))
+        return TRUE;
+
+    if (AI_ShouldSwitchIfBadMoves(battler, emitResult))
         return TRUE;
     //if (FindMonThatTrapsOpponent(battler, emitResult))
     //    return TRUE;
@@ -776,8 +856,6 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     //    return TRUE;
 
     //These Functions can prompt switch to generic pary members
-    if ((CanMonSurviveHazardSwitchin(battler) == FALSE))
-        return FALSE;
     //if (ShouldSwitchIfAllBadMoves(battler, emitResult))
     //    return TRUE;
     //if (ShouldSwitchIfAbilityBenefit(battler, emitResult))
@@ -800,9 +878,9 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
 
     //Default Function
     //Can prompt switch if AI has a pokemon in party that resists current opponent & has super effective move
-    if (FindMonWithFlagsAndSuperEffective(battler, MOVE_RESULT_DOESNT_AFFECT_FOE, 2, emitResult)
-        || FindMonWithFlagsAndSuperEffective(battler, MOVE_RESULT_NOT_VERY_EFFECTIVE, 3, emitResult))
-        return TRUE;
+    //if (FindMonWithFlagsAndSuperEffective(battler, MOVE_RESULT_DOESNT_AFFECT_FOE, 2, emitResult)
+    //    || FindMonWithFlagsAndSuperEffective(battler, MOVE_RESULT_NOT_VERY_EFFECTIVE, 3, emitResult))
+    //    return TRUE;
 
     return FALSE;
 }
