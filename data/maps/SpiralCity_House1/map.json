@@ -2,7 +2,7 @@
   "id": "MAP_SPIRAL_CITY_HOUSE1",
   "name": "SpiralCity_House1",
   "layout": "LAYOUT_SPIRAL_CITY_HOUSE1",
-  "music": "MUS_RUSTBORO",
+  "music": "MUS_DP_OREBURGH_DAY",
   "region_map_section": "MAPSEC_SPIRAL_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

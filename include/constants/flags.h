@@ -46,7 +46,7 @@
 #define FLAG_RECEIVED_HEART_SCALES    0x20 
 #define FLAG_UNUSED_0x021    0x21 // Keep for now, used for test scripting
 #define FLAG_RECEIVED_BERRY_JUICE    0x22 
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
+#define FLAG_RECEIVED_EVERSTONE    0x23
 #define FLAG_UNUSED_0x024    0x24 // Unused Flag
 #define FLAG_UNUSED_0x025    0x25 // Unused Flag
 #define FLAG_UNUSED_0x026    0x26 // Unused Flag
@@ -88,7 +88,7 @@
 #define FLAG_UNUSED_0x04A    0x4A // Unused Flag
 #define FLAG_UNUSED_0x04B    0x4B // Unused Flag
 #define FLAG_UNUSED_0x04C    0x4C // Unused Flag
-#define FLAG_UNUSED_0x04D    0x4D // Unused Flag
+#define FLAG_UNUSED_0x04D    0x4D // NO Encounter
 #define FLAG_UNUSED_0x04E    0x4E // NO Collision
 #define FLAG_UNUSED_0x04F    0x4F // NO OW Trainers
 
@@ -748,7 +748,7 @@
 
 // Event Flags
 #define FLAG_HIDE_ROUTE_EIGHT_GALACTIC_GRUNT                        0x2BC
-#define FLAG_HIDE_APPRENTICE                                        0x2BD
+#define FLAG_HIDE_SPIRAL_CITY_SCIENTIST                                        0x2BD
 #define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE
 #define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF
 #define FLAG_HIDE_UNION_ROOM_PLAYER_2                               0x2C0

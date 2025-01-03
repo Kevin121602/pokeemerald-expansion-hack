@@ -100,7 +100,7 @@ script RouteEight_EventScript_GruntNorth{
 	waitmovement(0)
 	msgbox(format("Outta my way, kid! I just stole something from the next town over!"))
 	trainerbattle_no_intro(TRAINER_GRUNT_ROUTE_EIGHT, RouteEight_Text_GalacticDefeated)
-	giveitem(ITEM_DEVON_GOODS)
+	giveitem(ITEM_RESEARCH_NOTES)
 	msgbox(format("This isn't the last you'll see of me…"))
 	closemessage
 	applymovement(GRUNT_ID, GruntMovementLeavingNorth)
@@ -118,7 +118,7 @@ script RouteEight_EventScript_GruntSouth{
 	waitmovement(0)
 	msgbox(format("Outta my way, kid! I just stole something from the next town over!"))
 	trainerbattle_no_intro(TRAINER_GRUNT_ROUTE_EIGHT, RouteEight_Text_GalacticDefeated)
-	giveitem(ITEM_DEVON_GOODS)
+	giveitem(ITEM_RESEARCH_NOTES)
 	msgbox(format("This isn't the last you'll see of me…"))
 	closemessage
 	applymovement(GRUNT_ID, GruntMovementLeavingSouth)
@@ -151,15 +151,6 @@ movement GruntMovementLeavingSouth{
 	walk_up
 	face_left
 	walk_left * 10
-}
-
-script RouteEight_EventScript_SetUpGalacticBattle{
-	msgbox(format("Outta my way, kid! I just stole something from the next town over!"))
-	trainerbattle_no_intro(TRAINER_GRUNT_ROUTE_EIGHT, RouteEight_Text_GalacticDefeated)
-	giveitem(ITEM_DEVON_GOODS)
-	msgbox(format("This isn't the last you'll see of me…"))
-	closemessage
-
 }
 
 script RouteEight_EventScript_PostGalacticBattle{

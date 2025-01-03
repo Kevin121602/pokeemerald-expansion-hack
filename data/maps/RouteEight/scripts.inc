@@ -58,7 +58,7 @@ RouteEight_EventScript_GruntNorth::
 # 102 "data/maps/RouteEight/scripts.pory"
 	trainerbattle_no_intro TRAINER_GRUNT_ROUTE_EIGHT, RouteEight_Text_GalacticDefeated
 # 103 "data/maps/RouteEight/scripts.pory"
-	giveitem ITEM_DEVON_GOODS
+	giveitem ITEM_RESEARCH_NOTES
 # 104 "data/maps/RouteEight/scripts.pory"
 	msgbox RouteEight_EventScript_GruntNorth_Text_1
 # 105 "data/maps/RouteEight/scripts.pory"
@@ -90,7 +90,7 @@ RouteEight_EventScript_GruntSouth::
 # 120 "data/maps/RouteEight/scripts.pory"
 	trainerbattle_no_intro TRAINER_GRUNT_ROUTE_EIGHT, RouteEight_Text_GalacticDefeated
 # 121 "data/maps/RouteEight/scripts.pory"
-	giveitem ITEM_DEVON_GOODS
+	giveitem ITEM_RESEARCH_NOTES
 # 122 "data/maps/RouteEight/scripts.pory"
 	msgbox RouteEight_EventScript_GruntNorth_Text_1
 # 123 "data/maps/RouteEight/scripts.pory"
@@ -214,7 +214,7 @@ RouteEight_EventScript_SetUpGalacticBattle::
 # 158 "data/maps/RouteEight/scripts.pory"
 	trainerbattle_no_intro TRAINER_GRUNT_ROUTE_EIGHT, RouteEight_Text_GalacticDefeated
 # 159 "data/maps/RouteEight/scripts.pory"
-	giveitem ITEM_DEVON_GOODS
+	giveitem ITEM_RESEARCH_NOTES
 # 160 "data/maps/RouteEight/scripts.pory"
 	msgbox RouteEight_EventScript_GruntNorth_Text_1
 # 161 "data/maps/RouteEight/scripts.pory"

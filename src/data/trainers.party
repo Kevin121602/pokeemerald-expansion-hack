@@ -3819,13 +3819,6 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Unown @ Choice Specs
-Level: 16
-Nature: Modest
-Ability: Levitate
-IVs: 30 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 30 Spe
--Hidden Power
-
 Thwackey @ Lum Berry
 Level: 16
 Nature: Jolly
@@ -6377,11 +6370,43 @@ Pic: Youngster
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Trapinch
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Corsola @ Rindo Berry
+Level: 17
+Nature: Calm
+Ability: Regenerator
+-Brine
+-Nature Power
+-Aurora Beam
+-Recover
+
+Ledian @ Light Clay
+Level: 18
+Nature: Timid
+Ability: Swarm
+-Signal Beam
+-Air Slash
+-Light Screen
+-Reflect
+
+Vibrava @ Yache Berry
+Level: 18
+Nature: Jolly
+Ability: Levitate
+-Stomping Tantrum
+-Breaking Swipe
+-Bug Bite
+-Supersonic
+
+Amaura @ Rock Gem
+Level: 18
+Nature: Timid
+Ability: Refrigerate
+-Round
+-Ancient Power
+-Discharge
+-Thunder Wave
 
 === TRAINER_DILLON ===
 Name: DILLON
@@ -6390,11 +6415,43 @@ Pic: Youngster
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Aron
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sandygast @ Berry Juice
+Level: 17
+Nature: Calm
+Ability: Water Compaction
+-Scorching Sands
+-Hex
+-Ancient Power
+-Will-O-Wisp
+
+Ariados @ Black Sludge
+Level: 18
+Nature: Jolly
+Ability: Swarm
+-Cross Poison
+-Bug Bite
+-Spider Web
+-Baton Pass
+
+Chinchou @ Eviolite
+Level: 17
+Nature: Timid
+Ability: Volt Absorb
+-Brine
+-Shock Wave
+-Thunder Wave
+-Confuse Ray
+
+Scraggy @ Roseli Berry
+Level: 18
+Nature: Jolly
+Ability: Intimidate
+-Power-Up Punch
+-Feint Attack
+-Headbutt
+-Dragon Dance
 
 === TRAINER_CALVIN_2 ===
 Name: CALVIN
@@ -9484,11 +9541,42 @@ Pic: Hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Numel
-Level: 23
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Shuppet @ Spell Tag
+Level: 17
+Nature: Adamant
+Ability: Cursed Body
+-Shadow Sneak
+-Secret Power
+-Night Shade
+-Destiny Bond
+
+Mankey @ Focus Sash
+Level: 17
+Nature: Jolly
+Ability: Defiant
+-Brick Break
+-Rock Tomb
+-Reversal
+-Screech
+
+Diglett @ Soft Sand
+Level: 17
+Nature: Jolly
+Ability: Arena Trap
+-Stomping Tantrum
+-Rock Tomb
+-Slash
+
+Parasect @ Coba Berry
+Level: 18
+Nature: Sassy
+Ability: Hyper Cutter
+-Bug Bite
+-Giga Drain
+-Cross Poison
+-Spore
 
 === TRAINER_ANNIKA ===
 Name: ANNIKA
@@ -10916,15 +11004,43 @@ Pic: Hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Geodude
-Level: 8
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+Tyrunt @ Weakness Policy
+Level: 17
+Nature: Jolly
+Ability: Strong Jaw
+-Rock Tomb
+-Fire Fang
+-Poison Fang
+-Charm
 
-Geodude
-Level: 8
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Mawile @ Berry Juice
+Level: 17
+Nature: Jolly
+Ability: Intimidate
+-Metal Claw
+-Covet
+-Fire Fang
+-Attract
+
+Sableye @ Leftovers
+Level: 17
+Nature: Careful
+Ability: Prankster
+-Night Shade
+-Feint Attack
+-Will-O-Wisp
+-Recover
+
+Sudowoodo @ Liechi Berry
+Level: 17
+Nature: Adamant
+Ability: Sturdy
+-Rock Tomb
+-Bulldoze
+-Flail
+-Stealth Rock
 
 === TRAINER_BRENDEN ===
 Name: BRENDEN
@@ -12510,9 +12626,59 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Ralts
-Level: 16
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Delibird @ Focus Sash
+Level: 18
+Nature: Jolly
+Ability: Hustle
+-Drill Peck
+-Ice Punch
+-Brick Break
+-Spikes
+
+Roselia @ Poison Barb
+Level: 18
+Nature: Timid
+Ability: Poison Point
+-Venoshock
+-Mega Drain
+-Nature Power
+-Synthesis
+
+Azumarill @ Iapapa Berry
+Level: 17
+Nature: Adamant
+Ability: Huge Power
+-Covet
+-Aqua Jet
+-Sing
+
+Magcargo @ Passho Berry
+Level: 17
+Nature: Calm
+Ability: Flame Body
+IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 31 Spe
+-Ancient Power
+-Incinerate
+-Hidden Power
+-Will-O-Wisp
+
+Meltan @ Eviolite
+Level: 19
+Nature: Sassy
+Ability: Magnet Pull
+-Flash Cannon
+-Thunderbolt
+-Facade
+-Thunder Wave
+
+Dunsparce @ Leftovers
+Level: 19
+Nature: Careful
+Ability: Serene Grace
+-Headbutt
+-Drill Run
+-Roost
+-Glare
 
 === TRAINER_WALLY_VR_2 ===
 Name: WALLY

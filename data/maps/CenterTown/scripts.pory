@@ -1,4 +1,11 @@
-mapscripts CenterTown_MapScripts {}
+mapscripts CenterTown_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION: CenterTown_OnTransition
+}
+
+script CenterTown_OnTransition{
+	setflag(FLAG_VISITED_CENTER_TOWN)
+	end
+}
 
 script CenterTown_SuperRod {
 	lock
@@ -50,6 +57,11 @@ raw `
 	@ 3: Met Rival
 	@ 4: Received Pokedex
 
+
+
+LittlerootTown_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_OnTransition
+	.byte 0
 
 LittlerootTown_OnTransition:
 	setflag FLAG_VISITED_CENTER_TOWN

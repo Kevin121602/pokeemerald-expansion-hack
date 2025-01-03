@@ -1,3 +1,189 @@
+mapscripts SpiralCity_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION: SpiralCity_OnTransition
+}
+
+const SCIENTIST_ID = 2
+
+script SpiralCity_EventScript_Movement0{
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerMovement0)
+	waitmovement(0)
+	goto(SpiralCity_EventScript_Scientist)
+}
+
+script SpiralCity_EventScript_Movement1{
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerMovement1)
+	waitmovement(0)
+	goto(SpiralCity_EventScript_Scientist)
+}
+
+script SpiralCity_EventScript_Movement2{
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerMovement2)
+	waitmovement(0)
+	goto(SpiralCity_EventScript_Scientist)
+}
+
+script SpiralCity_EventScript_Movement3{
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerMovement3)
+	waitmovement(0)
+	goto(SpiralCity_EventScript_Scientist)
+}
+
+script SpiralCity_EventScript_Movement4{
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerMovement4)
+	waitmovement(0)
+	goto(SpiralCity_EventScript_Scientist)
+}
+
+script SpiralCity_EventScript_Movement5{
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerMovement5)
+	waitmovement(0)
+	goto(SpiralCity_EventScript_Scientist)
+}
+
+script SpiralCity_EventScript_Movement6{
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerMovement6)
+	waitmovement(0)
+	goto(SpiralCity_EventScript_Scientist)
+}
+
+script SpiralCity_EventScript_Movement7{
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerMovement7)
+	waitmovement(0)
+	goto(SpiralCity_EventScript_Scientist)
+}
+
+script SpiralCity_EventScript_Movement8{
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerMovement8)
+	waitmovement(0)
+	goto(SpiralCity_EventScript_Scientist)
+}
+
+script SpiralCity_EventScript_Scientist{
+	msgbox(format("Ah, those are the Research Notes! May I have them back?"))
+	setvar(VAR_0x8004, ITEM_RESEARCH_NOTES)
+	call(Common_EventScript_PlayerHandedOverTheItem)
+	msgbox(format("Please stop by our museum, we have something to give you."))
+	closemessage
+	applymovement(SCIENTIST_ID, ScientistMovement)
+	waitmovement(0)
+	setvar(VAR_SPIRAL_CITY_STATE, 1)
+	setflag(FLAG_HIDE_SPIRAL_CITY_SCIENTIST)
+	removeobject (SCIENTIST_ID)
+	releaseall
+	end
+}
+
+script SpiralCity_OnTransition{
+	setflag(FLAG_VISITED_SPIRAL_CITY)
+	end
+}
+
+movement PlayerMovement0{
+	face_right
+	walk_right * 4
+	face_up
+	walk_up * 3
+}
+
+movement PlayerMovement1{
+	face_right
+	walk_right * 3
+	face_up
+	walk_up * 3
+}
+
+movement PlayerMovement2{
+	face_right
+	walk_right * 2
+	face_up
+	walk_up * 3
+}
+
+movement PlayerMovement3{
+	face_right
+	walk_right * 1
+	face_up
+	walk_up * 3
+}
+
+movement PlayerMovement4{
+	walk_up * 3
+}
+
+movement PlayerMovement5{
+	face_left
+	walk_left * 1
+	face_up
+	walk_up * 3
+}
+
+movement PlayerMovement6{
+	face_left
+	walk_left * 2
+	face_up
+	walk_up * 3
+}
+
+movement PlayerMovement7{
+	face_left
+	walk_left * 3
+	face_up
+	walk_up * 3
+}
+
+movement PlayerMovement8{
+	face_left
+	walk_left * 4
+	face_up
+	walk_up * 3
+}
+
+movement ScientistMovement{
+	face_up
+	walk_up * 9
+}
+
+script SpiralCity_EventScript_Guide {
+	lock
+	faceplayer
+	msgbox(GuideText)
+	release
+}
+
+text GuideText{
+	format("How's it going, champ to be? Beyond this entrance is where you'll fight your first Trial Leader!\p"
+			"Inside this cave, all status moves go first, and Trial Leader Wally has crafted a team to perfectly take advantage of this.\p"
+			"Make sure you're properly prepared!")
+}
+
+script SpiralCity_EventScript_Everstone {
+	lock
+	faceplayer
+	if(flag(FLAG_RECEIVED_EVERSTONE)){
+		msgbox(format("You can avoid evolving a Pokémon with that Everstone!"))
+	}
+	if(!flag(FLAG_RECEIVED_EVERSTONE)){
+		msgbox(EverstoneText)
+		giveitem(ITEM_EVERSTONE)
+		setflag(FLAG_RECEIVED_EVERSTONE)
+	}
+	release
+}
+
+text EverstoneText{
+	format("I can't decide if i should jump down that ledge, I'm so indecisive…\p"
+			"Luckily this item helps me be indecisive!")
+}
+
 raw `
 .set LOCALID_LITTLE_BOY, 7
 .set LOCALID_LITTLE_GIRL, 8
@@ -6,7 +192,7 @@ raw `
 .set LOCALID_RIVAL, 14
 .set LOCALID_SCIENTIST, 15
 
-SpiralCity_MapScripts::
+RustboroCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, RustboroCity_OnFrame
 	.byte 0

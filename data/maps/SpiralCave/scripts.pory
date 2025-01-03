@@ -1,5 +1,25 @@
+mapscripts SpiralCave_MapScripts{}
+
+script SpiralCave_EventScript_Wally{
+	trainerbattle_single (TRAINER_WALLY_MAUVILLE, SpiralCave_Text_WallyIntro, SpiralCave_Text_WallyDefeat)
+	msgbox (SpiralCave_Text_WallyPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text SpiralCave_Text_WallyIntro{
+	format("Did you just become a Trainer? We're both beginners!")
+}
+
+text SpiralCave_Text_WallyDefeat{
+	format("I called you because I thought I could beat you…")
+}
+
+text SpiralCave_Text_WallyPostBattle{
+	format("I haven't won once yet… I wish I would win soon…")
+}
+
 raw `
-SpiralCave_MapScripts::
+GraniteCave_1F_MapScripts::
 	.byte 0
 
 GraniteCave_1F_EventScript_Hiker::
