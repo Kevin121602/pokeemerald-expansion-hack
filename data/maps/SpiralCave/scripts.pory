@@ -1,5 +1,131 @@
 mapscripts SpiralCave_MapScripts{}
 
+script SpiralCave_EventScript_Marc{
+	trainerbattle_single (TRAINER_MARC, SpiralCave_Text_MarcIntro, SpiralCave_Text_MarcDefeat)
+	msgbox (SpiralCave_Text_MarcPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text SpiralCave_Text_MarcIntro{
+	format("My Rock Pokémon need room to rampage!")
+}
+
+text SpiralCave_Text_MarcDefeat{
+	format("Oh, man oh man!\n"
+	        "Our challenger is one feisty customer!")
+}
+
+text SpiralCave_Text_MarcPostBattle{
+	format("I have to hand it to our Leader.\p"
+			"His battling skills are formidable!")
+}
+
+script SpiralCave_EventScript_Eli{
+	trainerbattle_single (TRAINER_ELI, SpiralCave_Text_EliIntro, SpiralCave_Text_EliDefeat)
+	msgbox (SpiralCave_Text_EliPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text SpiralCave_Text_EliIntro{
+	format("As much as I love mountains,\n"
+			"I especially love volcanoes.")
+}
+
+text SpiralCave_Text_EliDefeat{
+	format("Well, it seems to me I lost without\n"
+			"ever being in control.")
+}
+
+text SpiralCave_Text_EliPostBattle{
+	format("I stay here because I became a fan\n"
+			"of Wally's power.\p"
+			"Hehehehe.")
+}
+
+script SpiralCave_EventScript_Dillon{
+	trainerbattle_single (TRAINER_DILLON, SpiralCave_Text_DillonIntro, SpiralCave_Text_DillonDefeat)
+	msgbox (SpiralCave_Text_DillonPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text SpiralCave_Text_DillonIntro{
+	format("Be very wary of my trapping techniques!")
+}
+
+text SpiralCave_Text_DillonDefeat{
+	format("You're some kind of strong!")
+}
+
+text SpiralCave_Text_DillonPostBattle{
+	format("Ouch! Owww! I can't see!\n"
+			"I got dust in my eyes!")
+}
+
+script SpiralCave_EventScript_Jaylen{
+	trainerbattle_single (TRAINER_JAYLEN, SpiralCave_Text_JaylenIntro, SpiralCave_Text_JaylenDefeat)
+	msgbox (SpiralCave_Text_JaylenPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text SpiralCave_Text_JaylenIntro{
+	format("Can you guess why it's so cool\n"
+			"around here?")
+}
+
+text SpiralCave_Text_JaylenDefeat{
+	format("Peeuuw!\n"
+			"That stinks!")
+}
+
+text SpiralCave_Text_JaylenPostBattle{
+	format("We're deep underground,\n"
+			"so it doesn't get very warm.\p"
+			"That's good for me--I can't stand heat!")
+}
+
+script SpiralCave_EventScript_Amy{
+	trainerbattle_single (TRAINER_AMY_AND_LIV_1, SpiralCave_Text_AmyIntro, SpiralCave_Text_AmyDefeat)
+	msgbox (SpiralCave_Text_AmyPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text SpiralCave_Text_AmyIntro{
+	format("Amy: I'm Amy.\n"
+			"And this is my little sister Liv.\l"
+			"We battle together!")
+}
+
+text SpiralCave_Text_AmyDefeat{
+	format("Amy: Uh-oh, we lost.")
+}
+
+text SpiralCave_Text_AmyPostBattle{
+	format("Amy: You have to think about all\n"
+			"kinds of things when you're battling\l"
+			"against two Trainers.")
+}
+
+script SpiralCave_EventScript_Liv{
+	trainerbattle_single (TRAINER_AMY_AND_LIV_1, SpiralCave_Text_LivIntro, SpiralCave_Text_LivDefeat)
+	msgbox (SpiralCave_Text_LivPostBattle, MSGBOX_AUTOCLOSE)
+	end
+}
+
+text SpiralCave_Text_LivIntro{
+	format("Liv: We battle together as one\n"
+			"team.")
+}
+
+text SpiralCave_Text_LivDefeat{
+	format("Liv: Oh, we lost, big sister…")
+}
+
+text SpiralCave_Text_LivPostBattle{
+	format("Liv: We work perfectly together,\n"
+			"me and my big sister…\p"
+			"But we still lost…")
+}
+
 script SpiralCave_EventScript_Wally{
 	trainerbattle_single (TRAINER_WALLY_MAUVILLE, SpiralCave_Text_WallyIntro, SpiralCave_Text_WallyDefeat)
 	msgbox (SpiralCave_Text_WallyPostBattle, MSGBOX_AUTOCLOSE)
