@@ -54,6 +54,7 @@ static const u8 sText_TheTradeHasBeenCanceled[] = _("{COLOR DARK_GRAY}{HIGHLIGHT
 static const u8 sText_OnlyPkmnForBattle[] = _("That's your only\nPOKéMON for battle.");
 static const u8 sText_WaitingForYourFriend[] = _("{COLOR DARK_GRAY}{HIGHLIGHT WHITE}{SHADOW LIGHT_GRAY}Waiting for your friend\nto finish…");
 static const u8 sText_YourFriendWantsToTrade[] = _("Your friend wants\nto trade POKéMON.");
+static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv);
 
 static const struct OamData sOamData_MenuText =
 {

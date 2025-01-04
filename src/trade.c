@@ -51,6 +51,7 @@
 #include "constants/songs.h"
 #include "constants/union_room.h"
 
+
 // IDs for RunTradeMenuCallback
 enum {
     CB_MAIN_MENU,
@@ -4535,24 +4536,66 @@ static void CreateInGameTradePokemonInternal(u8 whichPlayerMon, u8 whichInGameTr
     u8 mailNum;
     struct Pokemon *pokemon = &gEnemyParty[0];
 
-    CreateMon(pokemon, inGameTrade->species, level, USE_RANDOM_IVS, TRUE, inGameTrade->personality, OT_ID_PRESET, inGameTrade->otId);
+    CreateMon(pokemon, inGameTrade->species, level, USE_RANDOM_IVS, FALSE, inGameTrade->personality, OT_ID_PRESET, inGameTrade->otId);
+    
+    u32 i;
+    u8 availableIVs[NUM_STATS];
+    u8 selectedIvs[LEGENDARY_PERFECT_IV_COUNT];
+    u8 iv = MAX_PER_STAT_IVS;
+            // Initialize a list of IV indices.
+            for (i = 0; i < NUM_STATS; i++)
+            {
+                availableIVs[i] = i;
+            }
 
-    SetMonData(pokemon, MON_DATA_HP_IV, &inGameTrade->ivs[0]);
-    SetMonData(pokemon, MON_DATA_ATK_IV, &inGameTrade->ivs[1]);
-    SetMonData(pokemon, MON_DATA_DEF_IV, &inGameTrade->ivs[2]);
-    SetMonData(pokemon, MON_DATA_SPEED_IV, &inGameTrade->ivs[3]);
-    SetMonData(pokemon, MON_DATA_SPATK_IV, &inGameTrade->ivs[4]);
-    SetMonData(pokemon, MON_DATA_SPDEF_IV, &inGameTrade->ivs[5]);
+            // Select the 3 IVs that will be perfected.
+            for (i = 0; i < LEGENDARY_PERFECT_IV_COUNT; i++)
+            {
+                u8 index = Random() % (NUM_STATS - i);
+                selectedIvs[i] = availableIVs[index];
+                RemoveIVIndexFromList(availableIVs, index);
+            }
+            for (i = 0; i < LEGENDARY_PERFECT_IV_COUNT; i++)
+            {
+                switch (selectedIvs[i])
+                {
+                case STAT_HP:
+                    SetMonData(pokemon, MON_DATA_HP_IV, &iv);
+                    break;
+                case STAT_ATK:
+                    SetMonData(pokemon, MON_DATA_ATK_IV, &iv);
+                    break;
+                case STAT_DEF:
+                    SetMonData(pokemon, MON_DATA_DEF_IV, &iv);
+                    break;
+                case STAT_SPEED:
+                    SetMonData(pokemon, MON_DATA_SPEED_IV, &iv);
+                    break;
+                case STAT_SPATK:
+                    SetMonData(pokemon, MON_DATA_SPATK_IV, &iv);
+                    break;
+                case STAT_SPDEF:
+                    SetMonData(pokemon, MON_DATA_SPDEF_IV, &iv);
+                    break;
+                }
+            }
+
+    //SetMonData(pokemon, MON_DATA_HP_IV, &inGameTrade->ivs[0]);
+    //SetMonData(pokemon, MON_DATA_ATK_IV, &inGameTrade->ivs[1]);
+    //SetMonData(pokemon, MON_DATA_DEF_IV, &inGameTrade->ivs[2]);
+    //SetMonData(pokemon, MON_DATA_SPEED_IV, &inGameTrade->ivs[3]);
+    //SetMonData(pokemon, MON_DATA_SPATK_IV, &inGameTrade->ivs[4]);
+    //SetMonData(pokemon, MON_DATA_SPDEF_IV, &inGameTrade->ivs[5]);
     SetMonData(pokemon, MON_DATA_NICKNAME, inGameTrade->nickname);
     SetMonData(pokemon, MON_DATA_OT_NAME, inGameTrade->otName);
-    SetMonData(pokemon, MON_DATA_OT_GENDER, &inGameTrade->otGender);
-    SetMonData(pokemon, MON_DATA_ABILITY_NUM, &inGameTrade->abilityNum);
-    SetMonData(pokemon, MON_DATA_BEAUTY, &inGameTrade->conditions[1]);
-    SetMonData(pokemon, MON_DATA_CUTE, &inGameTrade->conditions[2]);
-    SetMonData(pokemon, MON_DATA_COOL, &inGameTrade->conditions[0]);
-    SetMonData(pokemon, MON_DATA_SMART, &inGameTrade->conditions[3]);
-    SetMonData(pokemon, MON_DATA_TOUGH, &inGameTrade->conditions[4]);
-    SetMonData(pokemon, MON_DATA_SHEEN, &inGameTrade->sheen);
+    //SetMonData(pokemon, MON_DATA_OT_GENDER, &inGameTrade->otGender);
+    //SetMonData(pokemon, MON_DATA_ABILITY_NUM, &inGameTrade->abilityNum);
+    //SetMonData(pokemon, MON_DATA_BEAUTY, &inGameTrade->conditions[1]);
+    //SetMonData(pokemon, MON_DATA_CUTE, &inGameTrade->conditions[2]);
+    //SetMonData(pokemon, MON_DATA_COOL, &inGameTrade->conditions[0]);
+    //SetMonData(pokemon, MON_DATA_SMART, &inGameTrade->conditions[3]);
+    //SetMonData(pokemon, MON_DATA_TOUGH, &inGameTrade->conditions[4]);
+    //SetMonData(pokemon, MON_DATA_SHEEN, &inGameTrade->sheen);
     SetMonData(pokemon, MON_DATA_MET_LOCATION, &metLocation);
 
     mailNum = 0;
@@ -4571,6 +4614,25 @@ static void CreateInGameTradePokemonInternal(u8 whichPlayerMon, u8 whichInGameTr
         }
     }
     CalculateMonStats(&gEnemyParty[0]);
+}
+
+static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv)
+{
+    s32 i, j;
+    u8 temp[NUM_STATS];
+
+    ivs[selectedIv] = 0xFF;
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        temp[i] = ivs[i];
+    }
+
+    j = 0;
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        if (temp[i] != 0xFF)
+            ivs[j++] = temp[i];
+    }
 }
 
 static void GetInGameTradeMail(struct Mail *mail, const struct InGameTrade *trade)
