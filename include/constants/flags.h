@@ -47,7 +47,7 @@
 #define FLAG_UNUSED_0x021    0x21 // Keep for now, used for test scripting
 #define FLAG_RECEIVED_BERRY_JUICE    0x22 
 #define FLAG_RECEIVED_EVERSTONE    0x23
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
+#define FLAG_RECIEVED_COMMON_FOSSIL    0x24 // Unused Flag
 #define FLAG_UNUSED_0x025    0x25 // Unused Flag
 #define FLAG_UNUSED_0x026    0x26 // Unused Flag
 #define FLAG_UNUSED_0x027    0x27 // Unused Flag
@@ -172,7 +172,7 @@
 #define FLAG_RECEIVED_CONTEST_PASS           0x96 // Unused, leftover from R/S
 #define FLAG_RECEIVED_CASTFORM               0x97
 #define FLAG_RECEIVED_SUPER_ROD              0x98
-#define FLAG_RUSTBORO_NPC_TRADE_COMPLETED    0x99
+#define FLAG_SPIRAL_CITY_TRADE_COMPLETED    0x99
 #define FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED  0x9A
 #define FLAG_FORTREE_NPC_TRADE_COMPLETED     0x9B
 #define FLAG_BATTLE_FRONTIER_TRADE_DONE      0x9C

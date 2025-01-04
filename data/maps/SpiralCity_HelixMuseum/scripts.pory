@@ -1,7 +1,113 @@
+mapscripts SpiralCity_HelixMuseum_MapScripts{}
+
+script SpiralCity_HelixMuseum_EventScript_FossilGuy{
+	lock
+	faceplayer
+	if(var(VAR_SPIRAL_CITY_STATE) <= 1){
+		msgbox(ThanksForRecovering)
+		setvar(VAR_SPIRAL_CITY_STATE, 2)
+	}
+	if(!flag(FLAG_RECIEVED_COMMON_FOSSIL)){
+		msgbox(format("We just revived a fossil Pokémon, would you like to have it?"), MSGBOX_YESNO)
+		if(var(VAR_RESULT) == NO){
+			msgbox(ThatsAShame)
+		}
+		if(var(VAR_RESULT) == YES){
+			random(10)
+			switch (var(VAR_RESULT)) {
+				case 0: givemon(SPECIES_OMANYTE, 5)
+						playfanfare(MUS_DP_OBTAIN_ITEM)
+						msgbox("{PLAYER} recieved Omantye!")
+						waitmessage
+						waitfanfare
+						call(NicknamePartyMon)
+				case 1: givemon(SPECIES_KABUTO, 5)
+						playfanfare(MUS_DP_OBTAIN_ITEM)
+						msgbox("{PLAYER} recieved Kabuto!")
+						waitmessage
+						waitfanfare
+						call(NicknamePartyMon)
+				case 2: givemon(SPECIES_LILEEP, 5)
+						playfanfare(MUS_DP_OBTAIN_ITEM)
+						msgbox("{PLAYER} recieved Lileep!")
+						waitmessage
+						waitfanfare
+						call(NicknamePartyMon)
+				case 3: givemon(SPECIES_ANORITH, 5)
+						playfanfare(MUS_DP_OBTAIN_ITEM)
+						msgbox("{PLAYER} recieved Anorith!")
+						waitmessage
+						waitfanfare
+						call(NicknamePartyMon)
+				case 4: givemon(SPECIES_CRANIDOS, 5)
+						playfanfare(MUS_DP_OBTAIN_ITEM)
+						msgbox("{PLAYER} recieved Cranidos!")
+						waitmessage
+						waitfanfare
+						call(NicknamePartyMon)
+				case 5: givemon(SPECIES_SHIELDON, 5)
+						playfanfare(MUS_DP_OBTAIN_ITEM)
+						msgbox("{PLAYER} recieved Shieldon!")
+						waitmessage
+						waitfanfare
+						call(NicknamePartyMon)
+				case 6: givemon(SPECIES_TIRTOUGA, 5)
+						playfanfare(MUS_DP_OBTAIN_ITEM)
+						msgbox("{PLAYER} recieved Tirtouga!")
+						waitmessage
+						waitfanfare
+						call(NicknamePartyMon)
+				case 7: givemon(SPECIES_ARCHEN, 5)
+						playfanfare(MUS_DP_OBTAIN_ITEM)
+						msgbox("{PLAYER} recieved Archen!")
+						waitmessage
+						waitfanfare
+						call(NicknamePartyMon)
+				case 8: givemon(SPECIES_TYRUNT, 5)
+						playfanfare(MUS_DP_OBTAIN_ITEM)
+						msgbox("{PLAYER} recieved Tyrunt!")
+						waitmessage
+						waitfanfare
+						call(NicknamePartyMon)
+				case 9: givemon(SPECIES_AMAURA, 5)
+						playfanfare(MUS_DP_OBTAIN_ITEM)
+						msgbox("{PLAYER} recieved Amaura!")
+						waitmessage
+						waitfanfare
+						call(NicknamePartyMon)
+			}
+			setflag(FLAG_RECIEVED_COMMON_FOSSIL)
+		}
+	}
+	if(flag(FLAG_RECIEVED_COMMON_FOSSIL)){
+		msgbox(format("I hope you find that fossil Pokémon useful, {PLAYER}!"))
+	}
+	releaseall
+	end
+}
+
+text ThanksForRecovering{
+	format("Thanks again for recovering our notes, they contain important research on how to reverse speed stats.\p"
+			"I wonder what that Galactic Grunt was gonna use them for…")
+}
+
+text ThatsAShame{
+	format("Oh, that's a shame…\p"
+			"Let me know if you change your mind.")
+}
+
+script SpiralCity_HelixMuseum_EventScript_RareFossilGuy{
+	lock
+	faceplayer
+	msgbox(format("I'm researching rare fossils."))
+	releaseall
+	end
+}
+
 raw `
 .set LOCALID_STAIR_GUARD, 2
 
-SpiralCity_HelixMuseum_MapScripts::
+RustboroCity_DevonCorp_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_DevonCorp_1F_OnTransition
 	.byte 0
 

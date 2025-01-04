@@ -235,3 +235,22 @@ MoveTutor_Text_ExplosionTaught:
 	.string "to ignite my own EXPLOSION…\p"
 	.string "Maybe it's because deep down,\n"
 	.string "I would rather stay here…$"
+
+MoveTutor_Text_HiddenPowerTeach:
+	.string "I research the hidden potential\n"
+	.string "of each Pokémon!\p"
+	.string "Would you like me to teach\n"
+	.string "Hidden Power to your Pokémon?$"
+
+MoveTutor_Text_HiddenPowerDeclined:
+	.string "That's a shame…$"
+
+MoveTutor_Text_HiddenPowerWhichMon:
+	.string "Which Pokémon wants to\n"
+	.string "learn Hidden Power?$"
+
+MoveTutor_Text_RockSmashTeach:
+	.string "They call me the Rock Smash Guy!\p"
+	.string "of each Pokémon!\p"
+	.string "Would you like me to teach\n"
+	.string "Hidden Power to your Pokémon?$"

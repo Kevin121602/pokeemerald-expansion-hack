@@ -1,12 +1,43 @@
+mapscripts SpiralCity_House1_MapScripts{}
+
+script SpiralCity_House1_EventScript_RockSmashTutor{
+	lock
+	faceplayer
+	msgbox(RockSmashTeach, MSGBOX_YESNO)
+	if(var(VAR_RESULT) == NO){
+		goto(SpiralCity_House1_EventScript_RockSmashEnd)
+	}
+	setvar(VAR_0x8005, MOVE_ROCK_SMASH)
+	call(MoveTutor_EventScript_OpenPartyMenu)
+	if(var(VAR_RESULT) == 0){
+		goto(SpiralCity_House1_EventScript_RockSmashEnd)
+	}
+	goto(SpiralCity_House1_EventScript_RockSmashEnd)
+	end
+}
+
+script SpiralCity_House1_EventScript_RockSmashEnd{
+	releaseall
+	end
+}
+
+text RockSmashTeach{
+	format("I'm the Rock Smash Guy!\p"
+			"Or at least I used to be…\n"
+			"But I can't find any breakable rocks around here.\p"
+			"I can still teach Rock Smash, do you want to learn it?")
+}
+
+
 raw `
-SpiralCity_House1_MapScripts::
+RustboroCity_House1_MapScripts::
 	.byte 0
 
 RustboroCity_House1_EventScript_Trader::
 	lock
 	faceplayer
-	goto_if_set FLAG_RUSTBORO_NPC_TRADE_COMPLETED, RustboroCity_House1_EventScript_TradeCompleted
-	setvar VAR_0x8008, INGAME_TRADE_SEEDOT
+	goto_if_set FLAG_SPIRAL_CITY_TRADE_COMPLETED, RustboroCity_House1_EventScript_TradeCompleted
+	setvar VAR_0x8008, INGAME_TRADE_GALARIAN_FARFETCHD
 	copyvar VAR_0x8004, VAR_0x8008
 	specialvar VAR_RESULT, GetInGameTradeSpeciesInfo
 	copyvar VAR_0x8009, VAR_RESULT
@@ -26,7 +57,7 @@ RustboroCity_House1_EventScript_Trader::
 	special DoInGameTradeScene
 	waitstate
 	msgbox RustboroCity_House1_Text_PleaseBeGoodToMyPokemon, MSGBOX_DEFAULT
-	setflag FLAG_RUSTBORO_NPC_TRADE_COMPLETED
+	setflag FLAG_SPIRAL_CITY_TRADE_COMPLETED
 	release
 	end
 
