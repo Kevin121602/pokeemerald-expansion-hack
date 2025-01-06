@@ -341,7 +341,7 @@ DewfordTown_Gym_EventScript_BrawlyDefeated::
 # 171 "data/maps/DewfordTown_Gym/scripts.pory"
 DewfordTown_Gym_EventScript_GiveBulkUp::
 # 172 "data/maps/DewfordTown_Gym/scripts.pory"
-	giveitem ITEM_TM_BULK_UP
+	giveitem ITEM_TM_ACROBATICS
 # 173 "data/maps/DewfordTown_Gym/scripts.pory"
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
 # 174 "data/maps/DewfordTown_Gym/scripts.pory"
@@ -355,7 +355,7 @@ DewfordTown_Gym_EventScript_GiveBulkUp::
 # 178 "data/maps/DewfordTown_Gym/scripts.pory"
 DewfordTown_Gym_EventScript_GiveBulkUp2:
 # 179 "data/maps/DewfordTown_Gym/scripts.pory"
-	giveitem ITEM_TM_BULK_UP
+	giveitem ITEM_TM_ACROBATICS
 # 180 "data/maps/DewfordTown_Gym/scripts.pory"
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
 # 181 "data/maps/DewfordTown_Gym/scripts.pory"

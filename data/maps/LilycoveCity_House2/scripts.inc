@@ -17,7 +17,7 @@ LilycoveCity_House2_EventScript_FatMan::
 # 9 "data/maps/LilycoveCity_House2/scripts.pory"
 	msgbox LilycoveCity_House2_Text_NotAwakeYetHaveThis, MSGBOX_DEFAULT
 # 10 "data/maps/LilycoveCity_House2/scripts.pory"
-	giveitem ITEM_TM_REST
+	giveitem ITEM_TM_ACROBATICS
 # 11 "data/maps/LilycoveCity_House2/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 12 "data/maps/LilycoveCity_House2/scripts.pory"

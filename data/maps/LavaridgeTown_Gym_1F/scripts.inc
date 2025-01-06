@@ -173,7 +173,7 @@ LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated::
 # 87 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
 LavaridgeTown_Gym_1F_EventScript_GiveOverheat2::
 # 88 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
-	giveitem ITEM_TM_OVERHEAT
+	giveitem ITEM_TM_ACROBATICS
 # 89 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 90 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
@@ -189,7 +189,7 @@ LavaridgeTown_Gym_1F_EventScript_GiveOverheat2::
 # 95 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
 LavaridgeTown_Gym_1F_EventScript_GiveOverheat::
 # 96 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
-	giveitem ITEM_TM_OVERHEAT
+	giveitem ITEM_TM_ACROBATICS
 # 97 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 # 98 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"

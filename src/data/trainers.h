@@ -15865,7 +15865,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 6379
                 MOVE_BRINE,
-                MOVE_ANCIENT_POWER,
+                MOVE_POWER_GEM,
                 MOVE_AURORA_BEAM,
                 MOVE_RECOVER,
             },

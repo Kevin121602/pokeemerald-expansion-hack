@@ -17,7 +17,7 @@ SootopolisCity_House1_EventScript_BrickBreakBlackBelt::
 # 9 "data/maps/SootopolisCity_House1/scripts.pory"
 	msgbox SootopolisCity_House1_Text_DevelopedThisTM, MSGBOX_DEFAULT
 # 10 "data/maps/SootopolisCity_House1/scripts.pory"
-	giveitem ITEM_TM_BRICK_BREAK
+	giveitem ITEM_TM_ACROBATICS
 # 11 "data/maps/SootopolisCity_House1/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 12 "data/maps/SootopolisCity_House1/scripts.pory"

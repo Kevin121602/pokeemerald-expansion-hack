@@ -307,7 +307,7 @@ SlateportCity_OceanicMuseum_1F_EventScript_FamiliarGrunt::
 # 154 "data/maps/SlateportCity_OceanicMuseum_1F/scripts.pory"
 	msgbox SlateportCity_OceanicMuseum_1F_Text_RememberMeTakeThis, MSGBOX_DEFAULT
 # 155 "data/maps/SlateportCity_OceanicMuseum_1F/scripts.pory"
-	giveitem ITEM_TM_THIEF
+	giveitem ITEM_TM_ACROBATICS
 # 156 "data/maps/SlateportCity_OceanicMuseum_1F/scripts.pory"
 	goto_if_eq VAR_RESULT, 0, SlateportCity_OceanicMuseum_1F_EventScript_NoRoomForThief
 # 157 "data/maps/SlateportCity_OceanicMuseum_1F/scripts.pory"

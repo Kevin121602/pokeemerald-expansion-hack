@@ -737,7 +737,7 @@ Route110_TrickHouseEntrance_EventScript_GivePuzzle4Reward::
 # 369 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 Route110_TrickHouseEntrance_EventScript_GivePuzzle5Reward::
 # 370 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	giveitem ITEM_TM_TAUNT
+	giveitem ITEM_TM_ACROBATICS
 # 371 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	goto_if_eq VAR_RESULT, TRUE, Route110_TrickHouseEntrance_EventScript_GotReward
 # 372 "data/maps/Route110_TrickHouseEntrance/scripts.pory"

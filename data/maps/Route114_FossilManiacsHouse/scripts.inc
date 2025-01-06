@@ -27,7 +27,7 @@ Route114_FossilManiacsHouse_EventScript_FossilManiacsBrother::
 # 14 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
 	msgbox Route114_FossilManiacsHouse_Text_HaveThisToDigLikeMyBrother, MSGBOX_DEFAULT
 # 15 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
-	giveitem ITEM_TM_DIG
+	giveitem ITEM_TM_ACROBATICS
 # 16 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 17 "data/maps/Route114_FossilManiacsHouse/scripts.pory"

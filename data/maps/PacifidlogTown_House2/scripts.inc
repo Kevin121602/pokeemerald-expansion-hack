@@ -81,7 +81,7 @@ PacifidlogTown_House2_EventScript_GiveReturn::
 # 41 "data/maps/PacifidlogTown_House2/scripts.pory"
 	msgbox PacifidlogTown_House2_Text_AdoringPokemonTakeThis, MSGBOX_DEFAULT
 # 42 "data/maps/PacifidlogTown_House2/scripts.pory"
-	giveitem ITEM_TM_RETURN
+	giveitem ITEM_TM_ACROBATICS
 # 43 "data/maps/PacifidlogTown_House2/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 44 "data/maps/PacifidlogTown_House2/scripts.pory"
@@ -111,7 +111,7 @@ PacifidlogTown_House2_EventScript_GiveFrustration::
 # 56 "data/maps/PacifidlogTown_House2/scripts.pory"
 	msgbox PacifidlogTown_House2_Text_ViciousPokemonTakeThis, MSGBOX_DEFAULT
 # 57 "data/maps/PacifidlogTown_House2/scripts.pory"
-	giveitem ITEM_TM_FRUSTRATION
+	giveitem ITEM_TM_ACROBATICS
 # 58 "data/maps/PacifidlogTown_House2/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 59 "data/maps/PacifidlogTown_House2/scripts.pory"

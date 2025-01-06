@@ -501,7 +501,7 @@ DewfordTown_Hall_EventScript_SludgeBombMan::
 # 251 "data/maps/DewfordTown_Hall/scripts.pory"
 	msgbox DewfordTown_Hall_Text_GiveYouSludgeBomb, MSGBOX_DEFAULT
 # 252 "data/maps/DewfordTown_Hall/scripts.pory"
-	giveitem ITEM_TM_SLUDGE_BOMB
+	giveitem ITEM_TM_ACROBATICS
 # 253 "data/maps/DewfordTown_Hall/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 254 "data/maps/DewfordTown_Hall/scripts.pory"

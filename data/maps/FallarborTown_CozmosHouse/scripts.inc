@@ -37,7 +37,7 @@ FallarborTown_CozmosHouse_EventScript_PlayerHasMeteorite::
 # 19 "data/maps/FallarborTown_CozmosHouse/scripts.pory"
 	msgbox FallarborTown_CozmosHouse_Text_PleaseUseThisTM, MSGBOX_DEFAULT
 # 20 "data/maps/FallarborTown_CozmosHouse/scripts.pory"
-	giveitem ITEM_TM_RETURN
+	giveitem ITEM_TM_ACROBATICS
 # 21 "data/maps/FallarborTown_CozmosHouse/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 22 "data/maps/FallarborTown_CozmosHouse/scripts.pory"

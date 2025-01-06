@@ -689,7 +689,7 @@ Route104_EventScript_Boy2::
 # 359 "data/maps/LightningMeadow/scripts.pory"
 	msgbox Route104_Text_LikeFillingMouthWithSeedsTakeThis, MSGBOX_DEFAULT
 # 360 "data/maps/LightningMeadow/scripts.pory"
-	giveitem ITEM_TM_BULLET_SEED
+	giveitem ITEM_TM_ACROBATICS
 # 361 "data/maps/LightningMeadow/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 362 "data/maps/LightningMeadow/scripts.pory"

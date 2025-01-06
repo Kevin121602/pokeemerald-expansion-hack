@@ -43,7 +43,7 @@ FortreeCity_House2_EventScript_HiddenPowerGiver::
 # 22 "data/maps/FortreeCity_House2/scripts.pory"
 	msgbox FortreeCity_House2_Text_YourHiddenPowerHasAwoken, MSGBOX_DEFAULT
 # 23 "data/maps/FortreeCity_House2/scripts.pory"
-	giveitem ITEM_TM_HIDDEN_POWER
+	giveitem ITEM_TM_ACROBATICS
 # 24 "data/maps/FortreeCity_House2/scripts.pory"
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
 # 25 "data/maps/FortreeCity_House2/scripts.pory"

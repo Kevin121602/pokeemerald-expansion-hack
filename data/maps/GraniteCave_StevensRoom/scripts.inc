@@ -27,7 +27,7 @@ GraniteCave_StevensRoom_EventScript_Steven::
 # 14 "data/maps/GraniteCave_StevensRoom/scripts.pory"
 	msgbox GraniteCave_StevensRoom_Text_ThankYouTakeThis, MSGBOX_DEFAULT
 # 15 "data/maps/GraniteCave_StevensRoom/scripts.pory"
-	giveitem ITEM_TM_STEEL_WING
+	giveitem ITEM_TM_ACROBATICS
 # 16 "data/maps/GraniteCave_StevensRoom/scripts.pory"
 	call_if_eq VAR_RESULT, FALSE, GraniteCave_StevensRoom_EventScript_BagFull
 # 17 "data/maps/GraniteCave_StevensRoom/scripts.pory"
