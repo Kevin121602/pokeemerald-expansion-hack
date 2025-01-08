@@ -12,7 +12,10 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_GYM",
-  "connections": null,
+  "connections": 0,
+  "object_events": [
+
+  ],
   "warp_events": [
     {
       "x": 5,
@@ -28,5 +31,11 @@
       "dest_map": "MAP_DEWFORD_TOWN",
       "dest_warp_id": "2"
     }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
   ]
 }

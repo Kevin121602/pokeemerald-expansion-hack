@@ -52,90 +52,157 @@ SpiralCave_EventScript_Liv::
 
 SpiralCave_EventScript_Wally::
 # 130 "data/maps/SpiralCave/scripts.pory"
-	trainerbattle_single TRAINER_WALLY_MAUVILLE, SpiralCave_Text_WallyIntro, SpiralCave_Text_WallyDefeat
-# 131 "data/maps/SpiralCave/scripts.pory"
-	msgbox SpiralCave_Text_WallyPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-
-# 147 "data/maps/SpiralCave/scripts.pory"
-
-# 148 "data/maps/SpiralCave/scripts.pory"
-GraniteCave_1F_MapScripts::
-# 149 "data/maps/SpiralCave/scripts.pory"
-	.byte 0
-# 150 "data/maps/SpiralCave/scripts.pory"
-
-# 151 "data/maps/SpiralCave/scripts.pory"
-GraniteCave_1F_EventScript_Hiker::
-# 152 "data/maps/SpiralCave/scripts.pory"
 	lock
-# 153 "data/maps/SpiralCave/scripts.pory"
+# 131 "data/maps/SpiralCave/scripts.pory"
 	faceplayer
-# 154 "data/maps/SpiralCave/scripts.pory"
-	goto_if_set FLAG_RECEIVED_HM_FLASH, GraniteCave_1F_EventScript_ReceivedFlash
-# 155 "data/maps/SpiralCave/scripts.pory"
-	msgbox GraniteCave_1F_Text_GetsDarkAheadHereYouGo, MSGBOX_DEFAULT
-# 156 "data/maps/SpiralCave/scripts.pory"
-	giveitem ITEM_HM_FLASH
-# 157 "data/maps/SpiralCave/scripts.pory"
-	setflag FLAG_RECEIVED_HM_FLASH
-# 158 "data/maps/SpiralCave/scripts.pory"
-	msgbox GraniteCave_1F_Text_ExplainFlash, MSGBOX_DEFAULT
-# 159 "data/maps/SpiralCave/scripts.pory"
-	release
-# 160 "data/maps/SpiralCave/scripts.pory"
+# 132 "data/maps/SpiralCave/scripts.pory"
+	goto_if_unset FLAG_DEFEATED_WALLY, SpiralCave_EventScript_Wally_2
+SpiralCave_EventScript_Wally_1:
+# 147 "data/maps/SpiralCave/scripts.pory"
+	goto_if_set FLAG_DEFEATED_WALLY, SpiralCave_EventScript_Wally_5
+SpiralCave_EventScript_Wally_4:
+# 150 "data/maps/SpiralCave/scripts.pory"
+	releaseall
 	end
-# 161 "data/maps/SpiralCave/scripts.pory"
 
-# 162 "data/maps/SpiralCave/scripts.pory"
-GraniteCave_1F_EventScript_ReceivedFlash::
-# 163 "data/maps/SpiralCave/scripts.pory"
-	msgbox GraniteCave_1F_Text_ExplainFlash, MSGBOX_DEFAULT
-# 164 "data/maps/SpiralCave/scripts.pory"
-	release
-# 165 "data/maps/SpiralCave/scripts.pory"
-	end
-# 166 "data/maps/SpiralCave/scripts.pory"
+SpiralCave_EventScript_Wally_2:
+# 133 "data/maps/SpiralCave/scripts.pory"
+	setflag FLAG_DISABLE_EXP
+# 134 "data/maps/SpiralCave/scripts.pory"
+	msgbox SpiralCave_Text_WallyIntro
+# 135 "data/maps/SpiralCave/scripts.pory"
+	trainerbattle_no_intro TRAINER_WALLY_MAUVILLE, SpiralCave_Text_WallyDefeat
+# 136 "data/maps/SpiralCave/scripts.pory"
+	msgbox SpiralCave_Text_WallyPostBattle
+# 137 "data/maps/SpiralCave/scripts.pory"
+	setflag FLAG_DEFEATED_WALLY
+# 138 "data/maps/SpiralCave/scripts.pory"
+	clearflag FLAG_DISABLE_EXP
+# 139 "data/maps/SpiralCave/scripts.pory"
+	playfanfare MUS_DP_OBTAIN_BADGE
+# 140 "data/maps/SpiralCave/scripts.pory"
+	msgbox SpiralCave_EventScript_Wally_Text_0
+# 141 "data/maps/SpiralCave/scripts.pory"
+	waitmessage
+# 142 "data/maps/SpiralCave/scripts.pory"
+	waitfanfare
+# 143 "data/maps/SpiralCave/scripts.pory"
+	msgbox SpiralCave_Text_WallyRewards
+# 144 "data/maps/SpiralCave/scripts.pory"
+	giveitem ITEM_HEART_SCALE
+# 145 "data/maps/SpiralCave/scripts.pory"
+	giveitem ITEM_TM_DEFOG
+	goto SpiralCave_EventScript_Wally_1
 
-# 167 "data/maps/SpiralCave/scripts.pory"
-GraniteCave_1F_Text_GetsDarkAheadHereYouGo:
-# 168 "data/maps/SpiralCave/scripts.pory"
-	.string "Hey, you.\n"
-# 169 "data/maps/SpiralCave/scripts.pory"
-	.string "It gets awfully dark ahead.\l"
-# 170 "data/maps/SpiralCave/scripts.pory"
-	.string "It'll be tough trying to explore.\p"
-# 171 "data/maps/SpiralCave/scripts.pory"
-	.string "That guy who came by earlier…\n"
-# 172 "data/maps/SpiralCave/scripts.pory"
-	.string "STEVEN, I think it was.\p"
-# 173 "data/maps/SpiralCave/scripts.pory"
-	.string "He knew how to use FLASH, so he ought\n"
-# 174 "data/maps/SpiralCave/scripts.pory"
-	.string "to be all right, but…\p"
-# 175 "data/maps/SpiralCave/scripts.pory"
-	.string "Well, for us HIKERS, helping out those\n"
-# 176 "data/maps/SpiralCave/scripts.pory"
-	.string "that we meet is our motto.\p"
+SpiralCave_EventScript_Wally_5:
+# 148 "data/maps/SpiralCave/scripts.pory"
+	msgbox SpiralCave_EventScript_Wally_Text_1
+	goto SpiralCave_EventScript_Wally_4
+
+
+SpiralCave_EventScript_Ralts::
 # 177 "data/maps/SpiralCave/scripts.pory"
-	.string "Here you go, I'll pass this on to you.$"
+	lock
 # 178 "data/maps/SpiralCave/scripts.pory"
-
+	faceplayer
 # 179 "data/maps/SpiralCave/scripts.pory"
-GraniteCave_1F_Text_ExplainFlash:
+	msgbox SpiralCave_EventScript_Ralts_Text_0
 # 180 "data/maps/SpiralCave/scripts.pory"
-	.string "Teach that hidden move FLASH to\n"
-# 181 "data/maps/SpiralCave/scripts.pory"
-	.string "a POKéMON and use it.\p"
-# 182 "data/maps/SpiralCave/scripts.pory"
-	.string "It lights up even the inky darkness\n"
-# 183 "data/maps/SpiralCave/scripts.pory"
-	.string "of caves.\p"
+	releaseall
+	end
+
+
 # 184 "data/maps/SpiralCave/scripts.pory"
-	.string "But, to use it, you need the GYM BADGE\n"
+
 # 185 "data/maps/SpiralCave/scripts.pory"
+GraniteCave_1F_MapScripts::
+# 186 "data/maps/SpiralCave/scripts.pory"
+	.byte 0
+# 187 "data/maps/SpiralCave/scripts.pory"
+
+# 188 "data/maps/SpiralCave/scripts.pory"
+GraniteCave_1F_EventScript_Hiker::
+# 189 "data/maps/SpiralCave/scripts.pory"
+	lock
+# 190 "data/maps/SpiralCave/scripts.pory"
+	faceplayer
+# 191 "data/maps/SpiralCave/scripts.pory"
+	goto_if_set FLAG_RECEIVED_HM_FLASH, GraniteCave_1F_EventScript_ReceivedFlash
+# 192 "data/maps/SpiralCave/scripts.pory"
+	msgbox GraniteCave_1F_Text_GetsDarkAheadHereYouGo, MSGBOX_DEFAULT
+# 193 "data/maps/SpiralCave/scripts.pory"
+	giveitem ITEM_HM_FLASH
+# 194 "data/maps/SpiralCave/scripts.pory"
+	setflag FLAG_RECEIVED_HM_FLASH
+# 195 "data/maps/SpiralCave/scripts.pory"
+	msgbox GraniteCave_1F_Text_ExplainFlash, MSGBOX_DEFAULT
+# 196 "data/maps/SpiralCave/scripts.pory"
+	release
+# 197 "data/maps/SpiralCave/scripts.pory"
+	end
+# 198 "data/maps/SpiralCave/scripts.pory"
+
+# 199 "data/maps/SpiralCave/scripts.pory"
+GraniteCave_1F_EventScript_ReceivedFlash::
+# 200 "data/maps/SpiralCave/scripts.pory"
+	msgbox GraniteCave_1F_Text_ExplainFlash, MSGBOX_DEFAULT
+# 201 "data/maps/SpiralCave/scripts.pory"
+	release
+# 202 "data/maps/SpiralCave/scripts.pory"
+	end
+# 203 "data/maps/SpiralCave/scripts.pory"
+
+# 204 "data/maps/SpiralCave/scripts.pory"
+GraniteCave_1F_Text_GetsDarkAheadHereYouGo:
+# 205 "data/maps/SpiralCave/scripts.pory"
+	.string "Hey, you.\n"
+# 206 "data/maps/SpiralCave/scripts.pory"
+	.string "It gets awfully dark ahead.\l"
+# 207 "data/maps/SpiralCave/scripts.pory"
+	.string "It'll be tough trying to explore.\p"
+# 208 "data/maps/SpiralCave/scripts.pory"
+	.string "That guy who came by earlier…\n"
+# 209 "data/maps/SpiralCave/scripts.pory"
+	.string "STEVEN, I think it was.\p"
+# 210 "data/maps/SpiralCave/scripts.pory"
+	.string "He knew how to use FLASH, so he ought\n"
+# 211 "data/maps/SpiralCave/scripts.pory"
+	.string "to be all right, but…\p"
+# 212 "data/maps/SpiralCave/scripts.pory"
+	.string "Well, for us HIKERS, helping out those\n"
+# 213 "data/maps/SpiralCave/scripts.pory"
+	.string "that we meet is our motto.\p"
+# 214 "data/maps/SpiralCave/scripts.pory"
+	.string "Here you go, I'll pass this on to you.$"
+# 215 "data/maps/SpiralCave/scripts.pory"
+
+# 216 "data/maps/SpiralCave/scripts.pory"
+GraniteCave_1F_Text_ExplainFlash:
+# 217 "data/maps/SpiralCave/scripts.pory"
+	.string "Teach that hidden move FLASH to\n"
+# 218 "data/maps/SpiralCave/scripts.pory"
+	.string "a POKéMON and use it.\p"
+# 219 "data/maps/SpiralCave/scripts.pory"
+	.string "It lights up even the inky darkness\n"
+# 220 "data/maps/SpiralCave/scripts.pory"
+	.string "of caves.\p"
+# 221 "data/maps/SpiralCave/scripts.pory"
+	.string "But, to use it, you need the GYM BADGE\n"
+# 222 "data/maps/SpiralCave/scripts.pory"
 	.string "from DEWFORD's POKéMON GYM.$"
+
+SpiralCave_EventScript_Wally_Text_0:
+# 140 "data/maps/SpiralCave/scripts.pory"
+	.string "Cleared the Spiral Island trial!$"
+
+SpiralCave_EventScript_Wally_Text_1:
+# 148 "data/maps/SpiralCave/scripts.pory"
+	.string "Defog lets you remove hazards and\n"
+	.string "lower evasion, it's very handy!$"
+
+SpiralCave_EventScript_Ralts_Text_0:
+# 179 "data/maps/SpiralCave/scripts.pory"
+	.string "...$"
 
 SpiralCave_Text_MarcIntro::
 # 9 "data/maps/SpiralCave/scripts.pory"
@@ -228,16 +295,31 @@ SpiralCave_Text_LivPostBattle::
 	.string "But we still lost…$"
 
 SpiralCave_Text_WallyIntro::
-# 135 "data/maps/SpiralCave/scripts.pory"
-	.string "Did you just become a Trainer? We're\n"
-	.string "both beginners!$"
-
-SpiralCave_Text_WallyDefeat::
-# 139 "data/maps/SpiralCave/scripts.pory"
-	.string "I called you because I thought I could\n"
-	.string "beat you…$"
+# 154 "data/maps/SpiralCave/scripts.pory"
+	.string "Hi there, my name's Wally!\n"
+	.string "I traveled here from the hoenn region.\p"
+	.string "I was appointed as the trial captain of\n"
+	.string "this island because my team was the\l"
+	.string "perfect fit for this cave's field\l"
+	.string "effect.\p"
+	.string "Oh, my Ralts? It's not ready for battle\n"
+	.string "yet.\p"
+	.string "Lets go!$"
 
 SpiralCave_Text_WallyPostBattle::
-# 143 "data/maps/SpiralCave/scripts.pory"
-	.string "I haven't won once yet… I wish I would\n"
-	.string "win soon…$"
+# 162 "data/maps/SpiralCave/scripts.pory"
+	.string "Wow, your potential reminds me of the\n"
+	.string "trainer who helped me catch my first\l"
+	.string "Pokémon.\p"
+	.string "I have a feeling you'll go a long way.$"
+
+SpiralCave_Text_WallyRewards::
+# 167 "data/maps/SpiralCave/scripts.pory"
+	.string "The level cap is now 23, and you can now\n"
+	.string "access all of this islands' Move Tutors\l"
+	.string "with the L menu.\p"
+	.string "Take these with you as well$"
+
+SpiralCave_Text_WallyDefeat::
+# 172 "data/maps/SpiralCave/scripts.pory"
+	.string "I lost…$"

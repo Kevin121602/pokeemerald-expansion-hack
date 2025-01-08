@@ -127,21 +127,58 @@ text SpiralCave_Text_LivPostBattle{
 }
 
 script SpiralCave_EventScript_Wally{
-	trainerbattle_single (TRAINER_WALLY_MAUVILLE, SpiralCave_Text_WallyIntro, SpiralCave_Text_WallyDefeat)
-	msgbox (SpiralCave_Text_WallyPostBattle, MSGBOX_AUTOCLOSE)
+	lock
+	faceplayer
+	if(!flag(FLAG_DEFEATED_WALLY)){
+		setflag(FLAG_DISABLE_EXP)
+		msgbox(SpiralCave_Text_WallyIntro)
+		trainerbattle_no_intro (TRAINER_WALLY_MAUVILLE, SpiralCave_Text_WallyDefeat)
+		msgbox(SpiralCave_Text_WallyPostBattle)
+		setflag(FLAG_DEFEATED_WALLY)
+		clearflag(FLAG_DISABLE_EXP)
+		playfanfare(MUS_DP_OBTAIN_BADGE)
+		msgbox(format("Cleared the Spiral Island trial!"))
+		waitmessage
+		waitfanfare
+		msgbox(SpiralCave_Text_WallyRewards)
+		giveitem(ITEM_HEART_SCALE)
+		giveitem(ITEM_TM_DEFOG)
+	}
+	if(flag(FLAG_DEFEATED_WALLY)){
+		msgbox(format("Defog lets you remove hazards and lower evasion, it's very handy!"))
+	}
+	releaseall
 	end
 }
 
 text SpiralCave_Text_WallyIntro{
-	format("Did you just become a Trainer? We're both beginners!")
-}
-
-text SpiralCave_Text_WallyDefeat{
-	format("I called you because I thought I could beat you…")
+	format("Hi there, my name's Wally!\n"
+			"I traveled here from the hoenn region.\p"
+			"I was appointed as the trial captain of this island because my team was the perfect fit for this cave's field effect.\p"
+			"Oh, my Ralts? It's not ready for battle yet.\p"
+			"Lets go!")
 }
 
 text SpiralCave_Text_WallyPostBattle{
-	format("I haven't won once yet… I wish I would win soon…")
+	format("Wow, your potential reminds me of the trainer who helped me catch my first Pokémon.\p"
+			"I have a feeling you'll go a long way.")
+}
+
+text SpiralCave_Text_WallyRewards{
+	format("The level cap is now 23, and you can now access all of this islands' Move Tutors with the L menu.\p"
+			"Take these with you as well.")
+}
+
+text SpiralCave_Text_WallyDefeat{
+	format("I lost…")
+}
+
+script SpiralCave_EventScript_Ralts{
+	lock
+	faceplayer
+	msgbox(format("..."))
+	releaseall
+	end
 }
 
 raw `

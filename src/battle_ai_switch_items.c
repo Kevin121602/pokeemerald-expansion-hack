@@ -1801,12 +1801,14 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
     s32 firstId = 0;
     s32 lastId = 0; // + 1
     struct Pokemon *party;
+    u8 potentialSwitchIns[PARTY_SIZE];
 
     if (*(gBattleStruct->monToSwitchIntoId + battler) != PARTY_SIZE)
         return *(gBattleStruct->monToSwitchIntoId + battler);
     if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
         return gBattlerPartyIndexes[battler] + 1;
 
+    //remove, make double switch ai an aggregate of both scores
     if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
     {
         battlerIn1 = battler;
@@ -1859,8 +1861,7 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
                 || gBattlerPartyIndexes[battlerIn1] == i
                 || gBattlerPartyIndexes[battlerIn2] == i
                 || i == gBattleStruct->monToSwitchIntoId[battlerIn1]
-                || i == gBattleStruct->monToSwitchIntoId[battlerIn2]
-                || (GetMonAbility(&party[i]) == ABILITY_TRUANT && IsTruantMonVulnerable(battler, opposingBattler))) // While not really invalid per se, not really wise to switch into this mon.)
+                || i == gBattleStruct->monToSwitchIntoId[battlerIn2])
             {
                 invalidMons |= gBitTable[i];
             }
