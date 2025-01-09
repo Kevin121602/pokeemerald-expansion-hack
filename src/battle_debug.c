@@ -20,6 +20,7 @@
 #include "international_string_util.h"
 #include "strings.h"
 #include "battle_ai_main.h"
+#include "battle_ai_switch_items.h"
 #include "battle_ai_util.h"
 #include "list_menu.h"
 #include "decompress.h"
@@ -1114,11 +1115,15 @@ static void PutAiPartyText(struct BattleDebugMenu *data)
     u32 i, j, count;
     u8 *text = Alloc(0x50), *txtPtr;
     struct AiPartyMon *aiMons = AI_PARTY->mons[GetBattlerSide(data->aiBattlerId)];
+    u32 battler = data->aiBattlerId;
+    u32 opposingBattler = data->battlerId;
+    struct Pokemon *mon;
 
     FillWindowPixelBuffer(data->aiMovesWindowId, 0x11);
     count = AI_PARTY->count[GetBattlerSide(data->aiBattlerId)];
     for (i = 0; i < count; i++)
     {
+        mon = &gEnemyParty[gBattlerPartyIndexes[i]];
         if (aiMons[i].wasSentInBattle)
         {
             text[0] = CHAR_LV;
@@ -1147,7 +1152,7 @@ static void PutAiPartyText(struct BattleDebugMenu *data)
         *txtPtr = EOS;
         AddTextPrinterParameterized5(data->aiMovesWindowId, FONT_SMALL_NARROW, text, i * 41, 35 + j * 15, 0, NULL, 0, 0);
 
-        txtPtr = ConvertIntToDecimalStringN(text, aiMons[i].switchInCount, STR_CONV_MODE_LEFT_ALIGN, 2);
+        txtPtr = ConvertIntToDecimalStringN(text, aiMons[i].switchInCount, STR_CONV_MODE_LEFT_ALIGN, 3);
         *txtPtr = EOS;
         AddTextPrinterParameterized5(data->aiMovesWindowId, FONT_SMALL_NARROW, text, i * 41, 35 + (j + 1) * 15, 0, NULL, 0, 0);
     }
