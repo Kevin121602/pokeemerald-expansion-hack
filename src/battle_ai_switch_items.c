@@ -1075,20 +1075,62 @@ static u32 GetMonSwitchScore(struct Pokemon *mon, u32 battler, u32 opposingBattl
         playerIsFaster = TRUE;
     } 
 
-    //if player has fast kill
-    if(playerIsFaster && (hitsToKOAI == 1) && (AI_DATA->switchinCandidate.battleMon.item != ITEM_FOCUS_SASH)){
-        switchScore = -8;
-        return switchScore;
-    }
+    //increments hitstokoplayer if player gets ohkod but has a focus sash
+    if((hitsToKOPlayer == 1) && ((gBattleMons[opposingBattler].item = ITEM_FOCUS_SASH) || 
+        (gBattleMons[opposingBattler].ability == ABILITY_STURDY))){
+            hitsToKOPlayer++;
+        }
+
+    if((hitsToKOAI == 1) && ((AI_DATA->switchinCandidate.battleMon.item = ITEM_FOCUS_SASH) || 
+        (AI_DATA->switchinCandidate.battleMon.ability == ABILITY_STURDY))){
+            hitsToKOAI++;
+        }
 
     if(AI_DATA->switchinCandidate.battleMon.species == (SPECIES_WOBBUFFET | SPECIES_WYNAUT | SPECIES_DITTO)){
         switchScore = 2;
         return switchScore;
     }
 
-    
-    return switchScore;
+    //if player has fast kill
+    if(playerIsFaster && (hitsToKOAI == 1)){
+        switchScore = -8;
+        return switchScore;
+    //AI has fast kill
+    } else if(!playerIsFaster && (hitsToKOPlayer == 1)){
+        switchScore = 5;
+        if(CanAbilityTrapOpponent(AI_DATA->switchinCandidate.battleMon.ability, opposingBattler) 
+        && gBattleMons[opposingBattler].item != ITEM_SHED_SHELL){
+            switchScore += 2;
+        }
+        return switchScore;
+    //AI has slow kill
+    } else if(playerIsFaster && (hitsToKOPlayer == 1)){
+        switchScore = 4;
+        if(CanAbilityTrapOpponent(AI_DATA->switchinCandidate.battleMon.ability, opposingBattler) 
+        && gBattleMons[opposingBattler].item != ITEM_SHED_SHELL){
+            switchScore += 2;
+        }
+        return switchScore;
+    //Player has slow kill
+    } else if(!playerIsFaster && (hitsToKOAI == 1)){
+        switchScore = -5;
+        return switchScore;
+    //AI is faster and outdamages
+    } else if(!playerIsFaster && (hitsToKOPlayer >= hitsToKOAI)){
+        switchScore = 3;
+        return switchScore;
+    //AI is slower and outdamages
+    } else if(playerIsFaster && (hitsToKOPlayer > hitsToKOAI)){
+        switchScore = 2;
+        return switchScore;
+    } else if(!playerIsFaster){
+        switchScore = 1;
+        return switchScore;
+    } else {
+        return switchScore;
+    }
 }
+
 
 // If there are two(or more) mons to choose from, always choose one that has baton pass
 // as most often it can't do much on its own.
@@ -1937,7 +1979,9 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
     s32 firstId = 0;
     s32 lastId = 0; // + 1
     struct Pokemon *party;
-    u8 potentialSwitchIns[PARTY_SIZE];
+    u32 numberOfBestMons = 0;
+    u32 maxSwitchScore = -16;
+    s32 j = 0;
 
     if (*(gBattleStruct->monToSwitchIntoId + battler) != PARTY_SIZE)
         return *(gBattleStruct->monToSwitchIntoId + battler);
@@ -2008,10 +2052,36 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
             }
             else
             {
-                aliveCount++;
+                if (GetMonSwitchScore(&party[i], battler, opposingBattler) > maxSwitchScore){
+                    numberOfBestMons = 1;
+                    maxSwitchScore = GetMonSwitchScore(&party[i], battler, opposingBattler);
+                } else if (GetMonSwitchScore(&party[i], battler, opposingBattler) == maxSwitchScore){
+                    numberOfBestMons++;
+                }
             }
         }
-        bestMonId = GetBestMonBatonPass(party, firstId, lastId, invalidMons, aliveCount, battler, opposingBattler);
+
+        u8 consideredMonArray[numberOfBestMons];
+
+        for (i = firstId; i < lastId; i++)
+        {
+            if (!IsValidForBattle(&party[i])
+                || gBattlerPartyIndexes[battlerIn1] == i
+                || gBattlerPartyIndexes[battlerIn2] == i
+                || i == gBattleStruct->monToSwitchIntoId[battlerIn1]
+                || i == gBattleStruct->monToSwitchIntoId[battlerIn2])
+            {
+                invalidMons |= gBitTable[i];
+            } else
+            {
+                if (GetMonSwitchScore(&party[i], battler, opposingBattler) == maxSwitchScore){
+                    consideredMonArray[j] = i;
+                    j++;
+                }
+            }
+        }
+        
+        /*bestMonId = GetBestMonBatonPass(party, firstId, lastId, invalidMons, aliveCount, battler, opposingBattler);
         if (bestMonId != PARTY_SIZE)
             return bestMonId;
 
@@ -2021,13 +2091,13 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
 
         bestMonId = GetBestMonDmg(party, firstId, lastId, invalidMons, battler, opposingBattler);
         if (bestMonId != PARTY_SIZE)
-            return bestMonId;
+            return bestMonId;*/
 
         // If ace mon is the last available Pokemon and switch move was used - switch to the mon.
         if (aceMonId != PARTY_SIZE)
             return aceMonId;
 
-        return PARTY_SIZE;
+        return consideredMonArray[Random() % numberOfBestMons];
     }
 }
 
