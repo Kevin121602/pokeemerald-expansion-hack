@@ -2142,6 +2142,7 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
     u32 maxSwitchScore = -16;
     u32 switchScore = 0;
     u8 consideredMonArray[PARTY_SIZE];
+    u8 currentMonArray[PARTY_SIZE];
     int i;
     s32 j = 0;
 
@@ -2183,7 +2184,12 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
         return bestMonId;
     }
 
-    for (i = firstId; i < lastId; i++)
+    InitializeSwitchinCandidate(&party[firstId]);
+
+    currentMonArray[0] = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, opposingBattler, TRUE);
+    consideredMonArray[0] = 0;
+
+    for (i = (firstId + 1); i < lastId; i++)
     {
         // Check mon validity
         if (!IsValidForBattle(&party[i])
@@ -2198,13 +2204,18 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
         InitializeSwitchinCandidate(&party[i]);
 
         switchScore = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, opposingBattler, TRUE);
-        if(switchScore > maxSwitchScore){
-            bestMonId = i;
-            maxSwitchScore = switchScore;
+        if(currentMonArray[0] == switchScore){
+            currentMonArray[numberOfBestMons] = switchScore;
+            consideredMonArray[numberOfBestMons++] = i;
+        }
+        if(currentMonArray[0] < switchScore){
+            numberOfBestMons = 1;
+            consideredMonArray[0] = i;
+            currentMonArray[0] = switchScore;
         }
     }
 
-    return bestMonId;
+    return consideredMonArray[Random() % numberOfBestMons];
 
     // Split ideal mon decision between after previous mon KO'd (prioritize offensive options) and after switching active mon out (prioritize defensive options), and expand the scope of both.
     bestMonId = GetBestMonIntegrated(party, firstId, lastId, battler, opposingBattler, battlerIn1, battlerIn2, switchAfterMonKOd);
