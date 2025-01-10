@@ -1669,163 +1669,120 @@ static u16 GetSwitchinTypeMatchup(u32 opposingBattler, struct BattlePokemon batt
 u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingBattler, bool32 switchAfterMonKOd)
 {
     int switchScore = 0;
-    bool32 revengeKillerId = FALSE, slowRevengeKillerId = FALSE, fastThreatenId = FALSE, slowThreatenId = FALSE, damageMonId = FALSE;
-    bool32 batonPassId = FALSE, typeMatchupId = FALSE, typeMatchupEffectiveId = FALSE, defensiveMonId = FALSE, aceMonId = FALSE, trapperId = FALSE;
-    int i, j, aliveCount = 0, bits = 0;
-    s32 defensiveMonHitKOThreshold = 3; // 3HKO threshold that candidate defensive mons must exceed
-    u32 aiMove, hitsToKOAI, hitsToKOPlayer, hitsToKOAIThreshold, maxHitsToKO = 0;
-    s32 playerMonSpeed = gBattleMons[opposingBattler].speed, playerMonHP = gBattleMons[opposingBattler].hp, aiMonSpeed, aiMovePriority = 0, maxDamageDealt = 0, damageDealt = 0;
-    u16 bestResist = UQ_4_12(1.0), bestResistEffective = UQ_4_12(1.0), typeMatchup;
+    int j = 0;
+    bool32 fastTrapper = FALSE, slowTrapper = FALSE, fastRevengeKiller = FALSE, slowRevengeKiller = FALSE;
+    bool32 fastThreaten = FALSE, slowThreaten = FALSE, faster = FALSE, slowKilled = FALSE, fastKilled = FALSE;
+    u32 aiMove, hitsToKOAI, hitsToKOPlayer, maxHitsToKO = 0;
+    s32 playerAbility = gBattleMons[opposingBattler].ability;
+    s32 playerHoldEffect = ItemId_GetHoldEffect(gBattleMons[opposingBattler].item);
+    s32 aiMonAbility = battleMon.ability;
+    s32 aiMonHoldEffect = ItemId_GetHoldEffect(battleMon.item);
+    u32 playerMonSpeed = GetSwitchInSpeedStatArgs(gBattleMons[opposingBattler], opposingBattler, playerAbility, playerHoldEffect);
+    u32 aiMonSpeed = GetSwitchInSpeedStatArgs(battleMon, battler, aiMonAbility, aiMonHoldEffect);
+    s32 playerMonHP = gBattleMons[opposingBattler].hp, aiMovePriority = 0, maxDamageDealt = 0, damageDealt = 0;
 
-    if (switchAfterMonKOd)
-        hitsToKOAIThreshold = 1; // After a KO, mons at minimum need to not be 1-shot, as they switch in for free
-    else
-        hitsToKOAIThreshold = 2; // When switching in otherwise need to not be 2-shot, as they do not switch in for free
+    //always returns 2 if species is ditto
+    if(battleMon.species == SPECIES_DITTO){
+        switchScore = 10;
+        return switchScore;
+    }
+
+    /*if (CanAbilityTrapOpponent(battleMon.ability, opposingBattler) && gBattleMons[opposingBattler].item != ITEM_SHED_SHELL){
+            switchScore += 2;
+        }*/
 
     // Get max number of hits for player to KO AI mon
-        hitsToKOAI = GetSwitchinHitsToKO(GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, battleMon), battler);
+    hitsToKOAI = GetNoOfHitsToKO(GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, battleMon), battleMon.hp);
 
-        // Track max hits to KO and set GetBestMonDefensive if applicable
-        if(hitsToKOAI > maxHitsToKO)
+    //if player can kill
+    if(hitsToKOAI != 0 && hitsToKOAI <= 1 && battleMon.item != ITEM_FOCUS_SASH){
+        if (((playerMonSpeed > aiMonSpeed && !(gFieldStatuses & STATUS_FIELD_TRICK_ROOM)) // Outspeed if not Trick Room
+            || (aiMonSpeed > playerMonSpeed && (gFieldStatuses & STATUS_FIELD_TRICK_ROOM))))
         {
-            maxHitsToKO = hitsToKOAI;
-            if(maxHitsToKO > defensiveMonHitKOThreshold)
-                defensiveMonId = TRUE;
+            fastKilled = TRUE;
         }
-
-        typeMatchup = GetSwitchinTypeMatchup(opposingBattler, battleMon);
-
-        // Check that good type matchups gets at least two turns and set GetBestMonTypeMatchup if applicable
-        if (typeMatchup < bestResist)
-        {
-            if ((hitsToKOAI > hitsToKOAIThreshold && battleMon.speed > playerMonSpeed) || hitsToKOAI > hitsToKOAIThreshold + 1) // Need to take an extra hit if slower
-            {
-                bestResist = typeMatchup;
-                typeMatchupId = TRUE;
-            }
+        else{
+            slowKilled = TRUE;
         }
+    }
 
-        aiMonSpeed = battleMon.speed;
+    //returns +2 if wobb or wynaut, so long as they arent fast killed
+    if((battleMon.species == (SPECIES_WOBBUFFET || SPECIES_WYNAUT)) && !fastKilled){
+        switchScore = 10;
+        return switchScore;
+    }
 
-        // Check through current mon's moves
-        for (j = 0; j < MAX_MON_MOVES; j++)
+    // Check through current mon's moves
+    for (j = 0; j < MAX_MON_MOVES; j++)
+    {
+        aiMove = battleMon.moves[j];
+        aiMovePriority = gMovesInfo[aiMove].priority;
+
+        if (aiMove != MOVE_NONE && gMovesInfo[aiMove].power != 0 && gMovesInfo[aiMove].effect != EFFECT_EXPLOSION)
         {
-            aiMove = battleMon.moves[j];
-            aiMovePriority = gMovesInfo[aiMove].priority;
+            damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, battleMon, TRUE, DMG_ROLL_LOWEST);
+            hitsToKOPlayer = GetNoOfHitsToKOBattlerDmg(damageDealt, opposingBattler);
 
-            // Only do damage calc if switching after KO, don't need it otherwise and saves ~0.02s per turn
-            if (switchAfterMonKOd && aiMove != MOVE_NONE && gMovesInfo[aiMove].power != 0)
+            // Check if current mon can revenge kill in some capacity
+            // If AI mon can one shot
+            if (damageDealt >= playerMonHP)
             {
-                damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, battleMon, TRUE, DMG_ROLL_LOWEST);
-            }
-
-            // Check for mon with resistance and super effective move for GetBestMonTypeMatchup
-            if (aiMove != MOVE_NONE && gMovesInfo[aiMove].power != 0)
-            {
-                if (typeMatchup < bestResistEffective)
+                // If AI mon outspeeds
+                if ((aiMonSpeed > playerMonSpeed && !(gFieldStatuses & STATUS_FIELD_TRICK_ROOM)) || (aiMovePriority > 0) // Outspeed if not Trick Room
+                    || (playerMonSpeed > aiMonSpeed && (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)))
                 {
-                    if (AI_GetTypeEffectiveness(aiMove, battler, opposingBattler) >= UQ_4_12(2.0))
-                    {
-                        // Assuming a super effective move would do significant damage or scare the player out, so not being as conservative here
-                        if (hitsToKOAI > hitsToKOAIThreshold)
-                        {
-                            bestResistEffective = typeMatchup;
-                            typeMatchupEffectiveId = TRUE;
-                        }
+                    // We have a revenge killer
+                    fastRevengeKiller = TRUE;
+                    if (CanAbilityTrapOpponent(battleMon.ability, opposingBattler) && gBattleMons[opposingBattler].item != ITEM_SHED_SHELL){
+                        fastTrapper = TRUE;
                     }
-                }
-
-                // If a self destruction move doesn't OHKO, don't factor it into revenge killing
-                if (gMovesInfo[aiMove].effect == EFFECT_EXPLOSION)
-                    continue;
-
-                // Check that mon isn't one shot and set GetBestMonDmg if applicable
-                if (damageDealt > maxDamageDealt)
-                {
-                    if(hitsToKOAI > hitsToKOAIThreshold)
-                    {
-                        maxDamageDealt = damageDealt;
-                        damageMonId = TRUE;
+                } else {
+                    // We have a slow revenge killer
+                    slowRevengeKiller = TRUE;
+                    if (CanAbilityTrapOpponent(battleMon.ability, opposingBattler) && gBattleMons[opposingBattler].item != ITEM_SHED_SHELL){
+                        slowTrapper = TRUE;
                     }
-                }
-
-                // Check if current mon can revenge kill in some capacity
-                // If AI mon can one shot
-                if (damageDealt > playerMonHP)
-                {
-                    // If AI mon outspeeds and doesn't die to hazards
-                    if ((((aiMonSpeed > playerMonSpeed && !(gFieldStatuses & STATUS_FIELD_TRICK_ROOM)) || aiMovePriority > 0) // Outspeed if not Trick Room
-                        || ((gFieldStatuses & STATUS_FIELD_TRICK_ROOM) // Trick Room
-                        && (aiMonSpeed < playerMonSpeed || (ItemId_GetHoldEffect(battleMon.item) == HOLD_EFFECT_ROOM_SERVICE && aiMonSpeed * 2 / 3 < playerMonSpeed)))) // Trick Room speeds
-                        && battleMon.hp > GetSwitchinHazardsDamage(battler, &battleMon)) // Hazards
-                    {
-                        // We have a revenge killer
-                        revengeKillerId = TRUE;
-                    }
-
-                    // If AI mon is outsped
-                    else
-                    {
-                        // If AI mon can't be OHKO'd
-                        if (hitsToKOAI > hitsToKOAIThreshold)
-                        {
-                            // We have a slow revenge killer
-                            slowRevengeKillerId = TRUE;
-                        }
-                    }
-                }
-
-                // If AI mon can two shot
-                if (damageDealt > playerMonHP / 2)
-                {
-                    // If AI mon outspeeds
-                    if (((aiMonSpeed > playerMonSpeed && !(gFieldStatuses & STATUS_FIELD_TRICK_ROOM)) || aiMovePriority > 0) // Outspeed if not Trick Room
-                        || (((gFieldStatuses & STATUS_FIELD_TRICK_ROOM) && gFieldTimers.trickRoomTimer > 1) // Trick Room has at least 2 turns left
-                        && (aiMonSpeed < playerMonSpeed || (ItemId_GetHoldEffect(battleMon.item) == HOLD_EFFECT_ROOM_SERVICE && aiMonSpeed * 2/ 3 < playerMonSpeed)))) // Trick Room speeds
-                    {
-                        // If AI mon can't be OHKO'd
-                        if (hitsToKOAI > hitsToKOAIThreshold)
-                        {
-                            // We have a fast threaten
-                            fastThreatenId = TRUE;
-                        }
-                    }
-                    // If AI mon is outsped
-                    else
-                    {
-                        // If AI mon can't be 2HKO'd
-                        if (hitsToKOAI > hitsToKOAIThreshold + 1)
-                        {
-                            // We have a slow threaten
-                            slowThreatenId = TRUE;
-                        }
-                    }
-                }
-
-                // If mon can trap
-                if (CanAbilityTrapOpponent(battleMon.ability, opposingBattler))
-                {
-                    hitsToKOPlayer = GetNoOfHitsToKOBattlerDmg(damageDealt, opposingBattler);
-                    if (CountUsablePartyMons(opposingBattler) > 0
-                    && (((hitsToKOAI > hitsToKOPlayer && switchAfterMonKOd) // If can 1v1 after a KO
-                    || (hitsToKOAI == hitsToKOPlayer && switchAfterMonKOd && (aiMonSpeed > playerMonSpeed || aiMovePriority > 0)))
-                    || ((hitsToKOAI > hitsToKOPlayer + 1 && !switchAfterMonKOd) // If can 1v1 after mid battle
-                    || (hitsToKOAI == hitsToKOPlayer + 1 && !switchAfterMonKOd && (aiMonSpeed > playerMonSpeed || aiMovePriority > 0)))))
-                        trapperId = TRUE;
                 }
             }
+
+            // If AI mon outdamages player
+            if ((hitsToKOAI == 0) || (hitsToKOAI >= hitsToKOPlayer))
+            {
+                // If AI mon outspeeds
+                if ((aiMonSpeed > playerMonSpeed && !(gFieldStatuses & STATUS_FIELD_TRICK_ROOM)) || (aiMovePriority > 0) // Outspeed if not Trick Room
+                    || (playerMonSpeed > aiMonSpeed && (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)))
+                {
+                    fastThreaten = TRUE;
+                }
+                // If AI mon is outsped
+                else
+                {
+                    // We have a slow threaten
+                    slowThreaten = TRUE;
+                }
+            }
+
+            // If AI mon outspeeds
+            if ((aiMonSpeed > playerMonSpeed && !(gFieldStatuses & STATUS_FIELD_TRICK_ROOM)) // Outspeed if not Trick Room
+                || (playerMonSpeed > aiMonSpeed && (gFieldStatuses & STATUS_FIELD_TRICK_ROOM)))
+            {
+                faster = TRUE;
+            }
         }
+    }
 
-        if (trapperId == TRUE)                    return 8;
-        else if (revengeKillerId == TRUE)         return 7;
-        else if (slowRevengeKillerId == TRUE)     return 6;
-        else if (fastThreatenId == TRUE)          return 5;
-        else if (slowThreatenId == TRUE)          return 4;
-        else if (typeMatchupEffectiveId == TRUE)  return 3;
-        else if (typeMatchupId == TRUE)           return 2;
-        else if (damageMonId == TRUE)             return 1;
-        else                                      return 0;
+    if (fastKilled == TRUE)                 switchScore = 0;
+    else if (fastTrapper == TRUE)           switchScore = 15;
+    else if (slowTrapper == TRUE)           switchScore = 14;
+    else if (fastRevengeKiller == TRUE)     switchScore = 13;
+    else if (slowKilled == TRUE)            switchScore = 3;
+    else if (slowRevengeKiller == TRUE)     switchScore = 12;
+    else if (fastThreaten == TRUE)          switchScore = 11;
+    else if (slowThreaten == TRUE)          switchScore = 10;
+    else if (faster == TRUE)                switchScore = 9;
+    else                                    switchScore = 8;
 
+    return switchScore;
 }
 
 static int GetRandomSwitchinWithBatonPass(int aliveCount, int bits, int firstId, int lastId, int currentMonId)

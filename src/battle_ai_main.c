@@ -1673,7 +1673,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_SCORE(-10);
             else if (gBattleMons[battlerAtk].status2 & STATUS2_SUBSTITUTE
               || (gStatuses3[battlerAtk] & (STATUS3_ROOTED | STATUS3_AQUA_RING | STATUS3_MAGNET_RISE | STATUS3_POWER_TRICK))
-              || AnyStatIsRaised(battlerAtk))
+              || AnyStatIsRaised(battlerAtk)
+              || gBattleMons[battlerDef].status2 & (STATUS2_ESCAPE_PREVENTION))
                 break;
             else
                 ADJUST_SCORE(-6);
@@ -3488,7 +3489,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         }
         break;
     case EFFECT_BATON_PASS:
-        if (AnyStatIsRaised(battlerAtk))
+        if (AnyStatIsRaised(battlerAtk) || gBattleMons[battlerDef].status2 & (STATUS2_ESCAPE_PREVENTION))
             ADJUST_SCORE(BEST_EFFECT);
         break;
     case EFFECT_DISABLE:
