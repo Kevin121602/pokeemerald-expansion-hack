@@ -71,6 +71,7 @@ script CenterTown_PlayersHouse_1F_MomItems {
 	msgbox(format("Our next door neighbours have a gift for you, pay them a visit before you leave. Come back home if you need any more Pokéballs or money, and stop by Professor Birch's lab if you have any questions!"))
 	setflag(FLAG_SYS_POKEMON_GET)
 	setflag(FLAG_SYS_POKEDEX_GET)
+	setflag(FLAG_SYS_NATIONAL_DEX)
 	setvar(VAR_CENTER_INTRO_STATE, 1)
 	setrespawn(HEAL_LOCATION_CENTER_TOWN)
 	release

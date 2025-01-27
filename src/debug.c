@@ -2737,7 +2737,7 @@ static void DebugAction_FlagsVars_SwitchNatDex(u8 taskId)
     }
     else
     {
-        EnableNationalPokedex();
+        *-();
         PlaySE(SE_PC_LOGIN);
     }
 }
