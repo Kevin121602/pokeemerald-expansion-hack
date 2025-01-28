@@ -69,6 +69,19 @@ Route102_Text_TianaPostBattle:
 	.string "To keep winning my way up, I see that\n"
 	.string "I have to catch more POKéMON.$"
 
+Route103_Text_DaisyIntro:
+	.string "AMY: I'm AMY.\n"
+	.string "And this is my little sister LIV.\l"
+	.string "We battle together!$"
+
+Route103_Text_DaisyDefeated:
+	.string "AMY: Uh-oh, we lost.$"
+
+Route103_Text_DaisyPostBattle:
+	.string "AMY: You have to think about all\n"
+	.string "kinds of things when you're battling\l"
+	.string "against two TRAINERS.$"
+
 Route103_Text_AmyIntro:
 	.string "AMY: I'm AMY.\n"
 	.string "And this is my little sister LIV.\l"

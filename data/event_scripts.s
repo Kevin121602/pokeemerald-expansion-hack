@@ -104,32 +104,32 @@ gStdScripts::
 	.4byte Std_MsgboxPokenav           @ MSGBOX_POKENAV
 gStdScripts_End::
 
-	.include "data/maps/RouteThree/scripts.inc"
+	.include "data/maps/PetalburgCity/scripts.inc"
 	.include "data/maps/SlateportCity/scripts.inc"
 	.include "data/maps/MauvilleCity/scripts.inc"
-	.include "data/maps/SpiralCity/scripts.inc"
+	.include "data/maps/RustboroCity/scripts.inc"
 	.include "data/maps/FortreeCity/scripts.inc"
 	.include "data/maps/LilycoveCity/scripts.inc"
 	.include "data/maps/MossdeepCity/scripts.inc"
 	.include "data/maps/SootopolisCity/scripts.inc"
 	.include "data/maps/EverGrandeCity/scripts.inc"
-	.include "data/maps/CenterTown/scripts.inc"
-	.include "data/maps/CraterPond/scripts.inc"
+	.include "data/maps/LittlerootTown/scripts.inc"
+	.include "data/maps/OldaleTown/scripts.inc"
 	.include "data/maps/DewfordTown/scripts.inc"
 	.include "data/maps/LavaridgeTown/scripts.inc"
 	.include "data/maps/FallarborTown/scripts.inc"
 	.include "data/maps/VerdanturfTown/scripts.inc"
 	.include "data/maps/PacifidlogTown/scripts.inc"
-	.include "data/maps/RouteOne/scripts.inc"
-	.include "data/maps/RouteTwo/scripts.inc"
-	.include "data/maps/LoneTreeCape/scripts.inc"
-	.include "data/maps/LightningMeadow/scripts.inc"
-	.include "data/maps/RouteSeven/scripts.inc"
-	.include "data/maps/RouteFour/scripts.inc"
-	.include "data/maps/SeashellBeach/scripts.inc"
-	.include "data/maps/RouteFive/scripts.inc"
-	.include "data/maps/RouteSix/scripts.inc"
-	.include "data/maps/RouteEight/scripts.inc"
+	.include "data/maps/Route101/scripts.inc"
+	.include "data/maps/Route102/scripts.inc"
+	.include "data/maps/Route103/scripts.inc"
+	.include "data/maps/Route104/scripts.inc"
+	.include "data/maps/Route105/scripts.inc"
+	.include "data/maps/Route106/scripts.inc"
+	.include "data/maps/Route107/scripts.inc"
+	.include "data/maps/Route108/scripts.inc"
+	.include "data/maps/Route109/scripts.inc"
+	.include "data/maps/Route110/scripts.inc"
 	.include "data/maps/Route111/scripts.inc"
 	.include "data/maps/Route112/scripts.inc"
 	.include "data/maps/Route113/scripts.inc"
@@ -161,11 +161,11 @@ gStdScripts_End::
 	.include "data/maps/Underwater_Route129/scripts.inc"
 	.include "data/maps/Underwater_Route105/scripts.inc"
 	.include "data/maps/Underwater_Route125/scripts.inc"
-	.include "data/maps/CenterTown_PlayersHouse_1F/scripts.inc"
-	.include "data/maps/CenterTown_PlayersHouse_2F/scripts.inc"
-	.include "data/maps/CenterTown_House_1/scripts.inc"
+	.include "data/maps/LittlerootTown_BrendansHouse_1F/scripts.inc"
+	.include "data/maps/LittlerootTown_BrendansHouse_2F/scripts.inc"
+	.include "data/maps/LittlerootTown_MaysHouse_1F/scripts.inc"
 	.include "data/maps/LittlerootTown_MaysHouse_2F/scripts.inc"
-	.include "data/maps/CenterTown_Lab/scripts.inc"
+	.include "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.inc"
 	.include "data/maps/OldaleTown_House1/scripts.inc"
 	.include "data/maps/OldaleTown_House2/scripts.inc"
 	.include "data/maps/OldaleTown_PokemonCenter_1F/scripts.inc"
@@ -237,7 +237,7 @@ gStdScripts_End::
 	.include "data/maps/MauvilleCity_PokemonCenter_1F/scripts.inc"
 	.include "data/maps/MauvilleCity_PokemonCenter_2F/scripts.inc"
 	.include "data/maps/MauvilleCity_Mart/scripts.inc"
-	.include "data/maps/SpiralCity_HelixMuseum/scripts.inc"
+	.include "data/maps/RustboroCity_DevonCorp_1F/scripts.inc"
 	.include "data/maps/RustboroCity_DevonCorp_2F/scripts.inc"
 	.include "data/maps/RustboroCity_DevonCorp_3F/scripts.inc"
 	.include "data/maps/RustboroCity_Gym/scripts.inc"
@@ -247,9 +247,9 @@ gStdScripts_End::
 	.include "data/maps/RustboroCity_Mart/scripts.inc"
 	.include "data/maps/RustboroCity_Flat1_1F/scripts.inc"
 	.include "data/maps/RustboroCity_Flat1_2F/scripts.inc"
-	.include "data/maps/SpiralCity_House1/scripts.inc"
+	.include "data/maps/RustboroCity_House1/scripts.inc"
 	.include "data/maps/RustboroCity_CuttersHouse/scripts.inc"
-	.include "data/maps/SpiralCity_House2/scripts.inc"
+	.include "data/maps/RustboroCity_House2/scripts.inc"
 	.include "data/maps/RustboroCity_Flat2_1F/scripts.inc"
 	.include "data/maps/RustboroCity_Flat2_2F/scripts.inc"
 	.include "data/maps/RustboroCity_Flat2_3F/scripts.inc"
@@ -346,14 +346,14 @@ gStdScripts_End::
 	.include "data/maps/MeteorFalls_1F_2R/scripts.inc"
 	.include "data/maps/MeteorFalls_B1F_1R/scripts.inc"
 	.include "data/maps/MeteorFalls_B1F_2R/scripts.inc"
-	.include "data/maps/FrigidPath/scripts.inc"
+	.include "data/maps/RusturfTunnel/scripts.inc"
 	.include "data/maps/Underwater_SootopolisCity/scripts.inc"
 	.include "data/maps/DesertRuins/scripts.inc"
-	.include "data/maps/SpiralCave/scripts.inc"
+	.include "data/maps/GraniteCave_1F/scripts.inc"
 	.include "data/maps/GraniteCave_B1F/scripts.inc"
 	.include "data/maps/GraniteCave_B2F/scripts.inc"
 	.include "data/maps/GraniteCave_StevensRoom/scripts.inc"
-	.include "data/maps/SpiralWoods/scripts.inc"
+	.include "data/maps/PetalburgWoods/scripts.inc"
 	.include "data/maps/MtChimney/scripts.inc"
 	.include "data/maps/JaggedPass/scripts.inc"
 	.include "data/maps/FieryPath/scripts.inc"
@@ -565,8 +565,8 @@ gStdScripts_End::
 	.include "data/maps/Route110_TrickHousePuzzle6/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle7/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle8/scripts.inc"
-	.include "data/maps/Route110_SeasideCyclingRoadSouthEntrance/scripts.inc"
 	.include "data/maps/Route110_SeasideCyclingRoadNorthEntrance/scripts.inc"
+	.include "data/maps/Route110_SeasideCyclingRoadSouthEntrance/scripts.inc"
 	.include "data/maps/Route113_GlassWorkshop/scripts.inc"
 	.include "data/maps/Route123_BerryMastersHouse/scripts.inc"
 	.include "data/maps/Route119_WeatherInstitute_1F/scripts.inc"
@@ -716,13 +716,13 @@ Common_EventScript_SetAbnormalWeather::
 	return
 
 Common_EventScript_PlayGymBadgeFanfare::
-	playfanfare MUS_DP_OBTAIN_BADGE
+	playfanfare MUS_OBTAIN_BADGE
 	waitfanfare
 	return
 
 Common_EventScript_OutOfCenterPartyHeal::
 	fadescreen FADE_TO_BLACK
-	playfanfare MUS_DP_HEAL
+	playfanfare MUS_HEAL
 	waitfanfare
 	special HealPlayerParty
 	callnative UpdateFollowingPokemon
@@ -822,7 +822,7 @@ Common_EventScript_NameReceivedPartyMon::
 
 Common_EventScript_PlayerHandedOverTheItem::
 	bufferitemname STR_VAR_1, VAR_0x8004
-	playfanfare MUS_DP_OBTAIN_TMHM
+	playfanfare MUS_OBTAIN_TMHM
 	message gText_PlayerHandedOverTheItem
 	waitmessage
 	waitfanfare
@@ -1074,5 +1074,3 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/frontier_brain.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
-
-	.include "data/maps/PorytilesTestMap/scripts.inc"

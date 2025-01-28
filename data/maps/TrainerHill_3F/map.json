@@ -13,6 +13,7 @@
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
+  "object_events": [],
   "warp_events": [
     {
       "x": 2,
@@ -28,5 +29,7 @@
       "dest_map": "MAP_TRAINER_HILL_4F",
       "dest_warp_id": "0"
     }
-  ]
+  ],
+  "coord_events": [],
+  "bg_events": []
 }

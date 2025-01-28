@@ -327,7 +327,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
         .emotion = FOLLOWER_EMOTION_PENSIVE,
         .conditions =
         {
-            MATCH_MAPSEC(MAPSEC_SPIRAL_WOODS),
+            MATCH_MAPSEC(MAPSEC_PETALBURG_WOODS),
         },
     },
     [COND_MSG_ICE] =

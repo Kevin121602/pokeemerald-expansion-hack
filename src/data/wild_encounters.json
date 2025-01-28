@@ -91,8 +91,8 @@
       ],
       "encounters": [
         {
-          "map": "MAP_ROUTE_TWO",
-          "base_label": "gRouteTwo",
+          "map": "MAP_ROUTE102",
+          "base_label": "gRoute102",
           "land_mons": {
             "encounter_rate": 20,
             "mons": [
@@ -170,8 +170,8 @@
           }
         },
         {
-          "map": "MAP_LONE_TREE_CAPE",
-          "base_label": "gLoneTreeCape",
+          "map": "MAP_ROUTE103",
+          "base_label": "gRoute103",
           "land_mons": {
             "encounter_rate": 20,
             "mons": [
@@ -249,8 +249,8 @@
           }
         },
         {
-          "map": "MAP_LIGHTNING_MEADOW",
-          "base_label": "gLightningMeadow",
+          "map": "MAP_ROUTE104",
+          "base_label": "gRoute104",
           "land_mons": {
             "encounter_rate": 20,
             "mons": [
@@ -328,8 +328,8 @@
           }
         },
         {
-          "map": "MAP_ROUTE_SEVEN",
-          "base_label": "gRouteSeven",
+          "map": "MAP_ROUTE105",
+          "base_label": "gRoute105",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -407,8 +407,8 @@
           }
         },
         {
-          "map": "MAP_ROUTE_EIGHT",
-          "base_label": "gRouteEight",
+          "map": "MAP_ROUTE110",
+          "base_label": "gRoute110",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -1678,8 +1678,8 @@
           }
         },
         {
-          "map": "MAP_SPIRAL_WOODS",
-          "base_label": "gSpiralWoods",
+          "map": "MAP_PETALBURG_WOODS",
+          "base_label": "gPetalburgWoods",
           "land_mons": {
             "encounter_rate": 20,
             "mons": [
@@ -1757,8 +1757,8 @@
           }
         },
         {
-          "map": "MAP_FRIGID_PATH",
-          "base_label": "gFrigidPath",
+          "map": "MAP_RUSTURF_TUNNEL",
+          "base_label": "gRusturfTunnel",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -1836,8 +1836,8 @@
           }
         },
         {
-          "map": "MAP_SPIRAL_CAVE",
-          "base_label": "gSpiralCave",
+          "map": "MAP_GRANITE_CAVE_1F",
+          "base_label": "gGraniteCave_1F",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -2845,8 +2845,8 @@
           }
         },
         {
-          "map": "MAP_ROUTE_FOUR",
-          "base_label": "gRouteFour",
+          "map": "MAP_ROUTE107",
+          "base_label": "gRoute107",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -2924,8 +2924,8 @@
           }
         },
         {
-          "map": "MAP_SEASHELL_BEACH",
-          "base_label": "gSeashellBeach",
+          "map": "MAP_ROUTE106",
+          "base_label": "gRoute106",
           "fishing_mons": {
             "encounter_rate": 30,
             "mons": [
@@ -3013,8 +3013,8 @@
           }
         },
         {
-          "map": "MAP_ROUTE_FIVE",
-          "base_label": "gRouteFive",
+          "map": "MAP_ROUTE108",
+          "base_label": "gRoute108",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -3092,8 +3092,8 @@
           }
         },
         {
-          "map": "MAP_ROUTE_SIX",
-          "base_label": "gRouteSix",
+          "map": "MAP_ROUTE109",
+          "base_label": "gRoute109",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -10452,8 +10452,8 @@
           }
         },
         {
-          "map": "MAP_ROUTE_THREE",
-          "base_label": "gRouteThree",
+          "map": "MAP_PETALBURG_CITY",
+          "base_label": "gPetalburgCity",
           "land_mons": {
             "encounter_rate": 30,
             "mons": [
@@ -13278,8 +13278,8 @@
           }
         },
         {
-          "map": "MAP_ROUTE_ONE",
-          "base_label": "gRouteOne",
+          "map": "MAP_ROUTE101",
+          "base_label": "gRoute101",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -13357,8 +13357,8 @@
           }
         },
         {
-          "map": "MAP_CENTER_TOWN",
-          "base_label": "gCenterTown",
+          "map": "MAP_LITTLEROOT_TOWN",
+          "base_label": "gLittlerootTown",
           "fishing_mons": {
             "encounter_rate": 30,
             "mons": [
@@ -13446,8 +13446,8 @@
           }
         },
         {
-          "map": "MAP_CRATER_POND",
-          "base_label": "gCraterPond",
+          "map": "MAP_OLDALE_TOWN",
+          "base_label": "gOldaleTown",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -13525,8 +13525,8 @@
           }
         },
         {
-          "map": "MAP_SPIRAL_CITY",
-          "base_label": "gSpiralCity",
+          "map": "MAP_RUSTBORO_CITY",
+          "base_label": "gRustboroCity",
           "fishing_mons": {
             "encounter_rate": 30,
             "mons": [

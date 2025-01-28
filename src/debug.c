@@ -1274,7 +1274,7 @@ static u8 Debug_CheckToggleFlags(u8 id)
             result = FlagGet(FLAG_SYS_B_DASH);
             break;
         case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_LOCATIONS:
-            result = FlagGet(FLAG_VISITED_CENTER_TOWN) &&
+            result = FlagGet(FLAG_VISITED_LITTLEROOT_TOWN) &&
                 FlagGet(FLAG_VISITED_OLDALE_TOWN) &&
                 FlagGet(FLAG_VISITED_DEWFORD_TOWN) &&
                 FlagGet(FLAG_VISITED_LAVARIDGE_TOWN) &&
@@ -1284,7 +1284,7 @@ static u8 Debug_CheckToggleFlags(u8 id)
                 FlagGet(FLAG_VISITED_PETALBURG_CITY) &&
                 FlagGet(FLAG_VISITED_SLATEPORT_CITY) &&
                 FlagGet(FLAG_VISITED_MAUVILLE_CITY) &&
-                FlagGet(FLAG_VISITED_SPIRAL_CITY) &&
+                FlagGet(FLAG_VISITED_RUSTBORO_CITY) &&
                 FlagGet(FLAG_VISITED_FORTREE_CITY) &&
                 FlagGet(FLAG_VISITED_LILYCOVE_CITY) &&
                 FlagGet(FLAG_VISITED_MOSSDEEP_CITY) &&
@@ -2737,7 +2737,7 @@ static void DebugAction_FlagsVars_SwitchNatDex(u8 taskId)
     }
     else
     {
-        *-();
+        EnableNationalPokedex();
         PlaySE(SE_PC_LOGIN);
     }
 }
@@ -2781,7 +2781,7 @@ static void DebugAction_FlagsVars_ToggleFlyFlags(u8 taskId)
     if (FlagGet(FLAG_LANDMARK_BATTLE_FRONTIER))
     {
         PlaySE(SE_PC_OFF);
-        FlagClear(FLAG_VISITED_CENTER_TOWN);
+        FlagClear(FLAG_VISITED_LITTLEROOT_TOWN);
         FlagClear(FLAG_VISITED_OLDALE_TOWN);
         FlagClear(FLAG_VISITED_DEWFORD_TOWN);
         FlagClear(FLAG_VISITED_LAVARIDGE_TOWN);
@@ -2791,7 +2791,7 @@ static void DebugAction_FlagsVars_ToggleFlyFlags(u8 taskId)
         FlagClear(FLAG_VISITED_PETALBURG_CITY);
         FlagClear(FLAG_VISITED_SLATEPORT_CITY);
         FlagClear(FLAG_VISITED_MAUVILLE_CITY);
-        FlagClear(FLAG_VISITED_SPIRAL_CITY);
+        FlagClear(FLAG_VISITED_RUSTBORO_CITY);
         FlagClear(FLAG_VISITED_FORTREE_CITY);
         FlagClear(FLAG_VISITED_LILYCOVE_CITY);
         FlagClear(FLAG_VISITED_MOSSDEEP_CITY);
@@ -2803,7 +2803,7 @@ static void DebugAction_FlagsVars_ToggleFlyFlags(u8 taskId)
     else
     {
         PlaySE(SE_PC_LOGIN);
-        FlagSet(FLAG_VISITED_CENTER_TOWN);
+        FlagSet(FLAG_VISITED_LITTLEROOT_TOWN);
         FlagSet(FLAG_VISITED_OLDALE_TOWN);
         FlagSet(FLAG_VISITED_DEWFORD_TOWN);
         FlagSet(FLAG_VISITED_LAVARIDGE_TOWN);
@@ -2813,7 +2813,7 @@ static void DebugAction_FlagsVars_ToggleFlyFlags(u8 taskId)
         FlagSet(FLAG_VISITED_PETALBURG_CITY);
         FlagSet(FLAG_VISITED_SLATEPORT_CITY);
         FlagSet(FLAG_VISITED_MAUVILLE_CITY);
-        FlagSet(FLAG_VISITED_SPIRAL_CITY);
+        FlagSet(FLAG_VISITED_RUSTBORO_CITY);
         FlagSet(FLAG_VISITED_FORTREE_CITY);
         FlagSet(FLAG_VISITED_LILYCOVE_CITY);
         FlagSet(FLAG_VISITED_MOSSDEEP_CITY);

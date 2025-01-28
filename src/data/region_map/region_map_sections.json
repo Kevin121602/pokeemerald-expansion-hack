@@ -1,16 +1,16 @@
 {
   "map_sections": [
     {
-      "map_section": "MAPSEC_CENTER_TOWN",
-      "name": "CENTER TOWN",
+      "map_section": "MAPSEC_LITTLEROOT_TOWN",
+      "name": "LITTLEROOT TOWN",
       "x": 4,
       "y": 11,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_CRATER_POND",
-      "name": "CRATER POND",
+      "map_section": "MAPSEC_OLDALE_TOWN",
+      "name": "OLDALE TOWN",
       "x": 4,
       "y": 9,
       "width": 1,
@@ -57,8 +57,8 @@
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_THREE",
-      "name": "ROUTE 3",
+      "map_section": "MAPSEC_PETALBURG_CITY",
+      "name": "PETALBURG CITY",
       "x": 1,
       "y": 9,
       "width": 1,
@@ -81,8 +81,8 @@
       "height": 1
     },
     {
-      "map_section": "MAPSEC_SPIRAL_CITY",
-      "name": "SPIRAL CITY",
+      "map_section": "MAPSEC_RUSTBORO_CITY",
+      "name": "RUSTBORO CITY",
       "x": 0,
       "y": 5,
       "width": 1,
@@ -129,80 +129,80 @@
       "height": 2
     },
     {
-      "map_section": "MAPSEC_ROUTE_ONE",
-      "name": "ROUTE 1",
+      "map_section": "MAPSEC_ROUTE_101",
+      "name": "ROUTE 101",
       "x": 4,
       "y": 10,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_TWO",
-      "name": "ROUTE 2",
+      "map_section": "MAPSEC_ROUTE_102",
+      "name": "ROUTE 102",
       "x": 2,
       "y": 9,
       "width": 2,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_LONE_TREE_CAPE",
-      "name": "LONE TREE CAPE",
+      "map_section": "MAPSEC_ROUTE_103",
+      "name": "ROUTE 103",
       "x": 4,
       "y": 8,
       "width": 4,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_LIGHTNING_MEADOW",
-      "name": "LIGHTNING MEADOW",
+      "map_section": "MAPSEC_ROUTE_104",
+      "name": "ROUTE 104",
       "x": 0,
       "y": 7,
       "width": 1,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_SEVEN",
-      "name": "ROUTE 7",
+      "map_section": "MAPSEC_ROUTE_105",
+      "name": "ROUTE 105",
       "x": 0,
       "y": 10,
       "width": 1,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_FOUR",
-      "name": "ROUTE 4",
+      "map_section": "MAPSEC_ROUTE_106",
+      "name": "ROUTE 106",
       "x": 0,
       "y": 13,
       "width": 2,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_SEASHELL_BEACH",
-      "name": "SEASHELL BEACH",
+      "map_section": "MAPSEC_ROUTE_107",
+      "name": "ROUTE 107",
       "x": 3,
       "y": 14,
       "width": 3,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_FIVE",
-      "name": "ROUTE 5",
+      "map_section": "MAPSEC_ROUTE_108",
+      "name": "ROUTE 108",
       "x": 6,
       "y": 14,
       "width": 2,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_SIX",
-      "name": "ROUTE 6",
+      "map_section": "MAPSEC_ROUTE_109",
+      "name": "ROUTE 109",
       "x": 8,
       "y": 12,
       "width": 1,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_ROUTE_EIGHT",
-      "name": "ROUTE 8",
+      "map_section": "MAPSEC_ROUTE_110",
+      "name": "ROUTE 110",
       "x": 8,
       "y": 7,
       "width": 1,
@@ -441,8 +441,8 @@
       "height": 1
     },
     {
-      "map_section": "MAPSEC_SPIRAL_CAVE",
-      "name": "SPIRAL CAVE",
+      "map_section": "MAPSEC_GRANITE_CAVE",
+      "name": "GRANITE CAVE",
       "x": 1,
       "y": 13,
       "width": 1,
@@ -473,16 +473,16 @@
       "height": 1
     },
     {
-      "map_section": "MAPSEC_SPIRAL_WOODS",
-      "name": "SPIRAL WOODS",
+      "map_section": "MAPSEC_PETALBURG_WOODS",
+      "name": "PETALBURG WOODS",
       "x": 0,
       "y": 8,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_FRIGID_PATH",
-      "name": "FRIGID PATH",
+      "map_section": "MAPSEC_RUSTURF_TUNNEL",
+      "name": "RUSTURF TUNNEL",
       "x": 2,
       "y": 5,
       "width": 1,
@@ -1706,14 +1706,6 @@
     {
       "map_section": "MAPSEC_TRAINER_HILL",
       "name": "TRAINER HILL",
-      "x": 8,
-      "y": 4,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_HELIX_MUSEUM",
-      "name": "HELIX MUSEUM",
       "x": 8,
       "y": 4,
       "width": 1,

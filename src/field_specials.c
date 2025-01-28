@@ -1416,8 +1416,8 @@ bool8 Special_AreLeadMonEVsMaxedOut(void)
 u8 TryUpdateRusturfTunnelState(void)
 {
     if (!FlagGet(FLAG_RUSTURF_TUNNEL_OPENED)
-        && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(FRIGID_PATH)
-        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(FRIGID_PATH))
+        && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(RUSTURF_TUNNEL)
+        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(RUSTURF_TUNNEL))
     {
         if (FlagGet(FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1))
         {
@@ -3401,8 +3401,8 @@ bool32 GetAbnormalWeatherMapNameAndType(void)
         MAP_NUM(ROUTE116),
         MAP_NUM(ROUTE118),
         MAP_NUM(ROUTE118),
-        MAP_NUM(ROUTE_SEVEN),
-        MAP_NUM(ROUTE_SEVEN),
+        MAP_NUM(ROUTE105),
+        MAP_NUM(ROUTE105),
         MAP_NUM(ROUTE125),
         MAP_NUM(ROUTE125),
         MAP_NUM(ROUTE127),
@@ -3434,8 +3434,8 @@ bool8 AbnormalWeatherHasExpired(void)
         MAP_NUM(ROUTE116),
         MAP_NUM(ROUTE118),
         MAP_NUM(ROUTE118),
-        MAP_NUM(ROUTE_SEVEN),
-        MAP_NUM(ROUTE_SEVEN),
+        MAP_NUM(ROUTE105),
+        MAP_NUM(ROUTE105),
         MAP_NUM(ROUTE125),
         MAP_NUM(ROUTE125),
         MAP_NUM(ROUTE127),

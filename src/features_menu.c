@@ -17,7 +17,7 @@ enum HeartScalesMenu
     HEART_SCALE_MENU_CHANGE_NATURE,
     HEART_SCALE_MENU_CHANGE_ABILITY,
     HEART_SCALE_MENU_INCREASE_LEVEL_CAP,
-}
+};
 
 enum HeartScalesIvMenu
 {
@@ -27,7 +27,7 @@ enum HeartScalesIvMenu
     IV_MENU_SPECIAL_ATTACK,
     IV_MENU_SPECIAL_DEFENSE,
     IV_MENU_SPEED,
-}
+};
 
 enum HeartScalesNatureMenu
 {
@@ -52,4 +52,4 @@ enum HeartScalesNatureMenu
     NATURE_MENU_MODEST,
     NATURE_MENU_MILD,
     NATURE_MENU_RASH,
-}
+};
