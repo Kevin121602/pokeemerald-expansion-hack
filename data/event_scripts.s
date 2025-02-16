@@ -1074,3 +1074,11 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/frontier_brain.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+
+	.include "data/maps/PetalburgField/scripts.inc"
+
+	.include "data/maps/WoodsCave/scripts.inc"
+
+	.include "data/maps/OldaleMeadow/scripts.inc"
+
+	.include "data/maps/OldaleMeadow_House1/scripts.inc"
