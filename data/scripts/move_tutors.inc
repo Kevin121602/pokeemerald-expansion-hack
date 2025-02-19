@@ -269,25 +269,6 @@ MoveTutor_EventScript_CanOnlyBeLearnedOnce::
 	msgbox MoveTutor_Text_ThisMoveCanOnlyBeLearnedOnce, MSGBOX_YESNO
 	return
 
-SpiralCity_HelixMuseum_EventScript_HiddenPowerTutor::
-	lock
-	faceplayer
-	msgbox MoveTutor_Text_HiddenPowerTeach, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_HiddenPowerDeclined
-	setvar VAR_0x8005, MOVE_HIDDEN_POWER
-	call MoveTutor_EventScript_OpenPartyMenu
-	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HiddenPowerDeclined
-	goto MoveTutor_EventScript_HiddenPowerTaught
-	end
-
-MoveTutor_EventScript_HiddenPowerDeclined::
-	release
-	end
-
-MoveTutor_EventScript_HiddenPowerTaught::
-	release
-	end
-
 SpiralCity_EventScript_RockSmashTutor::
 	lock
 	faceplayer

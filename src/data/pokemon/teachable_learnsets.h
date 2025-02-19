@@ -123,7 +123,6 @@
 // - MOVE_EXPLOSION                                    //
 // - MOVE_FIRE_PUNCH                                   //
 // - MOVE_FURY_CUTTER                                  //
-// - MOVE_HIDDEN_POWER                                 //
 // - MOVE_ICE_PUNCH                                    //
 // - MOVE_ICY_WIND                                     //
 // - MOVE_MEGA_KICK                                    //
