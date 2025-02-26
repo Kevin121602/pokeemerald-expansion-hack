@@ -8,6 +8,7 @@ PetalburgWoods_MapScripts::
 PetalburgWoods_EventScript_DevonResearcherLeft::
 	lockall
 	call PetalburgWoods_EventScript_DevonResearcherIntro
+	setflag FLAG_DISABLE_EXP
 	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonResearcherApproachPlayerLeft
 	waitmovement 0
 	msgbox PetalburgWoods_Text_HaveYouSeenShroomish, MSGBOX_DEFAULT
@@ -43,6 +44,7 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 PetalburgWoods_EventScript_DevonResearcherRight::
 	lockall
 	call PetalburgWoods_EventScript_DevonResearcherIntro
+	setflag FLAG_DISABLE_EXP
 	applymovement LOCALID_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonResearcherApproachPlayerRight
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
@@ -92,7 +94,7 @@ PetalburgWoods_EventScript_DevonResearcherPostBattle::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox PetalburgWoods_Text_ThatWasAwfullyClose, MSGBOX_DEFAULT
-	giveitem ITEM_GREAT_BALL
+	giveitem ITEM_EXP_SHARE
 	goto_if_eq VAR_RESULT, FALSE, PetalburgWoods_EventScript_BagFull
 	goto PetalburgWoods_EventScript_DevonResearcherFinish
 	end
@@ -113,6 +115,8 @@ PetalburgWoods_EventScript_DevonResearcherFinish::
 PetalburgWoods_EventScript_RemoveDevonResearcher::
 	removeobject LOCALID_DEVON_EMPLOYEE
 	setvar VAR_PETALBURG_WOODS_STATE, 1
+	setflag FLAG_DEFEATED_WOODS_GRUNT
+	clearflag FLAG_DISABLE_EXP
 	releaseall
 	end
 
@@ -279,13 +283,8 @@ PetalburgWoods_EventScript_Lyle::
 	end
 
 PetalburgWoods_EventScript_James::
-	trainerbattle_single TRAINER_JAMES_1, PetalburgWoods_Text_InstantlyPopularWithBugPokemon, PetalburgWoods_Text_CantBePopularIfILose, PetalburgWoods_EventScript_TryRegisterJames
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, PetalburgWoods_EventScript_JamesRematch
-	setvar VAR_0x8004, TRAINER_JAMES_1
-	specialvar VAR_RESULT, IsTrainerRegistered
-	goto_if_eq VAR_RESULT, FALSE, PetalburgWoods_EventScript_TryRegisterJames2
-	msgbox PetalburgWoods_Text_PeopleRespectYou, MSGBOX_DEFAULT
+	trainerbattle_single TRAINER_JAMES_1, PetalburgWoods_Text_InstantlyPopularWithBugPokemon, PetalburgWoods_Text_CantBePopularIfILose
+	msgbox PetalburgWoods_Text_PeopleRespectYou, MSGBOX_AUTOCLOSE
 	release
 	end
 
@@ -325,7 +324,7 @@ PetalburgWoods_Text_NotAOneToBeFound:
 
 PetalburgWoods_Text_HaveYouSeenShroomish:
 	.string "Hello, have you seen any POKéMON\n"
-	.string "called SHROOMISH around here?\p"
+	.string "called SMOLIV around here?\p"
 	.string "I really love that POKéMON.$"
 
 PetalburgWoods_Text_IWasGoingToAmbushYou:
@@ -368,7 +367,7 @@ PetalburgWoods_Text_ThatWasAwfullyClose:
 	.string "That was awfully close!\p"
 	.string "Thanks to you, he didn't rob me of\n"
 	.string "these important papers.\p"
-	.string "I know, I'll give you a GREAT BALL as\n"
+	.string "I know, I'll give you an EXP. Share as\n"
 	.string "my thanks!$"
 
 PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro:

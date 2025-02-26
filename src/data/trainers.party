@@ -253,39 +253,31 @@ Music: Aqua
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Glimmet @ Assault Vest
-Level: 16
+Clamperl @ Deep Sea Scale
+Level: 13
 Nature: Timid
-Ability: Toxic Debris
--Venoshock
--Ancient Power
--Mud Shot
--Dazzling Gleam
-
-Vulpix @ Air Balloon
-Level: 16
-Nature: Timid
-Ability: Mystic Charm
--Incinerate
--Hex
--Fire Spin
+Ability: Rattled
+-Brine
+-Icy Wind
+-Mud Sport
 -Confuse Ray
 
-Baltoy @ Berry Juice
-Level: 17
-Nature: Timid
-Ability: Levitate
--Mud Shot
--Psybeam
+Yanma @ Wise Glasses
+Level: 13
+Nature: Modest
+Ability: Speed Boost
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 30 SpD / 30 Spe
+-Hidden Power
+-Air Cutter
 -Ancient Power
--Heal Block
+-Detect
 
 Poipole @ Lum Berry
-Level: 17
+Level: 14
 Nature: Timid
 Ability: Beast Boost
 -Venoshock
--Dragon Pulse
+-Round
 -Toxic
 
 === TRAINER_MARCEL ===
@@ -2199,11 +2191,34 @@ Gender: Female
 Music: Female
 Items: Full Restore
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Zigzagoon @ Nugget
-Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Luvdisc @ Damp Rock
+Level: 12
+Nature: Modest
+Ability: Hydration
+-Scald
+-Icy Wind
+-Attract
+-Rain Dance
+
+Lotad @ Leftovers
+Level: 12
+Nature: Bold
+Ability: Rain Dish
+-Mega Drain
+-Bubble Beam
+-Teeter Dance
+-Protect
+
+Mantyke @ Lum Berry
+Level: 12
+Nature: Modest
+Ability: Swift Swim
+-Water Pulse
+-Air Cutter
+-Confuse Ray
+-Roost
 
 === TRAINER_DAPHNE ===
 Name: DAPHNE
@@ -2601,13 +2616,34 @@ Class: Rich Boy
 Pic: Rich Boy
 Gender: Male
 Music: Rich
-Items: Full Restore
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Zigzagoon @ Nugget
-Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Vulpix @ Eviolite
+Level: 13
+Nature: Timid
+Ability: Drought
+-Incinerate
+-Extrasensory
+-Hex
+-Confuse Ray
+
+Sunkern @ Life Orb
+Level: 13
+Nature: Timid
+Ability: Chlorophyll
+-Solar Beam
+-Weather Ball
+-Earth Power
+-Growth
+
+Cubone @ Thick Club
+Level: 13
+Nature: Adamant
+Ability: Battle Armor
+-Bone Club
+-Headbutt
+-Rock Tomb
 
 === TRAINER_MOLLIE ===
 Name: MOLLIE
@@ -3784,7 +3820,7 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sunkern @ Eviolite
+Sunkern @ Life Orb
 Level: 13
 Nature: Timid
 Ability: Chlorophyll
@@ -5297,11 +5333,25 @@ Pic: School Kid M
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Ralts
-Level: 9
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Elekid @ Berry Juice
+Level: 14
+Nature: Jolly
+Ability: Static
+-Thunder Punch
+-Brick Break
+-Thunder Wave
+-Helping Hand
+
+Magby @ Berry Juice
+Level: 15
+Nature: Naive
+Ability: Flame Body
+-Flame Burst
+-Dual Chop
+-Confuse Ray
+-Follow Me
 
 === TRAINER_TED ===
 Name: TED
@@ -5416,11 +5466,34 @@ Pic: School Kid F
 Gender: Female
 Music: Girl
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Shroomish
-Level: 9
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Cleffa @ Life Orb
+Level: 14
+Nature: Timid
+Ability: Magic Guard
+-Psybeam
+-Draining Kiss
+-Water Pulse
+-Sing
+
+Baltoy @ Berry Juice
+Level: 14
+Nature: Serious
+Ability: Levitate
+-Psybeam
+-Mud Shot
+-Rock Tomb
+-Heal Block
+
+Amaura @ Chople Berry
+Level: 15
+Nature: Timid
+Ability: Refrigerate
+-Round
+-Ancient Power
+-Mud Shot
+-Thunder Wave
 
 === TRAINER_GEORGIA ===
 Name: GEORGIA
@@ -6115,27 +6188,32 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Bidoof @ Berry Juice
-Level: 10
-Nature: Adamant
-Ability: Simple
--Defense Curl
--Rollout
+Surskit @ Silver Powder
+Level: 14
+Nature: Timid
+Ability: Swift Swim
+-Bubble Beam
+-Struggle Bug
+-Icy Wind
+-Sticky Web
 
-Rattata @ Focus Sash
-Level: 10
-Nature: Adamant
-Ability: Guts
--Endeavor
--Quick Attack
+Shroomish @ Loaded Dice
+Level: 14
+Nature: Jolly
+Ability: Quick Feet
+-Bullet Seed
+-Drain Punch
+-Headbutt
+-Spore
 
-Rattata Alolan @ Salac Berry
-Level: 10
-Nature: Adamant
-Ability: Gluttony
--Hyper Fang
--Bite
--Pursuit
+Aron @ Leftovers
+Level: 15
+Nature: Jolly
+Ability: Sturdy
+-Iron Head
+-Rock Tomb
+-Aerial Ace
+-Bulldoze
 
 === TRAINER_BILLY ===
 Name: BILLY
@@ -6146,29 +6224,30 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Tarountula @ Red Card
-Level: 10
-Nature: Adamant
-Ability: Stakeout
--Bug Bite
--Headbutt
-
-Nymble @ Liechi Berry
+Goldeen @ Focus Sash
 Level: 11
 Nature: Jolly
-Ability: Swarm
--Pounce
--Assurance
--Endure
+Ability: Lightning Rod
+-Waterfall
+-Poison Jab
+-Flail
 
-Rellor @ Leftovers
+Grubbin @ Ground Gem
 Level: 11
-Nature: Bold
-Ability: Shed Skin
--Struggle Bug
+Nature: Adamant
+Ability: Swarm
+-Bug Bite
+-Spark
 -Mud Shot
--Cosmic Power
--Rest
+
+Shinx @ Berry Juice
+Level: 12
+Nature: Jolly
+Ability: Intimidate
+-Spark
+-Bite
+-Double Kick
+-Howl
 
 === TRAINER_JOSH ===
 Name: JOSH
@@ -6248,32 +6327,27 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Pichu @ Eviolite
-Level: 15
-Nature: Hasty
-Ability: Static
--Volt Tackle
--Surf
--Grass Knot
--Iron Tail
+Bidoof @ Berry Juice
+Level: 10
+Nature: Adamant
+Ability: Simple
+-Defense Curl
+-Rollout
 
-Snover @ Occa Berry
-Level: 15
-Nature: Naive
-Ability: Soundproof
--Magical Leaf
--Icy Wind
--Water Pulse
--Ice Shard
+Rattata @ Focus Sash
+Level: 10
+Nature: Adamant
+Ability: Guts
+-Endeavor
+-Quick Attack
 
-Farfetch'd-Galarian @ Leek
-Level: 16
-Nature: Jolly
-Ability: Scrappy
--Rock Smash
--Brutal Swing
--Steel Wing
--Focus Energy
+Rattata Alolan @ Salac Berry
+Level: 10
+Nature: Adamant
+Ability: Gluttony
+-Hyper Fang
+-Bite
+-Pursuit
 
 === TRAINER_BEN ===
 Name: BEN
@@ -6549,15 +6623,33 @@ Pic: Youngster
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Zigzagoon
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Pikipek @ Berry Juice
+Level: 10
+Nature: Adamant
+Ability: Skill Link
+-Pluck
+-Fury Attack
+-Supersonic
 
-Taillow
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Hoppip @ Power Herb
+Level: 11
+Nature: Hasty
+Ability: Infiltrator
+-Mega Drain
+-Bounce
+-Leech Seed
+-Synthesis
+
+Natu @ Flame Orb
+Level: 11
+Nature: Timid
+Ability: Magic Bounce
+-Confusion
+-Night Shade
+-Psycho Shift
+-Roost
 
 === TRAINER_TIMMY ===
 Name: TIMMY
@@ -6663,19 +6755,34 @@ Pic: Fisherman
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Magikarp
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Qwilfish @ Liechi Berry
+Level: 14
+Nature: Jolly
+Ability: Intimidate
+-Poison Tail
+-Aqua Jet
+-Flail
+-Spikes
 
-Magikarp
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Chinchou @ Leftovers
+Level: 14
+Nature: Timid
+Ability: Volt Absorb
+-Brine
+-Discharge
+-Signal Beam
+-Confuse Ray
 
-Magikarp
-Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Popplio @ Throat Spray
+Level: 14
+Nature: Timid
+Ability: Torrent
+-Bubble Beam
+-Icy Wind
+-Draining Kiss
+-Sing
 
 === TRAINER_CLAUDE ===
 Name: CLAUDE
@@ -9195,15 +9302,22 @@ Pic: Twins
 Gender: Male
 Music: Twins
 Double Battle: Yes
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Seedot
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Smeargle @ Covert Cloak
+Level: 14
+Nature: Bold
+Ability: Own Tempo
+-Follow Me
+-Spore
 
-Lotad
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Smeargle @ Berry Juice
+Level: 13
+IVs: 28 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Nature: Adamant
+Ability: Own Tempo
+-Belly Drum
+-Extreme Speed
 
 === TRAINER_MIU_AND_YUKI ===
 Name: MIU & YUKI
@@ -11528,14 +11642,14 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Spearow @ Berry Juice
-Level: 10
+Level: 11
 Nature: Adamant
 Ability: Sniper
 -Pluck
 -Laser Focus
 
 Hoothoot @ Metronome
-Level: 10
+Level: 11
 Nature: Modest
 Ability: Insomnia
 -Echoed Voice
@@ -11556,30 +11670,31 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Goldeen @ Focus Sash
-Level: 12
-Nature: Jolly
-Ability: Lightning Rod
--Waterfall
--Poison Jab
--Flail
-
-Grubbin @ Ground Gem
-Level: 12
-Nature: Adamant
-Ability: Swarm
--Bug Bite
--Spark
--Mud Shot
-
-Shinx @ Berry Juice
+Vulpix-Alolan @ Eviolite
 Level: 13
-Nature: Jolly
-Ability: Intimidate
--Spark
--Bite
--Double Kick
--Howl
+Nature: Timid
+Ability: Snow Warning
+-Icy Wind
+-Moonblast
+-Chilling Water
+-Hypnosis
+
+Spheal @ Leftovers
+Level: 13
+Nature: Bold
+Ability: Ice Body
+-Brine
+-Aurora Beam
+-Rest
+-Sleep Talk
+
+Sandshrew-Alolan @ Focus Sash
+Level: 14
+Nature: Adamant
+Ability: Slush Rush
+-Ice Punch
+-Metal Claw
+-Rollout
 
 === TRAINER_JANICE ===
 Name: JANICE
@@ -11590,32 +11705,23 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Shroomish @ Loaded Dice
+Smoochum @ Focus Sash
+Level: 14
+Nature: Timid
+Ability: Oblivious
+-Fake Out
+-Psybeam
+-Icy Wind
+-Lovely Kiss
+
+Marill @ Muscle Band
 Level: 15
 Nature: Adamant
-Ability: Quick Feet
--Bullet Seed
--Drain Punch
--Headbutt
--Spore
-
-Wingull @ Wacan Berry
-Level: 15
-Nature: Timid
-Ability: Keen Eye
--Brine
--Air Cutter
--Shock Wave
--Tailwind
-
-Nidorina @ Poison Barb
-Level: 15
-Nature: Jolly
-Ability: Poison Point
--Poison Fang
--Stomping Tantrum
--Bite
--Toxic
+Ability: Huge Power
+-Covet
+-Aqua Jet
+-Trailblaze
+-Protect
 
 === TRAINER_VIVI ===
 Name: VIVI
@@ -11805,32 +11911,29 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Venonat @ Black Sludge
-Level: 14
-Nature: Jolly
-Ability: Tinted Lens
--Leech Life
--Poison Fang
--Sleep Powder
--Toxic Spikes
-
-Yanma @ Expert Belt
-Level: 14
-Nature: Modest
-Ability: Speed Boost
--Struggle Bug
--Air Cutter
--Ancient Power
--Detect
-
-Shedinja @ Focus Sash
-Level: 14
+Tarountula @ Red Card
+Level: 10
 Nature: Adamant
-Ability: Wonder Guard
--X-Scissor
--Shadow Claw
--Shadow Sneak
--Confuse Ray
+Ability: Stakeout
+-Bug Bite
+-Headbutt
+
+Nymble @ Liechi Berry
+Level: 10
+Nature: Jolly
+Ability: Swarm
+-Pounce
+-Assurance
+-Endure
+
+Rellor @ Leftovers
+Level: 11
+Nature: Bold
+Ability: Shed Skin
+-Struggle Bug
+-Mud Shot
+-Cosmic Power
+-Rest
 
 === TRAINER_LYLE ===
 Name: LYLE
@@ -11839,23 +11942,34 @@ Pic: Bug Catcher
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Wurmple
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Pineco @ Custap Berry
+Level: 12
+Nature: Careful
+Ability: Sturdy
+-Bug Bite
+-Payback
+-Self Destruct
+-Spikes
 
-Wurmple
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Karrablast @ Assault Vest
+Level: 12
+Nature: Adamant
+Ability: Swarm
+-Bug Bite
+-Drill Run
+-Knock Off
+-Facade
 
-Wurmple
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Wurmple
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Dwebble @ Salac Berry
+Level: 13
+Nature: Jolly
+Ability: Sturdy
+-Bug Bite
+-Smack Down
+-Flail
+-Counter
 
 === TRAINER_JOSE ===
 Name: JOSE
@@ -11864,15 +11978,34 @@ Pic: Bug Catcher
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Wurmple
-Level: 8
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Butterfree @ Charti Berry
+Level: 14
+Nature: Timid
+Ability: Compound Eyes
+-Silver Wind
+-Air Cutter
+-Psybeam
+-Sleep Powder
 
-Nincada
-Level: 8
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Shedinja @ Focus Sash
+Level: 14
+Nature: Adamant
+Ability: Wonder Guard
+-Bug Bite
+-Shadow Claw
+-Will-O-Wisp
+-Confuse Ray
+
+Beedrill @ Scope Lens
+Level: 14
+Nature: Jolly
+Ability: Swarm
+-Twineedle
+-Drill Run
+-Aerial Ace
+-Focus Energy
 
 === TRAINER_DOUG ===
 Name: DOUG
@@ -11928,15 +12061,34 @@ Pic: Bug Catcher
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Nincada
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Beautifly @ Lum Berry
+Level: 13
+Nature: Timid
+Ability: Swarm
+-Silver Wind
+-Air Cutter
+-Mega Drain
+-Morning Sun
 
-Nincada
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Dustox @ Black Sludge
+Level: 13
+Nature: Bold
+Ability: Shield Dust
+-Struggle Bug
+-Venoshock
+-Toxic
+-Moonlight
+
+Kricketune @ Silver Powder
+Level: 12
+Nature: Jolly
+Ability: Technician
+-Fury Cutter
+-Trailblaze
+-Aerial Ace
+-Sing
 
 === TRAINER_JAMES_2 ===
 Name: JAMES
@@ -13610,11 +13762,34 @@ Pic: Fisherman
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Magikarp
-Level: 9
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Wishiwashi @ Expert Belt
+Level: 11
+Nature: Hasty
+Ability: Schooling
+-Surf
+-Ice Beam
+-Earthquake
+-Scale Shot
+
+Magikarp @ Focus Sash
+Level: 12
+Nature: Naive
+Ability: Rattled
+-Hydro Pump
+-Bounce
+-Tackle
+-Flail
+
+Feebas @ Leftovers
+Level: 12
+Nature: Bold
+Ability: Adaptability
+-Water Pulse
+-Icy Wind
+-Whirlpool
+-Hypnosis
 
 === TRAINER_HAILEY ===
 Name: HAILEY
