@@ -8,6 +8,7 @@
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
+#include "features_menu.h"
 #include "fieldmap.h"
 #include "field_control_avatar.h"
 #include "field_player_avatar.h"
@@ -84,6 +85,7 @@ void FieldClearPlayerInput(struct FieldInput *input)
     input->heldDirection2 = FALSE;
     input->tookStep = FALSE;
     input->pressedBButton = FALSE;
+    input->pressedLButton = FALSE;
     input->input_field_1_0 = FALSE;
     input->input_field_1_1 = FALSE;
     input->input_field_1_2 = FALSE;
@@ -109,6 +111,8 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
                 input->pressedAButton = TRUE;
             if (newKeys & B_BUTTON)
                 input->pressedBButton = TRUE;
+            if (newKeys & L_BUTTON)
+                input->pressedLButton = TRUE;
         }
 
         if (heldKeys & (DPAD_UP | DPAD_DOWN | DPAD_LEFT | DPAD_RIGHT))
@@ -196,6 +200,12 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     {
         PlaySE(SE_WIN_OPEN);
         ShowStartMenu();
+        return TRUE;
+    }
+    if (input->pressedLButton)
+    {
+        PlaySE(SE_WIN_OPEN);
+        ShowFeaturesMenu();
         return TRUE;
     }
     if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
