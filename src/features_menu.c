@@ -6,6 +6,7 @@
 #include "coins.h"
 #include "credits.h"
 #include "data.h"
+#include "data/map_group_count.h"
 #include "daycare.h"
 #include "debug.h"
 #include "event_data.h"
@@ -242,6 +243,8 @@ static const u8 sFeaturesText_HeartScales_Natures_Naive[] =     _("Naive   (3 Sc
 static const u8 sFeaturesText_HeartScales_Natures_Modest[] =    _("Modest  (3 Scales)");
 static const u8 sFeaturesText_HeartScales_Natures_Mild[] =      _("Mild    (3 Scales)");
 static const u8 sFeaturesText_HeartScales_Natures_Rash[] =      _("Rash    (3 Scales)");
+
+extern const u8 LilycoveCity_MoveDeletersHouse_EventScript_ChooseMonAndMoveToForget[];
 
 static const struct WindowTemplate sFeaturesMenuWindowTemplateMain =
 {
@@ -531,8 +534,7 @@ static void FeaturesTask_HandleMenuInput_HeartScales(u8 taskId){
 static bool8 FeaturesAction_OpenPc(void){
     if (!gPaletteFade.active)
     {
-        //PlayRainStoppingSoundEffect();
-        //CleanupOverworldWindowsAndTilemaps();
+        PlaySE(SE_SELECT);
         FeaturesMenu_PreformScript(EventScript_PC);
         return TRUE;
     }
@@ -557,7 +559,14 @@ static bool8 FeaturesAction_OpenHeartScalesMenu(void){
 }
 
 static bool8 FeaturesAction_MoveDeleter(void){
-    return TRUE;
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        FeaturesMenu_PreformScript(LilycoveCity_MoveDeletersHouse_EventScript_ChooseMonAndMoveToForget);
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 static bool8 FeaturesAction_PokeRider(void){
