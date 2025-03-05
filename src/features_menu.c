@@ -9,6 +9,7 @@
 #include "daycare.h"
 #include "debug.h"
 #include "event_data.h"
+#include "event_object_lock.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
 #include "features_menu.h"
@@ -128,6 +129,7 @@ struct FeaturesMenuListData
 EWRAM_DATA static u8 sNumFeaturesMenuActions = 0;
 EWRAM_DATA static u8 sCurrentFeaturesMenuActions[7] = {0};
 EWRAM_DATA static s8 sInitFeaturesMenuData[2] = {0};
+EWRAM_DATA static u8 sFeaturesMenuCursorPos = 0;
 
 void ShowFeaturesMenu(void);
 static void AddFeaturesMenuAction(u8 action);
@@ -138,54 +140,59 @@ static void Features_DestroyMenu(u8 taskId);
 static void Features_DestroyMenu_Full(u8 taskId);
 static void Features_RefreshListMenu(u8 taskId);
 static void BuildFeaturesMenuActions(void);
+static void HideFeaturesMenu(void);
+
 static bool32 InitFeaturesMenuStep(void);
+static bool32 PrintFeaturesMenuActions(s8 *pIndex, u32 count);
+
+static bool8 HandleFeaturesMenuInput(void);
 
 static void FeaturesTask_HandleMenuInput_Main(u8 taskId);
 static void FeaturesTask_HandleMenuInput_MoveTutors(u8 taskId);
 static void FeaturesTask_HandleMenuInput_HeartScales(u8 taskId);
 
-static void FeaturesAction_OpenPc(u8 taskId);
-static void FeaturesAction_HealParty(u8 taskId);
-static void FeaturesAction_Repel(u8 taskId);
-static void FeaturesAction_OpenMoveTutorsMenu(u8 taskId);
-static void FeaturesAction_OpenHeartScalesMenu(u8 taskId);
-static void FeaturesAction_MoveDeleter(u8 taskId);
-static void FeaturesAction_PokeRider(u8 taskId);
+static bool8 FeaturesAction_OpenPc(void);
+static bool8 FeaturesAction_HealParty(void);
+static bool8 FeaturesAction_Repel(void);
+static bool8 FeaturesAction_OpenMoveTutorsMenu(void);
+static bool8 FeaturesAction_OpenHeartScalesMenu(void);
+static bool8 FeaturesAction_MoveDeleter(void);
+static bool8 FeaturesAction_PokeRider(void);
 
-static void FeaturesAction_HeartScales_MoveReminder(u8 taskId);
-static void FeaturesAction_HeartScales_ChangeIV(u8 taskId);
-static void FeaturesAction_HeartScales_ChangeNature(u8 taskId);
-static void FeaturesAction_HeartScales_ChangeAbility(u8 taskId);
-static void FeaturesAction_HeartScales_IncreaseLevelCap(u8 taskId);
+static bool8 FeaturesAction_HeartScales_MoveReminder(void);
+static bool8 FeaturesAction_HeartScales_ChangeIV(void);
+static bool8 FeaturesAction_HeartScales_ChangeNature(void);
+static bool8 FeaturesAction_HeartScales_ChangeAbility(void);
+static bool8 FeaturesAction_HeartScales_IncreaseLevelCap(void);
 
-static void FeaturesAction_HeartScales_IVs_ChangeHP(u8 taskId);
-static void FeaturesAction_HeartScales_IVs_ChangeAttack(u8 taskId);
-static void FeaturesAction_HeartScales_IVs_ChangeDefense(u8 taskId);
-static void FeaturesAction_HeartScales_IVs_ChangeSpecialAttack(u8 taskId);
-static void FeaturesAction_HeartScales_IVs_ChangeSpecialDefense(u8 taskId);
-static void FeaturesAction_HeartScales_IVs_ChangeSpeed(u8 taskId);
+static bool8 FeaturesAction_HeartScales_IVs_ChangeHP(void);
+static bool8 FeaturesAction_HeartScales_IVs_ChangeAttack(void);
+static bool8 FeaturesAction_HeartScales_IVs_ChangeDefense(void);
+static bool8 FeaturesAction_HeartScales_IVs_ChangeSpecialAttack(void);
+static bool8 FeaturesAction_HeartScales_IVs_ChangeSpecialDefense(void);
+static bool8 FeaturesAction_HeartScales_IVs_ChangeSpeed(void);
 
-static void FeaturesAction_HeartScales_Natures_Hardy(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Lax(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Gentle(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Brave(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Bold(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Relaxed(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Impish(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Quiet(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Calm(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Sassy(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Careful(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Lonely(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Adamant(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Naughty(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Timid(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Hasty(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Jolly(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Naive(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Modest(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Mild(u8 taskId);
-static void FeaturesAction_HeartScales_Natures_Rash(u8 taskId);
+static bool8 FeaturesAction_HeartScales_Natures_Hardy(void);
+static bool8 FeaturesAction_HeartScales_Natures_Lax(void);
+static bool8 FeaturesAction_HeartScales_Natures_Gentle(void);
+static bool8 FeaturesAction_HeartScales_Natures_Brave(void);
+static bool8 FeaturesAction_HeartScales_Natures_Bold(void);
+static bool8 FeaturesAction_HeartScales_Natures_Relaxed(void);
+static bool8 FeaturesAction_HeartScales_Natures_Impish(void);
+static bool8 FeaturesAction_HeartScales_Natures_Quiet(void);
+static bool8 FeaturesAction_HeartScales_Natures_Calm(void);
+static bool8 FeaturesAction_HeartScales_Natures_Sassy(void);
+static bool8 FeaturesAction_HeartScales_Natures_Careful(void);
+static bool8 FeaturesAction_HeartScales_Natures_Lonely(void);
+static bool8 FeaturesAction_HeartScales_Natures_Adamant(void);
+static bool8 FeaturesAction_HeartScales_Natures_Naughty(void);
+static bool8 FeaturesAction_HeartScales_Natures_Timid(void);
+static bool8 FeaturesAction_HeartScales_Natures_Hasty(void);
+static bool8 FeaturesAction_HeartScales_Natures_Jolly(void);
+static bool8 FeaturesAction_HeartScales_Natures_Naive(void);
+static bool8 FeaturesAction_HeartScales_Natures_Modest(void);
+static bool8 FeaturesAction_HeartScales_Natures_Mild(void);
+static bool8 FeaturesAction_HeartScales_Natures_Rash(void);
 
 //Task Callbacks
 static void FeaturesMenuTask(u8 taskId);
@@ -246,119 +253,63 @@ static const struct WindowTemplate sFeaturesMenuWindowTemplateMain =
     .baseBlock = 0x8,
 };
 
-static const struct ListMenuItem sFeaturesMenu_Items_Main[] =
+static const struct MenuAction sFeaturesMenu_Items_Main[] =
 {
-    [FEATURES_MENU_PORTA_PC]         = {sFeaturesText_PortaPC,      FEATURES_MENU_PORTA_PC},
-    [FEATURES_MENU_POKE_VIAL]        = {sFeaturesText_PokeVial,     FEATURES_MENU_POKE_VIAL},
-    [FEATURES_MENU_REPEL]            = {sFeaturesText_Repel,        FEATURES_MENU_REPEL},
-    [FEATURES_MENU_MOVE_TUTORS]      = {sFeaturesText_MoveTutors,   FEATURES_MENU_MOVE_TUTORS},
-    [FEATURES_MENU_HEART_SCALES]     = {sFeaturesText_HeartScales,  FEATURES_MENU_HEART_SCALES},
-    [FEATURES_MENU_MOVE_DELETER]     = {sFeaturesText_MoveDeleter,  FEATURES_MENU_MOVE_DELETER},
-    [FEATURES_MENU_POKE_RIDER]       = {sFeaturesText_PokeRider,    FEATURES_MENU_POKE_RIDER},
+    [FEATURES_MENU_PORTA_PC]         = {sFeaturesText_PortaPC,      {.u8_void = FeaturesAction_OpenPc}},
+    [FEATURES_MENU_POKE_VIAL]        = {sFeaturesText_PokeVial,     {.u8_void = FeaturesAction_HealParty}},
+    [FEATURES_MENU_REPEL]            = {sFeaturesText_Repel,        {.u8_void = FeaturesAction_Repel}},
+    [FEATURES_MENU_MOVE_TUTORS]      = {sFeaturesText_MoveTutors,   {.u8_void = FeaturesAction_OpenMoveTutorsMenu}},
+    [FEATURES_MENU_HEART_SCALES]     = {sFeaturesText_HeartScales,  {.u8_void = FeaturesAction_OpenHeartScalesMenu}},
+    [FEATURES_MENU_MOVE_DELETER]     = {sFeaturesText_MoveDeleter,  {.u8_void = FeaturesAction_MoveDeleter}},
+    [FEATURES_MENU_POKE_RIDER]       = {sFeaturesText_PokeRider,    {.u8_void = FeaturesAction_PokeRider}},
 };
 
-static const struct ListMenuItem sFeaturesMenu_Items_HeartScales[] =
+static const struct MenuAction sFeaturesMenu_Items_HeartScales[] =
 {
-    [HEART_SCALE_MENU_MOVE_REMINDER]            = {sFeaturesText_HeartScales_MoveReminder,      HEART_SCALE_MENU_MOVE_REMINDER},
-    [HEART_SCALE_MENU_CHANGE_IV]                = {sFeaturesText_HeartScales_ChangeIV,          HEART_SCALE_MENU_CHANGE_IV},
-    [HEART_SCALE_MENU_CHANGE_NATURE]            = {sFeaturesText_HeartScales_ChangeNature,      HEART_SCALE_MENU_CHANGE_NATURE},
-    [HEART_SCALE_MENU_CHANGE_ABILITY]           = {sFeaturesText_HeartScales_ChangeAbility,     HEART_SCALE_MENU_CHANGE_ABILITY},
-    [HEART_SCALE_MENU_INCREASE_LEVEL_CAP]       = {sFeaturesText_HeartScales_IncreaseLevelCap,  HEART_SCALE_MENU_INCREASE_LEVEL_CAP},
+    [HEART_SCALE_MENU_MOVE_REMINDER]            = {sFeaturesText_HeartScales_MoveReminder,      {.u8_void = FeaturesAction_HeartScales_MoveReminder}},
+    [HEART_SCALE_MENU_CHANGE_IV]                = {sFeaturesText_HeartScales_ChangeIV,          {.u8_void = FeaturesAction_HeartScales_ChangeIV}},
+    [HEART_SCALE_MENU_CHANGE_NATURE]            = {sFeaturesText_HeartScales_ChangeNature,      {.u8_void = FeaturesAction_HeartScales_ChangeNature}},
+    [HEART_SCALE_MENU_CHANGE_ABILITY]           = {sFeaturesText_HeartScales_ChangeAbility,     {.u8_void = FeaturesAction_HeartScales_ChangeAbility}},
+    [HEART_SCALE_MENU_INCREASE_LEVEL_CAP]       = {sFeaturesText_HeartScales_IncreaseLevelCap,  {.u8_void = FeaturesAction_HeartScales_IncreaseLevelCap}},
 };
 
-static const struct ListMenuItem sFeaturesMenu_Items_HeartScales_IVs[] =
+static const struct MenuAction sFeaturesMenu_Items_HeartScales_IVs[] =
 {
-    [IV_MENU_HP]                = {sFeaturesText_HeartScales_IV_HP,             IV_MENU_HP},
-    [IV_MENU_ATTACK]            = {sFeaturesText_HeartScales_IV_Attack,         IV_MENU_ATTACK},
-    [IV_MENU_DEFENSE]           = {sFeaturesText_HeartScales_IV_Defense,        IV_MENU_DEFENSE},
-    [IV_MENU_SPECIAL_ATTACK]    = {sFeaturesText_HeartScales_IV_SpecialAttack,  IV_MENU_SPECIAL_ATTACK},
-    [IV_MENU_SPECIAL_DEFENSE]   = {sFeaturesText_HeartScales_IV_SpecialDefense, IV_MENU_SPECIAL_DEFENSE},
-    [IV_MENU_SPEED]             = {sFeaturesText_HeartScales_IV_Speed,          IV_MENU_SPEED},
+    [IV_MENU_HP]                = {sFeaturesText_HeartScales_IV_HP,             {.u8_void = FeaturesAction_HeartScales_IVs_ChangeHP}},
+    [IV_MENU_ATTACK]            = {sFeaturesText_HeartScales_IV_Attack,         {.u8_void = FeaturesAction_HeartScales_IVs_ChangeAttack}},
+    [IV_MENU_DEFENSE]           = {sFeaturesText_HeartScales_IV_Defense,        {.u8_void = FeaturesAction_HeartScales_IVs_ChangeDefense}},
+    [IV_MENU_SPECIAL_ATTACK]    = {sFeaturesText_HeartScales_IV_SpecialAttack,  {.u8_void = FeaturesAction_HeartScales_IVs_ChangeSpecialAttack}},
+    [IV_MENU_SPECIAL_DEFENSE]   = {sFeaturesText_HeartScales_IV_SpecialDefense, {.u8_void = FeaturesAction_HeartScales_IVs_ChangeSpecialDefense}},
+    [IV_MENU_SPEED]             = {sFeaturesText_HeartScales_IV_Speed,          {.u8_void = FeaturesAction_HeartScales_IVs_ChangeSpeed}},
 };
 
-static const struct ListMenuItem sFeaturesMenu_Items_HeartScales_Natures[] =
+static const struct MenuAction sFeaturesMenu_Items_HeartScales_Natures[] =
 {
-    [NATURE_MENU_HARDY]              = {sFeaturesText_HeartScales_Natures_Hardy,           NATURE_MENU_HARDY},
-    [NATURE_MENU_LAX]                = {sFeaturesText_HeartScales_Natures_Lax,             NATURE_MENU_LAX},
-    [NATURE_MENU_GENTLE]             = {sFeaturesText_HeartScales_Natures_Gentle,          NATURE_MENU_GENTLE},
-    [NATURE_MENU_BRAVE]              = {sFeaturesText_HeartScales_Natures_Brave,           NATURE_MENU_BRAVE},
-    [NATURE_MENU_BOLD]               = {sFeaturesText_HeartScales_Natures_Bold,            NATURE_MENU_BOLD},
-    [NATURE_MENU_RELAXED]            = {sFeaturesText_HeartScales_Natures_Relaxed,         NATURE_MENU_RELAXED},
-    [NATURE_MENU_IMPISH]             = {sFeaturesText_HeartScales_Natures_Impish,          NATURE_MENU_IMPISH},
-    [NATURE_MENU_QUIET]              = {sFeaturesText_HeartScales_Natures_Quiet,           NATURE_MENU_QUIET},
-    [NATURE_MENU_CALM]               = {sFeaturesText_HeartScales_Natures_Calm,            NATURE_MENU_CALM},
-    [NATURE_MENU_SASSY]              = {sFeaturesText_HeartScales_Natures_Sassy,           NATURE_MENU_SASSY},
-    [NATURE_MENU_CAREFUL]            = {sFeaturesText_HeartScales_Natures_Careful,         NATURE_MENU_CAREFUL},
-    [NATURE_MENU_LONELY]             = {sFeaturesText_HeartScales_Natures_Lonely,          NATURE_MENU_LONELY},
-    [NATURE_MENU_ADAMANT]            = {sFeaturesText_HeartScales_Natures_Adamant,         NATURE_MENU_ADAMANT},
-    [NATURE_MENU_NAUGHTY]            = {sFeaturesText_HeartScales_Natures_Naughty,         NATURE_MENU_NAUGHTY},
-    [NATURE_MENU_TIMID]              = {sFeaturesText_HeartScales_Natures_Timid,           NATURE_MENU_TIMID},
-    [NATURE_MENU_HASTY]              = {sFeaturesText_HeartScales_Natures_Hasty,           NATURE_MENU_HASTY},
-    [NATURE_MENU_JOLLY]              = {sFeaturesText_HeartScales_Natures_Jolly,           NATURE_MENU_JOLLY},
-    [NATURE_MENU_NAIVE]              = {sFeaturesText_HeartScales_Natures_Naive,           NATURE_MENU_NAIVE},
-    [NATURE_MENU_MODEST]             = {sFeaturesText_HeartScales_Natures_Modest,          NATURE_MENU_MODEST},
-    [NATURE_MENU_MILD]               = {sFeaturesText_HeartScales_Natures_Mild,            NATURE_MENU_MILD},
-    [NATURE_MENU_RASH]               = {sFeaturesText_HeartScales_Natures_Rash,            NATURE_MENU_RASH},
-};
-
-// Menu Actions
-static void (*const sFeaturesMenu_Actions_Main[])(u8) =
-{
-    [FEATURES_MENU_PORTA_PC]         = FeaturesAction_OpenPc,
-    [FEATURES_MENU_POKE_VIAL]        = FeaturesAction_HealParty,
-    [FEATURES_MENU_REPEL]            = FeaturesAction_Repel,
-    [FEATURES_MENU_MOVE_TUTORS]      = FeaturesAction_OpenMoveTutorsMenu,
-    [FEATURES_MENU_HEART_SCALES]     = FeaturesAction_OpenHeartScalesMenu,
-    [FEATURES_MENU_MOVE_DELETER]     = FeaturesAction_MoveDeleter,
-    [FEATURES_MENU_POKE_RIDER]       = FeaturesAction_PokeRider,
-};
-
-static void (*const sFeaturesMenu_Actions_HeartScales[])(u8) =
-{
-    [HEART_SCALE_MENU_MOVE_REMINDER]            = FeaturesAction_HeartScales_MoveReminder,
-    [HEART_SCALE_MENU_CHANGE_IV]                = FeaturesAction_HeartScales_ChangeIV,
-    [HEART_SCALE_MENU_CHANGE_NATURE]            = FeaturesAction_HeartScales_ChangeNature,
-    [HEART_SCALE_MENU_CHANGE_ABILITY]           = FeaturesAction_HeartScales_ChangeAbility,
-    [HEART_SCALE_MENU_INCREASE_LEVEL_CAP]       = FeaturesAction_HeartScales_IncreaseLevelCap,
-};
-
-static void (*const sFeaturesMenu_Actions_HeartScales_IVs[])(u8) =
-{
-    [IV_MENU_HP]                = FeaturesAction_HeartScales_IVs_ChangeHP,
-    [IV_MENU_ATTACK]            = FeaturesAction_HeartScales_IVs_ChangeAttack,
-    [IV_MENU_DEFENSE]           = FeaturesAction_HeartScales_IVs_ChangeDefense,
-    [IV_MENU_SPECIAL_ATTACK]    = FeaturesAction_HeartScales_IVs_ChangeSpecialAttack,
-    [IV_MENU_SPECIAL_DEFENSE]   = FeaturesAction_HeartScales_IVs_ChangeSpecialDefense,
-    [IV_MENU_SPEED]             = FeaturesAction_HeartScales_IVs_ChangeSpeed,
-};
-
-static void (*const sFeaturesMenu_Actions_HeartScales_Natures[])(u8) =
-{
-    [NATURE_MENU_HARDY]              = FeaturesAction_HeartScales_Natures_Hardy,
-    [NATURE_MENU_LAX]                = FeaturesAction_HeartScales_Natures_Lax,
-    [NATURE_MENU_GENTLE]             = FeaturesAction_HeartScales_Natures_Gentle,
-    [NATURE_MENU_BRAVE]              = FeaturesAction_HeartScales_Natures_Brave,
-    [NATURE_MENU_BOLD]               = FeaturesAction_HeartScales_Natures_Bold,
-    [NATURE_MENU_RELAXED]            = FeaturesAction_HeartScales_Natures_Relaxed,
-    [NATURE_MENU_IMPISH]             = FeaturesAction_HeartScales_Natures_Impish,
-    [NATURE_MENU_QUIET]              = FeaturesAction_HeartScales_Natures_Quiet,
-    [NATURE_MENU_CALM]               = FeaturesAction_HeartScales_Natures_Calm,
-    [NATURE_MENU_SASSY]              = FeaturesAction_HeartScales_Natures_Sassy,
-    [NATURE_MENU_CAREFUL]            = FeaturesAction_HeartScales_Natures_Careful,
-    [NATURE_MENU_LONELY]             = FeaturesAction_HeartScales_Natures_Lonely,
-    [NATURE_MENU_ADAMANT]            = FeaturesAction_HeartScales_Natures_Adamant,
-    [NATURE_MENU_NAUGHTY]            = FeaturesAction_HeartScales_Natures_Naughty,
-    [NATURE_MENU_TIMID]              = FeaturesAction_HeartScales_Natures_Timid,
-    [NATURE_MENU_HASTY]              = FeaturesAction_HeartScales_Natures_Hasty,
-    [NATURE_MENU_JOLLY]              = FeaturesAction_HeartScales_Natures_Jolly,
-    [NATURE_MENU_NAIVE]              = FeaturesAction_HeartScales_Natures_Naive,
-    [NATURE_MENU_MODEST]             = FeaturesAction_HeartScales_Natures_Modest,
-    [NATURE_MENU_MILD]               = FeaturesAction_HeartScales_Natures_Mild,
-    [NATURE_MENU_RASH]               = FeaturesAction_HeartScales_Natures_Rash,
+    [NATURE_MENU_HARDY]              = {sFeaturesText_HeartScales_Natures_Hardy,           {.u8_void = FeaturesAction_HeartScales_Natures_Hardy}},
+    [NATURE_MENU_LAX]                = {sFeaturesText_HeartScales_Natures_Lax,             {.u8_void = FeaturesAction_HeartScales_Natures_Lax}},
+    [NATURE_MENU_GENTLE]             = {sFeaturesText_HeartScales_Natures_Gentle,          {.u8_void = FeaturesAction_HeartScales_Natures_Gentle}},
+    [NATURE_MENU_BRAVE]              = {sFeaturesText_HeartScales_Natures_Brave,           {.u8_void = FeaturesAction_HeartScales_Natures_Brave}},
+    [NATURE_MENU_BOLD]               = {sFeaturesText_HeartScales_Natures_Bold,            {.u8_void = FeaturesAction_HeartScales_Natures_Bold}},
+    [NATURE_MENU_RELAXED]            = {sFeaturesText_HeartScales_Natures_Relaxed,         {.u8_void = FeaturesAction_HeartScales_Natures_Relaxed}},
+    [NATURE_MENU_IMPISH]             = {sFeaturesText_HeartScales_Natures_Impish,          {.u8_void = FeaturesAction_HeartScales_Natures_Impish}},
+    [NATURE_MENU_QUIET]              = {sFeaturesText_HeartScales_Natures_Quiet,           {.u8_void = FeaturesAction_HeartScales_Natures_Quiet}},
+    [NATURE_MENU_CALM]               = {sFeaturesText_HeartScales_Natures_Calm,            {.u8_void = FeaturesAction_HeartScales_Natures_Calm}},
+    [NATURE_MENU_SASSY]              = {sFeaturesText_HeartScales_Natures_Sassy,           {.u8_void = FeaturesAction_HeartScales_Natures_Sassy}},
+    [NATURE_MENU_CAREFUL]            = {sFeaturesText_HeartScales_Natures_Careful,         {.u8_void = FeaturesAction_HeartScales_Natures_Careful}},
+    [NATURE_MENU_LONELY]             = {sFeaturesText_HeartScales_Natures_Lonely,          {.u8_void = FeaturesAction_HeartScales_Natures_Lonely}},
+    [NATURE_MENU_ADAMANT]            = {sFeaturesText_HeartScales_Natures_Adamant,         {.u8_void = FeaturesAction_HeartScales_Natures_Adamant}},
+    [NATURE_MENU_NAUGHTY]            = {sFeaturesText_HeartScales_Natures_Naughty,         {.u8_void = FeaturesAction_HeartScales_Natures_Naughty}},
+    [NATURE_MENU_TIMID]              = {sFeaturesText_HeartScales_Natures_Timid,           {.u8_void = FeaturesAction_HeartScales_Natures_Timid}},
+    [NATURE_MENU_HASTY]              = {sFeaturesText_HeartScales_Natures_Hasty,           {.u8_void = FeaturesAction_HeartScales_Natures_Hasty}},
+    [NATURE_MENU_JOLLY]              = {sFeaturesText_HeartScales_Natures_Jolly,           {.u8_void = FeaturesAction_HeartScales_Natures_Jolly}},
+    [NATURE_MENU_NAIVE]              = {sFeaturesText_HeartScales_Natures_Naive,           {.u8_void = FeaturesAction_HeartScales_Natures_Naive}},
+    [NATURE_MENU_MODEST]             = {sFeaturesText_HeartScales_Natures_Modest,          {.u8_void = FeaturesAction_HeartScales_Natures_Modest}},
+    [NATURE_MENU_MILD]               = {sFeaturesText_HeartScales_Natures_Mild,            {.u8_void = FeaturesAction_HeartScales_Natures_Mild}},
+    [NATURE_MENU_RASH]               = {sFeaturesText_HeartScales_Natures_Rash,            {.u8_void = FeaturesAction_HeartScales_Natures_Rash}},
 };
 
 // List Menu Templates
-static const struct ListMenuTemplate sFeaturesMenu_ListTemplate_Main =
+/*static const struct ListMenuTemplate sFeaturesMenu_ListTemplate_Main =
 {
     .items = sFeaturesMenu_Items_Main,
     .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
@@ -384,7 +335,7 @@ static const struct ListMenuTemplate sFeaturesMenu_ListTemplate_HeartScales_Natu
     .items = sFeaturesMenu_Items_HeartScales_Natures,
     .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
     .totalItems = ARRAY_COUNT(sFeaturesMenu_Items_HeartScales_Natures),
-};
+};*/
 
 //Functions
 void ShowFeaturesMenu(void){
@@ -394,7 +345,7 @@ void ShowFeaturesMenu(void){
         PlayerFreeze();
         StopPlayerAvatar();
     }
-    //CreateFeaturesMenuTask(Task_ShowFeaturesMenu);
+    CreateFeaturesMenuTask(Task_ShowFeaturesMenu);
     LockPlayerFieldControls();
 }
 
@@ -440,27 +391,91 @@ static bool32 InitFeaturesMenuStep(void)
         BuildFeaturesMenuActions();
         sInitFeaturesMenuData[0]++;
         break;
-    /* case 2:
+     case 2:
         LoadMessageBoxAndBorderGfx();
-        DrawStdWindowFrame(AddStartMenuWindow(sNumStartMenuActions), FALSE);
+        DrawStdWindowFrame(AddFeaturesMenuWindow(sNumFeaturesMenuActions), FALSE);
         sInitFeaturesMenuData[1] = 0;
         sInitFeaturesMenuData[0]++;
         break;
     case 3:
-        if (GetSafariZoneFlag())
-            ShowSafariBallsWindow();
-        if (InBattlePyramid())
-            ShowPyramidFloorWindow();
             sInitFeaturesMenuData[0]++;
         break;
     case 4:
-        if (PrintStartMenuActions(&sInitFeaturesMenuData[1], 2))
+        if (PrintFeaturesMenuActions(&sInitFeaturesMenuData[1], 2))
             sInitFeaturesMenuData[0]++;
         break;
     case 5:
-        sStartMenuCursorPos = InitMenuNormal(GetStartMenuWindowId(), FONT_NORMAL, 0, 9, 16, sNumStartMenuActions, sStartMenuCursorPos);
-        CopyWindowToVram(GetStartMenuWindowId(), COPYWIN_MAP);
-        return TRUE;*/
+        sFeaturesMenuCursorPos = InitMenuNormal(GetFeaturesMenuWindowId(), FONT_NORMAL, 0, 9, 16, sNumFeaturesMenuActions, sFeaturesMenuCursorPos);
+        CopyWindowToVram(GetFeaturesMenuWindowId(), COPYWIN_MAP);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool32 PrintFeaturesMenuActions(s8 *pIndex, u32 count)
+{
+    s8 index = *pIndex;
+
+    do
+    {
+        StringExpandPlaceholders(gStringVar4, sFeaturesMenu_Items_Main[sCurrentFeaturesMenuActions[index]].text);
+        AddTextPrinterParameterized(GetFeaturesMenuWindowId(), FONT_NORMAL, gStringVar4, 8, (index << 4) + 9, TEXT_SKIP_DRAW, NULL);
+
+        index++;
+        if (index >= sNumFeaturesMenuActions)
+        {
+            *pIndex = index;
+            return TRUE;
+        }
+
+        count--;
+    }
+    while (count != 0);
+
+    *pIndex = index;
+    return FALSE;
+}
+
+void Task_ShowFeaturesMenu(u8 taskId){
+    struct Task *task = &gTasks[taskId];
+
+    switch(task->data[0])
+    {
+    case 0:
+        gMenuCallback = HandleFeaturesMenuInput;
+        task->data[0]++;
+        break;
+    case 1:
+        if (gMenuCallback() == TRUE)
+            DestroyTask(taskId);
+        break;
+    }
+}
+
+static bool8 HandleFeaturesMenuInput(void){
+    if (JOY_NEW(DPAD_UP))
+    {
+        PlaySE(SE_SELECT);
+        sFeaturesMenuCursorPos = Menu_MoveCursor(-1);
+    }
+
+    if (JOY_NEW(DPAD_DOWN))
+    {
+        PlaySE(SE_SELECT);
+        sFeaturesMenuCursorPos = Menu_MoveCursor(1);
+    }
+
+    if (JOY_NEW(A_BUTTON))
+    {
+        gMenuCallback = sFeaturesMenu_Items_Main[sCurrentFeaturesMenuActions[sFeaturesMenuCursorPos]].func.u8_void;
+    }
+
+    if (JOY_NEW(START_BUTTON | B_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        HideFeaturesMenu();
+        return TRUE;
     }
 
     return FALSE;
@@ -504,160 +519,168 @@ static void FeaturesTask_HandleMenuInput_HeartScales(u8 taskId){
 
 }
 
-static void FeaturesAction_OpenPc(u8 taskId){
-
+static bool8 FeaturesAction_OpenPc(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HealParty(u8 taskId){
-
+static bool8 FeaturesAction_HealParty(void){
+    return TRUE;
 }
 
-static void FeaturesAction_Repel(u8 taskId){
-    
+static bool8 FeaturesAction_Repel(void){
+    return TRUE;
 }
 
-static void FeaturesAction_OpenMoveTutorsMenu(u8 taskId){
-
+static bool8 FeaturesAction_OpenMoveTutorsMenu(void){
+    return TRUE;
 }
 
-static void FeaturesAction_OpenHeartScalesMenu(u8 taskId){
-
+static bool8 FeaturesAction_OpenHeartScalesMenu(void){
+    return TRUE;
 }
 
-static void FeaturesAction_MoveDeleter(u8 taskId){
-
+static bool8 FeaturesAction_MoveDeleter(void){
+    return TRUE;
 }
 
-static void FeaturesAction_PokeRider(u8 taskId){
-
+static bool8 FeaturesAction_PokeRider(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_MoveReminder(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_MoveReminder(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_ChangeIV(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_ChangeIV(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_ChangeNature(u8 taskId){
-    
+static bool8 FeaturesAction_HeartScales_ChangeNature(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_ChangeAbility(u8 taskId){
-    
+static bool8 FeaturesAction_HeartScales_ChangeAbility(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_IncreaseLevelCap(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_IncreaseLevelCap(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_IVs_ChangeHP(u8 taskId){
-    
+static bool8 FeaturesAction_HeartScales_IVs_ChangeHP(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_IVs_ChangeAttack(u8 taskId){
-    
+static bool8 FeaturesAction_HeartScales_IVs_ChangeAttack(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_IVs_ChangeDefense(u8 taskId){
-    
+static bool8 FeaturesAction_HeartScales_IVs_ChangeDefense(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_IVs_ChangeSpecialAttack(u8 taskId){
-    
+static bool8 FeaturesAction_HeartScales_IVs_ChangeSpecialAttack(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_IVs_ChangeSpecialDefense(u8 taskId){
-    
+static bool8 FeaturesAction_HeartScales_IVs_ChangeSpecialDefense(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_IVs_ChangeSpeed(u8 taskId){
-    
+static bool8 FeaturesAction_HeartScales_IVs_ChangeSpeed(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Hardy(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_Natures_Hardy(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Lax(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_Natures_Lax(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Gentle(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_Natures_Gentle(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Brave(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_Natures_Brave(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Bold(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_Natures_Bold(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Relaxed(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_Natures_Relaxed(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Impish(u8 taskId){
-    
+static bool8 FeaturesAction_HeartScales_Natures_Impish(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Quiet(u8 taskId){
-    
+static bool8 FeaturesAction_HeartScales_Natures_Quiet(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Calm(u8 taskId){
-    
+static bool8 FeaturesAction_HeartScales_Natures_Calm(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Sassy(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_Natures_Sassy(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Careful(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_Natures_Careful(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Lonely(u8 taskId){
-    
+static bool8 FeaturesAction_HeartScales_Natures_Lonely(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Adamant(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_Natures_Adamant(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Naughty(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_Natures_Naughty(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Timid(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_Natures_Timid(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Hasty(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_Natures_Hasty(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Jolly(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_Natures_Jolly(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Naive(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_Natures_Naive(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Modest(u8 taskId){
-    
+static bool8 FeaturesAction_HeartScales_Natures_Modest(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Mild(u8 taskId){
-
+static bool8 FeaturesAction_HeartScales_Natures_Mild(void){
+    return TRUE;
 }
 
-static void FeaturesAction_HeartScales_Natures_Rash(u8 taskId){
+static bool8 FeaturesAction_HeartScales_Natures_Rash(void){
+    return TRUE;
+}
 
+static void HideFeaturesMenu(void)
+{
+    ClearStdWindowAndFrame(GetFeaturesMenuWindowId(), TRUE);
+    RemoveFeaturesMenuWindow();
+    ScriptUnfreezeObjectEvents();
+    UnlockPlayerFieldControls();
 }
 
 static void FeaturesMenuTask(u8 taskId)

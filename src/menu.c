@@ -64,6 +64,7 @@ static void WindowFunc_ClearStdWindowAndFrameToTransparent(u8, u8, u8, u8, u8, u
 static void task_free_buf_after_copying_tile_data_to_vram(u8 taskId);
 
 static EWRAM_DATA u8 sStartMenuWindowId = 0;
+static EWRAM_DATA u8 sFeaturesMenuWindowId = 0;
 static EWRAM_DATA u8 sMapNamePopupWindowId = 0;
 static EWRAM_DATA u8 sSecondaryPopupWindowId = 0;
 static EWRAM_DATA struct Menu sMenu = {0};
@@ -501,9 +502,21 @@ u8 AddStartMenuWindow(u8 numActions)
     return sStartMenuWindowId;
 }
 
+u8 AddFeaturesMenuWindow(u8 numActions)
+{
+    if (sFeaturesMenuWindowId == WINDOW_NONE)
+        sFeaturesMenuWindowId = AddWindowParameterized(0, 22, 1, 7, (numActions * 2) + 2, 15, 0x139);
+    return sFeaturesMenuWindowId;
+}
+
 u8 GetStartMenuWindowId(void)
 {
     return sStartMenuWindowId;
+}
+
+u8 GetFeaturesMenuWindowId(void)
+{
+    return sFeaturesMenuWindowId;
 }
 
 void RemoveStartMenuWindow(void)
@@ -512,6 +525,15 @@ void RemoveStartMenuWindow(void)
     {
         RemoveWindow(sStartMenuWindowId);
         sStartMenuWindowId = WINDOW_NONE;
+    }
+}
+
+void RemoveFeaturesMenuWindow(void)
+{
+    if (sFeaturesMenuWindowId != WINDOW_NONE)
+    {
+        RemoveWindow(sFeaturesMenuWindowId);
+        sFeaturesMenuWindowId = WINDOW_NONE;
     }
 }
 
