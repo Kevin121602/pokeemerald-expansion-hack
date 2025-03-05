@@ -141,6 +141,7 @@ static void Features_DestroyMenu_Full(u8 taskId);
 static void Features_RefreshListMenu(u8 taskId);
 static void BuildFeaturesMenuActions(void);
 static void HideFeaturesMenu(void);
+static void FeaturesMenu_PreformScript(const u8 *script);
 
 static bool32 InitFeaturesMenuStep(void);
 static bool32 PrintFeaturesMenuActions(s8 *pIndex, u32 count);
@@ -503,6 +504,14 @@ static void BuildFeaturesMenuActions(void){
     }
 }
 
+static void FeaturesMenu_PreformScript(const u8 *script)
+{
+    HideFeaturesMenu();
+    LockPlayerFieldControls();
+    FreezeObjectEvents();
+    ScriptContext_SetupScript(script);
+}
+
 static void AddFeaturesMenuAction(u8 action){
     AppendToList(sCurrentFeaturesMenuActions, &sNumFeaturesMenuActions, action);
 }
@@ -520,7 +529,15 @@ static void FeaturesTask_HandleMenuInput_HeartScales(u8 taskId){
 }
 
 static bool8 FeaturesAction_OpenPc(void){
-    return TRUE;
+    if (!gPaletteFade.active)
+    {
+        //PlayRainStoppingSoundEffect();
+        //CleanupOverworldWindowsAndTilemaps();
+        FeaturesMenu_PreformScript(EventScript_PC);
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 static bool8 FeaturesAction_HealParty(void){
