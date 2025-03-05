@@ -398,7 +398,7 @@ static bool32 InitFeaturesMenuStep(void)
         sInitFeaturesMenuData[0]++;
         break;
     case 3:
-            sInitFeaturesMenuData[0]++;
+        sInitFeaturesMenuData[0]++;
         break;
     case 4:
         if (PrintFeaturesMenuActions(&sInitFeaturesMenuData[1], 2))

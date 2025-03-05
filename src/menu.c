@@ -150,6 +150,7 @@ void InitStandardTextBoxWindows(void)
 {
     InitWindows(sStandardTextBox_WindowTemplates);
     sStartMenuWindowId = WINDOW_NONE;
+    sFeaturesMenuWindowId = WINDOW_NONE;
     sMapNamePopupWindowId = WINDOW_NONE;
     if (OW_POPUP_GENERATION == GEN_5)
         sSecondaryPopupWindowId = WINDOW_NONE;
@@ -505,7 +506,7 @@ u8 AddStartMenuWindow(u8 numActions)
 u8 AddFeaturesMenuWindow(u8 numActions)
 {
     if (sFeaturesMenuWindowId == WINDOW_NONE)
-        sFeaturesMenuWindowId = AddWindowParameterized(0, 22, 1, 7, (numActions * 2) + 2, 15, 0x139);
+        sFeaturesMenuWindowId = AddWindowParameterized(0, 1, 1, 10, (numActions * 2) + 2, 15, 1);
     return sFeaturesMenuWindowId;
 }
 
