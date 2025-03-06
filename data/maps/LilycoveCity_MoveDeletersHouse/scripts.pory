@@ -24,7 +24,7 @@ LilycoveCity_MoveDeletersHouse_EventScript_ChooseMonAndMoveToForget::
 	goto_if_eq VAR_RESULT, TRUE, LilycoveCity_MoveDeletersHouse_EventScript_ComeAgain
 	special GetNumMovesSelectedMonHas
 	goto_if_eq VAR_RESULT, 1, LilycoveCity_MoveDeletersHouse_EventScript_ComeAgain
-	@ msgbox LilycoveCity_MoveDeletersHouse_Text_WhichMoveShouldBeForgotten, MSGBOX_DEFAULT
+	msgbox LilycoveCity_MoveDeletersHouse_Text_WhichMoveShouldBeForgotten, MSGBOX_AUTOCLOSE
 	fadescreen FADE_TO_BLACK
 	special MoveDeleterChooseMoveToForget
 	fadescreen FADE_FROM_BLACK

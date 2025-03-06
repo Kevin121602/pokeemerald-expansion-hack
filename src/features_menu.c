@@ -245,6 +245,8 @@ static const u8 sFeaturesText_HeartScales_Natures_Mild[] =      _("Mild    (3 Sc
 static const u8 sFeaturesText_HeartScales_Natures_Rash[] =      _("Rash    (3 Scales)");
 
 extern const u8 LilycoveCity_MoveDeletersHouse_EventScript_ChooseMonAndMoveToForget[];
+extern const u8 EventScript_FeaturesMenu_Repel[];
+extern const u8 EventScript_FeaturesMenu_RepelOff[];
 
 static const struct WindowTemplate sFeaturesMenuWindowTemplateMain =
 {
@@ -543,11 +545,32 @@ static bool8 FeaturesAction_OpenPc(void){
 }
 
 static bool8 FeaturesAction_HealParty(void){
-    return TRUE;
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        HealPlayerParty();
+        HideFeaturesMenu();
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 static bool8 FeaturesAction_Repel(void){
-    return TRUE;
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        if(FlagGet(FLAG_REPEL_ON) == TRUE){
+            FeaturesMenu_PreformScript(EventScript_FeaturesMenu_RepelOff);
+            return TRUE;
+        } else {
+            FeaturesMenu_PreformScript(EventScript_FeaturesMenu_Repel);
+            return TRUE;
+        }
+        //return TRUE;
+    }
+
+    return FALSE;
 }
 
 static bool8 FeaturesAction_OpenMoveTutorsMenu(void){
@@ -570,7 +593,17 @@ static bool8 FeaturesAction_MoveDeleter(void){
 }
 
 static bool8 FeaturesAction_PokeRider(void){
-    return TRUE;
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        HideFeaturesMenu();
+        LockPlayerFieldControls();
+        FreezeObjectEvents();
+        SetMainCallback2(CB2_OpenFlyMap);
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 static bool8 FeaturesAction_HeartScales_MoveReminder(void){

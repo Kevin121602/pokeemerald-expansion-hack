@@ -51,7 +51,7 @@ LilycoveCity_MoveDeletersHouse_EventScript_ChooseMonAndMoveToForget::
 # 26 "data/maps/LilycoveCity_MoveDeletersHouse/scripts.pory"
 	goto_if_eq VAR_RESULT, 1, LilycoveCity_MoveDeletersHouse_EventScript_ComeAgain
 # 27 "data/maps/LilycoveCity_MoveDeletersHouse/scripts.pory"
-	@ msgbox LilycoveCity_MoveDeletersHouse_Text_WhichMoveShouldBeForgotten, MSGBOX_DEFAULT
+	msgbox LilycoveCity_MoveDeletersHouse_Text_WhichMoveShouldBeForgotten, MSGBOX_AUTOCLOSE
 # 28 "data/maps/LilycoveCity_MoveDeletersHouse/scripts.pory"
 	fadescreen FADE_TO_BLACK
 # 29 "data/maps/LilycoveCity_MoveDeletersHouse/scripts.pory"

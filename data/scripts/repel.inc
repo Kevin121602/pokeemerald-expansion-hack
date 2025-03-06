@@ -3,6 +3,18 @@
 .set LOCAL_VAR_SPRAY_TYPE, VAR_0x8009
 .set LOCAL_VAR_NEW_SPRAY, VAR_0x8007
 
+EventScript_FeaturesMenu_RepelOff::
+	clearflag FLAG_REPEL_ON
+	msgbox Text_RepelOff
+	releaseall
+	end
+
+EventScript_FeaturesMenu_Repel::
+	setflag FLAG_REPEL_ON
+	msgbox Text_RepelOn
+	releaseall
+	end
+
 EventScript_BufferSprayName::
 .if VAR_LAST_REPEL_LURE_USED != 0
 	bufferitemname STR_VAR_1, VAR_LAST_REPEL_LURE_USED
@@ -135,6 +147,11 @@ EventScript_UseSpray::
 	msgbox Text_SprayWoreOffUseX, MSGBOX_SIGN
 	return
 
+Text_RepelOff::
+	.string "Repel OFF$"
+
+Text_RepelOn::
+	.string "Repel ON$"
 
 Text_SprayWoreOff::
 	.string "{STR_VAR_1}'s effect wore off…$"
