@@ -148,10 +148,10 @@ EventScript_UseSpray::
 	return
 
 Text_RepelOff::
-	.string "Repel OFF$"
+	.string "Repel OFF.$"
 
 Text_RepelOn::
-	.string "Repel ON$"
+	.string "Repel ON.$"
 
 Text_SprayWoreOff::
 	.string "{STR_VAR_1}'s effect wore off…$"

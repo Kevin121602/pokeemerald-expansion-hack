@@ -82,6 +82,7 @@ enum HeartScalesMenu
     HEART_SCALE_MENU_CHANGE_NATURE,
     HEART_SCALE_MENU_CHANGE_ABILITY,
     HEART_SCALE_MENU_INCREASE_LEVEL_CAP,
+    HEART_SCALE_MENU_EXIT,
 };
 
 enum HeartScalesIvMenu
@@ -128,26 +129,37 @@ struct FeaturesMenuListData
 
 //EWRAM
 EWRAM_DATA static u8 sNumFeaturesMenuActions = 0;
+EWRAM_DATA static u8 sNumHeartScalesMenuActions = 0;
 EWRAM_DATA static u8 sCurrentFeaturesMenuActions[7] = {0};
+EWRAM_DATA static u8 sCurrentHeartScalesMenuActions[6] = {0};
 EWRAM_DATA static s8 sInitFeaturesMenuData[2] = {0};
+EWRAM_DATA static s8 sInitHeartScalesMenuData[2] = {0};
 EWRAM_DATA static u8 sFeaturesMenuCursorPos = 0;
+EWRAM_DATA static u8 sHeartScalesMenuCursorPos = 0;
 
 void ShowFeaturesMenu(void);
 static void AddFeaturesMenuAction(u8 action);
+static void AddHeartScalesMenuAction(u8 action);
 static void CreateFeaturesMenuTask(TaskFunc followupFunc);
+static void CreateHeartScalesMenuTask(TaskFunc followupFunc);
 static void Features_ReShowMainMenu(void);
 static void Features_ShowMenu(void (*HandleInput)(u8), struct ListMenuTemplate LMtemplate);
 static void Features_DestroyMenu(u8 taskId);
 static void Features_DestroyMenu_Full(u8 taskId);
 static void Features_RefreshListMenu(u8 taskId);
 static void BuildFeaturesMenuActions(void);
+static void BuildHeartScalesMenuActions(void);
 static void HideFeaturesMenu(void);
+static void HideHeartScalesMenu(void);
 static void FeaturesMenu_PreformScript(const u8 *script);
 
 static bool32 InitFeaturesMenuStep(void);
+static bool32 InitHeartScalesMenuStep(void);
 static bool32 PrintFeaturesMenuActions(s8 *pIndex, u32 count);
+static bool32 PrintHeartScalesMenuActions(s8 *pIndex, u32 count);
 
 static bool8 HandleFeaturesMenuInput(void);
+static bool8 HandleHeartScalesMenuInput(void);
 
 static void FeaturesTask_HandleMenuInput_Main(u8 taskId);
 static void FeaturesTask_HandleMenuInput_MoveTutors(u8 taskId);
@@ -166,6 +178,7 @@ static bool8 FeaturesAction_HeartScales_ChangeIV(void);
 static bool8 FeaturesAction_HeartScales_ChangeNature(void);
 static bool8 FeaturesAction_HeartScales_ChangeAbility(void);
 static bool8 FeaturesAction_HeartScales_IncreaseLevelCap(void);
+static bool8 FeaturesAction_HeartScales_Exit(void);
 
 static bool8 FeaturesAction_HeartScales_IVs_ChangeHP(void);
 static bool8 FeaturesAction_HeartScales_IVs_ChangeAttack(void);
@@ -198,6 +211,7 @@ static bool8 FeaturesAction_HeartScales_Natures_Rash(void);
 
 //Task Callbacks
 static void FeaturesMenuTask(u8 taskId);
+static void HeartScalesMenuTask(u8 taskId);
 
 //Text
 //Features Main Menu
@@ -214,6 +228,7 @@ static const u8 sFeaturesText_HeartScales_ChangeIV[] =          _("Change IV");
 static const u8 sFeaturesText_HeartScales_ChangeNature[] =      _("Change Nature");
 static const u8 sFeaturesText_HeartScales_ChangeAbility[] =     _("Change Ability");
 static const u8 sFeaturesText_HeartScales_IncreaseLevelCap[] =  _("Increase Level Cap");
+static const u8 sFeaturesText_HeartScales_Exit[] =              _("Exit");
 //IVs
 static const u8 sFeaturesText_HeartScales_IV_HP[] =             _("HP");
 static const u8 sFeaturesText_HeartScales_IV_Attack[] =         _("Attack");
@@ -277,6 +292,7 @@ static const struct MenuAction sFeaturesMenu_Items_HeartScales[] =
     [HEART_SCALE_MENU_CHANGE_NATURE]            = {sFeaturesText_HeartScales_ChangeNature,      {.u8_void = FeaturesAction_HeartScales_ChangeNature}},
     [HEART_SCALE_MENU_CHANGE_ABILITY]           = {sFeaturesText_HeartScales_ChangeAbility,     {.u8_void = FeaturesAction_HeartScales_ChangeAbility}},
     [HEART_SCALE_MENU_INCREASE_LEVEL_CAP]       = {sFeaturesText_HeartScales_IncreaseLevelCap,  {.u8_void = FeaturesAction_HeartScales_IncreaseLevelCap}},
+    [HEART_SCALE_MENU_EXIT]                     = {sFeaturesText_HeartScales_Exit,              {.u8_void = FeaturesAction_HeartScales_Exit}},
 };
 
 static const struct MenuAction sFeaturesMenu_Items_HeartScales_IVs[] =
@@ -364,6 +380,15 @@ static void CreateFeaturesMenuTask(TaskFunc followupFunc){
     SetTaskFuncWithFollowupFunc(taskId, FeaturesMenuTask, followupFunc);
 }
 
+static void CreateHeartScalesMenuTask(TaskFunc followupFunc){
+    u8 taskId;
+
+    sInitHeartScalesMenuData[0] = 0;
+    sInitHeartScalesMenuData[1] = 0;
+    taskId = CreateTask(HeartScalesMenuTask, 0x50);
+    SetTaskFuncWithFollowupFunc(taskId, HeartScalesMenuTask, followupFunc);
+}
+
 static void Features_ReShowMainMenu(void){
     
 }
@@ -403,16 +428,48 @@ static bool32 InitFeaturesMenuStep(void)
         sInitFeaturesMenuData[1] = 0;
         sInitFeaturesMenuData[0]++;
         break;
+    //case 3:
+    //    sInitFeaturesMenuData[0]++;
+    //    break;
     case 3:
-        sInitFeaturesMenuData[0]++;
-        break;
-    case 4:
         if (PrintFeaturesMenuActions(&sInitFeaturesMenuData[1], 2))
             sInitFeaturesMenuData[0]++;
         break;
-    case 5:
+    case 4:
         sFeaturesMenuCursorPos = InitMenuNormal(GetFeaturesMenuWindowId(), FONT_NORMAL, 0, 9, 16, sNumFeaturesMenuActions, sFeaturesMenuCursorPos);
         CopyWindowToVram(GetFeaturesMenuWindowId(), COPYWIN_MAP);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool32 InitHeartScalesMenuStep(void)
+{
+    s8 state = sInitHeartScalesMenuData[0];
+
+    switch (state)
+    {
+    case 0:
+        sInitHeartScalesMenuData[0]++;
+        break;
+    case 1:
+        BuildHeartScalesMenuActions();
+        sInitHeartScalesMenuData[0]++;
+        break;
+     case 2:
+        LoadMessageBoxAndBorderGfx();
+        DrawStdWindowFrame(AddHeartScalesMenuWindow(), FALSE);
+        sInitHeartScalesMenuData[1] = 0;
+        sInitHeartScalesMenuData[0]++;
+        break;
+    case 3:
+        if (PrintHeartScalesMenuActions(&sInitHeartScalesMenuData[1], 2))
+            sInitHeartScalesMenuData[0]++;
+        break;
+    case 4:
+        sHeartScalesMenuCursorPos = InitMenuNormal(GetHeartScalesMenuWindowId(), FONT_NORMAL, 0, 9, 16, sNumHeartScalesMenuActions, sHeartScalesMenuCursorPos);
+        CopyWindowToVram(GetHeartScalesMenuWindowId(), COPYWIN_MAP);
         return TRUE;
     }
 
@@ -443,6 +500,30 @@ static bool32 PrintFeaturesMenuActions(s8 *pIndex, u32 count)
     return FALSE;
 }
 
+static bool32 PrintHeartScalesMenuActions(s8 *pIndex, u32 count)
+{
+    s8 index = *pIndex;
+
+    do
+    {
+        StringExpandPlaceholders(gStringVar4, sFeaturesMenu_Items_HeartScales[sCurrentHeartScalesMenuActions[index]].text);
+        AddTextPrinterParameterized(GetHeartScalesMenuWindowId(), FONT_NORMAL, gStringVar4, 8, (index << 4) + 9, TEXT_SKIP_DRAW, NULL);
+
+        index++;
+        if (index >= sNumHeartScalesMenuActions)
+        {
+            *pIndex = index;
+            return TRUE;
+        }
+
+        count--;
+    }
+    while (count != 0);
+
+    *pIndex = index;
+    return FALSE;
+}
+
 void Task_ShowFeaturesMenu(u8 taskId){
     struct Task *task = &gTasks[taskId];
 
@@ -450,6 +531,22 @@ void Task_ShowFeaturesMenu(u8 taskId){
     {
     case 0:
         gMenuCallback = HandleFeaturesMenuInput;
+        task->data[0]++;
+        break;
+    case 1:
+        if (gMenuCallback() == TRUE)
+            DestroyTask(taskId);
+        break;
+    }
+}
+
+void Task_ShowHeartScalesMenu(u8 taskId){
+    struct Task *task = &gTasks[taskId];
+
+    switch(task->data[0])
+    {
+    case 0:
+        gMenuCallback = HandleHeartScalesMenuInput;
         task->data[0]++;
         break;
     case 1:
@@ -477,10 +574,41 @@ static bool8 HandleFeaturesMenuInput(void){
         gMenuCallback = sFeaturesMenu_Items_Main[sCurrentFeaturesMenuActions[sFeaturesMenuCursorPos]].func.u8_void;
     }
 
-    if (JOY_NEW(START_BUTTON | B_BUTTON))
+    if (JOY_NEW(L_BUTTON | B_BUTTON))
     {
         PlaySE(SE_SELECT);
         HideFeaturesMenu();
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool8 HandleHeartScalesMenuInput(void){
+    if (JOY_NEW(DPAD_UP))
+    {
+        PlaySE(SE_SELECT);
+        sHeartScalesMenuCursorPos = Menu_MoveCursor(-1);
+    }
+
+    if (JOY_NEW(DPAD_DOWN))
+    {
+        PlaySE(SE_SELECT);
+        sHeartScalesMenuCursorPos = Menu_MoveCursor(1);
+    }
+
+    if (JOY_NEW(A_BUTTON))
+    {
+        gMenuCallback = sFeaturesMenu_Items_HeartScales[sCurrentHeartScalesMenuActions[sHeartScalesMenuCursorPos]].func.u8_void;
+    }
+
+    if (JOY_NEW(L_BUTTON | B_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        //HideFeaturesMenu();
+        ClearStdWindowAndFrame(GetHeartScalesMenuWindowId(), TRUE);
+        RemoveHeartScalesMenuWindow();
+        CreateFeaturesMenuTask(Task_ShowFeaturesMenu);
         return TRUE;
     }
 
@@ -509,6 +637,16 @@ static void BuildFeaturesMenuActions(void){
     }
 }
 
+static void BuildHeartScalesMenuActions(void){
+
+    sNumHeartScalesMenuActions = 0;
+
+    for(int i = HEART_SCALE_MENU_MOVE_REMINDER; i <= HEART_SCALE_MENU_EXIT; i++)
+    {
+        AddHeartScalesMenuAction(i);
+    }
+}
+
 static void FeaturesMenu_PreformScript(const u8 *script)
 {
     HideFeaturesMenu();
@@ -521,12 +659,16 @@ static void AddFeaturesMenuAction(u8 action){
     AppendToList(sCurrentFeaturesMenuActions, &sNumFeaturesMenuActions, action);
 }
 
+static void AddHeartScalesMenuAction(u8 action){
+    AppendToList(sCurrentHeartScalesMenuActions, &sNumHeartScalesMenuActions, action);
+}
+
 static void FeaturesTask_HandleMenuInput_Main(u8 taskId){
 
 }
 
 static void FeaturesTask_HandleMenuInput_MoveTutors(u8 taskId){
-
+    
 }
 
 static void FeaturesTask_HandleMenuInput_HeartScales(u8 taskId){
@@ -574,11 +716,28 @@ static bool8 FeaturesAction_Repel(void){
 }
 
 static bool8 FeaturesAction_OpenMoveTutorsMenu(void){
-    return TRUE;
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        HideFeaturesMenu();
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 static bool8 FeaturesAction_OpenHeartScalesMenu(void){
-    return TRUE;
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        //HideFeaturesMenu();
+        ClearStdWindowAndFrame(GetFeaturesMenuWindowId(), TRUE);
+        RemoveFeaturesMenuWindow();
+        CreateHeartScalesMenuTask(Task_ShowHeartScalesMenu);
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 static bool8 FeaturesAction_MoveDeleter(void){
@@ -607,23 +766,69 @@ static bool8 FeaturesAction_PokeRider(void){
 }
 
 static bool8 FeaturesAction_HeartScales_MoveReminder(void){
-    return TRUE;
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        HideHeartScalesMenu();
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 static bool8 FeaturesAction_HeartScales_ChangeIV(void){
-    return TRUE;
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        HideHeartScalesMenu();
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 static bool8 FeaturesAction_HeartScales_ChangeNature(void){
-    return TRUE;
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        HideHeartScalesMenu();
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 static bool8 FeaturesAction_HeartScales_ChangeAbility(void){
-    return TRUE;
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        HideHeartScalesMenu();
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 static bool8 FeaturesAction_HeartScales_IncreaseLevelCap(void){
-    return TRUE;
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        HideHeartScalesMenu();
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool8 FeaturesAction_HeartScales_Exit(void){
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        HideHeartScalesMenu();
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 static bool8 FeaturesAction_HeartScales_IVs_ChangeHP(void){
@@ -742,8 +947,22 @@ static void HideFeaturesMenu(void)
     UnlockPlayerFieldControls();
 }
 
+static void HideHeartScalesMenu(void)
+{
+    ClearStdWindowAndFrame(GetHeartScalesMenuWindowId(), TRUE);
+    RemoveHeartScalesMenuWindow();
+    ScriptUnfreezeObjectEvents();
+    UnlockPlayerFieldControls();
+}
+
 static void FeaturesMenuTask(u8 taskId)
 {
     if (InitFeaturesMenuStep() == TRUE)
+        SwitchTaskToFollowupFunc(taskId);
+}
+
+static void HeartScalesMenuTask(u8 taskId)
+{
+    if (InitHeartScalesMenuStep() == TRUE)
         SwitchTaskToFollowupFunc(taskId);
 }
