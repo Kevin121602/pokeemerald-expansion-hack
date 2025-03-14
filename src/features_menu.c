@@ -152,6 +152,7 @@ static void BuildHeartScalesMenuActions(void);
 static void HideFeaturesMenu(void);
 static void HideHeartScalesMenu(void);
 static void FeaturesMenu_PreformScript(const u8 *script);
+static void FeaturesMenu_NoHeartScales(const u8 *message);
 
 static bool32 InitFeaturesMenuStep(void);
 static bool32 InitHeartScalesMenuStep(void);
@@ -262,6 +263,8 @@ static const u8 sFeaturesText_HeartScales_Natures_Rash[] =      _("Rash    (3 Sc
 extern const u8 LilycoveCity_MoveDeletersHouse_EventScript_ChooseMonAndMoveToForget[];
 extern const u8 EventScript_FeaturesMenu_Repel[];
 extern const u8 EventScript_FeaturesMenu_RepelOff[];
+extern const u8 EventScript_FeaturesMenu_NoHeartScales[];
+extern const u8 FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon[];
 
 static const struct WindowTemplate sFeaturesMenuWindowTemplateMain =
 {
@@ -655,6 +658,14 @@ static void FeaturesMenu_PreformScript(const u8 *script)
     ScriptContext_SetupScript(script);
 }
 
+static void FeaturesMenu_NoHeartScales(const u8 *message){
+    StringExpandPlaceholders(gStringVar4, message);
+    LoadMessageBoxAndFrameGfx(0, TRUE);
+    AddTextPrinterForMessage_2(TRUE);
+    ScriptUnfreezeObjectEvents();
+    UnlockPlayerFieldControls();
+}
+
 static void AddFeaturesMenuAction(u8 action){
     AppendToList(sCurrentFeaturesMenuActions, &sNumFeaturesMenuActions, action);
 }
@@ -733,7 +744,11 @@ static bool8 FeaturesAction_OpenHeartScalesMenu(void){
         //HideFeaturesMenu();
         ClearStdWindowAndFrame(GetFeaturesMenuWindowId(), TRUE);
         RemoveFeaturesMenuWindow();
-        CreateHeartScalesMenuTask(Task_ShowHeartScalesMenu);
+        if(CheckBagHasItem(ITEM_HEART_SCALE, 1)){
+            CreateHeartScalesMenuTask(Task_ShowHeartScalesMenu);
+        } else {
+            FeaturesMenu_PreformScript(EventScript_FeaturesMenu_NoHeartScales);
+        }
         return TRUE;
     }
 
@@ -769,7 +784,9 @@ static bool8 FeaturesAction_HeartScales_MoveReminder(void){
     if (!gPaletteFade.active)
     {
         PlaySE(SE_SELECT);
-        HideHeartScalesMenu();
+        ClearStdWindowAndFrame(GetHeartScalesMenuWindowId(), TRUE);
+        RemoveHeartScalesMenuWindow();
+        FeaturesMenu_PreformScript(FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon);
         return TRUE;
     }
 
