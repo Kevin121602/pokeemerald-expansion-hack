@@ -234,6 +234,7 @@ gSpecials::
 	def_special MoveDeleterChooseMoveToForget
 	def_special MoveDeleterForgetMove
 	def_special BufferMoveDeleterNicknameAndMove
+	def_special CanLevelCapBeIncreased
 	def_special GetNumMovesSelectedMonHas
 	def_special TeachMoveRelearnerMove
 	def_special GetRecordedCyclingRoadResults

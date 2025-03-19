@@ -4272,7 +4272,7 @@ void IncreaseLevelCap(void)
     u8 levelCap;
 
     levelCap = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_LEVEL_CAP);
-    if(GetIndividualLevelCap(levelCap) >= 100){
+    if(GetIndividualLevelCap(levelCap) >= 101){
         return;
     } 
     else {
@@ -4280,6 +4280,6 @@ void IncreaseLevelCap(void)
         SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_LEVEL_CAP, &levelCap);
     }
 
-
-    ConvertIntToDecimalStringN(gStringVar1, levelCap, STR_CONV_MODE_LEFT_ALIGN, 3);
+    GetMonNickname(&gPlayerParty[gSpecialVar_0x8004], gStringVar1);
+    ConvertIntToDecimalStringN(gStringVar2, levelCap, STR_CONV_MODE_LEFT_ALIGN, 3);
 }

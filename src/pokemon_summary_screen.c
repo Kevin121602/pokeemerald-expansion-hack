@@ -3531,7 +3531,7 @@ static void PrintLevelCap(void)
     levelcap--;
 
 
-    ConvertIntToDecimalStringN(gStringVar1, levelcap, STR_CONV_MODE_RIGHT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gStringVar1, levelcap, STR_CONV_MODE_RIGHT_ALIGN, 3);
     StringExpandPlaceholders(gStringVar4, gText_LvlCapVar);
     text = gStringVar4;
 

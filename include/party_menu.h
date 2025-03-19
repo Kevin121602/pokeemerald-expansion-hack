@@ -101,6 +101,7 @@ void IsLastMonThatKnowsSurf(void);
 void MoveDeleterForgetMove(void);
 void BufferMoveDeleterNicknameAndMove(void);
 void GetNumMovesSelectedMonHas(void);
+void CanLevelCapBeIncreased(void);
 void MoveDeleterChooseMoveToForget(void);
 bool32 IsItemFlute(u16 item);
 

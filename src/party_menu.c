@@ -7730,6 +7730,14 @@ void GetNumMovesSelectedMonHas(void)
     }
 }
 
+void CanLevelCapBeIncreased(void)
+{
+    if(GetIndividualLevelCap(GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_LEVEL_CAP)) >= 101)
+        gSpecialVar_Result = FALSE;
+    else    
+        gSpecialVar_Result = TRUE;
+}
+
 void BufferMoveDeleterNicknameAndMove(void)
 {
     struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8004];
