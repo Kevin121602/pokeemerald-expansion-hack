@@ -554,3 +554,8 @@ gSpecials::
 	def_special Script_GetChosenMonOffensiveIVs
 	def_special Script_GetChosenMonDefensiveIVs
 	def_special IncreaseLevelCap
+	def_special IsMonWeezingGalar
+	def_special CanChangeAbility
+	def_special IsHiddenAbility
+	def_special BufferMonNicknameAndAbility
+	def_special ChangeAbility

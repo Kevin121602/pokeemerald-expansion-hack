@@ -4283,3 +4283,54 @@ void IncreaseLevelCap(void)
     GetMonNickname(&gPlayerParty[gSpecialVar_0x8004], gStringVar1);
     ConvertIntToDecimalStringN(gStringVar2, levelCap, STR_CONV_MODE_LEFT_ALIGN, 3);
 }
+
+void IsMonWeezingGalar(void)
+{
+    if(GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES) == SPECIES_WEEZING_GALARIAN)
+        gSpecialVar_Result = TRUE;
+    else
+        gSpecialVar_Result = FALSE;
+}
+
+void IsHiddenAbility(void)
+{
+    if(GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ABILITY_NUM) > 1)
+        gSpecialVar_Result = TRUE;
+    else
+        gSpecialVar_Result = FALSE;
+}
+
+void CanChangeAbility(void)
+{    
+    if ((gSpeciesInfo[GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES)].abilities[0] == gSpeciesInfo[GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES)].abilities[1]) || gSpeciesInfo[GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES)].abilities[1] == 0)
+        gSpecialVar_Result = FALSE;
+    else
+        gSpecialVar_Result = TRUE;
+}
+
+void BufferMonNicknameAndAbility(void)
+{
+    u8 monAbility = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ABILITY_NUM);
+    u8 potentialAbility;
+
+    if(monAbility == 0)
+        potentialAbility = 1;
+    else
+        potentialAbility = 0;
+
+    GetMonNickname(&gPlayerParty[gSpecialVar_0x8004], gStringVar1);
+    StringCopy(gStringVar2, gAbilitiesInfo[GetAbilityBySpecies(GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES), potentialAbility)].name);
+}
+
+void ChangeAbility(void)
+{
+    u8 monAbility = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ABILITY_NUM);
+    u8 potentialAbility;
+
+    if(monAbility == 0)
+        potentialAbility = 1;
+    else
+        potentialAbility = 0;
+
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ABILITY_NUM, &potentialAbility);
+}
