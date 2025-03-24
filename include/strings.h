@@ -3056,4 +3056,49 @@ extern const u8 gText_SpeedLC[];
 extern const u8 gText_ExitLC[];
 extern const u8 gText_StatNameColon[];
 
+//For Nature Change Menu
+extern const u8 gText_Natures_Hardy[];
+extern const u8 gText_Natures_Lax[];
+extern const u8 gText_Natures_Gentle[];
+extern const u8 gText_Natures_Brave[];
+extern const u8 gText_Natures_Bold[];
+extern const u8 gText_Natures_Relaxed[];
+extern const u8 gText_Natures_Impish[];
+extern const u8 gText_Natures_Quiet[];
+extern const u8 gText_Natures_Calm[];
+extern const u8 gText_Natures_Sassy[];
+extern const u8 gText_Natures_Careful[];
+extern const u8 gText_Natures_Lonely[];
+extern const u8 gText_Natures_Adamant[];
+extern const u8 gText_Natures_Naughty[];
+extern const u8 gText_Natures_Timid[];
+extern const u8 gText_Natures_Hasty[];
+extern const u8 gText_Natures_Jolly[];
+extern const u8 gText_Natures_Naive[];
+extern const u8 gText_Natures_Modest[];
+extern const u8 gText_Natures_Mild[];
+extern const u8 gText_Natures_Rash[];
+
+extern const u8 gText_Natures_Hardy1[];
+extern const u8 gText_Natures_Lax1[];
+extern const u8 gText_Natures_Gentle1[];
+extern const u8 gText_Natures_Brave1[];
+extern const u8 gText_Natures_Bold1[];
+extern const u8 gText_Natures_Relaxed1[];
+extern const u8 gText_Natures_Impish1[];
+extern const u8 gText_Natures_Quiet1[];
+extern const u8 gText_Natures_Calm1[];
+extern const u8 gText_Natures_Sassy1[];
+extern const u8 gText_Natures_Careful1[];
+extern const u8 gText_Natures_Lonely1[];
+extern const u8 gText_Natures_Adamant1[];
+extern const u8 gText_Natures_Naughty1[];
+extern const u8 gText_Natures_Timid1[];
+extern const u8 gText_Natures_Hasty1[];
+extern const u8 gText_Natures_Jolly1[];
+extern const u8 gText_Natures_Naive1[];
+extern const u8 gText_Natures_Modest1[];
+extern const u8 gText_Natures_Mild1[];
+extern const u8 gText_Natures_Rash1[];
+
 #endif // GUARD_STRINGS_H

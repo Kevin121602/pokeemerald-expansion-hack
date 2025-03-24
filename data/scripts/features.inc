@@ -46,7 +46,7 @@ EventScript_FeaturesMenu_ChangeAbility::
 EventScript_FeaturesMenu_ChangeIV::
 	special ChoosePartyMon
 	waitstate
-	multichoice 0, 0, MULTI_CHANGE_IV, TRUE
+	multichoice 0, 0, MULTI_CHANGE_IV, FALSE
 	switch VAR_RESULT
 	case 0, EventScript_FeaturesMenu_ChangeHP
 	case 1, EventScript_FeaturesMenu_ChangeAttack
@@ -56,6 +56,59 @@ EventScript_FeaturesMenu_ChangeIV::
 	case 5, EventScript_FeaturesMenu_ChangeSpeed
 	case 6, EventScript_FeaturesMenu_Exit
 	case MULTI_B_PRESSED, EventScript_FeaturesMenu_Exit
+	releaseall
+	end
+
+EventScript_FeaturesMenu_ChangeNature::
+	special ChoosePartyMon
+	waitstate
+	copyvar VAR_0x8005, VAR_0x8004
+	checkitem ITEM_HEART_SCALE, 3
+	goto_if_eq VAR_RESULT, TRUE EventScript_FeaturesMenu_ChangeNature3
+	checkitem ITEM_HEART_SCALE, 2
+	goto_if_eq VAR_RESULT, TRUE EventScript_FeaturesMenu_ChangeNature2
+	multichoice 0, 0, MULTI_CHANGE_NATURE_1, FALSE
+	goto_if_eq VAR_RESULT, 3 EventScript_FeaturesMenu_Exit
+	copyvar VAR_0x8006, VAR_RESULT
+	special BufferNameAndNature
+	msgbox Text_ChangeNameToNature, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	special ChangeNature
+	msgbox Text_NameChangedToNature
+	removeitem ITEM_HEART_SCALE
+	msgbox Text_SpentHeartScale
+	releaseall
+	end
+
+EventScript_FeaturesMenu_ChangeNature3::
+	setvar VAR_0x8004, SCROLL_CHANGE_NATURE_THREE_SCALES
+	special ShowScrollableMultichoice
+	waitstate
+	goto_if_eq VAR_RESULT, 21 EventScript_FeaturesMenu_Exit
+	copyvar VAR_0x8006, VAR_RESULT
+	special BufferNameAndNature
+	msgbox Text_ChangeNameToNature, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	special ChangeNature
+	msgbox Text_NameChangedToNature
+	removeitem ITEM_HEART_SCALE, 3
+	msgbox Text_SpentThreeHeartScales
+	releaseall
+	end
+
+EventScript_FeaturesMenu_ChangeNature2::
+	setvar VAR_0x8004, SCROLL_CHANGE_NATURE_TWO_SCALES
+	special ShowScrollableMultichoice
+	waitstate
+	goto_if_eq VAR_RESULT, 11 EventScript_FeaturesMenu_Exit
+	copyvar VAR_0x8006, VAR_RESULT
+	special BufferNameAndNature
+	msgbox Text_ChangeNameToNature, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	special ChangeNature
+	msgbox Text_NameChangedToNature
+	removeitem ITEM_HEART_SCALE, 2
+	msgbox Text_SpentTwoHeartScales
 	releaseall
 	end
 
@@ -157,6 +210,14 @@ EventScript_FeaturesMenu_CantChangeAbility::
 	releaseall
 	end
 
+Text_ChangeNameToNature::
+	.string "Change {STR_VAR_1}'s Nature to\n"
+	.string "{STR_VAR_2}?$"
+
+Text_NameChangedToNature::
+	.string "{STR_VAR_1}'s Nature has been\n"
+	.string "changed to {STR_VAR_2}!$"
+
 Text_HPChanged::
 	.string "{STR_VAR_1}'s HP has been changed to\n"
 	.string "{STR_VAR_2}!$"
@@ -217,6 +278,12 @@ Text_LevelCapIncreased::
 
 Text_SpentHeartScale::
 	.string "{PLAYER} spent one Heart Scale.$"
+
+Text_SpentTwoHeartScales::
+	.string "{PLAYER} spent two Heart Scales.$"
+
+Text_SpentThreeHeartScales::
+	.string "{PLAYER} spent three Heart Scales.$"
 
 Text_AfraidOfHeights::
 	.string "{STR_VAR_1} is afraid of heights.\n"

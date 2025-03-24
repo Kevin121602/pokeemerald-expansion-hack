@@ -267,6 +267,7 @@ extern const u8 EventScript_FeaturesMenu_NoHeartScales[];
 extern const u8 EventScript_FeaturesMenu_IncreaseLevelCap[];
 extern const u8 EventScript_FeaturesMenu_ChangeAbility[];
 extern const u8 EventScript_FeaturesMenu_ChangeIV[];
+extern const u8 EventScript_FeaturesMenu_ChangeNature[];
 extern const u8 FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon[];
 
 static const struct WindowTemplate sFeaturesMenuWindowTemplateMain =
@@ -813,7 +814,9 @@ static bool8 FeaturesAction_HeartScales_ChangeNature(void){
     if (!gPaletteFade.active)
     {
         PlaySE(SE_SELECT);
-        HideHeartScalesMenu();
+        ClearStdWindowAndFrame(GetHeartScalesMenuWindowId(), TRUE);
+        RemoveHeartScalesMenuWindow();
+        FeaturesMenu_PreformScript(EventScript_FeaturesMenu_ChangeNature);
         return TRUE;
     }
 

@@ -507,7 +507,7 @@ BattleFrontier_ExchangeServiceCorner_EventScript_ChooseVitamin::
 # 254 "data/maps/BattleFrontier_ExchangeServiceCorner/scripts.pory"
 	special ShowScrollableMultichoice
 # 255 "data/maps/BattleFrontier_ExchangeServiceCorner/scripts.pory"
-	waitstate
+	
 # 256 "data/maps/BattleFrontier_ExchangeServiceCorner/scripts.pory"
 	special CloseFrontierExchangeCornerItemIconWindow
 # 257 "data/maps/BattleFrontier_ExchangeServiceCorner/scripts.pory"

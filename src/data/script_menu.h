@@ -789,6 +789,56 @@ static const struct MenuAction MultichoiceList_ChangeIV[] =
     {gText_ExitLC},
 };
 
+static const struct MenuAction MultichoiceList_ChangeNature1[] =
+{
+    {gText_Natures_Hardy},
+    {gText_Natures_Lax},
+    {gText_Natures_Gentle},
+    {gText_ExitLC},
+};
+
+static const struct MenuAction MultichoiceList_ChangeNature2[] =
+{
+    {gText_Natures_Hardy},
+    {gText_Natures_Lax},
+    {gText_Natures_Gentle},
+    {gText_Natures_Brave},
+    {gText_Natures_Bold},
+    {gText_Natures_Relaxed},
+    {gText_Natures_Impish},
+    {gText_Natures_Quiet},
+    {gText_Natures_Calm},
+    {gText_Natures_Sassy},
+    {gText_Natures_Careful},
+    {gText_ExitLC},
+};
+
+static const struct MenuAction MultichoiceList_ChangeNature3[] =
+{
+    {gText_Natures_Hardy},
+    {gText_Natures_Lax},
+    {gText_Natures_Gentle},
+    {gText_Natures_Brave},
+    {gText_Natures_Bold},
+    {gText_Natures_Relaxed},
+    {gText_Natures_Impish},
+    {gText_Natures_Quiet},
+    {gText_Natures_Calm},
+    {gText_Natures_Sassy},
+    {gText_Natures_Careful},
+    {gText_Natures_Lonely},
+    {gText_Natures_Adamant},
+    {gText_Natures_Naughty},
+    {gText_Natures_Timid},
+    {gText_Natures_Hasty},
+    {gText_Natures_Jolly},
+    {gText_Natures_Naive},
+    {gText_Natures_Modest},
+    {gText_Natures_Mild},
+    {gText_Natures_Rash},
+    {gText_ExitLC},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -918,6 +968,9 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
     [MULTI_BERRY_PLOT]                 = MULTICHOICE(MultichoiceList_BerryPlot),
     [MULTI_CHANGE_IV]                  = MULTICHOICE(MultichoiceList_ChangeIV),
+    [MULTI_CHANGE_NATURE_1]            = MULTICHOICE(MultichoiceList_ChangeNature1),
+    [MULTI_CHANGE_NATURE_2]            = MULTICHOICE(MultichoiceList_ChangeNature2),
+    [MULTI_CHANGE_NATURE_3]            = MULTICHOICE(MultichoiceList_ChangeNature3),
 };
 
 const u8 *const gStdStrings[] =

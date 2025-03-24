@@ -2410,6 +2410,26 @@ void ShowScrollableMultichoice(void)
         task->tKeepOpenAfterSelect = FALSE;
         task->tTaskId = taskId;
         break;
+    case SCROLL_CHANGE_NATURE_TWO_SCALES:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 12;
+        task->tLeft = 1;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
+    case SCROLL_CHANGE_NATURE_THREE_SCALES:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 22;
+        task->tLeft = 1;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
     default:
         gSpecialVar_Result = MULTI_B_PRESSED;
         DestroyTask(taskId);
@@ -2570,6 +2590,46 @@ static const u8 *const sScrollableMultichoiceOptions[][MAX_SCROLL_MULTI_LENGTH] 
         gText_Underpowered,
         gText_WhenInDanger,
         gText_Exit
+    },
+    [SCROLL_CHANGE_NATURE_TWO_SCALES] =
+    {
+        gText_Natures_Hardy,
+        gText_Natures_Lax,
+        gText_Natures_Gentle,
+        gText_Natures_Brave,
+        gText_Natures_Bold,
+        gText_Natures_Relaxed,
+        gText_Natures_Impish,
+        gText_Natures_Quiet,
+        gText_Natures_Calm,
+        gText_Natures_Sassy,
+        gText_Natures_Careful,
+        gText_ExitLC
+    },
+    [SCROLL_CHANGE_NATURE_THREE_SCALES] =
+    {
+        gText_Natures_Hardy,
+        gText_Natures_Lax,
+        gText_Natures_Gentle,
+        gText_Natures_Brave,
+        gText_Natures_Bold,
+        gText_Natures_Relaxed,
+        gText_Natures_Impish,
+        gText_Natures_Quiet,
+        gText_Natures_Calm,
+        gText_Natures_Sassy,
+        gText_Natures_Careful,
+        gText_Natures_Lonely,
+        gText_Natures_Adamant,
+        gText_Natures_Naughty,
+        gText_Natures_Timid,
+        gText_Natures_Hasty,
+        gText_Natures_Jolly,
+        gText_Natures_Naive,
+        gText_Natures_Modest,
+        gText_Natures_Mild,
+        gText_Natures_Rash,
+        gText_ExitLC
     }
 };
 
@@ -4339,6 +4399,153 @@ void BufferNameAndVarResult(void)
     GetMonNickname(&gPlayerParty[gSpecialVar_0x8004], gStringVar1);
     gSpecialVar_0x8005 = gSpecialVar_Result;
     ConvertIntToDecimalStringN(gStringVar2, gSpecialVar_Result, STR_CONV_MODE_LEFT_ALIGN, 2);
+}
+
+void BufferNameAndNature(void)
+{
+    GetMonNickname(&gPlayerParty[gSpecialVar_0x8005], gStringVar1);
+    switch(gSpecialVar_Result){
+        case 0:
+            StringCopy(gStringVar2, gText_Natures_Hardy1);
+            break;
+        case 1:
+            StringCopy(gStringVar2, gText_Natures_Lax1);
+            break;
+        case 2:
+            StringCopy(gStringVar2, gText_Natures_Gentle1);
+            break;
+        case 3:
+            StringCopy(gStringVar2, gText_Natures_Brave1);
+            break;
+        case 4:
+            StringCopy(gStringVar2, gText_Natures_Bold1);
+            break;
+        case 5:
+            StringCopy(gStringVar2, gText_Natures_Relaxed1);
+            break;
+        case 6:
+            StringCopy(gStringVar2, gText_Natures_Impish1);
+            break;
+        case 7:
+            StringCopy(gStringVar2, gText_Natures_Quiet1);
+            break;
+        case 8:
+            StringCopy(gStringVar2, gText_Natures_Calm1);
+            break;
+        case 9:
+            StringCopy(gStringVar2, gText_Natures_Sassy1);
+            break;
+        case 10:
+            StringCopy(gStringVar2, gText_Natures_Careful1);
+            break;
+        case 11:
+            StringCopy(gStringVar2, gText_Natures_Lonely1);
+            break;
+        case 12:
+            StringCopy(gStringVar2, gText_Natures_Adamant1);
+            break;
+        case 13:
+            StringCopy(gStringVar2, gText_Natures_Naughty1);
+            break;
+        case 14:
+            StringCopy(gStringVar2, gText_Natures_Timid1);
+            break;
+        case 15:
+            StringCopy(gStringVar2, gText_Natures_Hasty1);
+            break;
+        case 16:
+            StringCopy(gStringVar2, gText_Natures_Jolly1);
+            break;
+        case 17:
+            StringCopy(gStringVar2, gText_Natures_Naive1);
+            break;
+        case 18:
+            StringCopy(gStringVar2, gText_Natures_Modest1);
+            break;
+        case 19:
+            StringCopy(gStringVar2, gText_Natures_Mild1);
+            break;
+        case 20:
+            StringCopy(gStringVar2, gText_Natures_Rash1);
+            break;
+        default:
+            StringCopy(gStringVar2, gText_Natures_Hardy1);   
+    }
+}
+
+void ChangeNature(void)
+{
+    u16 nature;
+
+    switch(gSpecialVar_0x8006){
+        case 0:
+            nature = NATURE_HARDY;
+            break;
+        case 1:
+            nature = NATURE_LAX;
+            break;
+        case 2:
+            nature = NATURE_GENTLE;
+            break;
+        case 3:
+            nature = NATURE_BRAVE;
+            break;
+        case 4:
+            nature = NATURE_BOLD;
+            break;
+        case 5:
+            nature = NATURE_RELAXED;
+            break;
+        case 6:
+            nature = NATURE_IMPISH;
+            break;
+        case 7:
+            nature = NATURE_QUIET;
+            break;
+        case 8:
+            nature = NATURE_CALM;
+            break;
+        case 9:
+            nature = NATURE_SASSY;
+            break;
+        case 10:
+            nature = NATURE_CAREFUL;
+            break;
+        case 11:
+            nature = NATURE_LONELY;
+            break;
+        case 12:
+            nature = NATURE_ADAMANT;
+            break;
+        case 13:
+            nature = NATURE_NAUGHTY;
+            break;
+        case 14:
+            nature = NATURE_TIMID;
+            break;
+        case 15:
+            nature = NATURE_HASTY;
+            break;
+        case 16:
+            nature = NATURE_JOLLY;
+            break;
+        case 17:
+            nature = NATURE_NAIVE;
+            break;
+        case 18:
+            nature = NATURE_MODEST;
+            break;
+        case 19:
+            nature = NATURE_MILD;
+            break;
+        case 20:
+            nature = NATURE_RASH;
+            break;
+        default:
+            nature = NATURE_HARDY;  
+    }
+
+    SetMonData(&gPlayerParty[gSpecialVar_0x8005], MON_DATA_HIDDEN_NATURE, &nature);
 }
 
 void ChangeAbility(void)

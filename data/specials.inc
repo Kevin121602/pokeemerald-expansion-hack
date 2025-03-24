@@ -566,3 +566,5 @@ gSpecials::
 	def_special ChangeSpAttackIV
 	def_special ChangeSpDefenseIV
 	def_special ChangeSpeedIV
+	def_special BufferNameAndNature
+	def_special ChangeNature

@@ -40,9 +40,11 @@
 #define SCROLL_MULTI_BF_MOVE_TUTOR_2                      10
 #define SCROLL_MULTI_SS_TIDAL_DESTINATION                 11
 #define SCROLL_MULTI_BATTLE_TENT_RULES                    12
+#define SCROLL_CHANGE_NATURE_TWO_SCALES                   13
+#define SCROLL_CHANGE_NATURE_THREE_SCALES                 14
 
 #define MAX_SCROLL_MULTI_ON_SCREEN 6
-#define MAX_SCROLL_MULTI_LENGTH 16
+#define MAX_SCROLL_MULTI_LENGTH 22
 
 // Dept Store Floor Numbers
 #define DEPT_STORE_FLOORNUM_B4F       0
