@@ -27,6 +27,7 @@
 #include "mystery_gift.h"
 #include "match_call.h"
 #include "menu.h"
+#include "menu_helpers.h"
 #include "overworld.h"
 #include "party_menu.h"
 #include "pokeblock.h"
@@ -1694,6 +1695,17 @@ void OffsetCameraForBattle(void)
 }
 
 static const struct WindowTemplate sWindowTemplate_ElevatorFloor =
+{
+    .bg = 0,
+    .tilemapLeft = 21,
+    .tilemapTop = 1,
+    .width = 8,
+    .height = 4,
+    .paletteNum = 15,
+    .baseBlock = 8,
+};
+
+static const struct WindowTemplate sWindowTemplate_SelectIV =
 {
     .bg = 0,
     .tilemapLeft = 21,
@@ -4322,6 +4334,13 @@ void BufferMonNicknameAndAbility(void)
     StringCopy(gStringVar2, gAbilitiesInfo[GetAbilityBySpecies(GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES), potentialAbility)].name);
 }
 
+void BufferNameAndVarResult(void)
+{
+    GetMonNickname(&gPlayerParty[gSpecialVar_0x8004], gStringVar1);
+    gSpecialVar_0x8005 = gSpecialVar_Result;
+    ConvertIntToDecimalStringN(gStringVar2, gSpecialVar_Result, STR_CONV_MODE_LEFT_ALIGN, 2);
+}
+
 void ChangeAbility(void)
 {
     u8 monAbility = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ABILITY_NUM);
@@ -4333,4 +4352,28 @@ void ChangeAbility(void)
         potentialAbility = 0;
 
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ABILITY_NUM, &potentialAbility);
+}
+
+void ChangeHPIV(void){
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HP_IV, &gSpecialVar_0x8005);
+}
+
+void ChangeAttackIV(void){
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ATK_IV, &gSpecialVar_0x8005);
+}
+
+void ChangeDefenseIV(void){
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_DEF_IV, &gSpecialVar_0x8005);
+}
+
+void ChangeSpAttackIV(void){
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPATK_IV, &gSpecialVar_0x8005);
+}
+
+void ChangeSpDefenseIV(void){
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPDEF_IV, &gSpecialVar_0x8005);
+}
+
+void ChangeSpeedIV(void){
+    SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPEED_IV, &gSpecialVar_0x8005);
 }

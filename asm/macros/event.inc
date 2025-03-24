@@ -1885,6 +1885,19 @@
 	_dynmultichoice \left, \top, \ignoreBPress, \maxBeforeScroll, \shouldSort, \initialSelected, \callbacks, NULL
 	.endm
 
+	.macro qtyselect quantity:req, initialvalue:req
+	.byte 0xe5
+	.2byte \quantity
+	.2byte \initialvalue
+	.endm
+
+	.macro ChangeMonIV partySlot:req, iv:req, val: req
+	.byte 0xe6
+	.2byte \partySlot
+	.2byte \iv
+	.byte \val
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req

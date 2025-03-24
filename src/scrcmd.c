@@ -2472,3 +2472,30 @@ void ScriptSetDoubleBattleFlag(struct ScriptContext *ctx)
 {
     sIsScriptedWildDouble = TRUE;
 }
+
+bool8 ScrCmd_qtyselect(struct ScriptContext *ctx)
+{
+    s16 quantity = VarGet(ScriptReadHalfword(ctx));
+    s16 initialValue = VarGet(ScriptReadHalfword(ctx));
+
+    if (ScriptMenu_Quantity(quantity, initialValue) == TRUE)
+    {
+        ScriptContext_Stop();
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+}
+
+bool8 ScrCmd_ChangeMonIV(struct ScriptContext *ctx)
+{
+    u16 partyIndex = VarGet(ScriptReadHalfword(ctx));
+    u16 iv = VarGet(ScriptReadHalfword(ctx));
+    u8 value = ScriptReadByte(ctx);
+
+    if (partyIndex < PARTY_SIZE)
+        SetMonData(&gPlayerParty[partyIndex], iv, &value);
+    return FALSE;
+}

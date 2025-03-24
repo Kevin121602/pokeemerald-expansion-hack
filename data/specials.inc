@@ -559,3 +559,10 @@ gSpecials::
 	def_special IsHiddenAbility
 	def_special BufferMonNicknameAndAbility
 	def_special ChangeAbility
+	def_special BufferNameAndVarResult
+	def_special ChangeHPIV
+	def_special ChangeAttackIV
+	def_special ChangeDefenseIV
+	def_special ChangeSpAttackIV
+	def_special ChangeSpDefenseIV
+	def_special ChangeSpeedIV

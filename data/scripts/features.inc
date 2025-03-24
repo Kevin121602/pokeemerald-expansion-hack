@@ -43,6 +43,94 @@ EventScript_FeaturesMenu_ChangeAbility::
 	releaseall
 	end
 
+EventScript_FeaturesMenu_ChangeIV::
+	special ChoosePartyMon
+	waitstate
+	multichoice 0, 0, MULTI_CHANGE_IV, TRUE
+	switch VAR_RESULT
+	case 0, EventScript_FeaturesMenu_ChangeHP
+	case 1, EventScript_FeaturesMenu_ChangeAttack
+	case 2, EventScript_FeaturesMenu_ChangeDefense
+	case 3, EventScript_FeaturesMenu_ChangeSpAttack
+	case 4, EventScript_FeaturesMenu_ChangeSpDefense
+	case 5, EventScript_FeaturesMenu_ChangeSpeed
+	case 6, EventScript_FeaturesMenu_Exit
+	case MULTI_B_PRESSED, EventScript_FeaturesMenu_Exit
+	releaseall
+	end
+
+EventScript_FeaturesMenu_ChangeHP::
+	qtyselect 31, 31
+	special BufferNameAndVarResult
+	msgbox Text_IncreaseHPtoNumber, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	special ChangeHPIV
+	msgbox Text_HPChanged
+	removeitem ITEM_HEART_SCALE
+	msgbox Text_SpentHeartScale
+	releaseall
+	end
+
+EventScript_FeaturesMenu_ChangeAttack::
+	qtyselect 31, 31
+	special BufferNameAndVarResult
+	msgbox Text_IncreaseAttacktoNumber, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	special ChangeAttackIV
+	msgbox Text_AttackChanged
+	removeitem ITEM_HEART_SCALE
+	msgbox Text_SpentHeartScale
+	releaseall
+	end
+
+EventScript_FeaturesMenu_ChangeDefense::
+	qtyselect 31, 31
+	special BufferNameAndVarResult
+	msgbox Text_IncreaseDefensetoNumber, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	special ChangeDefenseIV
+	msgbox Text_DefenseChanged
+	removeitem ITEM_HEART_SCALE
+	msgbox Text_SpentHeartScale
+	releaseall
+	end
+
+EventScript_FeaturesMenu_ChangeSpAttack::
+	qtyselect 31, 31
+	special BufferNameAndVarResult
+	msgbox Text_IncreaseSpAtktoNumber, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	special ChangeSpAttackIV
+	msgbox Text_SpAttackChanged
+	removeitem ITEM_HEART_SCALE
+	msgbox Text_SpentHeartScale
+	releaseall
+	end
+
+EventScript_FeaturesMenu_ChangeSpDefense::
+	qtyselect 31, 31
+	special BufferNameAndVarResult
+	msgbox Text_IncreaseSpDeftoNumber, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	special ChangeSpDefenseIV
+	msgbox Text_SpDefenseChanged
+	removeitem ITEM_HEART_SCALE
+	msgbox Text_SpentHeartScale
+	releaseall
+	end
+
+EventScript_FeaturesMenu_ChangeSpeed::
+	qtyselect 31, 31
+	special BufferNameAndVarResult
+	msgbox Text_IncreaseSpeedtoNumber, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	special ChangeSpeedIV
+	msgbox Text_SpeedChanged
+	removeitem ITEM_HEART_SCALE
+	msgbox Text_SpentHeartScale
+	releaseall
+	end
+
 EventScript_FeaturesMenu_Exit::
 	releaseall
 	end
@@ -68,6 +156,50 @@ EventScript_FeaturesMenu_CantChangeAbility::
 	msgbox Text_CantChangeAbility
 	releaseall
 	end
+
+Text_HPChanged::
+	.string "{STR_VAR_1}'s HP has been changed to\n"
+	.string "{STR_VAR_2}!$"
+
+Text_AttackChanged::
+	.string "{STR_VAR_1}'s Attack has been changed\n"
+	.string "to {STR_VAR_2}!$"
+
+Text_DefenseChanged::
+	.string "{STR_VAR_1}'s Defense has been changed\n"
+	.string "to {STR_VAR_2}!$"
+
+Text_SpAttackChanged::
+	.string "{STR_VAR_1}'s Special Attack has been\n"
+	.string "changed to {STR_VAR_2}!$"
+
+Text_SpDefenseChanged::
+	.string "{STR_VAR_1}'s Special Defense has been\n"
+	.string "changed to {STR_VAR_2}!$"
+
+Text_SpeedChanged::
+	.string "{STR_VAR_1}'s Speed has been changed\n"
+	.string "to {STR_VAR_2}!$"
+
+Text_IncreaseHPtoNumber::
+	.string "Change {STR_VAR_1}'s HP to {STR_VAR_2}?$"
+
+Text_IncreaseAttacktoNumber::
+	.string "Change {STR_VAR_1}'s Attack to {STR_VAR_2}?$"
+
+Text_IncreaseDefensetoNumber::
+	.string "Change {STR_VAR_1}'s Defense to {STR_VAR_2}?$"
+
+Text_IncreaseSpAtktoNumber::
+	.string "Change {STR_VAR_1}'s Special Attack\n"
+	.string "to {STR_VAR_2}?$"
+
+Text_IncreaseSpDeftoNumber::
+	.string "Change {STR_VAR_1}'s Special Defense\n"
+	.string "to {STR_VAR_2}?$"
+
+Text_IncreaseSpeedtoNumber::
+	.string "Change {STR_VAR_1}'s Speed to {STR_VAR_2}?$"
 
 Text_NoHeartScales::
     .string "You don't have any Heart Scales!$"

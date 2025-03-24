@@ -3047,4 +3047,13 @@ extern const u8 gText_PlantBerry[];
 extern const u8 gText_AM[];
 extern const u8 gText_PM[];
 
+//For IV Change Menu
+extern const u8 gText_AttackLC[];
+extern const u8 gText_DefenseLC[];
+extern const u8 gText_SpAtkLC[];
+extern const u8 gText_SpDefLC[];
+extern const u8 gText_SpeedLC[];
+extern const u8 gText_ExitLC[];
+extern const u8 gText_StatNameColon[];
+
 #endif // GUARD_STRINGS_H

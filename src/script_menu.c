@@ -15,7 +15,9 @@
 #include "text.h"
 #include "list_menu.h"
 #include "malloc.h"
+#include "menu_helpers.h"
 #include "util.h"
+#include "international_string_util.h"
 #include "item_icon.h"
 #include "constants/field_specials.h"
 #include "constants/items.h"
@@ -30,6 +32,17 @@ struct DynamicListMenuEventArgs
     u16 selectedItem;
     u8 windowId;
 };
+
+/*static const struct WindowTemplate sWindowTemplate_SelectQuantity =
+{
+    .bg = 0,
+    .tilemapLeft = 21,
+    .tilemapTop = 1,
+    .width = 8,
+    .height = 4,
+    .paletteNum = 15,
+    .baseBlock = 8,
+};*/
 
 typedef void (*DynamicListCallback)(struct DynamicListMenuEventArgs *eventArgs);
 
@@ -54,6 +67,7 @@ static void Task_HandleYesNoInput(u8 taskId);
 static void Task_HandleMultichoiceGridInput(u8 taskId);
 static void DrawMultichoiceMenuDynamic(u8 left, u8 top, u8 argc, struct ListMenuItem *items, bool8 ignoreBPress, u32 initialRow, u8 maxBeforeScroll, u32 callbackSet);
 static void DrawMultichoiceMenu(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPress, u8 cursorPos);
+static void DrawQuantityMenu(s16 quantity, s16 initialValue);
 static void InitMultichoiceCheckWrap(bool8 ignoreBPress, u8 count, u8 windowId, u8 multichoiceId);
 static void DrawLinkServicesMultichoiceMenu(u8 multichoiceId);
 static void CreatePCMultichoice(void);
@@ -67,6 +81,8 @@ static void MultichoiceDynamicEventDebug_OnDestroy(struct DynamicListMenuEventAr
 static void MultichoiceDynamicEventShowItem_OnInit(struct DynamicListMenuEventArgs *eventArgs);
 static void MultichoiceDynamicEventShowItem_OnSelectionChanged(struct DynamicListMenuEventArgs *eventArgs);
 static void MultichoiceDynamicEventShowItem_OnDestroy(struct DynamicListMenuEventArgs *eventArgs);
+static void InitQuantityMenu(s16 quantity, s16 value, u8 windowID);
+static void Task_HandleQuantityInput(u8 taskId);
 
 static const struct DynamicListMenuEventCollection sDynamicListMenuEventCollections[] =
 {
@@ -136,6 +152,88 @@ bool8 ScriptMenu_MultichoiceWithDefault(u8 left, u8 top, u8 multichoiceId, bool8
         gSpecialVar_Result = 0xFF;
         DrawMultichoiceMenu(left, top, multichoiceId, ignoreBPress, defaultChoice);
         return TRUE;
+    }
+}
+
+bool8 ScriptMenu_Quantity(s16 quantity, s16 initialValue)
+{
+    if (FuncIsActiveTask(Task_HandleQuantityInput) == TRUE)
+    {
+        return FALSE;
+    }
+    else
+    {
+        gSpecialVar_Result = 0xFF;
+        DrawQuantityMenu(quantity, initialValue);
+        return TRUE;
+    }
+}
+
+static void DrawQuantityMenu(s16 quantity, s16 initialValue)
+{
+    u8 windowId;
+    u8 left;
+    u8 top;
+    int width = 0;
+    u8 newWidth;
+    ConvertIntToDecimalStringN(gStringVar1, initialValue, STR_CONV_MODE_LEADING_ZEROS, 2);
+    width = DisplayTextAndGetWidth(gStringVar1, width);
+
+    newWidth = ConvertPixelWidthToTileWidth(width);
+    left = 24;
+    top = 1;
+    windowId = CreateWindowFromRect(left, top, newWidth, 2);
+    SetStandardWindowBorderStyle(windowId, FALSE);
+    ScheduleBgCopyTilemapToVram(1);
+    AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar1, 7, 0, TEXT_SKIP_DRAW, NULL);
+    CopyWindowToVram(windowId, COPYWIN_FULL);
+    InitQuantityMenu(quantity, initialValue, windowId);
+}
+
+#define tQuantity       data[4]
+#define tValue          data[5]
+#define tWindowId       data[6]
+
+static void InitQuantityMenu(s16 quantity, s16 value, u8 windowID){
+    u8 taskId;
+    sProcessInputDelay = 2;
+    taskId = CreateTask(Task_HandleQuantityInput, 80);
+    gTasks[taskId].tWindowId = windowID;
+    gTasks[taskId].tQuantity = quantity;
+    gTasks[taskId].tValue = value;
+}
+
+static void Task_HandleQuantityInput(u8 taskId){
+    //s16 selection;
+    s16 maxValue;
+    s16 *data = gTasks[taskId].data;
+
+    //selection = tValue;
+    maxValue = tQuantity;
+
+    if (!gPaletteFade.active)
+    {
+        if (sProcessInputDelay)
+        {
+            sProcessInputDelay--;
+        }
+        else
+        {
+            if (AdjustQuantityAccordingToDPadInputZero(&tValue, maxValue) == TRUE)
+            {
+                ConvertIntToDecimalStringN(gStringVar1, tValue, STR_CONV_MODE_LEADING_ZEROS, 2);
+                AddTextPrinterParameterized(tWindowId, FONT_NORMAL, gStringVar1, 7, 0, TEXT_SKIP_DRAW, NULL);
+                CopyWindowToVram(tWindowId, COPYWIN_FULL);
+            }
+            else if (JOY_NEW(A_BUTTON))
+            {
+                PlaySE(SE_SELECT);
+                gSpecialVar_Result = tValue;
+                ClearToTransparentAndRemoveWindow(tWindowId);
+                DestroyTask(taskId);
+                ScriptContext_Enable();
+            }
+        }
     }
 }
 
