@@ -734,11 +734,11 @@ struct
     [MENU_CHANGE_ABILITY] = {gText_ChangeAbility, CursorCb_ChangeAbility},
     [MENU_HP] = {gText_HP3, CursorCb_Cancel1},
     [MENU_EXP] = {gText_EXP, CursorCb_Cancel1},
-    [MENU_BURN] = {gText_Brn, CursorCb_Cancel1},
-    [MENU_FROSTBITE] = {gText_Frz, CursorCb_Cancel1},
-    [MENU_PARALYZE] = {gText_Par, CursorCb_Cancel1},
-    [MENU_POISON] = {gText_Psn, CursorCb_Cancel1},
-    [MENU_SLEEP] = {gText_Slp, CursorCb_Cancel1},
+    [MENU_BURN] = {gText_Brn, CursorCb_Burn},
+    [MENU_FROSTBITE] = {gText_Frz, CursorCb_Frostbite},
+    [MENU_PARALYZE] = {gText_Par, CursorCb_Paralyze},
+    [MENU_POISON] = {gText_Psn, CursorCb_Poison},
+    [MENU_SLEEP] = {gText_Slp, CursorCb_Sleep},
 };
 
 static const u8 sPartyMenuAction_SummarySwitchCancel[] = {MENU_SUMMARY, MENU_SWITCH, MENU_CANCEL1};
