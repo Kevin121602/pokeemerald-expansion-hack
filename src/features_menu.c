@@ -85,41 +85,6 @@ enum HeartScalesMenu
     HEART_SCALE_MENU_EXIT,
 };
 
-enum HeartScalesIvMenu
-{
-    IV_MENU_HP,
-    IV_MENU_ATTACK,
-    IV_MENU_DEFENSE,
-    IV_MENU_SPECIAL_ATTACK,
-    IV_MENU_SPECIAL_DEFENSE,
-    IV_MENU_SPEED,
-};
-
-enum HeartScalesNatureMenu
-{
-    NATURE_MENU_HARDY,
-    NATURE_MENU_LAX,
-    NATURE_MENU_GENTLE,
-    NATURE_MENU_BRAVE,
-    NATURE_MENU_BOLD,
-    NATURE_MENU_RELAXED,
-    NATURE_MENU_IMPISH,
-    NATURE_MENU_QUIET,
-    NATURE_MENU_CALM,
-    NATURE_MENU_SASSY,
-    NATURE_MENU_CAREFUL,
-    NATURE_MENU_LONELY,
-    NATURE_MENU_ADAMANT,
-    NATURE_MENU_NAUGHTY,
-    NATURE_MENU_TIMID,
-    NATURE_MENU_HASTY,
-    NATURE_MENU_JOLLY,
-    NATURE_MENU_NAIVE,
-    NATURE_MENU_MODEST,
-    NATURE_MENU_MILD,
-    NATURE_MENU_RASH,
-};
-
 struct FeaturesMenuListData
 {
     struct ListMenuItem listItems[20 + 1];
@@ -142,11 +107,6 @@ static void AddFeaturesMenuAction(u8 action);
 static void AddHeartScalesMenuAction(u8 action);
 static void CreateFeaturesMenuTask(TaskFunc followupFunc);
 static void CreateHeartScalesMenuTask(TaskFunc followupFunc);
-static void Features_ReShowMainMenu(void);
-static void Features_ShowMenu(void (*HandleInput)(u8), struct ListMenuTemplate LMtemplate);
-static void Features_DestroyMenu(u8 taskId);
-static void Features_DestroyMenu_Full(u8 taskId);
-static void Features_RefreshListMenu(u8 taskId);
 static void BuildFeaturesMenuActions(void);
 static void BuildHeartScalesMenuActions(void);
 static void HideFeaturesMenu(void);
@@ -162,10 +122,6 @@ static bool32 PrintHeartScalesMenuActions(s8 *pIndex, u32 count);
 static bool8 HandleFeaturesMenuInput(void);
 static bool8 HandleHeartScalesMenuInput(void);
 
-static void FeaturesTask_HandleMenuInput_Main(u8 taskId);
-static void FeaturesTask_HandleMenuInput_MoveTutors(u8 taskId);
-static void FeaturesTask_HandleMenuInput_HeartScales(u8 taskId);
-
 static bool8 FeaturesAction_OpenPc(void);
 static bool8 FeaturesAction_HealParty(void);
 static bool8 FeaturesAction_Repel(void);
@@ -180,35 +136,6 @@ static bool8 FeaturesAction_HeartScales_ChangeNature(void);
 static bool8 FeaturesAction_HeartScales_ChangeAbility(void);
 static bool8 FeaturesAction_HeartScales_IncreaseLevelCap(void);
 static bool8 FeaturesAction_HeartScales_Exit(void);
-
-static bool8 FeaturesAction_HeartScales_IVs_ChangeHP(void);
-static bool8 FeaturesAction_HeartScales_IVs_ChangeAttack(void);
-static bool8 FeaturesAction_HeartScales_IVs_ChangeDefense(void);
-static bool8 FeaturesAction_HeartScales_IVs_ChangeSpecialAttack(void);
-static bool8 FeaturesAction_HeartScales_IVs_ChangeSpecialDefense(void);
-static bool8 FeaturesAction_HeartScales_IVs_ChangeSpeed(void);
-
-static bool8 FeaturesAction_HeartScales_Natures_Hardy(void);
-static bool8 FeaturesAction_HeartScales_Natures_Lax(void);
-static bool8 FeaturesAction_HeartScales_Natures_Gentle(void);
-static bool8 FeaturesAction_HeartScales_Natures_Brave(void);
-static bool8 FeaturesAction_HeartScales_Natures_Bold(void);
-static bool8 FeaturesAction_HeartScales_Natures_Relaxed(void);
-static bool8 FeaturesAction_HeartScales_Natures_Impish(void);
-static bool8 FeaturesAction_HeartScales_Natures_Quiet(void);
-static bool8 FeaturesAction_HeartScales_Natures_Calm(void);
-static bool8 FeaturesAction_HeartScales_Natures_Sassy(void);
-static bool8 FeaturesAction_HeartScales_Natures_Careful(void);
-static bool8 FeaturesAction_HeartScales_Natures_Lonely(void);
-static bool8 FeaturesAction_HeartScales_Natures_Adamant(void);
-static bool8 FeaturesAction_HeartScales_Natures_Naughty(void);
-static bool8 FeaturesAction_HeartScales_Natures_Timid(void);
-static bool8 FeaturesAction_HeartScales_Natures_Hasty(void);
-static bool8 FeaturesAction_HeartScales_Natures_Jolly(void);
-static bool8 FeaturesAction_HeartScales_Natures_Naive(void);
-static bool8 FeaturesAction_HeartScales_Natures_Modest(void);
-static bool8 FeaturesAction_HeartScales_Natures_Mild(void);
-static bool8 FeaturesAction_HeartScales_Natures_Rash(void);
 
 //Task Callbacks
 static void FeaturesMenuTask(u8 taskId);
@@ -230,35 +157,6 @@ static const u8 sFeaturesText_HeartScales_ChangeNature[] =      _("Change Nature
 static const u8 sFeaturesText_HeartScales_ChangeAbility[] =     _("Change Ability");
 static const u8 sFeaturesText_HeartScales_IncreaseLevelCap[] =  _("Increase Level Cap");
 static const u8 sFeaturesText_HeartScales_Exit[] =              _("Exit");
-//IVs
-static const u8 sFeaturesText_HeartScales_IV_HP[] =             _("HP");
-static const u8 sFeaturesText_HeartScales_IV_Attack[] =         _("Attack");
-static const u8 sFeaturesText_HeartScales_IV_Defense[] =        _("Defense");
-static const u8 sFeaturesText_HeartScales_IV_SpecialAttack[] =  _("Special Attack");
-static const u8 sFeaturesText_HeartScales_IV_SpecialDefense[] = _("Special Defense");
-static const u8 sFeaturesText_HeartScales_IV_Speed[] =          _("Speed");
-//Natures
-static const u8 sFeaturesText_HeartScales_Natures_Hardy[] =     _("Hardy   (1 Scale)");
-static const u8 sFeaturesText_HeartScales_Natures_Lax[] =       _("Lax     (1 Scale)");
-static const u8 sFeaturesText_HeartScales_Natures_Gentle[] =    _("Gentle  (1 Scale)");
-static const u8 sFeaturesText_HeartScales_Natures_Brave[] =     _("Brave   (2 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Bold[] =      _("Bold    (2 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Relaxed[] =   _("Relaxed (2 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Impish[] =    _("Impish  (2 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Quiet[] =     _("Quiet   (2 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Calm[] =      _("Calm    (2 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Sassy[] =     _("Sassy   (2 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Careful[] =   _("Careful (2 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Lonely[] =    _("Lonely  (3 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Adamant[] =   _("Adamant (3 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Naughty[] =   _("Naughty (3 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Timid[] =     _("Timid   (3 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Hasty[] =     _("Hasty   (3 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Jolly[] =     _("Jolly   (3 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Naive[] =     _("Naive   (3 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Modest[] =    _("Modest  (3 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Mild[] =      _("Mild    (3 Scales)");
-static const u8 sFeaturesText_HeartScales_Natures_Rash[] =      _("Rash    (3 Scales)");
 
 extern const u8 LilycoveCity_MoveDeletersHouse_EventScript_ChooseMonAndMoveToForget[];
 extern const u8 EventScript_FeaturesMenu_Repel[];
@@ -302,70 +200,6 @@ static const struct MenuAction sFeaturesMenu_Items_HeartScales[] =
     [HEART_SCALE_MENU_EXIT]                     = {sFeaturesText_HeartScales_Exit,              {.u8_void = FeaturesAction_HeartScales_Exit}},
 };
 
-static const struct MenuAction sFeaturesMenu_Items_HeartScales_IVs[] =
-{
-    [IV_MENU_HP]                = {sFeaturesText_HeartScales_IV_HP,             {.u8_void = FeaturesAction_HeartScales_IVs_ChangeHP}},
-    [IV_MENU_ATTACK]            = {sFeaturesText_HeartScales_IV_Attack,         {.u8_void = FeaturesAction_HeartScales_IVs_ChangeAttack}},
-    [IV_MENU_DEFENSE]           = {sFeaturesText_HeartScales_IV_Defense,        {.u8_void = FeaturesAction_HeartScales_IVs_ChangeDefense}},
-    [IV_MENU_SPECIAL_ATTACK]    = {sFeaturesText_HeartScales_IV_SpecialAttack,  {.u8_void = FeaturesAction_HeartScales_IVs_ChangeSpecialAttack}},
-    [IV_MENU_SPECIAL_DEFENSE]   = {sFeaturesText_HeartScales_IV_SpecialDefense, {.u8_void = FeaturesAction_HeartScales_IVs_ChangeSpecialDefense}},
-    [IV_MENU_SPEED]             = {sFeaturesText_HeartScales_IV_Speed,          {.u8_void = FeaturesAction_HeartScales_IVs_ChangeSpeed}},
-};
-
-static const struct MenuAction sFeaturesMenu_Items_HeartScales_Natures[] =
-{
-    [NATURE_MENU_HARDY]              = {sFeaturesText_HeartScales_Natures_Hardy,           {.u8_void = FeaturesAction_HeartScales_Natures_Hardy}},
-    [NATURE_MENU_LAX]                = {sFeaturesText_HeartScales_Natures_Lax,             {.u8_void = FeaturesAction_HeartScales_Natures_Lax}},
-    [NATURE_MENU_GENTLE]             = {sFeaturesText_HeartScales_Natures_Gentle,          {.u8_void = FeaturesAction_HeartScales_Natures_Gentle}},
-    [NATURE_MENU_BRAVE]              = {sFeaturesText_HeartScales_Natures_Brave,           {.u8_void = FeaturesAction_HeartScales_Natures_Brave}},
-    [NATURE_MENU_BOLD]               = {sFeaturesText_HeartScales_Natures_Bold,            {.u8_void = FeaturesAction_HeartScales_Natures_Bold}},
-    [NATURE_MENU_RELAXED]            = {sFeaturesText_HeartScales_Natures_Relaxed,         {.u8_void = FeaturesAction_HeartScales_Natures_Relaxed}},
-    [NATURE_MENU_IMPISH]             = {sFeaturesText_HeartScales_Natures_Impish,          {.u8_void = FeaturesAction_HeartScales_Natures_Impish}},
-    [NATURE_MENU_QUIET]              = {sFeaturesText_HeartScales_Natures_Quiet,           {.u8_void = FeaturesAction_HeartScales_Natures_Quiet}},
-    [NATURE_MENU_CALM]               = {sFeaturesText_HeartScales_Natures_Calm,            {.u8_void = FeaturesAction_HeartScales_Natures_Calm}},
-    [NATURE_MENU_SASSY]              = {sFeaturesText_HeartScales_Natures_Sassy,           {.u8_void = FeaturesAction_HeartScales_Natures_Sassy}},
-    [NATURE_MENU_CAREFUL]            = {sFeaturesText_HeartScales_Natures_Careful,         {.u8_void = FeaturesAction_HeartScales_Natures_Careful}},
-    [NATURE_MENU_LONELY]             = {sFeaturesText_HeartScales_Natures_Lonely,          {.u8_void = FeaturesAction_HeartScales_Natures_Lonely}},
-    [NATURE_MENU_ADAMANT]            = {sFeaturesText_HeartScales_Natures_Adamant,         {.u8_void = FeaturesAction_HeartScales_Natures_Adamant}},
-    [NATURE_MENU_NAUGHTY]            = {sFeaturesText_HeartScales_Natures_Naughty,         {.u8_void = FeaturesAction_HeartScales_Natures_Naughty}},
-    [NATURE_MENU_TIMID]              = {sFeaturesText_HeartScales_Natures_Timid,           {.u8_void = FeaturesAction_HeartScales_Natures_Timid}},
-    [NATURE_MENU_HASTY]              = {sFeaturesText_HeartScales_Natures_Hasty,           {.u8_void = FeaturesAction_HeartScales_Natures_Hasty}},
-    [NATURE_MENU_JOLLY]              = {sFeaturesText_HeartScales_Natures_Jolly,           {.u8_void = FeaturesAction_HeartScales_Natures_Jolly}},
-    [NATURE_MENU_NAIVE]              = {sFeaturesText_HeartScales_Natures_Naive,           {.u8_void = FeaturesAction_HeartScales_Natures_Naive}},
-    [NATURE_MENU_MODEST]             = {sFeaturesText_HeartScales_Natures_Modest,          {.u8_void = FeaturesAction_HeartScales_Natures_Modest}},
-    [NATURE_MENU_MILD]               = {sFeaturesText_HeartScales_Natures_Mild,            {.u8_void = FeaturesAction_HeartScales_Natures_Mild}},
-    [NATURE_MENU_RASH]               = {sFeaturesText_HeartScales_Natures_Rash,            {.u8_void = FeaturesAction_HeartScales_Natures_Rash}},
-};
-
-// List Menu Templates
-/*static const struct ListMenuTemplate sFeaturesMenu_ListTemplate_Main =
-{
-    .items = sFeaturesMenu_Items_Main,
-    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
-    .totalItems = ARRAY_COUNT(sFeaturesMenu_Items_Main),
-};
-
-static const struct ListMenuTemplate sFeaturesMenu_ListTemplate_HeartScales =
-{
-    .items = sFeaturesMenu_Items_HeartScales,
-    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
-    .totalItems = ARRAY_COUNT(sFeaturesMenu_Items_HeartScales),
-};
-
-static const struct ListMenuTemplate sFeaturesMenu_ListTemplate_HeartScales_IVs =
-{
-    .items = sFeaturesMenu_Items_HeartScales_IVs,
-    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
-    .totalItems = ARRAY_COUNT(sFeaturesMenu_Items_HeartScales_IVs),
-};
-
-static const struct ListMenuTemplate sFeaturesMenu_ListTemplate_HeartScales_Natures =
-{
-    .items = sFeaturesMenu_Items_HeartScales_Natures,
-    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
-    .totalItems = ARRAY_COUNT(sFeaturesMenu_Items_HeartScales_Natures),
-};*/
-
 //Functions
 void ShowFeaturesMenu(void){
     if (!IsOverworldLinkActive())
@@ -394,26 +228,6 @@ static void CreateHeartScalesMenuTask(TaskFunc followupFunc){
     sInitHeartScalesMenuData[1] = 0;
     taskId = CreateTask(HeartScalesMenuTask, 0x50);
     SetTaskFuncWithFollowupFunc(taskId, HeartScalesMenuTask, followupFunc);
-}
-
-static void Features_ReShowMainMenu(void){
-    
-}
-
-static void Features_ShowMenu(void (*HandleInput)(u8), struct ListMenuTemplate LMtemplate){
-
-}
-
-static void Features_DestroyMenu(u8 taskId){
-
-}
-
-static void Features_DestroyMenu_Full(u8 taskId){
-
-}
-
-static void Features_RefreshListMenu(u8 taskId){
-
 }
 
 static bool32 InitFeaturesMenuStep(void)
@@ -678,18 +492,6 @@ static void AddHeartScalesMenuAction(u8 action){
     AppendToList(sCurrentHeartScalesMenuActions, &sNumHeartScalesMenuActions, action);
 }
 
-static void FeaturesTask_HandleMenuInput_Main(u8 taskId){
-
-}
-
-static void FeaturesTask_HandleMenuInput_MoveTutors(u8 taskId){
-    
-}
-
-static void FeaturesTask_HandleMenuInput_HeartScales(u8 taskId){
-
-}
-
 static bool8 FeaturesAction_OpenPc(void){
     if (!gPaletteFade.active)
     {
@@ -858,114 +660,6 @@ static bool8 FeaturesAction_HeartScales_Exit(void){
     }
 
     return FALSE;
-}
-
-static bool8 FeaturesAction_HeartScales_IVs_ChangeHP(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_IVs_ChangeAttack(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_IVs_ChangeDefense(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_IVs_ChangeSpecialAttack(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_IVs_ChangeSpecialDefense(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_IVs_ChangeSpeed(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Hardy(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Lax(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Gentle(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Brave(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Bold(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Relaxed(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Impish(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Quiet(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Calm(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Sassy(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Careful(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Lonely(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Adamant(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Naughty(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Timid(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Hasty(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Jolly(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Naive(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Modest(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Mild(void){
-    return TRUE;
-}
-
-static bool8 FeaturesAction_HeartScales_Natures_Rash(void){
-    return TRUE;
 }
 
 static void HideFeaturesMenu(void)

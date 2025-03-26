@@ -107,6 +107,13 @@ enum {
     MENU_CATALOG_MOWER,
     MENU_CHANGE_FORM,
     MENU_CHANGE_ABILITY,
+    MENU_HP,
+    MENU_EXP,
+    MENU_BURN,
+    MENU_FROSTBITE,
+    MENU_PARALYZE,
+    MENU_POISON,
+    MENU_SLEEP,
     MENU_FIELD_MOVES
 };
 
@@ -128,6 +135,7 @@ enum {
     ACTIONS_TAKEITEM_TOSS,
     ACTIONS_ROTOM_CATALOG,
     ACTIONS_ZYGARDE_CUBE,
+    ACTIONS_STATUS,
 };
 
 // In CursorCb_FieldMove, field moves <= FIELD_MOVE_WATERFALL are assumed to line up with the badge flags.
@@ -2715,6 +2723,9 @@ static u8 DisplaySelectionWindow(u8 windowType)
     case SELECTWINDOW_ITEM:
         window = sItemGiveTakeWindowTemplate;
         break;
+    case SELECTWINDOW_STATUS:
+        window = sStatusWindowTemplate;
+        break;
     case SELECTWINDOW_MAIL:
         window = sMailReadTakeWindowTemplate;
         break;
@@ -2997,11 +3008,14 @@ static void CursorCb_Nickname(u8 taskId)
 static void CursorCb_Status(u8 taskId)
 {
     PlaySE(SE_SELECT);
-    gSpecialVar_0x8004 = gPartyMenu.slotId;
-    gPartyMenu.exitCallback = CB2_ReturnToField;
-    Task_ClosePartyMenu(taskId);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+    SetPartyMonSelectionActions(gPlayerParty, gPartyMenu.slotId, ACTIONS_STATUS);
+    DisplaySelectionWindow(SELECTWINDOW_STATUS);
+    DisplayPartyMenuStdMessage(PARTY_MSG_DO_WHAT_WITH_MON);
+    gTasks[taskId].data[0] = 0xFF;
+    gTasks[taskId].func = Task_HandleSelectionMenuInput;
 }
-
 
 static void CB2_ShowPokemonSummaryScreen(void)
 {

@@ -504,6 +504,17 @@ static const struct WindowTemplate sItemGiveTakeWindowTemplate =
     .baseBlock = 0x39D,
 };
 
+static const struct WindowTemplate sStatusWindowTemplate =
+{
+    .bg = 2,
+    .tilemapLeft = 23,
+    .tilemapTop = 3,
+    .width = 6,
+    .height = 16,
+    .paletteNum = 14,
+    .baseBlock = 0x39D,
+};
+
 static const struct WindowTemplate sMailReadTakeWindowTemplate =
 {
     .bg = 2,
@@ -721,6 +732,13 @@ struct
     [MENU_CATALOG_MOWER] = {gText_LawnMower, CursorCb_CatalogMower},
     [MENU_CHANGE_FORM] = {gText_ChangeForm, CursorCb_ChangeForm},
     [MENU_CHANGE_ABILITY] = {gText_ChangeAbility, CursorCb_ChangeAbility},
+    [MENU_HP] = {gText_HP3, CursorCb_Cancel1},
+    [MENU_EXP] = {gText_EXP, CursorCb_Cancel1},
+    [MENU_BURN] = {gText_Brn, CursorCb_Cancel1},
+    [MENU_FROSTBITE] = {gText_Frz, CursorCb_Cancel1},
+    [MENU_PARALYZE] = {gText_Par, CursorCb_Cancel1},
+    [MENU_POISON] = {gText_Psn, CursorCb_Cancel1},
+    [MENU_SLEEP] = {gText_Slp, CursorCb_Cancel1},
 };
 
 static const u8 sPartyMenuAction_SummarySwitchCancel[] = {MENU_SUMMARY, MENU_SWITCH, MENU_CANCEL1};
@@ -738,6 +756,7 @@ static const u8 sPartyMenuAction_TradeSummaryCancel2[] = {MENU_TRADE2, MENU_SUMM
 static const u8 sPartyMenuAction_TakeItemTossCancel[] = {MENU_TAKE_ITEM, MENU_TOSS, MENU_CANCEL1};
 static const u8 sPartyMenuAction_RotomCatalog[] = {MENU_CATALOG_BULB, MENU_CATALOG_OVEN, MENU_CATALOG_WASHING, MENU_CATALOG_FRIDGE, MENU_CATALOG_FAN, MENU_CATALOG_MOWER, MENU_CANCEL1};
 static const u8 sPartyMenuAction_ZygardeCube[] = {MENU_CHANGE_FORM, MENU_CHANGE_ABILITY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_InflictStatus[] = {MENU_HP, MENU_EXP, MENU_BURN, MENU_FROSTBITE, MENU_PARALYZE, MENU_POISON, MENU_SLEEP, MENU_CANCEL1};
 
 
 
@@ -759,6 +778,7 @@ static const u8 *const sPartyMenuActions[] =
     [ACTIONS_TAKEITEM_TOSS] = sPartyMenuAction_TakeItemTossCancel,
     [ACTIONS_ROTOM_CATALOG] = sPartyMenuAction_RotomCatalog,
     [ACTIONS_ZYGARDE_CUBE]  = sPartyMenuAction_ZygardeCube,
+    [ACTIONS_STATUS]        = sPartyMenuAction_InflictStatus,
 };
 
 static const u8 sPartyMenuActionCounts[] =
@@ -779,6 +799,7 @@ static const u8 sPartyMenuActionCounts[] =
     [ACTIONS_TAKEITEM_TOSS] = ARRAY_COUNT(sPartyMenuAction_TakeItemTossCancel),
     [ACTIONS_ROTOM_CATALOG] = ARRAY_COUNT(sPartyMenuAction_RotomCatalog),
     [ACTIONS_ZYGARDE_CUBE]  = ARRAY_COUNT(sPartyMenuAction_ZygardeCube),
+    [ACTIONS_STATUS]        = ARRAY_COUNT(sPartyMenuAction_InflictStatus),
 };
 
 static const u16 sFieldMoves[FIELD_MOVES_COUNT + 1] =
