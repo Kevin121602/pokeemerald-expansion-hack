@@ -81,6 +81,7 @@ enum {
     MENU_SUMMARY,
     MENU_SWITCH,
     MENU_NICKNAME,
+    MENU_STATUS,
     MENU_CANCEL1,
     MENU_ITEM,
     MENU_GIVE,
@@ -477,6 +478,7 @@ static void BlitBitmapToPartyWindow_LeftColumn(u8, u8, u8, u8, u8, bool8);
 static void BlitBitmapToPartyWindow_RightColumn(u8, u8, u8, u8, u8, bool8);
 static void CursorCb_Summary(u8);
 static void CursorCb_Nickname(u8);
+static void CursorCb_Status(u8);
 static void CursorCb_Switch(u8);
 static void CursorCb_Cancel1(u8);
 static void CursorCb_Item(u8);
@@ -2823,6 +2825,7 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_ITEM);
     }
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_NICKNAME);
+    AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_STATUS);
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_CANCEL1);
 }
 
@@ -2988,6 +2991,14 @@ static void CursorCb_Nickname(u8 taskId)
     PlaySE(SE_SELECT);
     gSpecialVar_0x8004 = gPartyMenu.slotId;
     sPartyMenuInternal->exitCallback = ChangePokemonNicknamePartyScreen;
+    Task_ClosePartyMenu(taskId);
+}
+
+static void CursorCb_Status(u8 taskId)
+{
+    PlaySE(SE_SELECT);
+    gSpecialVar_0x8004 = gPartyMenu.slotId;
+    gPartyMenu.exitCallback = CB2_ReturnToField;
     Task_ClosePartyMenu(taskId);
 }
 

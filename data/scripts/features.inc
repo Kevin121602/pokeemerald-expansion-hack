@@ -69,7 +69,38 @@ EventScript_FeaturesMenu_ChangeNature::
 	goto_if_eq VAR_RESULT, TRUE EventScript_FeaturesMenu_ChangeNature2
 	multichoice 0, 0, MULTI_CHANGE_NATURE_1, FALSE
 	goto_if_eq VAR_RESULT, 3 EventScript_FeaturesMenu_Exit
+	goto_if_eq VAR_RESULT, MULTI_B_PRESSED, EventScript_FeaturesMenu_Exit
 	copyvar VAR_0x8006, VAR_RESULT
+	goto EventScript_FeaturesMenu_ChangeNature1Scale
+	releaseall
+	end
+
+EventScript_FeaturesMenu_ChangeNature3::
+	setvar VAR_0x8004, SCROLL_CHANGE_NATURE_THREE_SCALES
+	special ShowScrollableMultichoice
+	waitstate
+	goto_if_eq VAR_RESULT, 21 EventScript_FeaturesMenu_Exit
+	goto_if_eq VAR_RESULT, MULTI_B_PRESSED, EventScript_FeaturesMenu_Exit
+	copyvar VAR_0x8006, VAR_RESULT
+	goto_if_lt VAR_RESULT, 3, EventScript_FeaturesMenu_ChangeNature1Scale
+	goto_if_lt VAR_RESULT, 11, EventScript_FeaturesMenu_ChangeNature2Scales
+	goto EventScript_FeaturesMenu_ChangeNature3Scales
+	releaseall
+	end
+
+EventScript_FeaturesMenu_ChangeNature2::
+	setvar VAR_0x8004, SCROLL_CHANGE_NATURE_TWO_SCALES
+	special ShowScrollableMultichoice
+	waitstate
+	goto_if_eq VAR_RESULT, 11 EventScript_FeaturesMenu_Exit
+	goto_if_eq VAR_RESULT, MULTI_B_PRESSED, EventScript_FeaturesMenu_Exit
+	copyvar VAR_0x8006, VAR_RESULT
+	goto_if_lt VAR_RESULT, 3, EventScript_FeaturesMenu_ChangeNature1Scale
+	goto EventScript_FeaturesMenu_ChangeNature2Scales
+	releaseall
+	end
+
+EventScript_FeaturesMenu_ChangeNature1Scale::
 	special BufferNameAndNature
 	msgbox Text_ChangeNameToNature, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
@@ -80,28 +111,7 @@ EventScript_FeaturesMenu_ChangeNature::
 	releaseall
 	end
 
-EventScript_FeaturesMenu_ChangeNature3::
-	setvar VAR_0x8004, SCROLL_CHANGE_NATURE_THREE_SCALES
-	special ShowScrollableMultichoice
-	waitstate
-	goto_if_eq VAR_RESULT, 21 EventScript_FeaturesMenu_Exit
-	copyvar VAR_0x8006, VAR_RESULT
-	special BufferNameAndNature
-	msgbox Text_ChangeNameToNature, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
-	special ChangeNature
-	msgbox Text_NameChangedToNature
-	removeitem ITEM_HEART_SCALE, 3
-	msgbox Text_SpentThreeHeartScales
-	releaseall
-	end
-
-EventScript_FeaturesMenu_ChangeNature2::
-	setvar VAR_0x8004, SCROLL_CHANGE_NATURE_TWO_SCALES
-	special ShowScrollableMultichoice
-	waitstate
-	goto_if_eq VAR_RESULT, 11 EventScript_FeaturesMenu_Exit
-	copyvar VAR_0x8006, VAR_RESULT
+EventScript_FeaturesMenu_ChangeNature2Scales::
 	special BufferNameAndNature
 	msgbox Text_ChangeNameToNature, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
@@ -109,6 +119,17 @@ EventScript_FeaturesMenu_ChangeNature2::
 	msgbox Text_NameChangedToNature
 	removeitem ITEM_HEART_SCALE, 2
 	msgbox Text_SpentTwoHeartScales
+	releaseall
+	end
+
+EventScript_FeaturesMenu_ChangeNature3Scales::
+	special BufferNameAndNature
+	msgbox Text_ChangeNameToNature, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	special ChangeNature
+	msgbox Text_NameChangedToNature
+	removeitem ITEM_HEART_SCALE, 3
+	msgbox Text_SpentThreeHeartScales
 	releaseall
 	end
 
