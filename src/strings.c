@@ -1887,3 +1887,7 @@ const u8 gText_Natures_Mild1[] =      _("Mild");
 const u8 gText_Natures_Rash1[] =      _("Rash");
 const u8 gText_EXP[] =                _("EXP");
 const u8 gText_HP5[] =                _("HP: {STR_VAR_1}");
+const u8 gText_PlusExp[] =            _("+{STR_VAR_1}");
+const u8 gText_WhichStatus[] =        _("Inflict which status?");
+const u8 gText_SetHP[] =              _("Set HP Value.");
+const u8 gText_AddExp[] =             _("Add Exp. Points.");

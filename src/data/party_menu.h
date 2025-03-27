@@ -438,6 +438,39 @@ static const struct WindowTemplate sDoWhatWithMonMsgWindowTemplate =
     .baseBlock = 0x279,
 };
 
+static const struct WindowTemplate sInflictStatusMsgWindowTemplate =
+{
+    .bg = 2,
+    .tilemapLeft = 1,
+    .tilemapTop = 17,
+    .width = 20,
+    .height = 2,
+    .paletteNum = 15,
+    .baseBlock = 0x279,
+};
+
+static const struct WindowTemplate sSetHPMsgWindowTemplate =
+{
+    .bg = 2,
+    .tilemapLeft = 1,
+    .tilemapTop = 17,
+    .width = 21,
+    .height = 2,
+    .paletteNum = 15,
+    .baseBlock = 0x279,
+};
+
+static const struct WindowTemplate sAddExpMsgWindowTemplate =
+{
+    .bg = 2,
+    .tilemapLeft = 1,
+    .tilemapTop = 17,
+    .width = 21,
+    .height = 2,
+    .paletteNum = 15,
+    .baseBlock = 0x279,
+};
+
 static const struct WindowTemplate sDoWhatWithItemMsgWindowTemplate =
 {
     .bg = 2,
@@ -516,6 +549,17 @@ static const struct WindowTemplate sStatusWindowTemplate =
 };
 
 static const struct WindowTemplate sHPWindowTemplate =
+{
+    .bg = 2,
+    .tilemapLeft = 24,
+    .tilemapTop = 17,
+    .width = 5,
+    .height = 2,
+    .paletteNum = 14,
+    .baseBlock = 0x39D,
+};
+
+static const struct WindowTemplate sExpWindowTemplate =
 {
     .bg = 2,
     .tilemapLeft = 24,
@@ -680,6 +724,9 @@ static const u8 *const sActionStringTable[] =
     [PARTY_MSG_DO_WHAT_WITH_MAIL]      = gText_DoWhatWithMail,
     [PARTY_MSG_ALREADY_HOLDING_ONE]    = gText_AlreadyHoldingOne,
     [PARTY_MSG_WHICH_APPLIANCE]        = gText_WhichAppliance,
+    [PARTY_MSG_WHICH_STATUS]           = gText_WhichStatus,
+    [PARTY_MSG_SET_HP]                 = gText_SetHP,
+    [PARTY_MSG_ADD_EXP]                = gText_AddExp,
     [PARTY_MSG_CHOOSE_SECOND_FUSION]   = gText_NextFusionMon,
 };
 
