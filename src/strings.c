@@ -1886,3 +1886,4 @@ const u8 gText_Natures_Modest1[] =    _("Modest");
 const u8 gText_Natures_Mild1[] =      _("Mild");
 const u8 gText_Natures_Rash1[] =      _("Rash");
 const u8 gText_EXP[] =                _("EXP");
+const u8 gText_HP5[] =                _("HP: {STR_VAR_1}");

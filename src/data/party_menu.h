@@ -515,6 +515,17 @@ static const struct WindowTemplate sStatusWindowTemplate =
     .baseBlock = 0x39D,
 };
 
+static const struct WindowTemplate sHPWindowTemplate =
+{
+    .bg = 2,
+    .tilemapLeft = 24,
+    .tilemapTop = 17,
+    .width = 5,
+    .height = 2,
+    .paletteNum = 14,
+    .baseBlock = 0x39D,
+};
+
 static const struct WindowTemplate sMailReadTakeWindowTemplate =
 {
     .bg = 2,
@@ -732,8 +743,8 @@ struct
     [MENU_CATALOG_MOWER] = {gText_LawnMower, CursorCb_CatalogMower},
     [MENU_CHANGE_FORM] = {gText_ChangeForm, CursorCb_ChangeForm},
     [MENU_CHANGE_ABILITY] = {gText_ChangeAbility, CursorCb_ChangeAbility},
-    [MENU_HP] = {gText_HP3, CursorCb_Cancel1},
-    [MENU_EXP] = {gText_EXP, CursorCb_Cancel1},
+    [MENU_HP] = {gText_HP3, CursorCb_HP},
+    [MENU_EXP] = {gText_EXP, CursorCb_Exp},
     [MENU_BURN] = {gText_Brn, CursorCb_Burn},
     [MENU_FROSTBITE] = {gText_Frz, CursorCb_Frostbite},
     [MENU_PARALYZE] = {gText_Par, CursorCb_Paralyze},

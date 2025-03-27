@@ -3103,4 +3103,5 @@ extern const u8 gText_Natures_Mild1[];
 extern const u8 gText_Natures_Rash1[];
 
 extern const u8 gText_EXP[];
+extern const u8 gText_HP5[];
 #endif // GUARD_STRINGS_H

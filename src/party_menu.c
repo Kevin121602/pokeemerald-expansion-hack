@@ -492,6 +492,10 @@ static void CursorCb_Paralyze(u8);
 static void CursorCb_Sleep(u8);
 static void CursorCb_Frostbite(u8);
 static void CursorCb_Poison(u8);
+static void CursorCb_HP(u8);
+static void PrintHPQuantity(u8, s16);
+static void Task_HandleHPInput(u8);
+static void CursorCb_Exp(u8);
 static void CursorCb_Switch(u8);
 static void CursorCb_Cancel1(u8);
 static void CursorCb_Item(u8);
@@ -2740,6 +2744,9 @@ static u8 DisplaySelectionWindow(u8 windowType)
     case SELECTWINDOW_ZYGARDECUBE:
         window = sZygardeCubeSelectWindowTemplate;
         break;
+    case SELECTWINDOW_HP:
+        window = sHPWindowTemplate;
+        break;
     default: // SELECTWINDOW_MOVES
         window = sMoveSelectWindowTemplate;
         break;
@@ -3333,10 +3340,13 @@ static void CursorCb_Burn(u8 taskId)
     u32 status1 = STATUS1_BURN;
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
 
-    PlaySE(SE_SELECT);
+    u16 species = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
+    if (species != SPECIES_NONE && species != SPECIES_EGG && GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HP) != 0){
+        PlaySE(SE_SELECT);
+        SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
+    }
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
-    SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
     DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
     SetPartyMonAilmentGfx(mon, &sPartyMenuBoxes[gPartyMenu.slotId]);
     gTasks[taskId].func = Task_HandleChooseMonInput;
@@ -3347,10 +3357,13 @@ static void CursorCb_Paralyze(u8 taskId)
     u32 status1 = STATUS1_PARALYSIS;
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
 
-    PlaySE(SE_SELECT);
+    u16 species = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
+    if (species != SPECIES_NONE && species != SPECIES_EGG && GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HP) != 0){
+        PlaySE(SE_SELECT);
+        SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
+    }
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
-    SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
     DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
     SetPartyMonAilmentGfx(mon, &sPartyMenuBoxes[gPartyMenu.slotId]);
     gTasks[taskId].func = Task_HandleChooseMonInput;
@@ -3361,10 +3374,13 @@ static void CursorCb_Sleep(u8 taskId)
     u32 status1 = STATUS1_SLEEP;
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
 
-    PlaySE(SE_SELECT);
+    u16 species = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
+    if (species != SPECIES_NONE && species != SPECIES_EGG && GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HP) != 0){
+        PlaySE(SE_SELECT);
+        SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
+    }
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
-    SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
     DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
     SetPartyMonAilmentGfx(mon, &sPartyMenuBoxes[gPartyMenu.slotId]);
     gTasks[taskId].func = Task_HandleChooseMonInput;
@@ -3375,10 +3391,13 @@ static void CursorCb_Frostbite(u8 taskId)
     u32 status1 = STATUS1_FROSTBITE;
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
 
-    PlaySE(SE_SELECT);
+    u16 species = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
+    if (species != SPECIES_NONE && species != SPECIES_EGG && GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HP) != 0){
+        PlaySE(SE_SELECT);
+        SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
+    }
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
-    SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
     DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
     SetPartyMonAilmentGfx(mon, &sPartyMenuBoxes[gPartyMenu.slotId]);
     gTasks[taskId].func = Task_HandleChooseMonInput;
@@ -3390,12 +3409,95 @@ static void CursorCb_Poison(u8 taskId)
     u32 status1 = STATUS1_POISON;
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
 
+    u16 species = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
+    if (species != SPECIES_NONE && species != SPECIES_EGG && GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HP) != 0){
+        PlaySE(SE_SELECT);
+        SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
+    }
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+    DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
+    SetPartyMonAilmentGfx(mon, &sPartyMenuBoxes[gPartyMenu.slotId]);
+    gTasks[taskId].func = Task_HandleChooseMonInput;
+}
+
+
+#define tHP     data[0]
+#define tMaxHP  data[1]
+#define tMonId  data[2]
+
+static void CursorCb_HP(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+    u16 species = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
+    tHP = GetMonData(mon, MON_DATA_HP);
+    tMaxHP = GetMonData(mon, MON_DATA_MAX_HP);
+    tMonId = gPartyMenu.slotId;
+
+    PlaySE(SE_SELECT);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+    if (species == SPECIES_NONE || species == SPECIES_EGG || GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HP) == 0){
+        PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+        DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
+        gTasks[taskId].func = Task_HandleChooseMonInput;
+    } else {
+        DisplaySelectionWindow(SELECTWINDOW_HP);
+        PrintHPQuantity(sPartyMenuInternal->windowId[0], tHP);
+        gTasks[taskId].func = Task_HandleHPInput;
+    }    
+}
+
+static void PrintHPQuantity(u8 windowId, s16 quantity)
+{
+    ConvertIntToDecimalStringN(gStringVar1, quantity, STR_CONV_MODE_LEADING_ZEROS, 3);
+    StringExpandPlaceholders(gStringVar4, gText_HP5);
+    AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar4, 0, 2, 0, 0);
+}
+
+void Task_HandleHPInput(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    struct Pokemon *mon = &gPlayerParty[tMonId];
+
+    if (AdjustQuantityAccordingToDPadInput(&tHP, tMaxHP) == TRUE)
+    {
+        PrintHPQuantity(sPartyMenuInternal->windowId[0], tHP);
+    }
+    else if (JOY_NEW(A_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+        SetMonData(mon, MON_DATA_HP, &tHP);
+        DisplayPartyPokemonHPCheck(mon, &sPartyMenuBoxes[tMonId], 1);
+        DisplayPartyPokemonHPBarCheck(mon, &sPartyMenuBoxes[tMonId]);
+        //PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+        //DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
+        gTasks[taskId].func = Task_HandleChooseMonInput;
+    }
+    else if (JOY_NEW(B_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+        //PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+        //DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
+        gTasks[taskId].func = Task_HandleChooseMonInput;
+    }
+}
+
+#undef tHP
+#undef tMaxHp
+#undef tMonId
+
+static void CursorCb_Exp(u8 taskId)
+{
     PlaySE(SE_SELECT);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
-    SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
-    DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
-    SetPartyMonAilmentGfx(mon, &sPartyMenuBoxes[gPartyMenu.slotId]);
+    if (gPartyMenu.menuType == PARTY_MENU_TYPE_DAYCARE)
+        DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON_2);
+    else
+        DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
     gTasks[taskId].func = Task_HandleChooseMonInput;
 }
 
