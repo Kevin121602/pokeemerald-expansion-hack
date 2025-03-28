@@ -2204,7 +2204,7 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
 
     //int numConsideredMons = sizeof(consideredMonArray) / sizeof(consideredMonArray[0]);
     u8 bestCandidate = 0;
-    u8 bestDamage = 0;
+    s32 bestDamage = 0;
     s32 damageDealt = 0;
 
     if(currentMonArray[0] >= 12){
@@ -2212,6 +2212,9 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
     } else if (currentMonArray[0] >= 1){
         //finds mon with highest damage roll on player
         for(i = 0; i < numberOfBestMons; i++){
+
+            InitializeSwitchinCandidate(&party[consideredMonArray[i]]);
+
             for (j = 0; j < MAX_MON_MOVES; j++)
             {
                 aiMove = AI_DATA->switchinCandidate.battleMon.moves[j];

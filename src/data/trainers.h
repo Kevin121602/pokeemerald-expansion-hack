@@ -34780,7 +34780,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_CHARMANDER,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 13848
-            .heldItem = ITEM_BERRY_JUICE,
+            .heldItem = ITEM_LUM_BERRY,
 #line 13852
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 13851

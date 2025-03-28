@@ -566,7 +566,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
         }
 
         critChanceIndex = CalcCritChanceStageArgs(battlerAtk, battlerDef, move, FALSE, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], aiData->holdEffects[battlerAtk]);
-        /*if (critChanceIndex > 1) // Consider crit damage only if a move has at least +2 crit chance
+        if (critChanceIndex > 1) // Consider crit damage only if a move has at least +2 crit chance
         {
             s32 nonCritDmg = CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                      effectivenessMultiplier, weather, FALSE,
@@ -580,12 +580,16 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
             u32 critOdds = GetCritHitOdds(critChanceIndex);
             // With critOdds getting closer to 1, dmg gets closer to critDmg.
             simDamage.expected = GetDamageByRollType((critDmg + nonCritDmg * (critOdds - 1)) / critOdds, rollType);
-            if (critOdds == 1)
+            if (critOdds == 1){
                 simDamage.minimum = LowestRollDmg(critDmg);
-            else
+                simDamage.expected = GetDamageByRollType(critDmg, rollType);
+            }
+            else{
                 simDamage.minimum = LowestRollDmg(nonCritDmg);
+                simDamage.expected = GetDamageByRollType(nonCritDmg, rollType);
+            }
         }
-        else */if (critChanceIndex == -2) // Guaranteed critical
+        else if (critChanceIndex == -2) // Guaranteed critical
         {
             s32 critDmg = CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                   effectivenessMultiplier, weather, TRUE,
@@ -1163,7 +1167,8 @@ u32 GetBestDmgMoveFromBattler(u32 battlerAtk, u32 battlerDef)
         if (gBattleMons[battlerAtk].moves[i] != MOVE_NONE && gBattleMons[battlerAtk].moves[i] != MOVE_UNAVAILABLE && !(unusable & gBitTable[i])
             && bestDmg < AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected
             && gMovesInfo[gBattleMons[battlerAtk].moves[i]].effect != EFFECT_EXPLOSION
-            && gMovesInfo[gBattleMons[battlerAtk].moves[i]].effect != EFFECT_FINAL_GAMBIT)
+            && gMovesInfo[gBattleMons[battlerAtk].moves[i]].effect != EFFECT_FINAL_GAMBIT
+            && !IsTwoTurnNotSemiInvulnerableMove(battlerAtk, gBattleMons[battlerAtk].moves[i]))
         {
             bestDmg = AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected;
             move = gBattleMons[battlerAtk].moves[i];
