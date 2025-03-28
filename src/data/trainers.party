@@ -262,11 +262,11 @@ Ability: Rattled
 -Mud Sport
 -Confuse Ray
 
-Yanma @ Silver Powder
+Yanma @ Hard Stone
 Level: 13
-Nature: Rash
+Nature: Modest
 Ability: Speed Boost
--Bug Bite
+-Mega Drain
 -Air Cutter
 -Ancient Power
 -Detect
@@ -5364,7 +5364,7 @@ Class: School Kid
 Pic: School Kid M
 Gender: Male
 Music: Male
-Double Battle: No
+Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Elekid @ Berry Juice
@@ -11732,7 +11732,7 @@ Class: Lass
 Pic: Lass
 Gender: Female
 Music: Female
-Double Battle: No
+Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Smoochum @ Focus Sash

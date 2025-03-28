@@ -529,7 +529,7 @@ Route104_EventScript_ExpertF::
 # 265 "data/maps/Route104/scripts.pory"
 	msgbox Route104_Text_PlantBerriesInSoilTakeThis, MSGBOX_DEFAULT
 # 266 "data/maps/Route104/scripts.pory"
-	giveitem ITEM_CHESTO_BERRY, 5
+	giveitem ITEM_LUM_BERRY
 # 267 "data/maps/Route104/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 268 "data/maps/Route104/scripts.pory"

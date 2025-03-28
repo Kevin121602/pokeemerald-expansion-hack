@@ -105,6 +105,7 @@ bool32 AI_IsDamagedByRecoil(u32 battler);
 u32 GetNoOfHitsToKO(u32 dmg, s32 hp);
 u32 GetNoOfHitsToKOBattlerDmg(u32 dmg, u32 battlerDef);
 u32 GetNoOfHitsToKOBattler(u32 battlerAtk, u32 battlerDef, u32 moveIndex);
+u32 GetMinNoOfHitsToKOBattler(u32 battlerAtk, u32 battlerDef);
 u32 GetCurrDamageHpPercent(u32 battlerAtk, u32 battlerDef);
 uq4_12_t AI_GetTypeEffectiveness(u32 move, u32 battlerAtk, u32 battlerDef);
 u32 AI_GetMoveEffectiveness(u32 move, u32 battlerAtk, u32 battlerDef);
@@ -209,5 +210,7 @@ bool32 AI_ShouldCopyStatChanges(u32 battlerAtk, u32 battlerDef);
 bool32 AI_ShouldSetUpHazards(u32 battlerAtk, u32 battlerDef, struct AiLogicData *aiData);
 void IncreaseTidyUpScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
 bool32 AI_ShouldSpicyExtract(u32 battlerAtk, u32 battlerAtkPartner, u32 move, struct AiLogicData *aiData);
+
+u32 GetDoublesTargeting(u32 battlerAtk, u32 battlerDef);
 
 #endif //GUARD_BATTLE_AI_UTIL_H

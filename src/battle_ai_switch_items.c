@@ -2098,10 +2098,12 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
     u32 numberOfBestMons = 1;
     u32 maxSwitchScore = -16;
     u32 switchScore = 0;
+    u32 highestSwitchScore = 0;
     u8 consideredMonArray[PARTY_SIZE];
     u8 currentMonArray[PARTY_SIZE];
     int i;
     s32 j = 0;
+    u32 aiMove = 0;
 
     if (*(gBattleStruct->monToSwitchIntoId + battler) != PARTY_SIZE)
         return *(gBattleStruct->monToSwitchIntoId + battler);
@@ -2109,9 +2111,9 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
         return gBattlerPartyIndexes[battler] + 1;
 
     //remove, make double switch ai an aggregate of both scores
-    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
-    {
-        battlerIn1 = battler;
+    //if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+    //{
+        /*battlerIn1 = battler;
         if (gAbsentBattlerFlags & gBitTable[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))])
             battlerIn2 = battler;
         else
@@ -2119,14 +2121,16 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
 
         opposingBattler = BATTLE_OPPOSITE(battlerIn1);
         if (gAbsentBattlerFlags & gBitTable[opposingBattler])
-            opposingBattler ^= BIT_FLANK;
-    }
-    else
-    {
+            opposingBattler ^= BIT_FLANK;*/
+    //}
+
+
+    //else
+    //{
         opposingBattler = GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerPosition(battler)));
         battlerIn1 = battler;
         battlerIn2 = battler;
-    }
+    //}
 
     GetAIPartyIndexes(battler, &firstId, &lastId);
 
@@ -2145,6 +2149,32 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
 
     currentMonArray[0] = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, opposingBattler, TRUE);
     consideredMonArray[0] = 0;
+
+    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+    {
+        for (i = (firstId + 1); i < lastId; i++)
+        {
+            // Check mon validity
+            if (!IsValidForBattle(&party[i])
+                || gBattlerPartyIndexes[battlerIn1] == i
+                || gBattlerPartyIndexes[battlerIn2] == i
+                || i == gBattleStruct->monToSwitchIntoId[battlerIn1]
+                || i == gBattleStruct->monToSwitchIntoId[battlerIn2])
+            {
+                continue;
+            }
+
+            InitializeSwitchinCandidate(&party[i]);
+
+            switchScore = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), TRUE) + GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), TRUE);
+            if(switchScore > highestSwitchScore){
+                highestSwitchScore = switchScore;
+                bestMonId = i;
+            }
+        }
+
+        return bestMonId;
+    }
 
     for (i = (firstId + 1); i < lastId; i++)
     {
@@ -2172,7 +2202,35 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
         }
     }
 
-    return consideredMonArray[Random() % numberOfBestMons];
+    //int numConsideredMons = sizeof(consideredMonArray) / sizeof(consideredMonArray[0]);
+    u8 bestCandidate = 0;
+    u8 bestDamage = 0;
+    s32 damageDealt = 0;
+
+    if(currentMonArray[0] >= 12){
+        return consideredMonArray[Random() % numberOfBestMons];
+    } else if (currentMonArray[0] >= 1){
+        //finds mon with highest damage roll on player
+        for(i = 0; i < numberOfBestMons; i++){
+            for (j = 0; j < MAX_MON_MOVES; j++)
+            {
+                aiMove = AI_DATA->switchinCandidate.battleMon.moves[j];
+
+                if (aiMove != MOVE_NONE && gMovesInfo[aiMove].power != 0 && gMovesInfo[aiMove].effect != EFFECT_EXPLOSION)
+                {
+                    damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, AI_DATA->switchinCandidate.battleMon, TRUE, DMG_ROLL_LOWEST);
+                    if(damageDealt > bestDamage){
+                        bestDamage = damageDealt;
+                        bestCandidate = consideredMonArray[i];
+                    }
+                }
+            }
+        }
+
+        return bestCandidate;
+    } else {
+        return consideredMonArray[0];
+    }
 
     // Split ideal mon decision between after previous mon KO'd (prioritize offensive options) and after switching active mon out (prioritize defensive options), and expand the scope of both.
     bestMonId = GetBestMonIntegrated(party, firstId, lastId, battler, opposingBattler, battlerIn1, battlerIn2, switchAfterMonKOd);

@@ -979,6 +979,23 @@ u32 GetNoOfHitsToKOBattler(u32 battlerAtk, u32 battlerDef, u32 moveIndex)
     return GetNoOfHitsToKOBattlerDmg(AI_DATA->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected, battlerDef);
 }
 
+u32 GetMinNoOfHitsToKOBattler(u32 battlerAtk, u32 battlerDef)
+{
+    u32 numHits = 0;
+    u32 minHits = 0;
+    for(int i = 0; i < MAX_MON_MOVES; i++){
+        if(gBattleMons[battlerAtk].moves[i] != MOVE_NONE
+            && gMovesInfo[gBattleMons[battlerAtk].moves[i]].effect != EFFECT_EXPLOSION
+            && gMovesInfo[gBattleMons[battlerAtk].moves[i]].effect != EFFECT_FINAL_GAMBIT
+            && !IS_MOVE_STATUS(gBattleMons[battlerAtk].moves[i]))
+        numHits = GetNoOfHitsToKOBattlerDmg(AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected, battlerDef);
+        if(numHits < minHits)
+            minHits = numHits;
+    }
+
+    return minHits;
+}
+
 u32 GetCurrDamageHpPercent(u32 battlerAtk, u32 battlerDef)
 {
     int bestDmg = AI_DATA->simulatedDmg[battlerAtk][battlerDef][AI_THINKING_STRUCT->movesetIndex].expected;
@@ -1139,17 +1156,17 @@ u32 GetBestDmgMoveFromBattler(u32 battlerAtk, u32 battlerDef)
     u32 move = 0;
     u32 bestDmg = 0;
     u32 unusable = AI_DATA->moveLimitations[battlerAtk];
-    u16 *moves = GetMovesArray(battlerAtk);
+    //u16 *moves = GetMovesArray(battlerAtk);
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
-        if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE && !(unusable & gBitTable[i])
+        if (gBattleMons[battlerAtk].moves[i] != MOVE_NONE && gBattleMons[battlerAtk].moves[i] != MOVE_UNAVAILABLE && !(unusable & gBitTable[i])
             && bestDmg < AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected
-            && gMovesInfo[moves[i]].effect != EFFECT_EXPLOSION
-            && gMovesInfo[moves[i]].effect != EFFECT_FINAL_GAMBIT)
+            && gMovesInfo[gBattleMons[battlerAtk].moves[i]].effect != EFFECT_EXPLOSION
+            && gMovesInfo[gBattleMons[battlerAtk].moves[i]].effect != EFFECT_FINAL_GAMBIT)
         {
             bestDmg = AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected;
-            move = moves[i];
+            move = gBattleMons[battlerAtk].moves[i];
         }
     }
     return move;
@@ -3602,6 +3619,15 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     u32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, TRUE);
     u32 shouldSetUp = ((noOfHitsToFaint >= 2 && aiIsFaster) || (noOfHitsToFaint >= 3 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS);
 
+    u32 speedBattlerAI, speedBattler;
+    u32 holdEffectAI = AI_DATA->holdEffects[battlerAtk];
+    u32 holdEffectPlayer = AI_DATA->holdEffects[battlerDef];
+    u32 abilityAI = AI_DATA->abilities[battlerAtk];
+    u32 abilityPlayer = AI_DATA->abilities[battlerDef];
+
+    speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
+    speedBattler   = GetBattlerTotalSpeedStatArgs(battlerDef, abilityPlayer, holdEffectPlayer);
+
     if (considerContrary && AI_DATA->abilities[battlerAtk] == ABILITY_CONTRARY)
         return NO_INCREASE;
 
@@ -3621,6 +3647,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     {
     case STAT_CHANGE_ATK:
     case STAT_CHANGE_ATK_2:
+    case STAT_CHANGE_ATK_DEF:
         if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
             tempScore += DECENT_EFFECT;
         break;
@@ -3632,14 +3659,40 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
         break;
     //add caveat where AI needs to be faster after speed control
     case STAT_CHANGE_SPEED:
-        if (!aiIsFaster && (noOfHitsToFaint >= 2)){
+        if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*1.5 >= speedBattler)){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
                 tempScore += WEAK_EFFECT;
         }
         break;
+    case STAT_CHANGE_ATK_DEF_SPEED:
+    case STAT_CHANGE_ATK_SPEED:
+        if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*1.5 >= speedBattler)){
+            tempScore += DECENT_EFFECT;
+            if(Random() % 100 < 50)
+                tempScore += WEAK_EFFECT;
+        } else if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+            tempScore += DECENT_EFFECT;
+        break;
+    case STAT_CHANGE_SPATK_SPDEF_SPEED:
+        if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*1.5 >= speedBattler)){
+            tempScore += DECENT_EFFECT;
+            if(Random() % 100 < 50)
+                tempScore += WEAK_EFFECT;
+        } else if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
+            tempScore += DECENT_EFFECT;
+        break;
+    case STAT_CHANGE_ATK_SPEED_2:
+        if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*2 >= speedBattler)){
+            tempScore += DECENT_EFFECT;
+            if(Random() % 100 < 50)
+                tempScore += WEAK_EFFECT;
+        } else if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+            tempScore += DECENT_EFFECT;
+        break;
     case STAT_CHANGE_SPATK:
     case STAT_CHANGE_SPATK_2:
+    case STAT_CHANGE_SPATK_SPDEF:
         if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
             tempScore += DECENT_EFFECT;
         break;
@@ -3647,6 +3700,20 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
         if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
         {
             tempScore += DECENT_EFFECT;
+        }
+        break;
+    case STAT_CHANGE_DEF_SPDEF:
+        if ((HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) || HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL)) && shouldSetUp)
+        {
+            tempScore += DECENT_EFFECT;
+        }
+        break;
+    case STAT_CHANGE_CRIT_RATE:
+        if (shouldSetUp)
+        {
+            tempScore += DECENT_EFFECT;
+            if(abilityAI == (ABILITY_SNIPER || ABILITY_SUPER_LUCK) || holdEffectAI == HOLD_EFFECT_SCOPE_LENS)
+                tempScore += WEAK_EFFECT;
         }
         break;
     //add caveat where if AI is faster and could live hit with defensive setup, its 80% to go for it
@@ -3657,7 +3724,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
         }
         break;
     case STAT_CHANGE_SPEED_2:
-        if (!aiIsFaster && (noOfHitsToFaint >= 2)){
+        if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*2 >= speedBattler)){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
                 tempScore += WEAK_EFFECT;
@@ -3944,4 +4011,102 @@ bool32 AI_ShouldSpicyExtract(u32 battlerAtk, u32 battlerAtkPartner, u32 move, st
     return (preventsStatLoss
          && AI_IsFaster(battlerAtk, battlerAtkPartner, TRUE)
          && HasMoveWithCategory(battlerAtkPartner, DAMAGE_CATEGORY_PHYSICAL));
+}
+
+//looks at slot 1 for player and AI
+u32 GetDoublesTargeting(u32 battlerAtk, u32 battlerDef){
+    u32 result;
+
+    u32 aiPartner = BATTLE_PARTNER(battlerAtk);
+    u32 playerPartner = BATTLE_PARTNER(battlerDef);
+
+    u32 speedBattlerAI, speedBattlerAIPartner;
+    u32 holdEffectAI = AI_DATA->holdEffects[battlerAtk];
+    u32 holdEffectAIPartner = AI_DATA->holdEffects[aiPartner];
+    u32 abilityAI = AI_DATA->abilities[battlerAtk];
+    u32 abilityAIPartner = AI_DATA->abilities[aiPartner];
+
+    speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
+    speedBattlerAIPartner   = GetBattlerTotalSpeedStatArgs(aiPartner, abilityAIPartner, holdEffectAIPartner);
+
+    bool32 aiHasKillSlot1 = (NoOfHitsForTargetToFaintAI(battlerAtk, battlerDef) <= 1);
+    bool32 aiHasKillSlot2 = (NoOfHitsForTargetToFaintAI(battlerAtk, playerPartner) <= 1);
+    bool32 aiPartnerHasKillSlot1 = (NoOfHitsForTargetToFaintAI(aiPartner, battlerDef) <= 1);
+    bool32 aiPartnerHasKillSlot2 = (NoOfHitsForTargetToFaintAI(aiPartner, playerPartner) <= 1);
+
+    bool32 aiFasterThanPartner = (speedBattlerAI > speedBattlerAIPartner);
+
+    //if any slot has a dead mon return default targeting
+    if(gBattleMons[battlerAtk].hp == 0 || gBattleMons[battlerDef].hp == 0 || gBattleMons[aiPartner].hp == 0 || gBattleMons[playerPartner].hp == 0){
+        result = DEFAULT_TARGETING;
+        return result;
+    }
+
+    //no kills seen, return default targeting
+    if(!aiHasKillSlot1 && !aiHasKillSlot2){
+        if(!aiPartnerHasKillSlot1 && !aiPartnerHasKillSlot2){
+            result = DEFAULT_TARGETING;
+            return result;
+        //only slot 1 has a kill on slot 2
+        } else if (aiPartnerHasKillSlot1 && !aiPartnerHasKillSlot2){
+            result = PARALLEL_TARGETING;
+            return result;
+        //only slot 2 has a kill on player slot 2
+        } else if (!aiPartnerHasKillSlot1 && aiPartnerHasKillSlot2){
+            result = DIAGONAL_TARGETING;
+            return result;
+        } else{
+            result = RANDOM_TARGETING;
+            return result;
+        }
+    } else if (aiHasKillSlot1 && !aiHasKillSlot2){
+        if(aiPartnerHasKillSlot1 && !aiPartnerHasKillSlot2){
+            //if both mons only see kill on slot 1, the faster mon targets slot 1 and the slower one targets slot 2
+            if(aiFasterThanPartner){
+                result = DIAGONAL_TARGETING;
+                return result;
+            } else {
+                result = PARALLEL_TARGETING;
+                return result;
+            }
+            //otherwise, ai slot 1 only seeing a kill on slot 1 returns diagonal targeting, regardless of if slot 2 sees both kills or no kills
+        } else {
+            result = DIAGONAL_TARGETING;
+            return result;
+        }
+    } else if (!aiHasKillSlot1 && aiHasKillSlot2){
+        if(!aiPartnerHasKillSlot1 && aiPartnerHasKillSlot2){
+            //if both mons only see kill on slot 2, the faster mon targets slot 2 and the slower one targets slot 1
+            if(aiFasterThanPartner){
+                result = PARALLEL_TARGETING;
+                return result;
+            } else {
+                result = DIAGONAL_TARGETING;
+                return result;
+            }
+            //otherwise, ai slot 1 only seeing a kill on slot 2 returns parallel targeting, regardless of if slot 2 sees both kills or no kills
+        } else {
+            result = PARALLEL_TARGETING;
+            return result;
+        }
+    //ai slot 1 has a kill on both player mons
+    } else {
+        //slot 2 has kill on neither
+        if(!aiPartnerHasKillSlot1 && !aiPartnerHasKillSlot2){
+            result = RANDOM_TARGETING;
+            return result;
+        //slot 2 only has kill on slot 2
+        } else if(!aiPartnerHasKillSlot1 && aiPartnerHasKillSlot2){
+            result = DEFAULT_TARGETING;
+            return result;
+        //slot 2 only has kill on slot 1
+        } else if(aiPartnerHasKillSlot1 && !aiPartnerHasKillSlot2){
+            result = PARALLEL_TARGETING;
+            return result;
+        //both AI mons see kill on both player mons
+        } else {
+            result = RANDOM_TARGETING;
+            return result;
+        }
+    }
 }

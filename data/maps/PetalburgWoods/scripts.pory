@@ -1,3 +1,18 @@
+script PetalburgWoods_EventScript_BerryJuice{
+	lockall
+	faceplayer
+	if(flag(FLAG_RECEIVED_BERRY_JUICE)){
+		msgbox(format("That juice is rich in Vitamin C!"))
+	} else {
+		msgbox(format("I've been looking for a trainer to give this to…"))
+		giveitem(ITEM_BERRY_JUICE)
+		setflag(FLAG_RECEIVED_BERRY_JUICE)
+		msgbox(format("That juice is rich in Vitamin C!"))
+	}
+	releaseall
+	end
+}
+
 raw `
 .set LOCALID_GRUNT, 3
 .set LOCALID_DEVON_EMPLOYEE, 4

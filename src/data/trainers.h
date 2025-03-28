@@ -485,7 +485,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_YANMA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 265
-            .heldItem = ITEM_SILVER_POWDER,
+            .heldItem = ITEM_HARD_STONE,
 #line 269
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 268
@@ -493,11 +493,11 @@ F_TRAINER_FEMALE |
 #line 266
             .lvl = 13,
 #line 267
-            .nature = NATURE_RASH,
+            .nature = NATURE_MODEST,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 269
-                MOVE_BUG_BITE,
+                MOVE_MEGA_DRAIN,
                 MOVE_AIR_CUTTER,
                 MOVE_ANCIENT_POWER,
                 MOVE_DETECT,
@@ -13271,7 +13271,7 @@ F_TRAINER_FEMALE |
 #line 5366
             TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 5367
-        .doubleBattle = FALSE,
+        .doubleBattle = TRUE,
 #line 5368
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
         .partySize = 2,
@@ -29512,7 +29512,7 @@ F_TRAINER_FEMALE |
 #line 11734
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
 #line 11735
-        .doubleBattle = FALSE,
+        .doubleBattle = TRUE,
 #line 11736
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
         .partySize = 2,
