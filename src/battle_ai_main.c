@@ -3259,25 +3259,17 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         break;
     case EFFECT_ATTACK_DOWN:
     case EFFECT_ATTACK_DOWN_2:
-        if (!ShouldLowerAttack(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
-            ADJUST_SCORE(-2);
-        if (gBattleMons[battlerDef].statStages[STAT_ATK] < DEFAULT_STAT_STAGE)
-            ADJUST_SCORE(-1);
-        else if (aiData->hpPercents[battlerAtk] <= 90)
-            ADJUST_SCORE(-1);
-        if (gBattleMons[battlerDef].statStages[STAT_ATK] > 3 && !AI_RandLessThan(50))
-            ADJUST_SCORE(-2);
-        else if (aiData->hpPercents[battlerDef] < 70)
-            ADJUST_SCORE(-2);
+        if (ShouldLowerAttack(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
+            ADJUST_SCORE(DECENT_EFFECT);
         break;
     case EFFECT_DEFENSE_DOWN:
     case EFFECT_DEFENSE_DOWN_2:
-        if (!ShouldLowerDefense(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
-            ADJUST_SCORE(-2);
-        if ((aiData->hpPercents[battlerAtk] < 70 && !AI_RandLessThan(50)) || (gBattleMons[battlerDef].statStages[STAT_DEF] <= 3 && !AI_RandLessThan(50)))
-            ADJUST_SCORE(-2);
-        if (aiData->hpPercents[battlerDef] <= 70)
-            ADJUST_SCORE(-2);
+        if (ShouldLowerDefense(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
+            ADJUST_SCORE(DECENT_EFFECT);
+        //if ((aiData->hpPercents[battlerAtk] < 70 && !AI_RandLessThan(50)) || (gBattleMons[battlerDef].statStages[STAT_DEF] <= 3 && !AI_RandLessThan(50)))
+        //    ADJUST_SCORE(-2);
+        //if (aiData->hpPercents[battlerDef] <= 70)
+        //    ADJUST_SCORE(-2);
         break;
     case EFFECT_SPEED_DOWN:
     case EFFECT_SPEED_DOWN_2:
@@ -3290,26 +3282,13 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         break;
     case EFFECT_SPECIAL_ATTACK_DOWN:
     case EFFECT_SPECIAL_ATTACK_DOWN_2:
-        if (!ShouldLowerSpAtk(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
-            ADJUST_SCORE(-2);
-        if (gBattleMons[battlerDef].statStages[STAT_SPATK] < DEFAULT_STAT_STAGE)
-            ADJUST_SCORE(-1);
-        else if (aiData->hpPercents[battlerAtk] <= 90)
-            ADJUST_SCORE(-1);
-        if (gBattleMons[battlerDef].statStages[STAT_SPATK] > 3 && !AI_RandLessThan(50))
-            ADJUST_SCORE(-2);
-        else if (aiData->hpPercents[battlerDef] < 70)
-            ADJUST_SCORE(-2);
+        if (ShouldLowerSpAtk(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
+            ADJUST_SCORE(DECENT_EFFECT);
         break;
     case EFFECT_SPECIAL_DEFENSE_DOWN:
     case EFFECT_SPECIAL_DEFENSE_DOWN_2:
-        if (!ShouldLowerSpDef(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
-            ADJUST_SCORE(-2);
-        if ((aiData->hpPercents[battlerAtk] < 70 && !AI_RandLessThan(50))
-          || (gBattleMons[battlerDef].statStages[STAT_SPDEF] <= 3 && !AI_RandLessThan(50)))
-            ADJUST_SCORE(-2);
-        if (aiData->hpPercents[battlerDef] <= 70)
-            ADJUST_SCORE(-2);
+        if (ShouldLowerSpDef(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
+            ADJUST_SCORE(DECENT_EFFECT);
         break;
     case EFFECT_ACCURACY_DOWN:
     case EFFECT_ACCURACY_DOWN_2:

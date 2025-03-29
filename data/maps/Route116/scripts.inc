@@ -1,7 +1,7 @@
 # 1 "data/maps/Route116/scripts.pory"
 
 # 2 "data/maps/Route116/scripts.pory"
-.set LOCALID_BRINEY, 11
+.set LOCALID_BRINEY, 25
 # 3 "data/maps/Route116/scripts.pory"
 .set LOCALID_WANDAS_BF_OUTSIDE, 21
 # 4 "data/maps/Route116/scripts.pory"
@@ -891,7 +891,7 @@ Route116_Text_RusturfTunnelSign:
 # 446 "data/maps/Route116/scripts.pory"
 Route116_Text_TunnelersRestHouse:
 # 447 "data/maps/Route116/scripts.pory"
-	.string "TUNNELER'S REST HOUSE$"
+	.string "ROCK SMASH HOUSE$"
 # 448 "data/maps/Route116/scripts.pory"
 
 # 449 "data/maps/Route116/scripts.pory"

@@ -1,5 +1,5 @@
 raw `
-.set LOCALID_BRINEY, 11
+.set LOCALID_BRINEY, 25
 .set LOCALID_WANDAS_BF_OUTSIDE, 21
 
 Route116_MapScripts::
@@ -444,7 +444,7 @@ Route116_Text_RusturfTunnelSign:
 	.string "canceled.”$"
 
 Route116_Text_TunnelersRestHouse:
-	.string "TUNNELER'S REST HOUSE$"
+	.string "ROCK SMASH HOUSE$"
 
 Route116_Text_TrainerTipsBToStopEvolution:
 	.string "TRAINER TIPS\p"

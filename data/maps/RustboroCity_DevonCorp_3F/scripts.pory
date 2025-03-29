@@ -211,7 +211,11 @@ RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor:
 	.string "Well, on the way, could you stop off in\n"
 	.string "DEWFORD TOWN?\p"
 	.string "I was hoping that you'd deliver a\n"
-	.string "LETTER to STEVEN in DEWFORD.$"
+	.string "LETTER to STEVEN in DEWFORD.\p"
+	.string "However, the bridge to DEWFORD is still\n"
+	.string "under construction.\p"
+	.string "Maybe it would be better to head north\n"
+	.string "after getting the STONE BADGE.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis:
 	.string "MR. STONE: Now, you should know that\n"

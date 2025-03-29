@@ -49,8 +49,8 @@
 #define FLAG_RECEIVED_EVERSTONE    0x23
 #define FLAG_RECIEVED_COMMON_FOSSIL    0x24 // Unused Flag
 #define FLAG_HIDE_RUSTBORO_CITY_GYM_GUIDE    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
+#define FLAG_HIDE_RUSTURF_TUNNEL_ROXANNE    0x26 // Unused Flag
+#define FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_2    0x27 // Unused Flag
 #define FLAG_UNUSED_0x028    0x28 // Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag

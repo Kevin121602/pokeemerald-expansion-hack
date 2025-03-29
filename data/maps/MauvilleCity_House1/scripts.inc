@@ -77,16 +77,20 @@ MauvilleCity_House1_Text_ExplainRockSmash:
 # 39 "data/maps/MauvilleCity_House1/scripts.pory"
 	.string "them right out of your way!\p"
 # 40 "data/maps/MauvilleCity_House1/scripts.pory"
-	.string "Yes, sir! Smash rocks aside, I say!\n"
+	.string "Or, I would say that. But without the\n"
 # 41 "data/maps/MauvilleCity_House1/scripts.pory"
-	.string "Woohoo!$"
+	.string "BALANCE BADGE from NORMAN's gym,\p"
 # 42 "data/maps/MauvilleCity_House1/scripts.pory"
-
+	.string "there's no way to break rocks at\n"
 # 43 "data/maps/MauvilleCity_House1/scripts.pory"
-MauvilleCity_House1_Text_MonCanFlyOutOfSmashedRock:
+	.string "all…$"
 # 44 "data/maps/MauvilleCity_House1/scripts.pory"
-	.string "Oh, yes, if you smash a rock, a POKéMON\n"
+
 # 45 "data/maps/MauvilleCity_House1/scripts.pory"
-	.string "could come flying out of hiding.\p"
+MauvilleCity_House1_Text_MonCanFlyOutOfSmashedRock:
 # 46 "data/maps/MauvilleCity_House1/scripts.pory"
+	.string "Oh, yes, if you smash a rock, a POKéMON\n"
+# 47 "data/maps/MauvilleCity_House1/scripts.pory"
+	.string "could come flying out of hiding.\p"
+# 48 "data/maps/MauvilleCity_House1/scripts.pory"
 	.string "Woohoo!$"

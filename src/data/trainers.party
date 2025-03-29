@@ -369,11 +369,11 @@ AI: Check Bad Move / Try To Faint / Check Viability
 Crabrawler @ Focus Sash
 Level: 17
 Nature: Jolly
-Ability: Iron Fist
--Drain Punch
--Fire Punch
--Ice Punch
--Thunder Punch
+Ability: Hyper Cutter
+-Power-Up Punch
+-Reversal
+-Brutal Swing
+-Dizzy Punch
 
 Quilladin @ Eviolite
 Level: 16
@@ -386,7 +386,7 @@ Ability: Overgrow
 
 Stunfisk-Galarian @ Lum Berry
 Level: 15
-Nature: Jolly
+Nature: Careful
 Ability: Filter
 -Bulldoze
 -Metal Claw
@@ -14802,7 +14802,7 @@ Nature: Jolly
 Ability: Mold Breaker
 -Rock Tomb
 -Thunder Punch
--Headbutt
+-Bulldoze
 -Pursuit
 
 Omanyte @ Focus Sash

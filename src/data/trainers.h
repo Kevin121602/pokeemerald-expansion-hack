@@ -752,7 +752,7 @@ F_TRAINER_FEMALE |
 #line 373
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 372
-            .ability = ABILITY_IRON_FIST,
+            .ability = ABILITY_HYPER_CUTTER,
 #line 370
             .lvl = 17,
 #line 371
@@ -760,10 +760,10 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 373
-                MOVE_DRAIN_PUNCH,
-                MOVE_FIRE_PUNCH,
-                MOVE_ICE_PUNCH,
-                MOVE_THUNDER_PUNCH,
+                MOVE_POWER_UP_PUNCH,
+                MOVE_REVERSAL,
+                MOVE_BRUTAL_SWING,
+                MOVE_DIZZY_PUNCH,
             },
             },
             {
@@ -802,7 +802,7 @@ F_TRAINER_FEMALE |
 #line 388
             .lvl = 15,
 #line 389
-            .nature = NATURE_JOLLY,
+            .nature = NATURE_CAREFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 391
@@ -37220,7 +37220,7 @@ F_TRAINER_FEMALE |
 #line 14803
                 MOVE_ROCK_TOMB,
                 MOVE_THUNDER_PUNCH,
-                MOVE_HEADBUTT,
+                MOVE_BULLDOZE,
                 MOVE_PURSUIT,
             },
             },

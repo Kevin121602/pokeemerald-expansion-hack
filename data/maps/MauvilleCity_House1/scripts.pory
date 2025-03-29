@@ -37,8 +37,10 @@ MauvilleCity_House1_Text_ExplainRockSmash:
 	.string "that block your path…\p"
 	.string "Well, use that HM move and smash\n"
 	.string "them right out of your way!\p"
-	.string "Yes, sir! Smash rocks aside, I say!\n"
-	.string "Woohoo!$"
+	.string "Or, I would say that. But without the\n"
+	.string "BALANCE BADGE from NORMAN's gym,\p"
+	.string "there's no way to break rocks at\n"
+	.string "all…$"
 
 MauvilleCity_House1_Text_MonCanFlyOutOfSmashedRock:
 	.string "Oh, yes, if you smash a rock, a POKéMON\n"

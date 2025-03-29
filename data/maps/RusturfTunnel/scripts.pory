@@ -3,6 +3,7 @@ raw `
 .set LOCALID_BRINEY, 5
 .set LOCALID_GRUNT, 6
 .set LOCALID_PEEKO, 7
+.set LOCALID_ROXANNE, 11
 .equ LOCALID_WANDA, 10
 
 RusturfTunnel_MapScripts::
@@ -306,11 +307,13 @@ RusturfTunnel_EventScript_Peeko::
 RusturfTunnel_EventScript_Grunt::
 	lock
 	faceplayer
+	setflag FLAG_DISABLE_EXP
 	playbgm MUS_ENCOUNTER_AQUA, FALSE
 	msgbox RusturfTunnel_Text_GruntIntro, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_GRUNT_RUSTURF_TUNNEL, RusturfTunnel_Text_GruntDefeat
 	msgbox RusturfTunnel_Text_GruntTakePackage, MSGBOX_DEFAULT
 	giveitem ITEM_DEVON_PARTS
+	clearflag FLAG_DISABLE_EXP
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, RusturfTunnel_Movement_PushPlayerAsideForGrunt
 	applymovement LOCALID_GRUNT, RusturfTunnel_Movement_GruntEscape
@@ -339,6 +342,18 @@ RusturfTunnel_EventScript_Grunt::
 	waitmovement 0
 	removeobject LOCALID_BRINEY
 	removeobject LOCALID_PEEKO
+	applymovement LOCALID_ROXANNE, RusturfTunnel_Movement_RoxanneApproach
+	waitmovement 0
+	msgbox RusturfTunnel_Text_RoxanneThankYou, MSGBOX_DEFAULT
+	waitmessage
+	closemessage
+	applymovement LOCALID_ROXANNE, RusturfTunnel_Movement_BrineyExit
+	waitmovement 0
+	removeobject LOCALID_ROXANNE
+	setflag FLAG_HIDE_RUSTURF_TUNNEL_ROXANNE
+	setflag FLAG_HIDE_RUSTBORO_CITY_GYM_GUIDE
+	clearflag FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_2
+	setflag FLAG_DEFEATED_TUNNEL_GRUNT
 	clearflag FLAG_DEVON_GOODS_STOLEN
 	setflag FLAG_RECOVERED_DEVON_GOODS
 	setvar VAR_RUSTBORO_CITY_STATE, 4
@@ -353,6 +368,20 @@ RusturfTunnel_Movement_PushPlayerAsideForGrunt:
 	walk_up
 	unlock_facing_direction
 	walk_in_place_faster_left
+	step_end
+
+RusturfTunnel_Movement_RoxanneApproach:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_down
 	step_end
 
 RusturfTunnel_Movement_PlayerMoveAsideForBriney:
@@ -469,10 +498,22 @@ RusturfTunnel_Text_ThankYouLetsGoHomePeeko:
 	.string "Now, if there's anything that troubles\n"
 	.string "you, don't hesitate to tell me!\p"
 	.string "You can usually find me in my cottage\n"
-	.string "by the sea near PETALBURG WOODS.\p"
+	.string "by the sea in DEWFORD TOWN.\p"
 	.string "Come, PEEKO, we should make our way\n"
 	.string "home.\p"
 	.string "PEEKO: Pihyoh!$"
+
+RusturfTunnel_Text_RoxanneThankYou:
+	.string "Thank you for dealing with that\n"
+	.string "awful grunt!\p"
+	.string "I was just looking for ROCK Pokémon\n"
+	.string "in this cave when he ambushed me!\p"
+	.string "…\p"
+	.string "{PLAYER} is it? you seem like a very\n"
+	.string "capable trainer!\p"
+	.string "I'd love to take you on at my gym\n"
+	.string "in RUSTBORO CITY.\p"
+	.string "See ya!$"
 
 RusturfTunnel_Text_WhyCantTheyKeepDigging:
 	.string "… …\p"
