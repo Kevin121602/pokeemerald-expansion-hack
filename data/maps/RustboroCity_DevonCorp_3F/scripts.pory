@@ -244,7 +244,10 @@ RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp:
 
 RustboroCity_DevonCorp_3F_Text_MrStoneGoWithCautionAndCare:
 	.string "MR. STONE: Well, then, {PLAYER}{KUN},\n"
-	.string "go with caution and care!$"
+	.string "go with caution and care!\p"
+	.string "Oh! One of our scientists downstairs\n"
+	.string "had something to give you as well.$"
+
 
 RustboroCity_DevonCorp_3F_Text_CountingOnYou:
 	.string "MR. STONE: I'm counting on you!$"

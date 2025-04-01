@@ -1,3 +1,99 @@
+script RustboroCity_DevonCorp_2F_EventScript_FossilScientistNew {
+	lockall
+	faceplayer
+	if(flag(FLAG_RECIEVED_COMMON_FOSSIL)){
+		msgbox(format("I hope you find that fossil POKéMON useful!"))
+	} else {
+		msgbox("MR. STONE told me all about what you\n"
+				"did for us!\p"
+				"I've been working on a machine to\n"
+				"bring fossil POKéMON back to life.\p"
+				"In fact, I just revived one right now!\n"
+				"Would you like to have it?$", MSGBOX_YESNO)
+		if(var(VAR_RESULT) == NO){
+			msgbox(format("Let me know if you change your mind."))
+			releaseall
+			end
+		} else {
+			msgbox("Let's see, where did I put it?\p"
+				"…\p"
+				"…\p"
+				"Here it is!$")
+			random(10)
+			switch(var(VAR_RESULT)){
+				case 0:
+					givemon(SPECIES_OMANYTE, 10)
+					playfanfare(MUS_DP_OBTAIN_ITEM)
+					msgbox(format("{PLAYER} recieved Omanyte!"))
+					waitmessage
+					waitfanfare
+				case 1:
+					givemon(SPECIES_KABUTO, 10)
+					playfanfare(MUS_DP_OBTAIN_ITEM)
+					msgbox(format("{PLAYER} recieved Kabuto!"))
+					waitmessage
+					waitfanfare
+				case 2:
+					givemon(SPECIES_LILEEP, 10)
+					playfanfare(MUS_DP_OBTAIN_ITEM)
+					msgbox(format("{PLAYER} recieved Lileep!"))
+					waitmessage
+					waitfanfare
+				case 3:
+					givemon(SPECIES_ANORITH, 10)
+					playfanfare(MUS_DP_OBTAIN_ITEM)
+					msgbox(format("{PLAYER} recieved Anorith!"))
+					waitmessage
+					waitfanfare
+				case 4:
+					givemon(SPECIES_CRANIDOS, 10)
+					playfanfare(MUS_DP_OBTAIN_ITEM)
+					msgbox(format("{PLAYER} recieved Cranidos!"))
+					waitmessage
+					waitfanfare
+				case 5:
+					givemon(SPECIES_SHIELDON, 10)
+					playfanfare(MUS_DP_OBTAIN_ITEM)
+					msgbox(format("{PLAYER} recieved Shieldon!"))
+					waitmessage
+					waitfanfare
+				case 6:
+					givemon(SPECIES_ARCHEN, 10)
+					playfanfare(MUS_DP_OBTAIN_ITEM)
+					msgbox(format("{PLAYER} recieved Archen!"))
+					waitmessage
+					waitfanfare
+				case 7:
+					givemon(SPECIES_TIRTOUGA, 10)
+					playfanfare(MUS_DP_OBTAIN_ITEM)
+					msgbox(format("{PLAYER} recieved Tirtouga!"))
+					waitmessage
+					waitfanfare
+				case 8:
+					givemon(SPECIES_AMAURA, 10)
+					playfanfare(MUS_DP_OBTAIN_ITEM)
+					msgbox(format("{PLAYER} recieved Amaura!"))
+					waitmessage
+					waitfanfare
+				case 9:
+					givemon(SPECIES_TYRUNT, 10)
+					playfanfare(MUS_DP_OBTAIN_ITEM)
+					msgbox(format("{PLAYER} recieved Tyrunt!"))
+					waitmessage
+					waitfanfare
+			}
+			msgbox("Give this Pokémon a nickname?", MSGBOX_YESNO)
+			if(var(VAR_RESULT) == YES){
+				call(Common_EventScript_NameReceivedPartyMon)
+			}
+			msgbox(format("I hope you find that fossil POKéMON useful!"))
+			setflag(FLAG_RECIEVED_COMMON_FOSSIL)
+		}
+	}
+	releaseall
+	end
+}
+
 raw `
 .set LOCALID_FOSSIL_SCIENTIST, 5
 

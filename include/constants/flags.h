@@ -44,14 +44,14 @@
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
 
 #define FLAG_RECEIVED_HEART_SCALES    0x20 
-#define FLAG_UNUSED_0x021    0x21 // Keep for now, used for test scripting
+#define FLAG_UNUSED_0x021    0x21
 #define FLAG_RECEIVED_BERRY_JUICE    0x22 
 #define FLAG_RECEIVED_EVERSTONE    0x23
-#define FLAG_RECIEVED_COMMON_FOSSIL    0x24 // Unused Flag
-#define FLAG_HIDE_RUSTBORO_CITY_GYM_GUIDE    0x25 // Unused Flag
-#define FLAG_HIDE_RUSTURF_TUNNEL_ROXANNE    0x26 // Unused Flag
-#define FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_2    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
+#define FLAG_RECIEVED_COMMON_FOSSIL    0x24
+#define FLAG_HIDE_RUSTBORO_CITY_GYM_GUIDE    0x25
+#define FLAG_HIDE_RUSTURF_TUNNEL_ROXANNE    0x26
+#define FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_2    0x27
+#define FLAG_HIDE_ROUTE_105_WORKERS    0x28
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag
 #define FLAG_UNUSED_0x02B    0x2B // Unused Flag

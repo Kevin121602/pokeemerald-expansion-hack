@@ -11,7 +11,7 @@ LittlerootTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 LittlerootTown_EventScript_SuperRod::
 # 8 "data/maps/LittlerootTown/scripts.pory"
-	lock
+	lockall
 # 9 "data/maps/LittlerootTown/scripts.pory"
 	faceplayer
 # 10 "data/maps/LittlerootTown/scripts.pory"

@@ -5,7 +5,7 @@ mapscripts LittlerootTown_MapScripts {
 }
 
 script LittlerootTown_EventScript_SuperRod {
-	lock
+	lockall
 	faceplayer
 	if(flag(FLAG_RECEIVED_SUPER_ROD)){
 		msgbox(format("How are the fish biting?"))

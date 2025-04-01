@@ -1880,7 +1880,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -1894,7 +1893,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -1908,7 +1906,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -1922,7 +1919,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -1944,7 +1940,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -1962,7 +1957,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -1984,7 +1978,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Hyper Potion
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -2006,7 +1999,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Hyper Potion
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -2028,7 +2020,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -2050,7 +2041,6 @@ Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Full Restore
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -2221,7 +2211,6 @@ Class: Lady
 Pic: Lady
 Gender: Female
 Music: Female
-Items: Full Restore
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
@@ -5028,33 +5017,62 @@ Class: Leader
 Pic: Leader Roxanne
 Gender: Female
 Music: Female
-Items: Potion / Potion
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Geodude
-Level: 12
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Tackle
-- Defense Curl
-- Rock Throw
-- Rock Tomb
+Tyrunt @ Expert Belt
+Level: 18
+Nature: Jolly
+Ability: Sturdy
+-Rock Slide
+-Breaking Swipe
+-Brick Break
+-Aerial Ace
 
-Geodude
-Level: 12
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Tackle
-- Defense Curl
-- Rock Throw
-- Rock Tomb
+Minior @ Liechi Berry
+Level: 17
+Nature: Jolly
+Ability: Shields Down
+-Rock Tomb
+-Acrobatics
+-Bulldoze
 
-Nosepass @ Oran Berry
-Level: 15
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Block
-- Harden
-- Tackle
-- Rock Tomb
+Magcargo @ Passho Berry
+Level: 18
+Nature: Calm
+Ability: Flame Body
+IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 31 Spe
+-Ancient Power
+-Incinerate
+-Hidden Power
+-Rock Polish
+
+Diggersby @ Lum Berry
+Level: 17
+Nature: Jolly
+Ability: Huge Power
+-Bulldoze
+-Quick Attack
+-Fire Punch
+-Smack Down
+
+Grotle @ Sitrus Berry
+Level: 19
+Nature: Careful
+Ability: Overgrow
+-Seed Bomb
+-Bulldoze
+-Crunch
+-Curse
+
+Meltan @ Eviolite
+Level: 19
+Nature: Sassy
+Ability: Magnet Pull
+-Flash Cannon
+-Thunderbolt
+-Facade
+-Thunder Wave
 
 === TRAINER_BRAWLY_1 ===
 Name: BRAWLY
@@ -6289,30 +6307,39 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Bunnelby @ Focus Sash
-Level: 11
-Nature: Adamant
-Ability: Huge Power
--Flail
--Bulldoze
+Parasect @ Coba Berry
+Level: 16
+Nature: Sassy
+Ability: Effect Spore
+-Bug Bite
+-Giga Drain
+-Slash
+-Rototiller
 
-Skwovet @ Ganlon Berry
-Level: 11
-Nature: Jolly
-Ability: Cheek Pouch
--Facade
--Bullet Seed
--Stuff Cheeks
--Counter
-
-Slowpoke @ Leftovers
-Level: 12
+Corsola @ Rindo Berry
+Level: 17
 Nature: Calm
-Ability: Own Tempo
--Water Pulse
--Confusion
--Thunder Wave
--Slack Off
+Ability: Regenerator
+-Brine
+-Ancient Power
+-Aurora Beam
+-Recover
+
+Diglett @ Soft Sand
+Level: 17
+Nature: Jolly
+Ability: Arena Trap
+-Stomping Tantrum
+-Rock Tomb
+
+Corvisquire @ Salac Berry
+Level: 17
+Nature: Jolly
+Ability: Unnerve
+-Pluck
+-Steel Wing
+-Power Trip
+-Hone Claws
 
 === TRAINER_TOMMY ===
 Name: TOMMY
@@ -6323,31 +6350,41 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Doduo @ Silk Scarf
-Level: 14
-Nature: Timid
-Ability: Tangled Feet
--Double Hit
--Pluck
--Quick Attack
+Hippopotas @ Leftovers
+Level: 16
+Nature: Careful
+Ability: Sand Stream
+-Bulldoze
+-Rock Tomb
+-Fire Fang
+-Slack Off
 
-Surskit @ Assault Vest
-Level: 15
-Nature: Timid
-Ability: Swift Swim
--Struggle Bug
--Bubble Beam
--Giga Drain
--Icy Wind
+Solosis @ Custap Berry
+Level: 18
+Nature: Modest
+Ability: Magic Guard
+-Psybeam
+-Night Shade
+-Endure
+-Endeavor
 
-Nidorino @ Muscle Band
-Level: 15
-Nature: Jolly
-Ability: Poison Point
--Poison Tail
--Double Kick
--Sucker Punch
--Sand Attack
+Shellos @ Berry Juice
+Level: 17
+Nature: Bold
+Ability: Sand Force
+-Water Pulse
+-Mud Bomb
+-Ancient Power
+-Recover
+
+Cacnea @ Eviolite
+Level: 17
+Nature: Hardy
+Ability: Sand Rush
+-Magical Leaf
+-Aerial Ace
+-Drain Punch
+-Rototiller
 
 === TRAINER_CALVIN_1 ===
 Name: CALVIN
@@ -6482,7 +6519,7 @@ Level: 17
 Nature: Calm
 Ability: Regenerator
 -Brine
--Power Gem
+-Ancient Power
 -Aurora Beam
 -Recover
 
@@ -11150,41 +11187,38 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Tyrunt @ Weakness Policy
-Level: 17
-Nature: Jolly
-Ability: Strong Jaw
--Rock Tomb
--Fire Fang
--Poison Fang
--Charm
-
-Mawile @ Berry Juice
-Level: 17
-Nature: Jolly
-Ability: Intimidate
--Metal Claw
--Covet
--Fire Fang
--Attract
-
-Sableye @ Leftovers
+Geodude @ Red Card
 Level: 17
 Nature: Careful
-Ability: Prankster
--Night Shade
--Feint Attack
--Will-O-Wisp
+Ability: Sturdy
+-Stealth Rock
+-Explosion
+
+Lileep @ Leftovers
+Level: 17
+Nature: Bold
+Ability: Storm Drain
+-Ancient Power
+-Mega Drain
 -Recover
 
+Anorith @ Lum Berry
+Level: 18
+Nature: Jolly
+Ability: Battle Armor
+-Bug Bite
+-Rock Tomb
+-Metal Claw
+-Aqua Jet
+
 Sudowoodo @ Liechi Berry
-Level: 17
+Level: 18
 Nature: Adamant
 Ability: Sturdy
 -Rock Tomb
--Bulldoze
+-Ice Punch
+-Thunder Punch
 -Flail
--Stealth Rock
 
 === TRAINER_BRENDEN ===
 Name: BRENDEN
@@ -14823,13 +14857,14 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Doduo @ Silk Scarf
+Delibird @ Sharp Beak
 Level: 15
-Nature: Timid
-Ability: Tangled Feet
--Double Hit
--Pluck
--Quick Attack
+Nature: Jolly
+Ability: Hustle
+-Fake Out
+-Ice Punch
+-Aerial Ace
+-Ice Shard
 
 Farfetch'd-Galarian @ Leek
 Level: 16

@@ -1,3 +1,11 @@
+script Route105_EventScript_BridgeWorkers{
+	lock
+	faceplayer
+	msgbox(format("We're still working on the bridge to DEWFORD TOWN."))
+	release
+	end
+}
+
 raw `
 Route105_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, Route105_OnLoad
