@@ -5410,11 +5410,34 @@ Pic: School Kid M
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Ralts
+Pachirisu @ Liechi Berry
 Level: 17
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Nature: Jolly
+Ability: Volt Absorb
+-Thunder Punch
+-Seed Bomb
+-Aerial Ace
+-Stuff Cheeks
+
+Bibarel @ Lum Berry
+Level: 16
+Nature: Adamant
+Ability: Simple
+-Aqua Step
+-Headbutt
+-Aqua Jet
+-Super Fang
+
+Larvesta @ Expert Belt
+Level: 17
+Nature: Jolly
+Ability: Flame Body
+-Fire Lash
+-Lunge
+-Skitter Smack
+-Wild Charge
 
 === TRAINER_PAUL ===
 Name: PAUL
@@ -5423,19 +5446,43 @@ Pic: School Kid M
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Numel
-Level: 15
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Ledian @ Lum Berry
+Level: 16
+Nature: Timid
+Ability: Rattled
+-Signal Beam
+-Aeroblast
+-Light Screen
+-Reflect
 
-Oddish
-Level: 15
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Sunflora @ Berry Juice
+Level: 16
+Nature: Jolly
+Ability: Chlorophyll
+-Giga Drain
+-Sludge Bomb
+-Leech Seed
+-Spiky Shield
 
-Wingull
-Level: 15
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Ariados @ Black Sludge
+Level: 16
+Nature: Jolly
+Ability: Swarm
+-Bug Bite
+-Poison Fang
+-Baneful Bunker
+-Toxic Thread
+
+Unown @ Wise Glasses
+Level: 16
+Nature: Timid
+Ability: Levitate
+IVs: 31 HP / 31 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+-Psyshock
+-Shadow Ball
+-Hidden Power
 
 === TRAINER_JERRY_2 ===
 Name: JERRY
@@ -5551,15 +5598,34 @@ Pic: School Kid F
 Gender: Female
 Music: Girl
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Shroomish
+Mankey @ Focus Sash
 Level: 16
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Nature: Jolly
+Ability: Defiant
+-Karate Chop
+-Reversal
+-Rock Tomb
+-Rage Fist
 
-Beautifly
+Deino @ Fighting Gem
 Level: 16
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Nature: Hasty
+Ability: Hustle
+-Feint Attack
+-Dragon Breath
+-Rock Smash
+-Headbutt
+
+Numel @ Passho Berry
+Level: 17
+Nature: Naive
+Ability: Simple
+-Fiery Dance
+-Flame Charge
+-Bulldoze
+-Ancient Power
 
 === TRAINER_KAREN_2 ===
 Name: KAREN
