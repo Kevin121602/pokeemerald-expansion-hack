@@ -3621,8 +3621,8 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
 {
     u32 tempScore = NO_INCREASE;
     u32 noOfHitsToFaint = NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk);
-    u32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, TRUE);
-    u32 shouldSetUp = ((noOfHitsToFaint >= 2 && aiIsFaster) || (noOfHitsToFaint >= 3 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS);
+
+    u32 bestMove = GetBestDmgMoveFromBattler(battlerDef, battlerAtk);
 
     u32 speedBattlerAI, speedBattler;
     u32 holdEffectAI = AI_DATA->holdEffects[battlerAtk];
@@ -3633,12 +3633,24 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
     speedBattler   = GetBattlerTotalSpeedStatArgs(battlerDef, abilityPlayer, holdEffectPlayer);
 
+    u32 hitsToKoShellSmash = GetNoOfHitsToKO(AI_DATA->simulatedDmg[battlerDef][battlerAtk][bestMove].expected, (gBattleMons[battlerAtk].hp/1.5));
+
+    bool32 aiIsFaster = (speedBattlerAI >= speedBattler);
+
+    bool32 aiIsFasterCurse = ((speedBattlerAI/1.5) >= speedBattler);
+
+    bool32 shouldSetUp = ((noOfHitsToFaint >= 2 && aiIsFaster) || (noOfHitsToFaint >= 3 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS);
+
+    bool32 shouldSetUpCurse = ((noOfHitsToFaint >= 2 && aiIsFasterCurse) || (noOfHitsToFaint >= 3 && !aiIsFasterCurse) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS);
+
+    bool32 shouldSetUpShellSmash = ((hitsToKoShellSmash >= 2 && aiIsFaster) || (hitsToKoShellSmash >= 3 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS);
+
     if (considerContrary && AI_DATA->abilities[battlerAtk] == ABILITY_CONTRARY)
         return NO_INCREASE;
 
     // Don't increase stat if AI is at +4
-    if (gBattleMons[battlerAtk].statStages[statId] >= MAX_STAT_STAGE - 2)
-        return NO_INCREASE;
+    //if (gBattleMons[battlerAtk].statStages[statId] >= MAX_STAT_STAGE - 2)
+    //    return NO_INCREASE;
 
     // Don't set up if AI is dead to residual damage from weather
     if (GetBattlerSecondaryDamage(battlerAtk) >= gBattleMons[battlerAtk].hp)
@@ -3653,10 +3665,22 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     case STAT_CHANGE_ATK:
     case STAT_CHANGE_ATK_2:
     case STAT_CHANGE_ATK_DEF:
-        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp){
             tempScore += DECENT_EFFECT;
+        }
+        break;
+    case STAT_CHANGE_CURSE:
+        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && (shouldSetUpCurse || (holdEffectAI == HOLD_EFFECT_RESTORE_STATS && shouldSetUp))){
+            tempScore += DECENT_EFFECT;
+        }
         break;
     case STAT_CHANGE_DEF:
+        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_DEF] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
         if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
         {
             tempScore += DECENT_EFFECT;
@@ -3664,6 +3688,8 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
         break;
     //add caveat where AI needs to be faster after speed control
     case STAT_CHANGE_SPEED:
+        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPEED] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
         if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*1.5 >= speedBattler)){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
@@ -3672,6 +3698,8 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
         break;
     case STAT_CHANGE_ATK_DEF_SPEED:
     case STAT_CHANGE_ATK_SPEED:
+        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
         if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*1.5 >= speedBattler)){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
@@ -3680,6 +3708,8 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
             tempScore += DECENT_EFFECT;
         break;
     case STAT_CHANGE_SPATK_SPDEF_SPEED:
+        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPATK] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
         if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*1.5 >= speedBattler)){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
@@ -3687,7 +3717,21 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
         } else if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
             tempScore += DECENT_EFFECT;
         break;
+    case STAT_CHANGE_SHELL_SMASH:
+        if ((gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPATK] >= MAX_STAT_STAGE - 2) || (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE - 2) || (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPEED] >= MAX_STAT_STAGE - 2))
+            return NO_INCREASE;
+        if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*2 >= speedBattler)){
+            tempScore += (DECENT_EFFECT + WEAK_EFFECT);
+            if(Random() % 100 < 50)
+                tempScore = BEST_EFFECT;
+        } else if (shouldSetUpShellSmash || (holdEffectAI == HOLD_EFFECT_RESTORE_STATS && shouldSetUp))
+            tempScore += (DECENT_EFFECT + WEAK_EFFECT);
+            if(Random() % 100 < 50)
+                tempScore = BEST_EFFECT;
+        break;
     case STAT_CHANGE_ATK_SPEED_2:
+        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
         if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*2 >= speedBattler)){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
@@ -3698,16 +3742,22 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     case STAT_CHANGE_SPATK:
     case STAT_CHANGE_SPATK_2:
     case STAT_CHANGE_SPATK_SPDEF:
+        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPATK] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
         if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
             tempScore += DECENT_EFFECT;
         break;
     case STAT_CHANGE_SPDEF:
+        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPDEF] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
         if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
         {
             tempScore += DECENT_EFFECT;
         }
         break;
     case STAT_CHANGE_DEF_SPDEF:
+        if ((gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPDEF] >= MAX_STAT_STAGE) && (gBattleMons[battlerAtk].statStages[STAT_CHANGE_DEF] >= MAX_STAT_STAGE))
+            return NO_INCREASE;
         if ((HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) || HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL)) && shouldSetUp)
         {
             tempScore += DECENT_EFFECT;
@@ -3723,12 +3773,16 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
         break;
     //add caveat where if AI is faster and could live hit with defensive setup, its 80% to go for it
     case STAT_CHANGE_DEF_2:
+        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_DEF] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
         if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
         {
             tempScore += DECENT_EFFECT;
         }
         break;
     case STAT_CHANGE_SPEED_2:
+        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPEED] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
         if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*2 >= speedBattler)){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
@@ -3736,16 +3790,21 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
         }
         break;
     case STAT_CHANGE_SPDEF_2:
+        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPDEF] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
         if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
         {
             tempScore += DECENT_EFFECT;
         }
         break;
     case STAT_CHANGE_ACC:
-        if (gBattleMons[battlerAtk].statStages[STAT_ACC] <= 3) // Increase only if necessary
+        //if (gBattleMons[battlerAtk].statStages[STAT_ACC] <= 3) // Increase only if necessary
             tempScore += DECENT_EFFECT;
         break;
     case STAT_CHANGE_EVASION:
+        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPDEF] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        else
             tempScore += DECENT_EFFECT;
         break;
     }

@@ -3157,6 +3157,15 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     bool32 isDoubleBattle = IsValidDoubleBattle(battlerAtk);
     u32 i;
 
+    u32 speedBattlerAI, speedBattler;
+    u32 holdEffectAI = AI_DATA->holdEffects[battlerAtk];
+    u32 holdEffectPlayer = AI_DATA->holdEffects[battlerDef];
+    u32 abilityAI = AI_DATA->abilities[battlerAtk];
+    u32 abilityPlayer = AI_DATA->abilities[battlerDef];
+
+    speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
+    speedBattler   = GetBattlerTotalSpeedStatArgs(battlerDef, abilityPlayer, holdEffectPlayer);
+
     // The AI should understand that while Dynamaxed, status moves function like Protect.
     if (GetActiveGimmick(battlerAtk) == GIMMICK_DYNAMAX && gMovesInfo[move].category == DAMAGE_CATEGORY_STATUS)
         moveEffect = EFFECT_PROTECT;
@@ -3318,7 +3327,6 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         break;
     case EFFECT_ATTACK_ACCURACY_UP: // hone claws
         ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ATK));
-        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ACC));
         break;
     case EFFECT_GROWTH:
     case EFFECT_ATTACK_SPATK_UP:    // work up
@@ -3554,8 +3562,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         }
         else
         {
-            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ATK));
-            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
+            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_CURSE));
         }
         break;
     case EFFECT_PROTECT:
@@ -3723,10 +3730,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_STOCKPILE:
         if (aiData->abilities[battlerAtk] == ABILITY_CONTRARY)
             break;
-        if (HasMoveEffect(battlerAtk, EFFECT_SWALLOW) || HasMoveEffect(battlerAtk, EFFECT_SPIT_UP))
-            ADJUST_SCORE(DECENT_EFFECT);
-        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
-        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPDEF));
+        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF_SPDEF));
         break;
     case EFFECT_SWAGGER:
     case EFFECT_FLATTER:
@@ -4004,9 +4008,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         break;
     //BEST_EFFECT if not dead after using it
     case EFFECT_SHELL_SMASH:
-        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED));
-        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPATK));
-        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ATK));
+        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SHELL_SMASH));
         break;
     case EFFECT_TIDY_UP:
         IncreaseTidyUpScore(battlerAtk, battlerDef, move, &score);
@@ -4374,8 +4376,14 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                     score += ShouldTryToFlinch(battlerAtk, battlerDef, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], move);
                     break;
                 case MOVE_EFFECT_SPD_MINUS_1:
+                    if (!ShouldLowerSpeed(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
+                        break;
+                    if(speedBattlerAI < (speedBattler/1.5))
+                        break;
                 case MOVE_EFFECT_SPD_MINUS_2:
                     if (!ShouldLowerSpeed(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
+                        break;
+                    if(speedBattlerAI < (speedBattler/2))
                         break;
                 case MOVE_EFFECT_ATK_MINUS_1:
                     if (aiData->abilities[battlerDef] != ABILITY_CONTRARY && HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL))

@@ -17,21 +17,18 @@ typedef s32 (*AiScoreFunc)(u32, u32, u32, s32);
 #define AI_IS_SLOWER   -1
 
 // for stat increasing / decreasing scores
-#define STAT_CHANGE_ATK        0
-#define STAT_CHANGE_DEF        1
-#define STAT_CHANGE_SPEED      2
-#define STAT_CHANGE_SPATK      3
-#define STAT_CHANGE_SPDEF      4
-
-#define STAT_CHANGE_ATK_2      5
-#define STAT_CHANGE_DEF_2      6
-#define STAT_CHANGE_SPEED_2    7
-#define STAT_CHANGE_SPATK_2    8
-#define STAT_CHANGE_SPDEF_2    9
-
-#define STAT_CHANGE_ACC        10
-#define STAT_CHANGE_EVASION    11
-
+#define STAT_CHANGE_ATK                 0
+#define STAT_CHANGE_DEF                 1
+#define STAT_CHANGE_SPEED               2
+#define STAT_CHANGE_SPATK               3
+#define STAT_CHANGE_SPDEF               4
+#define STAT_CHANGE_ATK_2               5
+#define STAT_CHANGE_DEF_2               6
+#define STAT_CHANGE_SPEED_2             7
+#define STAT_CHANGE_SPATK_2             8
+#define STAT_CHANGE_SPDEF_2             9
+#define STAT_CHANGE_ACC                 10
+#define STAT_CHANGE_EVASION             11
 #define STAT_CHANGE_ATK_DEF             12
 #define STAT_CHANGE_DEF_SPDEF           13
 #define STAT_CHANGE_ATK_SPEED           14
@@ -39,8 +36,9 @@ typedef s32 (*AiScoreFunc)(u32, u32, u32, s32);
 #define STAT_CHANGE_ATK_SPEED_2         16
 #define STAT_CHANGE_SPATK_SPDEF_SPEED   17
 #define STAT_CHANGE_ATK_DEF_SPEED       18
-
 #define STAT_CHANGE_CRIT_RATE           19
+#define STAT_CHANGE_CURSE               20
+#define STAT_CHANGE_SHELL_SMASH         21
 
 //for doubles targeting cases
 
