@@ -52,23 +52,23 @@
 #define FLAG_HIDE_RUSTURF_TUNNEL_ROXANNE    0x26
 #define FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_2    0x27
 #define FLAG_HIDE_ROUTE_105_WORKERS    0x28
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
-#define FLAG_UNUSED_0x035    0x35 // Unused Flag
-#define FLAG_UNUSED_0x036    0x36 // Unused Flag
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
-#define FLAG_UNUSED_0x038    0x38 // Unused Flag
-#define FLAG_UNUSED_0x039    0x39 // Unused Flag
+#define FLAG_BEAT_TRICK_HOUSE_PUZZLE_1    0x29 // Unused Flag
+#define FLAG_BEAT_TRICK_HOUSE_PUZZLE_2    0x2A // Unused Flag
+#define FLAG_BEAT_TRICK_HOUSE_PUZZLE_3    0x2B // Unused Flag
+#define FLAG_BEAT_TRICK_HOUSE_PUZZLE_4    0x2C // Unused Flag
+#define FLAG_BEAT_TRICK_HOUSE_PUZZLE_5    0x2D // Unused Flag
+#define FLAG_BEAT_TRICK_HOUSE_PUZZLE_6    0x2E // Unused Flag
+#define FLAG_BEAT_TRICK_HOUSE_PUZZLE_7    0x2F // Unused Flag
+#define FLAG_BEAT_TRICK_HOUSE_PUZZLE_8    0x30 // Unused Flag
+#define FLAG_RECIEVED_TRICK_HOUSE_GIFT_1    0x31 // Unused Flag
+#define FLAG_RECIEVED_TRICK_HOUSE_GIFT_2    0x32 // Unused Flag
+#define FLAG_RECIEVED_TRICK_HOUSE_GIFT_3    0x33 // Unused Flag
+#define FLAG_RECIEVED_TRICK_HOUSE_GIFT_4    0x34 // Unused Flag
+#define FLAG_RECIEVED_TRICK_HOUSE_GIFT_5    0x35 // Unused Flag
+#define FLAG_RECIEVED_TRICK_HOUSE_GIFT_6    0x36 // Unused Flag
+#define FLAG_RECIEVED_TRICK_HOUSE_GIFT_7    0x37 // Unused Flag
+#define FLAG_RECIEVED_TRICK_HOUSE_GIFT_8    0x38 // Unused Flag
+#define FLAG_HIDE_TRICK_HOUSE_APPRENTICE    0x39 // Unused Flag
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag
 #define FLAG_UNUSED_0x03B    0x3B // Unused Flag
 #define FLAG_UNUSED_0x03C    0x3C // Unused Flag

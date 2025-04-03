@@ -127,6 +127,7 @@
 #define MULTI_CHANGE_NATURE_1              116
 #define MULTI_CHANGE_NATURE_2              117
 #define MULTI_CHANGE_NATURE_3              118
+#define MULTI_TRICK_HOUSE_GIFTS            119
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

@@ -49,7 +49,7 @@ RustboroCity_DevonCorp_2F_EventScript_FossilScientistNew_20:
 	setflag FLAG_RECIEVED_COMMON_FOSSIL
 RustboroCity_DevonCorp_2F_EventScript_FossilScientistNew_1:
 # 93 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	releaseall
+	release
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_FossilScientistNew_2:
@@ -61,7 +61,7 @@ RustboroCity_DevonCorp_2F_EventScript_FossilScientistNew_5:
 # 14 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	msgbox RustboroCity_DevonCorp_2F_EventScript_FossilScientistNew_Text_2
 # 15 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	releaseall
+	release
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_FossilScientistNew_10:

@@ -1,3 +1,386 @@
+script Route110_TrickHouseEntrance_Apprentice{
+	lock
+	faceplayer
+	msgbox("They call me the TRICK APPRENTICE,\n"
+				"loyal protégé to the one and only\l"
+				"TRICK MASTER!\p"
+				"Would you like to pick up any of\n"
+				"your puzzle rewards?$")
+	waitmessage
+	closemessage
+	multichoice(21, 0, MULTI_TRICK_HOUSE_GIFTS, FALSE)
+	if(var(VAR_RESULT) == 8 || var(VAR_RESULT) == MULTI_B_PRESSED){
+		release
+		end
+	}
+	if(var(VAR_RESULT) > VAR_TRICK_HOUSE_LEVEL){
+		msgbox("The TRICK MASTER hasn't even devised\n"
+				"of that puzzle yet!$")
+		release
+		end
+	}
+	switch(var(VAR_RESULT)){
+		case 0:
+			if(!flag(FLAG_BEAT_TRICK_HOUSE_PUZZLE_1)){
+				msgbox("It looks like you haven't completed\n"
+				"that puzzle.$")
+				release
+				end
+			}
+			if(flag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_1)){
+				msgbox("You've already taken that reward.$")
+				release
+				end				
+			} else {
+				msgbox("The first reward is either a Sandshrew\n"
+					"or an Alolan Sandshrew, both with\l"
+					"Spiky Shield.\p"
+					"Does that sound good?$", MSGBOX_YESNO)
+				if(var(VAR_RESULT) == NO){
+					release
+					end
+				} else {
+					random(2)
+					switch(var(VAR_RESULT)){
+						case 0:
+							givemon(SPECIES_SANDSHREW, 5, , , , , , , , , , , , , , , , , , MOVE_SCRATCH, MOVE_POISON_STING, MOVE_SAND_ATTACK, MOVE_SPIKY_SHIELD)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Sandshrew!"))
+							waitmessage
+							waitfanfare
+						case 1:
+							givemon(SPECIES_SANDSHREW_ALOLAN, 5, , , , , , , , , , , , , , , , , , MOVE_BIDE, MOVE_SCRATCH, MOVE_MIST, MOVE_SPIKY_SHIELD)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Sandshrew!"))
+							waitmessage
+							waitfanfare
+					}
+					msgbox("Give this Pokémon a nickname?", MSGBOX_YESNO)
+					if(var(VAR_RESULT) == YES){
+						call(Common_EventScript_NameReceivedPartyMon)
+					}
+					setflag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_1)
+				}
+			}
+		case 1:
+			if(!flag(FLAG_BEAT_TRICK_HOUSE_PUZZLE_2)){
+				msgbox("It looks like you haven't completed\n"
+				"that puzzle.$")
+				release
+				end
+			}
+			if(flag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_2)){
+				msgbox("You've already taken that reward.$")
+				release
+				end				
+			} else {
+				msgbox("The second reward is either a Solrock\n"
+					"or Lunatone, both with Photon Geyser.\p"
+					"Does that sound good?$", MSGBOX_YESNO)
+				if(var(VAR_RESULT) == NO){
+					release
+					end
+				} else {
+					random(2)
+					switch(var(VAR_RESULT)){
+						case 0:
+							givemon(SPECIES_SOLROCK, 15)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Solrock!"))
+							waitmessage
+							waitfanfare
+						case 1:
+							givemon(SPECIES_LUNATONE, 15)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Lunatone!"))
+							waitmessage
+							waitfanfare
+					}
+					msgbox("Give this Pokémon a nickname?", MSGBOX_YESNO)
+					if(var(VAR_RESULT) == YES){
+						call(Common_EventScript_NameReceivedPartyMon)
+					}
+					setflag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_2)
+				}
+			}			
+		case 2:
+			if(!flag(FLAG_BEAT_TRICK_HOUSE_PUZZLE_3)){
+				msgbox("It looks like you haven't completed\n"
+				"that puzzle.$")
+				release
+				end
+			}
+			if(flag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_3)){
+				msgbox("You've already taken that reward.$")
+				release
+				end				
+			} else {
+				msgbox("The third reward is either a Murkrow\n"
+					"with Oblivion Wing, or a Misdreavus\l"
+					"with Moongeist Beam.\p"
+					"Does that sound good?$", MSGBOX_YESNO)
+				if(var(VAR_RESULT) == NO){
+					release
+					end
+				} else {
+					random(2)
+					switch(var(VAR_RESULT)){
+						case 0:
+							givemon(SPECIES_MURKROW, 20)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Murkrow!"))
+							waitmessage
+							waitfanfare
+						case 1:
+							givemon(SPECIES_MISDREAVUS, 20)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Misdreavus!"))
+							waitmessage
+							waitfanfare
+					}
+					msgbox("Give this Pokémon a nickname?", MSGBOX_YESNO)
+					if(var(VAR_RESULT) == YES){
+						call(Common_EventScript_NameReceivedPartyMon)
+					}
+					setflag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_3)
+				}
+			}
+		case 3:
+			if(!flag(FLAG_BEAT_TRICK_HOUSE_PUZZLE_4)){
+				msgbox("It looks like you haven't completed\n"
+				"that puzzle.$")
+				release
+				end
+			}
+			if(flag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_4)){
+				msgbox("You've already taken that reward.$")
+				release
+				end				
+			} else {
+				msgbox("The fourth reward is either a Jynx\n"
+					"with Psycho Boost, an Electivire with\p"
+					"Volt Tackle, or a Magmortar with\n"
+					"Armor Cannon.\p"
+					"Does that sound good?$", MSGBOX_YESNO)
+				if(var(VAR_RESULT) == NO){
+					release
+					end
+				} else {
+					random(3)
+					switch(var(VAR_RESULT)){
+						case 0:
+							givemon(SPECIES_JYNX, 30)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Jynx!"))
+							waitmessage
+							waitfanfare
+						case 1:
+							givemon(SPECIES_ELECTIVIRE, 30)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Electivire!"))
+							waitmessage
+							waitfanfare
+						case 2:
+							givemon(SPECIES_MAGMORTAR, 30)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Magmortar!"))
+							waitmessage
+							waitfanfare
+					}
+					msgbox("Give this Pokémon a nickname?", MSGBOX_YESNO)
+					if(var(VAR_RESULT) == YES){
+						call(Common_EventScript_NameReceivedPartyMon)
+					}
+					setflag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_4)
+				}
+			}
+		case 4:
+			if(!flag(FLAG_BEAT_TRICK_HOUSE_PUZZLE_5)){
+				msgbox("It looks like you haven't completed\n"
+				"that puzzle.$")
+				release
+				end
+			}
+			if(flag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_5)){
+				msgbox("You've already taken that reward.$")
+				release
+				end				
+			} else {
+				msgbox("The fifth reward is either a Hitmonlee\n"
+					"with Thunderous Kick, a Hitmonchan\p"
+					"with Wicked Blow, or a Hitmontop with\n"
+					"Surging Strikes.\p"
+					"Does that sound good?$", MSGBOX_YESNO)
+				if(var(VAR_RESULT) == NO){
+					release
+					end
+				} else {
+					random(3)
+					switch(var(VAR_RESULT)){
+						case 0:
+							givemon(SPECIES_HITMONLEE, 20)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Hitmonlee!"))
+							waitmessage
+							waitfanfare
+						case 1:
+							givemon(SPECIES_HITMONCHAN, 20)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Hitmonchan!"))
+							waitmessage
+							waitfanfare
+						case 2:
+							givemon(SPECIES_HITMONTOP, 30)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Hitmontop!"))
+							waitmessage
+							waitfanfare
+					}
+					msgbox("Give this Pokémon a nickname?", MSGBOX_YESNO)
+					if(var(VAR_RESULT) == YES){
+						call(Common_EventScript_NameReceivedPartyMon)
+					}
+					setflag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_5)
+				}
+			}
+		case 5:
+			if(!flag(FLAG_BEAT_TRICK_HOUSE_PUZZLE_6)){
+				msgbox("It looks like you haven't completed\n"
+				"that puzzle.$")
+				release
+				end
+			}
+			if(flag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_6)){
+				msgbox("You've already taken that reward.$")
+				release
+				end				
+			} else {
+				msgbox("The sixth reward is either a Relicanth\n"
+					"with Wave Crash, or an Aerodactyl\l"
+					"with Brave Bird.\p"
+					"Does that sound good?$", MSGBOX_YESNO)
+				if(var(VAR_RESULT) == NO){
+					release
+					end
+				} else {
+					random(2)
+					switch(var(VAR_RESULT)){
+						case 0:
+							givemon(SPECIES_RELICANTH, 40)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Relicanth!"))
+							waitmessage
+							waitfanfare
+						case 1:
+							givemon(SPECIES_AERODACTYL, 40)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Aerodactyl!"))
+							waitmessage
+							waitfanfare
+					}
+					msgbox("Give this Pokémon a nickname?", MSGBOX_YESNO)
+					if(var(VAR_RESULT) == YES){
+						call(Common_EventScript_NameReceivedPartyMon)
+					}
+					setflag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_6)
+				}
+			}
+		case 6:
+			if(!flag(FLAG_BEAT_TRICK_HOUSE_PUZZLE_7)){
+				msgbox("It looks like you haven't completed\n"
+				"that puzzle.$")
+				release
+				end
+			}
+			if(flag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_7)){
+				msgbox("You've already taken that reward.$")
+				release
+				end				
+			} else {
+				msgbox("The seventh reward is either a Togetic\n"
+					"with Aeroblast, or a Clefairy with\l"
+					"Light of Ruin.\p"
+					"Does that sound good?$", MSGBOX_YESNO)
+				if(var(VAR_RESULT) == NO){
+					release
+					end
+				} else {
+					random(2)
+					switch(var(VAR_RESULT)){
+						case 0:
+							givemon(SPECIES_TOGETIC, 25)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Togetic!"))
+							waitmessage
+							waitfanfare
+						case 1:
+							givemon(SPECIES_CLEFAIRY, 25)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Clefairy!"))
+							waitmessage
+							waitfanfare
+					}
+					msgbox("Give this Pokémon a nickname?", MSGBOX_YESNO)
+					if(var(VAR_RESULT) == YES){
+						call(Common_EventScript_NameReceivedPartyMon)
+					}
+					setflag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_7)
+				}
+			}
+		case 7:
+			if(!flag(FLAG_BEAT_TRICK_HOUSE_PUZZLE_8)){
+				msgbox("It looks like you haven't completed\n"
+				"that puzzle.$")
+				release
+				end
+			}
+			if(flag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_8)){
+				msgbox("You've already taken that reward.$")
+				release
+				end				
+			} else {
+				msgbox("The final reward is either a Pinsir\n"
+					"with Extreme Speed, a Kleavor with\p"
+					"Mighty Cleave, or a Scizor with\n"
+					"Gear Grind.\p"
+					"Does that sound good?$", MSGBOX_YESNO)
+				if(var(VAR_RESULT) == NO){
+					release
+					end
+				} else {
+					random(3)
+					switch(var(VAR_RESULT)){
+						case 0:
+							givemon(SPECIES_PINSIR, 50)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Pinsir!"))
+							waitmessage
+							waitfanfare
+						case 1:
+							givemon(SPECIES_KLEAVOR, 50)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Kleavor!"))
+							waitmessage
+							waitfanfare
+						case 2:
+							givemon(SPECIES_SCIZOR, 50)
+							playfanfare(MUS_DP_OBTAIN_ITEM)
+							msgbox(format("{PLAYER} recieved Scizor!"))
+							waitmessage
+							waitfanfare
+					}
+					msgbox("Give this Pokémon a nickname?", MSGBOX_YESNO)
+					if(var(VAR_RESULT) == YES){
+						call(Common_EventScript_NameReceivedPartyMon)
+					}
+					setflag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_8)
+				}
+			}
+	}
+	release
+	end
+}
+
 raw `
 .set LOCALID_TRICK_MASTER, 1
 
@@ -554,13 +937,13 @@ Route110_TrickHouseEntrance_EventScript_LeftOnJourneyNote2::
 Route110_TrickHousePuzzle_EventScript_Door::
 	lockall
 	switch VAR_TRICK_HOUSE_LEVEL
-	case 0, Route110_TrickHousePuzzle1_EventScript_Door
-	case 1, Route110_TrickHousePuzzle2_EventScript_Door
-	case 2, Route110_TrickHousePuzzle3_EventScript_Door
-	case 3, Route110_TrickHousePuzzle4_EventScript_Door
-	case 4, Route110_TrickHousePuzzle5_EventScript_Door
-	case 5, Route110_TrickHousePuzzle6_EventScript_Door
-	case 6, Route110_TrickHousePuzzle7_EventScript_Door
+	case 0, Route110_TrickHousePuzzle2_EventScript_Door
+	case 1, Route110_TrickHousePuzzle1_EventScript_Door
+	case 2, Route110_TrickHousePuzzle6_EventScript_Door
+	case 3, Route110_TrickHousePuzzle7_EventScript_Door
+	case 4, Route110_TrickHousePuzzle3_EventScript_Door
+	case 5, Route110_TrickHousePuzzle4_EventScript_Door
+	case 6, Route110_TrickHousePuzzle5_EventScript_Door
 	case 7, Route110_TrickHousePuzzle8_EventScript_Door
 	end
 

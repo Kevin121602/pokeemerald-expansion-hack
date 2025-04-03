@@ -12,7 +12,7 @@ script RustboroCity_DevonCorp_2F_EventScript_FossilScientistNew {
 				"Would you like to have it?$", MSGBOX_YESNO)
 		if(var(VAR_RESULT) == NO){
 			msgbox(format("Let me know if you change your mind."))
-			releaseall
+			release
 			end
 		} else {
 			msgbox("Let's see, where did I put it?\p"
@@ -90,7 +90,7 @@ script RustboroCity_DevonCorp_2F_EventScript_FossilScientistNew {
 			setflag(FLAG_RECIEVED_COMMON_FOSSIL)
 		}
 	}
-	releaseall
+	release
 	end
 }
 

@@ -3108,4 +3108,13 @@ extern const u8 gText_PlusExp[];
 extern const u8 gText_WhichStatus[];
 extern const u8 gText_SetHP[];
 extern const u8 gText_AddExp[];
+
+extern const u8 gText_FirstPuzzle[];
+extern const u8 gText_SecondPuzzle[];
+extern const u8 gText_ThirdPuzzle[];
+extern const u8 gText_FourthPuzzle[];
+extern const u8 gText_FifthPuzzle[];
+extern const u8 gText_SixthPuzzle[];
+extern const u8 gText_SeventhPuzzle[];
+extern const u8 gText_EighthPuzzle[];
 #endif // GUARD_STRINGS_H

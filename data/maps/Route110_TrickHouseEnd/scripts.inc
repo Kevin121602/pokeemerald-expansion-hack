@@ -99,19 +99,19 @@ Route110_TrickHouseEnd_EventScript_TrickMaster::
 # 50 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	switch VAR_TRICK_HOUSE_LEVEL
 # 51 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	case 0, Route110_TrickHouseEnd_EventScript_CompletedPuzzle1
+	case 0, Route110_TrickHouseEnd_EventScript_CompletedPuzzle2
 # 52 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	case 1, Route110_TrickHouseEnd_EventScript_CompletedPuzzle2
+	case 1, Route110_TrickHouseEnd_EventScript_CompletedPuzzle1
 # 53 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	case 2, Route110_TrickHouseEnd_EventScript_CompletedPuzzle3
+	case 2, Route110_TrickHouseEnd_EventScript_CompletedPuzzle6
 # 54 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	case 3, Route110_TrickHouseEnd_EventScript_CompletedPuzzle4
+	case 3, Route110_TrickHouseEnd_EventScript_CompletedPuzzle7
 # 55 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	case 4, Route110_TrickHouseEnd_EventScript_CompletedPuzzle5
+	case 4, Route110_TrickHouseEnd_EventScript_CompletedPuzzle3
 # 56 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	case 5, Route110_TrickHouseEnd_EventScript_CompletedPuzzle6
+	case 5, Route110_TrickHouseEnd_EventScript_CompletedPuzzle4
 # 57 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	case 6, Route110_TrickHouseEnd_EventScript_CompletedPuzzle7
+	case 6, Route110_TrickHouseEnd_EventScript_CompletedPuzzle5
 # 58 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	case 7, Route110_TrickHouseEnd_EventScript_CompletedPuzzle8
 # 59 "data/maps/Route110_TrickHouseEnd/scripts.pory"
@@ -125,11 +125,11 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle1::
 # 63 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 # 64 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
+	clearflag FLAG_HIDE_TRICK_HOUSE_APPRENTICE
 # 65 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	giveitem ITEM_RARE_CANDY
+	setflag FLAG_BEAT_TRICK_HOUSE_PUZZLE_2
 # 66 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
+	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
 # 67 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
 # 68 "data/maps/Route110_TrickHouseEnd/scripts.pory"
@@ -149,11 +149,11 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle2::
 # 75 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 # 76 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
+	clearflag FLAG_HIDE_TRICK_HOUSE_APPRENTICE
 # 77 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	giveitem ITEM_TIMER_BALL
+	setflag FLAG_BEAT_TRICK_HOUSE_PUZZLE_1
 # 78 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
+	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
 # 79 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
 # 80 "data/maps/Route110_TrickHouseEnd/scripts.pory"
@@ -173,11 +173,11 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle3::
 # 87 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 # 88 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
+	clearflag FLAG_HIDE_TRICK_HOUSE_APPRENTICE
 # 89 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	giveitem ITEM_HARD_STONE
+	setflag FLAG_BEAT_TRICK_HOUSE_PUZZLE_5
 # 90 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
+	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
 # 91 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
 # 92 "data/maps/Route110_TrickHouseEnd/scripts.pory"
@@ -197,11 +197,11 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle4::
 # 99 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 # 100 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
+	clearflag FLAG_HIDE_TRICK_HOUSE_APPRENTICE
 # 101 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	giveitem ITEM_SMOKE_BALL
+	setflag FLAG_BEAT_TRICK_HOUSE_PUZZLE_6
 # 102 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
+	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
 # 103 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
 # 104 "data/maps/Route110_TrickHouseEnd/scripts.pory"
@@ -221,11 +221,11 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle5::
 # 111 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 # 112 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
+	clearflag FLAG_HIDE_TRICK_HOUSE_APPRENTICE
 # 113 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	giveitem ITEM_TM_ACROBATICS
+	setflag FLAG_BEAT_TRICK_HOUSE_PUZZLE_7
 # 114 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
+	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
 # 115 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
 # 116 "data/maps/Route110_TrickHouseEnd/scripts.pory"
@@ -245,11 +245,11 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle6::
 # 123 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 # 124 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
+	clearflag FLAG_HIDE_TRICK_HOUSE_APPRENTICE
 # 125 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	giveitem ITEM_MAGNET
+	setflag FLAG_BEAT_TRICK_HOUSE_PUZZLE_3
 # 126 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
+	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
 # 127 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
 # 128 "data/maps/Route110_TrickHouseEnd/scripts.pory"
@@ -269,11 +269,11 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle7::
 # 135 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 # 136 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
+	clearflag FLAG_HIDE_TRICK_HOUSE_APPRENTICE
 # 137 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	giveitem ITEM_PP_MAX
+	setflag FLAG_BEAT_TRICK_HOUSE_PUZZLE_4
 # 138 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_BagFull
+	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
 # 139 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_MakeNewTricksToStumpYou, MSGBOX_DEFAULT
 # 140 "data/maps/Route110_TrickHouseEnd/scripts.pory"
@@ -313,13 +313,13 @@ Route110_TrickHouseEnd_EventScript_CompletedPuzzle8::
 # 157 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	delay 30
 # 158 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	msgbox Route110_TrickHouseEnd_Text_DefeatedMePreferWhichTent, MSGBOX_DEFAULT
+	msgbox Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
 # 159 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
+	clearflag FLAG_HIDE_TRICK_HOUSE_APPRENTICE
 # 160 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	call Route110_TrickHouseEnd_EventScript_ChooseTent
+	setflag FLAG_BEAT_TRICK_HOUSE_PUZZLE_8
 # 161 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	call_if_eq VAR_RESULT, FALSE, Route110_TrickHouseEnd_EventScript_NoRoomForTent
+	setvar VAR_TRICK_HOUSE_PRIZE_PICKUP, 0
 # 162 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	msgbox Route110_TrickHouseEnd_Text_LeavingOnJourney, MSGBOX_DEFAULT
 # 163 "data/maps/Route110_TrickHouseEnd/scripts.pory"
@@ -675,9 +675,9 @@ Route110_TrickHouseEnd_Text_LeavingOnJourney:
 # 338 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward:
 # 339 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "Fine!\n"
+	.string "Talk to my APPRENTICE if you want\n"
 # 340 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "You have earned this reward!$"
+	.string "a reward!$"
 # 341 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 
 # 342 "data/maps/Route110_TrickHouseEnd/scripts.pory"
