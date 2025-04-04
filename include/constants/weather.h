@@ -20,6 +20,32 @@
 #define WEATHER_ROUTE119_CYCLE          20
 #define WEATHER_ROUTE123_CYCLE          21
 
+//overworld field effects
+#define FIELD_EFFECT_RICH_SEDIMENT      22
+#define FIELD_EFFECT_HOT_COALS          23
+#define FIELD_EFFECT_GRUDGE             24
+#define FIELD_EFFECT_RETALIATE          25
+#define FIELD_EFFECT_BOOSTED_CRITS      26
+#define FIELD_EFFECT_CAMOMONS           27
+#define FIELD_EFFECT_DECREASED_SE_DMG   28
+#define FIELD_EFFECT_AURORA_VEIL        29
+#define FIELD_EFFECT_TAILWIND           30
+#define FIELD_EFFECT_WONDER_ROOM        31
+#define FIELD_EFFECT_TRICK_ROOM         32
+#define FIELD_EFFECT_INNATE_MOVES       33
+#define FIELD_EFFECT_INVERSE            34
+#define FIELD_EFFECT_MAGNET_RISE        35
+#define FIELD_EFFECT_MAGMA_STORM        36
+#define FIELD_EFFECT_SERENE_GRACE       37
+#define FIELD_EFFECT_MISTY_TERRAIN      38
+#define FIELD_EFFECT_GRASSY_TERRAIN     39
+#define FIELD_EFFECT_PSYCHIC_TERRAIN    40
+#define FIELD_EFFECT_ELECTRIC_TERRAIN   41
+#define FIELD_EFFECT_PRIMORDIAL_SUN     42
+#define FIELD_EFFECT_PRIMORDIAL_SEA     43
+#define FIELD_EFFECT_VISCIOUS_SANDSTORM 44
+#define FIELD_EFFECT_HEAVY_HAIL         45
+
 // These are used in maps' coord_weather_event entries.
 // They are not a one-to-one mapping with the engine's
 // internal weather constants above.

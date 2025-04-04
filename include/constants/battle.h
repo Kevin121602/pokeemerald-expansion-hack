@@ -248,6 +248,13 @@
 #define SIDE_STATUS_RAINBOW                 (1 << 24)
 #define SIDE_STATUS_SEA_OF_FIRE             (1 << 25)
 #define SIDE_STATUS_SWAMP                   (1 << 26)
+#define SIDE_STATUS_HOT_COALS               (1 << 27)
+#define SIDE_STATUS_TEPID_COALS             (1 << 28)
+#define SIDE_STATUS_DECREASED_SE_DMG        (1 << 29)
+#define SIDE_STATUS_AURORA_VEIL_PERMANENT   (1 << 30)
+#define SIDE_STATUS_TAILWIND_PERMANENT      (1 << 31)
+#define SIDE_STATUS_MAGMA_STORM             (1 << 32)
+#define SIDE_STATUS_RAINBOW_PERMANENT       (1 << 33)
 
 #define SIDE_STATUS_HAZARDS_ANY    (SIDE_STATUS_SPIKES | SIDE_STATUS_STICKY_WEB | SIDE_STATUS_TOXIC_SPIKES | SIDE_STATUS_STEALTH_ROCK | SIDE_STATUS_STEELSURGE)
 #define SIDE_STATUS_SCREEN_ANY     (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL)
@@ -267,6 +274,15 @@
 #define STATUS_FIELD_ION_DELUGE                     (1 << 10)
 #define STATUS_FIELD_FAIRY_LOCK                     (1 << 11)
 #define STATUS_FIELD_TERRAIN_PERMANENT              (1 << 12)   // Overworld thunderstorm generates electric terrain
+#define STATUS_FIELD_RICH_SEDIMENT                  (1 << 13)
+#define STATUS_FIELD_GRUDGE                         (1 << 14)
+#define STATUS_FIELD_RETALIATE                      (1 << 15)
+#define STATUS_FIELD_BOOSTED_CRITS                  (1 << 16)
+#define STATUS_FIELD_CAMOMONS                       (1 << 17)
+#define STATUS_FIELD_TRICK_ROOM_PERMANENT           (1 << 18)
+#define STATUS_FIELD_WONDER_ROOM_PERMANENT          (1 << 19)
+#define STATUS_FIELD_INNATE_MOVES                   (1 << 20)
+#define STATUS_FIELD_MAGNET_RISE                    (1 << 21)
 
 #define STATUS_FIELD_TERRAIN_ANY        (STATUS_FIELD_GRASSY_TERRAIN | STATUS_FIELD_MISTY_TERRAIN | STATUS_FIELD_ELECTRIC_TERRAIN | STATUS_FIELD_PSYCHIC_TERRAIN)
 
