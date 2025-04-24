@@ -44,7 +44,7 @@ OldaleTown_EventScript_MartEmployee::
 	goto_if_set FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_ExplainPotion
 	goto_if_set FLAG_TEMP_1, OldaleTown_EventScript_ExplainPotion
 	setflag FLAG_TEMP_1
-	playbgm MUS_FOLLOW_ME, FALSE
+	playbgm MUS_DP_FOLLOW_ME, FALSE
 	msgbox OldaleTown_Text_IWorkAtPokemonMart, MSGBOX_DEFAULT
 	closemessage
 	switch VAR_FACING
@@ -76,9 +76,6 @@ OldaleTown_EventScript_GoToMartEast::
 
 OldaleTown_EventScript_ExplainPokemonMart::
 	msgbox OldaleTown_Text_ThisIsAPokemonMart, MSGBOX_DEFAULT
-	giveitem ITEM_POTION
-	goto_if_eq VAR_RESULT, FALSE, OldaleTown_EventScript_BagIsFull
-	msgbox OldaleTown_Text_PotionExplanation, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_POTION_OLDALE
 	fadedefaultbgm
 	release
@@ -356,15 +353,15 @@ OldaleTown_Text_IWorkAtPokemonMart:
 OldaleTown_Text_ThisIsAPokemonMart:
 	.string "This is a POKéMON MART.\n"
 	.string "Just look for our blue roof.\p"
-	.string "We sell a variety of goods including\n"
-	.string "POKé BALLS for catching POKéMON.\p"
-	.string "Here, I'd like you to have this as\n"
-	.string "a promotional item.$"
+	.string "We're holding a giveaway for up-and\n"
+	.string "-coming Trainers inside!$"
 
 OldaleTown_Text_PotionExplanation:
-	.string "A POTION can be used anytime, so it's\n"
-	.string "even more useful than a POKéMON CENTER\l"
-	.string "in certain situations.$"
+	.string "Bottle Caps can be used to buy certain\n"
+	.string "items.\p" 
+	.string "Every time you get a new Badge make\n"
+	.string "sure to stop by the nearest POKéMART\l"
+	.string "to pick up another one!$"
 
 OldaleTown_Text_WaitDontComeInHere:
 	.string "Aaaaah! Wait!\n"

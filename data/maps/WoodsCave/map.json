@@ -2,7 +2,7 @@
   "id": "MAP_WOODS_CAVE",
   "name": "WoodsCave",
   "layout": "LAYOUT_WOODS_CAVE",
-  "music": "MUS_PETALBURG",
+  "music": "MUS_DP_OREBURGH_GATE",
   "region_map_section": "MAPSEC_WOODS_CAVE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

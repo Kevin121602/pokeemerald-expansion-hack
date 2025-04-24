@@ -2,7 +2,7 @@
   "id": "MAP_OLDALE_MEADOW_HOUSE1",
   "name": "OldaleMeadow_House1",
   "layout": "LAYOUT_OLDALE_MEADOW_HOUSE1",
-  "music": "MUS_DUMMY",
+  "music": "MUS_DP_SANDGEM_DAY",
   "region_map_section": "MAPSEC_OLDALE_MEADOW",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

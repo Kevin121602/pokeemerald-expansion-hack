@@ -5715,8 +5715,6 @@ void AnimTask_GetWeather(u8 taskId)
         gBattleAnimArgs[ARG_RET_ID] = ANIM_WEATHER_HAIL;
     else if (gWeatherMoveAnim & B_WEATHER_SNOW)
         gBattleAnimArgs[ARG_RET_ID] = ANIM_WEATHER_SNOW;
-    else if (gWeatherMoveAnim & B_WEATHER_FOG)
-        gBattleAnimArgs[ARG_RET_ID] = ANIM_WEATHER_FOG;
 
     DestroyAnimVisualTask(taskId);
 }

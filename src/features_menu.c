@@ -71,6 +71,7 @@ enum FeaturesMenu
     FEATURES_MENU_REPEL,
     FEATURES_MENU_MOVE_TUTORS,
     FEATURES_MENU_HEART_SCALES,
+    FEATURES_MENU_BUY_ITEMS,
     FEATURES_MENU_MOVE_DELETER,
     FEATURES_MENU_POKE_RIDER,
 };
@@ -85,6 +86,17 @@ enum HeartScalesMenu
     HEART_SCALE_MENU_EXIT,
 };
 
+enum ItemsMenu
+{
+    ITEM_MENU_EJECT_PACK,
+    ITEM_MENU_EJECT_BUTTON,
+    ITEM_MENU_RED_CARD,
+    ITEM_MENU_GEMS,
+    ITEM_MENU_RESIST_BERRIES,
+    ITEM_MENU_PINCH_BERRIES,
+    ITEM_MENU_EXIT,
+};
+
 struct FeaturesMenuListData
 {
     struct ListMenuItem listItems[20 + 1];
@@ -95,38 +107,49 @@ struct FeaturesMenuListData
 //EWRAM
 EWRAM_DATA static u8 sNumFeaturesMenuActions = 0;
 EWRAM_DATA static u8 sNumHeartScalesMenuActions = 0;
-EWRAM_DATA static u8 sCurrentFeaturesMenuActions[7] = {0};
+EWRAM_DATA static u8 sNumItemsMenuActions = 0;
+EWRAM_DATA static u8 sCurrentFeaturesMenuActions[8] = {0};
 EWRAM_DATA static u8 sCurrentHeartScalesMenuActions[6] = {0};
+EWRAM_DATA static u8 sCurrentItemsMenuActions[7] = {0};
 EWRAM_DATA static s8 sInitFeaturesMenuData[2] = {0};
 EWRAM_DATA static s8 sInitHeartScalesMenuData[2] = {0};
+EWRAM_DATA static s8 sInitItemsMenuData[2] = {0};
 EWRAM_DATA static u8 sFeaturesMenuCursorPos = 0;
 EWRAM_DATA static u8 sHeartScalesMenuCursorPos = 0;
+EWRAM_DATA static u8 sItemsMenuCursorPos = 0;
 
 void ShowFeaturesMenu(void);
 static void AddFeaturesMenuAction(u8 action);
 static void AddHeartScalesMenuAction(u8 action);
+static void AddItemsMenuAction(u8 action);
 static void CreateFeaturesMenuTask(TaskFunc followupFunc);
 static void CreateHeartScalesMenuTask(TaskFunc followupFunc);
+static void CreateItemsMenuTask(TaskFunc followupFunc);
 static void BuildFeaturesMenuActions(void);
 static void BuildHeartScalesMenuActions(void);
+static void BuildItemsMenuActions(void);
 static void HideFeaturesMenu(void);
 static void HideHeartScalesMenu(void);
+static void HideItemsMenu(void);
 static void FeaturesMenu_PreformScript(const u8 *script);
-static void FeaturesMenu_NoHeartScales(const u8 *message);
 
 static bool32 InitFeaturesMenuStep(void);
 static bool32 InitHeartScalesMenuStep(void);
+static bool32 InitItemsMenuStep(void);
 static bool32 PrintFeaturesMenuActions(s8 *pIndex, u32 count);
 static bool32 PrintHeartScalesMenuActions(s8 *pIndex, u32 count);
+static bool32 PrintItemsMenuActions(s8 *pIndex, u32 count);
 
 static bool8 HandleFeaturesMenuInput(void);
 static bool8 HandleHeartScalesMenuInput(void);
+static bool8 HandleItemsMenuInput(void);
 
 static bool8 FeaturesAction_OpenPc(void);
 static bool8 FeaturesAction_HealParty(void);
 static bool8 FeaturesAction_Repel(void);
 static bool8 FeaturesAction_OpenMoveTutorsMenu(void);
 static bool8 FeaturesAction_OpenHeartScalesMenu(void);
+static bool8 FeaturesAction_OpenItemsMenu(void);
 static bool8 FeaturesAction_MoveDeleter(void);
 static bool8 FeaturesAction_PokeRider(void);
 
@@ -137,9 +160,18 @@ static bool8 FeaturesAction_HeartScales_ChangeAbility(void);
 static bool8 FeaturesAction_HeartScales_IncreaseLevelCap(void);
 static bool8 FeaturesAction_HeartScales_Exit(void);
 
+static bool8 FeaturesAction_Items_EjectPack(void);
+static bool8 FeaturesAction_Items_EjectButton(void);
+static bool8 FeaturesAction_Items_RedCard(void);
+static bool8 FeaturesAction_Items_Gems(void);
+static bool8 FeaturesAction_Items_ResistBerries(void);
+static bool8 FeaturesAction_Items_PinchBerries(void);
+static bool8 FeaturesAction_Items_Exit(void);
+
 //Task Callbacks
 static void FeaturesMenuTask(u8 taskId);
 static void HeartScalesMenuTask(u8 taskId);
+static void ItemsMenuTask(u8 taskId);
 
 //Text
 //Features Main Menu
@@ -148,6 +180,7 @@ static const u8 sFeaturesText_PokeVial[] =          _("Poké Vial");
 static const u8 sFeaturesText_Repel[] =             _("Repel");
 static const u8 sFeaturesText_MoveTutors[] =        _("Move Tutors");
 static const u8 sFeaturesText_HeartScales[] =       _("Heart Scales");
+static const u8 sFeaturesText_BuyItems[] =          _("Buy Items");
 static const u8 sFeaturesText_MoveDeleter[] =       _("Move Deleter");
 static const u8 sFeaturesText_PokeRider[] =         _("Poké Rider");
 //Heart Scale Menu
@@ -157,16 +190,28 @@ static const u8 sFeaturesText_HeartScales_ChangeNature[] =      _("Change Nature
 static const u8 sFeaturesText_HeartScales_ChangeAbility[] =     _("Change Ability");
 static const u8 sFeaturesText_HeartScales_IncreaseLevelCap[] =  _("Increase Level Cap");
 static const u8 sFeaturesText_HeartScales_Exit[] =              _("Exit");
+//Items Menu
+static const u8 sFeaturesText_Items_EjectPack[] =               _("Eject Pack");
+static const u8 sFeaturesText_Items_EjectButton[] =             _("Eject Button");
+static const u8 sFeaturesText_Items_RedCard[] =                 _("Red Card");
+static const u8 sFeaturesText_Items_Gems[] =                    _("Gems");
+static const u8 sFeaturesText_Items_ResistBerries[] =           _("Dmg Reduce Berries");
+static const u8 sFeaturesText_Items_PinchBerries[] =            _("Low HP Berries");
+static const u8 sFeaturesText_Items_Exit[] =                    _("Exit");
 
 extern const u8 LilycoveCity_MoveDeletersHouse_EventScript_ChooseMonAndMoveToForget[];
 extern const u8 EventScript_FeaturesMenu_Repel[];
 extern const u8 EventScript_FeaturesMenu_RepelOff[];
 extern const u8 EventScript_FeaturesMenu_NoHeartScales[];
+extern const u8 EventScript_FeaturesMenu_NoBottleCaps[];
 extern const u8 EventScript_FeaturesMenu_IncreaseLevelCap[];
 extern const u8 EventScript_FeaturesMenu_ChangeAbility[];
 extern const u8 EventScript_FeaturesMenu_ChangeIV[];
 extern const u8 EventScript_FeaturesMenu_ChangeNature[];
 extern const u8 FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon[];
+extern const u8 EventScript_FeaturesMenu_GiveEjectPack[];
+extern const u8 EventScript_FeaturesMenu_GiveEjectButton[];
+extern const u8 EventScript_FeaturesMenu_GiveRedCard[];
 
 static const struct WindowTemplate sFeaturesMenuWindowTemplateMain =
 {
@@ -186,6 +231,7 @@ static const struct MenuAction sFeaturesMenu_Items_Main[] =
     [FEATURES_MENU_REPEL]            = {sFeaturesText_Repel,        {.u8_void = FeaturesAction_Repel}},
     [FEATURES_MENU_MOVE_TUTORS]      = {sFeaturesText_MoveTutors,   {.u8_void = FeaturesAction_OpenMoveTutorsMenu}},
     [FEATURES_MENU_HEART_SCALES]     = {sFeaturesText_HeartScales,  {.u8_void = FeaturesAction_OpenHeartScalesMenu}},
+    [FEATURES_MENU_BUY_ITEMS]        = {sFeaturesText_BuyItems,     {.u8_void = FeaturesAction_OpenItemsMenu}},
     [FEATURES_MENU_MOVE_DELETER]     = {sFeaturesText_MoveDeleter,  {.u8_void = FeaturesAction_MoveDeleter}},
     [FEATURES_MENU_POKE_RIDER]       = {sFeaturesText_PokeRider,    {.u8_void = FeaturesAction_PokeRider}},
 };
@@ -198,6 +244,17 @@ static const struct MenuAction sFeaturesMenu_Items_HeartScales[] =
     [HEART_SCALE_MENU_CHANGE_ABILITY]           = {sFeaturesText_HeartScales_ChangeAbility,     {.u8_void = FeaturesAction_HeartScales_ChangeAbility}},
     [HEART_SCALE_MENU_INCREASE_LEVEL_CAP]       = {sFeaturesText_HeartScales_IncreaseLevelCap,  {.u8_void = FeaturesAction_HeartScales_IncreaseLevelCap}},
     [HEART_SCALE_MENU_EXIT]                     = {sFeaturesText_HeartScales_Exit,              {.u8_void = FeaturesAction_HeartScales_Exit}},
+};
+
+static const struct MenuAction sFeaturesMenu_Items_BottleCaps[] =
+{
+    [ITEM_MENU_EJECT_PACK]                      = {sFeaturesText_Items_EjectPack,               {.u8_void = FeaturesAction_Items_EjectPack}},
+    [ITEM_MENU_EJECT_BUTTON]                    = {sFeaturesText_Items_EjectButton,             {.u8_void = FeaturesAction_Items_EjectButton}},
+    [ITEM_MENU_RED_CARD]                        = {sFeaturesText_Items_RedCard,                 {.u8_void = FeaturesAction_Items_RedCard}},
+    [ITEM_MENU_GEMS]                            = {sFeaturesText_Items_Gems,                    {.u8_void = FeaturesAction_Items_Gems}},
+    [ITEM_MENU_RESIST_BERRIES]                  = {sFeaturesText_Items_ResistBerries,           {.u8_void = FeaturesAction_Items_ResistBerries}},
+    [ITEM_MENU_PINCH_BERRIES]                   = {sFeaturesText_Items_PinchBerries,            {.u8_void = FeaturesAction_Items_PinchBerries}},
+    [ITEM_MENU_EXIT]                            = {sFeaturesText_Items_Exit,                    {.u8_void = FeaturesAction_Items_Exit}},
 };
 
 //Functions
@@ -228,6 +285,15 @@ static void CreateHeartScalesMenuTask(TaskFunc followupFunc){
     sInitHeartScalesMenuData[1] = 0;
     taskId = CreateTask(HeartScalesMenuTask, 0x50);
     SetTaskFuncWithFollowupFunc(taskId, HeartScalesMenuTask, followupFunc);
+}
+
+static void CreateItemsMenuTask(TaskFunc followupFunc){
+    u8 taskId;
+
+    sInitItemsMenuData[0] = 0;
+    sInitItemsMenuData[1] = 0;
+    taskId = CreateTask(ItemsMenuTask, 0x50);
+    SetTaskFuncWithFollowupFunc(taskId, ItemsMenuTask, followupFunc);
 }
 
 static bool32 InitFeaturesMenuStep(void)
@@ -297,6 +363,38 @@ static bool32 InitHeartScalesMenuStep(void)
     return FALSE;
 }
 
+static bool32 InitItemsMenuStep(void)
+{
+    s8 state = sInitItemsMenuData[0];
+
+    switch (state)
+    {
+    case 0:
+        sInitItemsMenuData[0]++;
+        break;
+    case 1:
+        BuildItemsMenuActions();
+        sInitItemsMenuData[0]++;
+        break;
+     case 2:
+        LoadMessageBoxAndBorderGfx();
+        DrawStdWindowFrame(AddItemsMenuWindow(sNumItemsMenuActions), FALSE);
+        sInitItemsMenuData[1] = 0;
+        sInitItemsMenuData[0]++;
+        break;
+    case 3:
+        if (PrintItemsMenuActions(&sInitItemsMenuData[1], 2))
+            sInitItemsMenuData[0]++;
+        break;
+    case 4:
+        sItemsMenuCursorPos = InitMenuNormal(GetItemsMenuWindowId(), FONT_NORMAL, 0, 9, 16, sNumItemsMenuActions, sItemsMenuCursorPos);
+        CopyWindowToVram(GetItemsMenuWindowId(), COPYWIN_MAP);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
 static bool32 PrintFeaturesMenuActions(s8 *pIndex, u32 count)
 {
     s8 index = *pIndex;
@@ -345,6 +443,30 @@ static bool32 PrintHeartScalesMenuActions(s8 *pIndex, u32 count)
     return FALSE;
 }
 
+static bool32 PrintItemsMenuActions(s8 *pIndex, u32 count)
+{
+    s8 index = *pIndex;
+
+    do
+    {
+        StringExpandPlaceholders(gStringVar4, sFeaturesMenu_Items_BottleCaps[sCurrentItemsMenuActions[index]].text);
+        AddTextPrinterParameterized(GetItemsMenuWindowId(), FONT_NORMAL, gStringVar4, 8, (index << 4) + 9, TEXT_SKIP_DRAW, NULL);
+
+        index++;
+        if (index >= sNumItemsMenuActions)
+        {
+            *pIndex = index;
+            return TRUE;
+        }
+
+        count--;
+    }
+    while (count != 0);
+
+    *pIndex = index;
+    return FALSE;
+}
+
 void Task_ShowFeaturesMenu(u8 taskId){
     struct Task *task = &gTasks[taskId];
 
@@ -368,6 +490,22 @@ void Task_ShowHeartScalesMenu(u8 taskId){
     {
     case 0:
         gMenuCallback = HandleHeartScalesMenuInput;
+        task->data[0]++;
+        break;
+    case 1:
+        if (gMenuCallback() == TRUE)
+            DestroyTask(taskId);
+        break;
+    }
+}
+
+void Task_ShowItemsMenu(u8 taskId){
+    struct Task *task = &gTasks[taskId];
+
+    switch(task->data[0])
+    {
+    case 0:
+        gMenuCallback = HandleItemsMenuInput;
         task->data[0]++;
         break;
     case 1:
@@ -423,13 +561,58 @@ static bool8 HandleHeartScalesMenuInput(void){
         gMenuCallback = sFeaturesMenu_Items_HeartScales[sCurrentHeartScalesMenuActions[sHeartScalesMenuCursorPos]].func.u8_void;
     }
 
-    if (JOY_NEW(L_BUTTON | B_BUTTON))
+    if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
         //HideFeaturesMenu();
         ClearStdWindowAndFrame(GetHeartScalesMenuWindowId(), TRUE);
         RemoveHeartScalesMenuWindow();
         CreateFeaturesMenuTask(Task_ShowFeaturesMenu);
+        return TRUE;
+    }
+
+    if (JOY_NEW(L_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        HideHeartScalesMenu();
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool8 HandleItemsMenuInput(void){
+    if (JOY_NEW(DPAD_UP))
+    {
+        PlaySE(SE_SELECT);
+        sItemsMenuCursorPos = Menu_MoveCursor(-1);
+    }
+
+    if (JOY_NEW(DPAD_DOWN))
+    {
+        PlaySE(SE_SELECT);
+        sItemsMenuCursorPos = Menu_MoveCursor(1);
+    }
+
+    if (JOY_NEW(A_BUTTON))
+    {
+        gMenuCallback = sFeaturesMenu_Items_BottleCaps[sCurrentItemsMenuActions[sItemsMenuCursorPos]].func.u8_void;
+    }
+
+    if (JOY_NEW(B_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        //HideFeaturesMenu();
+        ClearStdWindowAndFrame(GetItemsMenuWindowId(), TRUE);
+        RemoveItemsMenuWindow();
+        CreateFeaturesMenuTask(Task_ShowFeaturesMenu);
+        return TRUE;
+    }
+
+    if (JOY_NEW(L_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        HideItemsMenu();
         return TRUE;
     }
 
@@ -451,6 +634,7 @@ static void BuildFeaturesMenuActions(void){
         AddFeaturesMenuAction(FEATURES_MENU_MOVE_TUTORS);
     }
     AddFeaturesMenuAction(FEATURES_MENU_HEART_SCALES);
+    AddFeaturesMenuAction(FEATURES_MENU_BUY_ITEMS);
     AddFeaturesMenuAction(FEATURES_MENU_MOVE_DELETER);
     if (FlagGet(FLAG_SYS_GAUNTLET) == FALSE)
     {
@@ -468,6 +652,28 @@ static void BuildHeartScalesMenuActions(void){
     }
 }
 
+static void BuildItemsMenuActions(void){
+
+    sNumItemsMenuActions = 0;
+
+    AddItemsMenuAction(ITEM_MENU_EJECT_PACK);
+    AddItemsMenuAction(ITEM_MENU_EJECT_BUTTON);
+    AddItemsMenuAction(ITEM_MENU_RED_CARD);
+    if (FlagGet(FLAG_BADGE02_GET) == TRUE)
+    {
+        AddItemsMenuAction(ITEM_MENU_GEMS);
+    }
+    if (FlagGet(FLAG_BADGE06_GET) == TRUE)
+    {
+        AddItemsMenuAction(ITEM_MENU_RESIST_BERRIES);
+    }
+    if (FlagGet(FLAG_BADGE03_GET) == TRUE)
+    {
+        AddItemsMenuAction(ITEM_MENU_PINCH_BERRIES);
+    }
+    AddItemsMenuAction(ITEM_MENU_EXIT);
+}
+
 static void FeaturesMenu_PreformScript(const u8 *script)
 {
     HideFeaturesMenu();
@@ -476,20 +682,16 @@ static void FeaturesMenu_PreformScript(const u8 *script)
     ScriptContext_SetupScript(script);
 }
 
-static void FeaturesMenu_NoHeartScales(const u8 *message){
-    StringExpandPlaceholders(gStringVar4, message);
-    LoadMessageBoxAndFrameGfx(0, TRUE);
-    AddTextPrinterForMessage_2(TRUE);
-    ScriptUnfreezeObjectEvents();
-    UnlockPlayerFieldControls();
-}
-
 static void AddFeaturesMenuAction(u8 action){
     AppendToList(sCurrentFeaturesMenuActions, &sNumFeaturesMenuActions, action);
 }
 
 static void AddHeartScalesMenuAction(u8 action){
     AppendToList(sCurrentHeartScalesMenuActions, &sNumHeartScalesMenuActions, action);
+}
+
+static void AddItemsMenuAction(u8 action){
+    AppendToList(sCurrentItemsMenuActions, &sNumItemsMenuActions, action);
 }
 
 static bool8 FeaturesAction_OpenPc(void){
@@ -554,6 +756,24 @@ static bool8 FeaturesAction_OpenHeartScalesMenu(void){
             CreateHeartScalesMenuTask(Task_ShowHeartScalesMenu);
         } else {
             FeaturesMenu_PreformScript(EventScript_FeaturesMenu_NoHeartScales);
+        }
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool8 FeaturesAction_OpenItemsMenu(void){
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        //HideFeaturesMenu();
+        ClearStdWindowAndFrame(GetFeaturesMenuWindowId(), TRUE);
+        RemoveFeaturesMenuWindow();
+        if(CheckBagHasItem(ITEM_BOTTLE_CAP, 1)){
+            CreateItemsMenuTask(Task_ShowItemsMenu);
+        } else {
+            FeaturesMenu_PreformScript(EventScript_FeaturesMenu_NoBottleCaps);
         }
         return TRUE;
     }
@@ -662,6 +882,90 @@ static bool8 FeaturesAction_HeartScales_Exit(void){
     return FALSE;
 }
 
+static bool8 FeaturesAction_Items_EjectPack(void){
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        ClearStdWindowAndFrame(GetItemsMenuWindowId(), TRUE);
+        RemoveItemsMenuWindow();
+        FeaturesMenu_PreformScript(EventScript_FeaturesMenu_GiveEjectPack);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool8 FeaturesAction_Items_EjectButton(void){
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        ClearStdWindowAndFrame(GetItemsMenuWindowId(), TRUE);
+        RemoveItemsMenuWindow();
+        FeaturesMenu_PreformScript(EventScript_FeaturesMenu_GiveEjectButton);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool8 FeaturesAction_Items_RedCard(void){
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        ClearStdWindowAndFrame(GetItemsMenuWindowId(), TRUE);
+        RemoveItemsMenuWindow();
+        FeaturesMenu_PreformScript(EventScript_FeaturesMenu_GiveRedCard);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool8 FeaturesAction_Items_Gems(void){
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        HideItemsMenu();
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool8 FeaturesAction_Items_ResistBerries(void){
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        HideItemsMenu();
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool8 FeaturesAction_Items_PinchBerries(void){
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        HideItemsMenu();
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool8 FeaturesAction_Items_Exit(void){
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        HideItemsMenu();
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+
 static void HideFeaturesMenu(void)
 {
     ClearStdWindowAndFrame(GetFeaturesMenuWindowId(), TRUE);
@@ -678,6 +982,14 @@ static void HideHeartScalesMenu(void)
     UnlockPlayerFieldControls();
 }
 
+static void HideItemsMenu(void)
+{
+    ClearStdWindowAndFrame(GetItemsMenuWindowId(), TRUE);
+    RemoveItemsMenuWindow();
+    ScriptUnfreezeObjectEvents();
+    UnlockPlayerFieldControls();
+}
+
 static void FeaturesMenuTask(u8 taskId)
 {
     if (InitFeaturesMenuStep() == TRUE)
@@ -687,5 +999,11 @@ static void FeaturesMenuTask(u8 taskId)
 static void HeartScalesMenuTask(u8 taskId)
 {
     if (InitHeartScalesMenuStep() == TRUE)
+        SwitchTaskToFollowupFunc(taskId);
+}
+
+static void ItemsMenuTask(u8 taskId)
+{
+    if (InitItemsMenuStep() == TRUE)
         SwitchTaskToFollowupFunc(taskId);
 }

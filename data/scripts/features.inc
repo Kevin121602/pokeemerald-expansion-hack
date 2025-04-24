@@ -3,6 +3,11 @@ EventScript_FeaturesMenu_NoHeartScales::
 	releaseall
 	end
 
+EventScript_FeaturesMenu_NoBottleCaps::
+	msgbox Text_NoBottleCaps
+	releaseall
+	end
+
 EventScript_FeaturesMenu_IncreaseLevelCap::
 	special ChoosePartyMon
 	waitstate
@@ -205,6 +210,33 @@ EventScript_FeaturesMenu_ChangeSpeed::
 	releaseall
 	end
 
+EventScript_FeaturesMenu_GiveEjectPack::
+	msgbox Text_BuyEjectPack, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_EJECT_PACK
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveEjectButton::
+	msgbox Text_BuyEjectButton, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_EJECT_BUTTON
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveRedCard::
+	msgbox Text_BuyRedCard, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_RED_CARD
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
 EventScript_FeaturesMenu_Exit::
 	releaseall
 	end
@@ -286,6 +318,9 @@ Text_IncreaseSpeedtoNumber::
 Text_NoHeartScales::
     .string "You don't have any Heart Scales!$"
 
+Text_NoBottleCaps::
+    .string "You don't have any Bottle Caps!$"
+
 Text_CannotIncreaseLevelCap::
     .string "Level Cap cannot be increased past\n"
 	.string "100.$"
@@ -299,6 +334,9 @@ Text_LevelCapIncreased::
 
 Text_SpentHeartScale::
 	.string "{PLAYER} spent one Heart Scale.$"
+
+Text_SpentBottleCap::
+	.string "{PLAYER} spent one Bottle Cap.$"
 
 Text_SpentTwoHeartScales::
 	.string "{PLAYER} spent two Heart Scales.$"
@@ -320,3 +358,12 @@ Text_ChangeAbility::
 Text_AbilityChanged::
 	.string "{STR_VAR_1}'s ability has been\n"
 	.string "changed to {STR_VAR_2}!$"
+
+Text_BuyEjectPack::
+	.string "Buy an Eject Pack for one Bottle Cap?$"
+
+Text_BuyEjectButton::
+	.string "Buy an Eject Button for one Bottle Cap?$"
+
+Text_BuyRedCard::
+	.string "Buy a Red Card for one Bottle Cap?$"

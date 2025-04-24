@@ -66,6 +66,7 @@ static void task_free_buf_after_copying_tile_data_to_vram(u8 taskId);
 static EWRAM_DATA u8 sStartMenuWindowId = 0;
 static EWRAM_DATA u8 sFeaturesMenuWindowId = 0;
 static EWRAM_DATA u8 sHeartScalesMenuWindowId = 0;
+static EWRAM_DATA u8 sItemsMenuWindowId = 0;
 static EWRAM_DATA u8 sMapNamePopupWindowId = 0;
 static EWRAM_DATA u8 sSecondaryPopupWindowId = 0;
 static EWRAM_DATA struct Menu sMenu = {0};
@@ -153,6 +154,7 @@ void InitStandardTextBoxWindows(void)
     sStartMenuWindowId = WINDOW_NONE;
     sFeaturesMenuWindowId = WINDOW_NONE;
     sHeartScalesMenuWindowId = WINDOW_NONE;
+    sItemsMenuWindowId = WINDOW_NONE;
     sMapNamePopupWindowId = WINDOW_NONE;
     if (OW_POPUP_GENERATION == GEN_5)
         sSecondaryPopupWindowId = WINDOW_NONE;
@@ -519,6 +521,14 @@ u8 AddHeartScalesMenuWindow(void)
     return sHeartScalesMenuWindowId;
 }
 
+u8 AddItemsMenuWindow(u8 numActions)
+{
+    if (sItemsMenuWindowId == WINDOW_NONE)
+        sItemsMenuWindowId = AddWindowParameterized(0, 1, 1, 10, (numActions * 2) + 2, 15, 1);
+    return sItemsMenuWindowId;
+}
+
+
 u8 GetStartMenuWindowId(void)
 {
     return sStartMenuWindowId;
@@ -532,6 +542,11 @@ u8 GetFeaturesMenuWindowId(void)
 u8 GetHeartScalesMenuWindowId(void)
 {
     return sHeartScalesMenuWindowId;
+}
+
+u8 GetItemsMenuWindowId(void)
+{
+    return sItemsMenuWindowId;
 }
 
 void RemoveStartMenuWindow(void)
@@ -558,6 +573,15 @@ void RemoveHeartScalesMenuWindow(void)
     {
         RemoveWindow(sHeartScalesMenuWindowId);
         sHeartScalesMenuWindowId = WINDOW_NONE;
+    }
+}
+
+void RemoveItemsMenuWindow(void)
+{
+    if (sItemsMenuWindowId != WINDOW_NONE)
+    {
+        RemoveWindow(sItemsMenuWindowId);
+        sItemsMenuWindowId = WINDOW_NONE;
     }
 }
 

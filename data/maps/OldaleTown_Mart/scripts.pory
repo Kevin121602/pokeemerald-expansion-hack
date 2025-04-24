@@ -1,3 +1,76 @@
+script Mart_BottleCap_Vendor{
+	lock
+	faceplayer
+	if(!flag(FLAG_RECIEVED_BOTTLE_CAP_1)){
+		msgbox("You look like a new face.\p"
+				"We're giving away Bottle Caps as part of\n"
+				"a promotional event.\p"
+				"Here you go, on the house!$")
+		giveitem(ITEM_BOTTLE_CAP)
+		setflag(FLAG_RECIEVED_BOTTLE_CAP_1)
+	}
+	if(flag(FLAG_BADGE01_GET)){
+		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_2)){
+		msgbox("Oh is that the STONE BADGE?$")
+		giveitem(ITEM_BOTTLE_CAP)
+		setflag(FLAG_RECIEVED_BOTTLE_CAP_2)
+		}
+	}
+	if(flag(FLAG_BADGE04_GET)){
+		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_3)){
+		msgbox("Oh is that the HEAT BADGE?$")
+		giveitem(ITEM_BOTTLE_CAP)
+		setflag(FLAG_RECIEVED_BOTTLE_CAP_3)
+		}
+	}
+	if(flag(FLAG_BADGE02_GET)){
+		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_4)){
+		msgbox("Oh is that the KNUCKLE BADGE?$")
+		giveitem(ITEM_BOTTLE_CAP)
+		setflag(FLAG_RECIEVED_BOTTLE_CAP_4)
+		}
+	}
+	if(flag(FLAG_BADGE05_GET)){
+		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_5)){
+		msgbox("Oh is that the BALANCE BADGE?$")
+		giveitem(ITEM_BOTTLE_CAP)
+		setflag(FLAG_RECIEVED_BOTTLE_CAP_5)
+		}
+	}
+	if(flag(FLAG_BADGE08_GET)){
+		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_6)){
+		msgbox("Oh is that the RAIN BADGE?$")
+		giveitem(ITEM_BOTTLE_CAP)
+		setflag(FLAG_RECIEVED_BOTTLE_CAP_6)
+		}
+	}
+	if(flag(FLAG_BADGE06_GET)){
+		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_7)){
+		msgbox("Oh is that the FEATHER BADGE?$")
+		giveitem(ITEM_BOTTLE_CAP)
+		setflag(FLAG_RECIEVED_BOTTLE_CAP_7)
+		}
+	}
+	if(flag(FLAG_BADGE07_GET)){
+		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_8)){
+		msgbox("Oh is that the MIND BADGE?$")
+		giveitem(ITEM_BOTTLE_CAP)
+		setflag(FLAG_RECIEVED_BOTTLE_CAP_8)
+		}
+	}
+	if(flag(FLAG_BADGE03_GET)){
+		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_9)){
+		msgbox("Oh is that the DYNAMO BADGE?$")
+		giveitem(ITEM_BOTTLE_CAP)
+		setflag(FLAG_RECIEVED_BOTTLE_CAP_9)
+		}
+	}
+	msgbox("Bottle Caps can be spent on a variety\n"
+			"of rare items, use them wisely.$")
+	release
+	end
+}
+
 raw `
 OldaleTown_Mart_MapScripts::
 	.byte 0
