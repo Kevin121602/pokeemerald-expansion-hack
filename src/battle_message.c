@@ -849,7 +849,7 @@ static const u8 sText_PkmnTerastallizedInto[] = _("{B_ATK_NAME_WITH_PREFIX} tera
 static const u8 sText_SupersweetAromaWafts[] = _("A supersweet aroma is wafting from\nthe syrup covering {B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_TidyingUpComplete[] = _("Tidying up complete!");
 static const u8 sText_FickleBeamDoubled[] = _("{B_ATK_NAME_WITH_PREFIX} is going all\nout for this attack!");
-static const u8 sText_BattlefieldsRichSediment[] = _("The battlefield's rich sediment heightens the effect of Rock, Ground, and Steel type attacks!");
+static const u8 sText_RichSediment[] = _("The battlefield's rich sediment\nheightens the effects of Rock,\lGround, and Steel type attacks!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1554,7 +1554,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ITEMWASUSEDUP - BATTLESTRINGS_TABLE_START] = sText_ItemWasUsedUp,
     [STRINGID_ATTACKERLOSTITSTYPE - BATTLESTRINGS_TABLE_START] = sText_AttackerLostItsType,
     [STRINGID_CLOAKEDINAHARSHLIGHT - BATTLESTRINGS_TABLE_START] = sText_PkmnIsCloakedInAHarshLight,
-    [STRINGID_RICHSEDIMENT - BATTLESTRINGS_TABLE_START] = sText_BattlefieldsRichSediment,
+    [STRINGID_RICHSEDIMENT - BATTLESTRINGS_TABLE_START] = sText_RichSediment,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

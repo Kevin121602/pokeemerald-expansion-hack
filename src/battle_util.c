@@ -4312,6 +4312,12 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             case WEATHER_FOG_DIAGONAL:
             case WEATHER_FOG_HORIZONTAL:
                     break;
+            case FIELD_EFFECT_RICH_SEDIMENT:
+                gFieldStatuses |= FIELD_EFFECT_RICH_SEDIMENT;
+                gBattleScripting.animArg1 = B_ANIM_RICH_SEDIMENT;
+                //BattleScriptPushCursorAndCallback(BattleScript_RichSediment);
+                effect++;
+                break;       
             }
         }
         if (effect != 0)

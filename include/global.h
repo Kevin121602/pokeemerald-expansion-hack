@@ -985,8 +985,8 @@ struct SaveBlock1
     /*0x1C*/ struct WarpData lastHealLocation; // used by white-out and teleport
     /*0x24*/ struct WarpData escapeWarp; // used by Dig and Escape Rope
     /*0x2C*/ u16 savedMusic;
-    /*0x2E*/ u8 weather;
-    /*0x2F*/ u8 weatherCycleStage;
+    /*0x2E*/ u16 weather;
+    /*0x2F*/ //u8 weatherCycleStage;
     /*0x30*/ u8 flashLevel;
     /*0x31*/ //u8 padding1;
     /*0x32*/ u16 mapLayoutId;

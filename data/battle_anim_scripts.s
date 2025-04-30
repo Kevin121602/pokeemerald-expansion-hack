@@ -86,6 +86,7 @@ gBattleAnims_General::
 	.4byte General_TeraCharge               @ B_ANIM_TERA_CHARGE
 	.4byte General_TeraActivate             @ B_ANIM_TERA_ACTIVATE
 	.4byte General_SimpleHeal               @ B_ANIM_SIMPLE_HEAL
+	.4byte General_RichSediment				@ B_ANIM_RICH_SEDIMENT
 
 	.align 2
 gBattleAnims_Special::
@@ -28023,6 +28024,9 @@ General_SimpleHeal:
 	call HealingEffect
 	waitforvisualfinish
 	end
+
+General_RichSediment:
+	goto Move_ROTOTILLER
 
 General_IllusionOff:
 	monbg ANIM_TARGET

@@ -5954,7 +5954,7 @@ BattleScript_OverworldStatusStarts_TryActivations:
 BattleScript_OverworldWeatherStarts::
 	printfromtable gWeatherStartsStringIds
 	waitmessage B_WAIT_TIME_LONG
-	playanimation_var BS_BATTLER_0, sB_ANIM_ARG1
+	playanimation_var BS_OPPONENT1, sB_ANIM_ARG1
 	call BattleScript_ActivateWeatherAbilities
 	end3
 
@@ -10063,3 +10063,9 @@ BattleScript_EffectSnow::
 	call BattleScript_CheckPrimalWeather
 	setfieldweather ENUM_WEATHER_SNOW
 	goto BattleScript_MoveWeatherChange
+
+BattleScript_RichSediment::
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_RICHSEDIMENT
+	waitstate
+	end3

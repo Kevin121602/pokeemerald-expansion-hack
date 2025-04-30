@@ -2586,17 +2586,34 @@ static u8 TranslateWeatherNum(u8 weather)
     case WEATHER_DOWNPOUR:           return WEATHER_DOWNPOUR;
     case WEATHER_UNDERWATER_BUBBLES: return WEATHER_UNDERWATER_BUBBLES;
     case WEATHER_ABNORMAL:           return WEATHER_ABNORMAL;
-    case WEATHER_ROUTE119_CYCLE:     return sWeatherCycleRoute119[gSaveBlock1Ptr->weatherCycleStage];
-    case WEATHER_ROUTE123_CYCLE:     return sWeatherCycleRoute123[gSaveBlock1Ptr->weatherCycleStage];
+    case WEATHER_ROUTE119_CYCLE:     return WEATHER_RAIN;
+    case WEATHER_ROUTE123_CYCLE:     return WEATHER_RAIN;
+    case FIELD_EFFECT_RICH_SEDIMENT:      return FIELD_EFFECT_RICH_SEDIMENT;
+    case FIELD_EFFECT_HOT_COALS:          return FIELD_EFFECT_HOT_COALS;
+    case FIELD_EFFECT_GRUDGE:             return FIELD_EFFECT_GRUDGE;
+    case FIELD_EFFECT_RETALIATE:          return FIELD_EFFECT_RETALIATE;
+    case FIELD_EFFECT_BOOSTED_CRITS:      return FIELD_EFFECT_BOOSTED_CRITS;
+    case FIELD_EFFECT_CAMOMONS:           return FIELD_EFFECT_CAMOMONS;
+    case FIELD_EFFECT_DECREASED_SE_DMG:   return FIELD_EFFECT_DECREASED_SE_DMG;
+    case FIELD_EFFECT_AURORA_VEIL:        return FIELD_EFFECT_AURORA_VEIL;
+    case FIELD_EFFECT_TAILWIND:           return FIELD_EFFECT_TAILWIND;
+    case FIELD_EFFECT_WONDER_ROOM:        return FIELD_EFFECT_WONDER_ROOM;
+    case FIELD_EFFECT_TRICK_ROOM:         return FIELD_EFFECT_TRICK_ROOM;
+    case FIELD_EFFECT_INNATE_MOVES:       return FIELD_EFFECT_INNATE_MOVES;
+    case FIELD_EFFECT_INVERSE:            return FIELD_EFFECT_INVERSE;
+    case FIELD_EFFECT_MAGNET_RISE:        return FIELD_EFFECT_MAGNET_RISE;
+    case FIELD_EFFECT_MAGMA_STORM:        return FIELD_EFFECT_MAGMA_STORM;
+    case FIELD_EFFECT_SERENE_GRACE:       return FIELD_EFFECT_SERENE_GRACE;
+    case FIELD_EFFECT_MISTY_TERRAIN:      return FIELD_EFFECT_MISTY_TERRAIN;
+    case FIELD_EFFECT_GRASSY_TERRAIN:     return FIELD_EFFECT_GRASSY_TERRAIN;
+    case FIELD_EFFECT_PSYCHIC_TERRAIN:    return FIELD_EFFECT_PSYCHIC_TERRAIN;
+    case FIELD_EFFECT_ELECTRIC_TERRAIN:   return FIELD_EFFECT_ELECTRIC_TERRAIN;
+    case FIELD_EFFECT_PRIMORDIAL_SUN:     return FIELD_EFFECT_PRIMORDIAL_SUN;
+    case FIELD_EFFECT_PRIMORDIAL_SEA:     return FIELD_EFFECT_PRIMORDIAL_SEA;
+    case FIELD_EFFECT_VISCIOUS_SANDSTORM: return FIELD_EFFECT_VISCIOUS_SANDSTORM;
+    case FIELD_EFFECT_HEAVY_HAIL:         return FIELD_EFFECT_HEAVY_HAIL;
     default:                         return WEATHER_NONE;
     }
-}
-
-void UpdateWeatherPerDay(u16 increment)
-{
-    u16 weatherStage = gSaveBlock1Ptr->weatherCycleStage + increment;
-    weatherStage %= WEATHER_CYCLE_LENGTH;
-    gSaveBlock1Ptr->weatherCycleStage = weatherStage;
 }
 
 static void UpdateRainCounter(u8 newWeather, u8 oldWeather)
