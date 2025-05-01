@@ -12491,7 +12491,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 5027
                 MOVE_ROCK_SLIDE,
-                MOVE_BREAKING_SWIPE,
+                MOVE_DRAGON_TAIL,
                 MOVE_BRICK_BREAK,
                 MOVE_AERIAL_ACE,
             },
@@ -15883,7 +15883,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_CORSOLA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6385
-            .heldItem = ITEM_RINDO_BERRY,
+            .heldItem = ITEM_MYSTIC_WATER,
 #line 6389
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 6388
@@ -15927,7 +15927,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_CORVISQUIRE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6401
-            .heldItem = ITEM_SALAC_BERRY,
+            .heldItem = ITEM_STEEL_GEM,
 #line 6405
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 6404
@@ -16031,7 +16031,7 @@ F_TRAINER_FEMALE |
 #line 6441
                 MOVE_WATER_PULSE,
                 MOVE_MUD_BOMB,
-                MOVE_ANCIENT_POWER,
+                MOVE_ICY_WIND,
                 MOVE_RECOVER,
             },
             },
