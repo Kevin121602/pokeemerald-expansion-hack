@@ -1250,7 +1250,7 @@ static u32 GetBestMonDmg(struct Pokemon *party, int firstId, int lastId, u8 inva
                 if (AI_THINKING_STRUCT->aiFlags[battler] & AI_FLAG_CONSERVATIVE)
                     dmg = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, AI_DATA->switchinCandidate.battleMon, TRUE, DMG_ROLL_LOWEST);
                 else
-                    dmg = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, AI_DATA->switchinCandidate.battleMon, TRUE, DMG_ROLL_DEFAULT);
+                    dmg = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, AI_DATA->switchinCandidate.battleMon, TRUE, DMG_ROLL_LOWEST);
                 if (bestDmg < dmg)
                 {
                     bestDmg = dmg;
@@ -1668,8 +1668,8 @@ static u16 GetSwitchinTypeMatchup(u32 opposingBattler, struct BattlePokemon batt
 
 u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingBattler, bool32 switchAfterMonKOd)
 {
-    int switchScore = 0;
-    int j = 0;
+    u32 switchScore = 0;
+    u32 j = 0;
     bool32 fastTrapper = FALSE, slowTrapper = FALSE, fastRevengeKiller = FALSE, slowRevengeKiller = FALSE;
     bool32 fastThreaten = FALSE, slowThreaten = FALSE, faster = FALSE, slowKilled = FALSE, fastKilled = FALSE;
     u32 aiMove, hitsToKOAI, hitsToKOPlayer, maxHitsToKO = 0;
@@ -1686,6 +1686,9 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         switchScore = 10;
         return switchScore;
     }
+
+    //switchScore = 10;
+    //return switchScore;
 
     /*if (CanAbilityTrapOpponent(battleMon.ability, opposingBattler) && gBattleMons[opposingBattler].item != ITEM_SHED_SHELL){
             switchScore += 2;
@@ -1708,7 +1711,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
 
     //returns +2 if wobb or wynaut, so long as they arent fast killed
     if((battleMon.species == (SPECIES_WOBBUFFET || SPECIES_WYNAUT)) && !fastKilled){
-        switchScore = 10;
+        switchScore = 11;
         return switchScore;
     }
 
@@ -2096,7 +2099,7 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
     s32 lastId = 0; // + 1
     struct Pokemon *party;
     u32 numberOfBestMons = 1;
-    u32 maxSwitchScore = -16;
+    u32 maxSwitchScore = 0;
     u32 switchScore = 0;
     u32 highestSwitchScore = 0;
     u8 consideredMonArray[PARTY_SIZE];
@@ -2104,6 +2107,7 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
     int i;
     s32 j = 0;
     u32 aiMove = 0;
+    u32 invalidMons = 0;
 
     if (*(gBattleStruct->monToSwitchIntoId + battler) != PARTY_SIZE)
         return *(gBattleStruct->monToSwitchIntoId + battler);
@@ -2185,6 +2189,7 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
             || i == gBattleStruct->monToSwitchIntoId[battlerIn1]
             || i == gBattleStruct->monToSwitchIntoId[battlerIn2])
         {
+            invalidMons |= gBitTable[i];
             continue;
         }
 
@@ -2202,10 +2207,13 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
         }
     }
 
-    //int numConsideredMons = sizeof(consideredMonArray) / sizeof(consideredMonArray[0]);
+    //bestMonId = GetBestMonDmg(party, firstId, lastId, invalidMons, battler, opposingBattler);
+    //    if (bestMonId != PARTY_SIZE)
+    //        return bestMonId;
+
     u8 bestCandidate = 0;
-    s32 bestDamage = 0;
-    s32 damageDealt = 0;
+    int bestDamage = 0;
+    int damageDealt = 0;
 
     if(currentMonArray[0] >= 12){
         return consideredMonArray[Random() % numberOfBestMons];
@@ -2221,16 +2229,17 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
 
                 if (aiMove != MOVE_NONE && gMovesInfo[aiMove].power != 0 && gMovesInfo[aiMove].effect != EFFECT_EXPLOSION)
                 {
+                    aiMove = GetMonData(&party[consideredMonArray[i]], MON_DATA_MOVE1 + j);
                     damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, AI_DATA->switchinCandidate.battleMon, TRUE, DMG_ROLL_LOWEST);
                     if(damageDealt > bestDamage){
                         bestDamage = damageDealt;
-                        bestCandidate = consideredMonArray[i];
+                        bestCandidate = i;
                     }
                 }
             }
         }
 
-        return bestCandidate;
+        return consideredMonArray[bestCandidate];
     } else {
         return consideredMonArray[0];
     }

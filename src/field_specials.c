@@ -4546,6 +4546,7 @@ void ChangeNature(void)
     }
 
     SetMonData(&gPlayerParty[gSpecialVar_0x8005], MON_DATA_HIDDEN_NATURE, &nature);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8005]);
 }
 
 void ChangeAbility(void)

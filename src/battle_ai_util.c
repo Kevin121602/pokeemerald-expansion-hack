@@ -609,7 +609,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
                     nonCritDmg += CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                           effectivenessMultiplier, weather, FALSE,
                                                           aiData->holdEffects[battlerAtk], aiData->holdEffects[battlerDef],
-                                                          aiData->abilities[battlerAtk], aiData->abilities[battlerDef]);
+                                                          gBattleMons[battlerAtk].ability, gBattleMons[battlerDef].ability);
                 }
             }
             else
@@ -617,7 +617,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
                 nonCritDmg = CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                      effectivenessMultiplier, weather, FALSE,
                                                      aiData->holdEffects[battlerAtk], aiData->holdEffects[battlerDef],
-                                                     aiData->abilities[battlerAtk], aiData->abilities[battlerDef]);
+                                                     gBattleMons[battlerAtk].ability, gBattleMons[battlerDef].ability);
             }
             simDamage.expected = GetDamageByRollType(nonCritDmg, rollType);
             simDamage.minimum = LowestRollDmg(nonCritDmg);
@@ -629,14 +629,14 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
             switch (moveEffect)
             {
             case EFFECT_LEVEL_DAMAGE:
-                simDamage.expected = simDamage.minimum = gBattleMons[battlerAtk].level * (aiData->abilities[battlerAtk] == ABILITY_PARENTAL_BOND ? 2 : 1);
+                simDamage.expected = simDamage.minimum = gBattleMons[battlerAtk].level * (gBattleMons[battlerAtk].ability == ABILITY_PARENTAL_BOND ? 2 : 1);
                 break;
             case EFFECT_PSYWAVE:
-                simDamage.expected = gBattleMons[battlerAtk].level * (aiData->abilities[battlerAtk] == ABILITY_PARENTAL_BOND ? 2 : 1);
+                simDamage.expected = gBattleMons[battlerAtk].level * (gBattleMons[battlerAtk].ability == ABILITY_PARENTAL_BOND ? 2 : 1);
                 simDamage.minimum = simDamage.expected / 2;
                 break;
             case EFFECT_FIXED_DAMAGE_ARG:
-                simDamage.expected = simDamage.minimum = gMovesInfo[move].argument * (aiData->abilities[battlerAtk] == ABILITY_PARENTAL_BOND ? 2 : 1);
+                simDamage.expected = simDamage.minimum = gMovesInfo[move].argument * (gBattleMons[battlerAtk].ability == ABILITY_PARENTAL_BOND ? 2 : 1);
                 break;
             case EFFECT_MULTI_HIT:
                 if (move == MOVE_WATER_SHURIKEN && gBattleMons[battlerAtk].species == SPECIES_GRENINJA_ASH)
@@ -644,7 +644,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
                     simDamage.expected *= 3;
                     simDamage.minimum *= 3;
                 }
-                else if (aiData->abilities[battlerAtk] == ABILITY_SKILL_LINK)
+                else if (gBattleMons[battlerAtk].ability == ABILITY_SKILL_LINK)
                 {
                     simDamage.expected *= 5;
                     simDamage.minimum *= 5;
@@ -666,7 +666,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
                 simDamage.expected = simDamage.minimum = max(0, gBattleMons[battlerDef].hp - gBattleMons[battlerAtk].hp);
                 break;
             case EFFECT_SUPER_FANG:
-                simDamage.expected = simDamage.minimum = (aiData->abilities[battlerAtk] == ABILITY_PARENTAL_BOND
+                simDamage.expected = simDamage.minimum = (gBattleMons[battlerAtk].ability == ABILITY_PARENTAL_BOND
                     ? max(2, gBattleMons[battlerDef].hp * 3 / 4)
                     : max(1, gBattleMons[battlerDef].hp / 2));
                 break;
@@ -719,6 +719,11 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
     gBattleStruct->zmove.baseMoves[battlerAtk] = MOVE_NONE;
     if (toggledGimmick)
         SetActiveGimmick(battlerAtk, GIMMICK_NONE);
+
+    //if(gBattleMons[battlerAtk].ability == ABILITY_HUGE_POWER){
+    //    simDamage.expected *= 2;
+    //    simDamage.expected *= 2;
+    //}
 
     return simDamage;
 }
@@ -1322,10 +1327,10 @@ s32 AI_DecideKnownAbilityForTurn(u32 battlerId)
             validAbilities[numValidAbilities++] = gSpeciesInfo[gBattleMons[battlerId].species].abilities[i];
     }
 
-    if (numValidAbilities > 0)
-        return validAbilities[RandomUniform(RNG_AI_ABILITY, 0, numValidAbilities - 1)];
+    //if (numValidAbilities > 0)
+    //    return validAbilities[RandomUniform(RNG_AI_ABILITY, 0, numValidAbilities - 1)];
 
-    return ABILITY_NONE; // Unknown.
+    return knownAbility; // Unknown.
 }
 
 u32 AI_DecideHoldEffectForTurn(u32 battlerId)
@@ -3429,16 +3434,16 @@ s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct Battl
     if (isPartyMonAttacker)
     {
         gBattleMons[battlerAtk] = switchinCandidate;
-        AI_THINKING_STRUCT->saved[battlerDef].saved = TRUE;
-        SetBattlerData(battlerDef); // set known opposing battler data
-        AI_THINKING_STRUCT->saved[battlerDef].saved = FALSE;
+        //AI_THINKING_STRUCT->saved[battlerDef].saved = TRUE;
+        //SetBattlerData(battlerDef); // set known opposing battler data
+        //AI_THINKING_STRUCT->saved[battlerDef].saved = FALSE;
     }
     else
     {
         gBattleMons[battlerDef] = switchinCandidate;
-        AI_THINKING_STRUCT->saved[battlerAtk].saved = TRUE;
-        SetBattlerData(battlerAtk); // set known opposing battler data
-        AI_THINKING_STRUCT->saved[battlerAtk].saved = FALSE;
+        //AI_THINKING_STRUCT->saved[battlerAtk].saved = TRUE;
+        //SetBattlerData(battlerAtk); // set known opposing battler data
+        //AI_THINKING_STRUCT->saved[battlerAtk].saved = FALSE;
     }
 
     dmg = AI_CalcDamage(move, battlerAtk, battlerDef, &effectiveness, FALSE, AI_GetWeather(AI_DATA), rollType);
