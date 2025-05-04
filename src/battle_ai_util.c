@@ -35,6 +35,53 @@
 static u32 AI_GetEffectiveness(uq4_12_t multiplier);
 
 // Functions
+
+bool32 PartyMonHasInTactFocusSashSturdy(u32 battlerAtk, u32 battlerDef, u32 move, struct BattlePokemon battleMon, bool32 isPartyMonCheckedForSash)
+{
+    bool32 intactSash;
+
+    struct BattlePokemon *savedBattleMons = AllocSaveBattleMons();
+
+    if (isPartyMonCheckedForSash)
+    {
+        gBattleMons[battlerAtk] = battleMon;
+        AI_THINKING_STRUCT->saved[battlerDef].saved = TRUE;
+        SetBattlerData(battlerDef); // set known opposing battler data
+        AI_THINKING_STRUCT->saved[battlerDef].saved = FALSE;
+    }
+    else
+    {
+        gBattleMons[battlerDef] = battleMon;
+        AI_THINKING_STRUCT->saved[battlerAtk].saved = TRUE;
+        SetBattlerData(battlerAtk); // set known opposing battler data
+        AI_THINKING_STRUCT->saved[battlerAtk].saved = FALSE;
+    }
+
+    intactSash = MonHasInTactFocusSashSturdy(battlerAtk, battlerDef, move);
+    // restores original gBattleMon struct
+    FreeRestoreBattleMons(savedBattleMons);
+    return intactSash;
+}
+
+
+bool32 MonHasInTactFocusSashSturdy(u32 battler, u32 opposingBattler, u32 move)
+{
+    //battler is the one being checked for sash
+    if(gBattleMons[opposingBattler].ability == ABILITY_PARENTAL_BOND || gMovesInfo[move].effect == EFFECT_MULTI_HIT || gMovesInfo[move].effect == EFFECT_TRIPLE_KICK){
+        return FALSE;
+    }
+
+    if(ItemId_GetHoldEffect(gBattleMons[battler].item) == HOLD_EFFECT_FOCUS_SASH && AtMaxHp(battler)){
+        return TRUE;
+    }
+
+    if(gBattleMons[battler].ability == ABILITY_STURDY && AtMaxHp(battler) && !IsMoldBreakerTypeAbility(opposingBattler, gBattleMons[opposingBattler].ability) && !gMovesInfo[move].ignoresTargetAbility){
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
 bool32 AI_IsFaster(u32 battlerAi, u32 battlerDef, u32 move)
 {
     return (AI_WhoStrikesFirst(battlerAi, battlerDef, move) == AI_IS_FASTER);
@@ -3434,16 +3481,16 @@ s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct Battl
     if (isPartyMonAttacker)
     {
         gBattleMons[battlerAtk] = switchinCandidate;
-        //AI_THINKING_STRUCT->saved[battlerDef].saved = TRUE;
-        //SetBattlerData(battlerDef); // set known opposing battler data
-        //AI_THINKING_STRUCT->saved[battlerDef].saved = FALSE;
+        AI_THINKING_STRUCT->saved[battlerDef].saved = TRUE;
+        SetBattlerData(battlerDef); // set known opposing battler data
+        AI_THINKING_STRUCT->saved[battlerDef].saved = FALSE;
     }
     else
     {
         gBattleMons[battlerDef] = switchinCandidate;
-        //AI_THINKING_STRUCT->saved[battlerAtk].saved = TRUE;
-        //SetBattlerData(battlerAtk); // set known opposing battler data
-        //AI_THINKING_STRUCT->saved[battlerAtk].saved = FALSE;
+        AI_THINKING_STRUCT->saved[battlerAtk].saved = TRUE;
+        SetBattlerData(battlerAtk); // set known opposing battler data
+        AI_THINKING_STRUCT->saved[battlerAtk].saved = FALSE;
     }
 
     dmg = AI_CalcDamage(move, battlerAtk, battlerDef, &effectiveness, FALSE, AI_GetWeather(AI_DATA), rollType);

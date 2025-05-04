@@ -82,10 +82,6 @@ script RustboroCity_DevonCorp_2F_EventScript_FossilScientistNew {
 					waitmessage
 					waitfanfare
 			}
-			msgbox("Give this Pokémon a nickname?", MSGBOX_YESNO)
-			if(var(VAR_RESULT) == YES){
-				call(Common_EventScript_NameReceivedPartyMon)
-			}
 			msgbox(format("I hope you find that fossil POKéMON useful!"))
 			setflag(FLAG_RECIEVED_COMMON_FOSSIL)
 		}

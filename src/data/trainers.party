@@ -5029,7 +5029,7 @@ Ability: Sturdy
 -Brick Break
 -Aerial Ace
 
-Minior @ Liechi Berry
+Minior-Meteor @ Liechi Berry
 Level: 17
 Nature: Jolly
 Ability: Shields Down
@@ -10021,15 +10021,44 @@ Pic: Collector
 Gender: Male
 Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Zangoose
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Hoothoot @ Expert Belt
+Level: 1
+Nature: Hardy
+Ability: Insomnia
+-Uproar
 
-Seviper
+Diglett @ Choice Band
+Level: 17
+Nature: Jolly
+Ability: Sand Force
+-Earthquake
+
+Diglett @ Choice Band
 Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Nature: Jolly
+Ability: Sand Force
+-Earthquake
+
+Diglett @ Choice Band
+Level: 19
+Nature: Jolly
+Ability: Sand Force
+-Earthquake
+
+Diglett @ Focus Sash
+Level: 20
+Nature: Jolly
+Ability: Sand Force
+-Earthquake
+-Bolt Strike
+
+Diglett @ Choice Band
+Level: 21
+Nature: Jolly
+Ability: Sand Force
+-Earthquake
 
 === TRAINER_TABITHA_MOSSDEEP ===
 Name: TABITHA
