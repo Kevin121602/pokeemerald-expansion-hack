@@ -5590,6 +5590,7 @@ static void HandleEndTurn_FinishBattle(void)
 
         for (i = 0; i < PARTY_SIZE; i++)
         {
+            u32 status1 = STATUS1_SLEEP_TURN(1 + RandomUniform(RNG_SLEEP_TURNS, 1, 3));
             bool8 changedForm = FALSE;
 
             // Appeared in battle and didn't faint
@@ -5598,6 +5599,10 @@ static void HandleEndTurn_FinishBattle(void)
 
             if (!changedForm)
                 changedForm = TryFormChange(i, B_SIDE_PLAYER, FORM_CHANGE_END_BATTLE);
+
+            if(GetMonData(&gPlayerParty[i], MON_DATA_STATUS) & STATUS1_SLEEP){
+                SetMonData(&gPlayerParty[i], MON_DATA_STATUS, &status1);
+            }
 
             // Clear original species field
             gBattleStruct->changedSpecies[B_SIDE_PLAYER][i] = SPECIES_NONE;

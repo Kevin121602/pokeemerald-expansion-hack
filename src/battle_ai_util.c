@@ -67,7 +67,7 @@ bool32 PartyMonHasInTactFocusSashSturdy(u32 battlerAtk, u32 battlerDef, u32 move
 bool32 MonHasInTactFocusSashSturdy(u32 battler, u32 opposingBattler, u32 move)
 {
     //battler is the one being checked for sash
-    if(gBattleMons[opposingBattler].ability == ABILITY_PARENTAL_BOND || gMovesInfo[move].effect == EFFECT_MULTI_HIT || gMovesInfo[move].effect == EFFECT_TRIPLE_KICK){
+    if(gBattleMons[opposingBattler].ability == ABILITY_PARENTAL_BOND || gMovesInfo[move].effect == EFFECT_MULTI_HIT || gMovesInfo[move].effect == EFFECT_TRIPLE_KICK || gMovesInfo[move].strikeCount > 1){
         return FALSE;
     }
 
@@ -3073,6 +3073,21 @@ bool32 ShouldTrap(u32 battlerAtk, u32 battlerDef, u32 move)
     return FALSE;
 }
 
+bool32 ShouldRollout(u32 battlerAtk, u32 battlerDef, u32 move)
+{
+    u32 noOfHitsToFaint = NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk);
+    u32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, TRUE);
+
+    if(HasMoveEffect(battlerDef, EFFECT_PROTECT)){
+        return FALSE;
+    }
+
+    if ((noOfHitsToFaint >= 2 && aiIsFaster) || (noOfHitsToFaint >= 3 && !aiIsFaster))
+        return TRUE;    // chance to trap if decent mu
+
+    return FALSE;
+}
+
 bool32 ShouldFakeOut(u32 battlerAtk, u32 battlerDef, u32 move)
 {
     if ((!gDisableStructs[battlerAtk].isFirstTurn && MoveHasAdditionalEffectWithChance(move, MOVE_EFFECT_FLINCH, 100))
@@ -3081,7 +3096,7 @@ bool32 ShouldFakeOut(u32 battlerAtk, u32 battlerDef, u32 move)
     || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
     || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
     || (!IsMoldBreakerTypeAbility(battlerAtk, AI_DATA->abilities[battlerAtk])
-    && (AI_DATA->abilities[battlerDef] == ABILITY_SHIELD_DUST || AI_DATA->abilities[battlerDef] == ABILITY_INNER_FOCUS)))
+    && (gBattleMons[battlerDef].ability == ABILITY_SHIELD_DUST || gBattleMons[battlerDef].ability == ABILITY_INNER_FOCUS)))
         return FALSE;
 
     return TRUE;

@@ -1440,7 +1440,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             //fallthrough
         case EFFECT_POISON:
         case EFFECT_TOXIC:
-            if (!AI_CanPoison(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, aiData->partnerMove))
+            if (!AI_CanPoison(battlerAtk, battlerDef, gBattleMons[battlerDef].ability, move, aiData->partnerMove))
                 ADJUST_SCORE(-10);
             break;
         case EFFECT_LIGHT_SCREEN:
@@ -3720,6 +3720,10 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         }
         else
             ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
+        break;
+    case EFFECT_ROLLOUT:
+        if(ShouldRollout(battlerAtk, battlerDef, move))
+            ADJUST_SCORE(DECENT_EFFECT);
         break;
     case EFFECT_FIRST_TURN_ONLY:
         if (ShouldFakeOut(battlerAtk, battlerDef, move) && MoveHasAdditionalEffectWithChance(move, MOVE_EFFECT_FLINCH, 100))

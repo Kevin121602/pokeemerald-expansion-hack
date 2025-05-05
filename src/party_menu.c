@@ -3386,7 +3386,8 @@ static void CursorCb_Paralyze(u8 taskId)
 
 static void CursorCb_Sleep(u8 taskId)
 {
-    u32 status1 = STATUS1_SLEEP;
+    //u32 status1 = STATUS1_SLEEP;
+    u32 status1 = STATUS1_SLEEP_TURN(1 + RandomUniform(RNG_SLEEP_TURNS, 1, 3));
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
 
     u16 species = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
