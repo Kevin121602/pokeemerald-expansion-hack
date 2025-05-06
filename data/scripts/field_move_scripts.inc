@@ -221,14 +221,11 @@ Text_CantSmash:
 
 EventScript_StrengthBoulder::
 	lockall
-	goto_if_unset FLAG_BADGE04_GET, EventScript_CantStrength
+	goto_if_unset FLAG_BADGE08_GET, EventScript_CantStrength
+	checkitem ITEM_HM_STRENGTH
+	goto_if_eq VAR_RESULT, FALSE, EventScript_CantStrength
 	goto_if_set FLAG_SYS_USE_STRENGTH, EventScript_CheckActivatedBoulder
-	checkpartymove MOVE_STRENGTH
-	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantStrength
 	setfieldeffectargument 0, VAR_RESULT
-	msgbox Text_WantToStrength, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, EventScript_CancelStrength
-	closemessage
 	dofieldeffect FLDEFF_USE_STRENGTH
 	waitstate
 	goto EventScript_ActivateStrength
@@ -243,7 +240,6 @@ EventScript_UseStrength::
 
 EventScript_ActivateStrength::
 	setflag FLAG_SYS_USE_STRENGTH
-	msgbox Text_MonUsedStrength, MSGBOX_DEFAULT
 	releaseall
 	end
 
@@ -253,7 +249,6 @@ EventScript_CantStrength::
 	end
 
 EventScript_CheckActivatedBoulder::
-	msgbox Text_StrengthActivated, MSGBOX_DEFAULT
 	releaseall
 	end
 
@@ -315,14 +310,10 @@ Text_MonUsedWaterfall:
 
 EventScript_UseDive::
 	lockall
-	checkpartymove MOVE_DIVE
-	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantDive
+	goto_if_unset FLAG_BADGE07_GET, EventScript_CantDive
+	checkitem ITEM_HM_DIVE
+	goto_if_eq VAR_RESULT, FALSE, EventScript_CantDive
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	setfieldeffectargument 0, VAR_RESULT
-	setfieldeffectargument 1, 1
-	msgbox Text_WantToDive, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, EventScript_EndDive
-	msgbox Text_MonUsedDive, MSGBOX_DEFAULT
 	dofieldeffect FLDEFF_USE_DIVE
 	goto EventScript_EndDive
 	end
@@ -338,14 +329,9 @@ EventScript_EndDive::
 
 EventScript_UseDiveUnderwater::
 	lockall
-	checkpartymove MOVE_DIVE
-	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSurface
+	checkitem ITEM_HM_DIVE
+	goto_if_eq VAR_RESULT, FALSE, EventScript_CantSurface
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	setfieldeffectargument 0, VAR_RESULT
-	setfieldeffectargument 1, 1
-	msgbox Text_WantToSurface, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, EventScript_EndSurface
-	msgbox Text_MonUsedDive, MSGBOX_DEFAULT
 	dofieldeffect FLDEFF_USE_DIVE
 	goto EventScript_EndSurface
 	end
