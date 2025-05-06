@@ -212,6 +212,7 @@ extern const u8 FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon[];
 extern const u8 EventScript_FeaturesMenu_GiveEjectPack[];
 extern const u8 EventScript_FeaturesMenu_GiveEjectButton[];
 extern const u8 EventScript_FeaturesMenu_GiveRedCard[];
+extern const u8 EventScript_AccessPokemonStorage[];
 
 static const struct WindowTemplate sFeaturesMenuWindowTemplateMain =
 {
@@ -698,7 +699,7 @@ static bool8 FeaturesAction_OpenPc(void){
     if (!gPaletteFade.active)
     {
         PlaySE(SE_SELECT);
-        FeaturesMenu_PreformScript(EventScript_PC);
+        FeaturesMenu_PreformScript(EventScript_AccessPokemonStorage);
         return TRUE;
     }
 

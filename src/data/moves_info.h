@@ -11162,12 +11162,12 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
         .description = COMPOUND_STRING(
             "Makes the opposite gender\n"
             "sharply reduce its Sp. Atk."),
-        .effect = EFFECT_CAPTIVATE,
+        .effect = EFFECT_SPECIAL_ATTACK_DOWN_2,
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 20,
-        .target = MOVE_TARGET_BOTH,
+        .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
         .zMove = { .effect = Z_EFFECT_SPDEF_UP_2 },
