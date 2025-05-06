@@ -637,7 +637,7 @@ static void BuildFeaturesMenuActions(void){
     AddFeaturesMenuAction(FEATURES_MENU_HEART_SCALES);
     AddFeaturesMenuAction(FEATURES_MENU_BUY_ITEMS);
     AddFeaturesMenuAction(FEATURES_MENU_MOVE_DELETER);
-    if (FlagGet(FLAG_SYS_GAUNTLET) == FALSE)
+    if (FlagGet(FLAG_SYS_GAUNTLET) == FALSE && Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
     {
         AddFeaturesMenuAction(FEATURES_MENU_POKE_RIDER);
     }

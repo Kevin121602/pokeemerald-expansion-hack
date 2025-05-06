@@ -141,14 +141,14 @@ enum {
 // In CursorCb_FieldMove, field moves <= FIELD_MOVE_WATERFALL are assumed to line up with the badge flags.
 // Badge flag names are commented here for people searching for references to remove the badge requirement.
 enum {
-    FIELD_MOVE_CUT,         // FLAG_BADGE01_GET
-    FIELD_MOVE_FLASH,       // FLAG_BADGE02_GET
-    FIELD_MOVE_ROCK_SMASH,  // FLAG_BADGE03_GET
-    FIELD_MOVE_STRENGTH,    // FLAG_BADGE04_GET
-    FIELD_MOVE_SURF,        // FLAG_BADGE05_GET
+    FIELD_MOVE_CUT,         // FLAG_BADGE01_GET 
+    FIELD_MOVE_SURF,        // FLAG_BADGE02_GET (3rd In game Badge)
+    FIELD_MOVE_WATERFALL,   // FLAG_BADGE03_GET (8th In game Badge)
+    FIELD_MOVE_FLASH,       // FLAG_BADGE04_GET (2nd In game Badge)
+    FIELD_MOVE_ROCK_SMASH,  // FLAG_BADGE05_GET (4th In game Badge)
     FIELD_MOVE_FLY,         // FLAG_BADGE06_GET
     FIELD_MOVE_DIVE,        // FLAG_BADGE07_GET
-    FIELD_MOVE_WATERFALL,   // FLAG_BADGE08_GET
+    FIELD_MOVE_STRENGTH,    // FLAG_BADGE08_GET (5th In game Badge)
     FIELD_MOVE_TELEPORT,
     FIELD_MOVE_DIG,
     FIELD_MOVE_SECRET_POWER,

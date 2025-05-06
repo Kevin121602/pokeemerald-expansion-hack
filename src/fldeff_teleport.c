@@ -6,13 +6,14 @@
 #include "overworld.h"
 #include "task.h"
 #include "constants/field_effects.h"
+#include "event_data.h"
 
 static void FieldCallback_Teleport(void);
 static void StartTeleportFieldEffect(void);
 
 bool8 SetUpFieldMove_Teleport(void)
 {
-    if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
+    if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE && FlagGet(FLAG_SYS_GAUNTLET) == FALSE)
     {
         gFieldCallback2 = FieldCallback_PrepareFadeInForTeleport;
         gPostMenuFieldCallback = FieldCallback_Teleport;

@@ -61,21 +61,21 @@ static void Task_DoFieldMove_Init(u8 taskId)
     if (!ObjectEventIsMovementOverridden(&gObjectEvents[objEventId])
      || ObjectEventClearHeldMovementIfFinished(&gObjectEvents[objEventId]))
     {
-        if (gMapHeader.mapType == MAP_TYPE_UNDERWATER || gFieldEffectArguments[3])
-        {
+        //if (gMapHeader.mapType == MAP_TYPE_UNDERWATER || gFieldEffectArguments[3])
+        //{
             // Skip field move pose underwater, or if arg3 is nonzero
             if (gFieldEffectArguments[3])
                 gFieldEffectArguments[3] = 0;
-            FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
+            //FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
             gTasks[taskId].func = Task_DoFieldMove_WaitForMon;
-        }
-        else
-        {
-            // Do field move pose
-            SetPlayerAvatarFieldMove();
-            ObjectEventSetHeldMovement(&gObjectEvents[objEventId], MOVEMENT_ACTION_START_ANIM_IN_DIRECTION);
-            gTasks[taskId].func = Task_DoFieldMove_ShowMonAfterPose;
-        }
+        //}
+        //else
+        //{
+        //    // Do field move pose
+        //    SetPlayerAvatarFieldMove();
+        //    ObjectEventSetHeldMovement(&gObjectEvents[objEventId], MOVEMENT_ACTION_START_ANIM_IN_DIRECTION);
+        //    gTasks[taskId].func = Task_DoFieldMove_ShowMonAfterPose;
+        //}
     }
 }
 
@@ -83,7 +83,7 @@ static void Task_DoFieldMove_ShowMonAfterPose(u8 taskId)
 {
     if (ObjectEventCheckHeldMovementStatus(&gObjectEvents[gPlayerAvatar.objectEventId]) == TRUE)
     {
-        FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
+        //FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
         gTasks[taskId].func = Task_DoFieldMove_WaitForMon;
     }
 }
