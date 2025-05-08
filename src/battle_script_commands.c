@@ -3475,8 +3475,13 @@ void SetMoveEffect(bool32 primary, bool32 certain)
             case MOVE_EFFECT_ALL_STATS_UP:
                 if (!NoAliveMonsForEitherParty())
                 {
-                    BattleScriptPush(gBattlescriptCurrInstr + 1);
-                    gBattlescriptCurrInstr = BattleScript_AllStatsUp;
+                    if ((gFieldStatuses & STATUS_FIELD_RICH_SEDIMENT) && (moveType == TYPE_ROCK || moveType == TYPE_STEEL || moveType == TYPE_GROUND)){
+                        BattleScriptPush(gBattlescriptCurrInstr + 1);
+                        gBattlescriptCurrInstr = BattleScript_AllStatsUp2;
+                    } else {
+                        BattleScriptPush(gBattlescriptCurrInstr + 1);
+                        gBattlescriptCurrInstr = BattleScript_AllStatsUp;
+                    }
                 }
                 break;
             case MOVE_EFFECT_RAPID_SPIN:
