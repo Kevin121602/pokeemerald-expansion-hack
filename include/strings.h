@@ -53,6 +53,8 @@ extern const u8 gText_Key_Items[];
 extern const u8 gText_Poke_Balls[];
 extern const u8 gText_TMs_Hms[];
 extern const u8 gText_Berries2[];
+extern const u8 gText_HeldItems[];
+extern const u8 gText_MegaStones[];
 
 extern const u8 gText_Single2[];
 extern const u8 gText_Double2[];
@@ -1289,7 +1291,6 @@ extern const u8 gText_PyramidTrainers[];
 extern const u8 gText_PyramidMaze[];
 extern const u8 gText_BattleBag2[];
 extern const u8 gText_PokenavAndBag[];
-extern const u8 gText_HeldItems[];
 extern const u8 gText_PokemonOrder[];
 extern const u8 gText_GoOn[];
 extern const u8 gText_Red[];

@@ -80,6 +80,8 @@ struct GFRomHeader
     u32 gameClearFlag;
     u32 ribbonFlag;
     u8 bagCountItems;
+    u8 bagCountHeldItems;
+    u8 bagCountMegaStones;
     u8 bagCountKeyItems;
     u8 bagCountPokeballs;
     u8 bagCountTMHMs;
@@ -163,6 +165,8 @@ static const struct GFRomHeader sGFRomHeader = {
     .gameClearFlag = FLAG_SYS_GAME_CLEAR,
     .ribbonFlag = FLAG_SYS_RIBBON_GET,
     .bagCountItems = BAG_ITEMS_COUNT,
+    .bagCountHeldItems = BAG_HELD_ITEMS_COUNT,
+    .bagCountMegaStones = BAG_MEGA_STONES_COUNT,
     .bagCountKeyItems = BAG_KEYITEMS_COUNT,
     .bagCountPokeballs = BAG_POKEBALLS_COUNT,
     .bagCountTMHMs = BAG_TMHM_COUNT,
