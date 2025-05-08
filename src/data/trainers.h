@@ -12498,7 +12498,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 5032
-            .species = SPECIES_MINIOR_METEOR,
+            .species = SPECIES_MINIOR,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5032
             .heldItem = ITEM_LIECHI_BERRY,
@@ -12538,7 +12538,7 @@ F_TRAINER_FEMALE |
                 MOVE_ANCIENT_POWER,
                 MOVE_INCINERATE,
                 MOVE_HIDDEN_POWER,
-                MOVE_ROCK_POLISH,
+                MOVE_RECOVER,
             },
             },
             {

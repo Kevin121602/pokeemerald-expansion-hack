@@ -1689,6 +1689,10 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         return switchScore;
     }
 
+    //if(battleMon.species == SPECIES_MINIOR && battleMon.hp*2 > battleMon.maxHP){
+    //    battleMon.species = SPECIES_MINIOR_METEOR_RED;
+    //}
+
     //switchScore = 10;
     //return switchScore;
 

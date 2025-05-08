@@ -45,6 +45,7 @@
 #include "constants/hold_effects.h"
 #include "constants/items.h"
 #include "constants/moves.h"
+#include "constants/abilities.h"
 #include "constants/party_menu.h"
 #include "constants/region_map_sections.h"
 #include "constants/rgb.h"
@@ -4095,12 +4096,58 @@ static void SetMonTypeIcons(void)
 static void SetMoveTypeIcons(void)
 {
     u8 i;
+    u8 type;
+    u8 speciesId;
+    u16 ability = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum);
     struct PokeSummary *summary = &sMonSummaryScreen->summary;
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         if (summary->moves[i] != MOVE_NONE)
         {
-            SetTypeSpritePosAndPal(gMovesInfo[summary->moves[i]].type, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
+            type = gMovesInfo[summary->moves[i]].type;
+
+            if (summary->moves[i] == MOVE_IVY_CUDGEL)
+            {
+                speciesId = summary->species;
+
+                if (speciesId == SPECIES_OGERPON_WELLSPRING_MASK || speciesId == SPECIES_OGERPON_WELLSPRING_MASK_TERA
+                    || speciesId == SPECIES_OGERPON_HEARTHFLAME_MASK || speciesId == SPECIES_OGERPON_HEARTHFLAME_MASK_TERA
+                    || speciesId == SPECIES_OGERPON_CORNERSTONE_MASK || speciesId == SPECIES_OGERPON_CORNERSTONE_MASK_TERA)
+                    type = gSpeciesInfo[summary->species].types[1];
+            }
+
+            if(ability == ABILITY_AERILATE && gMovesInfo[summary->moves[i]].type == TYPE_NORMAL){
+                type = TYPE_FLYING;
+            }
+
+            if(ability == ABILITY_REFRIGERATE && gMovesInfo[summary->moves[i]].type == TYPE_NORMAL){
+                type = TYPE_ICE;
+            }
+
+            if(ability == ABILITY_PIXILATE && gMovesInfo[summary->moves[i]].type == TYPE_NORMAL){
+                type = TYPE_FAIRY;
+            }
+
+            if(ability == ABILITY_NORMALIZE){
+                type = TYPE_NORMAL;
+            }
+
+            if (summary->moves[i] == MOVE_HIDDEN_POWER)
+            {
+                u8 typeBits  = ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_HP_IV) & 1) << 0)
+                            | ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_ATK_IV) & 1) << 1)
+                            | ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_DEF_IV) & 1) << 2)
+                            | ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPEED_IV) & 1) << 3)
+                            | ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPATK_IV) & 1) << 4)
+                            | ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPDEF_IV) & 1) << 5);
+
+                type = ((NUMBER_OF_MON_TYPES - 6) * typeBits) / 63 + 2;;
+                if (type >= TYPE_MYSTERY)
+                    type++;
+                type |= 0xC0;
+                type = (type & 0x3F);
+            }
+            SetTypeSpritePosAndPal(type, 85, 32 + (i * 16), i + SPRITE_ARR_ID_TYPE);
         }
         else
             SetSpriteInvisibility(i + SPRITE_ARR_ID_TYPE, TRUE);
@@ -4122,14 +4169,61 @@ static void SetContestMoveTypeIcons(void)
 
 static void SetNewMoveTypeIcon(void)
 {
+    u8 type;
+    u8 speciesId;
+    u16 ability = GetAbilityBySpecies(sMonSummaryScreen->summary.species, sMonSummaryScreen->summary.abilityNum);
     if (sMonSummaryScreen->newMove == MOVE_NONE)
     {
         SetSpriteInvisibility(SPRITE_ARR_ID_TYPE + 4, TRUE);
     }
     else
     {
+        type = gMovesInfo[sMonSummaryScreen->newMove].type;
+
+            if (sMonSummaryScreen->newMove == MOVE_IVY_CUDGEL)
+            {
+                speciesId = sMonSummaryScreen->summary.species;
+
+                if (speciesId == SPECIES_OGERPON_WELLSPRING_MASK || speciesId == SPECIES_OGERPON_WELLSPRING_MASK_TERA
+                    || speciesId == SPECIES_OGERPON_HEARTHFLAME_MASK || speciesId == SPECIES_OGERPON_HEARTHFLAME_MASK_TERA
+                    || speciesId == SPECIES_OGERPON_CORNERSTONE_MASK || speciesId == SPECIES_OGERPON_CORNERSTONE_MASK_TERA)
+                    type = gSpeciesInfo[sMonSummaryScreen->summary.species].types[1];
+            }
+
+            if(ability == ABILITY_AERILATE && gMovesInfo[sMonSummaryScreen->newMove].type == TYPE_NORMAL){
+                type = TYPE_FLYING;
+            }
+
+            if(ability == ABILITY_REFRIGERATE && gMovesInfo[sMonSummaryScreen->newMove].type == TYPE_NORMAL){
+                type = TYPE_ICE;
+            }
+
+            if(ability == ABILITY_PIXILATE && gMovesInfo[sMonSummaryScreen->newMove].type == TYPE_NORMAL){
+                type = TYPE_FAIRY;
+            }
+
+            if(ability == ABILITY_NORMALIZE){
+                type = TYPE_NORMAL;
+            }
+
+            if (sMonSummaryScreen->newMove == MOVE_HIDDEN_POWER)
+            {
+                u8 typeBits  = ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_HP_IV) & 1) << 0)
+                            | ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_ATK_IV) & 1) << 1)
+                            | ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_DEF_IV) & 1) << 2)
+                            | ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPEED_IV) & 1) << 3)
+                            | ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPATK_IV) & 1) << 4)
+                            | ((GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_SPDEF_IV) & 1) << 5);
+
+                type = ((NUMBER_OF_MON_TYPES - 6) * typeBits) / 63 + 2;;
+                if (type >= TYPE_MYSTERY)
+                    type++;
+                type |= 0xC0;
+                type = (type & 0x3F);
+            }
+
         if (sMonSummaryScreen->currPageIndex == PSS_PAGE_BATTLE_MOVES)
-            SetTypeSpritePosAndPal(gMovesInfo[sMonSummaryScreen->newMove].type, 85, 96, SPRITE_ARR_ID_TYPE + 4);
+            SetTypeSpritePosAndPal(type, 85, 96, SPRITE_ARR_ID_TYPE + 4);
         else
             SetTypeSpritePosAndPal(NUMBER_OF_MON_TYPES + gMovesInfo[sMonSummaryScreen->newMove].contestCategory, 85, 96, SPRITE_ARR_ID_TYPE + 4);
     }

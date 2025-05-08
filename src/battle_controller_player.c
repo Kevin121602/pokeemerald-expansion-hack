@@ -44,6 +44,7 @@
 #include "level_caps.h"
 #include "menu.h"
 #include "pokemon_summary_screen.h"
+#include "constants/abilities.h"
 
 static void PlayerBufferExecCompleted(u32 battler);
 static void PlayerHandleLoadMonSprite(u32 battler);
@@ -1747,7 +1748,41 @@ static void MoveSelectionDisplayMoveType(u32 battler)
         || (IsGimmickSelected(battler, GIMMICK_TERA) && gBattleMons[battler].species == SPECIES_TERAPAGOS_TERASTAL))
             type = TYPE_STELLAR;
     }
-    end = StringCopy(txtPtr, gTypesInfo[type].name);
+
+    if(gBattleMons[battler].ability == ABILITY_REFRIGERATE && gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_NORMAL){
+        type = TYPE_ICE;
+    }
+
+    if(gBattleMons[battler].ability == ABILITY_AERILATE && gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_NORMAL){
+        type = TYPE_FLYING;
+    }
+
+    if(gBattleMons[battler].ability == ABILITY_PIXILATE && gMovesInfo[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_NORMAL){
+        type = TYPE_FAIRY;
+    }
+
+    if(gBattleMons[battler].ability == ABILITY_NORMALIZE){
+        type = TYPE_NORMAL;
+    }
+
+    if (moveInfo->moves[gMoveSelectionCursor[battler]] == MOVE_HIDDEN_POWER)
+    {
+        u8 typeBits  = ((GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_HP_IV) & 1) << 0)
+                     | ((GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_ATK_IV) & 1) << 1)
+                     | ((GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_DEF_IV) & 1) << 2)
+                     | ((GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_SPEED_IV) & 1) << 3)
+                     | ((GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_SPATK_IV) & 1) << 4)
+                     | ((GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_SPDEF_IV) & 1) << 5);
+
+        type = ((NUMBER_OF_MON_TYPES - 6) * typeBits) / 63 + 2;;
+        if (type >= TYPE_MYSTERY)
+            type++;
+        type |= 0xC0;
+        end = StringCopy(txtPtr, gTypesInfo[type & 0x3F].name);
+    } else {
+        end = StringCopy(txtPtr, gTypesInfo[type].name);
+    }
+
     PrependFontIdToFit(txtPtr, end, FONT_NORMAL, WindowWidthPx(B_WIN_MOVE_TYPE) - 25);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_TYPE);
 }
