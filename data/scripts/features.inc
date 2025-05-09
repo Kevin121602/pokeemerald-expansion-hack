@@ -51,6 +51,7 @@ EventScript_FeaturesMenu_ChangeAbility::
 EventScript_FeaturesMenu_ChangeIV::
 	special ChoosePartyMon
 	waitstate
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, EventScript_FeaturesMenu_Exit
 	multichoice 0, 0, MULTI_CHANGE_IV, FALSE
 	switch VAR_RESULT
 	case 0, EventScript_FeaturesMenu_ChangeHP
@@ -67,6 +68,7 @@ EventScript_FeaturesMenu_ChangeIV::
 EventScript_FeaturesMenu_ChangeNature::
 	special ChoosePartyMon
 	waitstate
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, EventScript_FeaturesMenu_Exit
 	copyvar VAR_0x8005, VAR_0x8004
 	checkitem ITEM_HEART_SCALE, 3
 	goto_if_eq VAR_RESULT, TRUE EventScript_FeaturesMenu_ChangeNature3
@@ -272,48 +274,48 @@ Text_NameChangedToNature::
 	.string "changed to {STR_VAR_2}!$"
 
 Text_HPChanged::
-	.string "{STR_VAR_1}'s HP has been changed to\n"
+	.string "{STR_VAR_1}'s HP IV has been changed to\n"
 	.string "{STR_VAR_2}!$"
 
 Text_AttackChanged::
-	.string "{STR_VAR_1}'s Attack has been changed\n"
-	.string "to {STR_VAR_2}!$"
+	.string "{STR_VAR_1}'s Attack IV has been\n"
+	.string "changed to {STR_VAR_2}!$"
 
 Text_DefenseChanged::
-	.string "{STR_VAR_1}'s Defense has been changed\n"
-	.string "to {STR_VAR_2}!$"
+	.string "{STR_VAR_1}'s Defense IV has been\n"
+	.string "changed to {STR_VAR_2}!$"
 
 Text_SpAttackChanged::
-	.string "{STR_VAR_1}'s Special Attack has been\n"
-	.string "changed to {STR_VAR_2}!$"
+	.string "{STR_VAR_1}'s Special Attack IV has\n"
+	.string "been changed to {STR_VAR_2}!$"
 
 Text_SpDefenseChanged::
-	.string "{STR_VAR_1}'s Special Defense has been\n"
-	.string "changed to {STR_VAR_2}!$"
+	.string "{STR_VAR_1}'s Special Defense IV has\n"
+	.string "been changed to {STR_VAR_2}!$"
 
 Text_SpeedChanged::
-	.string "{STR_VAR_1}'s Speed has been changed\n"
-	.string "to {STR_VAR_2}!$"
+	.string "{STR_VAR_1}'s Speed IV has been\n"
+	.string "changed to {STR_VAR_2}!$"
 
 Text_IncreaseHPtoNumber::
-	.string "Change {STR_VAR_1}'s HP to {STR_VAR_2}?$"
+	.string "Change {STR_VAR_1}'s HP IV to {STR_VAR_2}?$"
 
 Text_IncreaseAttacktoNumber::
-	.string "Change {STR_VAR_1}'s Attack to {STR_VAR_2}?$"
+	.string "Change {STR_VAR_1}'s Attack IV to {STR_VAR_2}?$"
 
 Text_IncreaseDefensetoNumber::
-	.string "Change {STR_VAR_1}'s Defense to {STR_VAR_2}?$"
+	.string "Change {STR_VAR_1}'s Defense IV to {STR_VAR_2}?$"
 
 Text_IncreaseSpAtktoNumber::
-	.string "Change {STR_VAR_1}'s Special Attack\n"
+	.string "Change {STR_VAR_1}'s Special Attack IV\n"
 	.string "to {STR_VAR_2}?$"
 
 Text_IncreaseSpDeftoNumber::
-	.string "Change {STR_VAR_1}'s Special Defense\n"
+	.string "Change {STR_VAR_1}'s Special Defense IV\n"
 	.string "to {STR_VAR_2}?$"
 
 Text_IncreaseSpeedtoNumber::
-	.string "Change {STR_VAR_1}'s Speed to {STR_VAR_2}?$"
+	.string "Change {STR_VAR_1}'s Speed IV to {STR_VAR_2}?$"
 
 Text_NoHeartScales::
     .string "You don't have any Heart Scales!$"
