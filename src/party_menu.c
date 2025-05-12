@@ -3721,13 +3721,13 @@ static void Task_WriteMailToGiveMonAfterText(u8 taskId)
 
 static void CB2_WriteMailToGiveMon(void)
 {
-    u8 mail = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_MAIL);
+    /*u8 mail = MAIL_NONE;
 
     DoEasyChatScreen(
         EASY_CHAT_TYPE_MAIL,
         gSaveBlock1Ptr->mail[mail].words,
         CB2_ReturnToPartyMenuFromWritingMail,
-        EASY_CHAT_PERSON_DISPLAY_NONE);
+        EASY_CHAT_PERSON_DISPLAY_NONE);*/
 }
 
 static void CB2_ReturnToPartyMenuFromWritingMail(void)
@@ -3899,7 +3899,7 @@ static void CursorCb_Read(u8 taskId)
 
 static void CB2_ReadHeldMail(void)
 {
-    ReadMail(&gSaveBlock1Ptr->mail[GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_MAIL)], CB2_ReturnToPartyMenuFromReadingMail, TRUE);
+    //ReadMail(&gSaveBlock1Ptr->mail[GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_MAIL)], CB2_ReturnToPartyMenuFromReadingMail, TRUE);
 }
 
 static void CB2_ReturnToPartyMenuFromReadingMail(void)
@@ -7087,13 +7087,13 @@ static void CB2_WriteMailToGiveMonFromBag(void)
 {
     u8 mail;
 
-    GiveItemToMon(&gPlayerParty[gPartyMenu.slotId], gPartyMenu.bagItem);
-    mail = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_MAIL);
-    DoEasyChatScreen(
-        EASY_CHAT_TYPE_MAIL,
-        gSaveBlock1Ptr->mail[mail].words,
-        CB2_ReturnToPartyOrBagMenuFromWritingMail,
-        EASY_CHAT_PERSON_DISPLAY_NONE);
+    //GiveItemToMon(&gPlayerParty[gPartyMenu.slotId], gPartyMenu.bagItem);
+    //mail = MAIL_NONE;
+    //DoEasyChatScreen(
+    //    EASY_CHAT_TYPE_MAIL,
+    //    gSaveBlock1Ptr->mail[mail].words,
+    //    CB2_ReturnToPartyOrBagMenuFromWritingMail,
+    //    EASY_CHAT_PERSON_DISPLAY_NONE);
 }
 
 static void CB2_ReturnToPartyOrBagMenuFromWritingMail(void)
@@ -7211,7 +7211,7 @@ static void TryGiveMailToSelectedMon(u8 taskId)
     struct Mail *mail;
 
     gPartyMenuUseExitCallback = FALSE;
-    mail = &gSaveBlock1Ptr->mail[gPlayerPCItemPageInfo.itemsAbove + PARTY_SIZE + gPlayerPCItemPageInfo.cursorPos];
+    /*mail = MAIL_NONE;
     if (GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE)
     {
         DisplayPartyMenuMessage(gText_PkmnHoldingItemCantHoldMail, TRUE);
@@ -7222,7 +7222,7 @@ static void TryGiveMailToSelectedMon(u8 taskId)
         ClearMail(mail);
         DisplayPartyMenuMessage(gText_MailTransferredFromMailbox, TRUE);
     }
-    ScheduleBgCopyTilemapToVram(2);
+    ScheduleBgCopyTilemapToVram(2);*/
     gTasks[taskId].func = Task_UpdateHeldItemSpriteAndClosePartyMenu;
 }
 

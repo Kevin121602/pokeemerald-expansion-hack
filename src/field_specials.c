@@ -4475,7 +4475,7 @@ void BufferNameAndNature(void)
 
 void ChangeNature(void)
 {
-    u16 nature;
+    u8 nature;
 
     switch(gSpecialVar_0x8006){
         case 0:
@@ -4546,6 +4546,7 @@ void ChangeNature(void)
     }
 
     SetMonData(&gPlayerParty[gSpecialVar_0x8005], MON_DATA_HIDDEN_NATURE, &nature);
+    SetMonData(&gPlayerParty[gSpecialVar_0x8005], MON_DATA_MINT_NATURE, &nature);
     CalculateMonStats(&gPlayerParty[gSpecialVar_0x8005]);
 }
 

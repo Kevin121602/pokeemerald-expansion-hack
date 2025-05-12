@@ -1073,8 +1073,7 @@ void ZeroMonData(struct Pokemon *mon)
     SetMonData(mon, MON_DATA_SPATK, &arg);
     SetMonData(mon, MON_DATA_SPDEF, &arg);
     SetMonData(mon, MON_DATA_LEVEL_CAP, &arg);
-    arg = MAIL_NONE;
-    SetMonData(mon, MON_DATA_MAIL, &arg);
+    SetMonData(mon, MON_DATA_MINT_NATURE, &arg);
 }
 
 void ZeroPlayerPartyMons(void)
@@ -1097,8 +1096,6 @@ void CreateMon(struct Pokemon *mon, u16 species, u8 level, u8 fixedIV, u8 hasFix
     ZeroMonData(mon);
     CreateBoxMon(&mon->box, species, level, fixedIV, hasFixedPersonality, fixedPersonality, otIdType, fixedOtId);
     SetMonData(mon, MON_DATA_LEVEL, &level);
-    mail = MAIL_NONE;
-    SetMonData(mon, MON_DATA_MAIL, &mail);
     CalculateMonStats(mon);
 }
 
@@ -1848,8 +1845,6 @@ void BoxMonToMon(const struct BoxPokemon *src, struct Pokemon *dest)
     dest->status = GetBoxMonData(&dest->box, MON_DATA_STATUS, NULL);
     dest->hp = 0;
     dest->maxHP = 0;
-    value = MAIL_NONE;
-    SetMonData(dest, MON_DATA_MAIL, &value);
     value = GetBoxMonData(&dest->box, MON_DATA_HP_LOST);
     CalculateMonStats(dest);
     value = GetMonData(dest, MON_DATA_MAX_HP) - value;
@@ -2377,9 +2372,9 @@ u32 GetMonData3(struct Pokemon *mon, s32 field, u8 *data)
     case MON_DATA_SPDEF2:
         ret = mon->spDefense;
         break;
-    case MON_DATA_MAIL:
-        ret = mon->mail;
-        break;
+    //case MON_DATA_MAIL:
+    //    ret = mon->mail;
+    //    break;
     default:
         ret = GetBoxMonData(&mon->box, field, data);
         break;
@@ -2941,8 +2936,8 @@ void SetMonData(struct Pokemon *mon, s32 field, const void *dataArg)
     case MON_DATA_SPDEF:
         SET16(mon->spDefense);
         break;
-    case MON_DATA_MAIL:
-        SET8(mon->mail);
+    case MON_DATA_MINT_NATURE:
+        SET8(mon->mintNature);
         break;
     case MON_DATA_SPECIES_OR_EGG:
         break;
