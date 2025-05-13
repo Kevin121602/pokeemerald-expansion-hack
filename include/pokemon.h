@@ -67,7 +67,7 @@ enum {
     MON_DATA_IS_EGG,
     MON_DATA_ABILITY_NUM,
     MON_DATA_TOUGH,
-    MON_DATA_SHEEN,
+    MON_DATA_MINT_NATURE,
     MON_DATA_OT_GENDER,
     //MON_DATA_COOL_RIBBON,
     //MON_DATA_BEAUTY_RIBBON,
@@ -81,7 +81,7 @@ enum {
     MON_DATA_SPEED,
     MON_DATA_SPATK,
     MON_DATA_SPDEF,
-    MON_DATA_MINT_NATURE,
+    MON_DATA_MAIL,
     MON_DATA_SPECIES_OR_EGG,
     MON_DATA_IVS,
     //MON_DATA_CHAMPION_RIBBON,
@@ -171,7 +171,7 @@ struct PokemonSubstruct2
     u8 cute;
     u8 smart;
     u8 tough;
-    u8 sheen;
+    u8 mintNature;
 };
 
 struct PokemonSubstruct3
@@ -271,7 +271,7 @@ struct Pokemon
     struct BoxPokemon box;
     u32 status;
     u8 level;
-    u8 mintNature;
+    u8 mail;
     u16 hp;
     u16 maxHP;
     u16 attack;

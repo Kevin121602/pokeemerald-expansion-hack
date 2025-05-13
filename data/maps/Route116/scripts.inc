@@ -21,7 +21,7 @@ Route116_MapScripts::
 # 11 "data/maps/Route116/scripts.pory"
 Route116_OnTransition:
 # 12 "data/maps/Route116/scripts.pory"
-	call_if_set FLAG_RECOVERED_DEVON_GOODS, Route116_EventScript_SetWandasBoyfriendPos
+	@ call_if_set FLAG_RECOVERED_DEVON_GOODS, Route116_EventScript_SetWandasBoyfriendPos
 # 13 "data/maps/Route116/scripts.pory"
 	call_if_eq VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_HideMapNamePopup
 # 14 "data/maps/Route116/scripts.pory"

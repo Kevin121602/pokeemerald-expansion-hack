@@ -39,6 +39,7 @@ typedef s32 (*AiScoreFunc)(u32, u32, u32, s32);
 #define STAT_CHANGE_CRIT_RATE           19
 #define STAT_CHANGE_CURSE               20
 #define STAT_CHANGE_SHELL_SMASH         21
+#define STAT_CHANGE_ATK_SPATK           22
 
 //for doubles targeting cases
 

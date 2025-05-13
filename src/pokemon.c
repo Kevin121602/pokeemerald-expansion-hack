@@ -2579,8 +2579,8 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
         case MON_DATA_TOUGH:
             retVal = substruct2->tough;
             break;
-        case MON_DATA_SHEEN:
-            retVal = substruct2->sheen;
+        case MON_DATA_MINT_NATURE:
+            retVal = substruct2->mintNature;
             break;
         case MON_DATA_POKERUS:
             retVal = substruct3->pokerus;
@@ -2936,8 +2936,8 @@ void SetMonData(struct Pokemon *mon, s32 field, const void *dataArg)
     case MON_DATA_SPDEF:
         SET16(mon->spDefense);
         break;
-    case MON_DATA_MINT_NATURE:
-        SET8(mon->mintNature);
+    case MON_DATA_MAIL:
+        SET8(mon->mail);
         break;
     case MON_DATA_SPECIES_OR_EGG:
         break;
@@ -3077,8 +3077,8 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         case MON_DATA_TOUGH:
             SET8(substruct2->tough);
             break;
-        case MON_DATA_SHEEN:
-            SET8(substruct2->sheen);
+        case MON_DATA_MINT_NATURE:
+            SET8(substruct2->mintNature);
             break;
         case MON_DATA_POKERUS:
             SET8(substruct3->pokerus);

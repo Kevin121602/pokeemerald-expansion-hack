@@ -3737,6 +3737,13 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
             tempScore += DECENT_EFFECT;
         }
         break;
+    case STAT_CHANGE_ATK_SPATK:
+        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        if (shouldSetUp){
+            tempScore += DECENT_EFFECT;
+        }
+        break; 
     case STAT_CHANGE_CURSE:
         if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
             return NO_INCREASE;

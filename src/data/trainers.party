@@ -5459,7 +5459,7 @@ Ability: Rattled
 
 Sunflora @ Berry Juice
 Level: 16
-Nature: Jolly
+Nature: Timid
 Ability: Chlorophyll
 -Giga Drain
 -Sludge Bomb
@@ -5473,7 +5473,7 @@ Ability: Swarm
 -Bug Bite
 -Poison Fang
 -Baneful Bunker
--Toxic Thread
+-Night Shade
 
 Unown @ Wise Glasses
 Level: 16
@@ -5582,7 +5582,7 @@ Ability: Rough Skin
 -Dragon Breath
 -Bite
 
-Amaura @ Chople Berry
+Amaura @ Never-Melt Ice
 Level: 15
 Nature: Timid
 Ability: Refrigerate
@@ -6405,7 +6405,7 @@ Ability: Unnerve
 -Pluck
 -Steel Wing
 -Power Trip
--Hone Claws
+-Roost
 
 === TRAINER_TOMMY ===
 Name: TOMMY
@@ -6450,7 +6450,7 @@ Ability: Sand Rush
 -Magical Leaf
 -Aerial Ace
 -Drain Punch
--Rototiller
+-Leech Seed
 
 === TRAINER_CALVIN_1 ===
 Name: CALVIN
@@ -11283,7 +11283,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Geodude @ Red Card
-Level: 17
+Level: 18
 Nature: Careful
 Ability: Sturdy
 -Stealth Rock
@@ -11295,6 +11295,7 @@ Nature: Bold
 Ability: Storm Drain
 -Ancient Power
 -Mega Drain
+-Sludge
 -Recover
 
 Anorith @ Lum Berry
@@ -11307,11 +11308,11 @@ Ability: Battle Armor
 -Aqua Jet
 
 Sudowoodo @ Liechi Berry
-Level: 18
+Level: 17
 Nature: Adamant
 Ability: Sturdy
--Rock Tomb
--Ice Punch
+-Rock Throw
+-Stomping Tantrum
 -Thunder Punch
 -Flail
 
@@ -13979,7 +13980,7 @@ Level: 14
 Nature: Naive
 Ability: Blaze
 -Incinerate
--Ancient Power
+-Thunder Punch
 -Breaking Swipe
 -Scary Face
 

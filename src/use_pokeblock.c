@@ -999,7 +999,7 @@ static void AddPokeblockToConditions(struct Pokeblock *pokeblock, struct Pokemon
     s16 stat;
     u8 data;
 
-    if (GetMonData(mon, MON_DATA_SHEEN) != MAX_SHEEN)
+    if (GetMonData(mon, MON_DATA_TOUGH) != MAX_SHEEN)
     {
         CalculatePokeblockEffectiveness(pokeblock, mon);
         for (i = 0; i < CONDITION_COUNT; i++)
@@ -1014,12 +1014,12 @@ static void AddPokeblockToConditions(struct Pokeblock *pokeblock, struct Pokemon
             SetMonData(mon, sConditionToMonData[i], &data);
         }
 
-        stat = (u8)(GetMonData(mon, MON_DATA_SHEEN)) + pokeblock->feel;
+        stat = (u8)(GetMonData(mon, MON_DATA_TOUGH)) + pokeblock->feel;
         if (stat > MAX_SHEEN)
             stat = MAX_SHEEN;
 
         data = stat;
-        SetMonData(mon, MON_DATA_SHEEN, &data);
+        SetMonData(mon, MON_DATA_TOUGH, &data);
     }
 }
 
@@ -1071,7 +1071,7 @@ static bool8 IsSheenMaxed(void)
 {
     if (GetBoxOrPartyMonData(sMenu->party[sMenu->info.curSelection].boxId,
                              sMenu->party[sMenu->info.curSelection].monId,
-                             MON_DATA_SHEEN,
+                             MON_DATA_TOUGH,
                              NULL) == MAX_SHEEN)
         return TRUE;
     else
@@ -1598,7 +1598,7 @@ static void SpriteCB_SelectionIconCancel(struct Sprite *sprite)
 // is the total number of sparkles that appear
 static void CalculateNumAdditionalSparkles(u8 monIndex)
 {
-    u8 sheen = GetMonData(&gPlayerParty[monIndex], MON_DATA_SHEEN);
+    u8 sheen = GetMonData(&gPlayerParty[monIndex], MON_DATA_TOUGH);
     sMenu->numSparkles[sMenu->curLoadId] = GET_NUM_CONDITION_SPARKLES(sheen);
 }
 

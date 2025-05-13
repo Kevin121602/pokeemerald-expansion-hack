@@ -1204,7 +1204,7 @@ RustboroCity_EventScript_ReturnGoods::
 # 604 "data/maps/RustboroCity/scripts.pory"
 	msgbox RustboroCity_Text_YouGotItThankYou, MSGBOX_DEFAULT
 # 605 "data/maps/RustboroCity/scripts.pory"
-	giveitem ITEM_GREAT_BALL
+	giveitem ITEM_BINDING_BAND
 # 606 "data/maps/RustboroCity/scripts.pory"
 	call_if_eq VAR_RESULT, FALSE, RustboroCity_EventScript_BagFull
 # 607 "data/maps/RustboroCity/scripts.pory"
@@ -2394,7 +2394,7 @@ RustboroCity_Text_YouGotItThankYou:
 # 1199 "data/maps/RustboroCity/scripts.pory"
 	.string "I know! As my thanks, I'll give you\n"
 # 1200 "data/maps/RustboroCity/scripts.pory"
-	.string "another GREAT BALL!$"
+	.string "a BINDING BAND!$"
 # 1201 "data/maps/RustboroCity/scripts.pory"
 
 # 1202 "data/maps/RustboroCity/scripts.pory"
@@ -2402,7 +2402,7 @@ RustboroCity_Text_YoureLoadedWithItems:
 # 1203 "data/maps/RustboroCity/scripts.pory"
 	.string "You're loaded with items.\n"
 # 1204 "data/maps/RustboroCity/scripts.pory"
-	.string "I can't give you this GREAT BALL.$"
+	.string "I can't give you this BINDING BAND.$"
 # 1205 "data/maps/RustboroCity/scripts.pory"
 
 # 1206 "data/maps/RustboroCity/scripts.pory"
