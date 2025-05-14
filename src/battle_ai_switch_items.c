@@ -1689,13 +1689,6 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         return switchScore;
     }
 
-    //if(battleMon.species == SPECIES_MINIOR && battleMon.hp*2 > battleMon.maxHP){
-    //    battleMon.species = SPECIES_MINIOR_METEOR_RED;
-    //}
-
-    //switchScore = 10;
-    //return switchScore;
-
     // Get best move for player to use on switch in candidate
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
@@ -1736,6 +1729,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         {
             damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, battleMon, TRUE, DMG_ROLL_LOWEST);
             hitsToKOPlayer = GetNoOfHitsToKOBattlerDmg(damageDealt, opposingBattler);
+
             //continues if move does 0 damage
             if(hitsToKOPlayer == 0){
                 continue;

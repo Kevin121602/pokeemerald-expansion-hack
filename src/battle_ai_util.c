@@ -240,18 +240,9 @@ void SetBattlerData(u32 battlerId)
         }
 
         // Use the known battler's ability.
-        if (AI_PARTY->mons[side][gBattlerPartyIndexes[battlerId]].ability != ABILITY_NONE)
-            gBattleMons[battlerId].ability = AI_PARTY->mons[side][gBattlerPartyIndexes[battlerId]].ability;
-        // Check if mon can only have one ability.
-        else if (gSpeciesInfo[species].abilities[1] == ABILITY_NONE
-                || gSpeciesInfo[species].abilities[1] == gSpeciesInfo[species].abilities[0])
-            gBattleMons[battlerId].ability = gSpeciesInfo[species].abilities[0];
-        // The ability is unknown.
-        else
-            gBattleMons[battlerId].ability = ABILITY_NONE;
+        gBattleMons[battlerId].ability = AI_PARTY->mons[side][gBattlerPartyIndexes[battlerId]].ability;
 
-        if (AI_PARTY->mons[side][gBattlerPartyIndexes[battlerId]].heldEffect == 0)
-            gBattleMons[battlerId].item = 0;
+        gBattleMons[battlerId].item = AI_PARTY->mons[side][gBattlerPartyIndexes[battlerId]].item;
 
         for (i = 0; i < MAX_MON_MOVES; i++)
         {
@@ -549,6 +540,8 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
     bool32 toggledGimmick = FALSE;
     struct AiLogicData *aiData = AI_DATA;
     gBattleStruct->aiCalcInProgress = TRUE;
+    u32 battlerAtkHoldEffect = ItemId_GetHoldEffect(gBattleMons[battlerAtk].item);
+    u32 battlerDefHoldEffect = ItemId_GetHoldEffect(gBattleMons[battlerDef].item);
 
     if (moveEffect == EFFECT_NATURE_POWER)
         move = GetNaturePowerMove(battlerAtk);
@@ -617,12 +610,12 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
         {
             s32 nonCritDmg = CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                      effectivenessMultiplier, weather, FALSE,
-                                                     aiData->holdEffects[battlerAtk], aiData->holdEffects[battlerDef],
-                                                     aiData->abilities[battlerAtk], aiData->abilities[battlerDef]);
+                                                     battlerAtkHoldEffect, battlerDefHoldEffect,
+                                                     gBattleMons[battlerAtk].ability, gBattleMons[battlerDef].ability);
             s32 critDmg = CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                   effectivenessMultiplier, weather, TRUE,
-                                                  aiData->holdEffects[battlerAtk], aiData->holdEffects[battlerDef],
-                                                  aiData->abilities[battlerAtk], aiData->abilities[battlerDef]);
+                                                  battlerAtkHoldEffect, battlerDefHoldEffect,
+                                                  gBattleMons[battlerAtk].ability, gBattleMons[battlerDef].ability);
 
             u32 critOdds = GetCritHitOdds(critChanceIndex);
             // With critOdds getting closer to 1, dmg gets closer to critDmg.
@@ -640,8 +633,8 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
         {
             s32 critDmg = CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                   effectivenessMultiplier, weather, TRUE,
-                                                  aiData->holdEffects[battlerAtk], aiData->holdEffects[battlerDef],
-                                                  aiData->abilities[battlerAtk], aiData->abilities[battlerDef]);
+                                                  battlerAtkHoldEffect, battlerDefHoldEffect,
+                                                  gBattleMons[battlerAtk].ability, gBattleMons[battlerDef].ability);
 
             simDamage.expected = GetDamageByRollType(critDmg, rollType);
             simDamage.minimum = LowestRollDmg(critDmg);
@@ -655,7 +648,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
                 {
                     nonCritDmg += CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                           effectivenessMultiplier, weather, FALSE,
-                                                          aiData->holdEffects[battlerAtk], aiData->holdEffects[battlerDef],
+                                                          battlerAtkHoldEffect, battlerDefHoldEffect,
                                                           gBattleMons[battlerAtk].ability, gBattleMons[battlerDef].ability);
                 }
             }
@@ -663,7 +656,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
             {
                 nonCritDmg = CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                      effectivenessMultiplier, weather, FALSE,
-                                                     aiData->holdEffects[battlerAtk], aiData->holdEffects[battlerDef],
+                                                     battlerAtkHoldEffect, battlerDefHoldEffect,
                                                      gBattleMons[battlerAtk].ability, gBattleMons[battlerDef].ability);
             }
             simDamage.expected = GetDamageByRollType(nonCritDmg, rollType);
@@ -705,7 +698,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
                 else
                 {
                     simDamage.expected *= 3;
-                    simDamage.minimum *= 2;
+                    simDamage.minimum *= 3;
                 }
                 break;
             case EFFECT_ENDEAVOR:
@@ -766,11 +759,6 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
     gBattleStruct->zmove.baseMoves[battlerAtk] = MOVE_NONE;
     if (toggledGimmick)
         SetActiveGimmick(battlerAtk, GIMMICK_NONE);
-
-    //if(gBattleMons[battlerAtk].ability == ABILITY_HUGE_POWER){
-    //    simDamage.expected *= 2;
-    //    simDamage.expected *= 2;
-    //}
 
     return simDamage;
 }
@@ -1021,8 +1009,11 @@ s32 AI_WhichMoveBetter(u32 move1, u32 move2, u32 battlerAtk, u32 battlerDef, s32
 u32 GetNoOfHitsToKO(u32 dmg, s32 hp)
 {
     if (dmg == 0)
-        return 0;
-    return hp / (dmg + 1) + 1;
+        return UINT32_MAX;
+    if (hp % dmg == 0)
+        return hp / dmg;
+    else
+        return (hp / dmg) + 1;
 }
 
 u32 GetNoOfHitsToKOBattlerDmg(u32 dmg, u32 battlerDef)

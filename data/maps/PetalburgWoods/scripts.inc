@@ -27,9 +27,9 @@ PetalburgWoods_EventScript_BerryJuice_2:
 # 16 "data/maps/PetalburgWoods/scripts.pory"
 
 # 17 "data/maps/PetalburgWoods/scripts.pory"
-.set LOCALID_GRUNT, 3
+.set LOCALID_GRUNT, 1
 # 18 "data/maps/PetalburgWoods/scripts.pory"
-.set LOCALID_DEVON_EMPLOYEE, 4
+.set LOCALID_DEVON_EMPLOYEE, 2
 # 19 "data/maps/PetalburgWoods/scripts.pory"
 
 # 20 "data/maps/PetalburgWoods/scripts.pory"
