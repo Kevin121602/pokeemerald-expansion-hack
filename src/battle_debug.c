@@ -1113,9 +1113,9 @@ static void PutAiInfoText(struct BattleDebugMenu *data)
 static void PutAiPartyText(struct BattleDebugMenu *data)
 {
     u32 i, j, count;
+    u32 battler;
     u8 *text = Alloc(0x50), *txtPtr;
     struct AiPartyMon *aiMons = AI_PARTY->mons[GetBattlerSide(data->aiBattlerId)];
-    u32 battler = data->aiBattlerId;
     u32 opposingBattler = data->battlerId;
     struct Pokemon *mon;
 
@@ -1123,9 +1123,10 @@ static void PutAiPartyText(struct BattleDebugMenu *data)
     count = AI_PARTY->count[GetBattlerSide(data->aiBattlerId)];
     for (i = 0; i < count; i++)
     {
-        mon = &gEnemyParty[gBattlerPartyIndexes[i]];
-        if (aiMons[i].wasSentInBattle)
-        {
+        //battler = &gEnemyParty[gBattlerPartyIndexes[i]];
+        u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(data->aiBattlerId));
+        u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
+
             text[0] = CHAR_LV;
             txtPtr = ConvertIntToDecimalStringN(text + 1, aiMons[i].level, STR_CONV_MODE_LEFT_ALIGN, 3);
             *txtPtr++ = CHAR_SPACE;
@@ -1135,7 +1136,6 @@ static void PutAiPartyText(struct BattleDebugMenu *data)
                 *txtPtr++ = CHAR_FEMALE;
             *txtPtr = EOS;
             AddTextPrinterParameterized5(data->aiMovesWindowId, FONT_SMALL_NARROW, text, i * 41, 0, 0, NULL, 0, 0);
-        }
 
         txtPtr = StringCopyN(text, gAbilitiesInfo[aiMons[i].ability].name, 7); // The screen is too small to fit the whole string, so we need to drop the last letters.
         *txtPtr = EOS;
@@ -1152,7 +1152,9 @@ static void PutAiPartyText(struct BattleDebugMenu *data)
         *txtPtr = EOS;
         AddTextPrinterParameterized5(data->aiMovesWindowId, FONT_SMALL_NARROW, text, i * 41, 35 + j * 15, 0, NULL, 0, 0);
 
-        txtPtr = ConvertIntToDecimalStringN(text, GetMonSwitchScore(gBattleMons[i], battler, opposingBattler, TRUE), STR_CONV_MODE_LEFT_ALIGN, 4);
+        InitializeSwitchinCandidate(&gEnemyParty[gBattlerPartyIndexes[i]]);
+
+        txtPtr = ConvertIntToDecimalStringN(text, GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, opposingBattler, data->aiBattlerId, TRUE), STR_CONV_MODE_LEFT_ALIGN, 4);
         *txtPtr = EOS;
         AddTextPrinterParameterized5(data->aiMovesWindowId, FONT_SMALL_NARROW, text, i * 41, 35 + (j + 1) * 15, 0, NULL, 0, 0);
 

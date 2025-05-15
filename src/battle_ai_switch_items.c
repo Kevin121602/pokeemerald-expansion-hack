@@ -35,7 +35,7 @@ static bool32 AI_SwitchMonIfSuitable(u32 battler, bool32 doubleBattle);
 static u32 GetSwitchinHitsToKO(s32 damageTaken, u32 battler);
 static s32 GetMaxDamagePlayerCouldDealToSwitchin(u32 battler, u32 opposingBattler, struct BattlePokemon battleMon);
 
-static void InitializeSwitchinCandidate(struct Pokemon *mon)
+void InitializeSwitchinCandidate(struct Pokemon *mon)
 {
     PokemonToBattleMon(mon, &AI_DATA->switchinCandidate.battleMon);
     AI_DATA->switchinCandidate.hypotheticalStatus = FALSE;
@@ -819,7 +819,7 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     s32 i;
     s32 availableToSwitch;
     bool32 hasAceMon = FALSE;
-    u32 bestCandidate = 0;
+    u32 bestCandidate;
     u32 bestMonSwitchScore = 0;
     u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
     u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
@@ -896,10 +896,7 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
 
     if (availableToSwitch == 0)
     {
-        if (hasAceMon) // If the ace mon is the only available mon, use it
-            availableToSwitch++;
-        else
-            return FALSE;
+        return FALSE;
     }
 
     bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
@@ -917,9 +914,9 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
         return TRUE;
     }
 
-    //if(bestMonSwitchScore < 10){
-    //    return FALSE;
-    //}
+    if(bestMonSwitchScore < 10){
+        return FALSE;
+    }
 
     
     // Get best move for AI to use on player
@@ -1000,10 +997,9 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
         return TRUE;
     }
-    else
-    {
-        return FALSE;
-    }
+
+    return FALSE;
+
 
     //if (AI_ShouldSwitchIfBadMoves(battler, emitResult))
     //    return TRUE;
@@ -1806,12 +1802,12 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
     u8 i = 0, j = 0;
     u32 bestPlayerMove = 0, bestAIMove = 0;
     u32 bestHitsToKOAI = INT_MAX, bestHitsToKOPlayer = INT_MAX;
-    u32 highestDmgtoSwitchIn = 0;
+    s32 highestDmgtoSwitchIn = 0;
     bool32 canDieOnSwitch = FALSE;
     bool32 takesOverHalfOnSwitch = FALSE;
     bool32 takesOverAThirdFromHazards = FALSE;
     u32 hazardDamage = 0;
-    u32 calcHP = battleMon.hp;
+    s32 calcHP = battleMon.hp;
 
     //always returns 10 if species is ditto
     if(battleMon.species == SPECIES_DITTO){
@@ -1819,15 +1815,16 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         return switchScore;
     }
 
-    if(!switchAfterMonKOd){
+    if(switchAfterMonKOd == FALSE){
        highestDmgtoSwitchIn = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, battleMon);
        hazardDamage = GetSwitchinHazardsDamage(battler, &battleMon);
-       calcHP -= highestDmgtoSwitchIn;
-       if(calcHP <= 0){
+       if(highestDmgtoSwitchIn >= battleMon.hp){
             canDieOnSwitch = TRUE;
-       } else if (calcHP <= (battleMon.maxHP/2)){
+       } else if (highestDmgtoSwitchIn >= (battleMon.hp/2)){
             takesOverHalfOnSwitch = TRUE;
        }
+
+       calcHP = (battleMon.hp - highestDmgtoSwitchIn);
        
        if (hazardDamage >= (calcHP/3)){
             takesOverAThirdFromHazards = TRUE;
@@ -1957,12 +1954,12 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         slowThreaten = TRUE;
     }
 
-    if(!switchAfterMonKOd){
-        if(canDieOnSwitch == TRUE)                     return 0;
-        else if(takesOverHalfOnSwitch && !faster)      return 0;
-        else if(takesOverHalfOnSwitch)                 return 9;
-        else if(takesOverAThirdFromHazards && !faster) return 8;
-        else if(takesOverAThirdFromHazards)            return 9;
+    if(switchAfterMonKOd == FALSE){
+        if(canDieOnSwitch == TRUE)                             return 0;
+        else if(takesOverHalfOnSwitch == TRUE && !faster)      return 0;
+        else if(takesOverHalfOnSwitch == TRUE)                 return 9;
+        else if(takesOverAThirdFromHazards == TRUE && !faster) return 8;
+        else if(takesOverAThirdFromHazards == TRUE)            return 9;
     }
     if (fastKilled == TRUE)                 return 0;
     else if (fastTrapper == TRUE)           return 15;
@@ -2302,10 +2299,10 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
     u32 aiMove = 0;
     u32 invalidMons = 0;
 
-    if (*(gBattleStruct->monToSwitchIntoId + battler) != PARTY_SIZE)
-        return *(gBattleStruct->monToSwitchIntoId + battler);
-    if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
-        return gBattlerPartyIndexes[battler] + 1;
+    //if (*(gBattleStruct->monToSwitchIntoId + battler) != PARTY_SIZE)
+    //    return *(gBattleStruct->monToSwitchIntoId + battler);
+    //if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
+    //    return gBattlerPartyIndexes[battler] + 1;
 
     //remove, make double switch ai an aggregate of both scores
     //if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
@@ -2342,8 +2339,6 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
         return bestMonId;
     }
 
-    //InitializeSwitchinCandidate(&party[firstId]);
-
     currentMonArray[0] = 0;
     consideredMonArray[0] = 0;
 
@@ -2360,8 +2355,6 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
             {
                 continue;
             }
-            if (i == gBattlerPartyIndexes[battler])
-                continue;
 
             InitializeSwitchinCandidate(&party[i]);
 
@@ -2402,10 +2395,6 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
         }
     }
 
-    //bestMonId = GetBestMonDmg(party, firstId, lastId, invalidMons, battler, opposingBattler);
-    //    if (bestMonId != PARTY_SIZE)
-    //        return bestMonId;
-
     u8 bestCandidate = 0;
     int bestDamage = 0;
     int damageDealt = 0;
@@ -2438,59 +2427,6 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
     } else {
         return consideredMonArray[0];
     }
-
-    // Split ideal mon decision between after previous mon KO'd (prioritize offensive options) and after switching active mon out (prioritize defensive options), and expand the scope of both.
-    bestMonId = GetBestMonIntegrated(party, firstId, lastId, battler, opposingBattler, battlerIn1, battlerIn2, switchAfterMonKOd);
-    return bestMonId;
-
-    // This all handled by the GetBestMonIntegrated function if the AI_FLAG_SMART_MON_CHOICES flag is set
-        /*s32 i, aliveCount = 0;
-        u32 invalidMons = 0, aceMonId = PARTY_SIZE;
-        // Get invalid slots ids.
-        consideredMonArray[0] = 0;
-        for (i = firstId; i < lastId; i++)
-        {
-            if (!IsValidForBattle(&party[i])
-                || gBattlerPartyIndexes[battlerIn1] == i
-                || gBattlerPartyIndexes[battlerIn2] == i
-                || i == gBattleStruct->monToSwitchIntoId[battlerIn1]
-                || i == gBattleStruct->monToSwitchIntoId[battlerIn2])
-            {
-                invalidMons |= gBitTable[i];
-            }
-            else if (IsAceMon(battler, i))// Save Ace Pokemon for last.
-            {
-                aceMonId = i;
-                invalidMons |= gBitTable[i];
-            }
-            else
-            {
-                if (GetMonSwitchScore(&party[i], battler, opposingBattler) == maxSwitchScore){
-                    consideredMonArray[numberOfBestMons++] = i;
-                }
-                if (GetMonSwitchScore(&party[i], battler, opposingBattler) > maxSwitchScore){
-                    maxSwitchScore = GetMonSwitchScore(&party[i], battler, opposingBattler);
-                    consideredMonArray[0] = i;
-                    numberOfBestMons = 1;
-                    bestMonId = i;
-                }
-            }
-        }*/
-        
-        /*bestMonId = GetBestMonBatonPass(party, firstId, lastId, invalidMons, aliveCount, battler, opposingBattler);
-        if (bestMonId != PARTY_SIZE)
-            return bestMonId;
-
-        bestMonId = GetBestMonTypeMatchup(party, firstId, lastId, invalidMons, battler, opposingBattler);
-        if (bestMonId != PARTY_SIZE)
-            return bestMonId;
-
-        bestMonId = GetBestMonDmg(party, firstId, lastId, invalidMons, battler, opposingBattler);
-        if (bestMonId != PARTY_SIZE)
-            return bestMonId;*/
-
-        //return consideredMonArray[Random() % numberOfBestMons];
-        return bestMonId;
 }
 
 static bool32 AiExpectsToFaintPlayer(u32 battler)
