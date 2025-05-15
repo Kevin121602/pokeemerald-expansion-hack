@@ -831,9 +831,11 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     s32 playerHoldEffect = AI_DATA->holdEffects[opposingBattler];
     u32 battlerSpeed = AI_DATA->speedStats[battler];
     u32 playerSpeed = AI_DATA->speedStats[opposingBattler];
-    s32 aiMovePriority = 0, playerMovePriority = 0, maxDamageDealt = 0, damageDealt = 0;
+    s32 battlerMovePriority = 0, playerMovePriority = 0, maxDamageDealt = 0, damageDealt = 0;
     u32 bestBattlerMove = 0, bestPlayerMove = 0;
     u32 bestHitsToKOPlayer = INT_MAX, bestHitsToKOBattler = INT_MAX;
+    u8 j, k;
+    s32 dmg;
 
     if (gBattleMons[battler].status2 & (STATUS2_WRAPPED | STATUS2_ESCAPE_PREVENTION))
         return FALSE;
@@ -915,24 +917,24 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
         return TRUE;
     }
 
-    if(bestMonSwitchScore < 10){
-        return FALSE;
-    }
+    //if(bestMonSwitchScore < 10){
+    //    return FALSE;
+    //}
 
-    /*
+    
     // Get best move for AI to use on player
-    for (l = 0; l < MAX_MON_MOVES; l++)
+    for (j = 0; j < MAX_MON_MOVES; j++)
     {
-        battlerMove = gBattleMons[battler].moves[l];
+        battlerMove = gBattleMons[battler].moves[j];
         battlerMovePriority = gMovesInfo[battlerMove].priority;
 
         if (battlerMove != MOVE_NONE && gMovesInfo[battlerMove].power != 0 && gMovesInfo[battlerMove].effect != EFFECT_EXPLOSION 
-            && AI_THINKING_STRUCT->score[l] >= 100)
+            && AI_THINKING_STRUCT->score[j] >= 100)
         {
-            //dmg = aiData->simulatedDmg[battler][opposingBattler][l].expected;
-            //hitsToKOPlayer = GetNoOfHitsToKO(dmg, gBattleMons[opposingBattler].hp);
+            dmg = AI_DATA->simulatedDmg[battler][opposingBattler][j].expected;
+            hitsToKOPlayer = GetNoOfHitsToKO(dmg, gBattleMons[opposingBattler].hp);
             //continues if move does 0 damage
-            /*if(hitsToKOPlayer == 0){
+            if(hitsToKOPlayer == 0){
                 continue;
             }
 
@@ -952,17 +954,17 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     }
 
     // Get best move for player to use on AI battler
-    for (m = 0; m < MAX_MON_MOVES; m++)
+    for (k = 0; k < MAX_MON_MOVES; k++)
     {
-        playerMove = gBattleMons[opposingBattler].moves[m];
+        playerMove = gBattleMons[opposingBattler].moves[k];
         playerMovePriority = gMovesInfo[playerMove].priority;
 
         if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION)
         {
-            //dmg = aiData->simulatedDmg[opposingBattler][battler][m].expected;
-            //hitsToKOBattler = GetNoOfHitsToKO(dmg, gBattleMons[battler].hp);
+            dmg = AI_DATA->simulatedDmg[opposingBattler][battler][k].expected;
+            hitsToKOBattler = GetNoOfHitsToKO(dmg, gBattleMons[battler].hp);
             //continues if move does 0 damage
-            /*if(hitsToKOBattler == 0){
+            if(hitsToKOBattler == 0){
                 continue;
             }
 
@@ -982,22 +984,26 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     }
 
     //faster bool represents whether or not the AI is faster
-    /*if(gMovesInfo[bestBattlerMove].priority > gMovesInfo[bestPlayerMove].priority){
+    if(gMovesInfo[bestBattlerMove].priority > gMovesInfo[bestPlayerMove].priority){
         faster = TRUE;
     } else if (gMovesInfo[bestPlayerMove].priority > gMovesInfo[bestBattlerMove].priority){
         faster = FALSE;
-    } else if (battlerSpeed >= playerMonSpeed){
+    } else if (battlerSpeed >= playerSpeed){
         //move prios are tied
         faster = TRUE;
     }
 
     if (bestHitsToKOBattler == 1 && !faster)
     {
-        gBattleStruct->AI_monToSwitchIntoId[battler] = midTurnSwitchCandidate;
+        gBattleStruct->AI_monToSwitchIntoId[battler] = bestCandidate;
         if (emitResult)
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
         return TRUE;
-    }*/
+    }
+    else
+    {
+        return FALSE;
+    }
 
     //if (AI_ShouldSwitchIfBadMoves(battler, emitResult))
     //    return TRUE;
@@ -2359,7 +2365,7 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
 
             InitializeSwitchinCandidate(&party[i]);
 
-            switchScore = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), TRUE) + GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), TRUE);
+            switchScore = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), switchAfterMonKOd) + GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), switchAfterMonKOd);
             if(switchScore > highestSwitchScore){
                 highestSwitchScore = switchScore;
                 bestMonId = i;
@@ -2384,7 +2390,7 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
 
         InitializeSwitchinCandidate(&party[i]);
 
-        switchScore = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, opposingBattler, TRUE);
+        switchScore = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, opposingBattler, switchAfterMonKOd);
         if(currentMonArray[0] == switchScore){
             currentMonArray[numberOfBestMons] = switchScore;
             consideredMonArray[numberOfBestMons++] = i;
