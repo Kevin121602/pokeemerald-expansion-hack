@@ -7602,7 +7602,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sMachopLevelUpLearnset,
         .teachableLearnset = sMachopTeachableLearnset,
         .eggMoveLearnset = sMachopEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 22, SPECIES_MACHOKE}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_MACHOKE}),
     },
 
     [SPECIES_MACHOKE] =
