@@ -823,6 +823,17 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     u32 bestMonSwitchScore = 0;
     u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
     u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
+    bool32 faster = FALSE;
+    u32 playerMove = 0, battlerMove = 0, hitsToKOPlayer = 0, hitsToKOBattler = 0;
+    s32 battlerAbility = AI_DATA->abilities[battler];
+    s32 battlerHoldEffect = AI_DATA->holdEffects[battler];
+    s32 playerAbility = AI_DATA->abilities[opposingBattler];
+    s32 playerHoldEffect = AI_DATA->holdEffects[opposingBattler];
+    u32 battlerSpeed = AI_DATA->speedStats[battler];
+    u32 playerSpeed = AI_DATA->speedStats[opposingBattler];
+    s32 aiMovePriority = 0, playerMovePriority = 0, maxDamageDealt = 0, damageDealt = 0;
+    u32 bestBattlerMove = 0, bestPlayerMove = 0;
+    u32 bestHitsToKOPlayer = INT_MAX, bestHitsToKOBattler = INT_MAX;
 
     if (gBattleMons[battler].status2 & (STATUS2_WRAPPED | STATUS2_ESCAPE_PREVENTION))
         return FALSE;
@@ -907,12 +918,6 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     if(bestMonSwitchScore < 10){
         return FALSE;
     }
-
-
-    //doesnt switch in non perish song cases if nothing in the back has at least slower + outdamage switch score
-    //if(currentMonArray[0] < 10){
-    //    return FALSE;
-    //}
 
     /*
     // Get best move for AI to use on player
@@ -1784,7 +1789,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
     u32 switchScore = 0;
     bool32 fastTrapper = FALSE, slowTrapper = FALSE, fastRevengeKiller = FALSE, slowRevengeKiller = FALSE;
     bool32 fastThreaten = FALSE, slowThreaten = FALSE, faster = FALSE, slowKilled = FALSE, fastKilled = FALSE;
-    u32 aiMove = 0, playerMove = 0, hitsToKOAI, hitsToKOPlayer, maxHitsToKO = 0;
+    u32 aiMove = 0, playerMove = 0, hitsToKOAI, hitsToKOPlayer;
     s32 playerAbility = gBattleMons[opposingBattler].ability;
     s32 playerHoldEffect = ItemId_GetHoldEffect(gBattleMons[opposingBattler].item);
     s32 aiMonAbility = battleMon.ability;
