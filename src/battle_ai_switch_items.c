@@ -834,8 +834,19 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     s32 battlerMovePriority = 0, playerMovePriority = 0, maxDamageDealt = 0, damageDealt = 0;
     u32 bestBattlerMove = 0, bestPlayerMove = 0;
     u32 bestHitsToKOPlayer = INT_MAX, bestHitsToKOBattler = INT_MAX;
-    u8 j, k;
-    s32 dmg;
+    u8 j, k, l;
+    s32 dmg, bestDmg = 0;
+    u32 aiHighestDmg = 0;
+
+    bool32 canFakeOut = FALSE;
+    bool32 willSetHazards = FALSE;
+    bool32 willDestinyBond = FALSE;
+    bool32 hasViableStatus = FALSE;
+    bool32 hasNoGoodMoves = TRUE;
+
+    bool32 canPivot = FALSE;
+    bool32 canEjectPack = FALSE;
+    bool32 canTeleport = FALSE;
 
     if (gBattleMons[battler].status2 & (STATUS2_WRAPPED | STATUS2_ESCAPE_PREVENTION))
         return FALSE;
@@ -851,8 +862,9 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     //    return FALSE;
 
     // Sequence Switching AI never switches mid-battle
-    if (AI_THINKING_STRUCT->aiFlags[battler] & AI_FLAG_SEQUENCE_SWITCHING)
+    if (AI_THINKING_STRUCT->aiFlags[battler] & AI_FLAG_SEQUENCE_SWITCHING){
         return FALSE;
+    }
 
     availableToSwitch = 0;
 
@@ -929,6 +941,11 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
             && AI_THINKING_STRUCT->score[j] >= 100)
         {
             dmg = AI_DATA->simulatedDmg[battler][opposingBattler][j].expected;
+            hasNoGoodMoves = FALSE;
+            if(dmg > bestDmg){
+                aiHighestDmg = j;
+                bestDmg = dmg;
+            }
             hitsToKOPlayer = GetNoOfHitsToKO(dmg, gBattleMons[opposingBattler].hp);
             //continues if move does 0 damage
             if(hitsToKOPlayer == 0){
@@ -990,8 +1007,54 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
         faster = TRUE;
     }
 
-    if (bestHitsToKOBattler == 1 && !faster)
+    for(l= 0; l < MAX_MON_MOVES; l++){
+        if (gBattleMons[battler].moves[l] == MOVE_FAKE_OUT && AI_THINKING_STRUCT->score[l] >= 107){
+            canFakeOut = TRUE;
+        }
+        if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_DESTINY_BOND && AI_THINKING_STRUCT->score[l] >= 107){
+            willDestinyBond = TRUE;
+        }
+        if (IsHazardMoveEffect(gMovesInfo[gBattleMons[battler].moves[l]].effect) && AI_THINKING_STRUCT->score[l] >= 107){
+            willSetHazards = TRUE;
+        }
+        if(l != aiHighestDmg && AI_THINKING_STRUCT->score[l] > 100){
+            hasViableStatus = TRUE;
+        }
+    }
+
+    //all moves scored under 100
+    if(hasNoGoodMoves){
+        gBattleStruct->AI_monToSwitchIntoId[battler] = bestCandidate;
+        if (emitResult)
+            BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
+        return TRUE;
+    }
+
+    if(battlerAbility == ABILITY_NATURAL_CURE && gBattleMons[battler].status1 & STATUS1_ANY){
+        gBattleStruct->AI_monToSwitchIntoId[battler] = bestCandidate;
+        if (emitResult)
+            BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
+        return TRUE;
+    }
+
+    //player kills ai, more conditions for slow kill than fast kill
+    if (bestHitsToKOBattler == 1 && !canFakeOut)
     {
+        if(!faster){
+            gBattleStruct->AI_monToSwitchIntoId[battler] = bestCandidate;
+            if (emitResult)
+                BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
+            return TRUE;
+        } else if (faster && !willSetHazards && !willDestinyBond && bestHitsToKOPlayer != 1){
+            gBattleStruct->AI_monToSwitchIntoId[battler] = bestCandidate;
+            if (emitResult)
+                BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
+            return TRUE;
+        }
+    }
+
+    //AI cant 3hko player, player at least 3hkos in return, and AI has no viable status moves
+    if(bestHitsToKOPlayer > 3 && bestHitsToKOBattler <= 3 && !hasViableStatus){
         gBattleStruct->AI_monToSwitchIntoId[battler] = bestCandidate;
         if (emitResult)
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);

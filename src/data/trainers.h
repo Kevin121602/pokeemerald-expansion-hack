@@ -12498,7 +12498,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 5032
-            .species = SPECIES_MINIOR,
+            .species = SPECIES_MINIOR_METEOR,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5032
             .heldItem = ITEM_LIECHI_BERRY,

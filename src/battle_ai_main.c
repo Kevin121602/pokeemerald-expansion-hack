@@ -3480,17 +3480,17 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_PARTING_SHOT:
         if (!IsDoubleBattle())
         {
-            switch (ShouldPivot(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, movesetIndex))
-            {
-            case 0: // no
-                ADJUST_SCORE(-10);    // technically should go in CheckBadMove, but this is easier/less computationally demanding
+            //switch (ShouldPivot(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, movesetIndex))
+            //{
+            //case 0: // no
+            //    ADJUST_SCORE(-10);    // technically should go in CheckBadMove, but this is easier/less computationally demanding
+            //    break;
+            //case 1: // maybe
+            //    break;
+            //case 2: // yes
+            //    ADJUST_SCORE(BEST_EFFECT);
                 break;
-            case 1: // maybe
-                break;
-            case 2: // yes
-                ADJUST_SCORE(BEST_EFFECT);
-                break;
-            }
+            //}
         }
         else //Double Battle
         {
