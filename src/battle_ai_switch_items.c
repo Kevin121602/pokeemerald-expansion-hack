@@ -810,6 +810,89 @@ bool32 ShouldSwitchIfStatusedNaturalCure(u32 battler, bool32 emitResult){
     return FALSE;
 }
 
+static bool32 MonHasRelevantStatsRaised(u32 battler)
+{
+    u8 i;
+    u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
+    u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
+
+    bool8 anyStatIsRaised = FALSE;
+    for(i = 0; i < STAT_EVASION; i ++){
+        if(gBattleMons[battler].statStages[i] > DEFAULT_STAT_STAGE){
+            anyStatIsRaised = TRUE;
+        }
+    }
+
+    if(!anyStatIsRaised){
+        return FALSE;
+    }
+
+    //if ai mon has raised its speed, would be slower without the boosts but is faster with them
+    if(gBattleMons[battler].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE && (gBattleMons[battler].speed < AI_DATA->speedStats[opposingBattler])
+        && (AI_DATA->speedStats[battler] >= AI_DATA->speedStats[opposingBattler])){
+        return TRUE;
+    }
+
+    if(AI_DATA->abilities[opposingBattler] == ABILITY_UNAWARE){
+        return FALSE;
+    }
+
+    if(gBattleMons[battler].statStages[STAT_ATK] > DEFAULT_STAT_STAGE && HasMoveWithCategory(battler, DAMAGE_CATEGORY_PHYSICAL)){
+        return TRUE;
+    }
+
+    if(gBattleMons[battler].statStages[STAT_SPATK] > DEFAULT_STAT_STAGE && HasMoveWithCategory(battler, DAMAGE_CATEGORY_SPECIAL)){
+        return TRUE;
+    }
+
+    if(gBattleMons[battler].statStages[STAT_DEF] > DEFAULT_STAT_STAGE && HasMoveWithCategory(opposingBattler, DAMAGE_CATEGORY_PHYSICAL)){
+        return TRUE;
+    }
+
+    if(gBattleMons[battler].statStages[STAT_SPDEF] > DEFAULT_STAT_STAGE && HasMoveWithCategory(opposingBattler, DAMAGE_CATEGORY_SPECIAL)){
+        return TRUE;
+    }
+
+    if(gBattleMons[battler].statStages[STAT_EVASION] > DEFAULT_STAT_STAGE && AI_DATA->abilities[opposingBattler] != ABILITY_NO_GUARD){
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool32 MoveActivatesEjectPack(u32 move){
+    u8 i;
+
+    for (i = 0; i < gMovesInfo[move].numAdditionalEffects; i++)
+        {
+            switch (gMovesInfo[move].additionalEffects[i].moveEffect)
+            {
+                case MOVE_EFFECT_ATK_MINUS_1:
+                case MOVE_EFFECT_DEF_MINUS_1:
+                case MOVE_EFFECT_SPD_MINUS_1:
+                case MOVE_EFFECT_SP_ATK_MINUS_1:
+                case MOVE_EFFECT_SP_DEF_MINUS_1:
+                case MOVE_EFFECT_EVS_MINUS_1:
+                case MOVE_EFFECT_ACC_MINUS_1:
+                case MOVE_EFFECT_ATK_MINUS_2:
+                case MOVE_EFFECT_DEF_MINUS_2:
+                case MOVE_EFFECT_SPD_MINUS_2:
+                case MOVE_EFFECT_SP_ATK_MINUS_2:
+                case MOVE_EFFECT_SP_DEF_MINUS_2:
+                case MOVE_EFFECT_EVS_MINUS_2:
+                case MOVE_EFFECT_ACC_MINUS_2:
+                case MOVE_EFFECT_V_CREATE:
+                case MOVE_EFFECT_ATK_DEF_DOWN:
+                case MOVE_EFFECT_DEF_SPDEF_DOWN:
+                    if ((gMovesInfo[move].additionalEffects[i].self))
+                        return TRUE;
+                    break;
+            }
+        }
+    
+    return FALSE;
+}
+
 bool32 ShouldSwitch(u32 battler, bool32 emitResult)
 {
     u32 battlerIn1, battlerIn2;
@@ -847,6 +930,13 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     bool32 canPivot = FALSE;
     bool32 canEjectPack = FALSE;
     bool32 canTeleport = FALSE;
+
+    bool32 shouldSwitchLiberal = FALSE;
+    bool32 shouldSwitchStandard = FALSE;
+
+    u8 pivot = 0;
+    u8 teleport = 0;
+    u8 ejectPack = 0;
 
     if (gBattleMons[battler].status2 & (STATUS2_WRAPPED | STATUS2_ESCAPE_PREVENTION))
         return FALSE;
@@ -911,24 +1001,20 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
         return FALSE;
     }
 
-    bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
-
-    InitializeSwitchinCandidate(&party[bestCandidate]);
-
-    bestMonSwitchScore = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, opposingBattler, FALSE);
-
-    if(bestMonSwitchScore <= 3){
-        return FALSE;
-    }
-
     //only used for perish song
-    if (ShouldSwitchIfGameStatePrompt(battler, emitResult, bestCandidate)){
-        return TRUE;
+    //if (ShouldSwitchIfGameStatePrompt(battler, emitResult, bestCandidate)){
+    //    return TRUE;
+    //}
+
+    if (gStatuses3[battler] & STATUS3_PERISH_SONG
+        && gDisableStructs[battler].perishSongTimer == 0
+        && battlerAbility != ABILITY_SOUNDPROOF){
+            shouldSwitchLiberal = TRUE;
     }
 
-    if(bestMonSwitchScore < 10){
-        return FALSE;
-    }
+    //if(bestMonSwitchScore < 10){
+    //    return FALSE;
+    //}
 
     
     // Get best move for AI to use on player
@@ -942,6 +1028,14 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
         {
             dmg = AI_DATA->simulatedDmg[battler][opposingBattler][j].expected;
             hasNoGoodMoves = FALSE;
+            if (gMovesInfo[battlerMove].effect == EFFECT_HIT_ESCAPE){
+                canPivot = TRUE;
+                pivot = j;
+            }
+            if(battlerHoldEffect == HOLD_EFFECT_EJECT_PACK && MoveActivatesEjectPack(battlerMove)){
+                canEjectPack = TRUE;
+                ejectPack = j;
+            }
             if(dmg > bestDmg){
                 aiHighestDmg = j;
                 bestDmg = dmg;
@@ -1011,6 +1105,10 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
         if (gBattleMons[battler].moves[l] == MOVE_FAKE_OUT && AI_THINKING_STRUCT->score[l] >= 107){
             canFakeOut = TRUE;
         }
+        if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_TELEPORT && AI_THINKING_STRUCT->score[l] >= 100){
+            canTeleport = TRUE;
+            teleport = l;
+        }
         if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_DESTINY_BOND && AI_THINKING_STRUCT->score[l] >= 107){
             willDestinyBond = TRUE;
         }
@@ -1024,49 +1122,84 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
 
     //all moves scored under 100
     if(hasNoGoodMoves){
-        gBattleStruct->AI_monToSwitchIntoId[battler] = bestCandidate;
-        if (emitResult)
-            BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
-        return TRUE;
+        shouldSwitchLiberal = TRUE;
     }
 
     if(battlerAbility == ABILITY_NATURAL_CURE && gBattleMons[battler].status1 & STATUS1_ANY){
-        gBattleStruct->AI_monToSwitchIntoId[battler] = bestCandidate;
-        if (emitResult)
-            BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
-        return TRUE;
+        if(canPivot && faster){
+                BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
+                return FALSE;
+        } else {
+            shouldSwitchStandard = TRUE;
+        }
     }
 
     //player kills ai, more conditions for slow kill than fast kill
     if (bestHitsToKOBattler == 1 && !canFakeOut)
     {
         if(!faster){
-            gBattleStruct->AI_monToSwitchIntoId[battler] = bestCandidate;
-            if (emitResult)
-                BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
-            return TRUE;
-        } else if (faster && !willSetHazards && !willDestinyBond && bestHitsToKOPlayer != 1){
-            gBattleStruct->AI_monToSwitchIntoId[battler] = bestCandidate;
-            if (emitResult)
-                BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
-            return TRUE;
+            shouldSwitchStandard = TRUE;
+        } else if (faster && !willSetHazards && !willDestinyBond && bestHitsToKOPlayer != 1 && !MonHasRelevantStatsRaised(battler)){
+            if(canPivot){
+                BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
+                return FALSE;
+            }
+            if(canEjectPack){
+                BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (ejectPack) | (opposingBattler << 8));
+                return FALSE;
+            } else {
+                shouldSwitchStandard = TRUE;
+            }
         }
     }
 
     //AI cant 3hko player, player at least 3hkos in return, and AI has no viable status moves
     if(bestHitsToKOPlayer > 3 && bestHitsToKOBattler <= 3 && !hasViableStatus){
-        gBattleStruct->AI_monToSwitchIntoId[battler] = bestCandidate;
-        if (emitResult)
-            BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
-        return TRUE;
+        if(canPivot){
+                BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
+                return FALSE;
+        } else if (canTeleport){
+                BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (teleport) | (opposingBattler << 8));
+                return FALSE;
+        } else {
+                shouldSwitchStandard = TRUE;
+        }
     }
 
-    return FALSE;
+    if(shouldSwitchLiberal){
+        bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
 
+        InitializeSwitchinCandidate(&party[bestCandidate]);
 
-    //if (AI_ShouldSwitchIfBadMoves(battler, emitResult))
-    //    return TRUE;
-    
+        bestMonSwitchScore = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, opposingBattler, FALSE);
+
+        if(bestMonSwitchScore <= 3){
+            return FALSE;
+        } else {
+                gBattleStruct->AI_monToSwitchIntoId[battler] = bestCandidate;
+                if (emitResult)
+                    BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
+                return TRUE;
+        }
+    } else if (shouldSwitchStandard){
+        bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
+
+        InitializeSwitchinCandidate(&party[bestCandidate]);
+
+        bestMonSwitchScore = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, opposingBattler, FALSE);
+
+        if(bestMonSwitchScore < 10){
+            return FALSE;
+        } else {
+                gBattleStruct->AI_monToSwitchIntoId[battler] = bestCandidate;
+                if (emitResult)
+                    BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
+                return TRUE;
+        }
+    } else {
+        return FALSE;
+    }
+
     return FALSE;
 }
 
