@@ -621,7 +621,7 @@ RusturfTunnel_EventScript_Grunt::
 # 311 "data/maps/RusturfTunnel/scripts.pory"
 	setflag FLAG_DISABLE_EXP
 # 312 "data/maps/RusturfTunnel/scripts.pory"
-	playbgm MUS_ENCOUNTER_AQUA, FALSE
+	playbgm MUS_HG_ENCOUNTER_ROCKET, FALSE
 # 313 "data/maps/RusturfTunnel/scripts.pory"
 	msgbox RusturfTunnel_Text_GruntIntro, MSGBOX_DEFAULT
 # 314 "data/maps/RusturfTunnel/scripts.pory"

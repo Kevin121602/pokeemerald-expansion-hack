@@ -941,13 +941,44 @@ static void PutMovesPointsText(struct BattleDebugMenu *data)
             if (data->spriteIds.aiIconSpriteIds[j] == 0xFF)
                 continue;
             battlerDef = gSprites[data->spriteIds.aiIconSpriteIds[j]].data[0];
-            ConvertIntToDecimalStringN(text,
-                                       gBattleStruct->aiFinalScore[data->aiBattlerId][battlerDef][i],
-                                       STR_CONV_MODE_RIGHT_ALIGN, 3);
-            AddTextPrinterParameterized(data->aiMovesWindowId, FONT_NORMAL, text, 83 + count * 54, i * 15, 0, NULL);
+            //ConvertIntToDecimalStringN(text,
+            //                           gBattleStruct->aiFinalScore[data->aiBattlerId][battlerDef][i],
+            //                           STR_CONV_MODE_RIGHT_ALIGN, 3);
+            //AddTextPrinterParameterized(data->aiMovesWindowId, FONT_NORMAL, text, 83 + count * 54, i * 15, 0, NULL);
 
             ConvertIntToDecimalStringN(text,
                                        AI_DATA->simulatedDmg[data->aiBattlerId][battlerDef][i].expected,
+                                       STR_CONV_MODE_RIGHT_ALIGN, 3);
+            AddTextPrinterParameterized(data->aiMovesWindowId, FONT_NORMAL, text, 110 + count * 54, i * 15, 0, NULL);
+
+            count++;
+        }
+    }
+
+    CopyWindowToVram(data->aiMovesWindowId, COPYWIN_FULL);
+    Free(text);
+}
+
+static void PutAIMovesPointsText(struct BattleDebugMenu *data)
+{
+    u32 i, j, count, battlerDef;
+    u8 *text = Alloc(0x50);
+
+    FillWindowPixelBuffer(data->aiMovesWindowId, 0x11);
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        text[0] = CHAR_SPACE;
+        battlerDef = gSprites[data->spriteIds.aiIconSpriteIds[0]].data[0];
+        StringCopy(text + 1, GetMoveName(gBattleMons[battlerDef].moves[i]));
+        AddTextPrinterParameterized(data->aiMovesWindowId, FONT_NORMAL, text, 0, i * 15, 0, NULL);
+        for (count = 0, j = 0; j < MAX_BATTLERS_COUNT; j++)
+        {
+            if (data->spriteIds.aiIconSpriteIds[j] == 0xFF)
+                continue;
+            battlerDef = gSprites[data->spriteIds.aiIconSpriteIds[j]].data[0];
+
+            ConvertIntToDecimalStringN(text,
+                                       AI_DATA->simulatedDmg[battlerDef][data->aiBattlerId][i].expected,
                                        STR_CONV_MODE_RIGHT_ALIGN, 3);
             AddTextPrinterParameterized(data->aiMovesWindowId, FONT_NORMAL, text, 110 + count * 54, i * 15, 0, NULL);
 
@@ -1034,6 +1065,15 @@ static void Task_ShowAiPoints(u8 taskId)
         break;
     // Input
     case 2:
+        if (JOY_NEW(A_BUTTON))
+        {
+            CleanUpAiInfoWindow(taskId);
+            winTemplate = CreateWindowTemplate(1, 0, 4, 30, 14, 15, 0x200);
+            data->aiMovesWindowId = AddWindow(&winTemplate);
+            PutWindowTilemap(data->aiMovesWindowId);
+            PutAIMovesPointsText(data);
+            data->aiViewState = 0;
+        }
         if (JOY_NEW(R_BUTTON) && IsDoubleBattle())
         {
             CleanUpAiInfoWindow(taskId);

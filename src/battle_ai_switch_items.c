@@ -750,7 +750,7 @@ bool32 ShouldSwitchIfOutspedAndKOd(u32 battler, bool32 emitResult){
             }
 
             //sets hits to 2 if would ohko but blocked by sash or sturdy
-            if(hitsToKOPlayer == 1 && MonHasInTactFocusSashSturdy(opposingBattler, battler, battlerMove)){
+            if(hitsToKOPlayer == 1 && MonHasInTactFocusSashSturdy(opposingBattler, battler, playerMonHoldEffect, battlerMove)){
                 hitsToKOPlayer++;
             }
 
@@ -781,7 +781,7 @@ bool32 ShouldSwitchIfOutspedAndKOd(u32 battler, bool32 emitResult){
             }
 
             //sets hits to 2 if would ohko but blocked by sash or sturdy
-            if(hitsToKOBattler == 1 && MonHasInTactFocusSashSturdy(battler, opposingBattler, playerMove)){
+            if(hitsToKOBattler == 1 && MonHasInTactFocusSashSturdy(battler, opposingBattler, battlerHoldEffect, playerMove)){
                 hitsToKOBattler++;
             }
 
@@ -919,7 +919,7 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     u32 bestHitsToKOPlayer = INT_MAX, bestHitsToKOBattler = INT_MAX;
     u8 j, k, l;
     s32 dmg, bestDmg = 0;
-    u32 aiHighestDmg = 0;
+    u32 aiHighestDmg = MAX_MON_MOVES;
 
     bool32 canFakeOut = FALSE;
     bool32 willSetHazards = FALSE;
@@ -1021,13 +1021,12 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     for (j = 0; j < MAX_MON_MOVES; j++)
     {
         battlerMove = gBattleMons[battler].moves[j];
-        battlerMovePriority = gMovesInfo[battlerMove].priority;
+        battlerMovePriority = GetMovePriority(battler, battlerMove);
 
         if (battlerMove != MOVE_NONE && gMovesInfo[battlerMove].power != 0 && gMovesInfo[battlerMove].effect != EFFECT_EXPLOSION 
             && AI_THINKING_STRUCT->score[j] >= 100)
         {
             dmg = AI_DATA->simulatedDmg[battler][opposingBattler][j].expected;
-            hasNoGoodMoves = FALSE;
             if (gMovesInfo[battlerMove].effect == EFFECT_HIT_ESCAPE){
                 canPivot = TRUE;
                 pivot = j;
@@ -1047,7 +1046,7 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
             }
 
             //sets hits to 2 if would ohko but blocked by sash or sturdy
-            if(hitsToKOPlayer == 1 && MonHasInTactFocusSashSturdy(opposingBattler, battler, battlerMove)){
+            if(hitsToKOPlayer == 1 && MonHasInTactFocusSashSturdy(opposingBattler, battler, playerHoldEffect, battlerMove)){
                 hitsToKOPlayer++;
             }
 
@@ -1055,7 +1054,7 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
             if(hitsToKOPlayer < bestHitsToKOPlayer){
                 bestHitsToKOPlayer = hitsToKOPlayer;
                 bestBattlerMove = battlerMove;
-            } else if (hitsToKOPlayer == bestHitsToKOPlayer && battlerMovePriority > gMovesInfo[bestBattlerMove].priority){
+            } else if (hitsToKOPlayer == bestHitsToKOPlayer && battlerMovePriority > GetMovePriority(opposingBattler, bestBattlerMove)){
                 bestBattlerMove = battlerMove;
             }
         }
@@ -1065,7 +1064,7 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     for (k = 0; k < MAX_MON_MOVES; k++)
     {
         playerMove = gBattleMons[opposingBattler].moves[k];
-        playerMovePriority = gMovesInfo[playerMove].priority;
+        playerMovePriority = GetMovePriority(opposingBattler, playerMove);
 
         if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION)
         {
@@ -1077,7 +1076,7 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
             }
 
             //sets hits to 2 if would ohko but blocked by sash or sturdy
-            if(hitsToKOBattler == 1 && MonHasInTactFocusSashSturdy(battler, opposingBattler, playerMove)){
+            if(hitsToKOBattler == 1 && MonHasInTactFocusSashSturdy(battler, opposingBattler, battlerHoldEffect, playerMove)){
                 hitsToKOBattler++;
             }
 
@@ -1085,7 +1084,7 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
             if(hitsToKOBattler < bestHitsToKOBattler){
                 bestHitsToKOBattler = hitsToKOBattler;
                 bestPlayerMove = playerMove;
-            } else if (hitsToKOBattler == bestHitsToKOBattler && playerMovePriority > gMovesInfo[bestPlayerMove].priority){
+            } else if (hitsToKOBattler == bestHitsToKOBattler && playerMovePriority > GetMovePriority(opposingBattler, bestPlayerMove)){
                 bestPlayerMove = playerMove;
             }
         }
@@ -1102,6 +1101,9 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     }
 
     for(l= 0; l < MAX_MON_MOVES; l++){
+        if (AI_THINKING_STRUCT->score[l] >= 100){
+            hasNoGoodMoves = FALSE;
+        }
         if (gBattleMons[battler].moves[l] == MOVE_FAKE_OUT && AI_THINKING_STRUCT->score[l] >= 107){
             canFakeOut = TRUE;
         }
@@ -1127,7 +1129,10 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
 
     if(battlerAbility == ABILITY_NATURAL_CURE && gBattleMons[battler].status1 & STATUS1_ANY){
         if(canPivot && faster){
-                BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
+                //BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
+                //OpponentBufferExecCompleted(battler);
+                //AI_THINKING_STRUCT->score[pivot] = 120;
+                gBattleStruct->aiMoveOrAction[battler] = pivot;
                 return FALSE;
         } else {
             shouldSwitchStandard = TRUE;
@@ -1141,11 +1146,17 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
             shouldSwitchStandard = TRUE;
         } else if (faster && !willSetHazards && !willDestinyBond && bestHitsToKOPlayer != 1 && !MonHasRelevantStatsRaised(battler)){
             if(canPivot){
-                BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
+                //BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
+                //OpponentBufferExecCompleted(battler);
+                //AI_THINKING_STRUCT->score[pivot] = 120;
+                gBattleStruct->aiMoveOrAction[battler] = pivot;
                 return FALSE;
             }
             if(canEjectPack){
-                BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (ejectPack) | (opposingBattler << 8));
+                //BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (ejectPack) | (opposingBattler << 8));
+                //OpponentBufferExecCompleted(battler);
+                //AI_THINKING_STRUCT->score[ejectPack] = 120;
+                gBattleStruct->aiMoveOrAction[battler] = ejectPack;
                 return FALSE;
             } else {
                 shouldSwitchStandard = TRUE;
@@ -1155,11 +1166,17 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
 
     //AI cant 3hko player, player at least 3hkos in return, and AI has no viable status moves
     if(bestHitsToKOPlayer > 3 && bestHitsToKOBattler <= 3 && !hasViableStatus){
-        if(canPivot){
-                BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
+        if(canPivot && faster){
+                //BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
+                //OpponentBufferExecCompleted(battler);
+                //AI_THINKING_STRUCT->score[pivot] = 120;
+                gBattleStruct->aiMoveOrAction[battler] = pivot;
                 return FALSE;
         } else if (canTeleport){
-                BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (teleport) | (opposingBattler << 8));
+                //BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (teleport) | (opposingBattler << 8));
+                //OpponentBufferExecCompleted(battler);
+                //AI_THINKING_STRUCT->score[teleport] = 120;
+                gBattleStruct->aiMoveOrAction[battler] = teleport;
                 return FALSE;
         } else {
                 shouldSwitchStandard = TRUE;
@@ -2000,7 +2017,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
     u32 bestHitsToKOAI = INT_MAX, bestHitsToKOPlayer = INT_MAX;
     s32 highestDmgtoSwitchIn = 0;
     bool32 canDieOnSwitch = FALSE;
-    bool32 takesOverHalfOnSwitch = FALSE;
+    bool32 takesOverAThirdOnSwitch = FALSE;
     bool32 takesOverAThirdFromHazards = FALSE;
     u32 hazardDamage = 0;
     s32 calcHP = battleMon.hp;
@@ -2011,13 +2028,13 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         return switchScore;
     }
 
-    if(switchAfterMonKOd == FALSE){
+    if(!switchAfterMonKOd){
        highestDmgtoSwitchIn = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, battleMon);
        hazardDamage = GetSwitchinHazardsDamage(battler, &battleMon);
        if(highestDmgtoSwitchIn >= battleMon.hp){
             canDieOnSwitch = TRUE;
-       } else if (highestDmgtoSwitchIn >= (battleMon.hp/2)){
-            takesOverHalfOnSwitch = TRUE;
+       } else if (highestDmgtoSwitchIn >= (battleMon.hp/3)){
+            takesOverAThirdOnSwitch = TRUE;
        }
 
        calcHP = (battleMon.hp - highestDmgtoSwitchIn);
@@ -2025,13 +2042,18 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
        if (hazardDamage >= (calcHP/3)){
             takesOverAThirdFromHazards = TRUE;
        }
+
+       if(aiMonHoldEffect == HOLD_EFFECT_FOCUS_SASH || aiMonHoldEffect == HOLD_EFFECT_AIR_BALLOON || (aiMonHoldEffect == HOLD_EFFECT_RESIST_BERRY 
+        && HasDamagingMoveOfType(opposingBattler, ItemId_GetHoldEffectParam(battleMon.item)))){
+            aiMonHoldEffect == HOLD_EFFECT_NONE;
+       }
     }
 
     // Get best move for player to use on switch in candidate
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         playerMove = gBattleMons[opposingBattler].moves[i];
-        playerMovePriority = gMovesInfo[playerMove].priority;
+        playerMovePriority = GetMovePriority(opposingBattler, playerMove);
 
         if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION)
         {
@@ -2043,7 +2065,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
             }
 
             //sets hits to 2 if would ohko but blocked by sash or sturdy
-            if(hitsToKOAI == 1 && PartyMonHasInTactFocusSashSturdy(battler, opposingBattler, playerMove, battleMon, TRUE)){
+            if(hitsToKOAI == 1 && PartyMonHasInTactFocusSashSturdy(battler, opposingBattler, playerMove, aiMonHoldEffect, battleMon, TRUE)){
                 hitsToKOAI++;
             }
 
@@ -2074,7 +2096,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
             }
 
             //sets hits to 2 if would ohko but blocked by sash or sturdy
-            if(hitsToKOPlayer == 1 && PartyMonHasInTactFocusSashSturdy(opposingBattler, battler, aiMove, battleMon, FALSE)){
+            if(hitsToKOPlayer == 1 && PartyMonHasInTactFocusSashSturdy(opposingBattler, battler, aiMove, playerHoldEffect, battleMon, FALSE)){
                 hitsToKOPlayer++;
             }
 
@@ -2150,10 +2172,10 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         slowThreaten = TRUE;
     }
 
-    if(switchAfterMonKOd == FALSE){
+    if(!switchAfterMonKOd){
         if(canDieOnSwitch == TRUE)                             return 0;
-        else if(takesOverHalfOnSwitch == TRUE && !faster)      return 0;
-        else if(takesOverHalfOnSwitch == TRUE)                 return 9;
+        else if(takesOverAThirdOnSwitch == TRUE && !faster)      return 0;
+        else if(takesOverAThirdOnSwitch == TRUE)                 return 9;
         else if(takesOverAThirdFromHazards == TRUE && !faster) return 8;
         else if(takesOverAThirdFromHazards == TRUE)            return 9;
     }
@@ -2203,7 +2225,7 @@ static s32 GetMaxDamagePlayerCouldDealToSwitchin(u32 battler, u32 opposingBattle
         if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0)
         {
             damageTaken = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, FALSE, DMG_ROLL_LOWEST);
-            if (damageTaken >= battleMon.hp && PartyMonHasInTactFocusSashSturdy(battler, opposingBattler, playerMove, battleMon, TRUE)){
+            if (damageTaken >= battleMon.hp && PartyMonHasInTactFocusSashSturdy(battler, opposingBattler, playerMove, ItemId_GetHoldEffect(gBattleMons[battler].item), battleMon, TRUE)){
                 damageTaken = (battleMon.hp - 1);
             }
             if (damageTaken > maxDamageTaken)

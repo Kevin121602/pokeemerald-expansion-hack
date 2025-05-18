@@ -5029,7 +5029,7 @@ Ability: Sturdy
 -Brick Break
 -Aerial Ace
 
-Minior-Meteor @ Liechi Berry
+Minior @ Liechi Berry
 Level: 17
 Nature: Jolly
 Ability: Shields Down
@@ -11289,7 +11289,7 @@ Ability: Sturdy
 -Stealth Rock
 -Explosion
 
-Lileep @ Leftovers
+Lileep @ Miracle Seed
 Level: 17
 Nature: Bold
 Ability: Storm Drain
@@ -12429,12 +12429,12 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Archen @ Berry Juice
-Level: 15
+Level: 14
 Nature: Jolly
 Ability: Overcoat
 -Acrobatics
 -Rock Throw
--Rock Smash
+-Steel Wing
 -Quick Attack
 
 Sandshrew @ Focus Sash

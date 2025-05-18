@@ -12498,7 +12498,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 5032
-            .species = SPECIES_MINIOR_METEOR,
+            .species = SPECIES_MINIOR,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 5032
             .heldItem = ITEM_LIECHI_BERRY,
@@ -28412,7 +28412,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_LILEEP,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 11292
-            .heldItem = ITEM_LEFTOVERS,
+            .heldItem = ITEM_MIRACLE_SEED,
 #line 11296
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 11295
@@ -31339,7 +31339,7 @@ F_TRAINER_FEMALE |
 #line 12434
             .ability = ABILITY_OVERCOAT,
 #line 12432
-            .lvl = 15,
+            .lvl = 14,
 #line 12433
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -31347,7 +31347,7 @@ F_TRAINER_FEMALE |
 #line 12435
                 MOVE_ACROBATICS,
                 MOVE_ROCK_THROW,
-                MOVE_ROCK_SMASH,
+                MOVE_STEEL_WING,
                 MOVE_QUICK_ATTACK,
             },
             },

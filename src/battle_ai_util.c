@@ -36,7 +36,7 @@ static u32 AI_GetEffectiveness(uq4_12_t multiplier);
 
 // Functions
 
-bool32 PartyMonHasInTactFocusSashSturdy(u32 battlerAtk, u32 battlerDef, u32 move, struct BattlePokemon battleMon, bool32 isPartyMonCheckedForSash)
+bool32 PartyMonHasInTactFocusSashSturdy(u32 battlerAtk, u32 battlerDef, u32 move, u32 holdEffect, struct BattlePokemon battleMon, bool32 isPartyMonCheckedForSash)
 {
     bool32 intactSash;
 
@@ -57,21 +57,21 @@ bool32 PartyMonHasInTactFocusSashSturdy(u32 battlerAtk, u32 battlerDef, u32 move
         AI_THINKING_STRUCT->saved[battlerAtk].saved = FALSE;
     }
 
-    intactSash = MonHasInTactFocusSashSturdy(battlerAtk, battlerDef, move);
+    intactSash = MonHasInTactFocusSashSturdy(battlerAtk, battlerDef, holdEffect, move);
     // restores original gBattleMon struct
     FreeRestoreBattleMons(savedBattleMons);
     return intactSash;
 }
 
 
-bool32 MonHasInTactFocusSashSturdy(u32 battler, u32 opposingBattler, u32 move)
+bool32 MonHasInTactFocusSashSturdy(u32 battler, u32 opposingBattler, u32 holdEffect, u32 move)
 {
     //battler is the one being checked for sash
     if(gBattleMons[opposingBattler].ability == ABILITY_PARENTAL_BOND || gMovesInfo[move].effect == EFFECT_MULTI_HIT || gMovesInfo[move].effect == EFFECT_TRIPLE_KICK || gMovesInfo[move].strikeCount > 1){
         return FALSE;
     }
 
-    if(ItemId_GetHoldEffect(gBattleMons[battler].item) == HOLD_EFFECT_FOCUS_SASH && AtMaxHp(battler)){
+    if(holdEffect == HOLD_EFFECT_FOCUS_SASH && AtMaxHp(battler)){
         return TRUE;
     }
 
@@ -240,9 +240,9 @@ void SetBattlerData(u32 battlerId)
         }
 
         // Use the known battler's ability.
-        gBattleMons[battlerId].ability = AI_PARTY->mons[side][gBattlerPartyIndexes[battlerId]].ability;
+        gBattleMons[battlerId].ability = gBattleMons[battlerId].ability;
 
-        gBattleMons[battlerId].item = AI_PARTY->mons[side][gBattlerPartyIndexes[battlerId]].item;
+        gBattleMons[battlerId].item = gBattleMons[battlerId].item;
 
         for (i = 0; i < MAX_MON_MOVES; i++)
         {
@@ -542,6 +542,8 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
     gBattleStruct->aiCalcInProgress = TRUE;
     u32 battlerAtkHoldEffect = ItemId_GetHoldEffect(gBattleMons[battlerAtk].item);
     u32 battlerDefHoldEffect = ItemId_GetHoldEffect(gBattleMons[battlerDef].item);
+    u32 battlerAtkAbility = GetBattlerAbility(battlerAtk);
+    u32 battlerDefAbility = GetBattlerAbility(battlerDef);
 
     if (moveEffect == EFFECT_NATURE_POWER)
         move = GetNaturePowerMove(battlerAtk);
@@ -611,11 +613,11 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
             s32 nonCritDmg = CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                      effectivenessMultiplier, weather, FALSE,
                                                      battlerAtkHoldEffect, battlerDefHoldEffect,
-                                                     gBattleMons[battlerAtk].ability, gBattleMons[battlerDef].ability);
+                                                     battlerAtkAbility, battlerDefAbility);
             s32 critDmg = CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                   effectivenessMultiplier, weather, TRUE,
                                                   battlerAtkHoldEffect, battlerDefHoldEffect,
-                                                  gBattleMons[battlerAtk].ability, gBattleMons[battlerDef].ability);
+                                                  battlerAtkAbility, battlerDefAbility);
 
             u32 critOdds = GetCritHitOdds(critChanceIndex);
             // With critOdds getting closer to 1, dmg gets closer to critDmg.
@@ -634,7 +636,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
             s32 critDmg = CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                   effectivenessMultiplier, weather, TRUE,
                                                   battlerAtkHoldEffect, battlerDefHoldEffect,
-                                                  gBattleMons[battlerAtk].ability, gBattleMons[battlerDef].ability);
+                                                  battlerAtkAbility, battlerDefAbility);
 
             simDamage.expected = GetDamageByRollType(critDmg, rollType);
             simDamage.minimum = LowestRollDmg(critDmg);
@@ -649,7 +651,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
                     nonCritDmg += CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                           effectivenessMultiplier, weather, FALSE,
                                                           battlerAtkHoldEffect, battlerDefHoldEffect,
-                                                          gBattleMons[battlerAtk].ability, gBattleMons[battlerDef].ability);
+                                                          battlerAtkAbility, battlerDefAbility);
                 }
             }
             else
@@ -657,7 +659,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
                 nonCritDmg = CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
                                                      effectivenessMultiplier, weather, FALSE,
                                                      battlerAtkHoldEffect, battlerDefHoldEffect,
-                                                     gBattleMons[battlerAtk].ability, gBattleMons[battlerDef].ability);
+                                                     battlerAtkAbility, battlerDefAbility);
             }
             simDamage.expected = GetDamageByRollType(nonCritDmg, rollType);
             simDamage.minimum = LowestRollDmg(nonCritDmg);
@@ -1009,7 +1011,7 @@ s32 AI_WhichMoveBetter(u32 move1, u32 move2, u32 battlerAtk, u32 battlerDef, s32
 u32 GetNoOfHitsToKO(u32 dmg, s32 hp)
 {
     if (dmg == 0)
-        return 0;
+        return UINT32_MAX;
     if (hp % dmg == 0)
         return hp / dmg;
     else
@@ -3225,13 +3227,15 @@ bool32 ShouldRecover(u32 battlerAtk, u32 battlerDef, u32 move, u32 healPercent)
     u32 i;
     u32 unusable = AI_DATA->moveLimitations[battlerDef];
     u16 *moves = GetMovesArray(battlerDef);
+    u8 effectiveness;
+
     //s32 damage = AI_DATA->simulatedDmg[battlerAtk][battlerDef][AI_THINKING_STRUCT->movesetIndex].expected;
     s32 healAmount = (healPercent * gBattleMons[battlerAtk].maxHP) / 100;
-    if (AI_DATA->hpPercents[battlerAtk] < 70){
+    if (AI_DATA->hpPercents[battlerAtk] < 75){
         for (i = 0; i < MAX_MON_MOVES; i++)
         {
             if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE && !(unusable & gBitTable[i])
-                && AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected >= healAmount)
+                && AI_CalcDamage(moves[i], battlerDef, battlerAtk, &effectiveness, TRUE, AI_GetWeather(AI_DATA), DMG_ROLL_DEFAULT).expected >= healAmount)
             {
                 return FALSE;
             }
