@@ -407,15 +407,15 @@
   ],
   "warp_events": [
     {
-      "x": 17,
-      "y": 36,
+      "x": 16,
+      "y": 35,
       "elevation": 0,
       "dest_map": "MAP_MT_CHIMNEY_CABLE_CAR_STATION",
       "dest_warp_id": "0"
     },
     {
-      "x": 18,
-      "y": 36,
+      "x": 17,
+      "y": 35,
       "elevation": 0,
       "dest_map": "MAP_MT_CHIMNEY_CABLE_CAR_STATION",
       "dest_warp_id": "1"

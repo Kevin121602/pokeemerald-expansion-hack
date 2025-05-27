@@ -792,6 +792,15 @@ static inline void BattleAI_DoAIProcessing(struct AI_ThinkingStruct *aiThink, u3
     aiThink->movesetIndex = 0;
 }
 
+static void TryResetProtectUseCounter(u32 battler)
+{
+    u32 lastMove = gLastResultingMoves[battler];
+    if (lastMove == MOVE_UNAVAILABLE
+        || (!gBattleMoveEffects[gMovesInfo[lastMove].effect].usesProtectCounter
+          && (B_ALLY_SWITCH_FAIL_CHANCE >= GEN_9 && gMovesInfo[lastMove].effect != EFFECT_ALLY_SWITCH)))
+        gDisableStructs[battler].protectUses = 0;
+}
+
 // AI Score Functions
 // AI_FLAG_CHECK_BAD_MOVE - decreases move scores
 static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
@@ -1989,17 +1998,18 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                   && move != MOVE_WIDE_GUARD
                   && move != MOVE_CRAFTY_SHIELD) //These moves have infinite usage
                 {
+                    TryResetProtectUseCounter(battlerAtk);
                     if (GetBattlerSecondaryDamage(battlerAtk) >= gBattleMons[battlerAtk].hp
                       && aiData->abilities[battlerDef] != ABILITY_MOXIE
                       && aiData->abilities[battlerDef] != ABILITY_BEAST_BOOST)
                     {
                         ADJUST_SCORE(-10); //Don't protect if you're going to faint after protecting
                     }
-                    else if (gDisableStructs[battlerAtk].protectUses == 1 && Random() % 100 < 50)
+                    else if (gDisableStructs[battlerAtk].protectUses == 1)
                     {
-                        if (!isDoubleBattle)
-                            ADJUST_SCORE(-6);
-                        else
+                        if (isDoubleBattle)
+                            ADJUST_SCORE(-30);
+                        else if (Random() % 100 < 50)
                             ADJUST_SCORE(-10); //Don't try double protecting in doubles
                     }
                     else if (gDisableStructs[battlerAtk].protectUses >= 2)
@@ -2675,6 +2685,14 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             && GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) != AI_IS_FASTER
             && GetMovePriority(battlerAtk, move) > 0)
     {
+        if(move == MOVE_FAKE_OUT){
+            if(ShouldFakeOut(battlerAtk, battlerDef, move)){
+                RETURN_SCORE_PLUS(LAST_CHANCE);
+            }
+            else{
+                RETURN_SCORE_PLUS(0);
+            }
+        }
         RETURN_SCORE_PLUS(LAST_CHANCE);
     }
 
@@ -3570,6 +3588,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             predictedMove = MOVE_NONE;
         switch (move)
         {
+        //change quick guard and wide guard later
         case MOVE_QUICK_GUARD:
             if (predictedMove != MOVE_NONE && gMovesInfo[predictedMove].priority > 0)
                 ProtectChecks(battlerAtk, battlerDef, move, predictedMove, &score);

@@ -2033,13 +2033,13 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
        hazardDamage = GetSwitchinHazardsDamage(battler, &battleMon);
        if(highestDmgtoSwitchIn >= battleMon.hp){
             canDieOnSwitch = TRUE;
-       } else if (highestDmgtoSwitchIn >= (battleMon.hp/3)){
+       } else if (highestDmgtoSwitchIn*3 >= battleMon.hp){
             takesOverAThirdOnSwitch = TRUE;
        }
 
        calcHP = (battleMon.hp - highestDmgtoSwitchIn);
        
-       if (hazardDamage >= (calcHP/3)){
+       if (hazardDamage*3 >= calcHP){
             takesOverAThirdFromHazards = TRUE;
        }
 
@@ -2047,6 +2047,10 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         && HasDamagingMoveOfType(opposingBattler, ItemId_GetHoldEffectParam(battleMon.item)))){
             aiMonHoldEffect == HOLD_EFFECT_NONE;
        }
+    }
+
+    if(!switchAfterMonKOd && aiMonAbility == ABILITY_MULTISCALE){
+        aiMonAbility ==  ABILITY_NONE;
     }
 
     // Get best move for player to use on switch in candidate

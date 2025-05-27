@@ -1739,41 +1739,56 @@ bool32 ShouldSetSnow(u32 battler, u32 ability, u32 holdEffect)
 
 void ProtectChecks(u32 battlerAtk, u32 battlerDef, u32 move, u32 predictedMove, s32 *score)
 {
-    // TODO more sophisticated logic
-    u32 uses = gDisableStructs[battlerAtk].protectUses;
 
-    /*if (GetMoveResultFlags(predictedMove) & (MOVE_RESULT_NO_EFFECT | MOVE_RESULT_MISSED))
-    {
-        ADJUST_SCORE_PTR(-5);
-        return;
-    }*/
+    u32 noOfHitsToFaint = NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk);
 
-    if (uses == 0)
-    {
-        if (predictedMove != MOVE_NONE && predictedMove != 0xFFFF && !IS_MOVE_STATUS(predictedMove))
-            ADJUST_SCORE_PTR(DECENT_EFFECT);
-        else if (Random() % 256 < 100)
+    u32 speedBattlerAI, speedBattler;
+    u32 holdEffectAI = AI_DATA->holdEffects[battlerAtk];
+    u32 holdEffectPlayer = AI_DATA->holdEffects[battlerDef];
+    u32 abilityAI = AI_DATA->abilities[battlerAtk];
+    u32 abilityPlayer = AI_DATA->abilities[battlerDef];
+
+    speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
+    speedBattler   = GetBattlerTotalSpeedStatArgs(battlerDef, abilityPlayer, holdEffectPlayer);
+
+    u32 i;
+
+    //if attacking mon previously used protect but protect is not on cooldown, 50% to disincentivise protect
+    if (IsDoubleBattle()){
+        for (i = 0; i < MAX_MON_MOVES; i++)
+        {
+            if((gBattleResources->battleHistory->usedMoves[battlerAtk][i] == move) && Random() % 100 < 50)
+                ADJUST_SCORE_PTR(-30);
+        }
+    }
+
+    //never uses protect in doubles if used last turn
+    if (IsDoubleBattle()){
+        //if(uses > 0){
+        //    ADJUST_SCORE_PTR(-30);
+        //}
+        if(noOfHitsToFaint == 1){
+            //if player has kill on AI and AI is faster
+            if(speedBattlerAI >= speedBattler){
+                ADJUST_SCORE_PTR(BEST_EFFECT);
+            } else {
+                //if AI is slower, protect incentivised over all other moves
+                ADJUST_SCORE_PTR(20);
+            }
+        }
+    } else {
+        //if (uses == 0)
+        //{
+            ADJUST_SCORE_PTR(WEAK_EFFECT);
+            if (Random() % 100 < 50)
+                ADJUST_SCORE_PTR(WEAK_EFFECT);
+        //}
+
+        if (gBattleMons[battlerDef].status1 & (STATUS1_TOXIC_POISON | STATUS1_POISON | STATUS1_BURN)
+        || gBattleMons[battlerDef].status2 & STATUS2_CURSED
+        || gStatuses3[battlerDef] & (STATUS3_PERISH_SONG | STATUS3_LEECHSEED | STATUS3_YAWN))
             ADJUST_SCORE_PTR(WEAK_EFFECT);
     }
-    else
-    {
-        if (IsDoubleBattle())
-            ADJUST_SCORE_PTR(-(2 * min(uses, 3)));
-        else
-            ADJUST_SCORE_PTR(-(min(uses, 3)));
-    }
-
-    if (gBattleMons[battlerAtk].status1 & (STATUS1_PSN_ANY | STATUS1_BURN | STATUS1_FROSTBITE)
-     || gBattleMons[battlerAtk].status2 & (STATUS2_CURSED | STATUS2_INFATUATION)
-     || gStatuses3[battlerAtk] & (STATUS3_PERISH_SONG | STATUS3_LEECHSEED | STATUS3_YAWN))
-    {
-        ADJUST_SCORE_PTR(-1);
-    }
-
-    if (gBattleMons[battlerDef].status1 & STATUS1_TOXIC_POISON
-      || gBattleMons[battlerDef].status2 & (STATUS2_CURSED | STATUS2_INFATUATION)
-      || gStatuses3[battlerDef] & (STATUS3_PERISH_SONG | STATUS3_LEECHSEED | STATUS3_YAWN))
-        ADJUST_SCORE_PTR(DECENT_EFFECT);
 }
 
 // stat stages

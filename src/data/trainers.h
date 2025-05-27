@@ -783,7 +783,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 382
-                MOVE_SEED_BOMB,
+                MOVE_GRASSY_GLIDE,
                 MOVE_BRICK_BREAK,
                 MOVE_ROCK_TOMB,
                 MOVE_SYNTHESIS,
