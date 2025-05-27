@@ -1850,6 +1850,10 @@ static void Cmd_ppreduce(void)
              ppToDeduct++;
     }
 
+    if(BattlerHasAi(gBattlerAttacker)){
+        ppToDeduct = 0;
+    }
+
     if (!(gHitMarker & (HITMARKER_NO_PPDEDUCT | HITMARKER_NO_ATTACKSTRING)) && gBattleMons[gBattlerAttacker].pp[gCurrMovePos])
     {
         gProtectStructs[gBattlerAttacker].notFirstStrike = TRUE;
