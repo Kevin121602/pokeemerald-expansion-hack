@@ -934,6 +934,10 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     bool32 shouldSwitchLiberal = FALSE;
     bool32 shouldSwitchStandard = FALSE;
 
+    bool32 shouldPivot = FALSE;
+    bool32 shouldEjectPack = FALSE;
+    bool32 shouldTeleport = FALSE;
+
     u8 pivot = 0;
     u8 teleport = 0;
     u8 ejectPack = 0;
@@ -944,7 +948,7 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
         return FALSE;
     if (IsAbilityPreventingEscape(battler))
         return FALSE;
-    if(gBattleMons[battler].hp <= (gBattleMons[battler].maxHP/5))
+    if(gBattleMons[battler].hp*5 <= gBattleMons[battler].maxHP)
         return FALSE;
     if(!CanMonSurviveHazardSwitchin(battler))
         return FALSE;
@@ -1132,8 +1136,9 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
                 //BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
                 //OpponentBufferExecCompleted(battler);
                 //AI_THINKING_STRUCT->score[pivot] = 120;
-                gBattleStruct->aiMoveOrAction[battler] = pivot;
-                return FALSE;
+                shouldPivot = TRUE;
+                //gBattleStruct->aiMoveOrAction[battler] = pivot;
+                //return FALSE;
         } else {
             shouldSwitchStandard = TRUE;
         }
@@ -1149,15 +1154,17 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
                 //BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
                 //OpponentBufferExecCompleted(battler);
                 //AI_THINKING_STRUCT->score[pivot] = 120;
-                gBattleStruct->aiMoveOrAction[battler] = pivot;
-                return FALSE;
+                shouldPivot = TRUE;
+                //gBattleStruct->aiMoveOrAction[battler] = pivot;
+                //return FALSE;
             }
             if(canEjectPack){
                 //BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (ejectPack) | (opposingBattler << 8));
                 //OpponentBufferExecCompleted(battler);
                 //AI_THINKING_STRUCT->score[ejectPack] = 120;
-                gBattleStruct->aiMoveOrAction[battler] = ejectPack;
-                return FALSE;
+                shouldEjectPack = TRUE;
+                //gBattleStruct->aiMoveOrAction[battler] = ejectPack;
+                //return FALSE;
             } else {
                 shouldSwitchStandard = TRUE;
             }
@@ -1170,14 +1177,16 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
                 //BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
                 //OpponentBufferExecCompleted(battler);
                 //AI_THINKING_STRUCT->score[pivot] = 120;
-                gBattleStruct->aiMoveOrAction[battler] = pivot;
-                return FALSE;
+                //gBattleStruct->aiMoveOrAction[battler] = pivot;
+                //return FALSE;
+                shouldPivot = TRUE;
         } else if (canTeleport){
                 //BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (teleport) | (opposingBattler << 8));
                 //OpponentBufferExecCompleted(battler);
                 //AI_THINKING_STRUCT->score[teleport] = 120;
-                gBattleStruct->aiMoveOrAction[battler] = teleport;
-                return FALSE;
+                //gBattleStruct->aiMoveOrAction[battler] = teleport;
+                //return FALSE;
+                shouldTeleport = TRUE;
         } else {
                 shouldSwitchStandard = TRUE;
         }
@@ -1212,6 +1221,45 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
                 if (emitResult)
                     BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_SWITCH, 0);
                 return TRUE;
+        }
+    } else if (shouldPivot){
+        bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
+
+        InitializeSwitchinCandidate(&party[bestCandidate]);
+
+        bestMonSwitchScore = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, opposingBattler, FALSE);
+
+        if(bestMonSwitchScore < 10){
+            return FALSE;
+        } else {
+        gBattleStruct->aiMoveOrAction[battler] = pivot;
+        return FALSE;
+        }
+    } else if (shouldEjectPack){
+        bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
+
+        InitializeSwitchinCandidate(&party[bestCandidate]);
+
+        bestMonSwitchScore = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, opposingBattler, FALSE);
+
+        if(bestMonSwitchScore < 10){
+            return FALSE;
+        } else {
+        gBattleStruct->aiMoveOrAction[battler] = ejectPack;
+        return FALSE;
+        }
+    } else if (shouldTeleport){
+        bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
+
+        InitializeSwitchinCandidate(&party[bestCandidate]);
+
+        bestMonSwitchScore = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, opposingBattler, FALSE);
+
+        if(bestMonSwitchScore < 10){
+            return FALSE;
+        } else {
+        gBattleStruct->aiMoveOrAction[battler] = teleport;
+        return FALSE;
         }
     } else {
         return FALSE;

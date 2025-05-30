@@ -1,9 +1,9 @@
 {
-  "id": "MAP_PETALBURG_FIELD",
-  "name": "PetalburgField",
-  "layout": "LAYOUT_PETALBURG_FIELD",
+  "id": "MAP_PETALBURG_PARK",
+  "name": "PetalburgPark",
+  "layout": "LAYOUT_PETALBURG_PARK",
   "music": "MUS_DP_JUBILIFE_DAY",
-  "region_map_section": "MAPSEC_PETALBURG_FIELD",
+  "region_map_section": "MAPSEC_PETALBURG_PARK",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
   "map_type": "MAP_TYPE_ROUTE",

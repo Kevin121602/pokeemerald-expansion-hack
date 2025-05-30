@@ -37524,7 +37524,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_SHIELDON,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 14911
-            .heldItem = ITEM_CUSTAP_BERRY,
+            .heldItem = ITEM_CHOPLE_BERRY,
 #line 14915
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 14914
@@ -37641,7 +37641,7 @@ F_TRAINER_FEMALE |
 #line 14960
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 14959
-            .ability = ABILITY_HUSTLE,
+            .ability = ABILITY_VITAL_SPIRIT,
 #line 14957
             .lvl = 15,
 #line 14958

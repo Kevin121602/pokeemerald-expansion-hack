@@ -1076,7 +1076,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 
-	.include "data/maps/PetalburgField/scripts.inc"
+	.include "data/maps/PetalburgPark/scripts.inc"
 
 	.include "data/maps/WoodsCave/scripts.inc"
 

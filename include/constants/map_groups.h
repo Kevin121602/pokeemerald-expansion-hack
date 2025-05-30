@@ -63,7 +63,7 @@
 #define MAP_UNDERWATER_ROUTE129 (54 | (0 << 8))
 #define MAP_UNDERWATER_ROUTE105 (55 | (0 << 8))
 #define MAP_UNDERWATER_ROUTE125 (56 | (0 << 8))
-#define MAP_PETALBURG_FIELD     (57 | (0 << 8))
+#define MAP_PETALBURG_PARK      (57 | (0 << 8))
 #define MAP_OLDALE_MEADOW       (58 | (0 << 8))
 
 // gMapGroup_IndoorLittleroot
