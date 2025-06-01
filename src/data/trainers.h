@@ -771,7 +771,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_QUILLADIN,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 378
-            .heldItem = ITEM_EVIOLITE,
+            .heldItem = ITEM_LEFTOVERS,
 #line 382
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 381
@@ -30572,7 +30572,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 12129
-                MOVE_BUG_BITE,
+                MOVE_FURY_CUTTER,
                 MOVE_SMACK_DOWN,
                 MOVE_FLAIL,
                 MOVE_COUNTER,
@@ -30812,7 +30812,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_BEAUTIFLY,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 12226
-            .heldItem = ITEM_LUM_BERRY,
+            .heldItem = ITEM_COBA_BERRY,
 #line 12230
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 12229
@@ -30858,7 +30858,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_KRICKETUNE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 12244
-            .heldItem = ITEM_SILVER_POWDER,
+            .heldItem = ITEM_OCCA_BERRY,
 #line 12248
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 12247

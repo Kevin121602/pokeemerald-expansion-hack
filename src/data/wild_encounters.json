@@ -482,17 +482,17 @@
               {
                 "min_level": 6,
                 "max_level": 7,
+                "species": "SPECIES_SALANDIT"
+              },
+              {
+                "min_level": 6,
+                "max_level": 7,
                 "species": "SPECIES_CHARCADET"
               },
               {
                 "min_level": 6,
                 "max_level": 7,
-                "species": "SPECIES_SALANDIT"
-              },
-              {
-                "min_level": 6,
-                "max_level": 7,
-                "species": "SPECIES_SALANDIT"
+                "species": "SPECIES_CHARCADET"
               }
             ]
           },
@@ -2035,7 +2035,7 @@
               {
                 "min_level": 8,
                 "max_level": 9,
-                "species": "SPECIES_ZUBAT"
+                "species": "SPECIES_ROCKRUFF"
               },
               {
                 "min_level": 8,
@@ -2080,7 +2080,7 @@
               {
                 "min_level": 8,
                 "max_level": 9,
-                "species": "SPECIES_DUNSPARCE"
+                "species": "SPECIES_BONSLY"
               },
               {
                 "min_level": 8,
@@ -3479,7 +3479,7 @@
               {
                 "min_level": 7,
                 "max_level": 8,
-                "species": "SPECIES_SALANDIT"
+                "species": "SPECIES_FOONGUS"
               },
               {
                 "min_level": 7,
@@ -13887,7 +13887,7 @@
               {
                 "min_level": 6,
                 "max_level": 7,
-                "species": "SPECIES_ROCKRUFF"
+                "species": "SPECIES_DUNSPARCE"
               },
               {
                 "min_level": 6,

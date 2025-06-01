@@ -499,16 +499,6 @@ bool32 IsDamageMoveUnusable(u32 move, u32 battlerAtk, u32 battlerDef)
         if (!gDisableStructs[battlerAtk].isFirstTurn)
             return TRUE;
         break;
-    case EFFECT_FOCUS_PUNCH:
-        if (HasDamagingMove(battlerDef) && !((gBattleMons[battlerAtk].status2 & STATUS2_SUBSTITUTE)
-         || IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef])
-         || gBattleMons[battlerDef].status2 & (STATUS2_INFATUATION | STATUS2_CONFUSION)))
-         // TODO: || IsPredictedToSwitch(battlerDef, battlerAtk)
-            return TRUE;
-        // If AI could Sub and doesn't have a Sub, don't Punch yet
-        if (HasMoveEffect(battlerAtk, EFFECT_SUBSTITUTE) && !(gBattleMons[battlerAtk].status2 & STATUS2_SUBSTITUTE))
-            return TRUE;
-        break;
     }
 
     return FALSE;
@@ -1206,7 +1196,7 @@ u32 GetBestDmgMoveFromBattler(u32 battlerAtk, u32 battlerDef)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         if (gBattleMons[battlerAtk].moves[i] != MOVE_NONE && gBattleMons[battlerAtk].moves[i] != MOVE_UNAVAILABLE && !(unusable & gBitTable[i])
-            && bestDmg < AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected
+            && (bestDmg < AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected || (bestDmg == AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected && (Random() % 100 < 50)))
             && gMovesInfo[gBattleMons[battlerAtk].moves[i]].effect != EFFECT_EXPLOSION
             && gMovesInfo[gBattleMons[battlerAtk].moves[i]].effect != EFFECT_FINAL_GAMBIT
             && !IsTwoTurnNotSemiInvulnerableMove(battlerAtk, gBattleMons[battlerAtk].moves[i]))

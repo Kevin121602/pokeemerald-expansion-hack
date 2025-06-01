@@ -375,7 +375,7 @@ Ability: Hyper Cutter
 -Brutal Swing
 -Dizzy Punch
 
-Quilladin @ Eviolite
+Quilladin @ Leftovers
 Level: 16
 Nature: Jolly
 Ability: Overgrow
@@ -12126,7 +12126,7 @@ Dwebble @ Salac Berry
 Level: 13
 Nature: Jolly
 Ability: Sturdy
--Bug Bite
+-Fury Cutter
 -Smack Down
 -Flail
 -Counter
@@ -12223,7 +12223,7 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Beautifly @ Lum Berry
+Beautifly @ Coba Berry
 Level: 13
 Nature: Timid
 Ability: Swarm
@@ -12241,7 +12241,7 @@ Ability: Shield Dust
 -Toxic
 -Moonlight
 
-Kricketune @ Silver Powder
+Kricketune @ Occa Berry
 Level: 12
 Nature: Jolly
 Ability: Technician
