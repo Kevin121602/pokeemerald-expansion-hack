@@ -1196,10 +1196,10 @@ u32 GetBestDmgMoveFromBattler(u32 battlerAtk, u32 battlerDef)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         if (gBattleMons[battlerAtk].moves[i] != MOVE_NONE && gBattleMons[battlerAtk].moves[i] != MOVE_UNAVAILABLE && !(unusable & gBitTable[i])
-            && (bestDmg < AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected || (bestDmg == AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected && (Random() % 100 < 50)))
+            && bestDmg < AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected
             && gMovesInfo[gBattleMons[battlerAtk].moves[i]].effect != EFFECT_EXPLOSION
             && gMovesInfo[gBattleMons[battlerAtk].moves[i]].effect != EFFECT_FINAL_GAMBIT
-            && !IsTwoTurnNotSemiInvulnerableMove(battlerAtk, gBattleMons[battlerAtk].moves[i]))
+            && AI_THINKING_STRUCT->score[i] >= 100)
         {
             bestDmg = AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected;
             move = gBattleMons[battlerAtk].moves[i];
@@ -1222,7 +1222,8 @@ u32 GetBestDmgFromBattler(u32 battler, u32 battlerTarget)
          && !(unusable & gBitTable[i])
          && bestDmg < AI_DATA->simulatedDmg[battler][battlerTarget][i].expected
          && gMovesInfo[moves[i]].effect != EFFECT_EXPLOSION
-         && gMovesInfo[moves[i]].effect != EFFECT_FINAL_GAMBIT)
+         && gMovesInfo[moves[i]].effect != EFFECT_FINAL_GAMBIT
+         && AI_THINKING_STRUCT->score[i] >= 100)
         {
             bestDmg = AI_DATA->simulatedDmg[battler][battlerTarget][i].expected;
         }
@@ -1241,7 +1242,7 @@ bool32 CanAIFaintTarget(u32 battlerAtk, u32 battlerDef, u32 numHits)
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
-        if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE && !(moveLimitations & gBitTable[i]))
+        if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE && gMovesInfo[moves[i]].effect != EFFECT_EXPLOSION && !(moveLimitations & gBitTable[i]))
         {
             // Use the pre-calculated value in simulatedDmg instead of re-calculating it
             dmg = AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].minimum;

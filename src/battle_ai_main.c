@@ -467,6 +467,9 @@ static void SetBattlerAiMovesData(struct AiLogicData *aiData, u32 battlerAtk, u3
                 aiData->moveAccuracy[battlerAtk][battlerDef][i] = Ai_SetMoveAccuracy(aiData, battlerAtk, battlerDef, move);
             }
             aiData->simulatedDmg[battlerAtk][battlerDef][i] = dmg;
+            if(aiData->simulatedDmg[battlerAtk][battlerDef][i].expected > aiData->highestDmg[battlerAtk][battlerDef].expected){
+                aiData->highestDmg[battlerAtk][battlerDef] = dmg;
+            }
             aiData->effectiveness[battlerAtk][battlerDef][i] = effectiveness;
         }
         RestoreBattlerData(battlerDef);
@@ -3168,7 +3171,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     u32 predictedMoveSlot = GetMoveSlot(GetMovesArray(battlerDef), predictedMove);
     u32 moveSlot = GetMoveSlot(GetMovesArray(battlerDef), move);
     bool32 isDoubleBattle = IsValidDoubleBattle(battlerAtk);
-    u32 i;
+    u32 i, j;
 
     u32 speedBattlerAI, speedBattler;
     u32 holdEffectAI = AI_DATA->holdEffects[battlerAtk];
@@ -3178,6 +3181,8 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
 
     speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
     speedBattler   = GetBattlerTotalSpeedStatArgs(battlerDef, abilityPlayer, holdEffectPlayer);
+
+    bool8 hasSameEffectMoveWithHigherDamage = FALSE;
 
     // The AI should understand that while Dynamaxed, status moves function like Protect.
     if (GetActiveGimmick(battlerAtk) == GIMMICK_DYNAMAX && gMovesInfo[move].category == DAMAGE_CATEGORY_STATUS)
@@ -4305,8 +4310,17 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         if (!MoveEffectIsGuaranteed(battlerAtk, aiData->abilities[battlerAtk], &gMovesInfo[move].additionalEffects[i]))
             continue;
 
-        // dont increment score if move already highest damage
-        if (GetBestDmgMoveFromBattler(battlerAtk, battlerDef) == move)
+        //dont look at move effects if a higher damage move has the same effect
+        for(j = 0; j < MAX_MON_MOVES; j++){
+            if(j == move)
+                continue;
+
+            if(aiData->simulatedDmg[battlerAtk][battlerDef][j].expected > aiData->simulatedDmg[battlerAtk][battlerDef][move].expected
+            && &gMovesInfo[j].additionalEffects[i] == &gMovesInfo[move].additionalEffects[i])
+                hasSameEffectMoveWithHigherDamage = TRUE;
+        }
+        
+        if(hasSameEffectMoveWithHigherDamage)
             continue;
 
         // Consider move effects that target self
@@ -4521,9 +4535,28 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     return score;
 }
 
+static s32 GetMoveIndex(u32 battler, u32 move){
+    u8 i;
+
+    for(i = 0; i < MAX_MON_MOVES; i++){
+        if(move == gBattleMons[battler].moves[i]){
+            return i;
+        }
+    }
+
+    return MAX_MON_MOVES;
+}
+
 // AI_FLAG_CHECK_VIABILITY - Chooses best possible move to hit player
 static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 {
+    bool8 isMoveHighestDmg = FALSE;
+    struct AiLogicData *aiData = AI_DATA;
+    s32 scoreTemp;
+    u8 effectiveness = AI_EFFECTIVENESS_x0;
+
+    s32 moveIndex = GetMoveIndex(battlerAtk, move);
+
     // Targeting partner, check benefits of doing that instead
     if (IS_TARGETING_PARTNER(battlerAtk, battlerDef))
         return score;
@@ -4534,17 +4567,27 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS); // No point in checking the move further so return early
         else
         {
-            if (GetBestDmgMoveFromBattler(battlerAtk, battlerDef) == move && !CanAIFaintTarget(battlerAtk, battlerDef, 0)){
+            if (moveIndex != MAX_MON_MOVES && aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected >= aiData->highestDmg[battlerAtk][battlerDef].expected && !CanAIFaintTarget(battlerAtk, battlerDef, 0)){
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
+                isMoveHighestDmg = TRUE;
                 if(Random() % 100 < 50)
                     ADJUST_SCORE(DECENT_EFFECT);
             }
-            //else
-            //    ADJUST_SCORE(AI_CompareDamagingMoves(battlerAtk, battlerDef, AI_THINKING_STRUCT->movesetIndex));
         }
     }
 
+    scoreTemp = score;
+
     ADJUST_SCORE(AI_CalcMoveEffectScore(battlerAtk, battlerDef, move));
+
+    //if calcMoveEffectScore returns higher score than original, has viable status bool is true
+    if(score > scoreTemp && score > 100){
+        AI_DATA->hasViableStatus = TRUE;
+        //however, dont permanently increase the score if move is highest damage
+        if(isMoveHighestDmg){
+            score = scoreTemp;
+        }
+    }
 
     return score;
 }

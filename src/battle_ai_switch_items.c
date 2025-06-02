@@ -924,7 +924,7 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     bool32 canFakeOut = FALSE;
     bool32 willSetHazards = FALSE;
     bool32 willDestinyBond = FALSE;
-    bool32 hasViableStatus = FALSE;
+    //bool32 hasViableStatus = FALSE;
     bool32 hasNoGoodMoves = TRUE;
 
     bool32 canPivot = FALSE;
@@ -1121,9 +1121,9 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
         if (IsHazardMoveEffect(gMovesInfo[gBattleMons[battler].moves[l]].effect) && AI_THINKING_STRUCT->score[l] >= 107){
             willSetHazards = TRUE;
         }
-        if(l != aiHighestDmg && AI_THINKING_STRUCT->score[l] > 100){
-            hasViableStatus = TRUE;
-        }
+        //if(l != aiHighestDmg && AI_THINKING_STRUCT->score[l] > 100){
+        //    hasViableStatus = TRUE;
+        //}
     }
 
     //all moves scored under 100
@@ -1172,7 +1172,7 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     }
 
     //AI cant 3hko player, player at least 3hkos in return, and AI has no viable status moves
-    if(bestHitsToKOPlayer > 3 && bestHitsToKOBattler <= 3 && !hasViableStatus){
+    if(bestHitsToKOPlayer > 3 && bestHitsToKOBattler <= 3 && (AI_DATA->hasViableStatus == FALSE)){
         if(canPivot && faster){
                 //BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
                 //OpponentBufferExecCompleted(battler);
