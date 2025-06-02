@@ -2095,8 +2095,7 @@ bool32 HasMoveWithAdditionalEffect(u32 battlerId, u32 moveEffect)
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
-        if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE
-            && MoveHasAdditionalEffect(moves[i], moveEffect))
+        if (moves[i] != MOVE_NONE && MoveHasAdditionalEffect(moves[i], moveEffect))
             return TRUE;
     }
 

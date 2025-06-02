@@ -11596,7 +11596,7 @@ bool32 MoveHasAdditionalEffect(u32 move, u32 moveEffect)
     for (i = 0; i < gMovesInfo[move].numAdditionalEffects; i++)
     {
         if (gMovesInfo[move].additionalEffects[i].moveEffect == moveEffect
-         && gMovesInfo[move].additionalEffects[i].self == FALSE)
+         /*&& gMovesInfo[move].additionalEffects[i].self == FALSE*/)
             return TRUE;
     }
     return FALSE;

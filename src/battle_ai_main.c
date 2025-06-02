@@ -3154,6 +3154,18 @@ static s32 AI_CompareDamagingMoves(u32 battlerAtk, u32 battlerDef, u32 currId)
     return score;
 }
 
+static u32 GetMoveIndex(u32 battler, u32 move){
+    u8 i;
+
+    for(i = 0; i < MAX_MON_MOVES; i++){
+        if(move == gBattleMons[battler].moves[i]){
+            return i;
+        }
+    }
+
+    return MAX_MON_MOVES;
+}
+
 static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
 {
     // move data
@@ -3180,6 +3192,8 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     speedBattler   = GetBattlerTotalSpeedStatArgs(battlerDef, abilityPlayer, holdEffectPlayer);
 
     bool8 hasSameEffectMoveWithHigherDamage = FALSE;
+
+    u32 moveIndex = GetMoveIndex(battlerAtk, move);
 
     // The AI should understand that while Dynamaxed, status moves function like Protect.
     if (GetActiveGimmick(battlerAtk) == GIMMICK_DYNAMAX && gMovesInfo[move].category == DAMAGE_CATEGORY_STATUS)
@@ -4309,11 +4323,11 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
 
         //dont look at move effects if a higher damage move has the same effect
         for(j = 0; j < MAX_MON_MOVES; j++){
-            if(j == move)
+            if(j == moveIndex)
                 continue;
 
-            if(aiData->simulatedDmg[battlerAtk][battlerDef][j].expected > aiData->simulatedDmg[battlerAtk][battlerDef][move].expected
-            && &gMovesInfo[j].additionalEffects[i] == &gMovesInfo[move].additionalEffects[i])
+            if(aiData->simulatedDmg[battlerAtk][battlerDef][j].expected > aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected
+            && &gMovesInfo[j].additionalEffects[i] == &gMovesInfo[moveIndex].additionalEffects[i])
                 hasSameEffectMoveWithHigherDamage = TRUE;
         }
         
@@ -4532,18 +4546,6 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     return score;
 }
 
-static s32 GetMoveIndex(u32 battler, u32 move){
-    u8 i;
-
-    for(i = 0; i < MAX_MON_MOVES; i++){
-        if(move == gBattleMons[battler].moves[i]){
-            return i;
-        }
-    }
-
-    return MAX_MON_MOVES;
-}
-
 // AI_FLAG_CHECK_VIABILITY - Chooses best possible move to hit player
 static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 {
@@ -4552,7 +4554,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     s32 scoreTemp;
     u8 effectiveness = AI_EFFECTIVENESS_x0;
 
-    s32 moveIndex = GetMoveIndex(battlerAtk, move);
+    u32 moveIndex = GetMoveIndex(battlerAtk, move);
 
     // Targeting partner, check benefits of doing that instead
     if (IS_TARGETING_PARTNER(battlerAtk, battlerDef))
@@ -4581,7 +4583,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     if(score > scoreTemp && score > 100){
         AI_DATA->hasViableStatus = TRUE;
         //however, dont permanently increase the score if move is highest damage
-        if(isMoveHighestDmg){
+        if(isMoveHighestDmg || (aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected >= gBattleMons[battlerDef].hp && !MonHasInTactFocusSashSturdy(battlerAtk, battlerDef, GetBattlerHoldEffect(battlerAtk, TRUE), GetBattlerAbility(battlerAtk), move))){
             score = scoreTemp;
         }
     }
