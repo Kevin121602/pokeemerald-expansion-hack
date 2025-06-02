@@ -36,38 +36,47 @@ static u32 AI_GetEffectiveness(uq4_12_t multiplier);
 
 // Functions
 
-bool32 PartyMonHasInTactFocusSashSturdy(u32 battlerAtk, u32 battlerDef, u32 move, u32 holdEffect, struct BattlePokemon battleMon, bool32 isPartyMonCheckedForSash)
+bool32 PartyMonHasInTactFocusSashSturdy(u32 battlerAtk, u32 battlerDef, u32 move, u32 holdEffect, u32 ability, struct BattlePokemon battleMon, bool32 isPartyMonCheckedForSash)
 {
-    bool32 intactSash;
-
-    struct BattlePokemon *savedBattleMons = AllocSaveBattleMons();
-
     if (isPartyMonCheckedForSash)
     {
-        gBattleMons[battlerAtk] = battleMon;
-        AI_THINKING_STRUCT->saved[battlerDef].saved = TRUE;
-        SetBattlerData(battlerDef); // set known opposing battler data
-        AI_THINKING_STRUCT->saved[battlerDef].saved = FALSE;
+        if(GetBattlerAbility(battlerDef) == ABILITY_PARENTAL_BOND || gMovesInfo[move].effect == EFFECT_MULTI_HIT || gMovesInfo[move].effect == EFFECT_TRIPLE_KICK || gMovesInfo[move].strikeCount > 1){
+            return FALSE;
+        }
+
+        if(holdEffect == HOLD_EFFECT_FOCUS_SASH && (battleMon.hp == battleMon.maxHP)){
+            return TRUE;
+        }
+
+        if(ability == ABILITY_STURDY && (battleMon.hp == battleMon.maxHP) && !IsMoldBreakerTypeAbility(battlerDef, gBattleMons[battlerDef].ability) && !gMovesInfo[move].ignoresTargetAbility){
+            return TRUE;
+        }
+
+        return FALSE;
     }
     else
     {
-        gBattleMons[battlerDef] = battleMon;
-        AI_THINKING_STRUCT->saved[battlerAtk].saved = TRUE;
-        SetBattlerData(battlerAtk); // set known opposing battler data
-        AI_THINKING_STRUCT->saved[battlerAtk].saved = FALSE;
-    }
+        if(battleMon.ability == ABILITY_PARENTAL_BOND || gMovesInfo[move].effect == EFFECT_MULTI_HIT || gMovesInfo[move].effect == EFFECT_TRIPLE_KICK || gMovesInfo[move].strikeCount > 1){
+            return FALSE;
+        }
 
-    intactSash = MonHasInTactFocusSashSturdy(battlerAtk, battlerDef, holdEffect, move);
-    // restores original gBattleMon struct
-    FreeRestoreBattleMons(savedBattleMons);
-    return intactSash;
+        if(holdEffect == HOLD_EFFECT_FOCUS_SASH && AtMaxHp(battlerAtk)){
+            return TRUE;
+        }
+
+        if(ability == ABILITY_STURDY && AtMaxHp(battlerAtk) && !IsMoldBreakerTypeAbility(battlerAtk, battleMon.ability) && !gMovesInfo[move].ignoresTargetAbility){
+            return TRUE;
+        }
+
+        return FALSE;
+    }
 }
 
 
-bool32 MonHasInTactFocusSashSturdy(u32 battler, u32 opposingBattler, u32 holdEffect, u32 move)
+bool32 MonHasInTactFocusSashSturdy(u32 battler, u32 opposingBattler, u32 holdEffect, u32 ability, u32 move)
 {
     //battler is the one being checked for sash
-    if(gBattleMons[opposingBattler].ability == ABILITY_PARENTAL_BOND || gMovesInfo[move].effect == EFFECT_MULTI_HIT || gMovesInfo[move].effect == EFFECT_TRIPLE_KICK || gMovesInfo[move].strikeCount > 1){
+    if(GetBattlerAbility(opposingBattler) == ABILITY_PARENTAL_BOND || gMovesInfo[move].effect == EFFECT_MULTI_HIT || gMovesInfo[move].effect == EFFECT_TRIPLE_KICK || gMovesInfo[move].strikeCount > 1){
         return FALSE;
     }
 
@@ -75,7 +84,7 @@ bool32 MonHasInTactFocusSashSturdy(u32 battler, u32 opposingBattler, u32 holdEff
         return TRUE;
     }
 
-    if(gBattleMons[battler].ability == ABILITY_STURDY && AtMaxHp(battler) && !IsMoldBreakerTypeAbility(opposingBattler, gBattleMons[opposingBattler].ability) && !gMovesInfo[move].ignoresTargetAbility){
+    if(ability == ABILITY_STURDY && AtMaxHp(battler) && !IsMoldBreakerTypeAbility(opposingBattler, gBattleMons[opposingBattler].ability) && !gMovesInfo[move].ignoresTargetAbility){
         return TRUE;
     }
 

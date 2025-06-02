@@ -7,13 +7,26 @@ Route104_PrettyPetalFlowerShop_MapScripts::
 
 Route104_PrettyPetalFlowerShop_OnTransition:
 	setflag FLAG_LANDMARK_FLOWER_SHOP
-	goto_if_unset FLAG_MET_PRETTY_PETAL_SHOP_OWNER, Route104_PrettyPetalFlowerShop_EventScript_MoveShopOwner
-	goto_if_unset FLAG_BADGE03_GET, Route104_PrettyPetalFlowerShop_EventScript_MoveShopOwner
 	setflag FLAG_TEMP_1
 	end
 
 Route104_PrettyPetalFlowerShop_EventScript_MoveShopOwner::
 	setobjectxyperm LOCALID_OWNER, 4, 6
+	end
+
+Route104_PrettyPetalFlowerShop_EventScript_HelpingHandTutor::
+	lock
+	faceplayer
+	msgbox Route104_PrettyPetalFlowerShop_Text_HelpingHand, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_HelpingHandDeclined
+	setvar VAR_0x8005, MOVE_HELPING_HAND
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	releaseall
+	end
+
+MoveTutor_EventScript_HelpingHandDeclined:
+	releaseall
 	end
 
 Route104_PrettyPetalFlowerShop_EventScript_ShopOwner::
@@ -84,14 +97,6 @@ Route104_PrettyPetalFlowerShop_EventScript_GiveWailmerPail::
 Route104_PrettyPetalFlowerShop_EventScript_RandomBerryGirl::
 	lock
 	faceplayer
-	dotimebasedevents
-	goto_if_set FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY, Route104_PrettyPetalFlowerShop_EventScript_AlreadyReceivedBerry
-	msgbox Route104_PrettyPetalFlowerShop_Text_ImGrowingFlowers, MSGBOX_DEFAULT
-	random 8
-	addvar VAR_RESULT, FIRST_BERRY_INDEX
-	giveitem VAR_RESULT
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
-	setflag FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY
 	msgbox Route104_PrettyPetalFlowerShop_Text_MachineMixesBerries, MSGBOX_DEFAULT
 	release
 	end
@@ -100,4 +105,11 @@ Route104_PrettyPetalFlowerShop_EventScript_AlreadyReceivedBerry::
 	msgbox Route104_PrettyPetalFlowerShop_Text_MachineMixesBerries, MSGBOX_DEFAULT
 	release
 	end
+
+Route104_PrettyPetalFlowerShop_Text_HelpingHand:
+	.string "I like helping out at this shop!\l"
+	.string "But sometimes I wish I got paid\n"
+	.string "more than minimum wage…\p"
+	.string "Would you like to learn how to\n"
+	.string "give a HELPING HAND?$"
 `

@@ -29834,7 +29834,7 @@ F_TRAINER_FEMALE |
                 MOVE_BRINE,
                 MOVE_AURORA_BEAM,
                 MOVE_REST,
-                MOVE_SLEEP_TALK,
+                MOVE_SNORE,
             },
             },
             {

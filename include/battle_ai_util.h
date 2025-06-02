@@ -16,8 +16,8 @@ enum DamageRollType
     DMG_ROLL_RANDOM,
 };
 
-bool32 MonHasInTactFocusSashSturdy(u32 battler, u32 opposingBattler, u32 holdEffect, u32 move);
-bool32 PartyMonHasInTactFocusSashSturdy(u32 battlerAtk, u32 battlerDef, u32 move, u32 holdEffect, struct BattlePokemon battleMon, bool32 isPartyMonCheckedForSash);
+bool32 MonHasInTactFocusSashSturdy(u32 battler, u32 opposingBattler, u32 holdEffect, u32 ability, u32 move);
+bool32 PartyMonHasInTactFocusSashSturdy(u32 battlerAtk, u32 battlerDef, u32 move, u32 holdEffect, u32 ability, struct BattlePokemon battleMon, bool32 isPartyMonCheckedForSash);
 bool32 AI_IsFaster(u32 battlerAi, u32 battlerDef, u32 move);
 bool32 AI_IsSlower(u32 battlerAi, u32 battlerDef, u32 move);
 bool32 AI_RandLessThan(u32 val);

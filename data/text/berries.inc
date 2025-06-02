@@ -6,8 +6,6 @@ PetalburgCity_Gym_Text_GiveEnigmaBerry:
 Route104_Text_PlantBerriesInSoilTakeThis:
 	.string "If you see BERRIES growing in loamy\n"
 	.string "soil, feel free to take them.\p"
-	.string "But make sure you plant a BERRY in the\n"
-	.string "same spot. That's common courtesy.\p"
 	.string "Here, I'll share this with you.$"
 
 Route104_Text_TrainersOftenMakeMonHoldBerries:
@@ -15,8 +13,8 @@ Route104_Text_TrainersOftenMakeMonHoldBerries:
 	.string "TRAINER, no?\p"
 	.string "TRAINERS often make POKéMON hold\n"
 	.string "BERRIES.\p"
-	.string "It's up to you whether to grow BERRIES\n"
-	.string "or use them.$"
+	.string "But be warned, once you use a BERRY\n"
+	.string "it's gone forever.$"
 
 Route111_Text_WateredPlantsEveryDayTakeBerry:
 	.string "I watered the plants every day.\n"
@@ -192,8 +190,7 @@ Route104_PrettyPetalFlowerShop_Text_ImGrowingFlowers:
 	.string "It's for you!$"
 
 Route104_PrettyPetalFlowerShop_Text_MachineMixesBerries:
-	.string "You can plant a BERRY and grow it big,\n"
-	.string "or you can make a POKéMON hold it.\p"
+	.string "You can make a POKéMON hold berries.\p"
 	.string "But now they have a machine that mixes\n"
 	.string "up different BERRIES and makes candies\l"
 	.string "for POKéMON.\p"

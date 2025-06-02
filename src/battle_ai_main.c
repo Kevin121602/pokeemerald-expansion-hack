@@ -467,9 +467,6 @@ static void SetBattlerAiMovesData(struct AiLogicData *aiData, u32 battlerAtk, u3
                 aiData->moveAccuracy[battlerAtk][battlerDef][i] = Ai_SetMoveAccuracy(aiData, battlerAtk, battlerDef, move);
             }
             aiData->simulatedDmg[battlerAtk][battlerDef][i] = dmg;
-            if(aiData->simulatedDmg[battlerAtk][battlerDef][i].expected > aiData->highestDmg[battlerAtk][battlerDef].expected){
-                aiData->highestDmg[battlerAtk][battlerDef] = dmg;
-            }
             aiData->effectiveness[battlerAtk][battlerDef][i] = effectiveness;
         }
         RestoreBattlerData(battlerDef);
@@ -4567,7 +4564,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS); // No point in checking the move further so return early
         else
         {
-            if (moveIndex != MAX_MON_MOVES && aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected >= aiData->highestDmg[battlerAtk][battlerDef].expected && !CanAIFaintTarget(battlerAtk, battlerDef, 0)){
+            if (moveIndex != MAX_MON_MOVES && aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected >= GetBestDmgFromBattler(battlerAtk, battlerDef) && !CanAIFaintTarget(battlerAtk, battlerDef, 0)){
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
                 isMoveHighestDmg = TRUE;
                 if(Random() % 100 < 50)

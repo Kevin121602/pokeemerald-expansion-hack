@@ -571,13 +571,13 @@ Route101_Text_YouSavedMe:
 # 286 "data/maps/Route101/scripts.pory"
 Route101_Text_TakeTiredPokemonToPokeCenter:
 # 287 "data/maps/Route101/scripts.pory"
-	.string "If POKéMON get tired, take them to\n"
+	.string "If POKéMON get tired, then use\n"
 # 288 "data/maps/Route101/scripts.pory"
-	.string "a POKéMON CENTER.\p"
+	.string "your POKéVIAL.\p"
 # 289 "data/maps/Route101/scripts.pory"
-	.string "There's a POKéMON CENTER in OLDALE\n"
+	.string "You can use it as many times as\n"
 # 290 "data/maps/Route101/scripts.pory"
-	.string "TOWN right close by.$"
+	.string "you need!$"
 # 291 "data/maps/Route101/scripts.pory"
 
 # 292 "data/maps/Route101/scripts.pory"
