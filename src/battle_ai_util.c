@@ -1232,6 +1232,7 @@ u32 GetBestDmgFromBattler(u32 battler, u32 battlerTarget)
          && bestDmg < AI_DATA->simulatedDmg[battler][battlerTarget][i].expected
          && gMovesInfo[moves[i]].effect != EFFECT_EXPLOSION
          && gMovesInfo[moves[i]].effect != EFFECT_FINAL_GAMBIT
+         && !IsTwoTurnNotSemiInvulnerableMove(battler, moves[i])
          && AI_THINKING_STRUCT->score[i] >= 100)
         {
             bestDmg = AI_DATA->simulatedDmg[battler][battlerTarget][i].expected;

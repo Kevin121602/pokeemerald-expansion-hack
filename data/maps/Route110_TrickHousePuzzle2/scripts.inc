@@ -241,7 +241,7 @@ Route110_TrickHousePuzzle2_Text_TedPostBattle:
 # 121 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
 Route110_TrickHousePuzzle2_Text_PaulIntro:
 # 122 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
-	.string "Oh! You're on your second TRICK HOUSE\n"
+	.string "Oh! You're on your first TRICK HOUSE\n"
 # 123 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
 	.string "challenge!$"
 # 124 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"

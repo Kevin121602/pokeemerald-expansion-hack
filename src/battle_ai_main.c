@@ -2527,7 +2527,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_SUCKER_PUNCH:
             //50% not to use sucker if previously used
             if (gLastMoves[battlerAtk] == MOVE_SUCKER_PUNCH && Random() % 100 < 50)
-                    ADJUST_SCORE(-10);
+                    ADJUST_SCORE(-20);
             break;
         case EFFECT_TAILWIND:
             if (gSideTimers[GetBattlerSide(battlerAtk)].tailwindTimer != 0
@@ -3195,6 +3195,8 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
 
     u32 moveIndex = GetMoveIndex(battlerAtk, move);
 
+    u16 *moves = GetMovesArray(battlerAtk);
+
     // The AI should understand that while Dynamaxed, status moves function like Protect.
     if (GetActiveGimmick(battlerAtk) == GIMMICK_DYNAMAX && gMovesInfo[move].category == DAMAGE_CATEGORY_STATUS)
         moveEffect = EFFECT_PROTECT;
@@ -3209,6 +3211,15 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_SLEEP:
     case EFFECT_YAWN:
         IncreaseSleepScore(battlerAtk, battlerDef, move, &score);
+        break;
+    case EFFECT_STUFF_CHEEKS:
+        if(aiData->holdEffects[battlerAtk] == HOLD_EFFECT_ATTACK_UP){
+            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ATK));
+        } else if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_SP_ATTACK_UP){
+            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPATK));
+        } else if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_SPEED_UP){
+            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED));
+        }
         break;
     case EFFECT_EXPLOSION:
         if((dmg * 2) > GetBestDmgFromBattler(battlerAtk, battlerDef)){
@@ -4323,12 +4334,16 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
 
         //dont look at move effects if a higher damage move has the same effect
         for(j = 0; j < MAX_MON_MOVES; j++){
-            if(j == moveIndex)
+
+            if(j == moveIndex){
                 continue;
+            }
 
             if(aiData->simulatedDmg[battlerAtk][battlerDef][j].expected > aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected
-            && &gMovesInfo[j].additionalEffects[i] == &gMovesInfo[moveIndex].additionalEffects[i])
+            && (gMovesInfo[moves[j]].additionalEffects[i].moveEffect == gMovesInfo[move].additionalEffects[i].moveEffect) 
+            && MoveEffectIsGuaranteed(battlerAtk, aiData->abilities[battlerAtk], &gMovesInfo[moves[j]].additionalEffects[i])){
                 hasSameEffectMoveWithHigherDamage = TRUE;
+            }
         }
         
         if(hasSameEffectMoveWithHigherDamage)
@@ -4432,15 +4447,29 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                     if(speedBattlerAI < (speedBattler/2))
                         break;
                 case MOVE_EFFECT_ATK_MINUS_1:
-                    if (aiData->abilities[battlerDef] != ABILITY_CONTRARY && HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL))
+                    if ((aiData->abilities[battlerDef] != ABILITY_CONTRARY) 
+                        && (aiData->abilities[battlerDef] != ABILITY_SHIELD_DUST) && (aiData->abilities[battlerDef] != ABILITY_CLEAR_BODY) 
+                        && (aiData->abilities[battlerDef] != ABILITY_HYPER_CUTTER) && HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL))
                         ADJUST_SCORE(DECENT_EFFECT);
                     break;
                 case MOVE_EFFECT_DEF_MINUS_1:
+                    if ((aiData->abilities[battlerDef] != ABILITY_CONTRARY) 
+                        && (aiData->abilities[battlerDef] != ABILITY_SHIELD_DUST) && (aiData->abilities[battlerDef] != ABILITY_CLEAR_BODY) 
+                        && (aiData->abilities[battlerDef] != ABILITY_BIG_PECKS) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL))
+                        ADJUST_SCORE(DECENT_EFFECT);
+                    break;
                 case MOVE_EFFECT_SP_ATK_MINUS_1:
-                    if (aiData->abilities[battlerDef] != ABILITY_CONTRARY && HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL))
+                    if ((aiData->abilities[battlerDef] != ABILITY_CONTRARY) 
+                        && (aiData->abilities[battlerDef] != ABILITY_SHIELD_DUST) && (aiData->abilities[battlerDef] != ABILITY_CLEAR_BODY) 
+                        && HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL))
                         ADJUST_SCORE(DECENT_EFFECT);
                     break;
                 case MOVE_EFFECT_SP_DEF_MINUS_1:
+                    if ((aiData->abilities[battlerDef] != ABILITY_CONTRARY) 
+                        && (aiData->abilities[battlerDef] != ABILITY_SHIELD_DUST) && (aiData->abilities[battlerDef] != ABILITY_CLEAR_BODY) 
+                        && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL))
+                        ADJUST_SCORE(DECENT_EFFECT);
+                    break;
                 case MOVE_EFFECT_ACC_MINUS_1:
                 case MOVE_EFFECT_EVS_MINUS_1:
                     if (aiData->abilities[battlerDef] != ABILITY_CONTRARY)
@@ -4566,7 +4595,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS); // No point in checking the move further so return early
         else
         {
-            if (moveIndex != MAX_MON_MOVES && aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected >= GetBestDmgFromBattler(battlerAtk, battlerDef) && !CanAIFaintTarget(battlerAtk, battlerDef, 0)){
+            if (moveIndex != MAX_MON_MOVES && gMovesInfo[move].effect != EFFECT_EXPLOSION && aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected >= GetBestDmgFromBattler(battlerAtk, battlerDef) && !CanAIFaintTarget(battlerAtk, battlerDef, 0)){
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
                 isMoveHighestDmg = TRUE;
                 if(Random() % 100 < 50)

@@ -5029,7 +5029,7 @@ Ability: Sturdy
 -Brick Break
 -Aerial Ace
 
-Minior @ Liechi Berry
+Minior-Meteor @ Liechi Berry
 Level: 17
 Nature: Jolly
 Ability: Shields Down
@@ -5426,7 +5426,7 @@ Level: 16
 Nature: Adamant
 Ability: Simple
 -Aqua Step
--Headbutt
+-Secret Power
 -Aqua Jet
 -Super Fang
 
@@ -5435,7 +5435,7 @@ Level: 17
 Nature: Jolly
 Ability: Flame Body
 -Fire Lash
--Lunge
+-Pounce
 -Skitter Smack
 -Wild Charge
 
@@ -6776,14 +6776,13 @@ Ability: Infiltrator
 -Leech Seed
 -Synthesis
 
-Natu @ Flame Orb
+Torchic @ Fighting Gem
 Level: 11
-Nature: Timid
-Ability: Magic Bounce
--Confusion
--Night Shade
--Psycho Shift
--Roost
+Nature: Rash
+Ability: Speed Boost
+-Incinerate
+-Aerial Ace
+-Rock Smash
 
 === TRAINER_TIMMY ===
 Name: TIMMY
@@ -11801,14 +11800,16 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Spearow @ Berry Juice
+Drowzee @ Berry Juice
 Level: 11
-Nature: Adamant
-Ability: Sniper
--Pluck
--Laser Focus
+Nature: Timid
+Ability: Inner Focus
+-Psybeam
+-Draining Kiss
+-Night Shade
+-Hypnosis
 
-Hoothoot @ Metronome
+Hoothoot @ Throat Spray
 Level: 11
 Nature: Modest
 Ability: Insomnia
