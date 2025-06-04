@@ -69,6 +69,8 @@ bool32 ShouldRecover(u32 battlerAtk, u32 battlerDef, u32 move, u32 healPercent);
 bool32 ShouldSetScreen(u32 battlerAtk, u32 battlerDef, u32 moveEffect);
 bool32 ShouldPivot(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 move, u32 moveIndex);
 bool32 IsRecycleEncouragedItem(u32 item);
+bool32 HasPriorityMove(u32 battler);
+bool32 ShouldBellyDrum(u32 battlerAtk, u32 battlerDef);
 bool32 ShouldRestoreHpBerry(u32 battlerAtk, u32 item);
 bool32 IsStatBoostingBerry(u32 item);
 bool32 CanKnockOffItem(u32 battler, u32 item);

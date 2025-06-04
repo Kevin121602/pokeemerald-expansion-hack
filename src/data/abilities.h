@@ -590,7 +590,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_TANGLED_FEET] =
     {
         .name = _("Tangled Feet"),
-        .description = COMPOUND_STRING("Lowered stats up Speed."),
+        .description = COMPOUND_STRING("Ups evasion if confused."),
         .aiRating = 2,
         .breakable = TRUE,
     },

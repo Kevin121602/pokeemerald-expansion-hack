@@ -1207,9 +1207,11 @@ u32 GetBestDmgMoveFromBattler(u32 battlerAtk, u32 battlerDef)
         if (gBattleMons[battlerAtk].moves[i] != MOVE_NONE && gBattleMons[battlerAtk].moves[i] != MOVE_UNAVAILABLE && !(unusable & gBitTable[i])
             && bestDmg < AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected
             && gMovesInfo[gBattleMons[battlerAtk].moves[i]].effect != EFFECT_EXPLOSION
-            && gMovesInfo[gBattleMons[battlerAtk].moves[i]].effect != EFFECT_FINAL_GAMBIT
-            && AI_THINKING_STRUCT->score[i] >= 100)
+            && gMovesInfo[gBattleMons[battlerAtk].moves[i]].effect != EFFECT_FINAL_GAMBIT)
         {
+            if(BattlerHasAi(battlerAtk) && AI_THINKING_STRUCT->score[i] < 100)
+                continue;
+
             bestDmg = AI_DATA->simulatedDmg[battlerAtk][battlerDef][i].expected;
             move = gBattleMons[battlerAtk].moves[i];
         }
@@ -3686,6 +3688,96 @@ bool32 IsRecycleEncouragedItem(u32 item)
         if (item == sRecycleEncouragedItems[i])
             return TRUE;
     }
+    return FALSE;
+}
+
+static u32 GetHPWithBerry(u32 battler){
+
+    u32 startingHP = gBattleMons[battler].hp;
+    u32 maxHP = gBattleMons[battler].maxHP;
+    u32 finalHP;
+
+    u32 heldItemEffect = ItemId_GetHoldEffect(gBattleMons[battler].item);
+    u8 holdEffectParam = ItemId_GetHoldEffectParam(gBattleMons[battler].item);
+
+    switch (heldItemEffect)
+    {
+        case HOLD_EFFECT_RESTORE_HP:
+            finalHP = (startingHP + holdEffectParam);
+            break;
+        case HOLD_EFFECT_RESTORE_PCT_HP:
+            finalHP = startingHP + (maxHP / holdEffectParam);
+            break;
+        case HOLD_EFFECT_CONFUSE_SPICY:
+        case HOLD_EFFECT_CONFUSE_DRY:
+        case HOLD_EFFECT_CONFUSE_SWEET:
+        case HOLD_EFFECT_CONFUSE_BITTER:
+        case HOLD_EFFECT_CONFUSE_SOUR:
+            finalHP = startingHP + (maxHP / holdEffectParam);
+            break;
+        default:
+            return finalHP = startingHP;
+            break;
+    }
+
+    return finalHP;
+}
+
+bool32 HasPriorityMove(u32 battler){
+    u8 i;
+    u16 *moves = GetMovesArray(battler);
+
+    for(i = 0; i < MAX_MON_MOVES; i++){
+        if(GetMovePriority(battler, moves[i]) > 0)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+bool32 ShouldBellyDrum(u32 battlerAtk, u32 battlerDef){
+
+    u32 battlerHP;
+    u8 effectiveness;
+
+    u32 speedBattlerAI, speedBattler;
+    u32 holdEffectAI = AI_DATA->holdEffects[battlerAtk];
+    u32 holdEffectPlayer = AI_DATA->holdEffects[battlerDef];
+    u32 abilityAI = AI_DATA->abilities[battlerAtk];
+    u32 abilityPlayer = AI_DATA->abilities[battlerDef];
+
+    u32 bestMove = GetBestDmgMoveFromBattler(battlerDef, battlerAtk);
+    u32 bestMoveDmg = AI_CalcDamage(bestMove, battlerDef, battlerAtk, &effectiveness, TRUE, AI_GetWeather(AI_DATA), DMG_ROLL_DEFAULT).expected;
+
+    speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
+    speedBattler   = GetBattlerTotalSpeedStatArgs(battlerDef, abilityPlayer, holdEffectPlayer);
+
+    if(abilityPlayer == ABILITY_UNNERVE){
+        battlerHP = gBattleMons[battlerAtk].hp;
+    } else {
+        battlerHP = GetHPWithBerry(battlerAtk);
+    }
+
+    if((battlerHP - bestMoveDmg) <= (gBattleMons[battlerAtk].maxHP/2)){
+        return FALSE;
+    }
+
+    if(speedBattlerAI >= speedBattler){
+        return TRUE;
+    }
+
+    if(holdEffectAI == HOLD_EFFECT_CUSTAP_BERRY){
+        return TRUE;
+    }
+
+    if(holdEffectAI == HOLD_EFFECT_SPEED_UP && (speedBattlerAI*3)/2 >= speedBattler){
+        return TRUE;
+    }
+
+    if(HasPriorityMove(battlerAtk) && (abilityPlayer != ABILITY_DAZZLING) && (abilityPlayer != ABILITY_QUEENLY_MAJESTY)){
+        return TRUE;
+    }
+
     return FALSE;
 }
 

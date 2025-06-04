@@ -36,6 +36,15 @@ RustboroCity_Gym_EventScript_GiveRockTomb::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM_ROCK_TOMB
 	msgbox RustboroCity_Gym_Text_ExplainRockTomb, MSGBOX_DEFAULT
+	goto RustboroCity_Gym_EventScript_GiveFloatStone
+	release
+	end
+
+RustboroCity_Gym_EventScript_GiveFloatStone::
+	msgbox RustboroCity_Gym_Text_IDontThinkIThankedYou, MSGBOX_DEFAULT
+	giveitem ITEM_FLOAT_STONE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	msgbox RustboroCity_Gym_Text_ExplainFloatStone, MSGBOX_DEFAULT
 	release
 	end
 
@@ -224,6 +233,16 @@ RustboroCity_Gym_Text_ExplainRockTomb:
 	.string "the move to a POKéMON.\p"
 	.string "Remember, a TM can be used only once,\n"
 	.string "so think before you use it.$"
+
+RustboroCity_Gym_Text_IDontThinkIThankedYou:
+	.string "I don't think I thanked you properly\n"
+	.string "for helping me at the Tunnel.\p"
+	.string "Here, you can have this stone from\n"
+	.string "my collection.$"
+
+RustboroCity_Gym_Text_ExplainFloatStone:
+	.string "This Float Stone halves the weight\n"
+	.string "of any Pokémon that holds it!$"
 
 RustboroCity_Gym_Text_RoxannePostBattle:
 	.string "Since you are so strong, you should\n"

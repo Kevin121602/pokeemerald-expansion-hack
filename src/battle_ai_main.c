@@ -921,7 +921,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 break;
             case ABILITY_DEFIANT:
             case ABILITY_COMPETITIVE:
-            case ABILITY_TANGLED_FEET:
                 if (IsStatLoweringEffect(moveEffect) && !IS_TARGETING_PARTNER(battlerAtk, battlerDef))
                     RETURN_SCORE_MINUS(20);
                 break;
@@ -3744,10 +3743,8 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         //Wont use if outsped and 2hkod, taking into account berry, priority(linoone)
         //unless it has custap, in which case it only wont use if ohkod or unnerve
     case EFFECT_BELLY_DRUM:
-        if (!CanTargetFaintAi(battlerDef, battlerAtk)
-        && gBattleMons[battlerAtk].statStages[STAT_ATK] < MAX_STAT_STAGE - 2
-        && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL)
-        && aiData->abilities[battlerAtk] != ABILITY_CONTRARY)
+        if (ShouldBellyDrum(battlerAtk, battlerDef)
+        && gBattleMons[battlerAtk].statStages[STAT_ATK] < MAX_STAT_STAGE - 2)
             ADJUST_SCORE(DECENT_EFFECT + WEAK_EFFECT);
         break;
     case EFFECT_PSYCH_UP:
