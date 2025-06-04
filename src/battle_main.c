@@ -5169,13 +5169,10 @@ static void TurnValuesCleanUp(bool8 var0)
     gSideTimers[B_SIDE_PLAYER].followmeTimer = 0;
     gSideTimers[B_SIDE_OPPONENT].followmeTimer = 0;
 
-<<<<<<< HEAD
-=======
     gBattleStruct->usedEjectItem = 0;
     gBattleStruct->pursuitTarget = 0;
     gBattleStruct->pursuitSwitchByMove = FALSE;
     gBattleStruct->pursuitStoredSwitch = 0;
->>>>>>> 1ded7f501d (Pursuit refactor)
     gBattleStruct->pledgeMove = FALSE; // combined pledge move may not have been used due to a canceller
 }
 

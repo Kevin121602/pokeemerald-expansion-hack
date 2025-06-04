@@ -807,6 +807,7 @@ struct BattleStruct
     u8 fickleBeamBoosted:1;
     u8 obedienceResult:3;
     u8 redCardActivates:1;
+    u8 usedEjectItem;
     u8 usedMicleBerry;
     u8 pursuitTarget:4; // Each battler as a bit.
     u8 pursuitSwitchByMove:1;

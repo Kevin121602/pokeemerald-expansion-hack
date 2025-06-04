@@ -13749,7 +13749,7 @@ static void Cmd_magnitudedamagecalculation(void)
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
-tatic bool32 SetTargetToNextPursuiter(u32 battlerDef)
+static bool32 SetTargetToNextPursuiter(u32 battlerDef)
 {
     u32 i;
     for (i = gCurrentTurnActionNumber + 1; i < gBattlersCount; i++)
