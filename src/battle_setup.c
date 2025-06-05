@@ -1168,11 +1168,49 @@ void SetMapVarsToTrainer(void)
     }
 }
 
+static bool32 IsPlayerInsideGym(void)
+{
+    u16 mapGroup = gSaveBlock1Ptr->location.mapGroup;
+    u16 mapNum = gSaveBlock1Ptr->location.mapNum;
+
+    typedef struct {
+        u16 mapGroup;
+        u16 mapNum;
+    } Location;
+
+    u32 i;
+    Location GymMaps[] =
+    {
+        { MAP_GROUP(RUSTBORO_CITY_GYM),             MAP_NUM(RUSTBORO_CITY_GYM) },
+        { MAP_GROUP(DEWFORD_TOWN_GYM),              MAP_NUM(DEWFORD_TOWN_GYM) },
+        { MAP_GROUP(MAUVILLE_CITY_GYM),             MAP_NUM(MAUVILLE_CITY_GYM) },
+        { MAP_GROUP(LAVARIDGE_TOWN_GYM_1F),         MAP_NUM(LAVARIDGE_TOWN_GYM_1F) },
+        { MAP_GROUP(LAVARIDGE_TOWN_GYM_B1F),        MAP_NUM(LAVARIDGE_TOWN_GYM_B1F) },
+        { MAP_GROUP(PETALBURG_CITY_GYM),            MAP_NUM(PETALBURG_CITY_GYM) },
+        { MAP_GROUP(FORTREE_CITY_GYM),              MAP_NUM(FORTREE_CITY_GYM) },
+        { MAP_GROUP(MOSSDEEP_CITY_GYM),             MAP_NUM(MOSSDEEP_CITY_GYM) },
+        { MAP_GROUP(SOOTOPOLIS_CITY_GYM_1F),        MAP_NUM(SOOTOPOLIS_CITY_GYM_1F) },
+        { MAP_GROUP(SOOTOPOLIS_CITY_GYM_B1F),       MAP_NUM(SOOTOPOLIS_CITY_GYM_B1F) },
+    };
+
+    for (i = 0; i < ARRAY_COUNT(GymMaps); i++)
+    {
+        if (mapNum == GymMaps[i].mapNum && mapGroup == GymMaps[i].mapGroup)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
 const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
 {
     if (TrainerBattleLoadArg8(data) != TRAINER_BATTLE_SET_TRAINER_B)
         InitTrainerBattleVariables();
     sTrainerBattleMode = TrainerBattleLoadArg8(data);
+
+    if(IsPlayerInsideGym()){
+        HealPlayerPartyNonFainted();
+    }
 
     switch (sTrainerBattleMode)
     {

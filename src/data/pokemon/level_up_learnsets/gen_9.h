@@ -10099,7 +10099,7 @@ static const struct LevelUpMove sLuxrayLevelUpLearnset[] = {
 static const struct LevelUpMove sCranidosLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_HEADBUTT),
     LEVEL_UP_MOVE( 1, MOVE_LEER),
-    LEVEL_UP_MOVE( 6, MOVE_FOCUS_ENERGY),
+    LEVEL_UP_MOVE( 6, MOVE_ROCK_TOMB),
     LEVEL_UP_MOVE(10, MOVE_SCARY_FACE),
     LEVEL_UP_MOVE(15, MOVE_TAKE_DOWN),
     LEVEL_UP_MOVE(19, MOVE_ROCK_SLIDE),
