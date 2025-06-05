@@ -710,7 +710,7 @@ static bool8 FeaturesAction_HealParty(void){
     if (!gPaletteFade.active)
     {
         PlaySE(SE_SELECT);
-        HealPlayerParty();
+        HealPlayerPartyNonFainted();
         HideFeaturesMenu();
         return TRUE;
     }

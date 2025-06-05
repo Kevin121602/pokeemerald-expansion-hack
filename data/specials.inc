@@ -568,3 +568,4 @@ gSpecials::
 	def_special ChangeSpeedIV
 	def_special BufferNameAndNature
 	def_special ChangeNature
+	def_special HealPlayerPartyNonFainted
