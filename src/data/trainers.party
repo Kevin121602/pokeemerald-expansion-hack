@@ -5394,7 +5394,7 @@ Ability: Static
 -Thunder Wave
 -Helping Hand
 
-Magby @ Berry Juice
+Magby @ Eviolite
 Level: 15
 Nature: Naive
 Ability: Flame Body
@@ -6339,14 +6339,13 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Goldeen @ Dark Gem
+Goldeen @ Focus Sash
 Level: 11
 Nature: Jolly
 Ability: Lightning Rod
 -Waterfall
 -Poison Jab
 -Flail
--Pursuit
 
 Grubbin @ Ground Gem
 Level: 11

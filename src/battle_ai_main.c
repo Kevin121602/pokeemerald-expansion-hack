@@ -2653,6 +2653,15 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 {
     u32 movesetIndex = AI_THINKING_STRUCT->movesetIndex;
 
+    u32 speedBattlerAI, speedBattler;
+    u32 holdEffectAI = AI_DATA->holdEffects[battlerAtk];
+    u32 holdEffectPlayer = AI_DATA->holdEffects[battlerDef];
+    u32 abilityAI = AI_DATA->abilities[battlerAtk];
+    u32 abilityPlayer = AI_DATA->abilities[battlerDef];
+
+    speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
+    speedBattler   = GetBattlerTotalSpeedStatArgs(battlerDef, abilityPlayer, holdEffectPlayer);
+
     if (IS_TARGETING_PARTNER(battlerAtk, battlerDef))
         return score;
 
@@ -2665,7 +2674,7 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         RETURN_SCORE_PLUS(REVENGE_KILL);
     }
     else if ((CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && gMovesInfo[move].priority > 0) 
-        && (GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) != AI_IS_FASTER))
+        && speedBattlerAI < speedBattler)
     {
         //kill with prio move
         RETURN_SCORE_PLUS(FAST_KILL);
@@ -2676,7 +2685,7 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         RETURN_SCORE_PLUS(KILL);
     }
     else if (CanTargetFaintAi(battlerDef, battlerAtk)
-            && GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) != AI_IS_FASTER
+            && speedBattlerAI < speedBattler
             && GetMovePriority(battlerAtk, move) > 0)
     {
         if(move == MOVE_FAKE_OUT){

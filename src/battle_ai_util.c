@@ -667,13 +667,22 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
             {
             case EFFECT_LEVEL_DAMAGE:
                 simDamage.expected = simDamage.minimum = gBattleMons[battlerAtk].level * (gBattleMons[battlerAtk].ability == ABILITY_PARENTAL_BOND ? 2 : 1);
+                if(AI_GetMoveEffectiveness(move, battlerAtk, battlerDef) == AI_EFFECTIVENESS_x0){
+                    simDamage.expected = simDamage.minimum = 0;
+                }
                 break;
             case EFFECT_PSYWAVE:
                 simDamage.expected = gBattleMons[battlerAtk].level * (gBattleMons[battlerAtk].ability == ABILITY_PARENTAL_BOND ? 2 : 1);
                 simDamage.minimum = simDamage.expected / 2;
+                if(AI_GetMoveEffectiveness(move, battlerAtk, battlerDef) == AI_EFFECTIVENESS_x0){
+                    simDamage.expected = simDamage.minimum = 0;
+                }
                 break;
             case EFFECT_FIXED_DAMAGE_ARG:
                 simDamage.expected = simDamage.minimum = gMovesInfo[move].argument * (gBattleMons[battlerAtk].ability == ABILITY_PARENTAL_BOND ? 2 : 1);
+                if(AI_GetMoveEffectiveness(move, battlerAtk, battlerDef) == AI_EFFECTIVENESS_x0){
+                    simDamage.expected = simDamage.minimum = 0;
+                }
                 break;
             case EFFECT_MULTI_HIT:
                 if (move == MOVE_WATER_SHURIKEN && gBattleMons[battlerAtk].species == SPECIES_GRENINJA_ASH)
