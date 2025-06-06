@@ -4874,7 +4874,7 @@ s8 GetMovePriority(u32 battler, u16 move)
         gProtectStructs[battler].pranksterElevated = 1;
         priority++;
     }
-    else if (ability == ABILITY_RUN_AWAY && gMovesInfo[move].effect == (EFFECT_HIT_ESCAPE | EFFECT_PARTING_SHOT))
+    else if (ability == ABILITY_RUN_AWAY && (gMovesInfo[move].effect == EFFECT_HIT_ESCAPE || gMovesInfo[move].effect == EFFECT_PARTING_SHOT))
     {
         priority++;
     }

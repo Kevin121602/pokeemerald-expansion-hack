@@ -754,7 +754,7 @@ F_TRAINER_FEMALE |
 #line 372
             .ability = ABILITY_HYPER_CUTTER,
 #line 370
-            .lvl = 17,
+            .lvl = 16,
 #line 371
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,

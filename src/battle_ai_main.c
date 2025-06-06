@@ -4499,10 +4499,6 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                 case MOVE_EFFECT_SPECTRAL_THIEF:
                     score += AI_ShouldCopyStatChanges(battlerAtk, battlerDef);
                     break;
-                case MOVE_EFFECT_SMACK_DOWN:
-                    if (!IsBattlerGrounded(battlerDef) && HasDamagingMoveOfType(battlerAtk, TYPE_GROUND) && !CanTargetFaintAi(battlerDef, battlerAtk))
-                        ADJUST_SCORE(DECENT_EFFECT);
-                    break;
 
                 case MOVE_EFFECT_STEAL_ITEM:
                     {

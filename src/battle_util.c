@@ -549,24 +549,28 @@ void HandleAction_Run(void)
         {
             if (!TryRunFromBattle(gBattlerAttacker)) // failed to run away
             {
-                ClearVariousBattlerFlags(gBattlerAttacker);
-                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CANT_ESCAPE_2;
-                gBattlescriptCurrInstr = BattleScript_PrintFailedToRunString;
-                gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
+                //ClearVariousBattlerFlags(gBattlerAttacker);
+                //gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CANT_ESCAPE_2;
+                //gBattlescriptCurrInstr = BattleScript_PrintFailedToRunString;
+                //gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
+                gCurrentTurnActionNumber = gBattlersCount;
+                gBattleOutcome = B_OUTCOME_RAN;
             }
         }
         else
         {
             if (!CanBattlerEscape(gBattlerAttacker))
             {
-                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ATTACKER_CANT_ESCAPE;
-                gBattlescriptCurrInstr = BattleScript_PrintFailedToRunString;
-                gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
+                //gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ATTACKER_CANT_ESCAPE;
+                //gBattlescriptCurrInstr = BattleScript_PrintFailedToRunString;
+                //gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
+                gCurrentTurnActionNumber = gBattlersCount;
+                gBattleOutcome = B_OUTCOME_RAN;
             }
             else
             {
                 gCurrentTurnActionNumber = gBattlersCount;
-                gBattleOutcome = B_OUTCOME_MON_FLED;
+                gBattleOutcome = B_OUTCOME_RAN;
             }
         }
     }
