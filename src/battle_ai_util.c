@@ -3790,12 +3790,65 @@ bool32 ShouldBellyDrum(u32 battlerAtk, u32 battlerDef){
     return FALSE;
 }
 
+static u32 GetSpeedStatAfterBoost(u32 battlerAtk, u32 currentSpeed, u32 stages, bool8 increase){
+
+    u32 currentStage = gBattleMons[battlerAtk].statStages[STAT_SPEED];
+    u32 finalStage;
+    u32 finalStat = currentSpeed;
+
+    finalStat *= gStatStageRatios[currentStage][1];
+    finalStat /= gStatStageRatios[currentStage][0];
+
+    if(increase){
+        finalStage = ((gBattleMons[battlerAtk].statStages[STAT_SPEED] + stages) < MAX_STAT_STAGE) ? (gBattleMons[battlerAtk].statStages[STAT_SPEED] + stages) : MAX_STAT_STAGE;
+    } else {
+        finalStage = (gBattleMons[battlerAtk].statStages[STAT_SPEED] - stages);
+    }
+
+    finalStat *= gStatStageRatios[finalStage][0];
+    finalStat /= gStatStageRatios[finalStage][1];
+
+    return finalStat;
+}
+
+static u32 GetDamageRollAfterDefBoost(u32 battlerAtk, u32 damageRoll, u32 statId, u32 stages, bool8 increase){
+    u32 currentStage = gBattleMons[battlerAtk].statStages[statId];
+    u32 finalStage;
+    u32 finalRoll = damageRoll;
+
+    finalRoll /= gStatStageRatios[currentStage][1];
+    finalRoll *= gStatStageRatios[currentStage][0];
+
+    if(increase){
+        finalStage = ((gBattleMons[battlerAtk].statStages[statId] + stages) < MAX_STAT_STAGE) ? (gBattleMons[battlerAtk].statStages[statId] + stages) : MAX_STAT_STAGE;
+    } else {
+        finalStage = (gBattleMons[battlerAtk].statStages[statId] - stages);
+    }
+
+    finalRoll /= gStatStageRatios[finalStage][0];
+    finalRoll *= gStatStageRatios[finalStage][1];
+
+    return finalRoll;
+}
+
 static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statId, bool32 considerContrary)
 {
     u32 tempScore = NO_INCREASE;
-    u32 noOfHitsToFaint = NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk);
+    u8 i;
+    u16 *moves = GetMovesArray(battlerDef);
+    bool32 aiIsFaster;
+    bool32 shouldSetUp = FALSE;
+    u8 effectiveness;
+    //u32 noOfHitsToFaint = NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk);
 
-    u32 bestMove = GetBestDmgMoveFromBattler(battlerDef, battlerAtk);
+    //u32 bestMove = GetBestDmgMoveFromBattler(battlerDef, battlerAtk);
+    u32 bestPhysicalMove = MAX_MON_MOVES;
+    u32 bestSpecialMove = MAX_MON_MOVES;
+    u32 bestOverallMove = MAX_MON_MOVES;
+
+    u32 bestPhysicalDmg = 0;
+    u32 bestSpecialDmg = 0;
+    u32 bestOverallDmg = 0;
 
     u32 speedBattlerAI, speedBattler;
     u32 holdEffectAI = AI_DATA->holdEffects[battlerAtk];
@@ -3806,17 +3859,85 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
     speedBattler   = GetBattlerTotalSpeedStatArgs(battlerDef, abilityPlayer, holdEffectPlayer);
 
-    u32 hitsToKoShellSmash = GetNoOfHitsToKO(AI_DATA->simulatedDmg[battlerDef][battlerAtk][bestMove].expected, (gBattleMons[battlerAtk].hp/1.5));
+    u32 AISpeedAfterBoosts;
 
-    bool32 aiIsFaster = (speedBattlerAI >= speedBattler);
+    for(i = 0; i < MAX_MON_MOVES; i++){
+        if(gMovesInfo[moves[i]].category == DAMAGE_CATEGORY_STATUS)
+            continue;
 
-    bool32 aiIsFasterCurse = ((speedBattlerAI/1.5) >= speedBattler);
+        if(gMovesInfo[moves[i]].category == DAMAGE_CATEGORY_PHYSICAL){
+            if(AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > bestPhysicalDmg){
+                bestPhysicalDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
+                bestPhysicalMove = i;
+            }
+        } else {
+            if(AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > bestSpecialDmg){
+                bestSpecialDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
+                bestSpecialMove = i;
+            } 
+        }
+    }
 
-    bool32 shouldSetUp = ((noOfHitsToFaint >= 2 && aiIsFaster) || (noOfHitsToFaint >= 3 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS);
+    if(bestPhysicalMove != MAX_MON_MOVES){
+        bestPhysicalDmg = AI_CalcDamage(moves[bestPhysicalMove], battlerDef, battlerAtk, &effectiveness, TRUE, AI_GetWeather(AI_DATA), DMG_ROLL_DEFAULT).expected;
+    }
+    if(bestSpecialMove != MAX_MON_MOVES){
+        bestSpecialDmg = AI_CalcDamage(moves[bestSpecialMove], battlerDef, battlerAtk, &effectiveness, TRUE, AI_GetWeather(AI_DATA), DMG_ROLL_DEFAULT).expected;
+    }
 
-    bool32 shouldSetUpCurse = ((noOfHitsToFaint >= 2 && aiIsFasterCurse) || (noOfHitsToFaint >= 3 && !aiIsFasterCurse) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS);
+    bestOverallDmg = (bestPhysicalDmg > bestSpecialDmg) ? bestPhysicalDmg : bestSpecialDmg;
 
-    bool32 shouldSetUpShellSmash = ((hitsToKoShellSmash >= 2 && aiIsFaster) || (hitsToKoShellSmash >= 3 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS);
+    u32 bestPhysicalDmgAfterBoosts = bestPhysicalDmg;
+    u32 bestSpecialDmgAfterBoosts = bestSpecialDmg;
+    u32 bestOverallDmgAfterBoosts = bestOverallDmg;
+
+    //u32 hitsToKoShellSmash = GetNoOfHitsToKO(AI_DATA->simulatedDmg[battlerDef][battlerAtk][bestMove].expected, (gBattleMons[battlerAtk].hp/1.5));
+
+    if(statId == STAT_CHANGE_CURSE){
+        AISpeedAfterBoosts = GetSpeedStatAfterBoost(battlerAtk, speedBattlerAI, 1, FALSE);
+    } else if (statId == STAT_CHANGE_SPEED || statId == STAT_CHANGE_SPEED || statId ==  STAT_CHANGE_ATK_SPEED || statId == STAT_CHANGE_SPATK_SPDEF_SPEED
+        || statId == STAT_CHANGE_ATK_DEF_SPEED){
+        AISpeedAfterBoosts = GetSpeedStatAfterBoost(battlerAtk, speedBattlerAI, 1, TRUE);
+    } else if (statId == STAT_CHANGE_SPEED_2 || statId == STAT_CHANGE_ATK_SPEED_2 || statId == STAT_CHANGE_SHELL_SMASH){
+        AISpeedAfterBoosts = GetSpeedStatAfterBoost(battlerAtk, speedBattlerAI, 2, TRUE);
+    } else {
+        AISpeedAfterBoosts = speedBattlerAI;
+    }
+
+    if(statId == STAT_CHANGE_DEF || statId == STAT_CHANGE_ATK_DEF || statId == STAT_CHANGE_DEF_SPDEF || statId == STAT_CHANGE_ATK_DEF_SPEED || statId == STAT_CHANGE_CURSE){
+        bestPhysicalDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestPhysicalDmg, STAT_DEF, 1, TRUE);
+    }
+
+    if(statId == STAT_CHANGE_DEF_2){
+        bestPhysicalDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestPhysicalDmg, STAT_DEF, 2, TRUE);
+    }
+
+    if(statId == STAT_CHANGE_SPDEF || statId == STAT_CHANGE_SPATK_SPDEF || statId == STAT_CHANGE_DEF_SPDEF || statId == STAT_CHANGE_SPATK_SPDEF_SPEED){
+        bestSpecialDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestSpecialDmg, STAT_SPDEF, 1, TRUE);
+    }
+
+    if(statId == STAT_CHANGE_DEF_2){
+        bestSpecialDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestSpecialDmg, STAT_SPDEF, 2, TRUE);
+    }
+
+    if(statId == STAT_CHANGE_SHELL_SMASH && holdEffectAI != HOLD_EFFECT_RESTORE_STATS){
+        bestPhysicalDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestPhysicalDmg, STAT_DEF, 1, FALSE);
+        bestSpecialDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestSpecialDmg, STAT_SPDEF, 1, FALSE);
+    }
+
+    bestOverallDmgAfterBoosts = (bestPhysicalDmgAfterBoosts > bestSpecialDmgAfterBoosts) ? bestPhysicalDmgAfterBoosts : bestSpecialDmgAfterBoosts;
+
+    if(speedBattlerAI >= speedBattler){
+        aiIsFaster = TRUE;
+    } else {
+        aiIsFaster = FALSE;
+    }
+
+    if(aiIsFaster && !CanTargetFaintAi(battlerDef, battlerAtk)){
+        shouldSetUp = TRUE;
+    } else if((bestOverallDmg + bestOverallDmgAfterBoosts) < gBattleMons[battlerAtk].hp){
+        shouldSetUp = TRUE;
+    }
 
     if (considerContrary && AI_DATA->abilities[battlerAtk] == ABILITY_CONTRARY)
         return NO_INCREASE;
@@ -3854,7 +3975,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     case STAT_CHANGE_CURSE:
         if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && (shouldSetUpCurse || (holdEffectAI == HOLD_EFFECT_RESTORE_STATS && shouldSetUp))){
+        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp){
             tempScore += DECENT_EFFECT;
         }
         break;
@@ -3870,7 +3991,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     case STAT_CHANGE_SPEED:
         if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPEED] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*1.5 >= speedBattler)){
+        if (speedBattler > speedBattlerAI && aiIsFaster){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
                 tempScore += WEAK_EFFECT;
@@ -3880,44 +4001,38 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     case STAT_CHANGE_ATK_SPEED:
         if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*1.5 >= speedBattler)){
+        if (shouldSetUp){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
                 tempScore += WEAK_EFFECT;
-        } else if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
-            tempScore += DECENT_EFFECT;
+        }
         break;
     case STAT_CHANGE_SPATK_SPDEF_SPEED:
         if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPATK] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*1.5 >= speedBattler)){
+        if (shouldSetUp){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
                 tempScore += WEAK_EFFECT;
-        } else if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
-            tempScore += DECENT_EFFECT;
+        }
         break;
     case STAT_CHANGE_SHELL_SMASH:
-        if ((gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPATK] >= MAX_STAT_STAGE - 2) || (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE - 2) || (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPEED] >= MAX_STAT_STAGE - 2))
+        if ((gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPATK] >= MAX_STAT_STAGE - 4) || (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE - 4) || (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPEED] >= MAX_STAT_STAGE - 4))
             return NO_INCREASE;
-        if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*2 >= speedBattler)){
-            tempScore += (DECENT_EFFECT + WEAK_EFFECT);
+        if (shouldSetUp){
+            tempScore += DECENT_EFFECT + WEAK_EFFECT;
             if(Random() % 100 < 50)
-                tempScore = BEST_EFFECT;
-        } else if (shouldSetUpShellSmash || (holdEffectAI == HOLD_EFFECT_RESTORE_STATS && shouldSetUp))
-            tempScore += (DECENT_EFFECT + WEAK_EFFECT);
-            if(Random() % 100 < 50)
-                tempScore = BEST_EFFECT;
+                tempScore += WEAK_EFFECT;
+        }
         break;
     case STAT_CHANGE_ATK_SPEED_2:
         if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*2 >= speedBattler)){
+        if (shouldSetUp){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
                 tempScore += WEAK_EFFECT;
-        } else if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
-            tempScore += DECENT_EFFECT;
+        }
         break;
     case STAT_CHANGE_SPATK:
     case STAT_CHANGE_SPATK_2:
@@ -3947,7 +4062,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
         if (shouldSetUp)
         {
             tempScore += DECENT_EFFECT;
-            if(abilityAI == (ABILITY_SNIPER || ABILITY_SUPER_LUCK) || holdEffectAI == HOLD_EFFECT_SCOPE_LENS)
+            if(abilityAI == ABILITY_SNIPER || abilityAI == ABILITY_SUPER_LUCK || holdEffectAI == HOLD_EFFECT_SCOPE_LENS)
                 tempScore += WEAK_EFFECT;
         }
         break;
@@ -3963,7 +4078,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     case STAT_CHANGE_SPEED_2:
         if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPEED] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (!aiIsFaster && (noOfHitsToFaint >= 2) && (speedBattlerAI*2 >= speedBattler)){
+        if (speedBattler > speedBattlerAI && aiIsFaster){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
                 tempScore += WEAK_EFFECT;
