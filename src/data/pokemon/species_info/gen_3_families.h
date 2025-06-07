@@ -8881,7 +8881,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .levelUpLearnset = sSnoruntLevelUpLearnset,
         .teachableLearnset = sSnoruntTeachableLearnset,
         .eggMoveLearnset = sSnoruntEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_GLALIE},
+        .evolutions = EVOLUTION({EVO_LEVEL, 24, SPECIES_GLALIE},
                                 {EVO_ITEM, ITEM_MOON_STONE, SPECIES_FROSLASS}),
     },
 
