@@ -3816,8 +3816,8 @@ static u32 GetDamageRollAfterDefBoost(u32 battlerAtk, u32 damageRoll, u32 statId
     u32 finalStage;
     u32 finalRoll = damageRoll;
 
-    finalRoll /= gStatStageRatios[currentStage][1];
     finalRoll *= gStatStageRatios[currentStage][0];
+    finalRoll /= gStatStageRatios[currentStage][1];
 
     if(increase){
         finalStage = ((gBattleMons[battlerAtk].statStages[statId] + stages) < MAX_STAT_STAGE) ? (gBattleMons[battlerAtk].statStages[statId] + stages) : MAX_STAT_STAGE;
@@ -3825,8 +3825,8 @@ static u32 GetDamageRollAfterDefBoost(u32 battlerAtk, u32 damageRoll, u32 statId
         finalStage = (gBattleMons[battlerAtk].statStages[statId] - stages);
     }
 
-    finalRoll /= gStatStageRatios[finalStage][0];
     finalRoll *= gStatStageRatios[finalStage][1];
+    finalRoll /= gStatStageRatios[finalStage][0];
 
     return finalRoll;
 }
@@ -3849,6 +3849,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     u32 bestPhysicalDmg = 0;
     u32 bestSpecialDmg = 0;
     u32 bestOverallDmg = 0;
+    u32 ignoreBoostsDmg = 0;
 
     u32 speedBattlerAI, speedBattler;
     u32 holdEffectAI = AI_DATA->holdEffects[battlerAtk];
@@ -3869,6 +3870,9 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
             if(AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > bestPhysicalDmg){
                 bestPhysicalDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
                 bestPhysicalMove = i;
+            }
+            if((AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > ignoreBoostsDmg) && gMovesInfo[moves[i]].ignoresTargetDefenseEvasionStages){
+                ignoreBoostsDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
             }
         } else {
             if(AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > bestSpecialDmg){
@@ -3926,6 +3930,9 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     }
 
     bestOverallDmgAfterBoosts = (bestPhysicalDmgAfterBoosts > bestSpecialDmgAfterBoosts) ? bestPhysicalDmgAfterBoosts : bestSpecialDmgAfterBoosts;
+    if(ignoreBoostsDmg > bestOverallDmgAfterBoosts){
+        bestOverallDmgAfterBoosts = ignoreBoostsDmg;
+    }
 
     if(speedBattlerAI >= speedBattler){
         aiIsFaster = TRUE;
@@ -3933,7 +3940,9 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
         aiIsFaster = FALSE;
     }
 
-    if(aiIsFaster && !CanTargetFaintAi(battlerDef, battlerAtk)){
+    if(speedBattler > speedBattlerAI && CanTargetFaintAi(battlerDef, battlerAtk)){
+        shouldSetUp = FALSE;
+    } else if(aiIsFaster && (bestOverallDmgAfterBoosts < gBattleMons[battlerAtk].hp)){
         shouldSetUp = TRUE;
     } else if((bestOverallDmg + bestOverallDmgAfterBoosts) < gBattleMons[battlerAtk].hp){
         shouldSetUp = TRUE;

@@ -6341,7 +6341,7 @@ AI: Check Bad Move / Try To Faint / Check Viability
 
 Goldeen @ Focus Sash
 Level: 11
-Nature: Adamant
+Nature: Jolly
 Ability: Lightning Rod
 -Waterfall
 -Poison Jab
@@ -11800,14 +11800,13 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Drowzee @ Berry Juice
+Rowlet @ Oran Berry
 Level: 11
-Nature: Timid
-Ability: Inner Focus
--Psybeam
--Draining Kiss
--Night Shade
--Hypnosis
+Nature: Jolly
+Ability: Overgrow
+-Razor Leaf
+-Pluck
+-Shadow Sneak
 
 Hoothoot @ Throat Spray
 Level: 11

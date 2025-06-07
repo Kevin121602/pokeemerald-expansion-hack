@@ -1580,7 +1580,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sPidgeyLevelUpLearnset,
         .teachableLearnset = sPidgeyTeachableLearnset,
         .eggMoveLearnset = sPidgeyEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_PIDGEOTTO}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 16, SPECIES_PIDGEOTTO}),
     },
 
     [SPECIES_PIDGEOTTO] =
