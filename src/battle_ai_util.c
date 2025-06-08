@@ -3761,13 +3761,17 @@ bool32 ShouldBellyDrum(u32 battlerAtk, u32 battlerDef){
     speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
     speedBattler   = GetBattlerTotalSpeedStatArgs(battlerDef, abilityPlayer, holdEffectPlayer);
 
+    if(abilityPlayer == ABILITY_UNAWARE){
+        return FALSE;
+    }
+
     if(abilityPlayer == ABILITY_UNNERVE){
         battlerHP = gBattleMons[battlerAtk].hp;
     } else {
         battlerHP = GetHPWithBerry(battlerAtk);
     }
 
-    if((battlerHP - bestMoveDmg) <= (gBattleMons[battlerAtk].maxHP/2)){
+    if((battlerHP - bestMoveDmg) <= (gBattleMons[battlerAtk].maxHP/2) || bestMoveDmg >= battlerHP){
         return FALSE;
     }
 
@@ -3786,6 +3790,11 @@ bool32 ShouldBellyDrum(u32 battlerAtk, u32 battlerDef){
     if(HasPriorityMove(battlerAtk) && (abilityPlayer != ABILITY_DAZZLING) && (abilityPlayer != ABILITY_QUEENLY_MAJESTY)){
         return TRUE;
     }
+
+    if((battlerHP - bestMoveDmg*2) > (gBattleMons[battlerAtk].maxHP/2) && (bestMoveDmg*2 < battlerHP)){
+        return FALSE;
+    }
+
 
     return FALSE;
 }

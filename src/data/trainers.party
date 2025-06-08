@@ -387,7 +387,7 @@ Ability: Overgrow
 Stunfisk-Galarian @ Lum Berry
 Level: 15
 Nature: Careful
-Ability: Filter
+Ability: Mimicry
 -Bulldoze
 -Metal Claw
 -Rock Tomb
@@ -5426,7 +5426,7 @@ Level: 16
 Nature: Adamant
 Ability: Simple
 -Aqua Step
--Secret Power
+-Cut
 -Aqua Jet
 -Super Fang
 

@@ -1982,7 +1982,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .levelUpLearnset = sNacliLevelUpLearnset,
         .teachableLearnset = sNacliTeachableLearnset,
         .eggMoveLearnset = sNacliEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 24, SPECIES_NACLSTACK}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_NACLSTACK}),
     },
 
     [SPECIES_NACLSTACK] =

@@ -798,7 +798,7 @@ F_TRAINER_FEMALE |
 #line 391
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 390
-            .ability = ABILITY_FILTER,
+            .ability = ABILITY_MIMICRY,
 #line 388
             .lvl = 15,
 #line 389
@@ -13442,7 +13442,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 5428
                 MOVE_AQUA_STEP,
-                MOVE_SECRET_POWER,
+                MOVE_CUT,
                 MOVE_AQUA_JET,
                 MOVE_SUPER_FANG,
             },
