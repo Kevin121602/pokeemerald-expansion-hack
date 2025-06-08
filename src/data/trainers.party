@@ -245,7 +245,7 @@ Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_PETALBURG_WOODS ===
-Name: GRUNT
+Name: Grunt
 Class: Team Aqua
 Pic: Aqua Grunt M
 Gender: Male
@@ -358,7 +358,7 @@ Level: 34
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_RUSTURF_TUNNEL ===
-Name: GRUNT
+Name: Grunt
 Class: Team Aqua
 Pic: Aqua Grunt M
 Gender: Male
@@ -2206,7 +2206,7 @@ Level: 42
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_CINDY_1 ===
-Name: CINDY
+Name: Cindy
 Class: Lady
 Pic: Lady
 Gender: Female
@@ -2632,7 +2632,7 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 - Crunch
 
 === TRAINER_WINSTON_1 ===
-Name: WINSTON
+Name: Winston
 Class: Rich Boy
 Pic: Rich Boy
 Gender: Male
@@ -4131,7 +4131,7 @@ Ability: Prankster
 -Moonlight
 
 === TRAINER_DONALD ===
-Name: DONALD
+Name: Donald
 Class: Bug Maniac
 Pic: Bug Maniac
 Gender: Male
@@ -5012,7 +5012,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Crunch
 
 === TRAINER_ROXANNE_1 ===
-Name: ROXANNE
+Name: Roxanne
 Class: Leader
 Pic: Leader Roxanne
 Gender: Female
@@ -5377,7 +5377,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Rest
 
 === TRAINER_JERRY_1 ===
-Name: JERRY
+Name: Jerry
 Class: School Kid
 Pic: School Kid M
 Gender: Male
@@ -5404,7 +5404,7 @@ Ability: Flame Body
 -Follow Me
 
 === TRAINER_TED ===
-Name: TED
+Name: Ted
 Class: School Kid
 Pic: School Kid M
 Gender: Male
@@ -5440,7 +5440,7 @@ Ability: Flame Body
 -Wild Charge
 
 === TRAINER_PAUL ===
-Name: PAUL
+Name: Paul
 Class: School Kid
 Pic: School Kid M
 Gender: Male
@@ -5557,7 +5557,7 @@ Level: 34
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_KAREN_1 ===
-Name: KAREN
+Name: Karen
 Class: School Kid
 Pic: School Kid F
 Gender: Female
@@ -5592,7 +5592,7 @@ Ability: Refrigerate
 -Thunder Wave
 
 === TRAINER_GEORGIA ===
-Name: GEORGIA
+Name: Georgia
 Class: School Kid
 Pic: School Kid F
 Gender: Female
@@ -6295,7 +6295,7 @@ Level: 39
 IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
 
 === TRAINER_JOEY ===
-Name: JOEY
+Name: Joey
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -6331,7 +6331,7 @@ Ability: Sturdy
 -Bulldoze
 
 === TRAINER_BILLY ===
-Name: BILLY
+Name: Billy
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -6365,7 +6365,7 @@ Ability: Intimidate
 -Howl
 
 === TRAINER_JOSH ===
-Name: JOSH
+Name: Josh
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -6408,7 +6408,7 @@ Ability: Unnerve
 -Roost
 
 === TRAINER_TOMMY ===
-Name: TOMMY
+Name: Tommy
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -6453,7 +6453,7 @@ Ability: Sand Rush
 -Leech Seed
 
 === TRAINER_CALVIN_1 ===
-Name: CALVIN
+Name: Calvin
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -6751,7 +6751,7 @@ Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ALLEN ===
-Name: ALLEN
+Name: Allen
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -6882,7 +6882,7 @@ Level: 15
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_IVAN ===
-Name: IVAN
+Name: Ivan
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
@@ -9428,7 +9428,7 @@ Level: 27
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
 === TRAINER_GINA_AND_MIA_1 ===
-Name: GINA & MIA
+Name: Gina & Mia
 Class: Twins
 Pic: Twins
 Gender: Male
@@ -11273,7 +11273,7 @@ Level: 22
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_MARC ===
-Name: MARC
+Name: Marc
 Class: Hiker
 Pic: Hiker
 Gender: Male
@@ -11792,7 +11792,7 @@ Level: 25
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_TIANA ===
-Name: TIANA
+Name: Tiana
 Class: Lass
 Pic: Lass
 Gender: Female
@@ -11822,7 +11822,7 @@ Ability: Gluttony
 -Metronome
 
 === TRAINER_HALEY_1 ===
-Name: HALEY
+Name: Haley
 Class: Lass
 Pic: Lass
 Gender: Female
@@ -11857,7 +11857,7 @@ Ability: Slush Rush
 -Rollout
 
 === TRAINER_JANICE ===
-Name: JANICE
+Name: Janice
 Class: Lass
 Pic: Lass
 Gender: Female
@@ -12063,7 +12063,7 @@ Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RICK ===
-Name: RICK
+Name: Rick
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -12096,7 +12096,7 @@ Ability: Shed Skin
 -Rest
 
 === TRAINER_LYLE ===
-Name: LYLE
+Name: Lyle
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -12132,7 +12132,7 @@ Ability: Sturdy
 -Counter
 
 === TRAINER_JOSE ===
-Name: JOSE
+Name: Jose
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -12215,7 +12215,7 @@ Level: 25
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_JAMES_1 ===
-Name: JAMES
+Name: James
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -12420,7 +12420,7 @@ Level: 22
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_CLARK ===
-Name: CLARK
+Name: Clark
 Class: Hiker
 Pic: Hiker
 Gender: Male
@@ -13913,7 +13913,7 @@ Level: 23
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWSON ===
-Name: DAWSON
+Name: Dawson
 Class: Rich Boy
 Pic: Rich Boy
 Gender: Male
@@ -13949,7 +13949,7 @@ Ability: Overcoat
 -Attract
 
 === TRAINER_SARAH ===
-Name: SARAH
+Name: Sarah
 Class: Lady
 Pic: Lady
 Gender: Female
@@ -13994,7 +13994,7 @@ Ability: Torrent
 -Icy Wind
 
 === TRAINER_DARIAN ===
-Name: DARIAN
+Name: Darian
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
@@ -14900,7 +14900,7 @@ Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DEVAN ===
-Name: DEVAN
+Name: Devan
 Class: Hiker
 Pic: Hiker
 Gender: Male
@@ -14945,7 +14945,7 @@ Ability: Weak Armor
 -Mud Shot
 
 === TRAINER_JOHNSON ===
-Name: JOHNSON
+Name: Johnson
 Class: Youngster
 Pic: Youngster
 Gender: Male
