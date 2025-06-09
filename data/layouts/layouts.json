@@ -3884,7 +3884,7 @@
     {
       "id": "LAYOUT_DESERT_UNDERPASS",
       "name": "DesertUnderpass_Layout",
-      "width": 139,
+      "width": 83,
       "height": 23,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Cave",
