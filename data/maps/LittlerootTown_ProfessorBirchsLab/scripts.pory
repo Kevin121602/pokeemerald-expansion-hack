@@ -50,6 +50,8 @@ script LittlerootTown_ProfessorBirchsLab_EventScript_GameInfo{
 					"to raise a Pokémon's level cap by one.\p"
 					"Once a Pokémon's level cap is raised,\n"
 					"it will be raised permanently.\p"
+					"Exp. gain during boss fights has been\n"
+					"disabled for the player's convenience.\p"
 					"Would you like to know about anything\n"
 					"else?$", MSGBOX_YESNO)
 					if(var(VAR_RESULT) == NO){
