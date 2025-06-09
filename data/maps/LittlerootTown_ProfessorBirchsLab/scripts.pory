@@ -2,10 +2,128 @@ mapscripts LittlerootTown_ProfessorBirchsLab_MapScripts{
 
 }
 
+script LittlerootTown_ProfessorBirchsLab_EventScript_GenesectAide{
+	lock
+	faceplayer
+	msgbox("I study how different Drives\n"
+			"interact with the Pokémon Genesect.$")
+	releaseall
+	end
+}
+
+script LittlerootTown_ProfessorBirchsLab_EventScript_DeoxysAide{
+	lock
+	faceplayer
+	msgbox("I'm doing research into the various\n"
+			"Deoxys forms.$")
+	releaseall
+	end
+}
+
+script LittlerootTown_ProfessorBirchsLab_EventScript_SilvallyAide{
+	lock
+	faceplayer
+	msgbox("Have you heard of Silvally?\p"
+				"Apparently it has the potential to\n"
+				"become every possible type!$")
+	releaseall
+	end
+}
+
 script LittlerootTown_ProfessorBirchsLab_EventScript_GameInfo{
 	lock
 	faceplayer
-	msgbox("placeholder")
+	msgbox(format("What would you like to know about?"))
+	multichoice(17, 2, MULTI_BIRCH_GAME_INFO, FALSE)
+	if(var(VAR_RESULT) == 4 || var(VAR_RESULT) == MULTI_B_PRESSED){
+		releaseall
+		end
+	}
+	switch(var(VAR_RESULT)){
+		case 0:
+			msgbox("There is an in-game level cap that\n"
+					"increases after every boss fight.\p"
+					"If you go over this level cap, your\n"
+					"Pokémon will disobey, and they will\l"
+					"be prevented from gaining experience.\p"
+					"However, you can spend Heart Scales\n"
+					"to raise a Pokémon's level cap by one.\p"
+					"Once a Pokémon's level cap is raised,\n"
+					"it will be raised permanently.\p"
+					"Would you like to know about anything\n"
+					"else?$", MSGBOX_YESNO)
+					if(var(VAR_RESULT) == NO){
+						release
+						end
+					} else {
+						goto(LittlerootTown_ProfessorBirchsLab_EventScript_GameInfo)
+					}
+		case 1:
+			msgbox("Heart Scales are items given to you by\n"
+					"people throughout your journey.\p"
+					"You can spend them in the L menu on\n"
+					"a variety of buffs to your Pokémon.\p"
+					"These include learning a move, editing\n"
+					"an IV, changing your Pokémon's nature,\p"
+					"switching their ability, and raising\n"
+					"their level cap.\p"
+					"Would you like to know about anything\n"
+					"else?$", MSGBOX_YESNO)
+					if(var(VAR_RESULT) == NO){
+						release
+						end
+					} else {
+						goto(LittlerootTown_ProfessorBirchsLab_EventScript_GameInfo)
+					}
+		case 2:
+			msgbox("The Trick House is available from the\n"
+					"start of your journey.\p"
+					"It can be accessed via the north of\n"
+					"Route 103.\p"
+					"There are eight puzzles in total, with\n"
+					"a new puzzle being unlocked with every\l"
+					"Gym Badge.\p"
+					"The trainers inside the Trick House all\n"
+					"fight with Pokémon that have moves\l"
+					"they can't normally learn.\p"
+					"However, by completing these puzzles,\n"
+					"you can recieve such a Pokémon\l"
+					"yourself.\p"
+					"Every puzzle offers a pool of two to\n"
+					"three Pokémon with exclusive moves as\l"
+					"a reward for completing it.\p"
+					"Once you complete a puzzle, you will be\n"
+					"able to take the reward at any time.\p"
+					"However, if you do not complete a puzzle\n"
+					"by the time the next one is unlocked,\l"
+					"you will not be able to attempt it.\p"
+					"Would you like to know about anything\n"
+					"else?$", MSGBOX_YESNO)
+					if(var(VAR_RESULT) == NO){
+						release
+						end
+					} else {
+						goto(LittlerootTown_ProfessorBirchsLab_EventScript_GameInfo)
+					}
+		case 3:
+			msgbox("Bottle Caps are handed out for free\n"
+					"by Poké Mart clerks.\p"
+					"You recieve an additional Bottle Cap\n"
+					"for each Gym Badge you obtain.\p"
+					"They can be spent using the L menu on\n"
+					"various consumable items.\p"
+					"Defeating certain Gym Leaders will\n"
+					"increase the amount of items you can\l"
+					"buy with Bottle Caps.\p"
+					"Would you like to know about anything\n"
+					"else?$", MSGBOX_YESNO)
+					if(var(VAR_RESULT) == NO){
+						release
+						end
+					} else {
+						goto(LittlerootTown_ProfessorBirchsLab_EventScript_GameInfo)
+					}
+	}
 	releaseall
 	end
 }

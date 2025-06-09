@@ -3118,4 +3118,10 @@ extern const u8 gText_FifthPuzzle[];
 extern const u8 gText_SixthPuzzle[];
 extern const u8 gText_SeventhPuzzle[];
 extern const u8 gText_EighthPuzzle[];
+
+extern const u8 gText_LevelCaps[];
+extern const u8 gText_HeartScales[];
+extern const u8 gText_TrickHouse[];
+extern const u8 gText_BottleCaps[];
+
 #endif // GUARD_STRINGS_H

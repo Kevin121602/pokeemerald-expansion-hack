@@ -244,12 +244,12 @@
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_POLIWAG"
+                "species": "SPECIES_BUIZEL"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_PANPOUR"
+                "species": "SPECIES_BUIZEL"
               }
             ]
           }
@@ -408,12 +408,12 @@
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_POLIWAG"
+                "species": "SPECIES_BUIZEL"
               },
               {
                 "min_level": 2,
                 "max_level": 3,
-                "species": "SPECIES_PANPOUR"
+                "species": "SPECIES_BUIZEL"
               }
             ]
           }
@@ -517,7 +517,7 @@
               {
                 "min_level": 6,
                 "max_level": 7,
-                "species": "SPECIES_BUIZEL"
+                "species": "SPECIES_CHINCHOU"
               },
               {
                 "min_level": 6,
@@ -641,7 +641,7 @@
               {
                 "min_level": 6,
                 "max_level": 7,
-                "species": "SPECIES_SHELLOS"
+                "species": "SPECIES_SHELLOS_WEST_SEA"
               },
               {
                 "min_level": 6,
@@ -2006,7 +2006,7 @@
               {
                 "min_level": 6,
                 "max_level": 7,
-                "species": "SPECIES_SMOLIV"
+                "species": "SPECIES_PANSAGE"
               },
               {
                 "min_level": 6,

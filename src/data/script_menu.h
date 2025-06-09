@@ -852,6 +852,15 @@ static const struct MenuAction MultichoiceList_TrickHouseGifts[] =
     {gText_ExitLC},
 };
 
+static const struct MenuAction MultichoiceList_BirchGameInfo[] =
+{
+    {gText_LevelCaps},
+    {gText_HeartScales},
+    {gText_TrickHouse},
+    {gText_BottleCaps},
+    {gText_ExitLC},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -985,6 +994,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_CHANGE_NATURE_2]            = MULTICHOICE(MultichoiceList_ChangeNature2),
     [MULTI_CHANGE_NATURE_3]            = MULTICHOICE(MultichoiceList_ChangeNature3),
     [MULTI_TRICK_HOUSE_GIFTS]          = MULTICHOICE(MultichoiceList_TrickHouseGifts),
+    [MULTI_BIRCH_GAME_INFO]            = MULTICHOICE(MultichoiceList_BirchGameInfo),
 };
 
 const u8 *const gStdStrings[] =

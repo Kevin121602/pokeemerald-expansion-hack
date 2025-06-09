@@ -1956,6 +1956,11 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_ENDURE:
             if (gBattleMons[battlerAtk].hp == 1 || GetBattlerSecondaryDamage(battlerAtk)) //Don't use Endure if you'll die after using it
                 ADJUST_SCORE(-10);
+            if (gDisableStructs[battlerAtk].protectUses == 1)
+                {
+                    if (Random() % 100 < 50)
+                        ADJUST_SCORE(-10); //50% to not use endure if on cooldown
+                }
             break;
         case EFFECT_PROTECT:
             {
@@ -3661,13 +3666,10 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         }
         break;
     case EFFECT_ENDURE:
-        if (CanTargetFaintAi(battlerDef, battlerAtk))
-        {
-            if (gBattleMons[battlerAtk].hp > gBattleMons[battlerAtk].maxHP / 4 // Pinch berry couldn't have activated yet
-             && IsPinchBerryItemEffect(aiData->holdEffects[battlerAtk])
-             && CanTargetFaintAi(battlerDef, battlerAtk))
+        if (gBattleMons[battlerAtk].hp > gBattleMons[battlerAtk].maxHP / 4 // Pinch berry couldn't have activated yet
+            && IsPinchBerryItemEffect(aiData->holdEffects[battlerAtk])
+            && CanTargetFaintAi(battlerDef, battlerAtk))
                 ADJUST_SCORE(DECENT_EFFECT + WEAK_EFFECT);
-        }
         break;
     case EFFECT_SPIKES:
     case EFFECT_STEALTH_ROCK:

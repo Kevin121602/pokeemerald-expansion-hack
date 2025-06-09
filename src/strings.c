@@ -1904,3 +1904,7 @@ const u8 gText_FifthPuzzle[] =        _("Fifth Puzzle");
 const u8 gText_SixthPuzzle[] =        _("Sixth Puzzle");
 const u8 gText_SeventhPuzzle[] =      _("Seventh Puzzle");
 const u8 gText_EighthPuzzle[] =       _("Eighth Puzzle");
+const u8 gText_LevelCaps[] =          _("Level Caps");
+const u8 gText_HeartScales[] =        _("Heart Scales");
+const u8 gText_TrickHouse[] =         _("Trick House");
+const u8 gText_BottleCaps[] =         _("Bottle Caps");
