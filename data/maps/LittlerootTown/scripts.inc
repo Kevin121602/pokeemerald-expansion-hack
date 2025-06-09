@@ -2084,9 +2084,10 @@ LittlerootTown_EventScript_SuperRod_Text_0:
 
 LittlerootTown_EventScript_SuperRod_Text_1:
 # 13 "data/maps/LittlerootTown/scripts.pory"
-	.string "I can't find anything decent in this\n"
-	.string "pond…$"
+	.string "I've fished up all the Pokémon this pond\n"
+	.string "has to offer.$"
 
 LittlerootTown_EventScript_SuperRod_Text_2:
 # 16 "data/maps/LittlerootTown/scripts.pory"
-	.string "Maybe you'll have better luck.$"
+	.string "It's time to pass the torch to someone\n"
+	.string "else.$"

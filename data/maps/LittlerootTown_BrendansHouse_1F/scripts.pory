@@ -47,7 +47,14 @@ script LittlerootTown_BrendansHouse_1F_EventScript_StartingItems{
 		call(Common_EventScript_NameReceivedPartyMon)
 	}
 	setmonmetlocation(0, 0xFF)
-	msgbox(format("Our next door neighbours have a gift for you, pay them a visit before you leave. Come back home if you need any more Pokéballs or money, and stop by Professor Birch's lab if you have any questions. Good luck, {PLAYER}!"))
+	msgbox("Our next door neighbours have a gift\n"
+		   "for you, pay them a visit before you\l"
+			"leave.\p" 
+			"Come back home if you need any more\n"
+			"Pokéballs or money,\p"
+			"and stop by Professor Birch's lab\n"
+			"if you have any questions.\p"
+			"Good luck, {PLAYER}!$")
 	setflag(FLAG_SYS_POKEMON_GET)
 	setflag(FLAG_SYS_POKEDEX_GET)
 	setflag(FLAG_SYS_NATIONAL_DEX)

@@ -252,6 +252,7 @@ Gender: Male
 Music: Aqua
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
+Mugshot: Blue
 
 Clamperl @ Deep Sea Scale
 Level: 13
@@ -365,6 +366,7 @@ Gender: Male
 Music: Aqua
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
+Mugshot: Blue
 
 Crabrawler @ Focus Sash
 Level: 16
@@ -5019,6 +5021,7 @@ Gender: Female
 Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
+Mugshot: Purple
 
 Tyrunt @ Expert Belt
 Level: 18
@@ -5029,7 +5032,7 @@ Ability: Sturdy
 -Brick Break
 -Aerial Ace
 
-Minior-Meteor @ Liechi Berry
+Minior @ Liechi Berry
 Level: 17
 Nature: Jolly
 Ability: Shields Down

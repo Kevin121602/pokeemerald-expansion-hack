@@ -10,10 +10,10 @@ script LittlerootTown_EventScript_SuperRod {
 	if(flag(FLAG_RECEIVED_SUPER_ROD)){
 		msgbox(format("How are the fish biting?"))
 	} else {
-		msgbox(format("I can't find anything decent in this pond…"))
+		msgbox(format("I've fished up all the Pokémon this pond has to offer."))
 		giveitem(ITEM_SUPER_ROD)
 		setflag(FLAG_RECEIVED_SUPER_ROD)
-		msgbox(format("Maybe you'll have better luck."))
+		msgbox(format("It's time to pass the torch to someone else."))
 	}
 	releaseall
 	end

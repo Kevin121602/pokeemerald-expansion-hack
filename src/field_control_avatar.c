@@ -202,7 +202,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         ShowStartMenu();
         return TRUE;
     }
-    if (input->pressedLButton)
+    if (input->pressedLButton && FlagGet(FLAG_ADVENTURE_STARTED))
     {
         PlaySE(SE_WIN_OPEN);
         ShowFeaturesMenu();
