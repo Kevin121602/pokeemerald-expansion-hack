@@ -48,8 +48,9 @@ script LittlerootTown_BrendansHouse_1F_EventScript_StartingItems{
 	}
 	setmonmetlocation(0, 0xFF)
 	msgbox("Our next door neighbours have a gift\n"
-		   "for you, pay them a visit before you\l"
-			"leave.\p" 
+		   "for you.\p"
+		   "Make sure to pay them a visit before\n"
+		   "you leave.\p"
 			"Come back home if you need any more\n"
 			"Pokéballs or money,\p"
 			"and stop by Professor Birch's lab\n"
