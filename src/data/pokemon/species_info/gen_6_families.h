@@ -1668,7 +1668,8 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .backPicYOffset = 2,                                                                    \
         .levelUpLearnset = sFloetteLevelUpLearnset,                                             \
         .teachableLearnset = sFloetteTeachableLearnset,                                         \
-        .evolutions = EVOLUTION({EVO_ITEM, ITEM_SHINY_STONE, SPECIES_FLORGES_ ##FORM##_FLOWER}),\
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_SHINY_STONE, SPECIES_FLORGES_ ##FORM##_FLOWER}, \
+                                {EVO_LEVEL, 55, SPECIES_FLOETTE_ETERNAL_FLOWER}),               \
         FLOETTE_MISC_INFO(form, FORM, iconPal)
 
     [SPECIES_FLOETTE_RED_FLOWER] =
@@ -2998,7 +2999,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_3),
-        .abilities = { ABILITY_SHARPNESS, ABILITY_NONE, ABILITY_SNIPER },
+        .abilities = { ABILITY_TOUGH_CLAWS, ABILITY_SNIPER, ABILITY_SNIPER },
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Binacle"),
         .cryId = CRY_BINACLE,
@@ -3060,7 +3061,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_3),
-        .abilities = { ABILITY_SHARPNESS, ABILITY_NONE, ABILITY_SNIPER },
+        .abilities = { ABILITY_TOUGH_CLAWS, ABILITY_SNIPER, ABILITY_SNIPER },
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = TRUE,
         .speciesName = _("Barbaracle"),

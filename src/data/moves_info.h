@@ -11232,7 +11232,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
             "Attacks with a sound wave\n"
             "that causes confusion."),
         .effect = EFFECT_HIT,
-        .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 80 : 60,
+        .power = 80,
         .type = TYPE_FLYING,
         .accuracy = 100,
         .pp = 20,
@@ -14801,7 +14801,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
             "Throws 2 to 5 stars that\n"
             "are sure to strike first."),
         .effect = EFFECT_MULTI_HIT,
-        .power = 15,
+        .power = 20,
         .type = TYPE_WATER,
         .accuracy = 100,
         .pp = 20,
