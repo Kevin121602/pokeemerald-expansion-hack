@@ -20030,7 +20030,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
             "An attack that absorbs\n"
             "half the damage inflicted."),
         .effect = EFFECT_ABSORB,
-        .power = 90,
+        .power = 75,
         .type = TYPE_FIRE,
         .accuracy = 100,
         .pp = 10,
