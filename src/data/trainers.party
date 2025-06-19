@@ -3349,15 +3349,44 @@ Pic: Black Belt
 Gender: Male
 Music: Intense
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Machop
-Level: 24
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Mawile @ Expert Belt
+Nature: Jolly
+Ability: Intimidate
+Level: 21
+- Iron Head
+- Covet
+- Rock Tomb
+- Sing
 
-Machoke
-Level: 28
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Ferroseed @ Occa Berry
+Nature: Sassy
+Ability: Iron Barbs
+IVs: 0 Spe
+Level: 20
+- Gyro Ball
+- Seed Bomb
+- Toxic
+- Leech Seed
+
+Sableye @ Leftovers
+Nature: Sassy
+Ability: Prankster
+Level: 21
+- Brick Break
+- Hex
+- Will O Wisp
+- Protect
+
+Klawf @ White Herb
+Nature: Adamant
+Ability: Anger Shell
+Level: 22
+- Rock Tomb
+- Bulldoze
+- Body Slam
+- Sleep Talk
 
 === TRAINER_NOB_1 ===
 Name: NOB
@@ -3366,11 +3395,43 @@ Pic: Black Belt
 Gender: Male
 Music: Intense
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Machop
+Geodude-Alolan @ Shuca Berry
+Nature: Adamant
+Ability: Galvanize
+Level: 20
+- Rock Slide
+- Body Slam
+- Stomping Tantrum
+- Self Destruct
+
+Spidops @ Fighting Gem
+Nature: Jolly
+Ability: Insomnia
 Level: 19
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Bug Bite
+- Circle Throw
+- Headbutt
+- Silk Trap
+
+Honedge @ Eviolite
+Nature: Careful
+Ability: No Guard
+Level: 20
+- Iron Head
+- Shadow Claw
+- Brick Break
+- Pursuit
+
+Machoke @ Leftovers
+Nature: Careful
+Ability: Steadfast
+Level: 20
+- Low Sweep
+- Rock Tomb
+- Bulldoze
+- Bullet Punch
 
 === TRAINER_NOB_2 ===
 Name: NOB
@@ -6123,9 +6184,40 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Hariyama
-Level: 27
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Morgrem @ Black Glasses
+Nature: Jolly
+Ability: Prankster
+Level: 20
+- Fake Out
+- Bite
+- Covet
+- Fake Tears
+
+Frogadier @ Wise Glasses
+Nature: Timid
+Ability: Protean
+Level: 19
+- Water Pulse
+- Round
+- Icy Wind
+
+Hattrem @ Berry Juice
+Nature: Bold
+Ability: Magic Bounce
+Level: 20
+- Psybeam
+- Dazzling Gleam
+- Mystical Fire
+- Nuzzle
+
+Farfetch'd @ Leek
+Nature: Jolly
+Ability: Defiant
+Level: 21
+- Dual Wingbeat
+- Slash
+- Leaf Blade
+- Quick Attack
 
 === TRAINER_TIMOTHY_2 ===
 Name: TIMOTHY
@@ -6635,7 +6727,7 @@ Ability: Water Compaction
 -Scorching Sands
 -Hex
 -Ancient Power
--Will-O-Wisp
+-Will O Wisp
 
 Ariados @ Black Sludge
 Level: 18
@@ -7772,15 +7864,33 @@ Pic: Dragon Tamer
 Gender: Male
 Music: Intense
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Altaria
-Level: 37
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Metang @ Punching Glove
+Nature: Jolly
+Ability: Clear Body
+Level: 22
+- Psycho Cut
+- Bullet Punch
+- Thunder Punch
+- Magnet Rise
 
-Altaria
-Level: 37
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Pupitar @ Choice Band
+Nature: Jolly
+Ability: Shed Skin
+Level: 21
+- Stomping Tantrum
+- Rock Tomb
+- Pursuit
+
+Shelgon @ Leftovers
+Nature: Naive
+Ability: Rock Head
+Level: 22
+- Dragon Breath
+- Take Down
+- Fire Fang
+- Wish
 
 === TRAINER_NICOLAS_2 ===
 Name: NICOLAS
@@ -8442,15 +8552,32 @@ Pic: Battle Girl
 Gender: Female
 Music: Intense
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Meditite
-Level: 18
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Quaxwell @ Flying Gem
+Nature: Jolly
+Ability: Torrent
+Level: 20
+- Aqua Cutter
+- Aqua Jet
+- Acrobatics
+- Roost
 
-Makuhita
-Level: 18
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Clobbopus @ Metronome
+Nature: Careful
+Ability: Technician
+Level: 20
+- Circle Throw
+- Facade
+
+Golett @ Assault Vest
+Nature: Jolly
+Ability: Iron Fist
+Level: 20
+- Shadow Punch
+- Stomping Tantrum
+- Fire Punch
+- Ice Punch
 
 === TRAINER_CORA ===
 Name: CORA
@@ -10025,42 +10152,32 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Hoothoot @ Expert Belt
-Level: 1
-Nature: Hardy
-Ability: Insomnia
--Uproar
-
-Diglett @ Choice Band
-Level: 17
+Taillow @ Flame Orb
 Nature: Jolly
-Ability: Sand Force
--Earthquake
-
-Diglett @ Choice Band
-Level: 18
-Nature: Jolly
-Ability: Sand Force
--Earthquake
-
-Diglett @ Choice Band
+Ability: Guts
 Level: 19
-Nature: Jolly
-Ability: Sand Force
--Earthquake
+- Facade
+- Dual Wingbeat
+- Steel Wing
+- Protect
 
-Diglett @ Focus Sash
+Palpitoad @ Rindo Berry
+Nature: Timid
+Ability: Water Absorb
 Level: 20
-Nature: Jolly
-Ability: Sand Force
--Earthquake
--Bolt Strike
-
-Diglett @ Choice Band
-Level: 21
-Nature: Jolly
-Ability: Sand Force
--Earthquake
+- Muddy Water
+- Mud Bomb
+- Hyper Voice
+- Toxic
+ 
+Roselia @ Poison Barb
+Nature: Timid
+Ability: Poison Point
+Level: 20
+- Magical Leaf
+- Venoshock
+- Extrasensory
+- Synthesis
 
 === TRAINER_TABITHA_MOSSDEEP ===
 Name: TABITHA
@@ -12158,7 +12275,7 @@ Nature: Adamant
 Ability: Wonder Guard
 -Bug Bite
 -Shadow Claw
--Will-O-Wisp
+-Will O Wisp
 -Confuse Ray
 
 Beedrill @ Scope Lens
@@ -12455,7 +12572,7 @@ Nature: Calm
 Ability: Mummy
 -Hex
 -Infestation
--Will-O-Wisp
+-Will O Wisp
 -Night Shade
 
 Tirtouga @ Rindo Berry
@@ -13008,7 +13125,7 @@ IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 31 Spe
 -Ancient Power
 -Incinerate
 -Hidden Power
--Will-O-Wisp
+-Will O Wisp
 
 Meltan @ Eviolite
 Level: 19
@@ -13655,21 +13772,41 @@ Music: Intense
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Medicham
-Level: 39
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Psychic
-- Fire Punch
-- Psych Up
-- Protect
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 22
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
-Hariyama
-Level: 39
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Focus Punch
-- Rock Tomb
-- Rest
-- Belly Drum
+Sneasel-Hisuian @ Muscle Band
+Nature: Jolly
+Ability: Inner Focus
+Level: 21
+- Fake Out
+- Low Sweep
+- Poison Tail
+- Double Hit
+
+Murkrow @ Black Glasses
+Nature: Jolly
+Ability: Prankster
+Level: 22
+- Assurance
+- Wing Attack
+- Pursuit
+- Quash
+
+Sandygast @ Wise Glasses
+Nature: Calm
+Ability: Water Compaction
+Level: 21
+- Scorching Sands
+- Hex
+- Ancient Power
+- Protect
 
 === TRAINER_JOHN_AND_JAY_2 ===
 Name: JOHN & JAY
@@ -14824,15 +14961,43 @@ Pic: Running Triathlete F
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Doduo
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ninjask @ Power Herb
+Nature: Adamant
+Ability: Speed Boost
+Level: 21
+- Dual Wingbeat
+- Leech Life
+- Dig
+- Hone Claws
 
-Dodrio
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Emolga @ Leftovers
+Nature: Naive
+Ability: Static
+Level: 21
+- Discharge
+- Dual Wingbeat
+- Signal Beam
+- Roost
+
+Furret @ Lum Berry
+Nature: Jolly
+Ability: Adaptability
+Level: 20
+- Headbutt
+- Seed Bomb
+- Quick Attack
+- Charm
+
+Combusken @ Charcoal
+Nature: Naive
+Ability: Speed Boost
+Level: 21
+- Incinerate
+- Low Sweep
+- Thunder Punch
+- Seismic Toss
 
 === TRAINER_JAIDEN ===
 Name: JAIDEN
@@ -14841,15 +15006,34 @@ Pic: Ninja Boy
 Gender: Male
 Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Ninjask
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Whirlipede @ Quick Claw
+Nature: Careful
+Ability: Poison Point
+Level: 20
+- Poison Jab
+- Steamroller
+- Take Down
+- Toxic Spikes
 
-Gulpin
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Baltoy @ Hard Stone
+Nature: Timid
+Ability: Levitate
+Level: 21
+- Extrasensory
+- Mud Shot
+- Ancient Power
+- Heal Block
+
+Haunter @ Black Sludge
+Nature: Timid
+Ability: Levitate
+Level: 21
+- Hex
+- Venoshock
+- Hypnosis
+- Dream Eater
 
 === TRAINER_ALIX ===
 Name: ALIX
@@ -14858,15 +15042,34 @@ Pic: Psychic F
 Gender: Female
 Music: Intense
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Kadabra
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Slowpoke @ Eviolite
+Nature: Calm
+Ability: Regenerator
+Level: 21
+- Brine
+- Psybeam
+- Slack Off
+- Teleport
 
-Kirlia
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Drifloon @ Flame Orb
+Nature: Timid
+Ability: Flare Boost
+Level: 21
+- Ominous Wind
+- Air Cutter
+- Charge Beam
+- Destiny Bond
+
+Togetic @ Scope Lens
+Nature: Bold
+Ability: Super Luck
+Level: 22
+- Air Cutter
+- Draining Kiss
+- Ancient Power
+- Roost
 
 === TRAINER_HELENE ===
 Name: HELENE
@@ -14875,15 +15078,34 @@ Pic: Battle Girl
 Gender: Female
 Music: Intense
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Meditite
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Pawmo @ Black Belt
+Nature: Jolly
+Ability: Iron Fist
+Level: 21
+- Thunder Punch
+- Brick Break
+- Play Rough
+- Super Fang
 
-Makuhita
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Dartrix @ Yache Berry
+Nature: Jolly
+Ability: Long Reach
+Level: 20
+- Leaf Blade
+- Dual Wingbeat
+- Sucker Punch
+- Roost
+
+Charmeleon @ Lum Berry
+Nature: Naive
+Ability: Blaze
+Level: 20
+- Temper Flare
+- Thunder Punch
+- Ancient Power
+- Will O Wisp
 
 === TRAINER_MARLENE ===
 Name: MARLENE
@@ -14892,15 +15114,34 @@ Pic: Psychic F
 Gender: Female
 Music: Intense
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Meditite
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Wynaut @ Lum Berry
+Level: 19
+Nature: Bold
+Ability: Shadow Tag
+- Counter
+- Mirror Coat
+- Safeguard
+- Destiny Bond
 
-Spoink
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Braixen @ Eviolite
+Level: 19
+Nature: Timid
+Ability: Blaze
+- Incinerate
+- Psyshock
+- Grass Knot
+- Will O Wisp
+
+Meditite @ Focus Sash
+Level: 20
+Nature: Jolly
+Ability: Pure Power
+- Psycho Cut
+- Force Palm
+- Thief
+- Meditate
 
 === TRAINER_DEVAN ===
 Name: Devan
