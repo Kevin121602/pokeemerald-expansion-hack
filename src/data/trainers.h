@@ -1807,7 +1807,7 @@ F_TRAINER_FEMALE |
 #line 783
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 784
-        .trainerPic = TRAINER_PIC_BATTLE_GIRL,
+        .trainerPic = TRAINER_PIC_RILEY,
         .encounterMusic_gender = 
 #line 785
 F_TRAINER_FEMALE | 

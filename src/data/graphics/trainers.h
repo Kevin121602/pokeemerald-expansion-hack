@@ -280,6 +280,9 @@ const u32 gTrainerPalette_RubySapphireBrendan[] = INCBIN_U32("graphics/trainers/
 const u32 gTrainerFrontPic_RubySapphireMay[] = INCBIN_U32("graphics/trainers/front_pics/may_rs.4bpp.lz");
 const u32 gTrainerPalette_RubySapphireMay[] = INCBIN_U32("graphics/trainers/palettes/may_rs.gbapal.lz");
 
+const u32 gTrainerFrontPic_TrainerRiley[] = INCBIN_U32("graphics/trainers/front_pics/riley.4bpp.lz");
+const u32 gTrainerPalette_TrainerRiley[] = INCBIN_U32("graphics/trainers/front_pics/riley.gbapal.lz");
+
 const u8 gTrainerBackPic_Brendan[] = INCBIN_U8("graphics/trainers/back_pics/brendan.4bpp");
 const u8 gTrainerBackPic_May[] = INCBIN_U8("graphics/trainers/back_pics/may.4bpp");
 const u8 gTrainerBackPic_Red[] = INCBIN_U8("graphics/trainers/back_pics/red.4bpp");
@@ -356,6 +359,7 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(LEADER_WINONA, LeaderWinona),
     TRAINER_SPRITE(LEADER_TATE_AND_LIZA, LeaderTateAndLiza),
     TRAINER_SPRITE(LEADER_JUAN, LeaderJuan),
+    TRAINER_SPRITE(RILEY, TrainerRiley),
     TRAINER_SPRITE(SCHOOL_KID_M, SchoolKidM),
     TRAINER_SPRITE(SCHOOL_KID_F, SchoolKidF),
     TRAINER_SPRITE(SR_AND_JR, SrAndJr),
