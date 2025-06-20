@@ -778,22 +778,69 @@ Gloom
 Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_ROSE_2 ===
-Name: ROSE
-Class: Aroma Lady
-Pic: Aroma Lady
+=== TRAINER_RILEY_METEOR_FALLS ===
+Name: Riley
+Class: Rival
+Pic: Battle Girl
 Gender: Female
-Music: Female
+Music: Intense
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
+Mugshot: Blue
 
-Shroomish
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Kubfu @ Normal Gem
+Level: 22
+Nature: Jolly
+Ability: Inner Focus
+-Brick Break
+-Mega Punch
+-Zen Headbutt
+-Acrobatics
 
-Roselia
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Mightyena @ Black Glasses
+Level: 23
+Nature: Adamant
+Ability: Intimidate
+-Bite
+-Covet
+-Poison Fang
+-Scary Face
+
+Carnivine @ Leftovers
+Level: 21
+Nature: Naive
+Ability: Levitate
+-Leaf Tornado
+-Slam
+-Knock Off
+-Sleep Powder
+
+Flareon @ Lum Berry
+Level: 22
+Nature: Jolly
+Ability: Guts
+-Fire Fang
+-Double Kick
+-Trailblaze
+-Will O Wisp
+
+Azumarill @ Sitrus Berry
+Level: 21
+Nature: Jolly
+Ability: Huge Power
+-Covet
+-Aqua Jet
+-Seismic Toss
+-Sing
+
+Lucario @ Muscle Band
+Level: 23
+Nature: Jolly
+Ability: Inner Focus
+-Force Palm
+-Metal Claw
+-Bullet Punch
+-Aerial Ace
 
 === TRAINER_ROSE_3 ===
 Name: ROSE
@@ -13790,22 +13837,22 @@ Level: 21
 - Poison Tail
 - Double Hit
 
-Murkrow @ Black Glasses
-Nature: Jolly
-Ability: Prankster
-Level: 22
-- Assurance
-- Wing Attack
-- Pursuit
-- Quash
-
 Sandygast @ Wise Glasses
 Nature: Calm
 Ability: Water Compaction
-Level: 21
+Level: 22
 - Scorching Sands
 - Hex
 - Ancient Power
+- Giga Drain
+
+Vivillon @ Leftovers
+Nature: Timid
+Ability: Friend Guard
+Level: 21
+- Struggle Bug
+- Air Cutter
+- Electroweb
 - Protect
 
 === TRAINER_JOHN_AND_JAY_2 ===

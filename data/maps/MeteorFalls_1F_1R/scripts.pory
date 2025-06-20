@@ -1,3 +1,18 @@
+script MeteorFalls_1F_1R_EventScript_Riley{
+	lock
+	faceplayer
+	msgbox("Hello there, my name is Riley.\p"
+		   "I traveled here from Sinnoh to hone\n"
+		   "my offensive skills.\p"
+		   "There's something about you that seems\n"
+		   "different from all the other Trainers\l"
+		   "I've fought.\p"
+		   "I'd love to put your skills to the\n"
+		   "test in battle!$")
+	release
+	end
+}
+
 raw `
 .set LOCALID_MAGMA_GRUNT_1, 5
 .set LOCALID_MAGMA_GRUNT_2, 6
