@@ -1809,8 +1809,6 @@ F_TRAINER_FEMALE |
 #line 784
         .trainerPic = TRAINER_PIC_RILEY,
         .encounterMusic_gender = 
-#line 785
-F_TRAINER_FEMALE | 
 #line 786
             TRAINER_ENCOUNTER_MUSIC_INTENSE,
 #line 787

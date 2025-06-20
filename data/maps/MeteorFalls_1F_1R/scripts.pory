@@ -1,6 +1,27 @@
+const LOCALID_RILEY = 4
+
+script MeteorFalls_1F_1R_EventScript_RileyTriggered{
+	lock
+	playse(SE_PIN)
+	applymovement(LOCALID_RILEY, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp)
+	waitmovement(0)
+	goto(MeteorFalls_1F_1R_EventScript_Riley)
+	release
+	end
+}
+
 script MeteorFalls_1F_1R_EventScript_Riley{
+	lock
+	faceplayer
 	setflag(FLAG_DISABLE_EXP)
-	trainerbattle_single(TRAINER_RILEY_METEOR_FALLS, MeteorFalls_1F_1R_Text_RileyIntro, MeteorFalls_1F_1R_Text_RileyDefeat, MeteorFalls_1F_1R_EventScript_RileyDefeated, NO_MUSIC)
+	trainerbattle(TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, TRAINER_RILEY_METEOR_FALLS, LOCALID_RILEY, MeteorFalls_1F_1R_Text_RileyIntro, MeteorFalls_1F_1R_Text_RileyDefeat, MeteorFalls_1F_1R_EventScript_RileyDefeated)
+	msgbox("Some of my friends are visiting Hoenn\n"
+		   "as well.\p"
+		   "Maybe you'll run into them on your\n"
+		   "journey…$")
+	clearflag(FLAG_DISABLE_EXP)
 	release
 	end
 }
@@ -20,6 +41,11 @@ text MeteorFalls_1F_1R_Text_RileyDefeat{
 	"It seems I was bested…$"
 }
 
+movement MeteorFalls_1F_1R_Movement_FaceUp{
+	face_up
+	step_end
+}
+
 script MeteorFalls_1F_1R_EventScript_RileyDefeated{
 	clearflag(FLAG_DISABLE_EXP)
 	msgbox("Some of my friends are visiting Hoenn\n"
@@ -27,6 +53,7 @@ script MeteorFalls_1F_1R_EventScript_RileyDefeated{
 		   "Maybe you'll run into them on your\n"
 		   "journey…$")
 	setflag(FLAG_DEFEATED_RILEY)
+	setvar(VAR_METEOR_FALLS_STATE, 1)
 	release
 	end
 }
