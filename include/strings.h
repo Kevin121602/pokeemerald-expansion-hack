@@ -3125,4 +3125,9 @@ extern const u8 gText_HeartScales[];
 extern const u8 gText_TrickHouse[];
 extern const u8 gText_BottleCaps[];
 
+extern const u8 gText_FireFang[];
+extern const u8 gText_ThunderFang[];
+extern const u8 gText_IceFang[];
+extern const u8 gText_PoisonFang[];
+
 #endif // GUARD_STRINGS_H

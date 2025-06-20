@@ -861,6 +861,15 @@ static const struct MenuAction MultichoiceList_BirchGameInfo[] =
     {gText_ExitLC},
 };
 
+static const struct MenuAction MultichoiceList_FangTutor[] =
+{
+    {gText_FireFang},
+    {gText_ThunderFang},
+    {gText_IceFang},
+    {gText_PoisonFang},
+    {gText_ExitLC},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -995,6 +1004,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_CHANGE_NATURE_3]            = MULTICHOICE(MultichoiceList_ChangeNature3),
     [MULTI_TRICK_HOUSE_GIFTS]          = MULTICHOICE(MultichoiceList_TrickHouseGifts),
     [MULTI_BIRCH_GAME_INFO]            = MULTICHOICE(MultichoiceList_BirchGameInfo),
+    [MULTI_FANG_TUTOR]                 = MULTICHOICE(MultichoiceList_FangTutor),
 };
 
 const u8 *const gStdStrings[] =

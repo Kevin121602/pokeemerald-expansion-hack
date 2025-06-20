@@ -287,3 +287,61 @@ MoveTutor_EventScript_RockSmashDeclined::
 MoveTutor_EventScript_RockSmashTaught::
 	release
 	end
+
+Route104_PrettyPetalFlowerShop_EventScript_HelpingHandTutor::
+	lock
+	faceplayer
+	msgbox Route104_PrettyPetalFlowerShop_Text_HelpingHand, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_HelpingHandDeclined
+	setvar VAR_0x8005, MOVE_HELPING_HAND
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+Route115_EventScript_FangsTutor::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_FangsTeach
+	multichoice 21, 0, MULTI_FANG_TUTOR, FALSE
+	switch VAR_RESULT
+	case 0, Route115_EventScript_FireFangTutor
+	case 1, Route115_EventScript_ThunderFangTutor
+	case 2, Route115_EventScript_IceFangTutor
+	case 3, Route115_EventScript_PoisonFangTutor
+	case 4, MoveTutor_EventScript_HelpingHandDeclined
+	case MULTI_B_PRESSED, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+Route115_EventScript_FireFangTutor::
+	setvar VAR_0x8005, MOVE_FIRE_FANG
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+Route115_EventScript_ThunderFangTutor::
+	setvar VAR_0x8005, MOVE_THUNDER_FANG
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+Route115_EventScript_IceFangTutor::
+	setvar VAR_0x8005, MOVE_ICE_FANG
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+Route115_EventScript_PoisonFangTutor::
+	setvar VAR_0x8005, MOVE_POISON_FANG
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+MoveTutor_EventScript_HelpingHandDeclined:
+	release
+	end

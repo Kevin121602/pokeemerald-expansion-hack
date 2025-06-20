@@ -14,21 +14,6 @@ Route104_PrettyPetalFlowerShop_EventScript_MoveShopOwner::
 	setobjectxyperm LOCALID_OWNER, 4, 6
 	end
 
-Route104_PrettyPetalFlowerShop_EventScript_HelpingHandTutor::
-	lock
-	faceplayer
-	msgbox Route104_PrettyPetalFlowerShop_Text_HelpingHand, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_HelpingHandDeclined
-	setvar VAR_0x8005, MOVE_HELPING_HAND
-	call MoveTutor_EventScript_OpenPartyMenu
-	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
-	releaseall
-	end
-
-MoveTutor_EventScript_HelpingHandDeclined:
-	releaseall
-	end
-
 Route104_PrettyPetalFlowerShop_EventScript_ShopOwner::
 	lock
 	faceplayer

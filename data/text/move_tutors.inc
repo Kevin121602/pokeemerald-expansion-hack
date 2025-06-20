@@ -254,3 +254,9 @@ MoveTutor_Text_RockSmashTeach:
 	.string "of each Pokémon!\p"
 	.string "Would you like me to teach\n"
 	.string "Hidden Power to your Pokémon?$"
+
+MoveTutor_Text_FangsTeach:
+	.string "They say you can't teach an old\n"
+	.string "dog new tricks.\p"
+	.string "So there's no time like the present\n"
+	.string "to learn these moves.$"

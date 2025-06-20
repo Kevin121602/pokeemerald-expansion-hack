@@ -36,16 +36,16 @@ RustboroCity_Gym_EventScript_GiveRockTomb::
 	giveitem ITEM_TM_ROCK_TOMB
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM_ROCK_TOMB
-	msgbox RustboroCity_Gym_Text_ExplainRockTomb, MSGBOX_DEFAULT
+	msgbox RustboroCity_Gym_Text_ExplainRockTombGiveOtherItems, MSGBOX_DEFAULT
 	goto RustboroCity_Gym_EventScript_GiveFloatStone
 	release
 	end
 
 RustboroCity_Gym_EventScript_GiveFloatStone::
-	msgbox RustboroCity_Gym_Text_IDontThinkIThankedYou, MSGBOX_DEFAULT
 	giveitem ITEM_FLOAT_STONE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	msgbox RustboroCity_Gym_Text_ExplainFloatStone, MSGBOX_DEFAULT
+	msgbox RustboroCity_Gym_Text_ExplainFloatStoneAndHeartScales, MSGBOX_DEFAULT
+	giveitem ITEM_HEART_SCALE, 3
 	release
 	end
 
@@ -219,13 +219,11 @@ RustboroCity_Gym_Text_ReceivedStoneBadge:
 	.string "from ROXANNE.$"
 
 RustboroCity_Gym_Text_StoneBadgeInfoTakeThis:
-	.string "The STONE BADGE heightens the ATTACK\n"
-	.string "power of your POKéMON.\p"
-	.string "It also enables them to use the HM move\n"
-	.string "CUT outside of battle.\p"
+	.string "The STONE BADGE enables your POKéMON\n"
+	.string "to use the move CUT outside of battle.\p"
 	.string "Please take this with you, too.$"
 
-RustboroCity_Gym_Text_ExplainRockTomb:
+RustboroCity_Gym_Text_ExplainRockTombGiveOtherItems:
 	.string "That TECHNICAL MACHINE, TM69,\n"
 	.string "contains ROCK TOMB.\p"
 	.string "It not only inflicts damage by dropping\n"
@@ -233,17 +231,16 @@ RustboroCity_Gym_Text_ExplainRockTomb:
 	.string "If you use a TM, it instantly teaches\n"
 	.string "the move to a POKéMON.\p"
 	.string "Remember, a TM can be used only once,\n"
-	.string "so think before you use it.$"
-
-RustboroCity_Gym_Text_IDontThinkIThankedYou:
+	.string "so think before you use it.\p"
 	.string "I don't think I thanked you properly\n"
 	.string "for helping me at the Tunnel.\p"
 	.string "Here, you can have this stone from\n"
 	.string "my collection.$"
 
-RustboroCity_Gym_Text_ExplainFloatStone:
+RustboroCity_Gym_Text_ExplainFloatStoneAndHeartScales:
 	.string "This Float Stone halves the weight\n"
-	.string "of any Pokémon that holds it!$"
+	.string "of any Pokémon that holds it!\p"
+	.string "You may find these useful as well.$"
 
 RustboroCity_Gym_Text_RoxannePostBattle:
 	.string "Since you are so strong, you should\n"

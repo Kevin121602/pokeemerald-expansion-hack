@@ -101,8 +101,7 @@
     F(WEATHER_BALL) \
     F(WILL_O_WISP) \
     F(X_SCISSOR) \
-    F(ZEN_HEADBUTT) \
-    F(HELPING_HAND)
+    F(ZEN_HEADBUTT)
 
 #define FOREACH_HM(F) \
     F(CUT) \

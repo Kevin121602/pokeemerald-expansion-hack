@@ -1909,3 +1909,7 @@ const u8 gText_LevelCaps[] =          _("Level Caps");
 const u8 gText_HeartScales[] =        _("Heart Scales");
 const u8 gText_TrickHouse[] =         _("Trick House");
 const u8 gText_BottleCaps[] =         _("Bottle Caps");
+const u8 gText_FireFang[] =           _("Fire Fang");
+const u8 gText_ThunderFang[] =        _("Thunder Fang");
+const u8 gText_IceFang[] =            _("Ice Fang");
+const u8 gText_PoisonFang[] =         _("Poison Fang");
