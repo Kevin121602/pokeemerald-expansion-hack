@@ -2676,18 +2676,36 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && gMovesInfo[move].effect == EFFECT_PURSUIT)
     {
         //kill with trapping or boosting move
-        RETURN_SCORE_PLUS(REVENGE_KILL);
+        if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, holdEffectPlayer, abilityPlayer, move)){
+            ADJUST_SCORE(BEST_DAMAGE_MOVE);
+            if(Random() % 100 < 50)
+                ADJUST_SCORE(DECENT_EFFECT);
+        } else {
+            RETURN_SCORE_PLUS(REVENGE_KILL);
+        }
     }
     else if ((CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && gMovesInfo[move].priority > 0) 
         && speedBattlerAI < speedBattler)
     {
         //kill with prio move
-        RETURN_SCORE_PLUS(FAST_KILL);
+        if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, holdEffectPlayer, abilityPlayer, move)){
+            ADJUST_SCORE(BEST_DAMAGE_MOVE);
+            if(Random() % 100 < 50)
+                ADJUST_SCORE(DECENT_EFFECT);
+        } else {
+            RETURN_SCORE_PLUS(FAST_KILL);
+        }
     }
     else if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && gMovesInfo[move].effect != EFFECT_EXPLOSION)
     {
         //fast kill and slow kill not differentiated
-        RETURN_SCORE_PLUS(KILL);
+        if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, holdEffectPlayer, abilityPlayer, move)){
+            ADJUST_SCORE(BEST_DAMAGE_MOVE);
+            if(Random() % 100 < 50)
+                ADJUST_SCORE(DECENT_EFFECT);
+        } else {
+            RETURN_SCORE_PLUS(KILL);
+        }
     }
     else if (CanTargetFaintAi(battlerDef, battlerAtk)
             && speedBattlerAI < speedBattler
