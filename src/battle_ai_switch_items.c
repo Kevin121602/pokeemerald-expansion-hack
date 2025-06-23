@@ -2237,7 +2237,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         }
     }
 
-    if((battleMon.species == SPECIES_WOBBUFFET || battleMon.species == SPECIES_WYNAUT) && !fastKilled){
+    if((battleMon.species == SPECIES_WOBBUFFET || battleMon.species == SPECIES_WYNAUT) && !fastKilled && switchAfterMonKOd){
         switchScore = 10;
         return switchScore;
     }
@@ -2273,6 +2273,8 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         else if(takesOverAThirdOnSwitch == TRUE)                return 9;
         else if(takesOverAThirdFromHazards == TRUE && !faster)  return 8;
         else if(takesOverAThirdFromHazards == TRUE)             return 9;
+        else if(battleMon.species == SPECIES_WOBBUFFET || battleMon.species == SPECIES_WYNAUT)
+            return 10;
     }
     if (fastTrapper == TRUE)                return 15;
     else if (slowTrapper == TRUE)           return 14;
@@ -2617,9 +2619,9 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
     //    return gBattlerPartyIndexes[battler] + 1;
 
     //remove, make double switch ai an aggregate of both scores
-    //if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
-    //{
-        /*battlerIn1 = battler;
+    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+    {
+        battlerIn1 = battler;
         if (gAbsentBattlerFlags & gBitTable[GetBattlerAtPosition(BATTLE_PARTNER(GetBattlerPosition(battler)))])
             battlerIn2 = battler;
         else
@@ -2627,16 +2629,13 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
 
         opposingBattler = BATTLE_OPPOSITE(battlerIn1);
         if (gAbsentBattlerFlags & gBitTable[opposingBattler])
-            opposingBattler ^= BIT_FLANK;*/
-    //}
+            opposingBattler ^= BIT_FLANK;
 
-
-    //else
-    //{
+    } else {
         opposingBattler = GetBattlerAtPosition(BATTLE_OPPOSITE(GetBattlerPosition(battler)));
         battlerIn1 = battler;
         battlerIn2 = battler;
-    //}
+    }
 
     GetAIPartyIndexes(battler, &firstId, &lastId);
 
@@ -2665,12 +2664,13 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
                 || i == gBattleStruct->monToSwitchIntoId[battlerIn1]
                 || i == gBattleStruct->monToSwitchIntoId[battlerIn2])
             {
+                invalidMons |= gBitTable[i];
                 continue;
             }
 
             InitializeSwitchinCandidate(&party[i]);
 
-            switchScore = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), switchAfterMonKOd) + GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT), switchAfterMonKOd);
+            switchScore = GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, BATTLE_OPPOSITE(battlerIn1), switchAfterMonKOd) + GetMonSwitchScore(AI_DATA->switchinCandidate.battleMon, battler, BATTLE_OPPOSITE(battlerIn2), switchAfterMonKOd);
             if(switchScore > highestSwitchScore){
                 highestSwitchScore = switchScore;
                 bestMonId = i;

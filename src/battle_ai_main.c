@@ -4463,15 +4463,13 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                     score += ShouldTryToFlinch(battlerAtk, battlerDef, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], move);
                     break;
                 case MOVE_EFFECT_SPD_MINUS_1:
-                    if (!ShouldLowerSpeed(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
-                        break;
-                    if(speedBattlerAI < (speedBattler/1.5))
-                        break;
+                    if (ShouldLowerSpeed(battlerAtk, battlerDef, aiData->abilities[battlerDef]) && (speedBattlerAI >= ((speedBattler*2)/3)))
+                        ADJUST_SCORE(DECENT_EFFECT);
+                    break;
                 case MOVE_EFFECT_SPD_MINUS_2:
-                    if (!ShouldLowerSpeed(battlerAtk, battlerDef, aiData->abilities[battlerDef]))
-                        break;
-                    if(speedBattlerAI < (speedBattler/2))
-                        break;
+                    if (ShouldLowerSpeed(battlerAtk, battlerDef, aiData->abilities[battlerDef]) && (speedBattlerAI >= (speedBattler/2)))
+                        ADJUST_SCORE(DECENT_EFFECT);
+                    break;
                 case MOVE_EFFECT_ATK_MINUS_1:
                     if ((aiData->abilities[battlerDef] != ABILITY_CONTRARY) 
                         && (aiData->abilities[battlerDef] != ABILITY_SHIELD_DUST) && (aiData->abilities[battlerDef] != ABILITY_CLEAR_BODY) 

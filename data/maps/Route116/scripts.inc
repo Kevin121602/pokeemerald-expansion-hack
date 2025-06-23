@@ -1,7 +1,7 @@
 # 1 "data/maps/Route116/scripts.pory"
 
 # 2 "data/maps/Route116/scripts.pory"
-.set LOCALID_BRINEY, 25
+.set LOCALID_BRINEY, 20
 # 3 "data/maps/Route116/scripts.pory"
 .set LOCALID_WANDAS_BF_OUTSIDE, 21
 # 4 "data/maps/Route116/scripts.pory"

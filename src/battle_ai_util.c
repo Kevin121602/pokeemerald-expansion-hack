@@ -1932,7 +1932,10 @@ bool32 ShouldLowerSpeed(u32 battlerAtk, u32 battlerDef, u32 defAbility)
      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CLEAR_AMULET)
         return FALSE;
 
-    return (AI_IsSlower(battlerAtk, battlerDef, AI_THINKING_STRUCT->moveConsidered));
+    if(AI_DATA->speedStats[battlerAtk] >= AI_DATA->speedStats[battlerDef])
+        return FALSE;
+
+    return TRUE;
 }
 
 bool32 ShouldLowerSpAtk(u32 battlerAtk, u32 battlerDef, u32 defAbility)
@@ -3943,7 +3946,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
         bestOverallDmgAfterBoosts = ignoreBoostsDmg;
     }
 
-    if(speedBattlerAI >= speedBattler){
+    if(AISpeedAfterBoosts >= speedBattler){
         aiIsFaster = TRUE;
     } else {
         aiIsFaster = FALSE;

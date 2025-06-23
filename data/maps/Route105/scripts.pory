@@ -1,7 +1,9 @@
-script Route105_EventScript_BridgeWorkers{
+script Route105_EventScript_AquaGrunts{
 	lock
 	faceplayer
-	msgbox(format("We're still working on the bridge to DEWFORD TOWN."))
+	msgbox("We have important business going on\n"
+		   "in Slateport City.\p"
+		   "Get lost!$")
 	release
 	end
 }

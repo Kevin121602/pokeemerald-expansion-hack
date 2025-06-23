@@ -46,7 +46,7 @@ RustboroCity_EventScript_GymGuide::
 # 25 "data/maps/RustboroCity/scripts.pory"
 .set LOCALID_SCIENTIST, 15
 # 26 "data/maps/RustboroCity/scripts.pory"
-.set LOCALID_DEVON_EMPLOYEE_2, 17
+.set LOCALID_DEVON_EMPLOYEE_2, 16
 # 27 "data/maps/RustboroCity/scripts.pory"
 
 # 28 "data/maps/RustboroCity/scripts.pory"
@@ -500,7 +500,7 @@ RustboroCity_EventScript_StolenGoodsScene::
 # 252 "data/maps/RustboroCity/scripts.pory"
 	closemessage
 # 253 "data/maps/RustboroCity/scripts.pory"
-	playbgm MUS_ENCOUNTER_AQUA, FALSE
+	playbgm MUS_HG_ENCOUNTER_ROCKET, FALSE
 # 254 "data/maps/RustboroCity/scripts.pory"
 	addobject LOCALID_GRUNT
 # 255 "data/maps/RustboroCity/scripts.pory"

@@ -8408,7 +8408,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_MAWILE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 3401
-            .heldItem = ITEM_EXPERT_BELT,
+            .heldItem = ITEM_HARD_STONE,
 #line 3405
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 3403
@@ -8477,7 +8477,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_KLAWF,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 3429
-            .heldItem = ITEM_WHITE_HERB,
+            .heldItem = ITEM_SOFT_SAND,
 #line 3433
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 3431
@@ -15520,7 +15520,7 @@ F_TRAINER_FEMALE |
                 MOVE_FAKE_OUT,
                 MOVE_BITE,
                 MOVE_COVET,
-                MOVE_FAKE_TEARS,
+                MOVE_SCARY_FACE,
             },
             },
             {

@@ -5585,7 +5585,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sTrubbishLevelUpLearnset,
         .teachableLearnset = sTrubbishTeachableLearnset,
         .eggMoveLearnset = sTrubbishEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 28, SPECIES_GARBODOR}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 26, SPECIES_GARBODOR}),
     },
 
     [SPECIES_GARBODOR] =
