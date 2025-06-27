@@ -4657,7 +4657,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .levelUpLearnset = sCetoddleLevelUpLearnset,
         .teachableLearnset = sCetoddleTeachableLearnset,
         .eggMoveLearnset = sCetoddleEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 35, SPECIES_CETITAN}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_CETITAN}),
     },
 
     [SPECIES_CETITAN] =

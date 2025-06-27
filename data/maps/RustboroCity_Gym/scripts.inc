@@ -93,7 +93,7 @@ RustboroCity_Gym_EventScript_GiveFloatStone::
 # 47 "data/maps/RustboroCity_Gym/scripts.pory"
 	msgbox RustboroCity_Gym_Text_ExplainFloatStoneAndHeartScales, MSGBOX_DEFAULT
 # 48 "data/maps/RustboroCity_Gym/scripts.pory"
-	giveitem ITEM_HEART_SCALE, 3
+	giveitem ITEM_HEART_SCALE
 # 49 "data/maps/RustboroCity_Gym/scripts.pory"
 	release
 # 50 "data/maps/RustboroCity_Gym/scripts.pory"
@@ -483,7 +483,7 @@ RustboroCity_Gym_Text_ExplainFloatStoneAndHeartScales:
 # 242 "data/maps/RustboroCity_Gym/scripts.pory"
 	.string "of any Pokémon that holds it!\p"
 # 243 "data/maps/RustboroCity_Gym/scripts.pory"
-	.string "You may find these useful as well.$"
+	.string "You may find this useful as well.$"
 # 244 "data/maps/RustboroCity_Gym/scripts.pory"
 
 # 245 "data/maps/RustboroCity_Gym/scripts.pory"

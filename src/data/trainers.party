@@ -381,7 +381,7 @@ Quilladin @ Leftovers
 Level: 16
 Nature: Jolly
 Ability: Overgrow
--Grassy Glide
+-Seed Bomb
 -Brick Break
 -Rock Tomb
 -Synthesis
@@ -797,14 +797,14 @@ Ability: Inner Focus
 -Zen Headbutt
 -Acrobatics
 
-Mightyena @ Black Glasses
+Lokix @ Focus Sash
 Level: 23
-Nature: Adamant
-Ability: Intimidate
--Bite
--Covet
--Poison Fang
--Scary Face
+Nature: Jolly
+Ability: Swarm
+-Thief
+-Pounce
+-Aerial Ace
+-Sleep Talk
 
 Carnivine @ Leftovers
 Level: 21
@@ -815,16 +815,16 @@ Ability: Levitate
 -Knock Off
 -Sleep Powder
 
-Flareon @ Lum Berry
+Flareon @ Charcoal
 Level: 22
 Nature: Jolly
 Ability: Guts
 -Fire Fang
+-Bite
 -Double Kick
 -Trailblaze
--Will O Wisp
 
-Azumarill @ Sitrus Berry
+Azumarill @ Lum Berry
 Level: 21
 Nature: Jolly
 Ability: Huge Power
@@ -835,12 +835,12 @@ Ability: Huge Power
 
 Lucario @ Muscle Band
 Level: 23
-Nature: Jolly
+Nature: Hasty
 Ability: Inner Focus
 -Force Palm
 -Metal Claw
 -Bullet Punch
--Aerial Ace
+-Vacuum Wave
 
 === TRAINER_ROSE_3 ===
 Name: ROSE
@@ -3427,7 +3427,7 @@ Level: 21
 - Protect
 
 Klawf @ Soft Sand
-Nature: Adamant
+Nature: Jolly
 Ability: Anger Shell
 Level: 22
 - Rock Tomb
@@ -3455,7 +3455,7 @@ Level: 20
 
 Spidops @ Fighting Gem
 Nature: Jolly
-Ability: Insomnia
+Ability: Stakeout
 Level: 19
 - Bug Bite
 - Circle Throw
@@ -6236,7 +6236,7 @@ Nature: Jolly
 Ability: Prankster
 Level: 20
 - Fake Out
-- Bite
+- Assurance
 - Covet
 - Scary Face
 
@@ -6257,14 +6257,14 @@ Level: 20
 - Mystical Fire
 - Nuzzle
 
-Farfetch'd @ Leek
+Trumbeak @ Lum Berry
 Nature: Jolly
-Ability: Defiant
+Ability: Skill Link
 Level: 21
-- Dual Wingbeat
-- Slash
-- Leaf Blade
-- Quick Attack
+- Aerial Ace
+- Fury Attack
+- Bullet Seed
+- Roost
 
 === TRAINER_TIMOTHY_2 ===
 Name: TIMOTHY
@@ -6901,13 +6901,13 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Pikipek @ Berry Juice
+Starly @ Berry Juice
 Level: 10
 Nature: Adamant
-Ability: Skill Link
--Pluck
--Fury Attack
--Supersonic
+Ability: Intimidate
+-Aerial Ace
+-Take Down
+-Quick Attack
 
 Hoppip @ Power Herb
 Level: 11
@@ -13828,14 +13828,14 @@ Level: 22
 - Reversal
 - Quick Attack
 
-Sneasel-Hisuian @ Muscle Band
+Mienfoo @ Muscle Band
 Nature: Jolly
 Ability: Inner Focus
 Level: 21
 - Fake Out
-- Low Sweep
-- Poison Tail
-- Double Hit
+- Force Palm
+- Rock Tomb
+- Detect
 
 Sandygast @ Wise Glasses
 Nature: Calm
@@ -15136,7 +15136,7 @@ Level: 21
 - Play Rough
 - Super Fang
 
-Dartrix @ Yache Berry
+Dartrix @ Miracle Seed
 Nature: Jolly
 Ability: Long Reach
 Level: 20

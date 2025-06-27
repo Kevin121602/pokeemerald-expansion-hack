@@ -45,7 +45,7 @@ RustboroCity_Gym_EventScript_GiveFloatStone::
 	giveitem ITEM_FLOAT_STONE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox RustboroCity_Gym_Text_ExplainFloatStoneAndHeartScales, MSGBOX_DEFAULT
-	giveitem ITEM_HEART_SCALE, 3
+	giveitem ITEM_HEART_SCALE
 	release
 	end
 
@@ -240,7 +240,7 @@ RustboroCity_Gym_Text_ExplainRockTombGiveOtherItems:
 RustboroCity_Gym_Text_ExplainFloatStoneAndHeartScales:
 	.string "This Float Stone halves the weight\n"
 	.string "of any Pokémon that holds it!\p"
-	.string "You may find these useful as well.$"
+	.string "You may find this useful as well.$"
 
 RustboroCity_Gym_Text_RoxannePostBattle:
 	.string "Since you are so strong, you should\n"

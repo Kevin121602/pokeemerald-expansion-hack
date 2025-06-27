@@ -60,7 +60,6 @@ script LittlerootTown_BrendansHouse_1F_EventScript_StartingItems{
 	setflag(FLAG_SYS_POKEDEX_GET)
 	setflag(FLAG_SYS_NATIONAL_DEX)
 	setflag(FLAG_ADVENTURE_STARTED)
-	setflag(FLAG_HIDE_TRICK_HOUSE_APPRENTICE)
 	setrespawn(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE)
 	special(EnableNationalPokedex)
 	setvar(VAR_LITTLEROOT_INTRO_STATE, 1)
