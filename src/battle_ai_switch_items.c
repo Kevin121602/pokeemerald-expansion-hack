@@ -1108,17 +1108,17 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
         if (AI_THINKING_STRUCT->score[l] >= 100){
             hasNoGoodMoves = FALSE;
         }
-        if (gBattleMons[battler].moves[l] == MOVE_FAKE_OUT && AI_THINKING_STRUCT->score[l] >= 107){
+        if (gBattleMons[battler].moves[l] == MOVE_FAKE_OUT && AI_THINKING_STRUCT->score[l] >= 105){
             canFakeOut = TRUE;
         }
         if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_TELEPORT && AI_THINKING_STRUCT->score[l] >= 100){
             canTeleport = TRUE;
             teleport = l;
         }
-        if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_DESTINY_BOND && AI_THINKING_STRUCT->score[l] >= 107){
+        if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_DESTINY_BOND && AI_THINKING_STRUCT->score[l] >= 105){
             willDestinyBond = TRUE;
         }
-        if (IsHazardMoveEffect(gMovesInfo[gBattleMons[battler].moves[l]].effect) && AI_THINKING_STRUCT->score[l] >= 107){
+        if (IsHazardMoveEffect(gMovesInfo[gBattleMons[battler].moves[l]].effect) && AI_THINKING_STRUCT->score[l] >= 105){
             willSetHazards = TRUE;
         }
         //if(l != aiHighestDmg && AI_THINKING_STRUCT->score[l] > 100){

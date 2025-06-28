@@ -1168,16 +1168,18 @@ bool32 CanTargetFaintAi(u32 battlerDef, u32 battlerAtk)
     u16 *moves = GetMovesArray(battlerDef);
 
     //edit so it only looks at multi hit moves w/ focus sash
-    if((gBattleMons[battlerAtk].item == ITEM_FOCUS_SASH) && AtMaxHp(battlerAtk)){
-        return FALSE;
-    }
-    else {
+    //if((gBattleMons[battlerAtk].item == ITEM_FOCUS_SASH) && AtMaxHp(battlerAtk)){
+    //    return FALSE;
+    //}
+    //else 
+    {
         for (i = 0; i < MAX_MON_MOVES; i++)
         {
             if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE && !(unusable & gBitTable[i])
                 && AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected >= gBattleMons[battlerAtk].hp)
             {
-                return TRUE;
+                if(!MonHasInTactFocusSashSturdy(battlerAtk, battlerDef, AI_DATA->holdEffects[battlerAtk], AI_DATA->abilities[battlerAtk], moves[i]))
+                    return TRUE;
             }
         }
     }
@@ -2021,6 +2023,102 @@ bool32 CanIndexMoveFaintTarget(u32 battlerAtk, u32 battlerDef, u32 index, u32 nu
 
     if (gBattleMons[battlerDef].hp <= dmg)
         return TRUE;
+    return FALSE;
+}
+
+bool32 IsMoveEncouragedKill(u32 battlerAtk, u32 battlerDef, u32 move){
+    u8 i;
+
+    if(gMovesInfo[move].effect == EFFECT_FELL_STINGER){
+        return TRUE;
+    }
+
+    if(gMovesInfo[move].effect == EFFECT_KNOCK_OFF){
+        return TRUE;
+    }
+
+    if(gMovesInfo[move].additionalEffects[0].moveEffect == MOVE_EFFECT_ALL_STATS_UP){
+        return TRUE;
+    }
+
+    for (i = 0; i < gMovesInfo[move].numAdditionalEffects; i++){
+        if (!MoveEffectIsGuaranteed(battlerAtk, AI_DATA->abilities[battlerAtk], &gMovesInfo[move].additionalEffects[i]))
+            continue;
+
+        if (gMovesInfo[move].additionalEffects[i].self)
+        {
+            if (AI_DATA->abilities[battlerAtk] != ABILITY_CONTRARY)
+            {
+                switch (gMovesInfo[move].additionalEffects[i].moveEffect)
+                {
+                case MOVE_EFFECT_ATK_PLUS_1:
+                case MOVE_EFFECT_DEF_PLUS_1:
+                case MOVE_EFFECT_SPD_PLUS_1:
+                case MOVE_EFFECT_SP_ATK_PLUS_1:
+                case MOVE_EFFECT_SP_DEF_PLUS_1:
+                case MOVE_EFFECT_ATK_PLUS_2:
+                case MOVE_EFFECT_DEF_PLUS_2:
+                case MOVE_EFFECT_SPD_PLUS_2:
+                case MOVE_EFFECT_SP_ATK_PLUS_2:
+                case MOVE_EFFECT_SP_DEF_PLUS_2:
+                case MOVE_EFFECT_ACC_PLUS_1:
+                case MOVE_EFFECT_ACC_PLUS_2:
+                case MOVE_EFFECT_EVS_PLUS_1:
+                case MOVE_EFFECT_EVS_PLUS_2:
+                case MOVE_EFFECT_RAPID_SPIN:
+                        return TRUE;
+                    break;
+                }
+            }
+            else
+            {
+                switch (gMovesInfo[move].additionalEffects[i].moveEffect)
+                {
+                case MOVE_EFFECT_ATK_MINUS_1:
+                case MOVE_EFFECT_DEF_MINUS_1:
+                case MOVE_EFFECT_SPD_MINUS_1:
+                case MOVE_EFFECT_SP_ATK_MINUS_1:
+                case MOVE_EFFECT_SP_DEF_MINUS_1:
+                case MOVE_EFFECT_ATK_MINUS_2:
+                case MOVE_EFFECT_DEF_MINUS_2:
+                case MOVE_EFFECT_SPD_MINUS_2:
+                case MOVE_EFFECT_SP_ATK_MINUS_2:
+                case MOVE_EFFECT_SP_DEF_MINUS_2:
+                case MOVE_EFFECT_ACC_MINUS_1:
+                case MOVE_EFFECT_ACC_MINUS_2:
+                case MOVE_EFFECT_EVS_MINUS_1:
+                case MOVE_EFFECT_EVS_MINUS_2:
+                case MOVE_EFFECT_DEF_SPDEF_DOWN:
+                case MOVE_EFFECT_ATK_DEF_DOWN:
+                case MOVE_EFFECT_V_CREATE:
+                        return TRUE;
+                    break;
+                }
+            }
+        } else {
+            switch (gMovesInfo[move].additionalEffects[i].moveEffect)
+            {
+                case MOVE_EFFECT_SPD_MINUS_1:
+                case MOVE_EFFECT_SPD_MINUS_2:
+                case MOVE_EFFECT_ATK_MINUS_1:
+                case MOVE_EFFECT_DEF_MINUS_1:
+                case MOVE_EFFECT_SP_ATK_MINUS_1:
+                case MOVE_EFFECT_SP_DEF_MINUS_1:
+                case MOVE_EFFECT_ACC_MINUS_1:
+                case MOVE_EFFECT_EVS_MINUS_1:
+                case MOVE_EFFECT_ATK_MINUS_2:
+                case MOVE_EFFECT_DEF_MINUS_2:
+                case MOVE_EFFECT_SP_ATK_MINUS_2:
+                case MOVE_EFFECT_SP_DEF_MINUS_2:
+                case MOVE_EFFECT_ACC_MINUS_2:
+                case MOVE_EFFECT_EVS_MINUS_2:
+                case MOVE_EFFECT_STEALTH_ROCK:
+                case MOVE_EFFECT_SPIKES:
+                        return TRUE;
+                    break;
+            }
+        }
+    }
     return FALSE;
 }
 
@@ -3863,16 +3961,19 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     u32 bestOverallDmg = 0;
     u32 ignoreBoostsDmg = 0;
 
-    u32 speedBattlerAI, speedBattler;
+    u16 speedBattlerAI, speedBattler;
     u32 holdEffectAI = AI_DATA->holdEffects[battlerAtk];
     u32 holdEffectPlayer = AI_DATA->holdEffects[battlerDef];
     u32 abilityAI = AI_DATA->abilities[battlerAtk];
     u32 abilityPlayer = AI_DATA->abilities[battlerDef];
 
-    speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
-    speedBattler   = GetBattlerTotalSpeedStatArgs(battlerDef, abilityPlayer, holdEffectPlayer);
+    //speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
+    //speedBattler   = GetBattlerTotalSpeedStatArgs(battlerDef, abilityPlayer, holdEffectPlayer);
 
-    u32 AISpeedAfterBoosts;
+    speedBattlerAI = AI_DATA->speedStats[battlerAtk];
+    speedBattler = AI_DATA->speedStats[battlerDef];
+
+    u16 AISpeedAfterBoosts;
 
     for(i = 0; i < MAX_MON_MOVES; i++){
         if(gMovesInfo[moves[i]].category == DAMAGE_CATEGORY_STATUS)
@@ -4236,6 +4337,92 @@ void IncreaseFrostbiteScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score
           || HasMoveEffectANDArg(BATTLE_PARTNER(battlerAtk), EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_FROSTBITE))
             ADJUST_SCORE_PTR(WEAK_EFFECT);
     }
+}
+
+u32 IncreaseStatLoweringScore(u32 battlerAtk, u32 battlerDef, u32 statId, u32 stages){
+
+    u32 tempScore = NO_INCREASE;
+    u16 *moves = GetMovesArray(battlerDef);
+    u32 bestDmg = GetBestDmgFromBattler(battlerDef, battlerAtk);
+    u32 bestDmgMove = GetBestDmgMoveFromBattler(battlerDef, battlerAtk);
+
+    u32 playerSpeedAfterDrop = GetSpeedStatAfterBoost(battlerDef, AI_DATA->speedStats[battlerDef], stages, FALSE);
+
+    if (AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CLEAR_AMULET
+         || AI_DATA->abilities[battlerDef] == ABILITY_CLEAR_BODY
+         || AI_DATA->abilities[battlerDef] == ABILITY_WHITE_SMOKE
+         || AI_DATA->abilities[battlerDef] == ABILITY_FULL_METAL_BODY)
+            return NO_INCREASE;
+
+    if(statId == STAT_CHANGE_ATK && AI_DATA->abilities[battlerDef] == ABILITY_HYPER_CUTTER)
+        return NO_INCREASE;
+
+    if(statId == STAT_CHANGE_DEF && AI_DATA->abilities[battlerDef] == ABILITY_BIG_PECKS)
+        return NO_INCREASE;
+
+    if(statId == STAT_CHANGE_ACC && (AI_DATA->abilities[battlerDef] == ABILITY_ILLUMINATE || AI_DATA->abilities[battlerDef] == ABILITY_KEEN_EYE || AI_DATA->abilities[battlerDef] == ABILITY_NO_GUARD))
+        return NO_INCREASE;
+
+    switch (statId)
+    {
+    case STAT_CHANGE_ATK:
+        if (gBattleMons[battlerDef].statStages[STAT_ATK] <= MIN_STAT_STAGE)
+            return NO_INCREASE;
+        if(bestDmg*3 < gBattleMons[battlerAtk].hp)
+            return NO_INCREASE;
+        if(gMovesInfo[bestDmgMove].category == DAMAGE_CATEGORY_SPECIAL)
+            return NO_INCREASE;
+        tempScore += WEAK_EFFECT;
+        if(stages >= 2 && Random() % 100 < 50)
+            tempScore += WEAK_EFFECT;
+        break;
+    case STAT_CHANGE_DEF:
+        //score of +1, 50% score of +2 if lowering stages by 2 or more
+        if (gBattleMons[battlerDef].statStages[STAT_DEF] <= MIN_STAT_STAGE)
+            return NO_INCREASE;
+        tempScore += WEAK_EFFECT;
+        if(stages >= 2 && Random() % 100 < 50)
+            tempScore += WEAK_EFFECT;
+        break;
+    case STAT_CHANGE_SPEED:
+        if (gBattleMons[battlerDef].statStages[STAT_SPEED] <= MIN_STAT_STAGE)
+            return NO_INCREASE;
+        if(AI_DATA->speedStats[battlerAtk] > AI_DATA->speedStats[battlerDef])
+            return NO_INCREASE;
+        if(AI_DATA->speedStats[battlerAtk] < playerSpeedAfterDrop)
+            return NO_INCREASE;
+        tempScore += DECENT_EFFECT;
+        tempScore += WEAK_EFFECT;
+        break;
+    case STAT_CHANGE_SPATK:
+        if (gBattleMons[battlerDef].statStages[STAT_SPATK] <= MIN_STAT_STAGE)
+            return NO_INCREASE;
+        if(bestDmg*3 < gBattleMons[battlerAtk].hp)
+            return NO_INCREASE;
+        if(gMovesInfo[bestDmgMove].category == DAMAGE_CATEGORY_PHYSICAL)
+            return NO_INCREASE;
+        tempScore += WEAK_EFFECT;
+        if(stages >= 2 && Random() % 100 < 50)
+            tempScore += WEAK_EFFECT;
+        break;
+    case STAT_CHANGE_SPDEF:
+        //score of +1, 50% score of +2 if lowering stages by 2 or more
+        if (gBattleMons[battlerDef].statStages[STAT_SPDEF] <= MIN_STAT_STAGE)
+            return NO_INCREASE;
+        tempScore += WEAK_EFFECT;
+        if(stages >= 2 && Random() % 100 < 50)
+            tempScore += WEAK_EFFECT;
+        break;
+    case STAT_CHANGE_ACC:
+        if (gBattleMons[battlerDef].statStages[STAT_ACC] <= MIN_STAT_STAGE)
+            return NO_INCREASE;
+        tempScore += WEAK_EFFECT;
+        if(stages >= 2 && Random() % 100 < 50)
+            tempScore += WEAK_EFFECT;
+        break;
+    }
+
+    return tempScore;
 }
 
 bool32 AI_MoveMakesContact(u32 ability, u32 holdEffect, u32 move)

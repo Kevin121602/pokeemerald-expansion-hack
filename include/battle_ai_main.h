@@ -49,20 +49,22 @@ typedef s32 (*AiScoreFunc)(u32, u32, u32, s32);
 #define RANDOM_TARGETING                3
 
 #define BEST_DAMAGE_MOVE         1  // Move with the most amount of hits with the best accuracy/effect
-#define POWERFUL_STATUS_MOVE     16 // Moves with this score will be chosen over a move that faints target
+#define POWERFUL_STATUS_MOVE     12 // Moves with this score will be chosen over a move that faints target
 #define NO_DAMAGE_OR_FAILS      -20 // Move fails or does no damage
 
 // Scores given in AI_CalcMoveEffectScore
 #define NO_INCREASE      0
 #define WEAK_EFFECT      1 //used for incrementing encourage status 50% of the time
 #define DECENT_EFFECT    2 //used for incrementing highest dmg 50% of the time and baseline for status moves
-#define BEST_EFFECT      7 //status moves guaranteed over highest damage but no kill
+#define BEST_EFFECT      5 //status moves guaranteed over highest damage but no kill
 
 // AI_TryToFaint
-#define KILL             8 // AI faints target
-#define FAST_KILL        10 //AI has priority kill on target
-#define REVENGE_KILL     11 //Kill With Pursuit, Fell Stinger, or Power Herb Meteor Beam
-#define LAST_CHANCE      12 // AI faints to target. It should try and do damage with a priority move
+#define DISCOURAGED_KILL 6 // Hyper Beam
+#define KILL             7 // AI faints target
+#define ENCOURAGED_KILL  8 // Certain encouraged moves like speed drop/omniboost etc get an 80% 1 point increase
+#define FAST_KILL        9 //AI has priority kill on target
+#define REVENGE_KILL     10 //Kill With Pursuit
+#define LAST_CHANCE      11 // AI faints to target. It should try and do damage with a priority move
 
 // AI_Risky
 #define STRONG_RISKY_EFFECT     3
