@@ -51,7 +51,6 @@ RustboroCity_DevonCorp_3F_EventScript_MeetPresident::
 	waitmovement 0
 	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor, MSGBOX_DEFAULT
 	giveitem ITEM_LETTER
-	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis, MSGBOX_DEFAULT
 	setflag FLAG_HIDE_RUSTBORO_CITY_POKEMON_SCHOOL_SCOTT
 	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp, MSGBOX_DEFAULT
 	closemessage
@@ -207,8 +206,8 @@ RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor:
 	.string "DEWFORD TOWN?\p"
 	.string "I was hoping that you'd deliver a\n"
 	.string "LETTER to STEVEN in DEWFORD.\p"
-	.string "However, the bridge to DEWFORD is still\n"
-	.string "under construction.\p"
+	.string "However, there are more Team Aqua thugs\n"
+	.string "blocking the bridge to Dewford Town.\p"
 	.string "Maybe it would be better to head north\n"
 	.string "after getting the STONE BADGE.$"
 

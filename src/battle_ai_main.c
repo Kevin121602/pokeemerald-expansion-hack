@@ -3513,6 +3513,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_PARALYZE:
         IncreaseParalyzeScore(battlerAtk, battlerDef, move, &score);
         break;
+    case MOVE_EFFECT_PARALYSIS:
+        IncreaseParalyzeScore(battlerAtk, battlerDef, move, &score);
+        break;
     case EFFECT_SUBSTITUTE:
         ADJUST_SCORE(DECENT_EFFECT);
         if (gBattleMons[battlerDef].status1 & (STATUS1_BURN | STATUS1_PSN_ANY | STATUS1_FROSTBITE | STATUS1_SLEEP))

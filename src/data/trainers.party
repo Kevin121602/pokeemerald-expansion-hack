@@ -3407,15 +3407,14 @@ Level: 21
 - Rock Tomb
 - Sing
 
-Ferroseed @ Occa Berry
-Nature: Sassy
-Ability: Iron Barbs
-IVs: 0 Spe
+Klawf @ Soft Sand
+Nature: Jolly
+Ability: Anger Shell
 Level: 20
-- Gyro Ball
-- Seed Bomb
-- Toxic
-- Leech Seed
+- Rock Tomb
+- Bulldoze
+- Body Slam
+- Sleep Talk
 
 Sableye @ Leftovers
 Nature: Sassy
@@ -3426,14 +3425,15 @@ Level: 21
 - Will O Wisp
 - Protect
 
-Klawf @ Soft Sand
-Nature: Jolly
-Ability: Anger Shell
+Ferroseed @ Occa Berry
+Nature: Sassy
+Ability: Iron Barbs
+IVs: 0 Spe
 Level: 22
-- Rock Tomb
-- Bulldoze
-- Body Slam
-- Sleep Talk
+- Gyro Ball
+- Seed Bomb
+- Toxic
+- Leech Seed
 
 === TRAINER_NOB_1 ===
 Name: Nob
@@ -13822,7 +13822,7 @@ AI: Check Bad Move / Try To Faint / Check Viability
 Squawkabilly @ Sharp Beak
 Nature: Jolly
 Ability: Intimidate
-Level: 22
+Level: 21
 - Facade
 - Aerial Ace
 - Reversal
@@ -13831,20 +13831,11 @@ Level: 22
 Mienfoo @ Muscle Band
 Nature: Jolly
 Ability: Inner Focus
-Level: 21
+Level: 22
 - Fake Out
 - Force Palm
 - Rock Tomb
 - Detect
-
-Sandygast @ Wise Glasses
-Nature: Calm
-Ability: Water Compaction
-Level: 22
-- Scorching Sands
-- Hex
-- Ancient Power
-- Giga Drain
 
 Vivillon @ Leftovers
 Nature: Timid
@@ -13854,6 +13845,15 @@ Level: 21
 - Air Cutter
 - Electroweb
 - Protect
+
+Sandygast @ Wise Glasses
+Nature: Calm
+Ability: Water Compaction
+Level: 22
+- Scorching Sands
+- Hex
+- Ancient Power
+- Giga Drain
 
 === TRAINER_JOHN_AND_JAY_2 ===
 Name: JOHN & JAY

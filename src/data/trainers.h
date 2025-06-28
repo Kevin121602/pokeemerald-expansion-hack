@@ -8428,44 +8428,44 @@ F_TRAINER_FEMALE |
             },
             {
 #line 3410
-            .species = SPECIES_FERROSEED,
+            .species = SPECIES_KLAWF,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 3410
-            .heldItem = ITEM_OCCA_BERRY,
-#line 3413
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 0, 31, 31),
-#line 3412
-            .ability = ABILITY_IRON_BARBS,
+            .heldItem = ITEM_SOFT_SAND,
 #line 3414
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 3412
+            .ability = ABILITY_ANGER_SHELL,
+#line 3413
             .lvl = 20,
 #line 3411
-            .nature = NATURE_SASSY,
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3415
-                MOVE_GYRO_BALL,
-                MOVE_SEED_BOMB,
-                MOVE_TOXIC,
-                MOVE_LEECH_SEED,
+#line 3414
+                MOVE_ROCK_TOMB,
+                MOVE_BULLDOZE,
+                MOVE_BODY_SLAM,
+                MOVE_SLEEP_TALK,
             },
             },
             {
-#line 3420
+#line 3419
             .species = SPECIES_SABLEYE,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3420
+#line 3419
             .heldItem = ITEM_LEFTOVERS,
-#line 3424
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 3422
-            .ability = ABILITY_PRANKSTER,
 #line 3423
-            .lvl = 21,
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 3421
+            .ability = ABILITY_PRANKSTER,
+#line 3422
+            .lvl = 21,
+#line 3420
             .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 3424
+#line 3423
                 MOVE_BRICK_BREAK,
                 MOVE_HEX,
                 MOVE_WILL_O_WISP,
@@ -8473,26 +8473,26 @@ F_TRAINER_FEMALE |
             },
             },
             {
-#line 3429
-            .species = SPECIES_KLAWF,
+#line 3428
+            .species = SPECIES_FERROSEED,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 3429
-            .heldItem = ITEM_SOFT_SAND,
-#line 3433
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 3428
+            .heldItem = ITEM_OCCA_BERRY,
 #line 3431
-            .ability = ABILITY_ANGER_SHELL,
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 0, 31, 31),
+#line 3430
+            .ability = ABILITY_IRON_BARBS,
 #line 3432
             .lvl = 22,
-#line 3430
-            .nature = NATURE_JOLLY,
+#line 3429
+            .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 3433
-                MOVE_ROCK_TOMB,
-                MOVE_BULLDOZE,
-                MOVE_BODY_SLAM,
-                MOVE_SLEEP_TALK,
+                MOVE_GYRO_BALL,
+                MOVE_SEED_BOMB,
+                MOVE_TOXIC,
+                MOVE_LEECH_SEED,
             },
             },
         },
@@ -34757,7 +34757,7 @@ F_TRAINER_FEMALE |
 #line 13824
             .ability = ABILITY_INTIMIDATE,
 #line 13825
-            .lvl = 22,
+            .lvl = 21,
 #line 13823
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -34780,7 +34780,7 @@ F_TRAINER_FEMALE |
 #line 13833
             .ability = ABILITY_INNER_FOCUS,
 #line 13834
-            .lvl = 21,
+            .lvl = 22,
 #line 13832
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -34794,48 +34794,48 @@ F_TRAINER_FEMALE |
             },
             {
 #line 13840
-            .species = SPECIES_SANDYGAST,
+            .species = SPECIES_VIVILLON,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 13840
-            .heldItem = ITEM_WISE_GLASSES,
+            .heldItem = ITEM_LEFTOVERS,
 #line 13844
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 13842
-            .ability = ABILITY_WATER_COMPACTION,
-#line 13843
-            .lvl = 22,
-#line 13841
-            .nature = NATURE_CALM,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 13844
-                MOVE_SCORCHING_SANDS,
-                MOVE_HEX,
-                MOVE_ANCIENT_POWER,
-                MOVE_GIGA_DRAIN,
-            },
-            },
-            {
-#line 13849
-            .species = SPECIES_VIVILLON,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 13849
-            .heldItem = ITEM_LEFTOVERS,
-#line 13853
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 13851
             .ability = ABILITY_FRIEND_GUARD,
-#line 13852
+#line 13843
             .lvl = 21,
-#line 13850
+#line 13841
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 13853
+#line 13844
                 MOVE_STRUGGLE_BUG,
                 MOVE_AIR_CUTTER,
                 MOVE_ELECTROWEB,
                 MOVE_PROTECT,
+            },
+            },
+            {
+#line 13849
+            .species = SPECIES_SANDYGAST,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 13849
+            .heldItem = ITEM_WISE_GLASSES,
+#line 13853
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 13851
+            .ability = ABILITY_WATER_COMPACTION,
+#line 13852
+            .lvl = 22,
+#line 13850
+            .nature = NATURE_CALM,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 13853
+                MOVE_SCORCHING_SANDS,
+                MOVE_HEX,
+                MOVE_ANCIENT_POWER,
+                MOVE_GIGA_DRAIN,
             },
             },
         },
