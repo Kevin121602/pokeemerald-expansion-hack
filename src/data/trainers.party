@@ -12676,32 +12676,29 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
-Level: 22
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+Emolga @ Leftovers
+Nature: Naive
+Ability: Static
+Level: 21
+- Dual Wingbeat
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
-Level: 22
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+Ninjask @ Power Herb
+Nature: Adamant
+Ability: Speed Boost
+Level: 21
+- Dual Wingbeat
+- Leech Life
+- Dig
+- Hone Claws
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
-Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+Combusken @ Charcoal
+Nature: Naive
+Ability: Speed Boost
+Level: 21
+- Incinerate
+- Low Sweep
+- Thunder Punch
+- Seismic Toss
 
 === TRAINER_LUCAS_1 ===
 Name: Lucas

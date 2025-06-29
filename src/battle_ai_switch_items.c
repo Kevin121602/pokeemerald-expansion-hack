@@ -1397,7 +1397,7 @@ u32 GetMonSwitchScoreOld(struct Pokemon *mon, u32 battler, u32 opposingBattler)
     s32 playerHoldEffect = ItemId_GetHoldEffect(gBattleMons[opposingBattler].item);
     s32 AI_Ability = AI_DATA->switchinCandidate.battleMon.ability;
     s32 AI_HoldEffect = ItemId_GetHoldEffect(AI_DATA->switchinCandidate.battleMon.item);
-    u32 playerSpeed = GetSwitchInSpeedStatArgs(gBattleMons[opposingBattler], opposingBattler, playerAbility, playerHoldEffect);
+    u32 playerSpeed = GetBattlerTotalSpeedStatArgs(opposingBattler, playerAbility, playerHoldEffect);
     u32 AISpeed = GetSwitchInSpeedStatArgs(AI_DATA->switchinCandidate.battleMon, battler, AI_Ability, AI_HoldEffect);
     u32 aiMove, playerMove = 0;
     u32 hitsToKOAI = 0;
@@ -2057,7 +2057,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
     s32 playerHoldEffect = ItemId_GetHoldEffect(gBattleMons[opposingBattler].item);
     s32 aiMonAbility = battleMon.ability;
     s32 aiMonHoldEffect = ItemId_GetHoldEffect(battleMon.item);
-    u32 playerMonSpeed = GetSwitchInSpeedStatArgs(gBattleMons[opposingBattler], opposingBattler, playerAbility, playerHoldEffect);
+    u32 playerMonSpeed = GetBattlerTotalSpeedStatArgs(opposingBattler, playerAbility, playerHoldEffect);
     u32 aiMonSpeed = GetSwitchInSpeedStatArgs(battleMon, battler, aiMonAbility, aiMonHoldEffect);
     s32 aiMovePriority = 0, playerMovePriority = 0, maxDamageDealt = 0, damageDealt = 0;
     u8 i = 0, j = 0;
