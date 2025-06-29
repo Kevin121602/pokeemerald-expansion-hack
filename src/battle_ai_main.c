@@ -2634,7 +2634,7 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         //kill with trapping or boosting move
         if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, holdEffectPlayer, abilityPlayer, move)){
             ADJUST_SCORE(BEST_DAMAGE_MOVE);
-            if(Random() % 100 < 30)
+            if(Random() % 100 < 40)
                 ADJUST_SCORE(DECENT_EFFECT);
         } else {
             RETURN_SCORE_PLUS(REVENGE_KILL);
@@ -2644,7 +2644,7 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         //kill with trapping or boosting move
         if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, holdEffectPlayer, abilityPlayer, move)){
             ADJUST_SCORE(BEST_DAMAGE_MOVE);
-            if(Random() % 100 < 30)
+            if(Random() % 100 < 40)
                 ADJUST_SCORE(DECENT_EFFECT);
         } else {
             RETURN_SCORE_PLUS(DISCOURAGED_KILL);
@@ -2654,7 +2654,7 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         //kill with trapping or boosting move
         if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, holdEffectPlayer, abilityPlayer, move)){
             ADJUST_SCORE(BEST_DAMAGE_MOVE);
-            if(Random() % 100 < 30)
+            if(Random() % 100 < 40)
                 ADJUST_SCORE(DECENT_EFFECT);
         } else {
             RETURN_SCORE_PLUS(ENCOURAGED_KILL);
@@ -2666,7 +2666,7 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         //kill with prio move
         if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, holdEffectPlayer, abilityPlayer, move)){
             ADJUST_SCORE(BEST_DAMAGE_MOVE);
-            if(Random() % 100 < 30)
+            if(Random() % 100 < 40)
                 ADJUST_SCORE(DECENT_EFFECT);
         } else {
             RETURN_SCORE_PLUS(FAST_KILL);
@@ -2677,7 +2677,7 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         //fast kill and slow kill not differentiated
         if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, holdEffectPlayer, abilityPlayer, move)){
             ADJUST_SCORE(BEST_DAMAGE_MOVE);
-            if(Random() % 100 < 30)
+            if(Random() % 100 < 40)
                 ADJUST_SCORE(DECENT_EFFECT);
         } else {
             RETURN_SCORE_PLUS(KILL);
@@ -4577,7 +4577,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             if (moveIndex != MAX_MON_MOVES && gMovesInfo[move].effect != EFFECT_EXPLOSION && aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected >= GetBestDmgFromBattler(battlerAtk, battlerDef) && !CanAIFaintTarget(battlerAtk, battlerDef, 0)){
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
                 isMoveHighestDmg = TRUE;
-                if(Random() % 100 < 30)
+                if(Random() % 100 < 40)
                     ADJUST_SCORE(DECENT_EFFECT);
             }
         }
