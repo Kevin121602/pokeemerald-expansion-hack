@@ -3956,16 +3956,35 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     u32 bestSpecialMove = MAX_MON_MOVES;
     u32 bestOverallMove = MAX_MON_MOVES;
 
+    u32 bestPhysPrioMove = MAX_MON_MOVES;
+    u32 bestSpecialPrioMove = MAX_MON_MOVES;
+
+    u32 bestPhysMultiHitMove = MAX_MON_MOVES;
+    u32 bestSpecialMultiHitMove = MAX_MON_MOVES;
+
     u32 bestPhysicalDmg = 0;
     u32 bestSpecialDmg = 0;
     u32 bestOverallDmg = 0;
     u32 ignoreBoostsDmg = 0;
+
+    u32 bestPhysPrioDmg = 0;
+    u32 bestSpecialPrioDmg = 0;
+    u32 bestPrioDmg = 0;
+
+    u32 bestPhysMultiHitDmg = 0;
+    u32 bestSpecialMultiHitDmg = 0;
+    u32 bestMultiHitDmg = 0;
 
     u16 speedBattlerAI, speedBattler;
     u32 holdEffectAI = AI_DATA->holdEffects[battlerAtk];
     u32 holdEffectPlayer = AI_DATA->holdEffects[battlerDef];
     u32 abilityAI = AI_DATA->abilities[battlerAtk];
     u32 abilityPlayer = AI_DATA->abilities[battlerDef];
+
+    bool8 intactFocusSashOrSturdyAI = FALSE;
+    bool8 intactFocusSashOrSturdyPlayer = FALSE;
+
+    u32 bestAIDmgOnPlayer = GetBestDmgFromBattler(battlerAtk, battlerDef);
 
     //speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
     //speedBattler   = GetBattlerTotalSpeedStatArgs(battlerDef, abilityPlayer, holdEffectPlayer);
@@ -3987,11 +4006,27 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
             if((AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > ignoreBoostsDmg) && gMovesInfo[moves[i]].ignoresTargetDefenseEvasionStages){
                 ignoreBoostsDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
             }
+            if(AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > bestPhysPrioDmg && GetMovePriority(battlerDef, moves[i]) > 0){
+                bestPhysPrioDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
+                bestPhysPrioMove = i;
+            }
+            if(AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > bestPhysMultiHitDmg && (gMovesInfo[moves[i]].effect == EFFECT_MULTI_HIT || gMovesInfo[moves[i]].strikeCount > 1)){
+                bestPhysMultiHitDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
+                bestPhysMultiHitMove = i;
+            }
         } else {
             if(AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > bestSpecialDmg){
                 bestSpecialDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
                 bestSpecialMove = i;
             } 
+            if(AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > bestSpecialPrioDmg && GetMovePriority(battlerDef, moves[i]) > 0){
+                bestSpecialPrioDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
+                bestSpecialPrioMove = i;
+            }
+            if(AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > bestSpecialMultiHitDmg && (gMovesInfo[moves[i]].effect == EFFECT_MULTI_HIT || gMovesInfo[moves[i]].strikeCount > 1)){
+                bestSpecialMultiHitDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
+                bestSpecialMultiHitMove = i;
+            }
         }
     }
 
@@ -4002,11 +4037,35 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
         bestSpecialDmg = AI_CalcDamage(moves[bestSpecialMove], battlerDef, battlerAtk, &effectiveness, TRUE, AI_GetWeather(AI_DATA), DMG_ROLL_DEFAULT).expected;
     }
 
+    if(bestPhysPrioMove != MAX_MON_MOVES){
+        bestPhysPrioDmg = AI_CalcDamage(moves[bestPhysPrioMove], battlerDef, battlerAtk, &effectiveness, TRUE, AI_GetWeather(AI_DATA), DMG_ROLL_DEFAULT).expected;
+    }
+    if(bestSpecialPrioMove != MAX_MON_MOVES){
+        bestSpecialPrioDmg = AI_CalcDamage(moves[bestSpecialPrioMove], battlerDef, battlerAtk, &effectiveness, TRUE, AI_GetWeather(AI_DATA), DMG_ROLL_DEFAULT).expected;
+    }
+
+    if(bestPhysMultiHitMove != MAX_MON_MOVES){
+        bestPhysMultiHitDmg = AI_CalcDamage(moves[bestPhysMultiHitMove], battlerDef, battlerAtk, &effectiveness, TRUE, AI_GetWeather(AI_DATA), DMG_ROLL_DEFAULT).expected;
+    }
+    if(bestSpecialMultiHitMove != MAX_MON_MOVES){
+        bestSpecialMultiHitDmg = AI_CalcDamage(moves[bestSpecialMultiHitMove], battlerDef, battlerAtk, &effectiveness, TRUE, AI_GetWeather(AI_DATA), DMG_ROLL_DEFAULT).expected;
+    }
+
     bestOverallDmg = (bestPhysicalDmg > bestSpecialDmg) ? bestPhysicalDmg : bestSpecialDmg;
+    bestPrioDmg = (bestPhysPrioDmg > bestSpecialPrioDmg) ? bestPhysPrioDmg : bestSpecialPrioDmg;
+    bestMultiHitDmg = (bestPhysMultiHitDmg > bestSpecialMultiHitDmg) ? bestPhysMultiHitDmg : bestSpecialMultiHitDmg;
 
     u32 bestPhysicalDmgAfterBoosts = bestPhysicalDmg;
     u32 bestSpecialDmgAfterBoosts = bestSpecialDmg;
     u32 bestOverallDmgAfterBoosts = bestOverallDmg;
+
+    u32 bestPhysPrioDmgAfterBoosts = bestPhysPrioDmg;
+    u32 bestSpecialPrioDmgAfterBoosts = bestSpecialPrioDmg;
+    u32 bestPrioDmgAfterBoosts = bestPrioDmg;
+
+    u32 bestPhysMultiHitDmgAfterBoosts = bestPhysMultiHitDmg;
+    u32 bestSpecialMultiHitDmgAfterBoosts = bestSpecialMultiHitDmg;
+    u32 bestMultiHitDmgAfterBoosts = bestMultiHitDmg;
 
     //u32 hitsToKoShellSmash = GetNoOfHitsToKO(AI_DATA->simulatedDmg[battlerDef][battlerAtk][bestMove].expected, (gBattleMons[battlerAtk].hp/1.5));
 
@@ -4023,26 +4082,42 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
 
     if(statId == STAT_CHANGE_DEF || statId == STAT_CHANGE_ATK_DEF || statId == STAT_CHANGE_DEF_SPDEF || statId == STAT_CHANGE_ATK_DEF_SPEED || statId == STAT_CHANGE_CURSE){
         bestPhysicalDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestPhysicalDmg, STAT_DEF, 1, TRUE);
+        bestPhysPrioDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestPhysPrioDmg, STAT_DEF, 1, TRUE);
+        bestPhysMultiHitDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestPhysMultiHitDmg, STAT_DEF, 1, TRUE);
     }
 
     if(statId == STAT_CHANGE_DEF_2){
         bestPhysicalDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestPhysicalDmg, STAT_DEF, 2, TRUE);
+        bestPhysMultiHitDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestPhysMultiHitDmg, STAT_DEF, 2, TRUE);
     }
 
     if(statId == STAT_CHANGE_SPDEF || statId == STAT_CHANGE_SPATK_SPDEF || statId == STAT_CHANGE_DEF_SPDEF || statId == STAT_CHANGE_SPATK_SPDEF_SPEED){
         bestSpecialDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestSpecialDmg, STAT_SPDEF, 1, TRUE);
+        bestSpecialPrioDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestSpecialPrioDmg, STAT_SPDEF, 1, TRUE);
+        bestSpecialMultiHitDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestSpecialMultiHitDmg, STAT_SPDEF, 1, TRUE);
     }
 
     if(statId == STAT_CHANGE_DEF_2){
         bestSpecialDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestSpecialDmg, STAT_SPDEF, 2, TRUE);
+        bestSpecialPrioDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestSpecialPrioDmg, STAT_SPDEF, 2, TRUE);
+        bestSpecialMultiHitDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestSpecialMultiHitDmg, STAT_SPDEF, 2, TRUE);
     }
 
     if(statId == STAT_CHANGE_SHELL_SMASH && holdEffectAI != HOLD_EFFECT_RESTORE_STATS){
         bestPhysicalDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestPhysicalDmg, STAT_DEF, 1, FALSE);
         bestSpecialDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestSpecialDmg, STAT_SPDEF, 1, FALSE);
+
+        bestPhysPrioDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestPhysPrioDmg, STAT_DEF, 1, FALSE);
+        bestSpecialPrioDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestSpecialPrioDmg, STAT_SPDEF, 1, FALSE);
+
+        bestPhysMultiHitDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestPhysMultiHitDmg, STAT_DEF, 1, FALSE);
+        bestSpecialMultiHitDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestSpecialMultiHitDmg, STAT_SPDEF, 1, FALSE);
     }
 
     bestOverallDmgAfterBoosts = (bestPhysicalDmgAfterBoosts > bestSpecialDmgAfterBoosts) ? bestPhysicalDmgAfterBoosts : bestSpecialDmgAfterBoosts;
+    bestPrioDmgAfterBoosts = (bestPhysPrioDmgAfterBoosts > bestSpecialPrioDmgAfterBoosts) ? bestPhysPrioDmgAfterBoosts : bestSpecialPrioDmgAfterBoosts;
+    bestMultiHitDmgAfterBoosts = (bestPhysMultiHitDmgAfterBoosts > bestSpecialMultiHitDmgAfterBoosts) ? bestPhysMultiHitDmgAfterBoosts : bestSpecialMultiHitDmgAfterBoosts;
+
     if(ignoreBoostsDmg > bestOverallDmgAfterBoosts){
         bestOverallDmgAfterBoosts = ignoreBoostsDmg;
     }
@@ -4053,12 +4128,30 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
         aiIsFaster = FALSE;
     }
 
+    if(AtMaxHp(battlerAtk) && abilityPlayer != ABILITY_PARENTAL_BOND && holdEffectAI == HOLD_EFFECT_FOCUS_SASH){
+        intactFocusSashOrSturdyAI = TRUE;
+    } else if (AtMaxHp(battlerAtk) && abilityPlayer != ABILITY_PARENTAL_BOND && !IsMoldBreakerTypeAbility(battlerDef, gBattleMons[battlerDef].ability) && abilityAI == ABILITY_STURDY){
+        intactFocusSashOrSturdyAI = TRUE;
+    }
+
+    if(AtMaxHp(battlerDef) && abilityAI != ABILITY_PARENTAL_BOND && holdEffectPlayer == HOLD_EFFECT_FOCUS_SASH){
+        intactFocusSashOrSturdyPlayer = TRUE;
+    } else if (AtMaxHp(battlerAtk) && abilityAI != ABILITY_PARENTAL_BOND && !IsMoldBreakerTypeAbility(battlerAtk, gBattleMons[battlerAtk].ability) && abilityPlayer == ABILITY_STURDY){
+        intactFocusSashOrSturdyPlayer = TRUE;
+    }
+
     if(speedBattler > speedBattlerAI && CanTargetFaintAi(battlerDef, battlerAtk)){
         shouldSetUp = FALSE;
-    } else if(aiIsFaster && (bestOverallDmgAfterBoosts < gBattleMons[battlerAtk].hp)){
+    } else if(aiIsFaster && (bestMultiHitDmgAfterBoosts < gBattleMons[battlerAtk].hp) && intactFocusSashOrSturdyAI){
+        shouldSetUp = TRUE;
+    } else if(aiIsFaster && ((bestOverallDmgAfterBoosts + bestPrioDmgAfterBoosts) < gBattleMons[battlerAtk].hp)){
         shouldSetUp = TRUE;
     } else if((bestOverallDmg + bestOverallDmgAfterBoosts) < gBattleMons[battlerAtk].hp){
         shouldSetUp = TRUE;
+    }
+
+    if(intactFocusSashOrSturdyPlayer && bestAIDmgOnPlayer*2 >= gBattleMons[battlerDef].hp){
+        shouldSetUp = FALSE;
     }
 
     if (considerContrary && AI_DATA->abilities[battlerAtk] == ABILITY_CONTRARY)

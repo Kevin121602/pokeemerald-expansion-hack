@@ -2807,17 +2807,40 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sand Attack
 
 === TRAINER_STEVE_1 ===
-Name: STEVE
+Name: Steve
 Class: Pokemaniac
 Pic: Pokemaniac
 Gender: Male
 Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Aron
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 22
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
 === TRAINER_THALIA_1 ===
 Name: THALIA
@@ -3858,21 +3881,49 @@ Level: 23
 IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
 
 === TRAINER_BERNIE_1 ===
-Name: BERNIE
+Name: Bernie
 Class: Kindler
 Pic: Kindler
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Slugma
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
-Wingull
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 22
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
 === TRAINER_BERNIE_2 ===
 Name: BERNIE
@@ -4036,21 +4087,40 @@ Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_SHANE ===
-Name: SHANE
+Name: Shane
 Class: Camper
 Pic: Camper
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Sandshrew
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
-Nuzleaf
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 22
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
 === TRAINER_JUSTIN ===
 Name: JUSTIN
@@ -7059,25 +7129,40 @@ Ability: Torrent
 -Sing
 
 === TRAINER_CLAUDE ===
-Name: CLAUDE
+Name: Claude
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Magikarp
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
-Goldeen
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
-Barboach
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
 === TRAINER_ELLIOT_1 ===
 Name: ELLIOT
@@ -7139,17 +7224,49 @@ Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_NOLAN ===
-Name: NOLAN
+Name: Nolan
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Barboach
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
 === TRAINER_BARNY ===
 Name: BARNY
@@ -9371,21 +9488,40 @@ Level: 17
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_NANCY ===
-Name: NANCY
+Name: Nancy
 Class: Picnicker
 Pic: Picnicker
 Gender: Female
 Music: Girl
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Marill
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
-Lombre
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
 === TRAINER_MARTHA ===
 Name: MARTHA
@@ -12532,38 +12668,76 @@ Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LENNY ===
-Name: LENNY
+Name: Lenny
 Class: Hiker
 Pic: Hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Geodude
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 22
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
-Machop
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 22
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
 === TRAINER_LUCAS_1 ===
-Name: LUCAS
+Name: Lucas
 Class: Hiker
 Pic: Hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Geodude
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 22
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
-Numel
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 22
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
 === TRAINER_ALAN ===
 Name: ALAN
@@ -13761,29 +13935,49 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Earthquake
 
 === TRAINER_TYRA_AND_IVY ===
-Name: TYRA & IVY
+Name: Tyra & Ivy
 Class: Sr And Jr
 Pic: Sr And Jr
 Gender: Male
 Music: Twins
 Double Battle: Yes
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Roselia
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Growth
-- Stun Spore
-- Mega Drain
-- Leech Seed
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
-Graveler
-Level: 20
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Defense Curl
-- Rollout
-- Mud Sport
-- Rock Throw
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
 === TRAINER_MEL_AND_PAUL ===
 Name: MEL & PAUL
@@ -14372,38 +14566,94 @@ Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_SOPHIE ===
-Name: SOPHIE
+Name: Sophie
 Class: Picnicker
 Pic: Picnicker
 Gender: Female
 Music: Girl
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Marill
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
-Lombre
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 25
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
 === TRAINER_COBY ===
-Name: COBY
+Name: Coby
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
 Music: Cool
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Skarmory
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
-Swellow
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 25
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 25
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
 === TRAINER_LAWRENCE ===
 Name: LAWRENCE
@@ -14440,47 +14690,130 @@ Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ANGELINA ===
-Name: ANGELINA
+Name: Angelina
 Class: Picnicker
 Pic: Picnicker
 Gender: Female
 Music: Girl
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Lombre
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
-Marill
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 22
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 22
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
 === TRAINER_KAI ===
-Name: KAI
+Name: Kai
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Barboach
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 25
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
 === TRAINER_CHARLOTTE ===
-Name: CHARLOTTE
+Name: Charlotte
 Class: Picnicker
 Pic: Picnicker
 Gender: Female
 Music: Girl
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Nuzleaf
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 23
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 24
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
+
+Squawkabilly @ Sharp Beak
+Nature: Jolly
+Ability: Intimidate
+Level: 25
+- Facade
+- Aerial Ace
+- Reversal
+- Quick Attack
 
 === TRAINER_DEANDRE ===
 Name: DEANDRE
