@@ -2048,8 +2048,10 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             else if (IsPartyFullyHealedExceptBattler(battlerAtk))
                 ADJUST_SCORE(-10);
             break;
+        //not used if last mon, not used if ai is slower, 20% not to use if it wouldnt kill
         case EFFECT_FINAL_GAMBIT:
-            if (CountUsablePartyMons(battlerAtk) == 0 || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
+            if (CountUsablePartyMons(battlerAtk) == 0 || AI_DATA->speedStats[battlerDef] > AI_DATA->speedStats[battlerAtk] ||
+                (gBattleMons[battlerDef].hp > gBattleMons[battlerAtk].hp && Random() % 100 < 20))
                 ADJUST_SCORE(-10);
             break;
         case EFFECT_NATURE_POWER:
@@ -2639,7 +2641,7 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         } else {
             RETURN_SCORE_PLUS(REVENGE_KILL);
         }
-    } else if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && gMovesInfo[move].additionalEffects[0].moveEffect == MOVE_EFFECT_RECHARGE)
+    } else if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && (gMovesInfo[move].additionalEffects[0].moveEffect == MOVE_EFFECT_RECHARGE || gMovesInfo[move].effect == EFFECT_FINAL_GAMBIT))
     {
         //kill with trapping or boosting move
         if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, holdEffectPlayer, abilityPlayer, move)){
@@ -3256,19 +3258,6 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                 if(Random() % 100 < 50)
                     ADJUST_SCORE(WEAK_EFFECT);
                 break;
-            }
-        }
-        break;
-    //80% to go for it if highest damage, dont go for it if slower, or if not highest damage
-    case EFFECT_FINAL_GAMBIT:
-        if(dmg >= GetBestDmgFromBattler(battlerAtk, battlerDef)){
-            if(AI_IsFaster(battlerAtk, battlerDef, move)){
-                if(Random() % 100 < 80)
-                    ADJUST_SCORE(BEST_EFFECT);
-                break;
-            }
-            else{
-                RETURN_SCORE_MINUS(NO_INCREASE);
             }
         }
         break;
