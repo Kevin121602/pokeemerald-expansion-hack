@@ -1862,9 +1862,9 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 804
                 MOVE_THIEF,
-                MOVE_POUNCE,
+                MOVE_BUG_BITE,
                 MOVE_AERIAL_ACE,
-                MOVE_SLEEP_TALK,
+                MOVE_SCARY_FACE,
             },
             },
             {

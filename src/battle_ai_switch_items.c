@@ -2047,6 +2047,25 @@ static u16 GetSwitchinTypeMatchup(u32 opposingBattler, struct BattlePokemon batt
     return typeEffectiveness;
 }
 
+bool32 IsPartyMonGrounded(struct BattlePokemon battleMon, u32 battler, s32 holdEffect)
+{
+
+    if (holdEffect == HOLD_EFFECT_IRON_BALL)
+        return TRUE;
+    else if (gFieldStatuses & STATUS_FIELD_GRAVITY)
+        return TRUE;
+    else if (holdEffect == HOLD_EFFECT_AIR_BALLOON)
+        return FALSE;
+    else if (battleMon.ability == ABILITY_LEVITATE)
+        return FALSE;
+    else if (battleMon.types[0] == TYPE_FLYING)
+        return FALSE;
+    else if (battleMon.types[1] == TYPE_FLYING)
+        return FALSE;
+    else
+        return TRUE;
+}
+
 u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingBattler, bool32 switchAfterMonKOd)
 {
     u32 switchScore = 0;
@@ -2073,14 +2092,15 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
     s32 bestAIDmg = 0;
 
     //always returns 10 if species is ditto
-    if(battleMon.species == SPECIES_DITTO){
+    if(battleMon.species == SPECIES_DITTO && switchAfterMonKOd){
         switchScore = 10;
         return switchScore;
     }
 
+    hazardDamage = GetSwitchinHazardsDamage(battler, &battleMon);
+
     if(!switchAfterMonKOd){
        highestDmgtoSwitchIn = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, battleMon);
-       hazardDamage = GetSwitchinHazardsDamage(battler, &battleMon);
        if(highestDmgtoSwitchIn >= battleMon.hp){
             canDieOnSwitch = TRUE;
        } else if (highestDmgtoSwitchIn*3 >= battleMon.hp){
@@ -2097,6 +2117,19 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         && HasDamagingMoveOfType(opposingBattler, ItemId_GetHoldEffectParam(battleMon.item)))){
             aiMonHoldEffect == HOLD_EFFECT_NONE;
        }
+    }
+
+    if(hazardDamage > calcHP)
+        calcHP = 0;
+    else
+        calcHP -= hazardDamage;
+
+    if((gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_STICKY_WEB) && aiMonHoldEffect != HOLD_EFFECT_RESTORE_STATS
+        && aiMonHoldEffect != HOLD_EFFECT_HEAVY_DUTY_BOOTS && aiMonHoldEffect != HOLD_EFFECT_CLEAR_AMULET && IsPartyMonGrounded(battleMon, battler, aiMonHoldEffect)
+        && aiMonAbility != ABILITY_CLEAR_BODY && aiMonAbility != ABILITY_WHITE_SMOKE && aiMonAbility != ABILITY_FULL_METAL_BODY
+        && !(gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_MIST)){
+        aiMonSpeed *= 2;
+        aiMonSpeed /= 3;
     }
 
     if(!switchAfterMonKOd && aiMonAbility == ABILITY_MULTISCALE){
