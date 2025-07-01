@@ -876,6 +876,14 @@ static const struct MenuAction MultichoiceList_SportTutor[] =
     {gText_MudSport},
 };
 
+static const struct MenuAction MultichoiceList_PhasingTutor[] =
+{
+    {gText_Roar},
+    {gText_Whirlwind},
+    {gText_DragonTail},
+    {gText_CircleThrow},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1012,6 +1020,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BIRCH_GAME_INFO]            = MULTICHOICE(MultichoiceList_BirchGameInfo),
     [MULTI_FANG_TUTOR]                 = MULTICHOICE(MultichoiceList_FangTutor),
     [MULTI_SPORT_TUTOR]                = MULTICHOICE(MultichoiceList_SportTutor),
+    [MULTI_PHASING_TUTOR]              = MULTICHOICE(MultichoiceList_PhasingTutor),
 };
 
 const u8 *const gStdStrings[] =

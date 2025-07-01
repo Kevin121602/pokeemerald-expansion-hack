@@ -3134,4 +3134,9 @@ extern const u8 gText_Bite[];
 extern const u8 gText_WaterSport[];
 extern const u8 gText_MudSport[];
 
+extern const u8 gText_Roar[];
+extern const u8 gText_Whirlwind[];
+extern const u8 gText_DragonTail[];
+extern const u8 gText_CircleThrow[];
+
 #endif // GUARD_STRINGS_H

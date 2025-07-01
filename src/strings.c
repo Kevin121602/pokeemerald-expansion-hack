@@ -1919,3 +1919,7 @@ const u8 gText_PoisonFang[] =         _("Poison Fang");
 const u8 gText_Bite[] =               _("Bite");
 const u8 gText_WaterSport[] =         _("Water Sport");
 const u8 gText_MudSport[] =           _("Mud Sport");
+const u8 gText_Roar[] =               _("Roar");
+const u8 gText_Whirlwind[] =          _("Whirlwind");
+const u8 gText_DragonTail[] =         _("Dragon Tail");
+const u8 gText_CircleThrow[] =        _("Circle Throw");

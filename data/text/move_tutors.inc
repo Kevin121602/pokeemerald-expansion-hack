@@ -264,3 +264,8 @@ MoveTutor_Text_FangsTeach:
 MoveTutor_Text_SportTeach:
 	.string "I like to play in this pond!\n"
 	.string "Would you like to play too?$"
+
+MoveTutor_Text_PhasingTeach:
+	.string "My Poochyena loves to scare\n"
+	.string "people away.\p"
+	.string "It's an excellent technique!$"

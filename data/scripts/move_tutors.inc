@@ -375,6 +375,48 @@ LittlerootTown_EventScript_MudSportTutor::
 	release
 	end
 
+Route114_EventScript_PhasingTutor::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_PhasingTeach
+	multichoice 21, 0, MULTI_PHASING_TUTOR, FALSE
+	switch VAR_RESULT
+	case 0, Route114_EventScript_RoarTutor
+	case 1, Route114_EventScript_WhirlwindTutor
+	case 2, Route114_EventScript_DragonTailTutor
+	case 3, Route114_EventScript_CircleThrowTutor
+	case MULTI_B_PRESSED, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+Route114_EventScript_RoarTutor::
+	setvar VAR_0x8005, MOVE_ROAR
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+Route114_EventScript_WhirlwindTutor::
+	setvar VAR_0x8005, MOVE_WHIRLWIND
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+Route114_EventScript_DragonTailTutor::
+	setvar VAR_0x8005, MOVE_DRAGON_TAIL
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+Route114_EventScript_CircleThrowTutor::
+	setvar VAR_0x8005, MOVE_CIRCLE_THROW
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
 MoveTutor_EventScript_HelpingHandDeclined:
 	release
 	end
