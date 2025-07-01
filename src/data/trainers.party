@@ -2815,32 +2815,32 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Squawkabilly @ Sharp Beak
+Ariados @ Scope Lens
 Nature: Jolly
-Ability: Intimidate
+Ability: Sniper
 Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- X-Scissor
+- Cross Poison
+- Sucker Punch
+- Focus Energy
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
+Mightyena @ Black Glasses
+Nature: Adamant
 Ability: Intimidate
 Level: 22
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Bite
+- Covet
+- Poison Fang
+- Scary Face
 
-Squawkabilly @ Sharp Beak
+Watchog @ Lum Berry
 Nature: Jolly
-Ability: Intimidate
+Ability: Analytic
 Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Retaliate
+- Seed Bomb
+- Super Fang
+- Hypnosis
 
 === TRAINER_THALIA_1 ===
 Name: THALIA
@@ -3889,41 +3889,41 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Squawkabilly @ Sharp Beak
+Graveler @ Weakness Policy
 Nature: Jolly
-Ability: Intimidate
+Ability: Sturdy
 Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Rock Slide
+- Stomping Tantrum
+- Fire Punch
+- Autotomize
 
-Squawkabilly @ Sharp Beak
+Komala @ Assault Vest
 Nature: Jolly
-Ability: Intimidate
+Ability: Comatose
 Level: 22
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Body Slam
+- Wood Hammer
+- Play Rough
+- Sucker Punch
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Lumineon @ Sharp Beak
+Nature: Timid
+Ability: Storm Drain
 Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Scald
+- Air Slash
+- Sweet Kiss
+- Attract
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Carkol @ Passho Berry
+Nature: Calm
+Ability: Steam Engine
 Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Heat Wave
+- Ancient Power
+- Scald
+- Fire Spin
 
 === TRAINER_BERNIE_2 ===
 Name: BERNIE
@@ -4095,32 +4095,32 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Squawkabilly @ Sharp Beak
+Charjabug @ Flying Gem
 Nature: Jolly
-Ability: Intimidate
+Ability: Battery
 Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Wild Charge
+- Bug Bite
+- Acrobatics
+- Sticky Web
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Clamperl @ Deep Sea Tooth
+Nature: Timid
+Ability: Shell Armor
 Level: 22
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Scald
+- Ice Beam
+- Whirlpool
+- Sleep Talk
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Wormadam @ Focus Sash
+Nature: Timid
+Ability: Overcoat
 Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Giga Drain
+- Signal Beam
+- Psychic
+- Quiver Dance
 
 === TRAINER_JUSTIN ===
 Name: JUSTIN
@@ -7102,13 +7102,14 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Qwilfish @ Liechi Berry
+Skrelp @ Berry Juice
 Level: 14
-Nature: Jolly
-Ability: Intimidate
--Poison Tail
--Aqua Jet
--Flail
+Nature: Sassy
+Ability: Poison Touch
+-Venoshock
+-Bubble Beam
+-Dragon Tail
+-Toxic Spikes
 
 Chinchou @ Leftovers
 Level: 14
@@ -7137,32 +7138,32 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Swalot @ Black Sludge
+Nature: Sassy
+Ability: Sticky Hold
+Level: 24
+- Sludge
+- Giga Drain
+- Fire Punch
+- Block
+
+Octillery @ Loaded Dice
+Nature: Quiet
+Ability: Suction Cups
 Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Bubble Beam
+- Bullet Seed
+- Rock Blast
+- Thunder Wave
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Seadra @ Scope Lens
+Nature: Naive
+Ability: Sniper
 Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
-
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
-Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Octazooka
+- Signal Beam
+- Take Down
+- Focus Energy
 
 === TRAINER_ELLIOT_1 ===
 Name: ELLIOT
@@ -7232,41 +7233,32 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Squawkabilly @ Sharp Beak
+Qwilfish @ Focus Sash
 Nature: Jolly
 Ability: Intimidate
 Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Waterfall
+- Poison Jab
+- Aqua Jet
+- Toxic Spikes
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
-Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
-
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Corsola-Galarian @ Leftovers
+Nature: Bold
+Ability: Cursed Body
 Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Hex
+- Night Shade
+- Power Gem
+- Strength Sap
 
-Squawkabilly @ Sharp Beak
+Croconaw @ Mystic Water
 Nature: Jolly
-Ability: Intimidate
-Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+Ability: Sheer Force
+Level: 25
+- Waterfall
+- Ice Fang
+- Aqua Jet
+- Roar
 
 === TRAINER_BARNY ===
 Name: BARNY
@@ -9496,32 +9488,32 @@ Music: Girl
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Shiinotic @ Kebia Berry
+Nature: Bold
+Ability: Effect Spore
 Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Giga Drain
+- Dazzling Gleam
+- Dream Eater
+- Spore
 
-Squawkabilly @ Sharp Beak
+Marowak @ Sitrus Berry
 Nature: Jolly
-Ability: Intimidate
+Ability: Battle Armor
 Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Bone Rush
+- Rock Tomb
+- Retaliate
+- Sing
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Hypno @ Leftovers
+Nature: Hasty
+Ability: No Guard
 Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Zen Headbutt
+- Dazzling Gleam
+- Hypnosis
+- Nightmare
 
 === TRAINER_MARTHA ===
 Name: MARTHA
@@ -12676,29 +12668,32 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Emolga @ Leftovers
-Nature: Naive
-Ability: Static
-Level: 21
-- Dual Wingbeat
+Wormadam-Sandy @ Leftovers
+Nature: Careful
+Ability: Overcoat
+Level: 22
+- Bug Bite
+- Bulldoze
+- Rock Blast
+- Infestation
 
-Ninjask @ Power Herb
-Nature: Adamant
-Ability: Speed Boost
-Level: 21
-- Dual Wingbeat
-- Leech Life
-- Dig
-- Hone Claws
-
-Combusken @ Charcoal
-Nature: Naive
-Ability: Speed Boost
-Level: 21
-- Incinerate
-- Low Sweep
+Hakamo-o @ Eviolite
+Nature: Jolly
+Ability: Soundproof
+Level: 22
+- Dragon Claw
+- Drain Punch
 - Thunder Punch
-- Seismic Toss
+- Dragon Dance
+
+Chatot @ Silk Scarf
+Nature: Timid
+Ability: Punk Rock
+Level: 22
+- Hyper Voice
+- Chatter
+- Heat Wave
+- Sing
 
 === TRAINER_LUCAS_1 ===
 Name: Lucas
@@ -12709,32 +12704,32 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Castform @ Petaya Berry
+Nature: Timid
+Ability: Forecast
 Level: 22
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Ice Beam
+- Flamethrower
+- Thunderbolt
+- Substitute
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Boldore @ Leftovers
+Nature: Careful
+Ability: Solid Rock
 Level: 22
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Rock Slide
+- Stomping Tantrum
+- Body Press
+- Iron Defense
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Marshtomp @ Rindo Berry
+Nature: Careful
+Ability: Torrent
 Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Earthquake
+- Aqua Tail
+- Avalanche
+- Curse
 
 === TRAINER_ALAN ===
 Name: ALAN
@@ -13940,41 +13935,41 @@ Music: Twins
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
+Sealeo @ Never-Melt Ice
+Nature: Bold
+Ability: Thick Fat
+Level: 24
+- Aurora Beam
+- Brine
+- Icy Wind
+- Whirlpool
+
+Pachirisu @ Leftovers
+Nature: Timid
+Ability: Volt Absorb
+Level: 23
+- Thunderbolt
+- Nuzzle
+- Super Fang
+- Follow Me
+
+Masquerain @ Lum Berry
+Nature: Timid
 Ability: Intimidate
 Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Air Cutter
+- Giga Drain
+- Bubble Beam
+- Scary Face
 
-Squawkabilly @ Sharp Beak
+Togedemaru @ Air Balloon
 Nature: Jolly
-Ability: Intimidate
+Ability: Sturdy
 Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
-
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
-Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
-
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
-Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Iron Head
+- Spark
+- Fake Out
+- Encore
 
 === TRAINER_MEL_AND_PAUL ===
 Name: MEL & PAUL
@@ -14695,41 +14690,41 @@ Music: Girl
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Squawkabilly @ Sharp Beak
+Sneasel @ Focus Sash
 Nature: Jolly
-Ability: Intimidate
-Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
-
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Ability: Inner Focus
 Level: 22
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Ice Punch
+- Night Slash
+- Fake Out
+- Low Kick
 
-Squawkabilly @ Sharp Beak
+Tinkatuff @ Fighting Gem
 Nature: Jolly
-Ability: Intimidate
-Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
-
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Ability: Own Tempo
 Level: 22
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Play Rough
+- Rock Smash
+- Rock Slide
+- Swords Dance
+
+Vibrava @ Yache Berry
+Nature: Naive
+Ability: Levitate
+Level: 23
+- Stomping Tantrum
+- Dragon Pulse
+- U-Turn
+- Supersonic
+
+Breloom @ Toxic Orb
+Nature: Jolly
+Ability: Poison Heal
+Level: 23
+- Seed Bomb
+- Force Palm
+- Rock Tomb
+- Spore
 
 === TRAINER_KAI ===
 Name: Kai
@@ -14740,32 +14735,41 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
-Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
-
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Pelipper @ Lum Berry
+Nature: Timid
+Ability: Drizzle
 Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Brine
+- Air Cutter
+- Icy Wind
+- Roost
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
-Level: 25
-- Facade
+Sliggoo @ Leftovers
+Nature: Timid
+Ability: Hydration
+Level: 23
+- Dragon Breath
+- Water Pulse
+- Acid Spray
+- Rest
+
+Anorith @ Focus Sash
+Nature: Adamant
+Ability: Swift Swim
+Level: 24
+- X-Scissor
+- Rock Slide
 - Aerial Ace
-- Reversal
-- Quick Attack
+- Aqua Jet
+
+Quagsire @ Mystic Water
+Nature: Careful
+Ability: Water Absorb
+Level: 24
+- Waterfall
+- Bulldoze
+- Ice Punch
+- Recover
 
 === TRAINER_CHARLOTTE ===
 Name: Charlotte
@@ -14776,41 +14780,38 @@ Music: Girl
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Wigglytuff @ Big Root
+Nature: Hasty
+Ability: Competitive
 Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Hyper Voice
+- Draining Kiss
+- Drain Punch
+- Sing
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Ditto @ Lum Berry
+Nature: Bashful
+Ability: Imposter
 Level: 23
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Transform
 
-Squawkabilly @ Sharp Beak
+Delcatty @ Leftovers
 Nature: Jolly
-Ability: Intimidate
+Ability: Normalize
 Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Headbutt
+- Fake Out
+- Thunder Wave
+- Heal Bell
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Wormadam-Trash @ Occa Berry
+Nature: Sassy
+Ability: Overcoat
 Level: 25
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Iron Head
+- Signal Beam
+- Infestation
+- Metal Burst
 
 === TRAINER_DEANDRE ===
 Name: DEANDRE

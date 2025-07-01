@@ -130,6 +130,7 @@
 #define MULTI_TRICK_HOUSE_GIFTS            119
 #define MULTI_BIRCH_GAME_INFO              120
 #define MULTI_FANG_TUTOR                   121
+#define MULTI_SPORT_TUTOR                  122
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

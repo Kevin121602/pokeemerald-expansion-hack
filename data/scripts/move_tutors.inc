@@ -309,7 +309,7 @@ Route115_EventScript_FangsTutor::
 	case 1, Route115_EventScript_ThunderFangTutor
 	case 2, Route115_EventScript_IceFangTutor
 	case 3, Route115_EventScript_PoisonFangTutor
-	case 4, MoveTutor_EventScript_HelpingHandDeclined
+	case 4, Route115_EventScript_BiteTutor
 	case MULTI_B_PRESSED, MoveTutor_EventScript_HelpingHandDeclined
 	release
 	end
@@ -337,6 +337,39 @@ Route115_EventScript_IceFangTutor::
 
 Route115_EventScript_PoisonFangTutor::
 	setvar VAR_0x8005, MOVE_POISON_FANG
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+Route115_EventScript_BiteTutor::
+	setvar VAR_0x8005, MOVE_BITE
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+LittlerootTown_EventScript_SportTutor::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_SportTeach
+	multichoice 21, 0, MULTI_SPORT_TUTOR, FALSE
+	switch VAR_RESULT
+	case 0, LittlerootTown_EventScript_WaterSportTutor
+	case 1, LittlerootTown_EventScript_MudSportTutor
+	case MULTI_B_PRESSED, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+LittlerootTown_EventScript_WaterSportTutor::
+	setvar VAR_0x8005, MOVE_WATER_SPORT
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+LittlerootTown_EventScript_MudSportTutor::
+	setvar VAR_0x8005, MOVE_MUD_SPORT
 	call MoveTutor_EventScript_OpenPartyMenu
 	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
 	release

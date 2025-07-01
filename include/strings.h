@@ -3129,5 +3129,9 @@ extern const u8 gText_FireFang[];
 extern const u8 gText_ThunderFang[];
 extern const u8 gText_IceFang[];
 extern const u8 gText_PoisonFang[];
+extern const u8 gText_Bite[];
+
+extern const u8 gText_WaterSport[];
+extern const u8 gText_MudSport[];
 
 #endif // GUARD_STRINGS_H

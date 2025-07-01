@@ -4336,59 +4336,49 @@ u32 IncreaseStatUpScoreContrary(u32 battlerAtk, u32 battlerDef, u32 statId)
 
 void IncreasePoisonScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
 {
-    if ((AI_THINKING_STRUCT->aiFlags[battlerAtk] & AI_FLAG_TRY_TO_FAINT) && CanAIFaintTarget(battlerAtk, battlerDef, 0))
-        return;
-
     if (AI_CanPoison(battlerAtk, battlerDef, AI_DATA->abilities[battlerDef], move, AI_DATA->partnerMove) && AI_DATA->hpPercents[battlerDef] > 20)
     {
-        ADJUST_SCORE_PTR(DECENT_EFFECT);
+        ADJUST_SCORE_PTR(WEAK_EFFECT);
+        if(Random() % 100 < 50)
+            ADJUST_SCORE_PTR(WEAK_EFFECT);
 
-        if ((HasMoveEffect(battlerAtk, EFFECT_PROTECT) || AI_DATA->abilities[battlerAtk] == ABILITY_MERCILESS) && (Random() % 100 < 50))
+        if ((HasMoveEffect(battlerAtk, EFFECT_PROTECT) || AI_DATA->abilities[battlerAtk] == ABILITY_MERCILESS) || (HasMoveEffectANDArg(battlerAtk, EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_POISON)))
             ADJUST_SCORE_PTR(WEAK_EFFECT);    // stall tactic
     }
 }
 
 void IncreaseBurnScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
 {
-    if ((AI_THINKING_STRUCT->aiFlags[battlerAtk] & AI_FLAG_TRY_TO_FAINT) && CanAIFaintTarget(battlerAtk, battlerDef, 0))
+    if(AI_DATA->abilities[battlerDef] == ABILITY_GUTS)
         return;
 
     if (AI_CanBurn(battlerAtk, battlerDef, AI_DATA->abilities[battlerDef], BATTLE_PARTNER(battlerAtk), move, AI_DATA->partnerMove))
     {
         ADJUST_SCORE_PTR(WEAK_EFFECT); // burning is good
-        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL))
-        {
+        if (gMovesInfo[GetBestDmgMoveFromBattler(battlerDef, battlerAtk)].category == DAMAGE_CATEGORY_PHYSICAL)
                 ADJUST_SCORE_PTR(WEAK_EFFECT);
-        }
 
-        if (HasMoveEffectANDArg(battlerAtk, EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_BURN)
-          || HasMoveEffectANDArg(BATTLE_PARTNER(battlerAtk), EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_BURN))
-            ADJUST_SCORE_PTR(WEAK_EFFECT);
+        if ((HasMoveEffectANDArg(battlerAtk, EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_BURN)))
+                ADJUST_SCORE_PTR(WEAK_EFFECT);
     }
 }
 
 void IncreaseParalyzeScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
 {
-    if ((AI_THINKING_STRUCT->aiFlags[battlerAtk] & AI_FLAG_TRY_TO_FAINT) && CanAIFaintTarget(battlerAtk, battlerDef, 0))
-        return;
-
     if (AI_CanParalyze(battlerAtk, battlerDef, AI_DATA->abilities[battlerDef], move, AI_DATA->partnerMove))
     {
-        ADJUST_SCORE_PTR(DECENT_EFFECT);
+        ADJUST_SCORE_PTR(WEAK_EFFECT);
         u32 atkSpeed = AI_DATA->speedStats[battlerAtk];
         u32 defSpeed = AI_DATA->speedStats[battlerDef];
 
-        if (((defSpeed >= atkSpeed && defSpeed / 4 < atkSpeed) // You'll go first after paralyzing foe
-          || HasMoveEffectANDArg(battlerAtk, EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_PARALYSIS)) && (Random() % 100 < 50))
-            ADJUST_SCORE_PTR(WEAK_EFFECT);
+        if (((defSpeed > atkSpeed && defSpeed / 4 < atkSpeed) // You'll go first after paralyzing foe
+          || HasMoveEffectANDArg(battlerAtk, EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_PARALYSIS)))
+            ADJUST_SCORE_PTR(DECENT_EFFECT);
     }
 }
 
 void IncreaseSleepScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
 {
-    if ((AI_THINKING_STRUCT->aiFlags[battlerAtk] & AI_FLAG_TRY_TO_FAINT) && CanAIFaintTarget(battlerAtk, battlerDef, 0))
-        return;
-
     if (AI_CanPutToSleep(battlerAtk, battlerDef, AI_DATA->abilities[battlerDef], move, AI_DATA->partnerMove))
         ADJUST_SCORE_PTR(DECENT_EFFECT);
     else
@@ -4410,7 +4400,9 @@ void IncreaseConfusionScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score
 
     if (AI_CanConfuse(battlerAtk, battlerDef, AI_DATA->abilities[battlerDef], BATTLE_PARTNER(battlerAtk), move, AI_DATA->partnerMove))
     {
-        ADJUST_SCORE_PTR(DECENT_EFFECT);
+        ADJUST_SCORE_PTR(WEAK_EFFECT);
+        if(Random() % 100 < 50)
+            ADJUST_SCORE_PTR(WEAK_EFFECT);
     }
 }
 
@@ -4467,6 +4459,8 @@ u32 IncreaseStatLoweringScore(u32 battlerAtk, u32 battlerDef, u32 statId, u32 st
             return NO_INCREASE;
         if(gMovesInfo[bestDmgMove].category == DAMAGE_CATEGORY_SPECIAL)
             return NO_INCREASE;
+        if(bestDmg*2 > gBattleMons[battlerAtk].hp && AI_DATA->speedStats[battlerDef] > AI_DATA->speedStats[battlerAtk])
+            return NO_INCREASE;
         tempScore += WEAK_EFFECT;
         if(stages >= 2 && Random() % 100 < 50)
             tempScore += WEAK_EFFECT;
@@ -4495,6 +4489,8 @@ u32 IncreaseStatLoweringScore(u32 battlerAtk, u32 battlerDef, u32 statId, u32 st
         if(bestDmg*3 < gBattleMons[battlerAtk].hp)
             return NO_INCREASE;
         if(gMovesInfo[bestDmgMove].category == DAMAGE_CATEGORY_PHYSICAL)
+            return NO_INCREASE;
+        if(bestDmg*2 > gBattleMons[battlerAtk].hp && AI_DATA->speedStats[battlerDef] > AI_DATA->speedStats[battlerAtk])
             return NO_INCREASE;
         tempScore += WEAK_EFFECT;
         if(stages >= 2 && Random() % 100 < 50)

@@ -260,3 +260,7 @@ MoveTutor_Text_FangsTeach:
 	.string "dog new tricks.\p"
 	.string "So there's no time like the present\n"
 	.string "to learn these moves.$"
+
+MoveTutor_Text_SportTeach:
+	.string "I like to play in this pond!\n"
+	.string "Would you like to play too?$"

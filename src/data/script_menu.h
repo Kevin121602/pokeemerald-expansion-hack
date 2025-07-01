@@ -867,7 +867,13 @@ static const struct MenuAction MultichoiceList_FangTutor[] =
     {gText_ThunderFang},
     {gText_IceFang},
     {gText_PoisonFang},
-    {gText_ExitLC},
+    {gText_Bite},
+};
+
+static const struct MenuAction MultichoiceList_SportTutor[] =
+{
+    {gText_WaterSport},
+    {gText_MudSport},
 };
 
 static const struct MenuAction MultichoiceList_Exit[] =
@@ -1005,6 +1011,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_TRICK_HOUSE_GIFTS]          = MULTICHOICE(MultichoiceList_TrickHouseGifts),
     [MULTI_BIRCH_GAME_INFO]            = MULTICHOICE(MultichoiceList_BirchGameInfo),
     [MULTI_FANG_TUTOR]                 = MULTICHOICE(MultichoiceList_FangTutor),
+    [MULTI_SPORT_TUTOR]                = MULTICHOICE(MultichoiceList_SportTutor),
 };
 
 const u8 *const gStdStrings[] =

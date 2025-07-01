@@ -1916,3 +1916,6 @@ const u8 gText_FireFang[] =           _("Fire Fang");
 const u8 gText_ThunderFang[] =        _("Thunder Fang");
 const u8 gText_IceFang[] =            _("Ice Fang");
 const u8 gText_PoisonFang[] =         _("Poison Fang");
+const u8 gText_Bite[] =               _("Bite");
+const u8 gText_WaterSport[] =         _("Water Sport");
+const u8 gText_MudSport[] =           _("Mud Sport");
