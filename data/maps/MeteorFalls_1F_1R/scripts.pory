@@ -27,7 +27,7 @@ script MeteorFalls_1F_1R_EventScript_Riley{
 }
 
 text MeteorFalls_1F_1R_Text_RileyIntro{
-	"Hello there, my name is Riley.\p"
+	"Hi, my name is Riley.\p"
 	"I traveled here from Sinnoh to hone\n"
 	"my offensive skills.\p"
 	"There's something about you that seems\n"
@@ -53,7 +53,7 @@ script MeteorFalls_1F_1R_EventScript_RileyDefeated{
 		   "Maybe you'll run into them on your\n"
 		   "journey…$")
 	setflag(FLAG_DEFEATED_RILEY)
-	setvar(VAR_METEOR_FALLS_STATE, 1)
+	setvar(VAR_STAT_TRAINERS_STATE, 1)
 	release
 	end
 }
@@ -152,7 +152,7 @@ MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene::
 	setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
 	setflag FLAG_MET_ARCHIE_METEOR_FALLS
 	setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
-	setvar VAR_METEOR_FALLS_STATE, 1
+	setvar VAR_STAT_TRAINERS_STATE, 1
 	releaseall
 	end
 

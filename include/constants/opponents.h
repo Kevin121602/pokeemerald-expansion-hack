@@ -50,7 +50,7 @@
 #define TRAINER_DUSTY_1                      44
 #define TRAINER_CHIP                         45
 #define TRAINER_FOSTER                       46
-#define TRAINER_DUSTY_2                      47
+#define TRAINER_CHERYL_ROUTE_113                      47
 #define TRAINER_DUSTY_3                      48
 #define TRAINER_DUSTY_4                      49
 #define TRAINER_DUSTY_5                      50

@@ -1005,22 +1005,69 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Sand Attack
 - Poison Sting
 
-=== TRAINER_DUSTY_2 ===
-Name: DUSTY
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
+=== TRAINER_CHERYL_ROUTE_113 ===
+Name: Cheryl
+Class: Rival
+Pic: Cheryl
+Gender: Female
+Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
+Mugshot: Green
 
-Sandslash
-Level: 27
-IVs: 7 HP / 7 Atk / 7 Def / 7 SpA / 7 SpD / 7 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
+Vaporeon @ Lum Berry
+Level: 24
+Nature: Timid
+Ability: Water Absorb
+- Bubble Beam
+- Icy Wind
+- Shadow Ball
+- Sing
+
+Stunfisk @ Leftovers
+Level: 25
+Nature: Bold
+Ability: Static
+- Discharge
+- Mud Bomb
+- Scald
+- Stealth Rock
+
+Drifblim @ Sitrus Berry
+Level: 24
+Nature: Naughty
+Ability: Unburden
+- Shadow Ball
+- Acrobatics
+- Shock Wave
+- Destiny Bond
+
+Hariyama @ Flame Orb
+Level: 25
+Nature: Jolly
+Ability: Guts
+- Force Palm
+- Rock Tomb
+- Bullet Punch
+- Fake Out
+
+Calyrex @ Big Root
+Level: 26
+Nature: Timid
+Ability: Unnerve
+- Giga Drain
+- Psybeam
+- Draining Kiss
+- Leech Seed
+
+Chansey @ Eviolite
+Level: 26
+Nature: Bold
+Ability: Natural Cure
+- Seismic Toss
+- Counter
+- Toxic
+- Soft-Boiled
 
 === TRAINER_DUSTY_3 ===
 Name: DUSTY
@@ -14566,41 +14613,41 @@ Music: Girl
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Chimecho @ Lum Berry
+Nature: Timid
+Ability: Levitate
 Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Psyshock
+- Draining Kiss
+- Thunder Wave
+- Recover
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Sunflora @ Sitrus Berry
+Nature: Bold
+Ability: Chlorophyll
 Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Giga Drain
+- Earth Power
+- Dazzling Gleam
+- Grass Whistle
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Ribombee @ Wise Glasses
+Nature: Timid
+Ability: Shield Dust
 Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Signal Beam
+- Draining Kiss
+- Round
+- Fake Tears
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Linoone @ Toxic Orb
+Nature: Adamant
+Ability: Quick Feet
 Level: 25
 - Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Stomping Tantrum
+- Seed Bomb
+- Fling
 
 === TRAINER_COBY ===
 Name: Coby
@@ -14611,41 +14658,41 @@ Music: Cool
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
 Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Mothim @ Focus Sash
+Nature: Hasty
+Ability: Swarm
 Level: 25
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Signal Beam
+- Air Cutter
+- Acrobatics
+- Shadow Ball
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Golbat @ Eviolite
+Nature: Timid
+Ability: Inner Focus
 Level: 24
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Air Slash
+- Heat Wave
+- Giga Drain
+- Confuse Ray
 
-Squawkabilly @ Sharp Beak
-Nature: Jolly
-Ability: Intimidate
+Noctowl @ Leftovers
+Nature: Timid
+Ability: Insomnia
 Level: 25
-- Facade
-- Aerial Ace
-- Reversal
-- Quick Attack
+- Hyper Voice
+- Air Slash
+- Night Shade
+- Hypnosis
 
 === TRAINER_LAWRENCE ===
 Name: LAWRENCE

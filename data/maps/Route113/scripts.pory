@@ -1,3 +1,63 @@
+const LOCALID_CHERYL = 18
+
+script Route113_EventScript_CherylTriggered{
+	lock
+	playse(SE_PIN)
+	applymovement(LOCALID_CHERYL, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp)
+	waitmovement(0)
+	goto(Route113_EventScript_Cheryl)
+	release
+	end
+}
+
+script Route113_EventScript_Cheryl{
+	lock
+	faceplayer
+	setflag(FLAG_DISABLE_EXP)
+	trainerbattle(TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, TRAINER_CHERYL_ROUTE_113, LOCALID_CHERYL, Route113_Text_CherylIntro, Route113_EventScript_CherylDefeat, Route113_EventScript_CherylDefeated)
+	msgbox("Battling isn't easy.\p"
+		   "You have a bright future ahead of you,\n"
+		   "{PLAYER}.$")
+	clearflag(FLAG_DISABLE_EXP)
+	release
+	end
+}
+	
+text Route113_Text_CherylIntro{
+	"Hello there, my name is Cheryl.\n"
+	"And you are?\p"
+	"I wanted to visit the Hot Springs in\n"
+	"Lavaridge Town, but all this soot is in\l"
+	"the way…\p"
+	"I value my health a lot, which is why I\n"
+	"fight with Pokémon that have a high HP\l"
+	"stat!\p"
+	"Would you like to keep me company with\n"
+	"a battle?$"
+}
+
+text Route113_EventScript_CherylDefeat{
+	"I can't keep up with healing…$"
+}
+
+movement Route113_Movement_FaceUp{
+	face_up
+	step_end
+}
+
+script Route113_EventScript_CherylDefeated{
+	clearflag(FLAG_DISABLE_EXP)
+	msgbox("Battling isn't easy.\p"
+		   "You have a bright future ahead of you,\n"
+		   "{PLAYER}.$")
+	setflag(FLAG_DEFEATED_CHERYL)
+	setvar(VAR_STAT_TRAINERS_STATE, 2)
+	release
+	end
+}
+
 raw `
 Route113_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, Route113_OnResume

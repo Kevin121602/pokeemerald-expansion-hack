@@ -1,3 +1,19 @@
+script FallarborTown_EventScript_KingsRockMart {
+	lock
+	faceplayer
+	msgbox("Welcome to the King's Rock Store!\p"
+			"The one stop shop for all your flinging\n"
+			"and flinching needs!"$)
+	waitmessage
+	pokemart(KingsRockMart)
+	release
+	end
+}
+
+mart KingsRockMart {
+	ITEM_KINGS_ROCK
+}
+
 raw `
 FallarborTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, FallarborTown_OnTransition

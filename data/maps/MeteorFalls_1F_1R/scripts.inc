@@ -51,7 +51,7 @@ MeteorFalls_1F_1R_EventScript_RileyDefeated::
 # 55 "data/maps/MeteorFalls_1F_1R/scripts.pory"
 	setflag FLAG_DEFEATED_RILEY
 # 56 "data/maps/MeteorFalls_1F_1R/scripts.pory"
-	setvar VAR_METEOR_FALLS_STATE, 1
+	setvar VAR_STAT_TRAINERS_STATE, 1
 # 57 "data/maps/MeteorFalls_1F_1R/scripts.pory"
 	release
 	end
@@ -246,7 +246,7 @@ MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene::
 # 154 "data/maps/MeteorFalls_1F_1R/scripts.pory"
 	setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
 # 155 "data/maps/MeteorFalls_1F_1R/scripts.pory"
-	setvar VAR_METEOR_FALLS_STATE, 1
+	setvar VAR_STAT_TRAINERS_STATE, 1
 # 156 "data/maps/MeteorFalls_1F_1R/scripts.pory"
 	releaseall
 # 157 "data/maps/MeteorFalls_1F_1R/scripts.pory"
