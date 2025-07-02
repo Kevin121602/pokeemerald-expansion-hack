@@ -78,7 +78,7 @@
 #define FLAG_RECIEVED_BOTTLE_CAP_7    0x40 // Unused Flag
 #define FLAG_RECIEVED_BOTTLE_CAP_8    0x41 // Unused Flag
 #define FLAG_RECIEVED_BOTTLE_CAP_9    0x42 // Unused Flag
-#define FLAG_UNUSED_0x043    0x43 // Unused Flag
+#define FLAG_RECIEVED_MOON_STONE    0x43 // Unused Flag
 #define FLAG_UNUSED_0x044    0x44 // Unused Flag
 #define FLAG_UNUSED_0x045    0x45 // Unused Flag
 #define FLAG_UNUSED_0x046    0x46 // Unused Flag
@@ -1225,7 +1225,7 @@
 
 #define FLAG_DISABLE_BAG                                            0x493
 #define FLAG_DISABLE_EXP                                            0x494 // Unused Flag
-#define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
+#define FLAG_ITEM_DESERT_UNDERPASS_SOFT_SAND                        0x495 // Unused Flag
 #define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
 #define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
 #define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
