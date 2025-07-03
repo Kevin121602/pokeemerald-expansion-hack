@@ -12,7 +12,7 @@ Route114_FossilManiacsHouse_EventScript_FossilManiacsBrother::
 	faceplayer
 	goto_if_set FLAG_RECEIVED_TM_DIG, Route114_FossilManiacsHouse_EventScript_ReceivedDig
 	msgbox Route114_FossilManiacsHouse_Text_HaveThisToDigLikeMyBrother, MSGBOX_DEFAULT
-	giveitem ITEM_TM_ACROBATICS
+	giveitem ITEM_TM_DEFOG
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM_DIG
 	release
@@ -32,16 +32,16 @@ Route114_FossilManiacsHouse_EventScript_Bookshelf::
 	end
 
 Route114_FossilManiacsHouse_Text_HaveThisToDigLikeMyBrother:
-	.string "My big brother's the FOSSIL MANIAC…\n"
-	.string "He's a nice guy who loves FOSSILS…\p"
-	.string "He loves digging holes, too…\n"
-	.string "He dug this hole by himself…\p"
-	.string "You can have this, so you can DIG\n"
-	.string "holes just like my big brother…$"
+	.string "My big brother's the Fossil Maniac…\n"
+	.string "He's a nice guy who loves Fossils…\p"
+	.string "He loves clearing rocks, too…\n"
+	.string "He cleared this tunnel by himself…\p"
+	.string "You can have this, so you can\n"
+	.string "clear away rocks like my brother…$"
 
 Route114_FossilManiacsHouse_Text_DigReturnsYouToEntrance:
-	.string "If you make a POKéMON DIG inside a\n"
-	.string "cave, you're returned to the entrance…$"
+	.string "If you make a Pokémon use Defog,\n"
+	.string "you can clear away rocks too!$"
 
 Route114_FossilManiacsHouse_Text_RocksFillDisplayCase:
 	.string "Rocks in peculiar shapes fill\n"

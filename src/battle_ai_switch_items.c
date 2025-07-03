@@ -2150,6 +2150,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         {
             damageDealt = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, FALSE, DMG_ROLL_LOWEST);
             hitsToKOAI = GetNoOfHitsToKO(damageDealt, calcHP);
+
             //continues if move does 0 damage
             if(damageDealt == 0){
                 continue;

@@ -1020,8 +1020,8 @@ Level: 24
 Nature: Timid
 Ability: Water Absorb
 - Bubble Beam
-- Icy Wind
 - Shadow Ball
+- Round
 - Sing
 
 Stunfisk @ Leftovers
@@ -1031,13 +1031,13 @@ Ability: Static
 - Discharge
 - Mud Bomb
 - Scald
-- Stealth Rock
+- Magnet Rise
 
-Drifblim @ Sitrus Berry
+Drifblim @ Iapapa Berry
 Level: 24
 Nature: Naughty
 Ability: Unburden
-- Shadow Ball
+- Hex
 - Acrobatics
 - Shock Wave
 - Destiny Bond
@@ -1064,7 +1064,7 @@ Chansey @ Eviolite
 Level: 26
 Nature: Bold
 Ability: Natural Cure
-- Seismic Toss
+- Hyper Voice
 - Counter
 - Toxic
 - Soft-Boiled
@@ -3960,8 +3960,8 @@ Ability: Storm Drain
 Level: 23
 - Scald
 - Air Slash
+- Aurora Beam
 - Sweet Kiss
-- Attract
 
 Carkol @ Passho Berry
 Nature: Calm
@@ -7286,7 +7286,7 @@ Ability: Intimidate
 Level: 24
 - Waterfall
 - Poison Jab
-- Aqua Jet
+- Spikes
 - Toxic Spikes
 
 Corsola-Galarian @ Leftovers
@@ -7297,6 +7297,15 @@ Level: 24
 - Night Shade
 - Power Gem
 - Strength Sap
+
+Mareanie @ Black Sludge
+Nature: Relaxed
+Ability: Merciless
+Level: 24
+- Liquidation
+- Venoshock
+- Infestation
+- Toxic
 
 Croconaw @ Mystic Water
 Nature: Jolly
@@ -14785,8 +14794,8 @@ AI: Check Bad Move / Try To Faint / Check Viability
 Pelipper @ Lum Berry
 Nature: Timid
 Ability: Drizzle
-Level: 24
-- Brine
+Level: 23
+- Chilling Water
 - Air Cutter
 - Icy Wind
 - Roost
@@ -14794,20 +14803,11 @@ Level: 24
 Sliggoo @ Leftovers
 Nature: Timid
 Ability: Hydration
-Level: 23
+Level: 24
 - Dragon Breath
 - Water Pulse
 - Acid Spray
 - Rest
-
-Anorith @ Focus Sash
-Nature: Adamant
-Ability: Swift Swim
-Level: 24
-- X-Scissor
-- Rock Slide
-- Aerial Ace
-- Aqua Jet
 
 Quagsire @ Mystic Water
 Nature: Careful
@@ -14827,13 +14827,13 @@ Music: Girl
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Wigglytuff @ Big Root
-Nature: Hasty
-Ability: Competitive
+Clefairy @ Fairy Feather
+Nature: Bold
+Ability: Cute Charm
 Level: 24
-- Hyper Voice
 - Draining Kiss
-- Drain Punch
+- Mystical Fire
+- Grass Knot
 - Sing
 
 Ditto @ Lum Berry
@@ -14857,7 +14857,7 @@ Ability: Overcoat
 Level: 25
 - Iron Head
 - Signal Beam
-- Infestation
+- Bug Bite
 - Metal Burst
 
 === TRAINER_DEANDRE ===

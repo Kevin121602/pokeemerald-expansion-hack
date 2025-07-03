@@ -3356,6 +3356,12 @@ bool32 ShouldRecover(u32 battlerAtk, u32 battlerDef, u32 move, u32 healPercent)
 
     //s32 damage = AI_DATA->simulatedDmg[battlerAtk][battlerDef][AI_THINKING_STRUCT->movesetIndex].expected;
     s32 healAmount = (healPercent * gBattleMons[battlerAtk].maxHP) / 100;
+
+    if(move == MOVE_STRENGTH_SAP){
+        healAmount = gBattleMons[battlerDef].attack;
+        healAmount *= gStatStageRatios[gBattleMons[battlerDef].statStages[STAT_ATK]][0];
+        healAmount /= gStatStageRatios[gBattleMons[battlerDef].statStages[STAT_ATK]][1];
+    }
     if (AI_DATA->hpPercents[battlerAtk] < 75){
         for (i = 0; i < MAX_MON_MOVES; i++)
         {
@@ -3861,8 +3867,8 @@ bool32 ShouldBellyDrum(u32 battlerAtk, u32 battlerDef){
     u32 bestMove = GetBestDmgMoveFromBattler(battlerDef, battlerAtk);
     u32 bestMoveDmg = AI_CalcDamage(bestMove, battlerDef, battlerAtk, &effectiveness, TRUE, AI_GetWeather(AI_DATA), DMG_ROLL_DEFAULT).expected;
 
-    speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
-    speedBattler   = GetBattlerTotalSpeedStatArgs(battlerDef, abilityPlayer, holdEffectPlayer);
+    speedBattlerAI = AI_DATA->speedStats[battlerAtk];
+    speedBattler   = AI_DATA->speedStats[battlerDef];
 
     if(abilityPlayer == ABILITY_UNAWARE){
         return FALSE;
@@ -4159,6 +4165,9 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     if (considerContrary && AI_DATA->abilities[battlerAtk] == ABILITY_CONTRARY)
         return NO_INCREASE;
 
+    if(AI_DATA->abilities[battlerDef] == ABILITY_UNAWARE && (AISpeedAfterBoosts < speedBattler || speedBattler > speedBattlerAI))
+        return NO_INCREASE;
+
     // Don't increase stat if AI is at +4
     //if (gBattleMons[battlerAtk].statStages[statId] >= MAX_STAT_STAGE - 2)
     //    return NO_INCREASE;
@@ -4339,7 +4348,7 @@ void IncreasePoisonScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
     if (AI_CanPoison(battlerAtk, battlerDef, AI_DATA->abilities[battlerDef], move, AI_DATA->partnerMove) && AI_DATA->hpPercents[battlerDef] > 20)
     {
         ADJUST_SCORE_PTR(WEAK_EFFECT);
-        if(Random() % 100 < 50)
+        if(Random() % 100 < 60)
             ADJUST_SCORE_PTR(WEAK_EFFECT);
 
         if ((HasMoveEffect(battlerAtk, EFFECT_PROTECT) || AI_DATA->abilities[battlerAtk] == ABILITY_MERCILESS) || (HasMoveEffectANDArg(battlerAtk, EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_POISON)))
@@ -4355,7 +4364,7 @@ void IncreaseBurnScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
     if (AI_CanBurn(battlerAtk, battlerDef, AI_DATA->abilities[battlerDef], BATTLE_PARTNER(battlerAtk), move, AI_DATA->partnerMove))
     {
         ADJUST_SCORE_PTR(WEAK_EFFECT); // burning is good
-        if (gMovesInfo[GetBestDmgMoveFromBattler(battlerDef, battlerAtk)].category == DAMAGE_CATEGORY_PHYSICAL)
+        if (gMovesInfo[GetBestDmgMoveFromBattler(battlerDef, battlerAtk)].category == DAMAGE_CATEGORY_PHYSICAL && Random() % 100 < 60)
                 ADJUST_SCORE_PTR(WEAK_EFFECT);
 
         if ((HasMoveEffectANDArg(battlerAtk, EFFECT_DOUBLE_POWER_ON_ARG_STATUS, STATUS1_BURN)))
@@ -4380,7 +4389,9 @@ void IncreaseParalyzeScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
 void IncreaseSleepScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score)
 {
     if (AI_CanPutToSleep(battlerAtk, battlerDef, AI_DATA->abilities[battlerDef], move, AI_DATA->partnerMove))
-        ADJUST_SCORE_PTR(DECENT_EFFECT);
+        ADJUST_SCORE_PTR(WEAK_EFFECT);
+        if(Random() % 100 < 60)
+            ADJUST_SCORE_PTR(WEAK_EFFECT);
     else
         return;
 
@@ -4401,7 +4412,7 @@ void IncreaseConfusionScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score
     if (AI_CanConfuse(battlerAtk, battlerDef, AI_DATA->abilities[battlerDef], BATTLE_PARTNER(battlerAtk), move, AI_DATA->partnerMove))
     {
         ADJUST_SCORE_PTR(WEAK_EFFECT);
-        if(Random() % 100 < 50)
+        if(Random() % 100 < 60)
             ADJUST_SCORE_PTR(WEAK_EFFECT);
     }
 }

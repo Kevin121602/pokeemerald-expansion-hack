@@ -842,6 +842,10 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         break;
     }
 
+    if ((gMovesInfo[move].soundMove && aiData->abilities[battlerDef] == ABILITY_SOUNDPROOF)){
+        RETURN_SCORE_MINUS(20);
+    }
+
     // check non-user target
     if (!(moveTarget & MOVE_TARGET_USER))
     {
@@ -1420,6 +1424,10 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_MIRROR_COAT:
             if (!HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL)) 
+                ADJUST_SCORE(-10);
+            break;
+        case EFFECT_METAL_BURST:
+            if(AI_DATA->speedStats[battlerAtk] >= AI_DATA->speedStats[battlerDef])
                 ADJUST_SCORE(-10);
             break;
         case EFFECT_ROAR:
@@ -3279,6 +3287,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED));
         break;
     case EFFECT_SPEED_UP_2:
+    case EFFECT_AUTOTOMIZE:
         ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED_2));
         break;
     case EFFECT_SPECIAL_ATTACK_UP:
@@ -3315,13 +3324,16 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         ADJUST_SCORE(IncreaseStatLoweringScore(battlerAtk, battlerDef, STAT_CHANGE_DEF, 2));
         break;
     case EFFECT_SPEED_DOWN:
-        if(gFieldStatuses & STATUS_FIELD_RICH_SEDIMENT & (gMovesInfo[move].type == TYPE_GROUND || gMovesInfo[move].type == TYPE_ROCK || gMovesInfo[move].type == TYPE_STEEL))
-            ADJUST_SCORE(IncreaseStatLoweringScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED, 2));
-        else
-            ADJUST_SCORE(IncreaseStatLoweringScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED, 1));
+        if((GetBestDmgFromBattler(battlerAtk, battlerDef) * 3) >= gBattleMons[battlerDef].hp){
+            if(gFieldStatuses & STATUS_FIELD_RICH_SEDIMENT & (gMovesInfo[move].type == TYPE_GROUND || gMovesInfo[move].type == TYPE_ROCK || gMovesInfo[move].type == TYPE_STEEL))
+                ADJUST_SCORE(IncreaseStatLoweringScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED, 2));
+            else
+                ADJUST_SCORE(IncreaseStatLoweringScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED, 1));
+        }
         break;
     case EFFECT_SPEED_DOWN_2:
-        ADJUST_SCORE(IncreaseStatLoweringScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED, 2));
+        if((GetBestDmgFromBattler(battlerAtk, battlerDef) * 3) >= gBattleMons[battlerDef].hp)
+            ADJUST_SCORE(IncreaseStatLoweringScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED, 2));
         break;
     case EFFECT_SPECIAL_ATTACK_DOWN:
         ADJUST_SCORE(IncreaseStatLoweringScore(battlerAtk, battlerDef, STAT_CHANGE_SPATK, 1));
@@ -3377,6 +3389,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         score += AI_TryToClearStats(battlerAtk, battlerDef, isDoubleBattle);
         break;
     case EFFECT_ROAR:
+    case EFFECT_HIT_SWITCH_TARGET:
         if ((gMovesInfo[move].soundMove && aiData->abilities[battlerDef] == ABILITY_SOUNDPROOF)
           || aiData->abilities[battlerDef] == ABILITY_SUCTION_CUPS)
             break;
@@ -3384,7 +3397,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             break;
         
         //50% Chance to roar if hazards on players side
-        if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_HAZARDS_ANY){
+        if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_SPIKES ||
+            gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_TOXIC_SPIKES ||
+            gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_STEALTH_ROCK){
             ADJUST_SCORE(WEAK_EFFECT);
             if(Random() % 100 < 50)
                 ADJUST_SCORE(WEAK_EFFECT);
@@ -3433,6 +3448,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_RESTORE_HP:
     case EFFECT_SOFTBOILED:
     case EFFECT_ROOST:
+    case EFFECT_STRENGTH_SAP:
         if (ShouldRecover(battlerAtk, battlerDef, move, 50))
             ADJUST_SCORE(BEST_EFFECT);
         break;
@@ -3465,7 +3481,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
               || aiData->abilities[battlerAtk] == ABILITY_EARLY_BIRD
               || (AI_GetWeather(aiData) & B_WEATHER_RAIN && gWishFutureKnock.weatherDuration != 1 && aiData->abilities[battlerAtk] == ABILITY_HYDRATION && aiData->holdEffects[battlerAtk] != HOLD_EFFECT_UTILITY_UMBRELLA)
               || (NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk) >= 3))
-                ADJUST_SCORE(DECENT_EFFECT);
+                ADJUST_SCORE(BEST_EFFECT);
         }
         break;
     case EFFECT_OHKO:
@@ -3769,10 +3785,16 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             break; // Don't use if the attract won't have a change to activate
         if (gBattleMons[battlerDef].status1 & STATUS1_ANY
         || (gBattleMons[battlerDef].status2 & STATUS2_CONFUSION)
-        || IsBattlerTrapped(battlerDef, TRUE))
-            ADJUST_SCORE(DECENT_EFFECT + WEAK_EFFECT);
-        else
+        || IsBattlerTrapped(battlerDef, TRUE)){
             ADJUST_SCORE(DECENT_EFFECT);
+            if(Random() % 100 < 60)
+                ADJUST_SCORE(WEAK_EFFECT);
+        }
+        else{
+            ADJUST_SCORE(WEAK_EFFECT);
+            if(Random() % 100 < 60)
+                ADJUST_SCORE(WEAK_EFFECT);
+        }
         break;
     case EFFECT_SAFEGUARD:
         if (!AI_IsTerrainAffected(battlerAtk, STATUS_FIELD_MISTY_TERRAIN) || !IsBattlerGrounded(battlerAtk))
@@ -4262,13 +4284,24 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         if ((!IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
          && (NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk) >= 2)
          && (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL)))
-            ADJUST_SCORE(DECENT_EFFECT);
+            ADJUST_SCORE(WEAK_EFFECT);
+        if(gMovesInfo[GetBestDmgMoveFromBattler(battlerDef, battlerAtk)].category == DAMAGE_CATEGORY_PHYSICAL && Random() % 100 < 60)
+            ADJUST_SCORE(WEAK_EFFECT);
         break;
     case EFFECT_MIRROR_COAT:
-        if ((!IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]) && predictedMove != MOVE_NONE)
+        if ((!IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
          && (NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk) >= 2)
          && (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL)))
-            ADJUST_SCORE(DECENT_EFFECT);
+            ADJUST_SCORE(WEAK_EFFECT);
+        if(gMovesInfo[GetBestDmgMoveFromBattler(battlerDef, battlerAtk)].category == DAMAGE_CATEGORY_SPECIAL && Random() % 100 < 60)
+            ADJUST_SCORE(WEAK_EFFECT);
+        break;
+    case EFFECT_METAL_BURST:
+        if ((!IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
+         && (NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk) >= 2))
+            ADJUST_SCORE(WEAK_EFFECT);
+        if(Random() % 100 < 60)
+            ADJUST_SCORE(WEAK_EFFECT);
         break;
     case EFFECT_SHORE_UP:
         if ((AI_GetWeather(aiData) & B_WEATHER_SANDSTORM) && ShouldRecover(battlerAtk, battlerDef, move, 67))
@@ -4341,7 +4374,8 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                 case MOVE_EFFECT_SP_ATK_PLUS_1:
                 case MOVE_EFFECT_SP_DEF_PLUS_1:
                     StageStatId = STAT_CHANGE_ATK + gMovesInfo[move].additionalEffects[i].moveEffect - MOVE_EFFECT_ATK_PLUS_1;
-                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, StageStatId));
+                    if(AI_DATA->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected + (GetBestDmgFromBattler(battlerAtk, battlerDef) * 3) >= gBattleMons[battlerDef].hp)
+                        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, StageStatId));
                     break;
                 case MOVE_EFFECT_ATK_PLUS_2:
                 case MOVE_EFFECT_DEF_PLUS_2:
@@ -4349,7 +4383,8 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                 case MOVE_EFFECT_SP_ATK_PLUS_2:
                 case MOVE_EFFECT_SP_DEF_PLUS_2:
                     StageStatId = STAT_CHANGE_ATK_2 + gMovesInfo[move].additionalEffects[i].moveEffect - MOVE_EFFECT_ATK_PLUS_1;
-                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, StageStatId));
+                    if(AI_DATA->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected + (GetBestDmgFromBattler(battlerAtk, battlerDef) * 3) >= gBattleMons[battlerDef].hp)
+                        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, StageStatId));
                     break;
                 case MOVE_EFFECT_ACC_PLUS_1:
                 case MOVE_EFFECT_ACC_PLUS_2:
@@ -4414,7 +4449,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                     score += ShouldTryToFlinch(battlerAtk, battlerDef, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], move);
                     break;
                 case MOVE_EFFECT_SPD_MINUS_1:
-                    if(aiData->abilities[battlerDef] != ABILITY_SHIELD_DUST){
+                    if(aiData->abilities[battlerDef] != ABILITY_SHIELD_DUST && (AI_DATA->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected + (GetBestDmgFromBattler(battlerAtk, battlerDef) * 3) >= gBattleMons[battlerDef].hp)){
                         if(gFieldStatuses & STATUS_FIELD_RICH_SEDIMENT & (gMovesInfo[move].type == TYPE_GROUND || gMovesInfo[move].type == TYPE_ROCK || gMovesInfo[move].type == TYPE_STEEL))
                             ADJUST_SCORE(IncreaseStatLoweringScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED, 2));
                         else
@@ -4422,7 +4457,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                     }
                     break;
                 case MOVE_EFFECT_SPD_MINUS_2:
-                    if(aiData->abilities[battlerDef] != ABILITY_SHIELD_DUST)
+                    if(aiData->abilities[battlerDef] != ABILITY_SHIELD_DUST && (AI_DATA->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected + (GetBestDmgFromBattler(battlerAtk, battlerDef) * 3) >= gBattleMons[battlerDef].hp))
                         ADJUST_SCORE(IncreaseStatLoweringScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED, 2));
                     break;
                 case MOVE_EFFECT_ATK_MINUS_1:
@@ -4557,6 +4592,10 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     struct AiLogicData *aiData = AI_DATA;
     s32 scoreTemp;
     u8 effectiveness = AI_EFFECTIVENESS_x0;
+    s32 initialScore = score;
+    s32 damageScore;
+    s32 statusScore;
+    s32 finalScore;
 
     u32 moveIndex = GetMoveIndex(battlerAtk, move);
 
@@ -4573,26 +4612,32 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             if (moveIndex != MAX_MON_MOVES && gMovesInfo[move].effect != EFFECT_EXPLOSION && aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected >= GetBestDmgFromBattler(battlerAtk, battlerDef) && !CanAIFaintTarget(battlerAtk, battlerDef, 0)){
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
                 isMoveHighestDmg = TRUE;
-                if(Random() % 100 < 40)
+                if(aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected*3 >= gBattleMons[battlerDef].hp && Random() % 100 < 40)
                     ADJUST_SCORE(DECENT_EFFECT);
             }
         }
     }
 
-    scoreTemp = score;
+    damageScore = score - initialScore;
 
     ADJUST_SCORE(AI_CalcMoveEffectScore(battlerAtk, battlerDef, move));
 
+    statusScore = score - (initialScore + damageScore);
+
     //if calcMoveEffectScore returns higher score than original, has viable status bool is true
-    if(score > scoreTemp && score > 100){
+    if(statusScore > 0 && score > 100){
         AI_DATA->hasViableStatus = TRUE;
         //however, dont permanently increase the score if move is highest damage
-        if(isMoveHighestDmg || (aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected >= gBattleMons[battlerDef].hp && !MonHasInTactFocusSashSturdy(battlerAtk, battlerDef, GetBattlerHoldEffect(battlerAtk, TRUE), GetBattlerAbility(battlerAtk), move))){
-            score = scoreTemp;
-        }
+        //if(isMoveHighestDmg || (aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected >= gBattleMons[battlerDef].hp && !MonHasInTactFocusSashSturdy(battlerAtk, battlerDef, GetBattlerHoldEffect(battlerAtk, TRUE), GetBattlerAbility(battlerAtk), move))){
+        //    score = scoreTemp;
+        //}
     }
 
-    return score;
+    finalScore = (statusScore > damageScore) ? statusScore : damageScore;
+    finalScore += initialScore;
+    //ADJUST_AND_RETURN_SCORE(finalScore);
+
+    return finalScore;
 }
 
 // Effects that are encouraged on the first turn of battle

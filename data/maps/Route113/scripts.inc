@@ -47,347 +47,349 @@ Route113_EventScript_CherylDefeated::
 # 51 "data/maps/Route113/scripts.pory"
 	clearflag FLAG_DISABLE_EXP
 # 52 "data/maps/Route113/scripts.pory"
-	msgbox Route113_EventScript_Cheryl_Text_0
-# 55 "data/maps/Route113/scripts.pory"
-	setflag FLAG_DEFEATED_CHERYL
+	msgbox Route113_EventScript_CherylDefeated_Text_0
 # 56 "data/maps/Route113/scripts.pory"
-	setvar VAR_STAT_TRAINERS_STATE, 2
+	giveitem ITEM_HEART_SCALE
 # 57 "data/maps/Route113/scripts.pory"
+	setflag FLAG_DEFEATED_CHERYL
+# 58 "data/maps/Route113/scripts.pory"
+	setvar VAR_STAT_TRAINERS_STATE, 2
+# 59 "data/maps/Route113/scripts.pory"
 	release
 	end
 
 
-# 61 "data/maps/Route113/scripts.pory"
-
-# 62 "data/maps/Route113/scripts.pory"
-Route113_MapScripts::
 # 63 "data/maps/Route113/scripts.pory"
-	map_script MAP_SCRIPT_ON_RESUME, Route113_OnResume
+
 # 64 "data/maps/Route113/scripts.pory"
-	map_script MAP_SCRIPT_ON_TRANSITION, Route113_OnTransition
+Route113_MapScripts::
 # 65 "data/maps/Route113/scripts.pory"
-	.byte 0
+	map_script MAP_SCRIPT_ON_RESUME, Route113_OnResume
 # 66 "data/maps/Route113/scripts.pory"
-
+	map_script MAP_SCRIPT_ON_TRANSITION, Route113_OnTransition
 # 67 "data/maps/Route113/scripts.pory"
-Route113_OnResume:
+	.byte 0
 # 68 "data/maps/Route113/scripts.pory"
-	setstepcallback STEP_CB_ASH
+
 # 69 "data/maps/Route113/scripts.pory"
-	end
+Route113_OnResume:
 # 70 "data/maps/Route113/scripts.pory"
-
+	setstepcallback STEP_CB_ASH
 # 71 "data/maps/Route113/scripts.pory"
-Route113_OnTransition:
+	end
 # 72 "data/maps/Route113/scripts.pory"
-	clearflag FLAG_FORCE_MIRAGE_TOWER_VISIBLE
+
 # 73 "data/maps/Route113/scripts.pory"
-	call Route113_EventScript_CheckSetAshWeather
+Route113_OnTransition:
 # 74 "data/maps/Route113/scripts.pory"
-	end
+	clearflag FLAG_FORCE_MIRAGE_TOWER_VISIBLE
 # 75 "data/maps/Route113/scripts.pory"
-
+	call Route113_EventScript_CheckSetAshWeather
 # 76 "data/maps/Route113/scripts.pory"
-Route113_EventScript_CheckSetAshWeather::
+	end
 # 77 "data/maps/Route113/scripts.pory"
-	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+
 # 78 "data/maps/Route113/scripts.pory"
-	goto_if_lt VAR_TEMP_0, 19, Route113_EventScript_DontSetAshWeather
+Route113_EventScript_CheckSetAshWeather::
 # 79 "data/maps/Route113/scripts.pory"
-	goto_if_gt VAR_TEMP_0, 84, Route113_EventScript_DontSetAshWeather
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 # 80 "data/maps/Route113/scripts.pory"
-	setweather WEATHER_VOLCANIC_ASH
+	goto_if_lt VAR_TEMP_0, 19, Route113_EventScript_DontSetAshWeather
 # 81 "data/maps/Route113/scripts.pory"
-	return
+	goto_if_gt VAR_TEMP_0, 84, Route113_EventScript_DontSetAshWeather
 # 82 "data/maps/Route113/scripts.pory"
-
+	setweather WEATHER_VOLCANIC_ASH
 # 83 "data/maps/Route113/scripts.pory"
-Route113_EventScript_DontSetAshWeather::
-# 84 "data/maps/Route113/scripts.pory"
 	return
+# 84 "data/maps/Route113/scripts.pory"
+
 # 85 "data/maps/Route113/scripts.pory"
-
+Route113_EventScript_DontSetAshWeather::
 # 86 "data/maps/Route113/scripts.pory"
-Route113_EventScript_Gentleman::
+	return
 # 87 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_AshCanBeFashionedIntoGlass, MSGBOX_NPC
+
 # 88 "data/maps/Route113/scripts.pory"
-	end
+Route113_EventScript_Gentleman::
 # 89 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_AshCanBeFashionedIntoGlass, MSGBOX_NPC
 # 90 "data/maps/Route113/scripts.pory"
-Route113_EventScript_NinjaBoy::
+	end
 # 91 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_FunWalkingThroughAsh, MSGBOX_NPC
+
 # 92 "data/maps/Route113/scripts.pory"
-	end
+Route113_EventScript_NinjaBoy::
 # 93 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_FunWalkingThroughAsh, MSGBOX_NPC
 # 94 "data/maps/Route113/scripts.pory"
-Route113_EventScript_RouteSign111::
+	end
 # 95 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_RouteSign111, MSGBOX_SIGN
+
 # 96 "data/maps/Route113/scripts.pory"
-	end
+Route113_EventScript_RouteSign111::
 # 97 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_RouteSign111, MSGBOX_SIGN
 # 98 "data/maps/Route113/scripts.pory"
-Route113_EventScript_RouteSignFallarbor::
+	end
 # 99 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_RouteSignFallarbor, MSGBOX_SIGN
+
 # 100 "data/maps/Route113/scripts.pory"
-	end
+Route113_EventScript_RouteSignFallarbor::
 # 101 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_RouteSignFallarbor, MSGBOX_SIGN
 # 102 "data/maps/Route113/scripts.pory"
-Route113_EventScript_GlassWorkshopSign::
+	end
 # 103 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_GlassWorkshopSign, MSGBOX_SIGN
+
 # 104 "data/maps/Route113/scripts.pory"
-	end
+Route113_EventScript_GlassWorkshopSign::
 # 105 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_GlassWorkshopSign, MSGBOX_SIGN
 # 106 "data/maps/Route113/scripts.pory"
-Route113_EventScript_TrainerTipsRegisterKeyItems::
+	end
 # 107 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_TrainerTipsRegisterKeyItems, MSGBOX_SIGN
+
 # 108 "data/maps/Route113/scripts.pory"
-	end
+Route113_EventScript_TrainerTipsRegisterKeyItems::
 # 109 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_TrainerTipsRegisterKeyItems, MSGBOX_SIGN
 # 110 "data/maps/Route113/scripts.pory"
-Route113_EventScript_Jaylen::
+	end
 # 111 "data/maps/Route113/scripts.pory"
-	trainerbattle_single TRAINER_JAYLEN, Route113_Text_JaylenIntro, Route113_Text_JaylenDefeat
+
 # 112 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_JaylenPostBattle, MSGBOX_AUTOCLOSE
+Route113_EventScript_Jaylen::
 # 113 "data/maps/Route113/scripts.pory"
-	end
+	trainerbattle_single TRAINER_JAYLEN, Route113_Text_JaylenIntro, Route113_Text_JaylenDefeat
 # 114 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_JaylenPostBattle, MSGBOX_AUTOCLOSE
 # 115 "data/maps/Route113/scripts.pory"
-Route113_EventScript_Dillon::
+	end
 # 116 "data/maps/Route113/scripts.pory"
-	trainerbattle_single TRAINER_DILLON, Route113_Text_DillonIntro, Route113_Text_DillonDefeat
+
 # 117 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_DillonPostBattle, MSGBOX_AUTOCLOSE
+Route113_EventScript_Dillon::
 # 118 "data/maps/Route113/scripts.pory"
-	end
+	trainerbattle_single TRAINER_DILLON, Route113_Text_DillonIntro, Route113_Text_DillonDefeat
 # 119 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_DillonPostBattle, MSGBOX_AUTOCLOSE
 # 120 "data/maps/Route113/scripts.pory"
-Route113_EventScript_Madeline::
+	end
 # 121 "data/maps/Route113/scripts.pory"
-	trainerbattle_single TRAINER_MADELINE_1, Route113_Text_MadelineIntro, Route113_Text_MadelineDefeat, Route113_EventScript_RegisterMadeline
+
 # 122 "data/maps/Route113/scripts.pory"
-	specialvar VAR_RESULT, ShouldTryRematchBattle
+Route113_EventScript_Madeline::
 # 123 "data/maps/Route113/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, Route113_EventScript_RematchMadeline
+	trainerbattle_single TRAINER_MADELINE_1, Route113_Text_MadelineIntro, Route113_Text_MadelineDefeat, Route113_EventScript_RegisterMadeline
 # 124 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_MadelinePostBattle, MSGBOX_DEFAULT
-# 125 "data/maps/Route113/scripts.pory"
-	release
-# 126 "data/maps/Route113/scripts.pory"
-	end
-# 127 "data/maps/Route113/scripts.pory"
-
-# 128 "data/maps/Route113/scripts.pory"
-Route113_EventScript_RegisterMadeline::
-# 129 "data/maps/Route113/scripts.pory"
-	special PlayerFaceTrainerAfterBattle
-# 130 "data/maps/Route113/scripts.pory"
-	waitmovement 0
-# 131 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_MadelineRegister, MSGBOX_DEFAULT
-# 132 "data/maps/Route113/scripts.pory"
-	register_matchcall TRAINER_MADELINE_1
-# 133 "data/maps/Route113/scripts.pory"
-	release
-# 134 "data/maps/Route113/scripts.pory"
-	end
-# 135 "data/maps/Route113/scripts.pory"
-
-# 136 "data/maps/Route113/scripts.pory"
-Route113_EventScript_RematchMadeline::
-# 137 "data/maps/Route113/scripts.pory"
-	trainerbattle_rematch TRAINER_MADELINE_1, Route113_Text_MadelineRematchIntro, Route113_Text_MadelineRematchDefeat
-# 138 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_MadelinePostRematch, MSGBOX_AUTOCLOSE
-# 139 "data/maps/Route113/scripts.pory"
-	end
-# 140 "data/maps/Route113/scripts.pory"
-
-# 141 "data/maps/Route113/scripts.pory"
-Route113_EventScript_Lao::
-# 142 "data/maps/Route113/scripts.pory"
-	trainerbattle_single TRAINER_LAO_1, Route113_Text_LaoIntro, Route113_Text_LaoDefeat, Route113_EventScript_RegisterLao
-# 143 "data/maps/Route113/scripts.pory"
 	specialvar VAR_RESULT, ShouldTryRematchBattle
-# 144 "data/maps/Route113/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, Route113_EventScript_RematchLao
-# 145 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_LaoPostBattle, MSGBOX_DEFAULT
-# 146 "data/maps/Route113/scripts.pory"
+# 125 "data/maps/Route113/scripts.pory"
+	goto_if_eq VAR_RESULT, TRUE, Route113_EventScript_RematchMadeline
+# 126 "data/maps/Route113/scripts.pory"
+	msgbox Route113_Text_MadelinePostBattle, MSGBOX_DEFAULT
+# 127 "data/maps/Route113/scripts.pory"
 	release
-# 147 "data/maps/Route113/scripts.pory"
+# 128 "data/maps/Route113/scripts.pory"
 	end
-# 148 "data/maps/Route113/scripts.pory"
+# 129 "data/maps/Route113/scripts.pory"
 
-# 149 "data/maps/Route113/scripts.pory"
-Route113_EventScript_RegisterLao::
-# 150 "data/maps/Route113/scripts.pory"
+# 130 "data/maps/Route113/scripts.pory"
+Route113_EventScript_RegisterMadeline::
+# 131 "data/maps/Route113/scripts.pory"
 	special PlayerFaceTrainerAfterBattle
-# 151 "data/maps/Route113/scripts.pory"
+# 132 "data/maps/Route113/scripts.pory"
 	waitmovement 0
-# 152 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_LaoRegister, MSGBOX_DEFAULT
-# 153 "data/maps/Route113/scripts.pory"
-	register_matchcall TRAINER_LAO_1
-# 154 "data/maps/Route113/scripts.pory"
+# 133 "data/maps/Route113/scripts.pory"
+	msgbox Route113_Text_MadelineRegister, MSGBOX_DEFAULT
+# 134 "data/maps/Route113/scripts.pory"
+	register_matchcall TRAINER_MADELINE_1
+# 135 "data/maps/Route113/scripts.pory"
 	release
+# 136 "data/maps/Route113/scripts.pory"
+	end
+# 137 "data/maps/Route113/scripts.pory"
+
+# 138 "data/maps/Route113/scripts.pory"
+Route113_EventScript_RematchMadeline::
+# 139 "data/maps/Route113/scripts.pory"
+	trainerbattle_rematch TRAINER_MADELINE_1, Route113_Text_MadelineRematchIntro, Route113_Text_MadelineRematchDefeat
+# 140 "data/maps/Route113/scripts.pory"
+	msgbox Route113_Text_MadelinePostRematch, MSGBOX_AUTOCLOSE
+# 141 "data/maps/Route113/scripts.pory"
+	end
+# 142 "data/maps/Route113/scripts.pory"
+
+# 143 "data/maps/Route113/scripts.pory"
+Route113_EventScript_Lao::
+# 144 "data/maps/Route113/scripts.pory"
+	trainerbattle_single TRAINER_LAO_1, Route113_Text_LaoIntro, Route113_Text_LaoDefeat, Route113_EventScript_RegisterLao
+# 145 "data/maps/Route113/scripts.pory"
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+# 146 "data/maps/Route113/scripts.pory"
+	goto_if_eq VAR_RESULT, TRUE, Route113_EventScript_RematchLao
+# 147 "data/maps/Route113/scripts.pory"
+	msgbox Route113_Text_LaoPostBattle, MSGBOX_DEFAULT
+# 148 "data/maps/Route113/scripts.pory"
+	release
+# 149 "data/maps/Route113/scripts.pory"
+	end
+# 150 "data/maps/Route113/scripts.pory"
+
+# 151 "data/maps/Route113/scripts.pory"
+Route113_EventScript_RegisterLao::
+# 152 "data/maps/Route113/scripts.pory"
+	special PlayerFaceTrainerAfterBattle
+# 153 "data/maps/Route113/scripts.pory"
+	waitmovement 0
+# 154 "data/maps/Route113/scripts.pory"
+	msgbox Route113_Text_LaoRegister, MSGBOX_DEFAULT
 # 155 "data/maps/Route113/scripts.pory"
-	end
+	register_matchcall TRAINER_LAO_1
 # 156 "data/maps/Route113/scripts.pory"
-
+	release
 # 157 "data/maps/Route113/scripts.pory"
-Route113_EventScript_RematchLao::
+	end
 # 158 "data/maps/Route113/scripts.pory"
-	trainerbattle_rematch TRAINER_LAO_1, Route113_Text_LaoRematchIntro, Route113_Text_LaoRematchDefeat
+
 # 159 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_LaoPostRematch, MSGBOX_AUTOCLOSE
+Route113_EventScript_RematchLao::
 # 160 "data/maps/Route113/scripts.pory"
-	end
+	trainerbattle_rematch TRAINER_LAO_1, Route113_Text_LaoRematchIntro, Route113_Text_LaoRematchDefeat
 # 161 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_LaoPostRematch, MSGBOX_AUTOCLOSE
 # 162 "data/maps/Route113/scripts.pory"
-Route113_EventScript_Lung::
+	end
 # 163 "data/maps/Route113/scripts.pory"
-	trainerbattle_single TRAINER_LUNG, Route113_Text_LungIntro, Route113_Text_LungDefeat
+
 # 164 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_LungPostBattle, MSGBOX_AUTOCLOSE
+Route113_EventScript_Lung::
 # 165 "data/maps/Route113/scripts.pory"
-	end
+	trainerbattle_single TRAINER_LUNG, Route113_Text_LungIntro, Route113_Text_LungDefeat
 # 166 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_LungPostBattle, MSGBOX_AUTOCLOSE
 # 167 "data/maps/Route113/scripts.pory"
-Route113_EventScript_Tori::
+	end
 # 168 "data/maps/Route113/scripts.pory"
-	trainerbattle_double TRAINER_TORI_AND_TIA, Route113_Text_ToriIntro, Route113_Text_ToriDefeat, Route113_Text_ToriNotEnoughMons
+
 # 169 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_ToriPostBattle, MSGBOX_AUTOCLOSE
+Route113_EventScript_Tori::
 # 170 "data/maps/Route113/scripts.pory"
-	end
+	trainerbattle_double TRAINER_TORI_AND_TIA, Route113_Text_ToriIntro, Route113_Text_ToriDefeat, Route113_Text_ToriNotEnoughMons
 # 171 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_ToriPostBattle, MSGBOX_AUTOCLOSE
 # 172 "data/maps/Route113/scripts.pory"
-Route113_EventScript_Tia::
+	end
 # 173 "data/maps/Route113/scripts.pory"
-	trainerbattle_double TRAINER_TORI_AND_TIA, Route113_Text_TiaIntro, Route113_Text_TiaDefeat, Route113_Text_TiaNotEnoughMons
+
 # 174 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_TiaPostBattle, MSGBOX_AUTOCLOSE
+Route113_EventScript_Tia::
 # 175 "data/maps/Route113/scripts.pory"
-	end
+	trainerbattle_double TRAINER_TORI_AND_TIA, Route113_Text_TiaIntro, Route113_Text_TiaDefeat, Route113_Text_TiaNotEnoughMons
 # 176 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_TiaPostBattle, MSGBOX_AUTOCLOSE
 # 177 "data/maps/Route113/scripts.pory"
-Route113_EventScript_Sophie::
+	end
 # 178 "data/maps/Route113/scripts.pory"
-	trainerbattle_single TRAINER_SOPHIE, Route113_Text_SophieIntro, Route113_Text_SophieDefeat
+
 # 179 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_SophiePostBattle, MSGBOX_AUTOCLOSE
+Route113_EventScript_Sophie::
 # 180 "data/maps/Route113/scripts.pory"
-	end
+	trainerbattle_single TRAINER_SOPHIE, Route113_Text_SophieIntro, Route113_Text_SophieDefeat
 # 181 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_SophiePostBattle, MSGBOX_AUTOCLOSE
 # 182 "data/maps/Route113/scripts.pory"
-Route113_EventScript_Coby::
+	end
 # 183 "data/maps/Route113/scripts.pory"
-	trainerbattle_single TRAINER_COBY, Route113_Text_CobyIntro, Route113_Text_CobyDefeat
+
 # 184 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_CobyPostBattle, MSGBOX_AUTOCLOSE
+Route113_EventScript_Coby::
 # 185 "data/maps/Route113/scripts.pory"
-	end
+	trainerbattle_single TRAINER_COBY, Route113_Text_CobyIntro, Route113_Text_CobyDefeat
 # 186 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_CobyPostBattle, MSGBOX_AUTOCLOSE
 # 187 "data/maps/Route113/scripts.pory"
-Route113_EventScript_Lawrence::
+	end
 # 188 "data/maps/Route113/scripts.pory"
-	trainerbattle_single TRAINER_LAWRENCE, Route113_Text_LawrenceIntro, Route113_Text_LawrenceDefeat
+
 # 189 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_LawrencePostBattle, MSGBOX_AUTOCLOSE
+Route113_EventScript_Lawrence::
 # 190 "data/maps/Route113/scripts.pory"
-	end
+	trainerbattle_single TRAINER_LAWRENCE, Route113_Text_LawrenceIntro, Route113_Text_LawrenceDefeat
 # 191 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_LawrencePostBattle, MSGBOX_AUTOCLOSE
 # 192 "data/maps/Route113/scripts.pory"
-Route113_EventScript_Wyatt::
-# 193 "data/maps/Route113/scripts.pory"
-	trainerbattle_single TRAINER_WYATT, Route113_Text_WyattIntro, Route113_Text_WyattDefeat
-# 194 "data/maps/Route113/scripts.pory"
-	msgbox Route113_Text_WyattPostBattle, MSGBOX_AUTOCLOSE
-# 195 "data/maps/Route113/scripts.pory"
 	end
+# 193 "data/maps/Route113/scripts.pory"
+
+# 194 "data/maps/Route113/scripts.pory"
+Route113_EventScript_Wyatt::
+# 195 "data/maps/Route113/scripts.pory"
+	trainerbattle_single TRAINER_WYATT, Route113_Text_WyattIntro, Route113_Text_WyattDefeat
 # 196 "data/maps/Route113/scripts.pory"
-
+	msgbox Route113_Text_WyattPostBattle, MSGBOX_AUTOCLOSE
 # 197 "data/maps/Route113/scripts.pory"
-Route113_Text_AshCanBeFashionedIntoGlass:
+	end
 # 198 "data/maps/Route113/scripts.pory"
-	.string "Wahahaha! Today's technology is a\n"
+
 # 199 "data/maps/Route113/scripts.pory"
-	.string "wondrous thing!\p"
+Route113_Text_AshCanBeFashionedIntoGlass:
 # 200 "data/maps/Route113/scripts.pory"
-	.string "Take this volcanic ash here.\n"
+	.string "Wahahaha! Today's technology is a\n"
 # 201 "data/maps/Route113/scripts.pory"
-	.string "It can be fashioned into glass.$"
+	.string "wondrous thing!\p"
 # 202 "data/maps/Route113/scripts.pory"
-
+	.string "Take this volcanic ash here.\n"
 # 203 "data/maps/Route113/scripts.pory"
-Route113_Text_FunWalkingThroughAsh:
+	.string "It can be fashioned into glass.$"
 # 204 "data/maps/Route113/scripts.pory"
-	.string "It's fun walking through the volcano's\n"
+
 # 205 "data/maps/Route113/scripts.pory"
-	.string "ashes on the ground and grass.\p"
+Route113_Text_FunWalkingThroughAsh:
 # 206 "data/maps/Route113/scripts.pory"
-	.string "You can see where you walked--it's\n"
+	.string "It's fun walking through the volcano's\n"
 # 207 "data/maps/Route113/scripts.pory"
-	.string "really neat!$"
+	.string "ashes on the ground and grass.\p"
 # 208 "data/maps/Route113/scripts.pory"
-
+	.string "You can see where you walked--it's\n"
 # 209 "data/maps/Route113/scripts.pory"
-Route113_Text_RouteSign111:
+	.string "really neat!$"
 # 210 "data/maps/Route113/scripts.pory"
-	.string "ROUTE 113\n"
+
 # 211 "data/maps/Route113/scripts.pory"
-	.string "{RIGHT_ARROW} ROUTE 111$"
+Route113_Text_RouteSign111:
 # 212 "data/maps/Route113/scripts.pory"
-
-# 213 "data/maps/Route113/scripts.pory"
-Route113_Text_RouteSignFallarbor:
-# 214 "data/maps/Route113/scripts.pory"
 	.string "ROUTE 113\n"
+# 213 "data/maps/Route113/scripts.pory"
+	.string "{RIGHT_ARROW} ROUTE 111$"
+# 214 "data/maps/Route113/scripts.pory"
+
 # 215 "data/maps/Route113/scripts.pory"
-	.string "{LEFT_ARROW} FALLARBOR TOWN$"
+Route113_Text_RouteSignFallarbor:
 # 216 "data/maps/Route113/scripts.pory"
-
+	.string "ROUTE 113\n"
 # 217 "data/maps/Route113/scripts.pory"
-Route113_Text_TrainerTipsRegisterKeyItems:
+	.string "{LEFT_ARROW} FALLARBOR TOWN$"
 # 218 "data/maps/Route113/scripts.pory"
-	.string "TRAINER TIPS\p"
-# 219 "data/maps/Route113/scripts.pory"
-	.string "You may register one of the KEY ITEMS\n"
-# 220 "data/maps/Route113/scripts.pory"
-	.string "in your BAG as SELECT.\p"
-# 221 "data/maps/Route113/scripts.pory"
-	.string "Simply press SELECT to use\n"
-# 222 "data/maps/Route113/scripts.pory"
-	.string "the registered item conveniently.$"
-# 223 "data/maps/Route113/scripts.pory"
 
+# 219 "data/maps/Route113/scripts.pory"
+Route113_Text_TrainerTipsRegisterKeyItems:
+# 220 "data/maps/Route113/scripts.pory"
+	.string "TRAINER TIPS\p"
+# 221 "data/maps/Route113/scripts.pory"
+	.string "You may register one of the KEY ITEMS\n"
+# 222 "data/maps/Route113/scripts.pory"
+	.string "in your BAG as SELECT.\p"
+# 223 "data/maps/Route113/scripts.pory"
+	.string "Simply press SELECT to use\n"
 # 224 "data/maps/Route113/scripts.pory"
-Route113_Text_GlassWorkshopSign:
+	.string "the registered item conveniently.$"
 # 225 "data/maps/Route113/scripts.pory"
-	.string "GLASS WORKSHOP\n"
+
 # 226 "data/maps/Route113/scripts.pory"
+Route113_Text_GlassWorkshopSign:
+# 227 "data/maps/Route113/scripts.pory"
+	.string "GLASS WORKSHOP\n"
+# 228 "data/maps/Route113/scripts.pory"
 	.string "“Turning Volcanic Ash into Glass Items”$"
 
 Route113_EventScript_Cheryl_Text_0:
@@ -395,6 +397,13 @@ Route113_EventScript_Cheryl_Text_0:
 	.string "Battling isn't easy.\p"
 	.string "You have a bright future ahead of you,\n"
 	.string "{PLAYER}.$"
+
+Route113_EventScript_CherylDefeated_Text_0:
+# 52 "data/maps/Route113/scripts.pory"
+	.string "Battling isn't easy.\p"
+	.string "You have a bright future ahead of you,\n"
+	.string "{PLAYER}.\p"
+	.string "You should take this, too.$"
 
 Route113_Text_CherylIntro::
 # 28 "data/maps/Route113/scripts.pory"

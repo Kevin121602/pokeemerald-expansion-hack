@@ -9697,7 +9697,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sDoduoLevelUpLearnset,
         .teachableLearnset = sDoduoTeachableLearnset,
         .eggMoveLearnset = sDoduoEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_DODRIO}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 27, SPECIES_DODRIO}),
     },
 
     [SPECIES_DODRIO] =

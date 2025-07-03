@@ -51,7 +51,9 @@ script Route113_EventScript_CherylDefeated{
 	clearflag(FLAG_DISABLE_EXP)
 	msgbox("Battling isn't easy.\p"
 		   "You have a bright future ahead of you,\n"
-		   "{PLAYER}.$")
+		   "{PLAYER}.\p"
+		   "You should take this, too.$")
+	giveitem(ITEM_HEART_SCALE)
 	setflag(FLAG_DEFEATED_CHERYL)
 	setvar(VAR_STAT_TRAINERS_STATE, 2)
 	release

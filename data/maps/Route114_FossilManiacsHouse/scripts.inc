@@ -27,7 +27,7 @@ Route114_FossilManiacsHouse_EventScript_FossilManiacsBrother::
 # 14 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
 	msgbox Route114_FossilManiacsHouse_Text_HaveThisToDigLikeMyBrother, MSGBOX_DEFAULT
 # 15 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
-	giveitem ITEM_TM_ACROBATICS
+	giveitem ITEM_TM_DEFOG
 # 16 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 17 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
@@ -67,25 +67,25 @@ Route114_FossilManiacsHouse_EventScript_Bookshelf::
 # 34 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
 Route114_FossilManiacsHouse_Text_HaveThisToDigLikeMyBrother:
 # 35 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
-	.string "My big brother's the FOSSIL MANIAC…\n"
+	.string "My big brother's the Fossil Maniac…\n"
 # 36 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
-	.string "He's a nice guy who loves FOSSILS…\p"
+	.string "He's a nice guy who loves Fossils…\p"
 # 37 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
-	.string "He loves digging holes, too…\n"
+	.string "He loves clearing rocks, too…\n"
 # 38 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
-	.string "He dug this hole by himself…\p"
+	.string "He cleared this tunnel by himself…\p"
 # 39 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
-	.string "You can have this, so you can DIG\n"
+	.string "You can have this, so you can\n"
 # 40 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
-	.string "holes just like my big brother…$"
+	.string "clear away rocks like my brother…$"
 # 41 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
 
 # 42 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
 Route114_FossilManiacsHouse_Text_DigReturnsYouToEntrance:
 # 43 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
-	.string "If you make a POKéMON DIG inside a\n"
+	.string "If you make a Pokémon use Defog,\n"
 # 44 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
-	.string "cave, you're returned to the entrance…$"
+	.string "you can clear away rocks too!$"
 # 45 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
 
 # 46 "data/maps/Route114_FossilManiacsHouse/scripts.pory"

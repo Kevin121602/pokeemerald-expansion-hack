@@ -420,14 +420,6 @@
       "script": "Route114_EventScript_LanettesHouseSign"
     },
     {
-      "type": "hidden_item",
-      "x": 20,
-      "y": 57,
-      "elevation": 3,
-      "item": "ITEM_CARBOS",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_114_CARBOS"
-    },
-    {
       "type": "secret_base",
       "x": 32,
       "y": 57,
