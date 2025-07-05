@@ -2226,8 +2226,8 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .levelUpLearnset = sEspurrLevelUpLearnset,
         .teachableLearnset = sEspurrTeachableLearnset,
         .eggMoveLearnset = sEspurrEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL_MALE, 25, SPECIES_MEOWSTIC_MALE},
-                                {EVO_LEVEL_FEMALE, 25, SPECIES_MEOWSTIC_FEMALE}),
+        .evolutions = EVOLUTION({EVO_LEVEL_MALE, 24, SPECIES_MEOWSTIC_MALE},
+                                {EVO_LEVEL_FEMALE, 24, SPECIES_MEOWSTIC_FEMALE}),
     },
 
     [SPECIES_MEOWSTIC_MALE] =

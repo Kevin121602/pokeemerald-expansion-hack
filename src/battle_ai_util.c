@@ -577,7 +577,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
 
     SetTypeBeforeUsingMove(move, battlerAtk);
     GET_MOVE_TYPE(move, moveType);
-    effectivenessMultiplier = CalcTypeEffectivenessMultiplier(move, moveType, battlerAtk, battlerDef, aiData->abilities[battlerDef], FALSE);
+    effectivenessMultiplier = CalcTypeEffectivenessMultiplier(move, moveType, battlerAtk, battlerDef, battlerDefAbility, FALSE);
 
     if (gMovesInfo[move].power)
         isDamageMoveUnusable = IsDamageMoveUnusable(move, battlerAtk, battlerDef);
@@ -602,7 +602,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
             break;
         }
 
-        critChanceIndex = CalcCritChanceStageArgs(battlerAtk, battlerDef, move, FALSE, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], aiData->holdEffects[battlerAtk]);
+        critChanceIndex = CalcCritChanceStageArgs(battlerAtk, battlerDef, move, FALSE, battlerAtkAbility, battlerDefAbility, battlerAtkHoldEffect);
         if (critChanceIndex > 1) // Consider crit damage only if a move has at least +2 crit chance
         {
             s32 nonCritDmg = CalculateMoveDamageVars(move, battlerAtk, battlerDef, moveType, fixedBasePower,
@@ -710,14 +710,23 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
             case EFFECT_ENDEAVOR:
                 // If target has less HP than user, Endeavor does no damage
                 simDamage.expected = simDamage.minimum = max(0, gBattleMons[battlerDef].hp - gBattleMons[battlerAtk].hp);
+                if(AI_GetMoveEffectiveness(move, battlerAtk, battlerDef) == AI_EFFECTIVENESS_x0){
+                    simDamage.expected = simDamage.minimum = 0;
+                }
                 break;
             case EFFECT_SUPER_FANG:
                 simDamage.expected = simDamage.minimum = (gBattleMons[battlerAtk].ability == ABILITY_PARENTAL_BOND
                     ? max(2, gBattleMons[battlerDef].hp * 3 / 4)
                     : max(1, gBattleMons[battlerDef].hp / 2));
+                if(AI_GetMoveEffectiveness(move, battlerAtk, battlerDef) == AI_EFFECTIVENESS_x0){
+                    simDamage.expected = simDamage.minimum = 0;
+                }
                 break;
             case EFFECT_FINAL_GAMBIT:
                 simDamage.expected = simDamage.minimum = gBattleMons[battlerAtk].hp;
+                if(AI_GetMoveEffectiveness(move, battlerAtk, battlerDef) == AI_EFFECTIVENESS_x0){
+                    simDamage.expected = simDamage.minimum = 0;
+                }
                 break;
             case EFFECT_BEAT_UP:
                 if (B_BEAT_UP >= GEN_5)
@@ -4487,7 +4496,7 @@ u32 IncreaseStatLoweringScore(u32 battlerAtk, u32 battlerDef, u32 statId, u32 st
     case STAT_CHANGE_SPEED:
         if (gBattleMons[battlerDef].statStages[STAT_SPEED] <= MIN_STAT_STAGE)
             return NO_INCREASE;
-        if(AI_DATA->speedStats[battlerAtk] > AI_DATA->speedStats[battlerDef])
+        if(AI_DATA->speedStats[battlerAtk] >= AI_DATA->speedStats[battlerDef])
             return NO_INCREASE;
         if(AI_DATA->speedStats[battlerAtk] < playerSpeedAfterDrop)
             return NO_INCREASE;

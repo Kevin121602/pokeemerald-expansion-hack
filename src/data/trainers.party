@@ -381,7 +381,7 @@ Quilladin @ Leftovers
 Level: 16
 Nature: Jolly
 Ability: Overgrow
--Seed Bomb
+-Bullet Seed
 -Brick Break
 -Rock Tomb
 -Synthesis
@@ -792,55 +792,55 @@ Kubfu @ Normal Gem
 Level: 22
 Nature: Jolly
 Ability: Inner Focus
--Brick Break
--Mega Punch
--Zen Headbutt
--Acrobatics
-
-Lokix @ Focus Sash
-Level: 23
-Nature: Jolly
-Ability: Swarm
--Thief
--Bug Bite
--Aerial Ace
--Scary Face
+- Brick Break
+- Mega Punch
+- Zen Headbutt
+- Acrobatics
 
 Carnivine @ Leftovers
 Level: 21
 Nature: Naive
 Ability: Levitate
--Leaf Tornado
--Slam
--Knock Off
--Sleep Powder
+- Leaf Tornado
+- Slam
+- Knock Off
+- Sleep Powder
 
 Flareon @ Charcoal
 Level: 22
 Nature: Jolly
 Ability: Guts
--Fire Fang
--Bite
--Double Kick
--Trailblaze
+- Fire Fang
+- Bite
+- Double Kick
+- Trailblaze
 
 Azumarill @ Lum Berry
 Level: 21
 Nature: Jolly
 Ability: Huge Power
--Covet
--Aqua Jet
--Seismic Toss
--Sing
+- Covet
+- Aqua Jet
+- Seismic Toss
+- Sing
+
+Shedinja @ Focus Sash
+Level: 23
+Nature: Adamant
+Ability: Wonder Guard
+- Bug Bite
+- Shadow Claw
+- Will O Wisp
+- Confuse Ray
 
 Lucario @ Muscle Band
-Level: 23
+Level: 21
 Nature: Hasty
 Ability: Inner Focus
--Force Palm
--Metal Claw
--Bullet Punch
--Vacuum Wave
+- Force Palm
+- Metal Claw
+- Bullet Punch
+- Vacuum Wave
 
 === TRAINER_ROSE_3 ===
 Name: ROSE
@@ -1030,8 +1030,8 @@ Nature: Bold
 Ability: Static
 - Discharge
 - Mud Bomb
+- Foul Play
 - Scald
-- Magnet Rise
 
 Drifblim @ Iapapa Berry
 Level: 24
@@ -6370,7 +6370,7 @@ Nature: Bold
 Ability: Magic Bounce
 Level: 20
 - Psybeam
-- Dazzling Gleam
+- Draining Kiss
 - Mystical Fire
 - Nuzzle
 
@@ -8092,7 +8092,7 @@ Nature: Jolly
 Ability: Shed Skin
 Level: 21
 - Stomping Tantrum
-- Rock Tomb
+- Rock Slide
 - Pursuit
 
 Shelgon @ Leftovers
@@ -12500,14 +12500,14 @@ Ability: Compound Eyes
 -Psybeam
 -Sleep Powder
 
-Shedinja @ Focus Sash
+Cutiefly @ Flying Gem
 Level: 14
-Nature: Adamant
-Ability: Wonder Guard
--Bug Bite
--Shadow Claw
--Will O Wisp
--Confuse Ray
+Nature: Naughty
+Ability: Shield Dust
+-Struggle Bug
+-Draining Kiss
+-Infestation
+-Acrobatics
 
 Beedrill @ Scope Lens
 Level: 14

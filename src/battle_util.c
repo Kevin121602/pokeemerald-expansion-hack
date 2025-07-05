@@ -10346,8 +10346,10 @@ static inline void MulByTypeEffectiveness(uq4_12_t *modifier, u32 move, u32 move
             RecordAbilityBattle(battlerDef, GetBattlerAbility(battlerDef));
     }
 
-    if ((mod <= UQ_4_12(1.0)  &&  abilityDef == ABILITY_WONDER_GUARD)
-         || (moveType == TYPE_FIRE     &&  abilityDef == ABILITY_FLASH_FIRE)
+    if(IsMoldBreakerTypeAbility(battlerAtk, abilityAtk)){
+        mod = mod;
+    }
+    else if ((moveType == TYPE_FIRE     &&  abilityDef == ABILITY_FLASH_FIRE)
          || (moveType == TYPE_GRASS    &&  abilityDef == ABILITY_SAP_SIPPER)
          || (moveType == TYPE_GROUND   && (abilityDef == ABILITY_LEVITATE
                                        ||  abilityDef == ABILITY_EARTH_EATER))

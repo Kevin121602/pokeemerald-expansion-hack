@@ -1058,7 +1058,7 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
             if(hitsToKOPlayer < bestHitsToKOPlayer){
                 bestHitsToKOPlayer = hitsToKOPlayer;
                 bestBattlerMove = battlerMove;
-            } else if (hitsToKOPlayer == bestHitsToKOPlayer && battlerMovePriority > GetMovePriority(opposingBattler, bestBattlerMove)){
+            } else if (hitsToKOPlayer == bestHitsToKOPlayer && battlerMovePriority > GetMovePriority(battler, bestBattlerMove)){
                 bestBattlerMove = battlerMove;
             }
         }
@@ -1095,9 +1095,9 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     }
 
     //faster bool represents whether or not the AI is faster
-    if(gMovesInfo[bestBattlerMove].priority > gMovesInfo[bestPlayerMove].priority){
+    if(GetMovePriority(battler, bestBattlerMove) > GetMovePriority(opposingBattler, bestPlayerMove)){
         faster = TRUE;
-    } else if (gMovesInfo[bestPlayerMove].priority > gMovesInfo[bestBattlerMove].priority){
+    } else if (GetMovePriority(opposingBattler, bestPlayerMove) > GetMovePriority(battler, bestBattlerMove)){
         faster = FALSE;
     } else if (battlerSpeed >= playerSpeed){
         //move prios are tied
@@ -2066,6 +2066,36 @@ bool32 IsPartyMonGrounded(struct BattlePokemon battleMon, u32 battler, s32 holdE
         return TRUE;
 }
 
+s8 GetPartyMovePriority(struct BattlePokemon battleMon, u16 move, u16 ability)
+{
+    s8 priority;
+
+    priority = gMovesInfo[move].priority;
+
+    if (ability == ABILITY_GALE_WINGS
+        && (B_GALE_WINGS < GEN_7 || battleMon.hp == battleMon.maxHP)
+        && gMovesInfo[move].type == TYPE_FLYING)
+    {
+        priority++;
+    }
+    else if (ability == ABILITY_PRANKSTER && IS_MOVE_STATUS(move))
+    {
+        priority++;
+    }
+    else if (ability == ABILITY_RUN_AWAY && (gMovesInfo[move].effect == EFFECT_HIT_ESCAPE || gMovesInfo[move].effect == EFFECT_PARTING_SHOT))
+    {
+        priority++;
+    }
+    else if (gMovesInfo[move].effect == EFFECT_GRASSY_GLIDE && gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN/* && IsBattlerGrounded(battler)*/)
+    {
+        priority++;
+    }
+    else if (ability == ABILITY_TRIAGE && IsHealingMove(move))
+        priority += 3;
+
+    return priority;
+}
+
 u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingBattler, bool32 switchAfterMonKOd)
 {
     u32 switchScore = 0;
@@ -2101,6 +2131,9 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
 
     if(!switchAfterMonKOd){
        highestDmgtoSwitchIn = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, battleMon);
+       if(CalcPartyMonTypeEffectivenessMultiplier(playerMove, battleMon.species, aiMonAbility) == UQ_4_12(0.0) && !IsMoldBreakerTypeAbility(battler, playerAbility)){
+                highestDmgtoSwitchIn = 0;
+            }
        if(highestDmgtoSwitchIn >= battleMon.hp){
             canDieOnSwitch = TRUE;
        } else if (highestDmgtoSwitchIn*3 >= battleMon.hp){
@@ -2149,6 +2182,9 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION)
         {
             damageDealt = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, FALSE, DMG_ROLL_LOWEST);
+            if(CalcPartyMonTypeEffectivenessMultiplier(playerMove, battleMon.species, aiMonAbility) == UQ_4_12(0.0) && !IsMoldBreakerTypeAbility(battler, playerAbility)){
+                damageDealt = 0;
+            }
             hitsToKOAI = GetNoOfHitsToKO(damageDealt, calcHP);
 
             //continues if move does 0 damage
@@ -2191,7 +2227,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
     for (j = 0; j < MAX_MON_MOVES; j++)
     {
         aiMove = battleMon.moves[j];
-        aiMovePriority = gMovesInfo[aiMove].priority;
+        aiMovePriority = GetPartyMovePriority(battleMon, aiMove, aiMonAbility);
 
         if (aiMove != MOVE_NONE && gMovesInfo[aiMove].power != 0 && gMovesInfo[aiMove].effect != EFFECT_EXPLOSION)
         {
@@ -2219,7 +2255,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
                     bestAIDmg = damageDealt;
                     bestHitsToKOPlayer = hitsToKOPlayer;
                     bestAIMove = aiMove;
-                } else if (hitsToKOPlayer == bestHitsToKOPlayer && aiMovePriority > gMovesInfo[bestAIMove].priority){
+                } else if (hitsToKOPlayer == bestHitsToKOPlayer && aiMovePriority > GetPartyMovePriority(battleMon, bestAIMove, aiMonAbility)){
                     bestAIMove = aiMove;
                 }
                 if(aiMove == MOVE_PURSUIT){
@@ -2244,9 +2280,9 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
     }
 
     //faster bool represents whether or not the AI is faster
-    if(gMovesInfo[bestAIMove].priority > gMovesInfo[bestPlayerMove].priority){
+    if(GetPartyMovePriority(battleMon, bestAIMove, aiMonAbility) > GetMovePriority(opposingBattler, bestPlayerMove)){
         faster = TRUE;
-    } else if (gMovesInfo[bestPlayerMove].priority > gMovesInfo[bestAIMove].priority){
+    } else if (GetMovePriority(opposingBattler, bestPlayerMove) > GetPartyMovePriority(battleMon, bestAIMove, aiMonAbility)){
         faster = FALSE;
     } else if (aiMonSpeed >= playerMonSpeed){
         //move prios are tied

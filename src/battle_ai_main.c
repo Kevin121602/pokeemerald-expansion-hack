@@ -449,12 +449,13 @@ static void SetBattlerAiMovesData(struct AiLogicData *aiData, u32 battlerAtk, u3
         for (i = 0; i < MAX_MON_MOVES; i++)
         {
             struct SimulatedDamage dmg = {0};
+            struct SimulatedDamage noDmg = {0};
             u8 effectiveness = AI_EFFECTIVENESS_x0;
             u32 move = moves[i];
 
             if (move != 0
              && move != 0xFFFF
-             //&& gMovesInfo[move].power != 0  /* we want to get effectiveness and accuracy of status moves */
+             && gMovesInfo[move].power != 0  /* we want to get effectiveness and accuracy of status moves */
              && !(aiData->moveLimitations[battlerAtk] & gBitTable[i]))
             {
                 //if (AI_THINKING_STRUCT->aiFlags[battlerAtk] & AI_FLAG_RISKY)
@@ -467,6 +468,9 @@ static void SetBattlerAiMovesData(struct AiLogicData *aiData, u32 battlerAtk, u3
                 aiData->moveAccuracy[battlerAtk][battlerDef][i] = Ai_SetMoveAccuracy(aiData, battlerAtk, battlerDef, move);
             }
             aiData->simulatedDmg[battlerAtk][battlerDef][i] = dmg;
+            if(AI_GetMoveEffectiveness(move, battlerAtk, battlerDef) <= AI_EFFECTIVENESS_x1 && aiData->abilities[battlerDef] == ABILITY_WONDER_GUARD && !IsMoldBreakerTypeAbility(battlerAtk, aiData->abilities[battlerAtk])){
+                aiData->simulatedDmg[battlerAtk][battlerDef][i] = noDmg;
+            }
             aiData->effectiveness[battlerAtk][battlerDef][i] = effectiveness;
         }
         RestoreBattlerData(battlerDef);
@@ -1476,6 +1480,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_FOCUS_ENERGY:
             if (gBattleMons[battlerAtk].status2 & STATUS2_FOCUS_ENERGY_ANY)
                 ADJUST_SCORE(-10);
+            if (aiData->abilities[battlerDef] == ABILITY_SHELL_ARMOR || aiData->abilities[battlerDef] == ABILITY_BATTLE_ARMOR || aiData->abilities[battlerDef] == ABILITY_MAGMA_ARMOR)
+                ADJUST_SCORE(-8);
             break;
         case EFFECT_CONFUSE:
         case EFFECT_SWAGGER:
@@ -3461,8 +3467,10 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_AURORA_VEIL:
         if (ShouldSetScreen(battlerAtk, battlerDef, moveEffect))
         {
-            ADJUST_SCORE(DECENT_EFFECT);
-            if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_LIGHT_CLAY && (Random() % 100 < 50))
+            ADJUST_SCORE(WEAK_EFFECT);
+            if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_LIGHT_CLAY)
+                ADJUST_SCORE(WEAK_EFFECT);
+            if (Random() % 100 < 60);
                 ADJUST_SCORE(WEAK_EFFECT);
         }
         break;
@@ -3502,9 +3510,6 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         IncreaseConfusionScore(battlerAtk, battlerDef, move, &score);
         break;
     case EFFECT_PARALYZE:
-        IncreaseParalyzeScore(battlerAtk, battlerDef, move, &score);
-        break;
-    case MOVE_EFFECT_PARALYSIS:
         IncreaseParalyzeScore(battlerAtk, battlerDef, move, &score);
         break;
     case EFFECT_SUBSTITUTE:
@@ -4371,20 +4376,22 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                 case MOVE_EFFECT_ATK_PLUS_1:
                 case MOVE_EFFECT_DEF_PLUS_1:
                 case MOVE_EFFECT_SPD_PLUS_1:
+                    if(AI_DATA->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected + (GetBestDmgFromBattler(battlerAtk, battlerDef) * 3) < gBattleMons[battlerDef].hp)
+                        break;
                 case MOVE_EFFECT_SP_ATK_PLUS_1:
                 case MOVE_EFFECT_SP_DEF_PLUS_1:
                     StageStatId = STAT_CHANGE_ATK + gMovesInfo[move].additionalEffects[i].moveEffect - MOVE_EFFECT_ATK_PLUS_1;
-                    if(AI_DATA->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected + (GetBestDmgFromBattler(battlerAtk, battlerDef) * 3) >= gBattleMons[battlerDef].hp)
-                        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, StageStatId));
+                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, StageStatId));
                     break;
                 case MOVE_EFFECT_ATK_PLUS_2:
                 case MOVE_EFFECT_DEF_PLUS_2:
                 case MOVE_EFFECT_SPD_PLUS_2:
+                    if(AI_DATA->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected + (GetBestDmgFromBattler(battlerAtk, battlerDef) * 3) < gBattleMons[battlerDef].hp)
+                        break;
                 case MOVE_EFFECT_SP_ATK_PLUS_2:
                 case MOVE_EFFECT_SP_DEF_PLUS_2:
                     StageStatId = STAT_CHANGE_ATK_2 + gMovesInfo[move].additionalEffects[i].moveEffect - MOVE_EFFECT_ATK_PLUS_1;
-                    if(AI_DATA->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected + (GetBestDmgFromBattler(battlerAtk, battlerDef) * 3) >= gBattleMons[battlerDef].hp)
-                        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, StageStatId));
+                    ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, StageStatId));
                     break;
                 case MOVE_EFFECT_ACC_PLUS_1:
                 case MOVE_EFFECT_ACC_PLUS_2:
@@ -4499,6 +4506,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                 case MOVE_EFFECT_ACC_MINUS_2:
                     if(aiData->abilities[battlerDef] != ABILITY_SHIELD_DUST)
                         ADJUST_SCORE(IncreaseStatLoweringScore(battlerAtk, battlerDef, STAT_CHANGE_ACC, 2));
+                    break;
+                case MOVE_EFFECT_PARALYSIS:
+                        IncreaseParalyzeScore(battlerAtk, battlerDef, move, &score);
                     break;
                 case MOVE_EFFECT_POISON:
                     IncreasePoisonScore(battlerAtk, battlerDef, move, &score);
