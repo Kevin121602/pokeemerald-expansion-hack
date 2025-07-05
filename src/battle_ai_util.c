@@ -4446,6 +4446,46 @@ void IncreaseFrostbiteScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score
     }
 }
 
+u32 IncreaseFollowMeScore(u32 battlerAtk, u32 battlerDef){
+
+    u32 tempScore = NO_INCREASE;
+
+    if(!IsDoubleBattle())
+        return NO_INCREASE;
+
+    u32 battlerPartner = BATTLE_PARTNER(battlerAtk);
+
+    u8 i;
+
+    u16 *moves = GetMovesArray(battlerDef);
+
+    if(gBattleMons[battlerPartner].hp == 0)
+        return NO_INCREASE;
+
+    u32 maxRedirectedDmg = 0;
+
+    if(!CanTargetFaintAi(battlerDef, battlerPartner))
+        return NO_INCREASE;
+
+    for(i = 0; i < MAX_MON_MOVES; i++){
+        if(CanIndexMoveFaintTarget(battlerDef, battlerPartner, i, 1)){
+            if(CanIndexMoveFaintTarget(battlerDef, battlerAtk, i, 1)){
+                return NO_INCREASE;
+            }
+
+            if(AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > maxRedirectedDmg){
+                maxRedirectedDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
+            }
+        }
+    }
+
+    tempScore += DECENT_EFFECT;
+    if(maxRedirectedDmg*2 < gBattleMons[battlerAtk].hp)
+        tempScore += DECENT_EFFECT;
+
+    return tempScore;
+}
+
 u32 IncreaseStatLoweringScore(u32 battlerAtk, u32 battlerDef, u32 statId, u32 stages){
 
     u32 tempScore = NO_INCREASE;

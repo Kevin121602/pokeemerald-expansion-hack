@@ -32202,8 +32202,8 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 12785
-                MOVE_EARTHQUAKE,
                 MOVE_AQUA_TAIL,
+                MOVE_BULLDOZE,
                 MOVE_AVALANCHE,
                 MOVE_CURSE,
             },
@@ -35193,25 +35193,25 @@ F_TRAINER_FEMALE |
         {
             {
 #line 13994
-            .species = SPECIES_SEALEO,
+            .species = SPECIES_PRINPLUP,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 13994
-            .heldItem = ITEM_NEVER_MELT_ICE,
+            .heldItem = ITEM_SHARP_BEAK,
 #line 13998
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 13996
-            .ability = ABILITY_THICK_FAT,
+            .ability = ABILITY_COMPETITIVE,
 #line 13997
             .lvl = 24,
 #line 13995
-            .nature = NATURE_BOLD,
+            .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 13998
-                MOVE_AURORA_BEAM,
-                MOVE_BRINE,
+                MOVE_BUBBLE_BEAM,
+                MOVE_AQUA_JET,
+                MOVE_DRILL_PECK,
                 MOVE_ICY_WIND,
-                MOVE_WHIRLPOOL,
             },
             },
             {
@@ -35239,48 +35239,48 @@ F_TRAINER_FEMALE |
             },
             {
 #line 14012
-            .species = SPECIES_MASQUERAIN,
+            .species = SPECIES_TOGEDEMARU,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 14012
-            .heldItem = ITEM_LUM_BERRY,
+            .heldItem = ITEM_AIR_BALLOON,
 #line 14016
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 14014
-            .ability = ABILITY_INTIMIDATE,
+            .ability = ABILITY_STURDY,
 #line 14015
             .lvl = 24,
 #line 14013
-            .nature = NATURE_TIMID,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 14016
-                MOVE_AIR_CUTTER,
-                MOVE_GIGA_DRAIN,
-                MOVE_BUBBLE_BEAM,
-                MOVE_SCARY_FACE,
-            },
-            },
-            {
-#line 14021
-            .species = SPECIES_TOGEDEMARU,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 14021
-            .heldItem = ITEM_AIR_BALLOON,
-#line 14025
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 14023
-            .ability = ABILITY_STURDY,
-#line 14024
-            .lvl = 23,
-#line 14022
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 14025
+#line 14016
                 MOVE_IRON_HEAD,
                 MOVE_SPARK,
                 MOVE_FAKE_OUT,
                 MOVE_ENCORE,
+            },
+            },
+            {
+#line 14021
+            .species = SPECIES_MASQUERAIN,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 14021
+            .heldItem = ITEM_LUM_BERRY,
+#line 14025
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 14023
+            .ability = ABILITY_INTIMIDATE,
+#line 14024
+            .lvl = 23,
+#line 14022
+            .nature = NATURE_TIMID,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 14025
+                MOVE_AIR_CUTTER,
+                MOVE_GIGA_DRAIN,
+                MOVE_BUBBLE_BEAM,
+                MOVE_SCARY_FACE,
             },
             },
         },

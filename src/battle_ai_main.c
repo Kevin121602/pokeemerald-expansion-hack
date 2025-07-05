@@ -455,7 +455,7 @@ static void SetBattlerAiMovesData(struct AiLogicData *aiData, u32 battlerAtk, u3
 
             if (move != 0
              && move != 0xFFFF
-             && gMovesInfo[move].power != 0  /* we want to get effectiveness and accuracy of status moves */
+             //&& gMovesInfo[move].power != 0  /* we want to get effectiveness and accuracy of status moves */
              && !(aiData->moveLimitations[battlerAtk] & gBitTable[i]))
             {
                 //if (AI_THINKING_STRUCT->aiFlags[battlerAtk] & AI_FLAG_RISKY)
@@ -1758,6 +1758,12 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_SCORE(-10);
             break;
         case EFFECT_FOLLOW_ME:
+            if (!isDoubleBattle
+              || !IsBattlerAlive(BATTLE_PARTNER(battlerAtk))
+              || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove)
+              || *(gBattleStruct->monToSwitchIntoId + BATTLE_PARTNER(battlerAtk)) != PARTY_SIZE) //Partner is switching out.
+                ADJUST_SCORE(-10);
+            break;
         case EFFECT_HELPING_HAND:
             if (!isDoubleBattle
               || !IsBattlerAlive(BATTLE_PARTNER(battlerAtk))
@@ -3513,17 +3519,15 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         IncreaseParalyzeScore(battlerAtk, battlerDef, move, &score);
         break;
     case EFFECT_SUBSTITUTE:
-        ADJUST_SCORE(DECENT_EFFECT);
-        if (gBattleMons[battlerDef].status1 & (STATUS1_BURN | STATUS1_PSN_ANY | STATUS1_FROSTBITE | STATUS1_SLEEP))
+        if(AI_DATA->speedStats[battlerAtk] >= AI_DATA->speedStats[battlerDef] || gBattleMons[battlerAtk].hp - (GetBestDmgFromBattler(battlerDef, battlerAtk)) > (gBattleMons[battlerAtk].maxHP/4)){
             ADJUST_SCORE(WEAK_EFFECT);
-        else if ((HasMoveEffect(battlerDef, EFFECT_SLEEP)
-          || HasMoveEffect(battlerDef, EFFECT_TOXIC)
-          || HasMoveEffect(battlerDef, EFFECT_POISON)
-          || HasMoveEffect(battlerDef, EFFECT_PARALYZE)
-          || HasMoveEffect(battlerDef, EFFECT_WILL_O_WISP)
-          || HasMoveEffect(battlerDef, EFFECT_CONFUSE)
-          || HasMoveEffect(battlerDef, EFFECT_LEECH_SEED)) && (Random() % 100 < 50))
-            ADJUST_SCORE(WEAK_EFFECT);
+            if(Random() % 100 < 60)
+                ADJUST_SCORE(WEAK_EFFECT);
+
+            if(GetBestDmgFromBattler(battlerDef, battlerAtk)*4 < gBattleMons[battlerAtk].maxHP){
+                ADJUST_SCORE(WEAK_EFFECT);
+            }
+        }
         break;
     case EFFECT_MIMIC:
         if (AI_IsFaster(battlerAtk, battlerDef, move))
@@ -3568,10 +3572,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         if (GetActiveGimmick(battlerDef) == GIMMICK_DYNAMAX)
             break;
         else if (gDisableStructs[battlerDef].encoreTimer == 0
-        && (gBattleMoveEffects[gMovesInfo[gLastMoves[battlerDef]].effect].encourageEncore))
-            ADJUST_SCORE(DECENT_EFFECT);
-        if((Random() % 100 < 50))
-            ADJUST_SCORE(WEAK_EFFECT);
+        && (gBattleMoveEffects[gMovesInfo[gLastMoves[battlerDef]].effect].encourageEncore)
+        && aiData->speedStats[battlerAtk] >= aiData->speedStats[battlerDef])
+            ADJUST_SCORE(BEST_EFFECT);
         break;
     case EFFECT_SLEEP_TALK:
     case EFFECT_SNORE:
@@ -3831,11 +3834,10 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_FOLLOW_ME:
         if (isDoubleBattle
           && move != MOVE_SPOTLIGHT
-          && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef])
           && (move != MOVE_RAGE_POWDER || IsAffectedByPowder(battlerDef, aiData->abilities[battlerDef], aiData->holdEffects[battlerDef])) // Rage Powder doesn't affect powder immunities
           && IsBattlerAlive(BATTLE_PARTNER(battlerAtk)))
         {
-            ADJUST_SCORE(DECENT_EFFECT);
+            ADJUST_SCORE(IncreaseFollowMeScore(battlerAtk, battlerDef));
         }
         break;
     case EFFECT_CHARGE:

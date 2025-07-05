@@ -12782,8 +12782,8 @@ Marshtomp @ Rindo Berry
 Nature: Careful
 Ability: Torrent
 Level: 23
-- Earthquake
 - Aqua Tail
+- Bulldoze
 - Avalanche
 - Curse
 
@@ -13991,14 +13991,14 @@ Music: Twins
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sealeo @ Never-Melt Ice
-Nature: Bold
-Ability: Thick Fat
+Prinplup @ Sharp Beak
+Nature: Relaxed
+Ability: Competitive
 Level: 24
-- Aurora Beam
-- Brine
+- Bubble Beam
+- Aqua Jet
+- Drill Peck
 - Icy Wind
-- Whirlpool
 
 Pachirisu @ Leftovers
 Nature: Timid
@@ -14009,23 +14009,23 @@ Level: 23
 - Super Fang
 - Follow Me
 
-Masquerain @ Lum Berry
-Nature: Timid
-Ability: Intimidate
-Level: 24
-- Air Cutter
-- Giga Drain
-- Bubble Beam
-- Scary Face
-
 Togedemaru @ Air Balloon
 Nature: Jolly
 Ability: Sturdy
-Level: 23
+Level: 24
 - Iron Head
 - Spark
 - Fake Out
 - Encore
+
+Masquerain @ Lum Berry
+Nature: Timid
+Ability: Intimidate
+Level: 23
+- Air Cutter
+- Giga Drain
+- Bubble Beam
+- Scary Face
 
 === TRAINER_MEL_AND_PAUL ===
 Name: MEL & PAUL
