@@ -1919,7 +1919,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_SCORE(-10);
             break;
         case EFFECT_DESTINY_BOND:
-            if ((gBattleMons[battlerDef].status2 & STATUS2_DESTINY_BOND) && (Random() % 100 < 50))
+            if (gLastMoves[battlerAtk] == MOVE_DESTINY_BOND && (Random() % 100 < 50))
                 ADJUST_SCORE(-10);
             else if (GetActiveGimmick(battlerDef) == GIMMICK_DYNAMAX)
                 ADJUST_SCORE(-10);
