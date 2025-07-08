@@ -2424,8 +2424,8 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 1022
                 MOVE_BUBBLE_BEAM,
+                MOVE_ALLURING_VOICE,
                 MOVE_SHADOW_BALL,
-                MOVE_ROUND,
                 MOVE_SING,
             },
             },
@@ -17809,7 +17809,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_SKRELP,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7152
-            .heldItem = ITEM_BERRY_JUICE,
+            .heldItem = ITEM_LUM_BERRY,
 #line 7156
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 7155
@@ -17821,10 +17821,10 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 7156
-                MOVE_VENOSHOCK,
                 MOVE_BUBBLE_BEAM,
+                MOVE_ACID,
                 MOVE_DRAGON_TAIL,
-                MOVE_TOXIC_SPIKES,
+                MOVE_SMOKESCREEN,
             },
             },
             {
@@ -17855,7 +17855,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_POPPLIO,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7170
-            .heldItem = ITEM_THROAT_SPRAY,
+            .heldItem = ITEM_BERRY_JUICE,
 #line 7174
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 7173
@@ -18154,7 +18154,7 @@ F_TRAINER_FEMALE |
 #line 7287
                 MOVE_WATERFALL,
                 MOVE_POISON_JAB,
-                MOVE_SPIKES,
+                MOVE_FLAIL,
                 MOVE_TOXIC_SPIKES,
             },
             },
@@ -18209,7 +18209,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_CROCONAW,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7310
-            .heldItem = ITEM_MYSTIC_WATER,
+            .heldItem = ITEM_NEVER_MELT_ICE,
 #line 7314
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 7312
@@ -18221,7 +18221,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 7314
-                MOVE_WATERFALL,
+                MOVE_BITE,
                 MOVE_ICE_FANG,
                 MOVE_AQUA_JET,
                 MOVE_ROAR,
@@ -32112,7 +32112,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 12749
-                MOVE_HYPER_VOICE,
+                MOVE_ROUND,
                 MOVE_CHATTER,
                 MOVE_HEAT_WAVE,
                 MOVE_SING,
@@ -35209,7 +35209,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 13998
                 MOVE_BUBBLE_BEAM,
-                MOVE_AQUA_JET,
+                MOVE_WHIRLPOOL,
                 MOVE_DRILL_PECK,
                 MOVE_ICY_WIND,
             },
@@ -37253,7 +37253,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 14816
                 MOVE_WATERFALL,
-                MOVE_BULLDOZE,
+                MOVE_STOMPING_TANTRUM,
                 MOVE_ICE_PUNCH,
                 MOVE_RECOVER,
             },
@@ -38751,8 +38751,8 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 15404
-                MOVE_DISCHARGE,
                 MOVE_DUAL_WINGBEAT,
+                MOVE_SHOCK_WAVE,
                 MOVE_SIGNAL_BEAM,
                 MOVE_ROOST,
             },
@@ -39128,7 +39128,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_BRAIXEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 15553
-            .heldItem = ITEM_EVIOLITE,
+            .heldItem = ITEM_BERRY_JUICE,
 #line 15557
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 15556

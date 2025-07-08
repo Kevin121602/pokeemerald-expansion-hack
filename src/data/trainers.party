@@ -1020,8 +1020,8 @@ Level: 24
 Nature: Timid
 Ability: Water Absorb
 - Bubble Beam
+- Alluring Voice
 - Shadow Ball
-- Round
 - Sing
 
 Stunfisk @ Leftovers
@@ -7149,14 +7149,14 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Skrelp @ Berry Juice
+Skrelp @ Lum Berry
 Level: 14
 Nature: Sassy
 Ability: Poison Touch
--Venoshock
 -Bubble Beam
+-Acid
 -Dragon Tail
--Toxic Spikes
+-Smokescreen
 
 Chinchou @ Leftovers
 Level: 14
@@ -7167,7 +7167,7 @@ Ability: Volt Absorb
 -Signal Beam
 -Confuse Ray
 
-Popplio @ Throat Spray
+Popplio @ Berry Juice
 Level: 14
 Nature: Timid
 Ability: Torrent
@@ -7286,7 +7286,7 @@ Ability: Intimidate
 Level: 24
 - Waterfall
 - Poison Jab
-- Spikes
+- Flail
 - Toxic Spikes
 
 Corsola-Galarian @ Leftovers
@@ -7307,11 +7307,11 @@ Level: 24
 - Infestation
 - Toxic
 
-Croconaw @ Mystic Water
+Croconaw @ Never-Melt Ice
 Nature: Jolly
 Ability: Sheer Force
 Level: 25
-- Waterfall
+- Bite
 - Ice Fang
 - Aqua Jet
 - Roar
@@ -12746,7 +12746,7 @@ Chatot @ Silk Scarf
 Nature: Timid
 Ability: Punk Rock
 Level: 22
-- Hyper Voice
+- Round
 - Chatter
 - Heat Wave
 - Sing
@@ -13996,7 +13996,7 @@ Nature: Relaxed
 Ability: Competitive
 Level: 24
 - Bubble Beam
-- Aqua Jet
+- Whirlpool
 - Drill Peck
 - Icy Wind
 
@@ -14814,7 +14814,7 @@ Nature: Careful
 Ability: Water Absorb
 Level: 24
 - Waterfall
-- Bulldoze
+- Stomping Tantrum
 - Ice Punch
 - Recover
 
@@ -15401,8 +15401,8 @@ Emolga @ Leftovers
 Nature: Naive
 Ability: Static
 Level: 21
-- Discharge
 - Dual Wingbeat
+- Shock Wave
 - Signal Beam
 - Roost
 
@@ -15550,7 +15550,7 @@ Ability: Shadow Tag
 - Safeguard
 - Destiny Bond
 
-Braixen @ Eviolite
+Braixen @ Berry Juice
 Level: 19
 Nature: Timid
 Ability: Blaze

@@ -34,6 +34,7 @@ static bool32 AI_ShouldSwitchIfBadMoves(u32 battler, bool32 emitResult);
 static bool32 AI_SwitchMonIfSuitable(u32 battler, bool32 doubleBattle);
 static u32 GetSwitchinHitsToKO(s32 damageTaken, u32 battler);
 static s32 GetMaxDamagePlayerCouldDealToSwitchin(u32 battler, u32 opposingBattler, struct BattlePokemon battleMon);
+static s32 GetMaxDamageMovePlayerCouldUseOnSwitchin(u32 battler, u32 opposingBattler, struct BattlePokemon battleMon);
 
 void InitializeSwitchinCandidate(struct Pokemon *mon)
 {
@@ -2113,6 +2114,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
     u32 bestPlayerMove = 0, bestAIMove = 0;
     u32 bestHitsToKOAI = INT_MAX, bestHitsToKOPlayer = INT_MAX;
     s32 highestDmgtoSwitchIn = 0;
+    s32 bestMoveOnSwitchIn = MAX_MON_MOVES;
     bool32 canDieOnSwitch = FALSE;
     bool32 takesOverAThirdOnSwitch = FALSE;
     bool32 takesOverAThirdFromHazards = FALSE;
@@ -2131,7 +2133,8 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
 
     if(!switchAfterMonKOd){
        highestDmgtoSwitchIn = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, battleMon);
-       if(CalcPartyMonTypeEffectivenessMultiplier(playerMove, battleMon.species, aiMonAbility) == UQ_4_12(0.0) && !IsMoldBreakerTypeAbility(battler, playerAbility)){
+       bestMoveOnSwitchIn = GetMaxDamageMovePlayerCouldUseOnSwitchin(battler, opposingBattler, battleMon);
+       if(CalcPartyMonTypeEffectivenessMultiplier(bestMoveOnSwitchIn, battleMon.species, aiMonAbility) == UQ_4_12(0.0) && !IsMoldBreakerTypeAbility(battler, playerAbility)){
                 highestDmgtoSwitchIn = 0;
             }
        if(highestDmgtoSwitchIn >= battleMon.hp){
@@ -2399,6 +2402,30 @@ static s32 GetMaxDamagePlayerCouldDealToSwitchin(u32 battler, u32 opposingBattle
         }
     }
     return maxDamageTaken;
+}
+
+static s32 GetMaxDamageMovePlayerCouldUseOnSwitchin(u32 battler, u32 opposingBattler, struct BattlePokemon battleMon)
+{
+    int i = 0;
+    u32 playerMove;
+    u32 bestMove = MAX_MON_MOVES;
+    s32 damageTaken = 0, maxDamageTaken = 0;
+
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        playerMove = gBattleMons[opposingBattler].moves[i];
+        if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0)
+        {
+            damageTaken = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, FALSE, DMG_ROLL_LOWEST);
+            if (damageTaken >= battleMon.hp && PartyMonHasInTactFocusSashSturdy(battler, opposingBattler, playerMove, ItemId_GetHoldEffect(gBattleMons[battler].item), GetBattlerAbility(battler), battleMon, TRUE)){
+                damageTaken = (battleMon.hp - 1);
+            }
+            if (damageTaken > maxDamageTaken)
+                maxDamageTaken = damageTaken;
+                bestMove = playerMove;
+        }
+    }
+    return bestMove;
 }
 
 static bool32 CanAbilityTrapOpponent(u16 ability, u32 opponent)

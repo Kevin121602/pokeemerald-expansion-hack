@@ -4071,13 +4071,14 @@ void BattleTurnPassed(void)
     BattlePutTextOnWindow(gText_EmptyString3, B_WIN_MSG);
     AssignUsableGimmicks();
     SetShellSideArmCategory();
-    SetAiLogicDataForTurn(AI_DATA); // get assumed abilities, hold effects, etc of all battlers
-    gBattleMainFunc = HandleTurnActionSelectionState;
 
     if (gSideTimers[B_SIDE_PLAYER].retaliateTimer > 0)
         gSideTimers[B_SIDE_PLAYER].retaliateTimer--;
     if (gSideTimers[B_SIDE_OPPONENT].retaliateTimer > 0)
         gSideTimers[B_SIDE_OPPONENT].retaliateTimer--;
+    
+    SetAiLogicDataForTurn(AI_DATA); // get assumed abilities, hold effects, etc of all battlers
+    gBattleMainFunc = HandleTurnActionSelectionState;
 
     if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
         BattleScriptExecute(BattleScript_PalacePrintFlavorText);
