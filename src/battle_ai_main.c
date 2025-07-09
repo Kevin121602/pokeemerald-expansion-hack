@@ -4637,7 +4637,9 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
 
     damageScore = score - initialScore;
 
-    ADJUST_SCORE(AI_CalcMoveEffectScore(battlerAtk, battlerDef, move));
+    if(!CanAIFaintTarget(battlerAtk, battlerDef, 0)){
+        ADJUST_SCORE(AI_CalcMoveEffectScore(battlerAtk, battlerDef, move));
+    }
 
     statusScore = score - (initialScore + damageScore);
 

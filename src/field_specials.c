@@ -4565,24 +4565,30 @@ void ChangeAbility(void)
 
 void ChangeHPIV(void){
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HP_IV, &gSpecialVar_0x8005);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
 }
 
 void ChangeAttackIV(void){
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ATK_IV, &gSpecialVar_0x8005);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
 }
 
 void ChangeDefenseIV(void){
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_DEF_IV, &gSpecialVar_0x8005);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
 }
 
 void ChangeSpAttackIV(void){
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPATK_IV, &gSpecialVar_0x8005);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
 }
 
 void ChangeSpDefenseIV(void){
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPDEF_IV, &gSpecialVar_0x8005);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
 }
 
 void ChangeSpeedIV(void){
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPEED_IV, &gSpecialVar_0x8005);
+    CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
 }
