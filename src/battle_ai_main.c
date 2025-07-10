@@ -4268,19 +4268,10 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(DECENT_EFFECT);
         break;
     case EFFECT_MAGNET_RISE:
-        if (IsBattlerGrounded(battlerAtk) && !(AI_GetTypeEffectiveness(MOVE_EARTHQUAKE, battlerDef, battlerAtk) == AI_EFFECTIVENESS_x0)) // Doesn't resist ground move
+        if (IsBattlerGrounded(battlerAtk)) // Doesn't resist ground move
         {
-            if (AI_IsFaster(battlerAtk, battlerDef, move)) // Attacker goes first
-           {
-                if (HasDamagingMoveOfType(battlerDef, TYPE_GROUND))
-                    ADJUST_SCORE(DECENT_EFFECT + WEAK_EFFECT); // Cause the enemy's move to fail
-                break;
-            }
-            else // Opponent Goes First
             {
-                if (HasDamagingMoveOfType(battlerDef, TYPE_GROUND))
-                    ADJUST_SCORE(DECENT_EFFECT);
-                break;
+                ADJUST_SCORE(IncreaseMagnetRiseScore(battlerAtk, battlerDef));
             }
         }
         break;

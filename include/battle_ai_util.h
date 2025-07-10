@@ -208,6 +208,7 @@ void IncreaseSleepScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
 void IncreaseConfusionScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
 void IncreaseFrostbiteScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
 u32 IncreaseFollowMeScore(u32 battlerAtk, u32 battlerDef);
+u32 IncreaseMagnetRiseScore(u32 battlerAtk, u32 battlerDef);
 u32 IncreaseStatLoweringScore(u32 battlerAtk, u32 battlerDef, u32 statId, u32 stages);
 
 s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct BattlePokemon switchinCandidate, bool32 isPartyMonAttacker, enum DamageRollType rollType);

@@ -4474,6 +4474,9 @@ u32 IncreaseFollowMeScore(u32 battlerAtk, u32 battlerDef){
     if(!CanTargetFaintAi(battlerDef, battlerPartner))
         return NO_INCREASE;
 
+    if(gMovesInfo[GetBestDmgMoveFromBattler(battlerAtk, battlerPartner)].target == MOVE_TARGET_FOES_AND_ALLY || gMovesInfo[GetBestDmgMoveFromBattler(battlerAtk, battlerPartner)].target == MOVE_TARGET_BOTH)
+        return NO_INCREASE;
+
     for(i = 0; i < MAX_MON_MOVES; i++){
         if(CanIndexMoveFaintTarget(battlerDef, battlerPartner, i, 1)){
             if(CanIndexMoveFaintTarget(battlerDef, battlerAtk, i, 1)){
@@ -4489,6 +4492,45 @@ u32 IncreaseFollowMeScore(u32 battlerAtk, u32 battlerDef){
     tempScore += DECENT_EFFECT;
     if(maxRedirectedDmg*2 < gBattleMons[battlerAtk].hp)
         tempScore += DECENT_EFFECT;
+
+    return tempScore;
+}
+
+u32 IncreaseMagnetRiseScore(u32 battlerAtk, u32 battlerDef){
+
+    u32 tempScore = NO_INCREASE;
+
+    u8 i;
+
+    u16 *moves = GetMovesArray(battlerDef);
+
+    //if best dmg move isnt ground type, no increase
+    if(gMovesInfo[GetBestDmgMoveFromBattler(battlerDef, battlerAtk)].type != TYPE_GROUND || gMovesInfo[GetBestDmgMoveFromBattler(battlerDef, battlerAtk)].ignoreTypeIfFlyingAndUngrounded)
+        return NO_INCREASE;
+
+    u32 maxGroundDmg = 0;
+    u32 maxNonGroundDmg = 0;
+
+    for(i = 0; i < MAX_MON_MOVES; i++){
+        if(gMovesInfo[moves[i]].type != TYPE_GROUND || gMovesInfo[moves[i]].ignoreTypeIfFlyingAndUngrounded){
+            //returns no increase if a non ground move can faint user
+            if(CanIndexMoveFaintTarget(battlerDef, battlerAtk, i, 0))
+                return NO_INCREASE;
+            else if (AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > maxNonGroundDmg)
+                maxNonGroundDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
+        } else {
+            if (AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > maxGroundDmg)
+                maxGroundDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
+        }
+    }
+
+    if(AI_DATA->speedStats[battlerAtk] >= AI_DATA->speedStats[battlerDef]){
+        tempScore += 3;
+    } else if (maxGroundDmg + maxNonGroundDmg >= gBattleMons[battlerAtk].hp){
+        return NO_INCREASE;
+    } else {
+        tempScore += 3;
+    }
 
     return tempScore;
 }
