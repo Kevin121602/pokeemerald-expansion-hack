@@ -3537,7 +3537,7 @@ Nature: Careful
 Ability: No Guard
 Level: 20
 - Iron Head
-- Shadow Claw
+- Shadow Sneak
 - Brick Break
 - Pursuit
 
@@ -14855,9 +14855,9 @@ Wormadam-Trash @ Occa Berry
 Nature: Sassy
 Ability: Overcoat
 Level: 25
-- Iron Head
-- Signal Beam
-- Bug Bite
+- Mirror Shot
+- Struggle Bug
+- Secret Power
 - Metal Burst
 
 === TRAINER_DEANDRE ===
@@ -15411,7 +15411,7 @@ Nature: Jolly
 Ability: Adaptability
 Level: 20
 - Headbutt
-- Seed Bomb
+- Ice Punch
 - Quick Attack
 - Charm
 

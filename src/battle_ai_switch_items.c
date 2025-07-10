@@ -2417,12 +2417,16 @@ static s32 GetMaxDamageMovePlayerCouldUseOnSwitchin(u32 battler, u32 opposingBat
         if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0)
         {
             damageTaken = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, FALSE, DMG_ROLL_LOWEST);
-            if (damageTaken >= battleMon.hp && PartyMonHasInTactFocusSashSturdy(battler, opposingBattler, playerMove, ItemId_GetHoldEffect(gBattleMons[battler].item), GetBattlerAbility(battler), battleMon, TRUE)){
-                damageTaken = (battleMon.hp - 1);
+            //if (damageTaken >= battleMon.hp && PartyMonHasInTactFocusSashSturdy(battler, opposingBattler, playerMove, ItemId_GetHoldEffect(gBattleMons[battler].item), GetBattlerAbility(battler), battleMon, TRUE)){
+            //    damageTaken = (battleMon.hp - 1);
+            //}
+            if(CalcPartyMonTypeEffectivenessMultiplier(playerMove, battleMon.species, battleMon.ability) == UQ_4_12(0.0) && !IsMoldBreakerTypeAbility(battler, gBattleMons[battler].ability)){
+                damageTaken = 0;
             }
-            if (damageTaken > maxDamageTaken)
+            else if (damageTaken > maxDamageTaken){
                 maxDamageTaken = damageTaken;
                 bestMove = playerMove;
+            }
         }
     }
     return bestMove;

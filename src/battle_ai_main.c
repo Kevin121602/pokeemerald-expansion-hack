@@ -4295,7 +4295,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         break;
     case EFFECT_COUNTER:
         if ((!IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
-         && (NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk) >= 2)
+         && !CanTargetFaintAi(battlerDef, battlerAtk)
          && (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL)))
             ADJUST_SCORE(WEAK_EFFECT);
         if(gMovesInfo[GetBestDmgMoveFromBattler(battlerDef, battlerAtk)].category == DAMAGE_CATEGORY_PHYSICAL && Random() % 100 < 60)
@@ -4303,7 +4303,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         break;
     case EFFECT_MIRROR_COAT:
         if ((!IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
-         && (NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk) >= 2)
+         && !CanTargetFaintAi(battlerDef, battlerAtk)
          && (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL)))
             ADJUST_SCORE(WEAK_EFFECT);
         if(gMovesInfo[GetBestDmgMoveFromBattler(battlerDef, battlerAtk)].category == DAMAGE_CATEGORY_SPECIAL && Random() % 100 < 60)
@@ -4311,7 +4311,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         break;
     case EFFECT_METAL_BURST:
         if ((!IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
-         && (NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk) >= 2))
+         && !CanTargetFaintAi(battlerDef, battlerAtk))
             ADJUST_SCORE(WEAK_EFFECT);
         if(Random() % 100 < 60)
             ADJUST_SCORE(WEAK_EFFECT);

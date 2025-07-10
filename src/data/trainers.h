@@ -8763,7 +8763,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 3539
                 MOVE_IRON_HEAD,
-                MOVE_SHADOW_CLAW,
+                MOVE_SHADOW_SNEAK,
                 MOVE_BRICK_BREAK,
                 MOVE_PURSUIT,
             },
@@ -37364,9 +37364,9 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 14858
-                MOVE_IRON_HEAD,
-                MOVE_SIGNAL_BEAM,
-                MOVE_BUG_BITE,
+                MOVE_MIRROR_SHOT,
+                MOVE_STRUGGLE_BUG,
+                MOVE_SECRET_POWER,
                 MOVE_METAL_BURST,
             },
             },
@@ -38775,7 +38775,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 15413
                 MOVE_HEADBUTT,
-                MOVE_SEED_BOMB,
+                MOVE_ICE_PUNCH,
                 MOVE_QUICK_ATTACK,
                 MOVE_CHARM,
             },

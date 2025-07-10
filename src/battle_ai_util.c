@@ -3626,6 +3626,8 @@ s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct Battl
     struct SimulatedDamage dmg;
     u8 effectiveness;
     struct BattlePokemon *savedBattleMons = AllocSaveBattleMons();
+    u32 battleStatuses3 = gStatuses3[battlerDef];
+    u32 battleStatuses4 = gStatuses4[battlerDef];
 
     if (isPartyMonAttacker)
     {
@@ -3637,6 +3639,9 @@ s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct Battl
     else
     {
         gBattleMons[battlerDef] = switchinCandidate;
+        //bandaid fix, improve later
+        gStatuses3[battlerDef] = 0;
+        gStatuses4[battlerDef] = 0;
         AI_THINKING_STRUCT->saved[battlerAtk].saved = TRUE;
         SetBattlerData(battlerAtk); // set known opposing battler data
         AI_THINKING_STRUCT->saved[battlerAtk].saved = FALSE;
@@ -3644,6 +3649,8 @@ s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct Battl
 
     dmg = AI_CalcDamage(move, battlerAtk, battlerDef, &effectiveness, FALSE, AI_GetWeather(AI_DATA), rollType);
     // restores original gBattleMon struct
+    gStatuses3[battlerDef] = battleStatuses3;
+    gStatuses4[battlerDef] = battleStatuses4;
     FreeRestoreBattleMons(savedBattleMons);
     return dmg.expected;
 }
