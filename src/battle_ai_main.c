@@ -471,9 +471,6 @@ static void SetBattlerAiMovesData(struct AiLogicData *aiData, u32 battlerAtk, u3
             if(AI_GetMoveEffectiveness(move, battlerAtk, battlerDef) <= AI_EFFECTIVENESS_x1 && aiData->abilities[battlerDef] == ABILITY_WONDER_GUARD && !IsMoldBreakerTypeAbility(battlerAtk, aiData->abilities[battlerAtk])){
                 aiData->simulatedDmg[battlerAtk][battlerDef][i] = noDmg;
             }
-            if(DoesSubstituteBlockMove(battlerAtk, battlerDef, move)){
-                aiData->simulatedDmg[battlerAtk][battlerDef][i] = noDmg;
-            }
             aiData->effectiveness[battlerAtk][battlerDef][i] = effectiveness;
         }
         RestoreBattlerData(battlerDef);

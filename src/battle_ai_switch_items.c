@@ -1071,7 +1071,7 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
         playerMove = gBattleMons[opposingBattler].moves[k];
         playerMovePriority = GetMovePriority(opposingBattler, playerMove);
 
-        if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION)
+        if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION && !DoesSubstituteBlockMove(opposingBattler, battler, playerMove))
         {
             dmg = AI_DATA->simulatedDmg[opposingBattler][battler][k].expected;
             hitsToKOBattler = GetNoOfHitsToKO(dmg, gBattleMons[battler].hp);

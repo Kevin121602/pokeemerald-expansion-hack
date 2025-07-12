@@ -1057,7 +1057,7 @@
               {
                 "min_level": 12,
                 "max_level": 13,
-                "species": "SPECIES_POLTCHAGEIST"
+                "species": "SPECIES_GREAVARD"
               },
               {
                 "min_level": 12,
@@ -13979,7 +13979,7 @@
               {
                 "min_level": 11,
                 "max_level": 12,
-                "species": "SPECIES_CUTIEFLY"
+                "species": "SPECIES_COMFEY"
               },
               {
                 "min_level": 11,
@@ -13999,17 +13999,17 @@
               {
                 "min_level": 11,
                 "max_level": 12,
-                "species": "SPECIES_COMFEY"
+                "species": "SPECIES_CUTIEFLY"
               },
               {
                 "min_level": 11,
                 "max_level": 12,
-                "species": "SPECIES_TOGEPI"
+                "species": "SPECIES_DEDENNE"
               },
               {
                 "min_level": 11,
                 "max_level": 12,
-                "species": "SPECIES_TOGEPI"
+                "species": "SPECIES_DEDENNE"
               }
             ]
           }

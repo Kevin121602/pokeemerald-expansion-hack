@@ -1958,17 +1958,41 @@ Items: Super Potion
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Wingull
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 27
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
-Numel
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 27
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
-Roselia
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 27
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
+
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 28
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
 === TRAINER_JENNIFER ===
 Name: JENNIFER
@@ -3650,11 +3674,43 @@ Pic: Black Belt
 Gender: Male
 Music: Intense
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Machop
-Level: 19
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 27
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
+
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 28
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
+
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 27
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
+
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 28
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
 === TRAINER_ATSUSHI ===
 Name: ATSUSHI
@@ -6839,41 +6895,32 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Corsola @ Rindo Berry
-Level: 17
-Nature: Calm
-Ability: Regenerator
--Brine
--Ancient Power
--Aurora Beam
--Recover
-
-Ledian @ Light Clay
-Level: 18
+Swoobat @ Weakness Policy
 Nature: Timid
-Ability: Swarm
--Signal Beam
--Air Slash
--Light Screen
--Reflect
+Ability: Simple
+Level: 26
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
-Vibrava @ Yache Berry
-Level: 18
-Nature: Jolly
-Ability: Levitate
--Stomping Tantrum
--Breaking Swipe
--Bug Bite
--Supersonic
-
-Amaura @ Rock Gem
-Level: 18
+Swoobat @ Weakness Policy
 Nature: Timid
-Ability: Refrigerate
--Round
--Ancient Power
--Discharge
--Thunder Wave
+Ability: Simple
+Level: 26
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
+
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 27
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
 === TRAINER_DILLON ===
 Name: DILLON
@@ -6884,41 +6931,32 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sandygast @ Berry Juice
-Level: 17
-Nature: Calm
-Ability: Water Compaction
--Scorching Sands
--Hex
--Ancient Power
--Will O Wisp
-
-Ariados @ Black Sludge
-Level: 18
-Nature: Jolly
-Ability: Swarm
--Cross Poison
--Bug Bite
--Spider Web
--Baton Pass
-
-Chinchou @ Eviolite
-Level: 17
+Swoobat @ Weakness Policy
 Nature: Timid
-Ability: Volt Absorb
--Brine
--Shock Wave
--Thunder Wave
--Confuse Ray
+Ability: Simple
+Level: 25
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
-Scraggy @ Roseli Berry
-Level: 18
-Nature: Jolly
-Ability: Intimidate
--Power-Up Punch
--Feint Attack
--Headbutt
--Dragon Dance
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 25
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
+
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 26
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
 === TRAINER_CALVIN_2 ===
 Name: CALVIN
@@ -8544,30 +8582,34 @@ Pic: Ninja Boy
 Gender: Male
 Music: Suspicious
 Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Koffing
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Poison Gas
-- Tackle
-- Smog
-- Self Destruct
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 26
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
-Koffing
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Poison Gas
-- Tackle
-- Smog
-- Self Destruct
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 25
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
-Koffing
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Poison Gas
-- Tackle
-- Sludge
-- Self Destruct
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 26
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
 === TRAINER_LUNG ===
 Name: LUNG
@@ -8576,14 +8618,34 @@ Pic: Ninja Boy
 Gender: Male
 Music: Suspicious
 Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Koffing
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 27
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
-Ninjask
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 26
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
+
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 27
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
 === TRAINER_LAO_2 ===
 Name: LAO
@@ -8894,30 +8956,41 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Luvdisc @ Berry Juice
-Level: 11
-Nature: Modest
-Ability: Hydration
--Water Pulse
--Icy Wind
--Attract
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 26
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
-Lotad @ Leftovers
-Level: 12
-Nature: Bold
-Ability: Rain Dish
--Mega Drain
--Bubble Beam
--Teeter Dance
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 27
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
-Mantyke @ Lum Berry
-Level: 12
-Nature: Modest
-Ability: Swift Swim
--Water Pulse
--Air Cutter
--Confuse Ray
--Roost
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 26
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
+
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 27
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
 === TRAINER_CLARISSA ===
 Name: CLARISSA
@@ -13947,15 +14020,43 @@ Pic: Twins
 Gender: Male
 Music: Twins
 Double Battle: Yes
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Spinda
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 26
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
-Spinda
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 27
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
+
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 26
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
+
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 26
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
 === TRAINER_KIM_AND_IRIS ===
 Name: KIM & IRIS
@@ -13992,7 +14093,7 @@ Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Prinplup @ Sharp Beak
-Nature: Relaxed
+Nature: Hasty
 Ability: Competitive
 Level: 24
 - Bubble Beam
@@ -14710,15 +14811,34 @@ Pic: Camper
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Baltoy
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 27
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
-Sandshrew
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 26
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
+
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 28
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
 === TRAINER_WYATT ===
 Name: WYATT
@@ -14727,15 +14847,43 @@ Pic: Pokemaniac
 Gender: Male
 Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Aron
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 27
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
-Aron
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 26
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
+
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 27
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
+
+Swoobat @ Weakness Policy
+Nature: Timid
+Ability: Simple
+Level: 28
+- Psyshock
+- Air Cutter
+- Stored Power
+- Shadow Ball
 
 === TRAINER_ANGELINA ===
 Name: Angelina
