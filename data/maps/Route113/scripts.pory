@@ -60,6 +60,36 @@ script Route113_EventScript_CherylDefeated{
 	end
 }
 
+script Route113_EventScript_Gentleman{
+	lock
+	faceplayer
+	msgbox("If the soot ever gets in your eyes,\n"
+			"consider using a move that won't miss!$")
+	if(!flag(FLAG_RECIEVED_AERIAL_ACE)){
+		giveitem(ITEM_TM_AERIAL_ACE)
+		setflag(FLAG_RECIEVED_AERIAL_ACE)
+	}
+	release
+	end
+}
+
+script Route113_EventScript_NinjaBoy{
+	lock
+	faceplayer
+	if(!flag(FLAG_RECIEVED_WIDE_LENS)){
+		msgbox("A key part of Ninja training is being\n"
+			"aware of your surroundings.\p"
+			"You should use this Wide Lens if you\n"
+			"want to be as good of a Ninja as me.$")
+		giveitem(ITEM_WIDE_LENS)
+		setflag(FLAG_RECIEVED_WIDE_LENS)
+	} else {
+		msgbox("I'm still the Number One Ninja around.$")
+	}
+	release
+	end
+}
+
 raw `
 Route113_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, Route113_OnResume
@@ -85,13 +115,6 @@ Route113_EventScript_CheckSetAshWeather::
 Route113_EventScript_DontSetAshWeather::
 	return
 
-Route113_EventScript_Gentleman::
-	msgbox Route113_Text_AshCanBeFashionedIntoGlass, MSGBOX_NPC
-	end
-
-Route113_EventScript_NinjaBoy::
-	msgbox Route113_Text_FunWalkingThroughAsh, MSGBOX_NPC
-	end
 
 Route113_EventScript_RouteSign111::
 	msgbox Route113_Text_RouteSign111, MSGBOX_SIGN
@@ -197,10 +220,8 @@ Route113_EventScript_Wyatt::
 	end
 
 Route113_Text_AshCanBeFashionedIntoGlass:
-	.string "Wahahaha! Today's technology is a\n"
-	.string "wondrous thing!\p"
-	.string "Take this volcanic ash here.\n"
-	.string "It can be fashioned into glass.$"
+	.string "If the soot ever gets in your eyes,\n"
+	.string "consider using a move that won't miss!$"
 
 Route113_Text_FunWalkingThroughAsh:
 	.string "It's fun walking through the volcano's\n"
