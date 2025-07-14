@@ -63,7 +63,7 @@
 #define TRAINER_LOLA_1                       57
 #define TRAINER_AUSTINA                      58
 #define TRAINER_GWEN                         59
-#define TRAINER_LOLA_2                       60
+#define TRAINER_MARLEY_ROUTE_111                       60
 #define TRAINER_LOLA_3                       61
 #define TRAINER_LOLA_4                       62
 #define TRAINER_LOLA_5                       63
