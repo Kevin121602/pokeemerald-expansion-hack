@@ -1316,7 +1316,7 @@ Nature: Jolly
 Ability: Tangling Hair
 - Iron Head
 - Stomping Tantrum
-- Rock Tomb
+- Slash
 - Pursuit
 
 Jolteon @ Wise Glasses
@@ -1996,50 +1996,49 @@ Level: 45
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_BROOKE_1 ===
-Name: BROOKE
+Name: Brooke
 Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
 Music: Cool
-Items: Super Potion
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Granbull @ Lum Berry
+Nature: Jolly
+Ability: Intimidate
 Level: 27
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Covet
+- Fire Fang
+- Thunder Fang
+- Scary Face
 
-Swoobat @ Weakness Policy
+Cherrim @ Miracle Seed
 Nature: Timid
-Ability: Simple
+Ability: Flower Gift
 Level: 27
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Giga Drain
+- Pollen Puff
+- Draining Kiss
+- Flower Shield
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Purugly @ Soft Sand
+Nature: Jolly
+Ability: Defiant
 Level: 27
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Body Slam
+- Stomping Tantrum
+- Feint Attack
+- Hypnosis
 
-Swoobat @ Weakness Policy
+Illumise @ Leftovers
 Nature: Timid
-Ability: Simple
+Ability: Prankster
 Level: 28
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Bug Buzz
+- Air Slash
+- Moonlight
+- Thunder Wave
 
 === TRAINER_JENNIFER ===
 Name: JENNIFER
@@ -3715,7 +3714,7 @@ Level: 26
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAISUKE ===
-Name: DAISUKE
+Name: Daisuke
 Class: Black Belt
 Pic: Black Belt
 Gender: Male
@@ -3723,41 +3722,41 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
-Level: 27
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
-
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Sneasel-Hisuian @ Flying Gem
+Nature: Jolly
+Ability: Inner Focus
 Level: 28
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Poison Jab
+- Brick Break
+- Aerial Ace
+- Fake Out
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Hitmonchan @ Lum Berry
+Nature: Impish
+Ability: Iron Fist
 Level: 27
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Drain Punch
+- Fire Punch
+- Bullet Punch
+- Agility
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Sawk @ Eject Button
+Nature: Jolly
+Ability: Sturdy
 Level: 28
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Low Kick
+- Reversal
+- Retaliate
+- Knock Off
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 27
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
 
 === TRAINER_ATSUSHI ===
 Name: ATSUSHI
@@ -6934,7 +6933,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Brick Break
 
 === TRAINER_JAYLEN ===
-Name: JAYLEN
+Name: Jaylen
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -6942,35 +6941,35 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Vanillish @ Focus Sash
+Nature: Modest
+Ability: Weak Armor
 Level: 26
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Frost Breath
+- Flash Cannon
+- Signal Beam
+- Mirror Coat
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Wigglytuff @ Big Root
+Nature: Naive
+Ability: Competitive
 Level: 26
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Hyper Voice
+- Draining Kiss
+- Drain Punch
+- Counter
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Toxicroak @ Payapa Berry
+Nature: Hasty
+Ability: Poison Touch
 Level: 27
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Fake Out
+- Venoshock
+- Mud Bomb
+- Vacuum Wave
 
 === TRAINER_DILLON ===
-Name: DILLON
+Name: Dillon
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -6978,32 +6977,32 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Fearow @ Scope Lens
+Nature: Jolly
+Ability: Sniper
 Level: 25
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Aerial Ace
+- Quick Attack
+- Drill Run
+- Focus Energy
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Bruxish @ Lum Berry
+Nature: Jolly
+Ability: Wonder Skin
 Level: 25
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Waterfall
+- Aqua Jet
+- Psywave
+- Super Fang
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Vespiquen @ Leftovers
+Nature: Relaxed
+Ability: Unnerve
 Level: 26
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Attack Order
+- Air Slash
+- Ominous Wind
+- Roost
 
 === TRAINER_CALVIN_2 ===
 Name: CALVIN
@@ -8623,7 +8622,7 @@ Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LAO_1 ===
-Name: LAO
+Name: Lao
 Class: Ninja Boy
 Pic: Ninja Boy
 Gender: Male
@@ -8631,35 +8630,35 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Lairon @ Focus Band
+Nature: Sassy
+Ability: Sturdy
 Level: 26
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Iron Head
+- Rock Tomb
+- Body Slam
+- Metal Burst
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Absol @ Leftovers
+Nature: Jolly
+Ability: Pressure
 Level: 25
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Pursuit
+- Psycho Cut
+- Thunder Wave
+- Will-O-Wisp
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Drednaw @ Rindo Berry
+Nature: Adamant
+Ability: Strong Jaw
 Level: 26
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Razor Shell
+- Rock Slide
+- Ice Fang
+- Rock Polish
 
 === TRAINER_LUNG ===
-Name: LUNG
+Name: Lung
 Class: Ninja Boy
 Pic: Ninja Boy
 Gender: Male
@@ -8667,32 +8666,32 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Kecleon @ Assault Vest
+Nature: Adamant
+Ability: Color Change
 Level: 27
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Body Slam
+- Drain Punch
+- Rock Slide
+- Aerial Ace
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Jumpluff @ Bright Powder
+Nature: Hasty
+Ability: Infiltrator
 Level: 26
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Bounce
+- Giga Drain
+- Leech Seed
+- Sleep Powder
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Accelgor @ Loaded Dice
+Nature: Modest
+Ability: Sticky Hold
 Level: 27
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Signal Beam
+- Venoshock
+- Water Shuriken
+- Recover
 
 === TRAINER_LAO_2 ===
 Name: LAO
@@ -8995,7 +8994,7 @@ Level: 35
 IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
 
 === TRAINER_MADELINE_1 ===
-Name: MADELINE
+Name: Madeline
 Class: Parasol Lady
 Pic: Parasol Lady
 Gender: Female
@@ -9003,41 +9002,42 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Floette @ Eviolite
+Nature: Bold
+Ability: Flower Veil
 Level: 26
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Alluring Voice
+- Psychic
+- Chilling Water
+- Synthesis
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Golduck @ Psychic Gem
+Nature: Naive
+Ability: Cloud Nine
 Level: 27
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Aqua Tail
+- Zen Headbutt
+- Power Gem
+- Aqua Jet
 
-Swoobat @ Weakness Policy
+Tangela @ Leftovers
 Nature: Timid
-Ability: Simple
+Ability: Regenerator
+IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 30 Spe
 Level: 26
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Giga Drain
+- Ancient Power
+- Hidden Power
+- Sleep Powder
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Camerupt @ Lum Berry
+Nature: Quiet
+Ability: Magma Armor
 Level: 27
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Lava Plume
+- Scorching Sands
+- Rock Slide
+- Self-Destruct
 
 === TRAINER_CLARISSA ===
 Name: CLARISSA
@@ -9683,11 +9683,11 @@ Level: 23
 - Sing
 
 Hypno @ Leftovers
-Nature: Hasty
+Nature: Jolly
 Ability: No Guard
 Level: 24
 - Zen Headbutt
-- Dazzling Gleam
+- Brick Break
 - Hypnosis
 - Nightmare
 
@@ -14061,7 +14061,7 @@ Level: 34
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_TORI_AND_TIA ===
-Name: TORI & TIA
+Name: Tori & Tia
 Class: Twins
 Pic: Twins
 Gender: Male
@@ -14069,41 +14069,41 @@ Music: Twins
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Eldegoss @ Leftovers
+Nature: Bold
+Ability: Cotton Down
 Level: 26
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Leaf Tornado
+- Pollen Puff
+- Hyper Voice
+- Sing
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Primeape @ White Herb
+Nature: Jolly
+Ability: Defiant
 Level: 27
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Brick Break
+- Rock Slide
+- Bulldoze
+- Rage Fist
 
-Swoobat @ Weakness Policy
+Farfetch'd @ Leek
+Nature: Jolly
+Ability: Defiant
+Level: 26
+- Dual Wingbeat
+- Quick Attack
+- Leaf Blade
+- Detect
+
+Gothorita @ Eviolite
 Nature: Timid
-Ability: Simple
+Ability: Competitive
 Level: 26
 - Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
-
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
-Level: 26
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Dark Pulse
+- Thunderbolt
+- Fake Out
 
 === TRAINER_KIM_AND_IRIS ===
 Name: KIM & IRIS
@@ -14852,7 +14852,7 @@ Level: 25
 - Hypnosis
 
 === TRAINER_LAWRENCE ===
-Name: LAWRENCE
+Name: Lawrence
 Class: Camper
 Pic: Camper
 Gender: Male
@@ -14860,35 +14860,35 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Persian @ Throat Spray
+Nature: Naive
+Ability: Unnerve
 Level: 27
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Hyper Voice
+- Fake Out
+- Bite
+- Hypnosis
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Arbok @ Lum Berry
+Nature: Jolly
+Ability: Intimidate
 Level: 26
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Poison Jab
+- Crunch
+- Ice Fang
+- Glare
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Lokix @ Focus Sash
+Nature: Jolly
+Ability: Swarm
 Level: 28
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- First Impression
+- Assurance
+- Bug Bite
+- Double Kick
 
 === TRAINER_WYATT ===
-Name: WYATT
+Name: Wyatt
 Class: Pokemaniac
 Pic: Pokemaniac
 Gender: Male
@@ -14896,41 +14896,41 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Swoobat @ Weakness Policy
+Oricorio @ Lum Berry
 Nature: Timid
-Ability: Simple
+Ability: Dancer
 Level: 27
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Revelation Dance
+- Air Slash
+- Feather Dance
+- Roost
 
-Swoobat @ Weakness Policy
+Persian-Alolan @ Wise Glasses
 Nature: Timid
-Ability: Simple
+Ability: Technician
 Level: 26
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Snarl
+- Shock Wave
+- Water Pulse
+- Nasty Plot
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Clodsire @ Black Sludge
+Nature: Impish
+Ability: Water Absorb
 Level: 27
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Poison Jab
+- Stomping Tantrum
+- Toxic
+- Recover
 
-Swoobat @ Weakness Policy
-Nature: Timid
-Ability: Simple
+Spinda @ Chople Berry
+Nature: Jolly
+Ability: Contrary
 Level: 28
-- Psyshock
-- Air Cutter
-- Stored Power
-- Shadow Ball
+- Facade
+- Superpower
+- Sucker Punch
+- Teeter Dance
 
 === TRAINER_ANGELINA ===
 Name: Angelina
@@ -15053,7 +15053,7 @@ Level: 25
 - Mirror Shot
 - Struggle Bug
 - Secret Power
-- Metal Burst
+- Infestation
 
 === TRAINER_DEANDRE ===
 Name: DEANDRE
