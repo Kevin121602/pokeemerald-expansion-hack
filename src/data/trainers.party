@@ -1276,7 +1276,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_MARLEY_ROUTE_111 ===
 Name: Marley
 Class: Rival
-Pic: Cheryl
+Pic: Marley
 Gender: Female
 Music: Female
 Double Battle: No
@@ -1316,7 +1316,7 @@ Nature: Jolly
 Ability: Tangling Hair
 - Iron Head
 - Stomping Tantrum
-- Slash
+- Rock Tomb
 - Pursuit
 
 Jolteon @ Wise Glasses

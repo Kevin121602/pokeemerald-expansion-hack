@@ -1,3 +1,62 @@
+const LOCALID_MARLEY = 44
+
+script Route111_EventScript_MarleyTriggered{
+	lock
+	playse(SE_PIN)
+	applymovement(LOCALID_MARLEY, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp)
+	waitmovement(0)
+	goto(Route111_EventScript_Marley)
+	release
+	end
+}
+
+script Route111_EventScript_Marley{
+	lock
+	faceplayer
+	setflag(FLAG_DISABLE_EXP)
+	trainerbattle(TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, TRAINER_MARLEY_ROUTE_111, LOCALID_MARLEY, Route111_Text_MarleyIntro, Route111_EventScript_MarleyDefeat, Route111_EventScript_MarleyDefeated)
+	msgbox("You're so strong,\n"
+		   "it makes me feel happy!\p"
+		   "I really enjoyed our battle.\n"
+		   "Next time, I won't lose!$")
+	clearflag(FLAG_DISABLE_EXP)
+	release
+	end
+}
+		
+text Route111_Text_MarleyIntro{
+	"I'm Marley. …You are?\p"
+	"{PLAYER}. I see…\n"
+	"Riley and Cheryl told me about you.\p"
+	"I don't like to chat, I prefer to let my\n"
+	"Pokémon and their blazing Speed stat do\l"
+	"all the talking for me.\p"
+	"Are you ready?$"
+}
+
+text Route111_EventScript_MarleyDefeat{
+	"I got left in the dust…$"
+}
+
+movement Route111_Movement_FaceUp{
+	face_up
+	step_end
+}
+		   
+script Route111_EventScript_MarleyDefeated{
+	clearflag(FLAG_DISABLE_EXP)
+	msgbox("You're so strong,\n"
+		   "it makes me feel happy!\p"
+		   "I really enjoyed our battle.\n"
+		   "Next time, I won't lose!$")
+	setflag(FLAG_DEFEATED_MARLEY)
+	setvar(VAR_STAT_TRAINERS_STATE, 3)
+	release
+	end
+}
+
 raw `
 .set LOCALID_VICTOR, 1
 .set LOCALID_VICTORIA, 2
@@ -514,9 +573,7 @@ Route111_EventScript_RematchWilton::
 	end
 
 Route111_EventScript_Brooke::
-	trainerbattle_single TRAINER_BROOKE_1, Route111_Text_BrookeIntro, Route111_Text_BrookeDefeat, Route111_EventScript_RegisterBrooke
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route111_EventScript_RematchBrooke
+	trainerbattle_single TRAINER_BROOKE_1, Route111_Text_BrookeIntro, Route111_Text_BrookeDefeat
 	msgbox Route111_Text_BrookePostBattle, MSGBOX_DEFAULT
 	release
 	end

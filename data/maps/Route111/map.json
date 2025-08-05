@@ -2,7 +2,7 @@
   "id": "MAP_ROUTE111",
   "name": "Route111",
   "layout": "LAYOUT_ROUTE111",
-  "music": "MUS_ROUTE110",
+  "music": "MUS_DP_ROUTE210_DAY",
   "region_map_section": "MAPSEC_ROUTE_111",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -604,7 +604,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Route111_EventScript_Marley",
       "flag": "0"
     },
     {
@@ -838,6 +838,15 @@
       "var": "TRIGGER_RUN_IMMEDIATELY",
       "var_value": "0",
       "script": "Route111_EventScript_SandstormTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_STAT_TRAINERS_STATE",
+      "var_value": "2",
+      "script": "Route111_EventScript_MarleyTriggered"
     }
   ],
   "bg_events": [

@@ -3056,7 +3056,7 @@ F_TRAINER_FEMALE |
 #line 1278
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 1279
-        .trainerPic = TRAINER_PIC_CHERYL,
+        .trainerPic = TRAINER_PIC_MARLEY,
         .encounterMusic_gender = 
 #line 1280
 F_TRAINER_FEMALE | 
@@ -3160,7 +3160,7 @@ F_TRAINER_FEMALE |
 #line 1317
                 MOVE_IRON_HEAD,
                 MOVE_STOMPING_TANTRUM,
-                MOVE_SLASH,
+                MOVE_ROCK_TOMB,
                 MOVE_PURSUIT,
             },
             },
