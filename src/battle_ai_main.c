@@ -278,15 +278,7 @@ u32 BattleAI_ChooseMoveOrAction(void)
     if (!(gBattleTypeFlags & BATTLE_TYPE_DOUBLE))
         ret = ChooseMoveOrAction_Singles(sBattler_AI);
     else{
-        u32 doublesTargeting = GetDoublesTargeting(sBattler_AI, BATTLE_OPPOSITE(sBattler_AI));
-
-        if(doublesTargeting == RANDOM_TARGETING){
-            if(Random() % 100 < 50)
-                doublesTargeting = PARALLEL_TARGETING;
-            else
-                doublesTargeting = DIAGONAL_TARGETING;
-        }
-        ret = ChooseMoveOrAction_Doubles(sBattler_AI, doublesTargeting);
+        ret = ChooseMoveOrAction_Doubles(sBattler_AI, AI_DATA->targetingCase);
     }
 
     // Clear protect structures, some flags may be set during AI calcs
@@ -482,6 +474,9 @@ void SetAiLogicDataForTurn(struct AiLogicData *aiData)
 {
     u32 battlerAtk, battlersCount;
 
+    u32 opposingBattler = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+    u32 playerBattler = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
+
     memset(aiData, 0, sizeof(struct AiLogicData));
     if (!(gBattleTypeFlags & BATTLE_TYPE_HAS_AI) && !IsWildMonSmart())
         return;
@@ -507,6 +502,17 @@ void SetAiLogicDataForTurn(struct AiLogicData *aiData)
             continue;
 
         SetBattlerAiMovesData(aiData, battlerAtk, battlersCount);
+    }
+
+    if(IsDoubleBattle()){
+        aiData->targetingCase = GetDoublesTargeting(opposingBattler, playerBattler);
+
+        if(aiData->targetingCase == RANDOM_TARGETING){
+            if(Random() % 100 < 50)
+                aiData->targetingCase = PARALLEL_TARGETING;
+            else
+                aiData->targetingCase = DIAGONAL_TARGETING;
+        }
     }
 }
 
@@ -724,6 +730,12 @@ static u32 ChooseMoveOrAction_Doubles(u32 battlerAi, u32 doublesTargeting)
 
     for (i = 1; i < MAX_BATTLERS_COUNT; i++)
     {
+        if(doublesTargeting == PARALLEL_TARGETING && i == opposingPosition)
+            continue;
+
+        if(doublesTargeting == DIAGONAL_TARGETING && i == parallelPosition)
+            continue;
+
         if (mostMovePoints == bestMovePointsForTarget[i])
         {
             mostViableTargetsArray[mostViableTargetsNo] = i;
@@ -739,16 +751,16 @@ static u32 ChooseMoveOrAction_Doubles(u32 battlerAi, u32 doublesTargeting)
 
     gBattlerTarget = mostViableTargetsArray[Random() % mostViableTargetsNo];
     gBattleStruct->aiChosenTarget[battlerAi] = gBattlerTarget;
-    if(doublesTargeting == PARALLEL_TARGETING){
+    /*if(doublesTargeting == PARALLEL_TARGETING){
         gBattleStruct->aiChosenTarget[battlerAi] = parallelPosition;
         return actionOrMoveIndex[parallelPosition];
     } else if (doublesTargeting == DIAGONAL_TARGETING){
         gBattleStruct->aiChosenTarget[battlerAi] = opposingPosition;
         return actionOrMoveIndex[opposingPosition];
-    } else {
+    } else {*/
         gBattleStruct->aiChosenTarget[battlerAi] = gBattlerTarget;
         return actionOrMoveIndex[gBattlerTarget];
-    }
+    //}
 }
 
 static inline bool32 ShouldConsiderMoveForBattler(u32 battlerAi, u32 battlerDef, u32 move)

@@ -1524,7 +1524,7 @@ Route111_Text_MarleyIntro::
 	.string "Riley and Cheryl told me about you.\p"
 	.string "I don't like to chat, I prefer to let my\n"
 	.string "Pokémon and their blazing Speed stat do\l"
-	.string "all the talking for me.\p"
+	.string "all the talking for me!\p"
 	.string "Are you ready?$"
 
 Route111_EventScript_MarleyDefeat::
