@@ -7177,6 +7177,13 @@ BattleScript_IllusionOff::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+@ waitstate
+@ 	call BattleScript_AbilityPopUp
+@	swapattackerwithtarget  @ for defiant, mirror armor
+@	seteffectsecondary MOVE_EFFECT_SPD_MINUS_1
+@	swapattackerwithtarget
+@	return
+
 BattleScript_CottonDownActivates::
 	copybyte sSAVED_BATTLER, gBattlerAttacker
 	call BattleScript_AbilityPopUpTarget

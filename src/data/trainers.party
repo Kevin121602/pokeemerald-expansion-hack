@@ -6476,13 +6476,13 @@ Level: 20
 - Mystical Fire
 - Nuzzle
 
-Trumbeak @ Lum Berry
+Farfetch'd @ Leek
 Nature: Jolly
-Ability: Skill Link
+Ability: Defiant
 Level: 21
 - Aerial Ace
-- Fury Attack
-- Bullet Seed
+- Quick Attack
+- Leaf Blade
 - Roost
 
 === TRAINER_TIMOTHY_2 ===
@@ -8653,8 +8653,8 @@ Nature: Adamant
 Ability: Strong Jaw
 Level: 26
 - Razor Shell
-- Rock Slide
-- Ice Fang
+- Rock Tomb
+- Bite
 - Rock Polish
 
 === TRAINER_LUNG ===
@@ -14069,40 +14069,40 @@ Music: Twins
 Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Eldegoss @ Leftovers
-Nature: Bold
-Ability: Cotton Down
+Stantler @ White Herb
+Nature: Jolly
+Ability: Intimidate
 Level: 26
-- Leaf Tornado
-- Pollen Puff
-- Hyper Voice
-- Sing
+- Headbutt
+- Psyshield Bash
+- Earth Power
+- Skill Swap
 
-Primeape @ White Herb
+Primeape @ Adrenaline Orb
 Nature: Jolly
 Ability: Defiant
 Level: 27
 - Brick Break
 - Rock Slide
-- Bulldoze
 - Rage Fist
-
-Farfetch'd @ Leek
-Nature: Jolly
-Ability: Defiant
-Level: 26
-- Dual Wingbeat
-- Quick Attack
-- Leaf Blade
 - Detect
 
-Gothorita @ Eviolite
+Monferno @ Focus Sash
+Nature: Naive
+Ability: Blaze
+Level: 26
+- Heat Wave
+- Drain Punch
+- Grass Knot
+- Psych Up
+
+Meowstic-Female @ Lum Berry
 Nature: Timid
 Ability: Competitive
 Level: 26
 - Psyshock
-- Dark Pulse
 - Thunderbolt
+- Shadow Ball
 - Fake Out
 
 === TRAINER_KIM_AND_IRIS ===

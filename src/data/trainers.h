@@ -16127,14 +16127,14 @@ F_TRAINER_FEMALE |
             },
             {
 #line 6479
-            .species = SPECIES_TRUMBEAK,
+            .species = SPECIES_FARFETCHD,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6479
-            .heldItem = ITEM_LUM_BERRY,
+            .heldItem = ITEM_LEEK,
 #line 6483
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 6481
-            .ability = ABILITY_SKILL_LINK,
+            .ability = ABILITY_DEFIANT,
 #line 6482
             .lvl = 21,
 #line 6480
@@ -16143,8 +16143,8 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 6483
                 MOVE_AERIAL_ACE,
-                MOVE_FURY_ATTACK,
-                MOVE_BULLET_SEED,
+                MOVE_QUICK_ATTACK,
+                MOVE_LEAF_BLADE,
                 MOVE_ROOST,
             },
             },
@@ -21634,8 +21634,8 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 8655
                 MOVE_RAZOR_SHELL,
-                MOVE_ROCK_SLIDE,
-                MOVE_ICE_FANG,
+                MOVE_ROCK_TOMB,
+                MOVE_BITE,
                 MOVE_ROCK_POLISH,
             },
             },
@@ -35395,25 +35395,25 @@ F_TRAINER_FEMALE |
         {
             {
 #line 14072
-            .species = SPECIES_ELDEGOSS,
+            .species = SPECIES_STANTLER,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 14072
-            .heldItem = ITEM_LEFTOVERS,
+            .heldItem = ITEM_WHITE_HERB,
 #line 14076
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 14074
-            .ability = ABILITY_COTTON_DOWN,
+            .ability = ABILITY_INTIMIDATE,
 #line 14075
             .lvl = 26,
 #line 14073
-            .nature = NATURE_BOLD,
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 14076
-                MOVE_LEAF_TORNADO,
-                MOVE_POLLEN_PUFF,
-                MOVE_HYPER_VOICE,
-                MOVE_SING,
+                MOVE_HEADBUTT,
+                MOVE_PSYSHIELD_BASH,
+                MOVE_EARTH_POWER,
+                MOVE_SKILL_SWAP,
             },
             },
             {
@@ -35421,7 +35421,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_PRIMEAPE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 14081
-            .heldItem = ITEM_WHITE_HERB,
+            .heldItem = ITEM_ADRENALINE_ORB,
 #line 14085
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 14083
@@ -35435,39 +35435,39 @@ F_TRAINER_FEMALE |
 #line 14085
                 MOVE_BRICK_BREAK,
                 MOVE_ROCK_SLIDE,
-                MOVE_BULLDOZE,
                 MOVE_RAGE_FIST,
-            },
-            },
-            {
-#line 14090
-            .species = SPECIES_FARFETCHD,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 14090
-            .heldItem = ITEM_LEEK,
-#line 14094
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 14092
-            .ability = ABILITY_DEFIANT,
-#line 14093
-            .lvl = 26,
-#line 14091
-            .nature = NATURE_JOLLY,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 14094
-                MOVE_DUAL_WINGBEAT,
-                MOVE_QUICK_ATTACK,
-                MOVE_LEAF_BLADE,
                 MOVE_DETECT,
             },
             },
             {
+#line 14090
+            .species = SPECIES_MONFERNO,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 14090
+            .heldItem = ITEM_FOCUS_SASH,
+#line 14094
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 14092
+            .ability = ABILITY_BLAZE,
+#line 14093
+            .lvl = 26,
+#line 14091
+            .nature = NATURE_NAIVE,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 14094
+                MOVE_HEAT_WAVE,
+                MOVE_DRAIN_PUNCH,
+                MOVE_GRASS_KNOT,
+                MOVE_PSYCH_UP,
+            },
+            },
+            {
 #line 14099
-            .species = SPECIES_GOTHORITA,
+            .species = SPECIES_MEOWSTIC_FEMALE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 14099
-            .heldItem = ITEM_EVIOLITE,
+            .heldItem = ITEM_LUM_BERRY,
 #line 14103
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 14101
@@ -35480,8 +35480,8 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 14103
                 MOVE_PSYSHOCK,
-                MOVE_DARK_PULSE,
                 MOVE_THUNDERBOLT,
+                MOVE_SHADOW_BALL,
                 MOVE_FAKE_OUT,
             },
             },

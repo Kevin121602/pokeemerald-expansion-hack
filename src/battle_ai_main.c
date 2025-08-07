@@ -2953,7 +2953,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 }
                 break;
             case EFFECT_SKILL_SWAP:
-                if (aiData->abilities[battlerAtk] != aiData->abilities[BATTLE_PARTNER(battlerAtk)] && !attackerHasBadAbility)
+                /*if (aiData->abilities[battlerAtk] != aiData->abilities[BATTLE_PARTNER(battlerAtk)] && !attackerHasBadAbility)
                 {
                     if (aiData->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_TRUANT)
                     {
@@ -2964,7 +2964,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     {
                         RETURN_SCORE_PLUS(DECENT_EFFECT);
                     }
-                }
+                }*/
                 break;
             case EFFECT_ROLE_PLAY:
                 if (attackerHasBadAbility && !partnerHasBadAbility)
@@ -3027,7 +3027,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     else // checking opponent
     {
         // these checks mostly handled in AI_CheckBadMove and AI_CheckViability
-        switch (effect)
+        /*switch (effect)
         {
         case EFFECT_SKILL_SWAP:
             if (aiData->abilities[battlerAtk] == ABILITY_TRUANT)
@@ -3035,7 +3035,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             else if (IsAbilityOfRating(aiData->abilities[battlerAtk], 0) || IsAbilityOfRating(aiData->abilities[battlerDef], 10))
                 ADJUST_SCORE(DECENT_EFFECT); // we want to transfer our bad ability or take their awesome ability
             break;
-        }
+        }*/
 
         // lightning rod, flash fire against enemy handled in AI_CheckBadMove
     }
@@ -3995,8 +3995,11 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_SKILL_SWAP:
         if (GetActiveGimmick(battlerDef) == GIMMICK_DYNAMAX)
             break;
-        else if (gAbilitiesInfo[aiData->abilities[battlerDef]].aiRating > gAbilitiesInfo[aiData->abilities[battlerAtk]].aiRating)
+        else if (IsDoubleBattle() && aiData->abilities[battlerAtk] == ABILITY_INTIMIDATE && aiData->abilities[battlerDef] != ABILITY_INTIMIDATE && (aiData->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_DEFIANT || aiData->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_COMPETITIVE)){
             ADJUST_SCORE(DECENT_EFFECT);
+            if(Random() % 100 < 50)
+                ADJUST_SCORE(WEAK_EFFECT);
+        }
         break;
     case EFFECT_WORRY_SEED:
     case EFFECT_GASTRO_ACID:
