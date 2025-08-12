@@ -1221,7 +1221,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         )
         .levelUpLearnset = sDottlerLevelUpLearnset,
         .teachableLearnset = sDottlerTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 28, SPECIES_ORBEETLE}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 27, SPECIES_ORBEETLE}),
     },
 
     [SPECIES_ORBEETLE] =

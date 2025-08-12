@@ -638,6 +638,7 @@ static u32 ChooseMoveOrAction_Doubles(u32 battlerAi, u32 doublesTargeting)
 
     u8 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battlerAi));
     u8 parallelPosition = BATTLE_OPPOSITE(GetBattlerPosition(BATTLE_PARTNER(battlerAi)));
+    u8 partnerPosition = GetBattlerPosition(BATTLE_PARTNER(battlerAi));
 
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
     {
@@ -730,11 +731,11 @@ static u32 ChooseMoveOrAction_Doubles(u32 battlerAi, u32 doublesTargeting)
 
     for (i = 1; i < MAX_BATTLERS_COUNT; i++)
     {
-        if(doublesTargeting == PARALLEL_TARGETING && i == opposingPosition)
-            continue;
+        //if(doublesTargeting == PARALLEL_TARGETING && i == opposingPosition)
+        //    continue;
 
-        if(doublesTargeting == DIAGONAL_TARGETING && i == parallelPosition)
-            continue;
+        //if(doublesTargeting == DIAGONAL_TARGETING && i == parallelPosition)
+        //    continue;
 
         if (mostMovePoints == bestMovePointsForTarget[i])
         {
@@ -750,17 +751,17 @@ static u32 ChooseMoveOrAction_Doubles(u32 battlerAi, u32 doublesTargeting)
     }
 
     gBattlerTarget = mostViableTargetsArray[Random() % mostViableTargetsNo];
-    gBattleStruct->aiChosenTarget[battlerAi] = gBattlerTarget;
-    /*if(doublesTargeting == PARALLEL_TARGETING){
+    //gBattleStruct->aiChosenTarget[battlerAi] = gBattlerTarget;
+    if(doublesTargeting == PARALLEL_TARGETING && gBattlerTarget != partnerPosition){
         gBattleStruct->aiChosenTarget[battlerAi] = parallelPosition;
         return actionOrMoveIndex[parallelPosition];
-    } else if (doublesTargeting == DIAGONAL_TARGETING){
+    } else if (doublesTargeting == DIAGONAL_TARGETING && gBattlerTarget != partnerPosition){
         gBattleStruct->aiChosenTarget[battlerAi] = opposingPosition;
         return actionOrMoveIndex[opposingPosition];
-    } else {*/
+    } else {
         gBattleStruct->aiChosenTarget[battlerAi] = gBattlerTarget;
         return actionOrMoveIndex[gBattlerTarget];
-    //}
+    }
 }
 
 static inline bool32 ShouldConsiderMoveForBattler(u32 battlerAi, u32 battlerDef, u32 move)
@@ -3996,9 +3997,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         if (GetActiveGimmick(battlerDef) == GIMMICK_DYNAMAX)
             break;
         else if (IsDoubleBattle() && aiData->abilities[battlerAtk] == ABILITY_INTIMIDATE && aiData->abilities[battlerDef] != ABILITY_INTIMIDATE && (aiData->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_DEFIANT || aiData->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_COMPETITIVE)){
-            ADJUST_SCORE(DECENT_EFFECT);
-            if(Random() % 100 < 50)
-                ADJUST_SCORE(WEAK_EFFECT);
+            ADJUST_SCORE(BEST_EFFECT);
         }
         break;
     case EFFECT_WORRY_SEED:

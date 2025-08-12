@@ -836,7 +836,7 @@ Ability: Wonder Guard
 Lucario @ Muscle Band
 Level: 21
 Nature: Hasty
-Ability: Inner Focus
+Ability: Justified
 - Force Palm
 - Metal Claw
 - Bullet Punch
@@ -1292,41 +1292,41 @@ Ability: Aura Break
 - Skitter Smack
 - Reversal
 
+Sharpedo @ Lum Berry
+Level: 27
+Nature: Rash
+Ability: Speed Boost
+- Scald
+- Bite
+- Whirlpool
+- Ice Fang
+
 Hawlucha @ Muscle Band
-Level: 28
+Level: 27
 Nature: Jolly
 Ability: Mold Breaker
 - Dual Wingbeat
 - Low Sweep
-- Poison Jab
+- Iron Head
 - Roost
 
-Sharpedo @ Mystic Water
-Level: 27
-Nature: Modest
-Ability: Speed Boost
-- Dark Pulse
-- Scald
-- Ancient Power
-- Icy Wind
-
-Dugtrio-Alolan @ Dark Gem
+Froslass @ Wise Glasses
 Level: 28
-Nature: Jolly
-Ability: Tangling Hair
-- Iron Head
-- Stomping Tantrum
-- Rock Tomb
-- Pursuit
+Nature: Timid
+Ability: Mystic Charm
+- Frost Breath
+- Hex
+- Thunder Wave
+- Will-O-Wisp
 
-Jolteon @ Wise Glasses
+Jolteon @ Air Balloon
 Level: 29
 Nature: Timid
 Ability: Volt Absorb
 - Discharge
 - Hyper Voice
 - Signal Beam
-- Magnet Rise
+- Substitute
 
 Arcanine @ Salac Berry
 Level: 29
@@ -8648,12 +8648,12 @@ Level: 25
 - Thunder Wave
 - Will-O-Wisp
 
-Drednaw @ Rindo Berry
+Drednaw @ Hard Stone
 Nature: Adamant
 Ability: Strong Jaw
 Level: 26
 - Razor Shell
-- Rock Tomb
+- Rock Slide
 - Bite
 - Rock Polish
 
@@ -8666,7 +8666,7 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Kecleon @ Assault Vest
+Kecleon @ Focus Sash
 Nature: Adamant
 Ability: Color Change
 Level: 27
@@ -8874,7 +8874,7 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Quaxwell @ Flying Gem
+Quaxwell @ Berry Juice
 Nature: Jolly
 Ability: Torrent
 Level: 20
@@ -9002,16 +9002,16 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Floette @ Eviolite
+Floette @ Lum Berry
 Nature: Bold
 Ability: Flower Veil
 Level: 26
 - Alluring Voice
 - Psychic
-- Chilling Water
+- Grass Knot
 - Synthesis
 
-Golduck @ Psychic Gem
+Golduck @ Muscle Band
 Nature: Naive
 Ability: Cloud Nine
 Level: 27
@@ -9030,7 +9030,7 @@ Level: 26
 - Hidden Power
 - Sleep Powder
 
-Camerupt @ Lum Berry
+Camerupt @ Wise Glasses
 Nature: Quiet
 Ability: Magma Armor
 Level: 27
@@ -14070,7 +14070,7 @@ Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Stantler @ White Herb
-Nature: Jolly
+Nature: Hasty
 Ability: Intimidate
 Level: 26
 - Headbutt
@@ -14101,8 +14101,8 @@ Nature: Timid
 Ability: Competitive
 Level: 26
 - Psyshock
-- Thunderbolt
 - Shadow Ball
+- Shock Wave
 - Fake Out
 
 === TRAINER_KIM_AND_IRIS ===
