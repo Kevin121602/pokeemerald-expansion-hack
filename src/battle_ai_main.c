@@ -3595,7 +3595,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         else if (gDisableStructs[battlerDef].encoreTimer == 0
         && (gBattleMoveEffects[gMovesInfo[gLastMoves[battlerDef]].effect].encourageEncore)
         && aiData->speedStats[battlerAtk] >= aiData->speedStats[battlerDef])
-            ADJUST_SCORE(BEST_EFFECT);
+            ADJUST_SCORE(4);
         break;
     case EFFECT_SLEEP_TALK:
     case EFFECT_SNORE:
@@ -4639,9 +4639,9 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
 
     damageScore = score - initialScore;
 
-    if(!CanAIFaintTarget(battlerAtk, battlerDef, 0)){
+    //if(!CanAIFaintTarget(battlerAtk, battlerDef, 0)){
         ADJUST_SCORE(AI_CalcMoveEffectScore(battlerAtk, battlerDef, move));
-    }
+    //}
 
     statusScore = score - (initialScore + damageScore);
 

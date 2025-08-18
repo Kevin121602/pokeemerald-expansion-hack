@@ -5414,7 +5414,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .levelUpLearnset = sSwinubLevelUpLearnset,
         .teachableLearnset = sSwinubTeachableLearnset,
         .eggMoveLearnset = sSwinubEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 24, SPECIES_PILOSWINE}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 26, SPECIES_PILOSWINE}),
     },
 
     [SPECIES_PILOSWINE] =

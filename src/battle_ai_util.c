@@ -1767,8 +1767,8 @@ void ProtectChecks(u32 battlerAtk, u32 battlerDef, u32 move, u32 predictedMove, 
     u32 abilityAI = AI_DATA->abilities[battlerAtk];
     u32 abilityPlayer = AI_DATA->abilities[battlerDef];
 
-    speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
-    speedBattler   = GetBattlerTotalSpeedStatArgs(battlerDef, abilityPlayer, holdEffectPlayer);
+    speedBattlerAI = AI_DATA->speedStats[battlerAtk];
+    speedBattler   = AI_DATA->speedStats[battlerDef];
 
     u32 i;
 
@@ -1786,7 +1786,7 @@ void ProtectChecks(u32 battlerAtk, u32 battlerDef, u32 move, u32 predictedMove, 
         //if(uses > 0){
         //    ADJUST_SCORE_PTR(-30);
         //}
-        if(noOfHitsToFaint == 1){
+        if(CanTargetFaintAi(battlerDef, battlerAtk)){
             //if player has kill on AI and AI is faster
             if(speedBattlerAI >= speedBattler){
                 ADJUST_SCORE_PTR(BEST_EFFECT);

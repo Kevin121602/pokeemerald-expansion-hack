@@ -37426,7 +37426,7 @@ F_TRAINER_FEMALE |
                 MOVE_FIRST_IMPRESSION,
                 MOVE_ASSURANCE,
                 MOVE_BUG_BITE,
-                MOVE_DOUBLE_KICK,
+                MOVE_AERIAL_ACE,
             },
             },
         },
