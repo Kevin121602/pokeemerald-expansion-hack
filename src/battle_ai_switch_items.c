@@ -2206,6 +2206,8 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
                     bestPlayerDmg = damageDealt;
                     bestHitsToKOAI = hitsToKOAI;
                     bestPlayerMove = gBattleMons[opposingBattler].moves[i];
+                } else if (hitsToKOAI <= bestHitsToKOAI && damageDealt == bestPlayerDmg && playerMovePriority > GetMovePriority(opposingBattler, bestPlayerMove)){
+                    bestPlayerMove = gBattleMons[opposingBattler].moves[i];
                 }
             } else {
                 if(hitsToKOAI < bestHitsToKOAI){

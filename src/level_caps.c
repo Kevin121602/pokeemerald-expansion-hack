@@ -15,7 +15,7 @@ u32 GetCurrentLevelCap(void)
         {FLAG_DEFEATED_RILEY, 24}, //23
         {FLAG_DEFEATED_CHERYL, 27}, //26
         {FLAG_DEFEATED_MARLEY, 30}, //29
-        {FLAG_DEFEATED_MIRA, 32}, //31
+        {FLAG_DEFEATED_MIRA, 33}, //32
         {FLAG_BADGE04_GET, 36}, // 35
         {FLAG_DEFEATED_PHOEBE, 42}, //41
         {FLAG_BADGE02_GET, 46}, //45

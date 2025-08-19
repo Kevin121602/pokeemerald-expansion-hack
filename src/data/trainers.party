@@ -82,7 +82,7 @@ Music: Male
 Double Battle: No
 
 === TRAINER_SAWYER_1 ===
-Name: SAWYER
+Name: Sawyer
 Class: Hiker
 Pic: Hiker
 Gender: Male
@@ -90,31 +90,23 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Smoochum @ Berry Juice
-Level: 12
-Nature: Timid
-Ability: Oblivious
--Fake Out
--Confusion
--Powder Snow
--Sing
+Sawk @ Eject Button
+Nature: Jolly
+Ability: Sturdy
+Level: 29
+- Low Kick
+- Reversal
+- Retaliate
+- Knock Off
 
-Spheal @ Leftovers
-Level: 12
-Nature: Bold
-Ability: Ice Body
--Brine
--Aurora Beam
--Rest
--Snore
-
-Sandshrew-Alolan @ Focus Sash
-Level: 12
-Nature: Adamant
-Ability: Slush Rush
--Ice Shard
--Metal Claw
--Rollout
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 30
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_1 ===
 Name: GRUNT
@@ -1661,26 +1653,49 @@ Level: 46
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_WILTON_1 ===
-Name: WILTON
+Name: Wilton
 Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
-Items: Super Potion
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Electrike
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Sneasel-Hisuian @ Flying Gem
+Nature: Jolly
+Ability: Inner Focus
+Level: 28
+- Poison Jab
+- Brick Break
+- Aerial Ace
+- Fake Out
 
-Wailmer
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Hitmonchan @ Lum Berry
+Nature: Impish
+Ability: Iron Fist
+Level: 28
+- Drain Punch
+- Fire Punch
+- Bullet Punch
+- Agility
 
-Makuhita
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Sawk @ Eject Button
+Nature: Jolly
+Ability: Sturdy
+Level: 28
+- Low Kick
+- Reversal
+- Retaliate
+- Knock Off
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 29
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
 
 === TRAINER_EDGAR ===
 Name: EDGAR
@@ -2559,43 +2574,130 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 - Sand Attack
 
 === TRAINER_MELISSA ===
-Name: MELISSA
+Name: Melissa
 Class: Beauty
 Pic: Beauty
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Marill
-Level: 21
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sawk @ Eject Button
+Nature: Jolly
+Ability: Sturdy
+Level: 29
+- Low Kick
+- Reversal
+- Retaliate
+- Knock Off
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 30
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
 
 === TRAINER_SHEILA ===
-Name: SHEILA
+Name: Sheila
 Class: Beauty
 Pic: Beauty
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Shroomish
-Level: 21
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sawk @ Eject Button
+Nature: Jolly
+Ability: Sturdy
+Level: 29
+- Low Kick
+- Reversal
+- Retaliate
+- Knock Off
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 30
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 29
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 30
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 31
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
 
 === TRAINER_SHIRLEY ===
-Name: SHIRLEY
+Name: Shirley
 Class: Beauty
 Pic: Beauty
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Numel
-Level: 21
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sawk @ Eject Button
+Nature: Jolly
+Ability: Sturdy
+Level: 30
+- Low Kick
+- Reversal
+- Retaliate
+- Knock Off
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 29
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 30
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 31
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
 
 === TRAINER_JESSICA_1 ===
 Name: JESSICA
@@ -4223,17 +4325,40 @@ Ability: Grass Pelt
 -Milk Drink
 
 === TRAINER_LARRY ===
-Name: LARRY
+Name: Larry
 Class: Camper
 Pic: Camper
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Nuzleaf
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sawk @ Eject Button
+Nature: Jolly
+Ability: Sturdy
+Level: 29
+- Low Kick
+- Reversal
+- Retaliate
+- Knock Off
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 29
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 30
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
 
 === TRAINER_SHANE ===
 Name: Shane
@@ -6571,7 +6696,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Detect
 
 === TRAINER_SHELBY_1 ===
-Name: SHELBY
+Name: Shelby
 Class: Expert
 Pic: Expert F
 Gender: Female
@@ -6579,13 +6704,41 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Meditite
-Level: 21
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Sawk @ Eject Button
+Nature: Jolly
+Ability: Sturdy
+Level: 30
+- Low Kick
+- Reversal
+- Retaliate
+- Knock Off
 
-Makuhita
-Level: 21
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 29
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 30
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 30
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
 
 === TRAINER_SHELBY_2 ===
 Name: SHELBY
@@ -9639,21 +9792,49 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Defense Curl
 
 === TRAINER_CAROL ===
-Name: CAROL
+Name: Carol
 Class: Picnicker
 Pic: Picnicker
 Gender: Female
 Music: Girl
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Taillow
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sawk @ Eject Button
+Nature: Jolly
+Ability: Sturdy
+Level: 29
+- Low Kick
+- Reversal
+- Retaliate
+- Knock Off
 
-Lombre
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 29
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 29
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 30
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
 
 === TRAINER_NANCY ===
 Name: Nancy
@@ -12798,42 +12979,85 @@ Level: 33
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_BRICE ===
-Name: BRICE
+Name: Brice
 Class: Hiker
 Pic: Hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Numel
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sawk @ Eject Button
+Nature: Jolly
+Ability: Sturdy
+Level: 29
+- Low Kick
+- Reversal
+- Retaliate
+- Knock Off
 
-Machop
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 28
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 29
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
+
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 30
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
 
 === TRAINER_TRENT_1 ===
-Name: TRENT
+Name: Trent
 Class: Hiker
 Pic: Hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Geodude
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sawk @ Eject Button
+Nature: Jolly
+Ability: Sturdy
+Level: 29
+- Low Kick
+- Reversal
+- Retaliate
+- Knock Off
 
-Geodude
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 28
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
 
-Geodude
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 30
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
 
 === TRAINER_LENNY ===
 Name: Lenny
@@ -15541,38 +15765,58 @@ Level: 22
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRYANT ===
-Name: BRYANT
+Name: Bryant
 Class: Kindler
 Pic: Kindler
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Numel
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sawk @ Eject Button
+Nature: Jolly
+Ability: Sturdy
+Level: 28
+- Low Kick
+- Reversal
+- Retaliate
+- Knock Off
 
-Slugma
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 29
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
 
 === TRAINER_SHAYLA ===
-Name: SHAYLA
+Name: Shayla
 Class: Aroma Lady
 Pic: Aroma Lady
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Shroomish
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sawk @ Eject Button
+Nature: Jolly
+Ability: Sturdy
+Level: 28
+- Low Kick
+- Reversal
+- Retaliate
+- Knock Off
 
-Roselia
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Falinks @ Leftovers
+Nature: Jolly
+Ability: Defiant
+Level: 29
+- Body Press
+- Counter
+- Lunge
+- Zen Headbutt
 
 === TRAINER_KYRA ===
 Name: Kyra
