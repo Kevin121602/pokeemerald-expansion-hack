@@ -1519,7 +1519,7 @@ MtChimney_Text_ShelbyPostBattle:
 # 760 "data/maps/MtChimney/scripts.pory"
 	.string "Well, well, I've lost. I can't call\n"
 # 761 "data/maps/MtChimney/scripts.pory"
-	.string "myself an EXPERT now, can I?$"
+	.string "myself an Expert now, can I?$"
 # 762 "data/maps/MtChimney/scripts.pory"
 
 # 763 "data/maps/MtChimney/scripts.pory"

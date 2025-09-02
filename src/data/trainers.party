@@ -90,23 +90,23 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sawk @ Eject Button
-Nature: Jolly
-Ability: Sturdy
+Klang @ Eviolite
+Nature: Sassy
+Ability: Plus
 Level: 29
-- Low Kick
-- Reversal
-- Retaliate
-- Knock Off
+- Flash Cannon
+- Wild Charge
+- Gear Up
+- Magnetic Flux
 
-Falinks @ Leftovers
-Nature: Jolly
-Ability: Defiant
+Plusle @ Air Balloon
+Nature: Timid
+Ability: Plus
 Level: 30
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Thunderbolt
+- Alluring Voice
+- Grass Knot
+- Charge Beam
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_1 ===
 Name: GRUNT
@@ -1661,41 +1661,41 @@ Music: Cool
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sneasel-Hisuian @ Flying Gem
-Nature: Jolly
-Ability: Inner Focus
+Swellow @ Lum Berry
+Nature: Naive
+Ability: Scrappy
 Level: 28
-- Poison Jab
-- Brick Break
-- Aerial Ace
-- Fake Out
+- Hyper Voice
+- Dual Wingbeat
+- Heat Wave
+- Steel Wing
 
-Hitmonchan @ Lum Berry
-Nature: Impish
-Ability: Iron Fist
-Level: 28
-- Drain Punch
-- Fire Punch
-- Bullet Punch
-- Agility
-
-Sawk @ Eject Button
+Furfrou @ Leftovers
 Nature: Jolly
-Ability: Sturdy
+Ability: Fur Coat
 Level: 28
-- Low Kick
-- Reversal
-- Retaliate
-- Knock Off
-
-Falinks @ Leftovers
-Nature: Jolly
-Ability: Defiant
-Level: 29
-- Body Press
-- Counter
-- Lunge
+- Headbutt
+- Iron Tail
 - Zen Headbutt
+- Toxic
+
+Thievul @ Flying Gem
+Nature: Adamant
+Ability: Unburden
+Level: 28
+- Lash Out
+- Acrobatics
+- Play Rough
+- Sleep Talk
+
+Whiscash @ Power Herb
+Nature: Naive
+Ability: Oblivious
+Level: 29
+- Scald
+- Stomping Tantrum
+- Bounce
+- Dragon Dance
 
 === TRAINER_EDGAR ===
 Name: EDGAR
@@ -2582,23 +2582,24 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sawk @ Eject Button
-Nature: Jolly
-Ability: Sturdy
+Minun @ Leftovers
+Nature: Timid
+Ability: Minus
+IVs: 31 HP / 30 Atk / 30 Def / 31 SpA / 31 SpD / 31 Spe
 Level: 29
-- Low Kick
-- Reversal
-- Retaliate
-- Knock Off
+- Electroweb
+- Hidden Power
+- Fake Tears
+- Magnet Rise
 
-Falinks @ Leftovers
-Nature: Jolly
-Ability: Defiant
+Manectric @ Lum Berry
+Nature: Timid
+Ability: Minus
 Level: 30
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Discharge
+- Signal Beam
+- Flame Burst
+- Snarl
 
 === TRAINER_SHEILA ===
 Name: Sheila
@@ -4333,32 +4334,32 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sawk @ Eject Button
-Nature: Jolly
-Ability: Sturdy
+Jynx @ Focus Sash
+Nature: Timid
+Ability: Oblivious
 Level: 29
-- Low Kick
-- Reversal
-- Retaliate
-- Knock Off
+- Frost Breath
+- Psybeam
+- Fake Out
+- Lovely Kiss
 
-Falinks @ Leftovers
+Sawsbuck @ Silk Scarf
 Nature: Jolly
-Ability: Defiant
+Ability: Serene Grace
 Level: 29
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Horn Leech
+- Headbutt
+- Stomping Tantrum
+- Camouflage
 
-Falinks @ Leftovers
-Nature: Jolly
-Ability: Defiant
+Morpeko @ Muscle Band
+Nature: Adamant
+Ability: Hunger Switch
 Level: 30
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Aura Wheel
+- Psychic Fangs
+- Seed Bomb
+- Super Fang
 
 === TRAINER_SHANE ===
 Name: Shane
@@ -6704,41 +6705,41 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sawk @ Eject Button
-Nature: Jolly
-Ability: Sturdy
+Eldegoss @ Eject Button
+Nature: Timid
+Ability: Cotton Down
 Level: 30
-- Low Kick
-- Reversal
-- Retaliate
-- Knock Off
+- Leaf Tornado
+- Pollen Puff
+- Hyper Voice
+- Sing
 
-Falinks @ Leftovers
-Nature: Jolly
-Ability: Defiant
+Perrserker @ Lum Berry
+Nature: Adamant
+Ability: Tough Claws
 Level: 29
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Iron Head
+- Bullet Punch
+- Knock Off
+- Fake Out
 
-Falinks @ Leftovers
-Nature: Jolly
-Ability: Defiant
+Lanturn @ Leftovers
+Nature: Timid
+Ability: Volt Absorb
 Level: 30
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Brine
+- Electro Ball
+- Signal Beam
+- Thunder Wave
 
-Falinks @ Leftovers
-Nature: Jolly
-Ability: Defiant
+Raticate-Alolan @ Chople Berry
+Nature: Adamant
+Ability: Hustle
 Level: 30
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Hyper Fang
+- Bite
+- Quick Attack
+- Super Fang
 
 === TRAINER_SHELBY_2 ===
 Name: SHELBY
@@ -9800,41 +9801,41 @@ Music: Girl
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sawk @ Eject Button
-Nature: Jolly
-Ability: Sturdy
+Raichu @ Lum Berry
+Nature: Naive
+Ability: Static
 Level: 29
-- Low Kick
-- Reversal
-- Retaliate
-- Knock Off
+- Thunder Punch
+- Surf
+- Grass Knot
+- Sing
 
-Falinks @ Leftovers
+Cinccino @ Liechi Berry
 Nature: Jolly
-Ability: Defiant
+Ability: Skill Link
 Level: 29
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Tail Slap
+- Triple Axel
+- Rock Blast
+- Endure
 
-Falinks @ Leftovers
-Nature: Jolly
-Ability: Defiant
+Clefable @ Life Orb
+Nature: Timid
+Ability: Magic Guard
 Level: 29
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Draining Kiss
+- Ice Beam
+- Shock Wave
+- Moonlight
 
-Falinks @ Leftovers
+Glalie @ Expert Belt
 Nature: Jolly
-Ability: Defiant
+Ability: Inner Focus
 Level: 30
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Avalanche
+- Bulldoze
+- Super Fang
+- Block
 
 === TRAINER_NANCY ===
 Name: Nancy
@@ -12987,41 +12988,41 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sawk @ Eject Button
-Nature: Jolly
-Ability: Sturdy
+Mr. Mime @ Wise Glasses
+Nature: Timid
+Ability: Technician
 Level: 29
-- Low Kick
-- Reversal
-- Retaliate
-- Knock Off
+- Dazzling Gleam
+- Psyshock
+- Magical Leaf
+- Charge Beam
 
-Falinks @ Leftovers
-Nature: Jolly
-Ability: Defiant
+Probopass @ Leftovers
+Nature: Bold
+Ability: Magnet Pull
 Level: 28
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Flash Cannon
+- Power Gem
+- Earth Power
+- Thunder Wave
 
-Falinks @ Leftovers
+Arctibax @ Lum Berry
 Nature: Jolly
-Ability: Defiant
+Ability: Thermal Exchange
 Level: 29
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Dragon Claw
+- Ice Punch
+- Aqua Tail
+- Dragon Dance
 
-Falinks @ Leftovers
-Nature: Jolly
-Ability: Defiant
+Solrock @ Fire Gem
+Nature: Naive
+Ability: Levitate
 Level: 30
-- Body Press
-- Counter
-- Lunge
 - Zen Headbutt
+- Rock Tomb
+- Heat Wave
+- Will-O-Wisp
 
 === TRAINER_TRENT_1 ===
 Name: Trent
@@ -13032,32 +13033,32 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sawk @ Eject Button
-Nature: Jolly
-Ability: Sturdy
+Hitmonlee @ Normal Gem
+Nature: Adamant
+Ability: Unburden
 Level: 29
 - Low Kick
-- Reversal
-- Retaliate
-- Knock Off
+- Rock Slide
+- Fake Out
+- Pursuit
 
-Falinks @ Leftovers
+Tsareena @ Miracle Seed
 Nature: Jolly
-Ability: Defiant
+Ability: Queenly Majesty
 Level: 28
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Trop Kick
+- Facade
+- Low Sweep
+- Synthesis
 
-Falinks @ Leftovers
-Nature: Jolly
-Ability: Defiant
+Lunatone @ Assault Vest
+Nature: Timid
+Ability: Levitate
 Level: 30
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Psyshock
+- Ancient Power
+- Earth Power
+- Icy Wind
 
 === TRAINER_LENNY ===
 Name: Lenny
@@ -15773,23 +15774,20 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sawk @ Eject Button
-Nature: Jolly
-Ability: Sturdy
+Quilava @ Fire Gem
+Nature: Timid
+Ability: Blaze
 Level: 28
-- Low Kick
-- Reversal
-- Retaliate
-- Knock Off
+- Fire Pledge
+- Heat Wave
+- Extrasensory
+- Will-O-Wisp
 
-Falinks @ Leftovers
+Rhydon @ Metronome
 Nature: Jolly
-Ability: Defiant
+Ability: Lightning Rod
 Level: 29
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Rock Slide
 
 === TRAINER_SHAYLA ===
 Name: Shayla
@@ -15800,23 +15798,23 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sawk @ Eject Button
-Nature: Jolly
-Ability: Sturdy
+Grovyle @ Grass Gem
+Nature: Mild
+Ability: Unburden
 Level: 28
-- Low Kick
-- Reversal
-- Retaliate
-- Knock Off
+- Grass Pledge
+- X-Scissor
+- Acrobatics
+- Detect
 
-Falinks @ Leftovers
-Nature: Jolly
-Ability: Defiant
+Simipour @ Water Gem
+Nature: Hasty
+Ability: Torrent
 Level: 29
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Water Pledge
+- Icy Wind
+- Endeavor
+- Helping Hand
 
 === TRAINER_KYRA ===
 Name: Kyra
