@@ -70,7 +70,7 @@
 #define TRAINER_RICKY_1                      64
 #define TRAINER_SIMON                        65
 #define TRAINER_CHARLIE                      66
-#define TRAINER_RICKY_2                      67
+#define TRAINER_MIRA_MT_CHIMNEY              67
 #define TRAINER_RICKY_3                      68
 #define TRAINER_RICKY_4                      69
 #define TRAINER_RICKY_5                      70

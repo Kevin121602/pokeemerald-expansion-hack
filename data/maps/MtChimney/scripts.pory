@@ -1,3 +1,62 @@
+const LOCALID_MIRA = 32
+
+script MtChimney_EventScript_MiraTriggered{
+	lock
+	playse(SE_PIN)
+	applymovement(LOCALID_MIRA, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp)
+	waitmovement(0)
+	goto(MtChimney_EventScript_Mira)
+	release
+	end
+}
+
+script MtChimney_EventScript_Mira{
+	lock
+	faceplayer
+	setflag(FLAG_DISABLE_EXP)
+	trainerbattle(TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, TRAINER_MIRA_MT_CHIMNEY, LOCALID_MIRA, MtChimney_Text_MiraIntro, MtChimney_EventScript_MiraDefeat, MtChimney_EventScript_MiraDefeated)
+	msgbox("You must have a very strong bond with\n"
+		   "your Pokémon, {PLAYER}.\p"
+		   "I hope I can be like you one day.$")
+	clearflag(FLAG_DISABLE_EXP)
+	release
+	end
+}
+		
+text MtChimney_Text_MiraIntro{
+	"Hi there!\n"
+	"I'm Mira.\p"
+	"I was trying to get to Lavaridge Town,\n"
+	"but Jagged Pass is scary! I kept\l"
+	"getting lost…\p"
+	"Now I'm bored, can we battle?$"
+}
+
+text MtChimney_EventScript_MiraDefeat{
+	"Oh, no! You're too much for me!$"
+}
+
+movement MtChimney_Movement_FaceUp{
+	face_up
+	step_end
+}
+		   
+script MtChimney_EventScript_MiraDefeated{
+	clearflag(FLAG_DISABLE_EXP)
+	msgbox("You must have a very strong bond with\n"
+		   "your Pokémon, {PLAYER}.\p"
+		   "I hope I can be like you one day.\p"
+		   "Oh! I found this on the ground,\n"
+		   "you should take it!$")
+	setflag(FLAG_DEFEATED_MIRA)
+	giveitem(ITEM_HEART_SCALE)
+	setvar(VAR_STAT_TRAINERS_STATE, 4)
+	release
+	end
+}
+
 raw `
 .set LOCALID_ARCHIE, 1
 .set LOCALID_MAXIE, 2
@@ -474,9 +533,7 @@ MtChimney_EventScript_RouteSign::
 	end
 
 MtChimney_EventScript_Shelby::
-	trainerbattle_single TRAINER_SHELBY_1, MtChimney_Text_ShelbyIntro, MtChimney_Text_ShelbyDefeat, MtChimney_EventScript_DefeatedShelby
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, MtChimney_EventScript_RematchShelby
+	trainerbattle_single TRAINER_SHELBY_1, MtChimney_Text_ShelbyIntro, MtChimney_Text_ShelbyDefeat
 	msgbox MtChimney_Text_ShelbyPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -515,9 +572,7 @@ MtChimney_EventScript_Grunt1::
 	end
 
 MtChimney_EventScript_Sawyer::
-	trainerbattle_single TRAINER_SAWYER_1, MtChimney_Text_SawyerIntro, MtChimney_Text_SawyerDefeat, MtChimney_EventScript_SawyerDefeated
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, MtChimney_EventScript_SawyerRematch
+	trainerbattle_single TRAINER_SAWYER_1, MtChimney_Text_SawyerIntro, MtChimney_Text_SawyerDefeat
 	msgbox MtChimney_Text_SawyerPostBattle, MSGBOX_DEFAULT
 	release
 	end

@@ -290,6 +290,7 @@ const u32 gObjectEventPic_RowapBerryTree[] = INCBIN_U32("graphics/object_events/
 const u32 gObjectEventPic_Riley[] = INCBIN_U32("graphics/object_events/pics/people/stat_trainers/riley.4bpp");
 const u32 gObjectEventPic_Cheryl[] = INCBIN_U32("graphics/object_events/pics/people/stat_trainers/cheryl.4bpp");
 const u32 gObjectEventPic_Marley[] = INCBIN_U32("graphics/object_events/pics/people/stat_trainers/marley.4bpp");
+const u32 gObjectEventPic_Mira[] = INCBIN_U32("graphics/object_events/pics/people/stat_trainers/mira.4bpp");
 
 const u32 gFieldEffectObjectPic_SurfBlob[] = INCBIN_U32("graphics/field_effects/pics/surf_blob.4bpp");
 const u32 gObjectEventPic_QuintyPlump[] = INCBIN_U32("graphics/object_events/pics/people/quinty_plump.4bpp");

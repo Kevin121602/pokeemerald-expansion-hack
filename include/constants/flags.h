@@ -1226,9 +1226,9 @@
 #define FLAG_DISABLE_BAG                                            0x493
 #define FLAG_DISABLE_EXP                                            0x494 // Unused Flag
 #define FLAG_ITEM_DESERT_UNDERPASS_SOFT_SAND                        0x495 // Unused Flag
-#define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
-#define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
-#define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
+#define FLAG_ITEM_ROUTE_112_MAGNET                                           0x496 // Unused Flag
+#define FLAG_ITEM_FIERY_PATH_BLACK_GLASSES                                           0x497 // Unused Flag
+#define FLAG_ITEM_MT_CHIMNEY_METAL_COAT                                           0x498 // Unused Flag
 #define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
 #define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
 #define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag

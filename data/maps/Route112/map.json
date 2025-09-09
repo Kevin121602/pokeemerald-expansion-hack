@@ -2,7 +2,7 @@
   "id": "MAP_ROUTE112",
   "name": "Route112",
   "layout": "LAYOUT_ROUTE112",
-  "music": "MUS_ROUTE110",
+  "music": "MUS_DP_ROUTE210_DAY",
   "region_map_section": "MAPSEC_ROUTE_112",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -195,9 +195,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "ITEM_MAGNET",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ROUTE_112_MAGNET"
     }
   ],
   "warp_events": [

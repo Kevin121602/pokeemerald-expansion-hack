@@ -2,7 +2,7 @@
   "id": "MAP_MT_CHIMNEY",
   "name": "MtChimney",
   "layout": "LAYOUT_MT_CHIMNEY",
-  "music": "MUS_MT_CHIMNEY",
+  "music": "MUS_DP_STARK_MOUNTAIN",
   "region_map_section": "MAPSEC_MT_CHIMNEY",
   "requires_flash": false,
   "weather": "WEATHER_VOLCANIC_ASH",
@@ -413,6 +413,32 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_METAL_COAT",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_MT_CHIMNEY_METAL_COAT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MIRA",
+      "x": 26,
+      "y": 25,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MtChimney_EventScript_Mira",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KADABRA)",
+      "x": 25,
+      "y": 25,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
@@ -449,7 +475,15 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_STAT_TRAINERS_STATE",
+      "var_value": "3",
+      "script": "MtChimney_EventScript_MiraTriggered"
+    }
   ],
   "bg_events": [
     {

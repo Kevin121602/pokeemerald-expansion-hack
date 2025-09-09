@@ -1427,22 +1427,70 @@ Marill
 Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_RICKY_2 ===
-Name: RICKY
-Class: Tuber M
-Pic: Tuber M
-Gender: Male
+=== TRAINER_MIRA_MT_CHIMNEY ===
+Name: Mira
+Class: Rival
+Pic: Mira
+Gender: Female
 Music: Girl
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
+Mugshot: Yellow
 
-Linoone
-Level: 27
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-- Sand Attack
-- Pin Missile
-- Tail Whip
-- Surf
+Toxtricity Low Key @ Throat Spray
+Level: 32
+Nature: Timid
+Ability: Punk Rock
+- Sludge Bomb
+- Discharge
+- Hyper Voice
+- Hex
+
+Glaceon @ Lum Berry
+Level: 31
+Nature: Naive
+Ability: Ice Body
+- Freeze Dry
+- Ice Shard
+- Mud Shot
+- Mirror Coat
+
+Roserade @ Miracle Seed
+Level: 31
+Nature: Timid
+Ability: Technician
+IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 30 Spe
+- Venoshock
+- Grass Knot
+- Hidden Power
+- Grass Whistle
+
+Togekiss @ Fairy Feather
+Level: 30
+Nature: Timid
+Ability: Serene Grace
+- Air Cutter
+- Draining Kiss
+- Aura Sphere
+- Ancient Power
+
+Hoopa @ Petaya Berry
+Level: 30
+Nature: Timid
+Ability: Magician
+- Hyperspace Hole
+- Shadow Ball
+- Signal Beam
+- Thunder Wave
+
+Kadabra @ Focus Sash
+Level: 32
+Nature: Timid
+Ability: Inner Focus
+- Psyshock
+- Aura Sphere
+- Dazzling Gleam
+- Counter
 
 === TRAINER_RICKY_3 ===
 Name: RICKY
@@ -2610,50 +2658,50 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sawk @ Eject Button
-Nature: Jolly
-Ability: Sturdy
+Galvantula @ Miracle Seed
+Nature: Timid
+Ability: Unnerve
 Level: 29
-- Low Kick
-- Reversal
-- Retaliate
-- Knock Off
+- Discharge
+- Signal Beam
+- Giga Drain
+- Toxic
 
-Falinks @ Leftovers
+Lycanroc Midnight @ Lum Berry
 Nature: Jolly
-Ability: Defiant
+Ability: No Guard
 Level: 30
-- Body Press
+- Rock Tomb
+- Fire Punch
+- Stomping Tantrum
 - Counter
-- Lunge
-- Zen Headbutt
 
-Falinks @ Leftovers
-Nature: Jolly
-Ability: Defiant
+Seviper @ Wise Glasses
+Nature: Timid
+Ability: Infiltrator
 Level: 29
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Venoshock
+- Flamethrower
+- Giga Drain
+- Glare
 
-Falinks @ Leftovers
+Dodrio @ Muscle Band
 Nature: Jolly
-Ability: Defiant
+Ability: Keen Eye
 Level: 30
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Body Slam
+- Drill Peck
+- Quick Attack
+- Drill Run
 
-Falinks @ Leftovers
-Nature: Jolly
-Ability: Defiant
+Espeon @ Weakness Policy
+Nature: Timid
+Ability: Synchronize
 Level: 31
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Stored Power
+- Dazzling Gleam
+- Shadow Ball
+- Endure
 
 === TRAINER_SHIRLEY ===
 Name: Shirley
@@ -2664,41 +2712,41 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sawk @ Eject Button
+Heatmor @ Expert Belt
 Nature: Jolly
-Ability: Sturdy
+Ability: White Smoke
 Level: 30
-- Low Kick
-- Reversal
-- Retaliate
-- Knock Off
+- Fire Lash
+- Drain Punch
+- Stomping Tantrum
+- Thunder Punch
 
-Falinks @ Leftovers
+Basculin Blue Striped @ Normal Gem
 Nature: Jolly
-Ability: Defiant
+Ability: Rock Head
 Level: 29
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Waterfall
+- Aqua Jet
+- Take Down
+- Crunch
 
-Falinks @ Leftovers
+Piloswine @ Muscle Band
 Nature: Jolly
-Ability: Defiant
+Ability: Thick Fat
 Level: 30
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Stomping Tantrum
+- Ice Fang
+- Trailblaze
+- Reversal
 
-Falinks @ Leftovers
-Nature: Jolly
-Ability: Defiant
+Maractus @ Leftovers
+Nature: Naive
+Ability: Storm Drain
 Level: 31
-- Body Press
-- Counter
-- Lunge
-- Zen Headbutt
+- Energy Ball
+- Knock Off
+- Leech Seed
+- Spiky Shield
 
 === TRAINER_JESSICA_1 ===
 Name: JESSICA
@@ -6715,7 +6763,7 @@ Level: 30
 - Sing
 
 Perrserker @ Lum Berry
-Nature: Adamant
+Nature: Jolly
 Ability: Tough Claws
 Level: 29
 - Iron Head
@@ -6733,8 +6781,8 @@ Level: 30
 - Thunder Wave
 
 Raticate-Alolan @ Chople Berry
-Nature: Adamant
-Ability: Hustle
+Nature: Jolly
+Ability: Thick Fat
 Level: 30
 - Hyper Fang
 - Bite
