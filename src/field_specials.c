@@ -2430,6 +2430,16 @@ void ShowScrollableMultichoice(void)
         task->tKeepOpenAfterSelect = FALSE;
         task->tTaskId = taskId;
         break;
+    case SCROLL_BERRY_MENU:
+        task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
+        task->tNumItems = 13;
+        task->tLeft = 1;
+        task->tTop = 1;
+        task->tWidth = 12;
+        task->tHeight = 12;
+        task->tKeepOpenAfterSelect = FALSE;
+        task->tTaskId = taskId;
+        break;
     default:
         gSpecialVar_Result = MULTI_B_PRESSED;
         DestroyTask(taskId);
@@ -2630,6 +2640,22 @@ static const u8 *const sScrollableMultichoiceOptions[][MAX_SCROLL_MULTI_LENGTH] 
         gText_Natures_Mild,
         gText_Natures_Rash,
         gText_ExitLC
+    },
+    [SCROLL_BERRY_MENU] =
+    {
+        gText_LiechiBerry,
+        gText_GanlonBerry,
+        gText_SalacBerry,
+        gText_PetayaBerry,
+        gText_ApicotBerry,
+        gText_LansatBerry,
+        gText_StarfBerry,
+        gText_MicleBerry,
+        gText_CustapBerry,
+        gText_JabocaBerry,
+        gText_RowapBerry,
+        gText_KeeBerry,
+        gText_MarangaBerry
     }
 };
 

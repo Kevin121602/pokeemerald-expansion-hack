@@ -102,7 +102,7 @@ Level: 29
 Plusle @ Air Balloon
 Nature: Timid
 Ability: Plus
-Level: 30
+Level: 29
 - Thunderbolt
 - Alluring Voice
 - Grass Knot
@@ -1443,14 +1443,14 @@ Nature: Timid
 Ability: Punk Rock
 - Sludge Bomb
 - Discharge
-- Hyper Voice
+- Psychic Noise
 - Hex
 
 Glaceon @ Lum Berry
 Level: 31
 Nature: Naive
 Ability: Ice Body
-- Freeze Dry
+- Aurora Beam
 - Ice Shard
 - Mud Shot
 - Mirror Coat
@@ -2634,7 +2634,7 @@ Minun @ Leftovers
 Nature: Timid
 Ability: Minus
 IVs: 31 HP / 30 Atk / 30 Def / 31 SpA / 31 SpD / 31 Spe
-Level: 29
+Level: 30
 - Electroweb
 - Hidden Power
 - Fake Tears
@@ -2658,7 +2658,7 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Galvantula @ Miracle Seed
+Galvantula @ Magnet
 Nature: Timid
 Ability: Unnerve
 Level: 29
@@ -2669,10 +2669,10 @@ Level: 29
 
 Lycanroc Midnight @ Lum Berry
 Nature: Jolly
-Ability: No Guard
+Ability: Keen Eye
 Level: 30
 - Rock Tomb
-- Fire Punch
+- Brick Break
 - Stomping Tantrum
 - Counter
 
@@ -2689,8 +2689,8 @@ Dodrio @ Muscle Band
 Nature: Jolly
 Ability: Keen Eye
 Level: 30
-- Body Slam
 - Drill Peck
+- Facade
 - Quick Attack
 - Drill Run
 
@@ -2730,7 +2730,7 @@ Level: 29
 - Take Down
 - Crunch
 
-Piloswine @ Muscle Band
+Piloswine @ Fighting Gem
 Nature: Jolly
 Ability: Thick Fat
 Level: 30
@@ -9877,10 +9877,10 @@ Level: 29
 - Moonlight
 
 Glalie @ Expert Belt
-Nature: Jolly
+Nature: Naive
 Ability: Inner Focus
 Level: 30
-- Avalanche
+- Frost Breath
 - Bulldoze
 - Super Fang
 - Block
@@ -15831,9 +15831,9 @@ Level: 28
 - Extrasensory
 - Will-O-Wisp
 
-Rhydon @ Metronome
+Golem @ Metronome
 Nature: Jolly
-Ability: Lightning Rod
+Ability: Sturdy
 Level: 29
 - Rock Slide
 
@@ -15855,9 +15855,9 @@ Level: 28
 - Acrobatics
 - Detect
 
-Simipour @ Water Gem
-Nature: Hasty
-Ability: Torrent
+Simipour @ Petaya Berry
+Nature: Timid
+Ability: Gluttony
 Level: 29
 - Water Pledge
 - Icy Wind

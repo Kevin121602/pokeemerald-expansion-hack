@@ -11572,8 +11572,8 @@ static const struct LevelUpMove sUnfezantLevelUpLearnset[] = {
 #if P_FAMILY_BLITZLE
 static const struct LevelUpMove sBlitzleLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_QUICK_ATTACK),
-    LEVEL_UP_MOVE( 4, MOVE_TAIL_WHIP),
-    LEVEL_UP_MOVE( 8, MOVE_CHARGE),
+    LEVEL_UP_MOVE( 4, MOVE_CHARGE),
+    LEVEL_UP_MOVE( 8, MOVE_SCREECH),
     LEVEL_UP_MOVE(11, MOVE_SHOCK_WAVE),
     LEVEL_UP_MOVE(15, MOVE_THUNDER_WAVE),
     LEVEL_UP_MOVE(18, MOVE_FLAME_CHARGE),
@@ -11589,8 +11589,8 @@ static const struct LevelUpMove sBlitzleLevelUpLearnset[] = {
 
 static const struct LevelUpMove sZebstrikaLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_QUICK_ATTACK),
-    LEVEL_UP_MOVE( 4, MOVE_TAIL_WHIP),
-    LEVEL_UP_MOVE( 8, MOVE_CHARGE),
+    LEVEL_UP_MOVE( 4, MOVE_CHARGE),
+    LEVEL_UP_MOVE( 8, MOVE_SCREECH),
     LEVEL_UP_MOVE(11, MOVE_SHOCK_WAVE),
     LEVEL_UP_MOVE(15, MOVE_THUNDER_WAVE),
     LEVEL_UP_MOVE(18, MOVE_FLAME_CHARGE),

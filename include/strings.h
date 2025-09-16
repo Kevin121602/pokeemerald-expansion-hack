@@ -3139,4 +3139,39 @@ extern const u8 gText_Whirlwind[];
 extern const u8 gText_DragonTail[];
 extern const u8 gText_CircleThrow[];
 
+extern const u8 gText_SwitchItems[];
+//extern const u8 gText_Berries[]; already defined
+extern const u8 gText_BoostItems[];
+extern const u8 gText_Herbs[];
+
+extern const u8 gText_EjectPack[];
+extern const u8 gText_EjectButton[];
+extern const u8 gText_RedCard[];
+
+extern const u8 gText_LiechiBerry[];
+extern const u8 gText_GanlonBerry[];
+extern const u8 gText_SalacBerry[];
+extern const u8 gText_PetayaBerry[];
+extern const u8 gText_ApicotBerry[];
+extern const u8 gText_LansatBerry[];
+extern const u8 gText_StarfBerry[];
+extern const u8 gText_MicleBerry[];
+extern const u8 gText_CustapBerry[];
+extern const u8 gText_JabocaBerry[];
+extern const u8 gText_RowapBerry[];
+extern const u8 gText_KeeBerry[];
+extern const u8 gText_MarangaBerry[];
+
+extern const u8 gText_AbsorbBulb[];
+extern const u8 gText_CellBattery[];
+extern const u8 gText_LuminousMoss[];
+extern const u8 gText_Snowball[];
+extern const u8 gText_AdrenalineOrb[];
+extern const u8 gText_RoomService[];
+extern const u8 gText_ThroatSpray[];
+
+extern const u8 gText_MentalHerb[];
+extern const u8 gText_PowerHerb[];
+extern const u8 gText_WhiteHerb[];
+
 #endif // GUARD_STRINGS_H

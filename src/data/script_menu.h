@@ -884,6 +884,57 @@ static const struct MenuAction MultichoiceList_PhasingTutor[] =
     {gText_CircleThrow},
 };
 
+static const struct MenuAction MultichoiceList_BottleCapMenu[] =
+{
+    {gText_SwitchItems},
+    {gText_Berries},
+    {gText_BoostItems},
+    {gText_Herbs},
+    {gText_ExitLC},
+};
+
+static const struct MenuAction MultichoiceList_SwitchItemMenu[] =
+{
+    {gText_EjectPack},
+    {gText_EjectButton},
+    {gText_RedCard},
+};
+
+static const struct MenuAction MultichoiceList_BerriesMenu[] =
+{
+    {gText_LiechiBerry},
+    {gText_GanlonBerry},
+    {gText_SalacBerry},
+    {gText_PetayaBerry},
+    {gText_ApicotBerry},
+    {gText_LansatBerry},
+    {gText_StarfBerry},
+    {gText_MicleBerry},
+    {gText_CustapBerry},
+    {gText_JabocaBerry},
+    {gText_RowapBerry},
+    {gText_KeeBerry},
+    {gText_MarangaBerry},
+};
+
+static const struct MenuAction MultichoiceList_BoostItemMenu[] =
+{
+    {gText_AbsorbBulb},
+    {gText_CellBattery},
+    {gText_LuminousMoss},
+    {gText_Snowball},
+    {gText_AdrenalineOrb},
+    {gText_RoomService},
+    {gText_ThroatSpray},
+};
+
+static const struct MenuAction MultichoiceList_HerbMenu[] =
+{
+    {gText_MentalHerb},
+    {gText_PowerHerb},
+    {gText_WhiteHerb},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1021,6 +1072,11 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FANG_TUTOR]                 = MULTICHOICE(MultichoiceList_FangTutor),
     [MULTI_SPORT_TUTOR]                = MULTICHOICE(MultichoiceList_SportTutor),
     [MULTI_PHASING_TUTOR]              = MULTICHOICE(MultichoiceList_PhasingTutor),
+    [MULTI_BOTTLE_CAP_MENU]            = MULTICHOICE(MultichoiceList_BottleCapMenu),
+    [MULTI_SWITCH_ITEM_MENU]           = MULTICHOICE(MultichoiceList_SwitchItemMenu),
+    [MULTI_BERRIES_MENU]               = MULTICHOICE(MultichoiceList_BerriesMenu),
+    [MULTI_BOOST_ITEM_MENU]            = MULTICHOICE(MultichoiceList_BoostItemMenu),
+    [MULTI_HERB_MENU]                  = MULTICHOICE(MultichoiceList_HerbMenu),
 };
 
 const u8 *const gStdStrings[] =

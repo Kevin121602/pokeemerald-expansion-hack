@@ -213,6 +213,7 @@ extern const u8 EventScript_FeaturesMenu_GiveEjectPack[];
 extern const u8 EventScript_FeaturesMenu_GiveEjectButton[];
 extern const u8 EventScript_FeaturesMenu_GiveRedCard[];
 extern const u8 EventScript_AccessPokemonStorage[];
+extern const u8 EventScript_FeaturesMenu_BottleCapMenu[];
 
 static const struct WindowTemplate sFeaturesMenuWindowTemplateMain =
 {
@@ -772,7 +773,7 @@ static bool8 FeaturesAction_OpenItemsMenu(void){
         ClearStdWindowAndFrame(GetFeaturesMenuWindowId(), TRUE);
         RemoveFeaturesMenuWindow();
         if(CheckBagHasItem(ITEM_BOTTLE_CAP, 1)){
-            CreateItemsMenuTask(Task_ShowItemsMenu);
+            FeaturesMenu_PreformScript(EventScript_FeaturesMenu_BottleCapMenu);
         } else {
             FeaturesMenu_PreformScript(EventScript_FeaturesMenu_NoBottleCaps);
         }

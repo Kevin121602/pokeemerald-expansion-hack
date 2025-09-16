@@ -78,7 +78,7 @@
 #line 104
             .ability = ABILITY_PLUS,
 #line 105
-            .lvl = 30,
+            .lvl = 29,
 #line 103
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -3482,7 +3482,7 @@ F_TRAINER_FEMALE |
 #line 1444
                 MOVE_SLUDGE_BOMB,
                 MOVE_DISCHARGE,
-                MOVE_HYPER_VOICE,
+                MOVE_PSYCHIC_NOISE,
                 MOVE_HEX,
             },
             },
@@ -3503,7 +3503,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 1453
-                MOVE_FREEZE_DRY,
+                MOVE_AURORA_BEAM,
                 MOVE_ICE_SHARD,
                 MOVE_MUD_SHOT,
                 MOVE_MIRROR_COAT,
@@ -6509,7 +6509,7 @@ F_TRAINER_FEMALE |
 #line 2635
             .ability = ABILITY_MINUS,
 #line 2637
-            .lvl = 29,
+            .lvl = 30,
 #line 2634
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6572,7 +6572,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_GALVANTULA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2661
-            .heldItem = ITEM_MIRACLE_SEED,
+            .heldItem = ITEM_MAGNET,
 #line 2665
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 2663
@@ -6599,7 +6599,7 @@ F_TRAINER_FEMALE |
 #line 2674
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 2672
-            .ability = ABILITY_NO_GUARD,
+            .ability = ABILITY_KEEN_EYE,
 #line 2673
             .lvl = 30,
 #line 2671
@@ -6608,7 +6608,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 2674
                 MOVE_ROCK_TOMB,
-                MOVE_FIRE_PUNCH,
+                MOVE_BRICK_BREAK,
                 MOVE_STOMPING_TANTRUM,
                 MOVE_COUNTER,
             },
@@ -6653,8 +6653,8 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 2692
-                MOVE_BODY_SLAM,
                 MOVE_DRILL_PECK,
+                MOVE_FACADE,
                 MOVE_QUICK_ATTACK,
                 MOVE_DRILL_RUN,
             },
@@ -6756,7 +6756,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_PILOSWINE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2733
-            .heldItem = ITEM_MUSCLE_BAND,
+            .heldItem = ITEM_FIGHTING_GEM,
 #line 2737
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 2735
@@ -24758,11 +24758,11 @@ F_TRAINER_FEMALE |
 #line 9882
             .lvl = 30,
 #line 9880
-            .nature = NATURE_JOLLY,
+            .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 9883
-                MOVE_AVALANCHE,
+                MOVE_FROST_BREATH,
                 MOVE_BULLDOZE,
                 MOVE_SUPER_FANG,
                 MOVE_BLOCK,
@@ -39819,14 +39819,14 @@ F_TRAINER_FEMALE |
             },
             {
 #line 15834
-            .species = SPECIES_RHYDON,
+            .species = SPECIES_GOLEM,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 15834
             .heldItem = ITEM_METRONOME,
 #line 15838
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 15836
-            .ability = ABILITY_LIGHTNING_ROD,
+            .ability = ABILITY_STURDY,
 #line 15837
             .lvl = 29,
 #line 15835
@@ -39888,15 +39888,15 @@ F_TRAINER_FEMALE |
             .species = SPECIES_SIMIPOUR,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 15858
-            .heldItem = ITEM_WATER_GEM,
+            .heldItem = ITEM_PETAYA_BERRY,
 #line 15862
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 15860
-            .ability = ABILITY_TORRENT,
+            .ability = ABILITY_GLUTTONY,
 #line 15861
             .lvl = 29,
 #line 15859
-            .nature = NATURE_HASTY,
+            .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 15862

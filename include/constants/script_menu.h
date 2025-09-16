@@ -132,6 +132,11 @@
 #define MULTI_FANG_TUTOR                   121
 #define MULTI_SPORT_TUTOR                  122
 #define MULTI_PHASING_TUTOR                123
+#define MULTI_BOTTLE_CAP_MENU              124
+#define MULTI_SWITCH_ITEM_MENU             125
+#define MULTI_BERRIES_MENU                 126
+#define MULTI_BOOST_ITEM_MENU              127
+#define MULTI_HERB_MENU                    128
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

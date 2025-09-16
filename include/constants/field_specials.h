@@ -42,6 +42,7 @@
 #define SCROLL_MULTI_BATTLE_TENT_RULES                    12
 #define SCROLL_CHANGE_NATURE_TWO_SCALES                   13
 #define SCROLL_CHANGE_NATURE_THREE_SCALES                 14
+#define SCROLL_BERRY_MENU                                 15
 
 #define MAX_SCROLL_MULTI_ON_SCREEN 6
 #define MAX_SCROLL_MULTI_LENGTH 22

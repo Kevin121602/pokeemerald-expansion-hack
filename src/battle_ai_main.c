@@ -2286,7 +2286,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_SCORE(-10);
             break;
         case EFFECT_PLEDGE:
-            if (isDoubleBattle && gBattleMons[BATTLE_PARTNER(battlerAtk)].hp > 0)
+            /*if (isDoubleBattle && gBattleMons[BATTLE_PARTNER(battlerAtk)].hp > 0)
             {
                 if (aiData->partnerMove != MOVE_NONE
                   && gMovesInfo[aiData->partnerMove].effect == EFFECT_PLEDGE
@@ -2296,7 +2296,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                     // && gBattleMons[BATTLE_PARTNER(battlerAtk)].status1 != 1) // Will wake up this turn - how would AI know
                         ADJUST_SCORE(-10); // Don't use combo move if your partner will cause failure
                 }
-            }
+            }*/
             break;
         case EFFECT_TRICK_ROOM:
             if (PartnerMoveIs(BATTLE_PARTNER(battlerAtk), aiData->partnerMove, MOVE_TRICK_ROOM))
@@ -4164,8 +4164,8 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(WEAK_EFFECT);
         break;
     case EFFECT_PLEDGE:
-        if (isDoubleBattle && HasMoveEffect(BATTLE_PARTNER(battlerAtk), EFFECT_PLEDGE))
-            ADJUST_SCORE(BEST_EFFECT); // Partner might use pledge move
+        //if (isDoubleBattle && HasMoveEffect(BATTLE_PARTNER(battlerAtk), EFFECT_PLEDGE))
+        //    ADJUST_SCORE(BEST_EFFECT); // Partner might use pledge move
         break;
     case EFFECT_TRICK_ROOM:
         if (!(AI_THINKING_STRUCT->aiFlags[battlerAtk] & AI_FLAG_POWERFUL_STATUS))
@@ -4287,6 +4287,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         }
         break;
     case EFFECT_CAMOUFLAGE:
+        //if camouflage type is super effective against player, 40% +1 60% +2 and ai isnt slower and 2 shot
         if (predictedMove != MOVE_NONE && AI_IsFaster(battlerAtk, battlerDef, move) // Attacker goes first
          && !IS_MOVE_STATUS(move) && AI_GetTypeEffectiveness(predictedMove, battlerDef, battlerAtk) != AI_EFFECTIVENESS_x0)
             ADJUST_SCORE(DECENT_EFFECT);
@@ -4355,6 +4356,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     {
         // Only consider effects with a guaranteed chance to happen
         if (!MoveEffectIsGuaranteed(battlerAtk, aiData->abilities[battlerAtk], &gMovesInfo[move].additionalEffects[i]))
+            continue;
+
+        if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, moveIndex, 0))
             continue;
 
         //dont look at move effects if a higher damage move has the same effect

@@ -212,6 +212,74 @@ EventScript_FeaturesMenu_ChangeSpeed::
 	releaseall
 	end
 
+EventScript_FeaturesMenu_BottleCapMenu::
+	multichoice 0, 0, MULTI_BOTTLE_CAP_MENU, FALSE
+	switch VAR_RESULT
+	case 0, EventScript_FeaturesMenu_SwitchItemsMenu
+	case 1, EventScript_FeaturesMenu_BerriesMenu
+	case 2, EventScript_FeaturesMenu_BoostItemsMenu
+	case 3, EventScript_FeaturesMenu_HerbsMenu
+	case 6, EventScript_FeaturesMenu_Exit
+	case MULTI_B_PRESSED, EventScript_FeaturesMenu_Exit
+	releaseall
+	end
+
+EventScript_FeaturesMenu_SwitchItemsMenu::
+	multichoice 0, 0, MULTI_SWITCH_ITEM_MENU, FALSE
+	switch VAR_RESULT
+	case 0, EventScript_FeaturesMenu_GiveEjectPack
+	case 1, EventScript_FeaturesMenu_GiveEjectButton
+	case 2, EventScript_FeaturesMenu_GiveRedCard
+	case MULTI_B_PRESSED, EventScript_FeaturesMenu_BottleCapMenu
+	releaseall
+	end
+
+EventScript_FeaturesMenu_BerriesMenu::
+	setvar VAR_0x8004, SCROLL_BERRY_MENU
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, EventScript_FeaturesMenu_GiveLiechiBerry
+	case 1, EventScript_FeaturesMenu_GiveGanlonBerry
+	case 2, EventScript_FeaturesMenu_GiveSalacBerry
+	case 3, EventScript_FeaturesMenu_GivePetayaBerry
+	case 4, EventScript_FeaturesMenu_GiveApicotBerry
+	case 5, EventScript_FeaturesMenu_GiveLansatBerry
+	case 6, EventScript_FeaturesMenu_GiveStarfBerry
+	case 7, EventScript_FeaturesMenu_GiveMicleBerry
+	case 8, EventScript_FeaturesMenu_GiveCustapBerry
+	case 9, EventScript_FeaturesMenu_GiveJabocaBerry
+	case 10, EventScript_FeaturesMenu_GiveRowapBerry
+	case 11, EventScript_FeaturesMenu_GiveKeeBerry
+	case 12, EventScript_FeaturesMenu_GiveMarangaBerry
+	case MULTI_B_PRESSED, EventScript_FeaturesMenu_BottleCapMenu
+	releaseall
+	end
+
+EventScript_FeaturesMenu_BoostItemsMenu::
+	multichoice 0, 0, MULTI_BOOST_ITEM_MENU, FALSE
+	switch VAR_RESULT
+	case 0, EventScript_FeaturesMenu_GiveAbsorbBulb
+	case 1, EventScript_FeaturesMenu_GiveCellBattery
+	case 2, EventScript_FeaturesMenu_GiveLuminousMoss
+	case 3, EventScript_FeaturesMenu_GiveSnowball
+	case 4, EventScript_FeaturesMenu_GiveAdrenalineOrb
+	case 5, EventScript_FeaturesMenu_GiveRoomService
+	case 6, EventScript_FeaturesMenu_GiveThroatSpray
+	case MULTI_B_PRESSED, EventScript_FeaturesMenu_BottleCapMenu
+	releaseall
+	end
+
+EventScript_FeaturesMenu_HerbsMenu::
+	multichoice 0, 0, MULTI_HERB_MENU, FALSE
+	switch VAR_RESULT
+	case 0, EventScript_FeaturesMenu_GiveMentalHerb
+	case 1, EventScript_FeaturesMenu_GivePowerHerb
+	case 2, EventScript_FeaturesMenu_GiveWhiteHerb
+	case MULTI_B_PRESSED, EventScript_FeaturesMenu_BottleCapMenu
+	releaseall
+	end 
+
 EventScript_FeaturesMenu_GiveEjectPack::
 	msgbox Text_BuyEjectPack, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
@@ -234,6 +302,213 @@ EventScript_FeaturesMenu_GiveRedCard::
 	msgbox Text_BuyRedCard, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
 	giveitem ITEM_RED_CARD
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveLiechiBerry::
+	msgbox Text_BuyLiechiBerry, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_LIECHI_BERRY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveGanlonBerry::
+	msgbox Text_BuyGanlonBerry, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_GANLON_BERRY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveSalacBerry::
+	msgbox Text_BuySalacBerry, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_SALAC_BERRY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GivePetayaBerry::
+	msgbox Text_BuyPetayaBerry, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_PETAYA_BERRY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveApicotBerry::
+	msgbox Text_BuyApicotBerry, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_APICOT_BERRY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveLansatBerry::
+	msgbox Text_BuyLansatBerry, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_LANSAT_BERRY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveStarfBerry::
+	msgbox Text_BuyStarfBerry, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_STARF_BERRY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveMicleBerry::
+	msgbox Text_BuyMicleBerry, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_MICLE_BERRY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveCustapBerry::
+	msgbox Text_BuyCustapBerry, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_CUSTAP_BERRY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveJabocaBerry::
+	msgbox Text_BuyJabocaBerry, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_JABOCA_BERRY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveRowapBerry::
+	msgbox Text_BuyRowapBerry, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_ROWAP_BERRY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveKeeBerry::
+	msgbox Text_BuyKeeBerry, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_KEE_BERRY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveMarangaBerry::
+	msgbox Text_BuyMarangaBerry, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_MARANGA_BERRY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveAbsorbBulb::
+	msgbox Text_BuyAbsorbBulb, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_ABSORB_BULB
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveCellBattery::
+	msgbox Text_BuyCellBattery, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_CELL_BATTERY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveLuminousMoss::
+	msgbox Text_BuyLuminousMoss, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_LUMINOUS_MOSS
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveSnowball::
+	msgbox Text_BuySnowball, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_SNOWBALL
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveAdrenalineOrb::
+	msgbox Text_BuyAdrenalineOrb, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_ADRENALINE_ORB
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveRoomService::
+	msgbox Text_BuyRoomService, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_ROOM_SERVICE
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveThroatSpray::
+	msgbox Text_BuyThroatSpray, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_THROAT_SPRAY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveMentalHerb::
+	msgbox Text_BuyMentalHerb, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_MENTAL_HERB
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GivePowerHerb::
+	msgbox Text_BuyPowerHerb, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_POWER_HERB
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveWhiteHerb::
+	msgbox Text_BuyWhiteHerb, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_WHITE_HERB
 	removeitem ITEM_BOTTLE_CAP
 	msgbox Text_SpentBottleCap
 	releaseall
@@ -369,3 +644,73 @@ Text_BuyEjectButton::
 
 Text_BuyRedCard::
 	.string "Buy a Red Card for one Bottle Cap?$"
+
+Text_BuyLiechiBerry::
+	.string "Buy a Liechi Berry for one Bottle Cap?$"
+
+Text_BuyGanlonBerry::
+	.string "Buy a Ganlon Berry for one Bottle Cap?$"
+
+Text_BuySalacBerry::
+	.string "Buy a Salac Berry for one Bottle Cap?$"
+
+Text_BuyPetayaBerry::
+	.string "Buy a Petaya Berry for one Bottle Cap?$"
+
+Text_BuyApicotBerry::
+	.string "Buy an Apicot Berry for one Bottle Cap?$"
+
+Text_BuyLansatBerry::
+	.string "Buy a Lansat Berry for one Bottle Cap?$"
+
+Text_BuyStarfBerry::
+	.string "Buy a Starf Berry for one Bottle Cap?$"
+
+Text_BuyMicleBerry::
+	.string "Buy a Micle Berry for one Bottle Cap?$"
+
+Text_BuyCustapBerry::
+	.string "Buy a Custap Berry for one Bottle Cap?$"
+
+Text_BuyJabocaBerry::
+	.string "Buy a Jaboca Berry for one Bottle Cap?$"
+
+Text_BuyRowapBerry::
+	.string "Buy a Rowap Berry for one Bottle Cap?$"
+
+Text_BuyKeeBerry::
+	.string "Buy a Kee Berry for one Bottle Cap?$"
+
+Text_BuyMarangaBerry::
+	.string "Buy a Maranga Berry for one Bottle Cap?$"
+
+Text_BuyAbsorbBulb::
+	.string "Buy an Absorb Bulb for one Bottle Cap?$"
+
+Text_BuyCellBattery::
+	.string "Buy a Cell Battery for one Bottle Cap?$"
+
+Text_BuyLuminousMoss::
+	.string "Buy Luminous Moss for one Bottle Cap?$"
+
+Text_BuySnowball::
+	.string "Buy a Snowball for one Bottle Cap?$"
+
+Text_BuyAdrenalineOrb::
+	.string "Buy an Adrenaline Orb for one Bottle\n"
+	.string "Cap?$"
+
+Text_BuyRoomService::
+	.string "Buy Room Service for one Bottle Cap?$"
+
+Text_BuyThroatSpray::
+	.string "Buy Throat Spray for one Bottle Cap?$"
+
+Text_BuyMentalHerb::
+	.string "Buy a Mental Herb for one Bottle Cap?$"
+
+Text_BuyPowerHerb::
+	.string "Buy a Power Herb for one Bottle Cap?$"
+
+Text_BuyWhiteHerb::
+	.string "Buy a White Herb for one Bottle Cap?$"
