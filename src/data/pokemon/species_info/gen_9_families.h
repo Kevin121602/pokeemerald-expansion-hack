@@ -4094,7 +4094,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .levelUpLearnset = sVaroomLevelUpLearnset,
         .teachableLearnset = sVaroomTeachableLearnset,
         .eggMoveLearnset = sVaroomEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_REVAVROOM}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 33, SPECIES_REVAVROOM}),
     },
 
     [SPECIES_REVAVROOM] =

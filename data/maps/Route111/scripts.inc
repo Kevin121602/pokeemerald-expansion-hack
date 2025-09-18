@@ -4,7 +4,7 @@ Route111_EventScript_MarleyTriggered::
 # 5 "data/maps/Route111/scripts.pory"
 	playse SE_PIN
 # 6 "data/maps/Route111/scripts.pory"
-	applymovement 44, Common_Movement_ExclamationMark
+	applymovement 43, Common_Movement_ExclamationMark
 # 7 "data/maps/Route111/scripts.pory"
 	waitmovement 0
 # 8 "data/maps/Route111/scripts.pory"
@@ -26,7 +26,7 @@ Route111_EventScript_Marley::
 # 18 "data/maps/Route111/scripts.pory"
 	setflag FLAG_DISABLE_EXP
 # 19 "data/maps/Route111/scripts.pory"
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, TRAINER_MARLEY_ROUTE_111, 44, Route111_Text_MarleyIntro, Route111_EventScript_MarleyDefeat, Route111_EventScript_MarleyDefeated
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, TRAINER_MARLEY_ROUTE_111, 43, Route111_Text_MarleyIntro, Route111_EventScript_MarleyDefeat, Route111_EventScript_MarleyDefeated
 # 20 "data/maps/Route111/scripts.pory"
 	msgbox Route111_EventScript_Marley_Text_0
 # 24 "data/maps/Route111/scripts.pory"

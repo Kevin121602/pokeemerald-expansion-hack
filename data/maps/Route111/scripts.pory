@@ -1,4 +1,4 @@
-const LOCALID_MARLEY = 44
+const LOCALID_MARLEY = 43
 
 script Route111_EventScript_MarleyTriggered{
 	lock

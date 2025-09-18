@@ -97,7 +97,7 @@ Level: 29
 - Flash Cannon
 - Wild Charge
 - Gear Up
-- Magnetic Flux
+- Protect
 
 Plusle @ Air Balloon
 Nature: Timid
@@ -1318,16 +1318,16 @@ Ability: Volt Absorb
 - Discharge
 - Hyper Voice
 - Signal Beam
-- Substitute
+- Heal Bell
 
-Arcanine @ Salac Berry
+Arcanine @ Sitrus Berry
 Level: 29
-Nature: Adamant
+Nature: Jolly
 Ability: Intimidate
 - Temper Flare
 - Wild Charge
 - Crunch
-- Howl
+- Extreme Speed
 
 === TRAINER_LOLA_3 ===
 Name: LOLA
@@ -4391,14 +4391,14 @@ Level: 29
 - Fake Out
 - Lovely Kiss
 
-Sawsbuck @ Silk Scarf
+Sawsbuck @ Lum Berry
 Nature: Jolly
 Ability: Serene Grace
 Level: 29
 - Horn Leech
 - Headbutt
 - Stomping Tantrum
-- Camouflage
+- Leech Seed
 
 Morpeko @ Muscle Band
 Nature: Adamant
@@ -6753,8 +6753,8 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Eldegoss @ Eject Button
-Nature: Timid
+Eldegoss @ Kings Rock
+Nature: Bold
 Ability: Cotton Down
 Level: 30
 - Leaf Tornado
@@ -6785,7 +6785,7 @@ Nature: Jolly
 Ability: Thick Fat
 Level: 30
 - Hyper Fang
-- Bite
+- Crunch
 - Quick Attack
 - Super Fang
 
@@ -9868,21 +9868,21 @@ Level: 29
 - Endure
 
 Clefable @ Life Orb
-Nature: Timid
+Nature: Hasty
 Ability: Magic Guard
 Level: 29
 - Draining Kiss
-- Ice Beam
+- Fire Punch
 - Shock Wave
 - Moonlight
 
-Glalie @ Expert Belt
+Glalie @ Leftovers
 Nature: Naive
 Ability: Inner Focus
 Level: 30
-- Frost Breath
-- Bulldoze
-- Super Fang
+- Freeze-Dry
+- Crunch
+- Chilling Water
 - Block
 
 === TRAINER_NANCY ===
@@ -15242,10 +15242,10 @@ Level: 23
 - Supersonic
 
 Breloom @ Toxic Orb
-Nature: Jolly
+Nature: Naive
 Ability: Poison Heal
 Level: 23
-- Seed Bomb
+- Giga Drain
 - Force Palm
 - Rock Tomb
 - Spore
@@ -15299,7 +15299,7 @@ Clefairy @ Fairy Feather
 Nature: Bold
 Ability: Cute Charm
 Level: 24
-- Draining Kiss
+- Dazzling Gleam
 - Mystical Fire
 - Grass Knot
 - Sing
@@ -15861,7 +15861,7 @@ Ability: Gluttony
 Level: 29
 - Water Pledge
 - Icy Wind
-- Endeavor
+- Grass Knot
 - Helping Hand
 
 === TRAINER_KYRA ===
