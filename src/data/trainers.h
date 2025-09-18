@@ -55,7 +55,7 @@
 #line 95
             .ability = ABILITY_PLUS,
 #line 96
-            .lvl = 29,
+            .lvl = 30,
 #line 94
             .nature = NATURE_SASSY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -6532,7 +6532,7 @@ F_TRAINER_FEMALE |
 #line 2645
             .ability = ABILITY_MINUS,
 #line 2646
-            .lvl = 30,
+            .lvl = 29,
 #line 2644
             .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
