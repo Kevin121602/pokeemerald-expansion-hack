@@ -41,7 +41,7 @@ LavaridgeTown_House_Text_WifeWarmingEggInHotSprings:
 # 21 "data/maps/LavaridgeTown_House/scripts.pory"
 	.string "springs. This is what she told me.\p"
 # 22 "data/maps/LavaridgeTown_House/scripts.pory"
-	.string "She left two POKéMON with the DAY CARE.\n"
+	.string "She left two Pokémon with the DAY CARE.\n"
 # 23 "data/maps/LavaridgeTown_House/scripts.pory"
 	.string "And they discovered that EGG!$"
 # 24 "data/maps/LavaridgeTown_House/scripts.pory"

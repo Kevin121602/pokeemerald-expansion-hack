@@ -439,7 +439,7 @@ Route117_EventScript_Aisha::
 # 220 "data/maps/Route117/scripts.pory"
 Route117_Text_DayCarePokemonHadNewMove:
 # 221 "data/maps/Route117/scripts.pory"
-	.string "I left my POKéMON at the DAY CARE.\p"
+	.string "I left my Pokémon at the DAY CARE.\p"
 # 222 "data/maps/Route117/scripts.pory"
 	.string "When I got it back, it had a new move\n"
 # 223 "data/maps/Route117/scripts.pory"
@@ -483,6 +483,6 @@ Route117_Text_RouteSignMauville:
 # 242 "data/maps/Route117/scripts.pory"
 Route117_Text_DayCareSign:
 # 243 "data/maps/Route117/scripts.pory"
-	.string "POKéMON DAY CARE\n"
+	.string "Pokémon DAY CARE\n"
 # 244 "data/maps/Route117/scripts.pory"
-	.string "“Let us raise your POKéMON.”$"
+	.string "“Let us raise your Pokémon.”$"

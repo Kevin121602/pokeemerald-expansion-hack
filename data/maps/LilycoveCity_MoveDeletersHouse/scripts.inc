@@ -147,7 +147,7 @@ LilycoveCity_MoveDeletersHouse_Text_ICanMakeMonForgetMove:
 # 74 "data/maps/LilycoveCity_MoveDeletersHouse/scripts.pory"
 	.string "Oh, yes, I'm the MOVE DELETER.\p"
 # 75 "data/maps/LilycoveCity_MoveDeletersHouse/scripts.pory"
-	.string "I can make POKéMON forget their moves.\p"
+	.string "I can make Pokémon forget their moves.\p"
 # 76 "data/maps/LilycoveCity_MoveDeletersHouse/scripts.pory"
 	.string "Would you like me to do that?$"
 # 77 "data/maps/LilycoveCity_MoveDeletersHouse/scripts.pory"
@@ -155,7 +155,7 @@ LilycoveCity_MoveDeletersHouse_Text_ICanMakeMonForgetMove:
 # 78 "data/maps/LilycoveCity_MoveDeletersHouse/scripts.pory"
 LilycoveCity_MoveDeletersHouse_Text_WhichMonShouldForget:
 # 79 "data/maps/LilycoveCity_MoveDeletersHouse/scripts.pory"
-	.string "Which POKéMON should forget a move?$"
+	.string "Which Pokémon should forget a move?$"
 # 80 "data/maps/LilycoveCity_MoveDeletersHouse/scripts.pory"
 
 # 81 "data/maps/LilycoveCity_MoveDeletersHouse/scripts.pory"

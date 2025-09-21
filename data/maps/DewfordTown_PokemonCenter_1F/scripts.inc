@@ -71,7 +71,7 @@ DewfordTown_PokemonCenter_1F_Text_StoneCavern:
 # 36 "data/maps/DewfordTown_PokemonCenter_1F/scripts.pory"
 DewfordTown_PokemonCenter_1F_Text_FaintedMonCanUseHM:
 # 37 "data/maps/DewfordTown_PokemonCenter_1F/scripts.pory"
-	.string "Even if a POKéMON faints and can't\n"
+	.string "Even if a Pokémon faints and can't\n"
 # 38 "data/maps/DewfordTown_PokemonCenter_1F/scripts.pory"
 	.string "battle, it can still use a move learned\l"
 # 39 "data/maps/DewfordTown_PokemonCenter_1F/scripts.pory"

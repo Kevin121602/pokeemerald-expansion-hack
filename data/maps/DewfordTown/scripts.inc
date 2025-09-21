@@ -1303,7 +1303,7 @@ DewfordTown_Text_TownSign:
 # 652 "data/maps/DewfordTown/scripts.pory"
 DewfordTown_Text_GymSign:
 # 653 "data/maps/DewfordTown/scripts.pory"
-	.string "DEWFORD TOWN POKéMON GYM\n"
+	.string "DEWFORD TOWN Pokémon GYM\n"
 # 654 "data/maps/DewfordTown/scripts.pory"
 	.string "LEADER: BRAWLY\l"
 # 655 "data/maps/DewfordTown/scripts.pory"

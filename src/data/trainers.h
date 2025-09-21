@@ -3170,7 +3170,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_ARCANINE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1323
-            .heldItem = ITEM_SITRUS_BERRY,
+            .heldItem = ITEM_SILK_SCARF,
 #line 1327
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 1326
@@ -6538,7 +6538,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 2647
-                MOVE_DISCHARGE,
+                MOVE_SHOCK_WAVE,
                 MOVE_SIGNAL_BEAM,
                 MOVE_FLAME_BURST,
                 MOVE_SNARL,
@@ -6679,7 +6679,7 @@ F_TRAINER_FEMALE |
                 MOVE_STORED_POWER,
                 MOVE_DAZZLING_GLEAM,
                 MOVE_SHADOW_BALL,
-                MOVE_ENDURE,
+                MOVE_MORNING_SUN,
             },
             },
         },
@@ -38216,13 +38216,13 @@ F_TRAINER_FEMALE |
 #line 15202
             .lvl = 28,
 #line 15200
-            .nature = NATURE_JOLLY,
+            .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 15203
                 MOVE_FACADE,
                 MOVE_SUPERPOWER,
-                MOVE_SUCKER_PUNCH,
+                MOVE_SHADOW_BALL,
                 MOVE_TEETER_DANCE,
             },
             },

@@ -1182,7 +1182,7 @@ MtChimney_Text_MaxieIntro:
 # 620 "data/maps/MtChimney/scripts.pory"
 	.string "It is for further advancement of\n"
 # 621 "data/maps/MtChimney/scripts.pory"
-	.string "humankind and POKéMON!\p"
+	.string "humankind and Pokémon!\p"
 # 622 "data/maps/MtChimney/scripts.pory"
 	.string "And for that, we need the power of\n"
 # 623 "data/maps/MtChimney/scripts.pory"
@@ -1444,7 +1444,7 @@ MtChimney_Text_LessHabitatForWaterPokemon:
 # 751 "data/maps/MtChimney/scripts.pory"
 	.string "If they expand the land, there'll be\n"
 # 752 "data/maps/MtChimney/scripts.pory"
-	.string "less habitats for WATER POKéMON!$"
+	.string "less habitats for WATER Pokémon!$"
 # 753 "data/maps/MtChimney/scripts.pory"
 
 # 754 "data/maps/MtChimney/scripts.pory"
@@ -1592,7 +1592,7 @@ MtChimney_Text_ShelbyRematchIntro:
 # 825 "data/maps/MtChimney/scripts.pory"
 	.string "If you can mesh your heart with those\n"
 # 826 "data/maps/MtChimney/scripts.pory"
-	.string "of your POKéMON, why, you should be\l"
+	.string "of your Pokémon, why, you should be\l"
 # 827 "data/maps/MtChimney/scripts.pory"
 	.string "able to achieve great things.$"
 # 828 "data/maps/MtChimney/scripts.pory"
@@ -1610,7 +1610,7 @@ MtChimney_Text_ShelbyPostRematch:
 # 834 "data/maps/MtChimney/scripts.pory"
 	.string "Perhaps your heart has become one\n"
 # 835 "data/maps/MtChimney/scripts.pory"
-	.string "with the hearts of your POKéMON.$"
+	.string "with the hearts of your Pokémon.$"
 # 836 "data/maps/MtChimney/scripts.pory"
 
 # 837 "data/maps/MtChimney/scripts.pory"
@@ -1640,7 +1640,7 @@ MtChimney_Text_SheilaIntro:
 # 849 "data/maps/MtChimney/scripts.pory"
 	.string "I've finally made it to MT. CHIMNEY.\n"
 # 850 "data/maps/MtChimney/scripts.pory"
-	.string "I want to make my POKéMON battle!$"
+	.string "I want to make my Pokémon battle!$"
 # 851 "data/maps/MtChimney/scripts.pory"
 
 # 852 "data/maps/MtChimney/scripts.pory"
@@ -1720,7 +1720,7 @@ MtChimney_Text_SawyerRegister:
 # 889 "data/maps/MtChimney/scripts.pory"
 	.string "I like little fireballs like you.\n"
 # 890 "data/maps/MtChimney/scripts.pory"
-	.string "Let me register you in my POKéNAV.$"
+	.string "Let me register you in my Pokénav.$"
 # 891 "data/maps/MtChimney/scripts.pory"
 
 # 892 "data/maps/MtChimney/scripts.pory"

@@ -763,7 +763,7 @@ MossdeepCity_Text_SurfExhilarating:
 # 382 "data/maps/MossdeepCity/scripts.pory"
 	.string "A voyage on a ship is fine.\p"
 # 383 "data/maps/MossdeepCity/scripts.pory"
-	.string "But crossing the sea with POKéMON\n"
+	.string "But crossing the sea with Pokémon\n"
 # 384 "data/maps/MossdeepCity/scripts.pory"
 	.string "using SURF…\p"
 # 385 "data/maps/MossdeepCity/scripts.pory"
@@ -801,7 +801,7 @@ MossdeepCity_Text_ItsAWhiteRock:
 # 401 "data/maps/MossdeepCity/scripts.pory"
 MossdeepCity_Text_GymSign:
 # 402 "data/maps/MossdeepCity/scripts.pory"
-	.string "MOSSDEEP CITY POKéMON GYM\n"
+	.string "MOSSDEEP CITY Pokémon GYM\n"
 # 403 "data/maps/MossdeepCity/scripts.pory"
 	.string "LEADERS: LIZA & TATE\p"
 # 404 "data/maps/MossdeepCity/scripts.pory"
@@ -813,7 +813,7 @@ MossdeepCity_Text_CitySign:
 # 407 "data/maps/MossdeepCity/scripts.pory"
 	.string "MOSSDEEP CITY\n"
 # 408 "data/maps/MossdeepCity/scripts.pory"
-	.string "“Our slogan: Cherish POKéMON!”$"
+	.string "“Our slogan: Cherish Pokémon!”$"
 # 409 "data/maps/MossdeepCity/scripts.pory"
 
 # 410 "data/maps/MossdeepCity/scripts.pory"

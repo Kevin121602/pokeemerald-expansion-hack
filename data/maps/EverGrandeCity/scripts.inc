@@ -59,7 +59,7 @@ EverGrandeCity_Text_EnteringVictoryRoad:
 # 30 "data/maps/EverGrandeCity/scripts.pory"
 EverGrandeCity_Text_EnteringPokemonLeague:
 # 31 "data/maps/EverGrandeCity/scripts.pory"
-	.string "ENTERING POKéMON LEAGUE\n"
+	.string "ENTERING Pokémon LEAGUE\n"
 # 32 "data/maps/EverGrandeCity/scripts.pory"
 	.string "CENTER GATE$"
 # 33 "data/maps/EverGrandeCity/scripts.pory"
@@ -71,4 +71,4 @@ EverGrandeCity_Text_CitySign:
 # 36 "data/maps/EverGrandeCity/scripts.pory"
 	.string "“The paradise of flowers, the sea,\n"
 # 37 "data/maps/EverGrandeCity/scripts.pory"
-	.string "and POKéMON.”$"
+	.string "and Pokémon.”$"

@@ -121,7 +121,7 @@ LilycoveCity_DepartmentStore_4F_Text_AttackOrDefenseTM:
 # 61 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
 	.string "It's no easy matter to decide which TM\n"
 # 62 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
-	.string "moves should be taught to POKéMON…$"
+	.string "moves should be taught to Pokémon…$"
 # 63 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
 
 # 64 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
@@ -141,4 +141,4 @@ LilycoveCity_DepartmentStore_4F_Text_PokemonOnlyHaveFourMoves:
 # 71 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
 	.string "I'd like to get all the different TMs,\n"
 # 72 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
-	.string "but a POKéMON learns only four moves.$"
+	.string "but a Pokémon learns only four moves.$"

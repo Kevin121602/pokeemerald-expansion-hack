@@ -69,11 +69,11 @@ MtPyre_1F_Text_TakeThisForYourOwnGood:
 # 35 "data/maps/MtPyre_1F/scripts.pory"
 MtPyre_1F_Text_ExplainCleanseTag:
 # 36 "data/maps/MtPyre_1F/scripts.pory"
-	.string "Have a POKéMON hold that\n"
+	.string "Have a Pokémon hold that\n"
 # 37 "data/maps/MtPyre_1F/scripts.pory"
 	.string "CLEANSE TAG.\p"
 # 38 "data/maps/MtPyre_1F/scripts.pory"
-	.string "It will help ward off wild POKéMON.$"
+	.string "It will help ward off wild Pokémon.$"
 # 39 "data/maps/MtPyre_1F/scripts.pory"
 
 # 40 "data/maps/MtPyre_1F/scripts.pory"
@@ -81,9 +81,9 @@ MtPyre_1F_Text_ComeToPayRespects:
 # 41 "data/maps/MtPyre_1F/scripts.pory"
 	.string "Did you come to pay your respect\n"
 # 42 "data/maps/MtPyre_1F/scripts.pory"
-	.string "to the spirits of departed POKéMON?\p"
+	.string "to the spirits of departed Pokémon?\p"
 # 43 "data/maps/MtPyre_1F/scripts.pory"
-	.string "You must care for your POKéMON a lot.$"
+	.string "You must care for your Pokémon a lot.$"
 # 44 "data/maps/MtPyre_1F/scripts.pory"
 
 # 45 "data/maps/MtPyre_1F/scripts.pory"

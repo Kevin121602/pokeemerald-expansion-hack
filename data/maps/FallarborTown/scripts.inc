@@ -180,7 +180,7 @@ FallarborTown_Text_HaveYouChallengedFlannery:
 # 95 "data/maps/FallarborTown/scripts.pory"
 	.string "He was one of the ELITE FOUR in the\l"
 # 96 "data/maps/FallarborTown/scripts.pory"
-	.string "POKéMON LEAGUE at one point.\p"
+	.string "Pokémon LEAGUE at one point.\p"
 # 97 "data/maps/FallarborTown/scripts.pory"
 	.string "It wouldn't surprise me to see FLANNERY\n"
 # 98 "data/maps/FallarborTown/scripts.pory"
@@ -210,7 +210,7 @@ FallarborTown_Text_MoveTutorSign:
 # 110 "data/maps/FallarborTown/scripts.pory"
 	.string "MOVE TUTOR'S HOUSE\n"
 # 111 "data/maps/FallarborTown/scripts.pory"
-	.string "“New moves taught to POKéMON.”$"
+	.string "“New moves taught to Pokémon.”$"
 
 FallarborTown_EventScript_KingsRockMart_Text_0:
 # 4 "data/maps/FallarborTown/scripts.pory"

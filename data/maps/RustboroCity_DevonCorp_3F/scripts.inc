@@ -441,7 +441,7 @@ RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis:
 # 221 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"
 RustboroCity_DevonCorp_3F_Text_ReceivedPokenav:
 # 222 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"
-	.string "{PLAYER} received a POKéNAV.$"
+	.string "{PLAYER} received a Pokénav.$"
 # 223 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"
 
 # 224 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"
@@ -493,7 +493,7 @@ RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter:
 # 247 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"
 RustboroCity_DevonCorp_3F_Text_ExplainExpShare:
 # 248 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"
-	.string "MR. STONE: A POKéMON holding that\n"
+	.string "MR. STONE: A Pokémon holding that\n"
 # 249 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"
 	.string "EXP. SHARE will be given some of the\l"
 # 250 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"
@@ -505,7 +505,7 @@ RustboroCity_DevonCorp_3F_Text_ExplainExpShare:
 # 253 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"
 	.string "I would say EXP. SHARE is quite useful\n"
 # 254 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"
-	.string "for raising weak POKéMON.$"
+	.string "for raising weak Pokémon.$"
 # 255 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"
 
 # 256 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"
@@ -521,7 +521,7 @@ RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends:
 # 261 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"
 	.string "But do young people all want to be\n"
 # 262 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"
-	.string "TRAINERS in the POKéMON LEAGUE?$"
+	.string "TRAINERS in the Pokémon LEAGUE?$"
 # 263 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"
 
 # 264 "data/maps/RustboroCity_DevonCorp_3F/scripts.pory"

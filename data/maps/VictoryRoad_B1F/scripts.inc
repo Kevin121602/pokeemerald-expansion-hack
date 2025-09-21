@@ -61,7 +61,7 @@ VictoryRoad_B1F_Text_SamuelIntro:
 # 31 "data/maps/VictoryRoad_B1F/scripts.pory"
 	.string "The thought that I'm getting closer to\n"
 # 32 "data/maps/VictoryRoad_B1F/scripts.pory"
-	.string "the POKéMON LEAGUE…\p"
+	.string "the Pokémon LEAGUE…\p"
 # 33 "data/maps/VictoryRoad_B1F/scripts.pory"
 	.string "I'm getting stage fright…$"
 # 34 "data/maps/VictoryRoad_B1F/scripts.pory"
@@ -75,7 +75,7 @@ VictoryRoad_B1F_Text_SamuelDefeat:
 # 38 "data/maps/VictoryRoad_B1F/scripts.pory"
 VictoryRoad_B1F_Text_SamuelPostBattle:
 # 39 "data/maps/VictoryRoad_B1F/scripts.pory"
-	.string "The POKéMON LEAGUE became distant\n"
+	.string "The Pokémon LEAGUE became distant\n"
 # 40 "data/maps/VictoryRoad_B1F/scripts.pory"
 	.string "again… What a letdown…$"
 # 41 "data/maps/VictoryRoad_B1F/scripts.pory"
@@ -83,11 +83,11 @@ VictoryRoad_B1F_Text_SamuelPostBattle:
 # 42 "data/maps/VictoryRoad_B1F/scripts.pory"
 VictoryRoad_B1F_Text_ShannonIntro:
 # 43 "data/maps/VictoryRoad_B1F/scripts.pory"
-	.string "To win your way through the POKéMON\n"
+	.string "To win your way through the Pokémon\n"
 # 44 "data/maps/VictoryRoad_B1F/scripts.pory"
 	.string "LEAGUE, you need the trust of your\l"
 # 45 "data/maps/VictoryRoad_B1F/scripts.pory"
-	.string "POKéMON.$"
+	.string "Pokémon.$"
 # 46 "data/maps/VictoryRoad_B1F/scripts.pory"
 
 # 47 "data/maps/VictoryRoad_B1F/scripts.pory"
@@ -103,7 +103,7 @@ VictoryRoad_B1F_Text_ShannonPostBattle:
 # 52 "data/maps/VictoryRoad_B1F/scripts.pory"
 	.string "By being together all the time, trust\n"
 # 53 "data/maps/VictoryRoad_B1F/scripts.pory"
-	.string "grows between POKéMON and TRAINERS.$"
+	.string "grows between Pokémon and TRAINERS.$"
 # 54 "data/maps/VictoryRoad_B1F/scripts.pory"
 
 # 55 "data/maps/VictoryRoad_B1F/scripts.pory"
@@ -111,7 +111,7 @@ VictoryRoad_B1F_Text_MichelleIntro:
 # 56 "data/maps/VictoryRoad_B1F/scripts.pory"
 	.string "This isn't the goal. It's only a place\n"
 # 57 "data/maps/VictoryRoad_B1F/scripts.pory"
-	.string "on the way to the POKéMON LEAGUE.$"
+	.string "on the way to the Pokémon LEAGUE.$"
 # 58 "data/maps/VictoryRoad_B1F/scripts.pory"
 
 # 59 "data/maps/VictoryRoad_B1F/scripts.pory"
@@ -125,13 +125,13 @@ VictoryRoad_B1F_Text_MichellePostBattle:
 # 63 "data/maps/VictoryRoad_B1F/scripts.pory"
 	.string "You'll do fine, for sure!\n"
 # 64 "data/maps/VictoryRoad_B1F/scripts.pory"
-	.string "Your POKéMON are all eager to go!$"
+	.string "Your Pokémon are all eager to go!$"
 # 65 "data/maps/VictoryRoad_B1F/scripts.pory"
 
 # 66 "data/maps/VictoryRoad_B1F/scripts.pory"
 VictoryRoad_B1F_Text_MitchellIntro:
 # 67 "data/maps/VictoryRoad_B1F/scripts.pory"
-	.string "My POKéMON are cosmically\n"
+	.string "My Pokémon are cosmically\n"
 # 68 "data/maps/VictoryRoad_B1F/scripts.pory"
 	.string "awe inspiring!$"
 # 69 "data/maps/VictoryRoad_B1F/scripts.pory"
@@ -149,7 +149,7 @@ VictoryRoad_B1F_Text_MitchellPostBattle:
 # 75 "data/maps/VictoryRoad_B1F/scripts.pory"
 	.string "incredible power emanating from you\l"
 # 76 "data/maps/VictoryRoad_B1F/scripts.pory"
-	.string "and your POKéMON.$"
+	.string "and your Pokémon.$"
 # 77 "data/maps/VictoryRoad_B1F/scripts.pory"
 
 # 78 "data/maps/VictoryRoad_B1F/scripts.pory"

@@ -59,8 +59,8 @@ const u8 gText_BirchBoy[] = _("Boy");
 const u8 gText_BirchGirl[] = _("Girl");
 
 //replace default names with Dawn and Lucas
-const u8 gText_DefaultNameStu[] = _("STU");
-const u8 gText_DefaultNameMilton[] = _("MILTON");
+const u8 gText_DefaultNameBrendan[] = _("Brendan");
+const u8 gText_DefaultNameMay[] = _("May");
 const u8 gText_DefaultNameTom[] = _("TOM");
 const u8 gText_DefaultNameKenny[] = _("KENNY");
 const u8 gText_DefaultNameReid[] = _("REID");

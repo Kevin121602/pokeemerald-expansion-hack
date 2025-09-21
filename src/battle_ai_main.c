@@ -4471,9 +4471,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         {
             switch (gMovesInfo[move].additionalEffects[i].moveEffect)
             {
-                case MOVE_EFFECT_FLINCH:
-                    score += ShouldTryToFlinch(battlerAtk, battlerDef, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], move);
-                    break;
+                //case MOVE_EFFECT_FLINCH:
+                //    score += ShouldTryToFlinch(battlerAtk, battlerDef, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], move);
+                //    break;
                 case MOVE_EFFECT_SPD_MINUS_1:
                     if(aiData->abilities[battlerDef] != ABILITY_SHIELD_DUST && (AI_DATA->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected + (GetBestDmgFromBattler(battlerAtk, battlerDef) * 3) >= gBattleMons[battlerDef].hp)){
                         if(gFieldStatuses & STATUS_FIELD_RICH_SEDIMENT && (gMovesInfo[move].type == TYPE_GROUND || gMovesInfo[move].type == TYPE_ROCK || gMovesInfo[move].type == TYPE_STEEL))

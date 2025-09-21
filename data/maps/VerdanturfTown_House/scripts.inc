@@ -27,7 +27,7 @@ VerdanturfTown_House_Text_TrainersGatherAtPokemonLeague:
 # 14 "data/maps/VerdanturfTown_House/scripts.pory"
 	.string "Far away, deep in EVER GRANDE CITY,\n"
 # 15 "data/maps/VerdanturfTown_House/scripts.pory"
-	.string "is the POKéMON LEAGUE.\p"
+	.string "is the Pokémon LEAGUE.\p"
 # 16 "data/maps/VerdanturfTown_House/scripts.pory"
 	.string "The TRAINERS who gather there are\n"
 # 17 "data/maps/VerdanturfTown_House/scripts.pory"
@@ -37,7 +37,7 @@ VerdanturfTown_House_Text_TrainersGatherAtPokemonLeague:
 # 19 "data/maps/VerdanturfTown_House/scripts.pory"
 VerdanturfTown_House_Text_DefeatEliteFourInARow:
 # 20 "data/maps/VerdanturfTown_House/scripts.pory"
-	.string "In the POKéMON LEAGUE, I think the\n"
+	.string "In the Pokémon LEAGUE, I think the\n"
 # 21 "data/maps/VerdanturfTown_House/scripts.pory"
 	.string "rules say that you have to battle the\l"
 # 22 "data/maps/VerdanturfTown_House/scripts.pory"

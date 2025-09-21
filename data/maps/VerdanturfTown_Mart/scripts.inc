@@ -87,7 +87,7 @@ VerdanturfTown_Mart_EventScript_Lass::
 # 44 "data/maps/VerdanturfTown_Mart/scripts.pory"
 VerdanturfTown_Mart_Text_XSpecialIsCrucial:
 # 45 "data/maps/VerdanturfTown_Mart/scripts.pory"
-	.string "For any POKéMON match, X SPECIAL\n"
+	.string "For any Pokémon match, X SPECIAL\n"
 # 46 "data/maps/VerdanturfTown_Mart/scripts.pory"
 	.string "is crucial.\p"
 # 47 "data/maps/VerdanturfTown_Mart/scripts.pory"
@@ -113,7 +113,7 @@ VerdanturfTown_Mart_Text_NestBallOnWeakenedPokemon:
 # 57 "data/maps/VerdanturfTown_Mart/scripts.pory"
 	.string "The NEST BALL works better on\n"
 # 58 "data/maps/VerdanturfTown_Mart/scripts.pory"
-	.string "weakened POKéMON.\p"
+	.string "weakened Pokémon.\p"
 # 59 "data/maps/VerdanturfTown_Mart/scripts.pory"
 	.string "VERDANTURF is the only place you can\n"
 # 60 "data/maps/VerdanturfTown_Mart/scripts.pory"

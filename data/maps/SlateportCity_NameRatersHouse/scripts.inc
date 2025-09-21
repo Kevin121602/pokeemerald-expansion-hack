@@ -135,13 +135,13 @@ SlateportCity_NameRatersHouse_Text_PleasedToRateMonNickname:
 # 68 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
 	.string "I shall be pleased to rate your\n"
 # 69 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
-	.string "POKéMON's nickname.$"
+	.string "Pokémon's nickname.$"
 # 70 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
 
 # 71 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
 SlateportCity_NameRatersHouse_Text_CritiqueWhichMonNickname:
 # 72 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
-	.string "Which POKéMON's nickname should\n"
+	.string "Which Pokémon's nickname should\n"
 # 73 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
 	.string "I critique?$"
 # 74 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
@@ -169,7 +169,7 @@ SlateportCity_NameRatersHouse_Text_WhatShallNewNameBe:
 # 85 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
 SlateportCity_NameRatersHouse_Text_MonShallBeKnownAsName:
 # 86 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
-	.string "Done! From now on, this POKéMON\n"
+	.string "Done! From now on, this Pokémon\n"
 # 87 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
 	.string "shall be known as {STR_VAR_1}!\p"
 # 88 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
@@ -189,7 +189,7 @@ SlateportCity_NameRatersHouse_Text_DoVisitAgain:
 # 95 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
 SlateportCity_NameRatersHouse_Text_NameNoDifferentYetSuperior:
 # 96 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
-	.string "Done! From now on, this POKéMON\n"
+	.string "Done! From now on, this Pokémon\n"
 # 97 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"
 	.string "shall be known as {STR_VAR_1}!\p"
 # 98 "data/maps/SlateportCity_NameRatersHouse/scripts.pory"

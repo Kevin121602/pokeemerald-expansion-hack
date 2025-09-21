@@ -747,7 +747,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         )
         .levelUpLearnset = sTrumbeakLevelUpLearnset,
         .teachableLearnset = sTrumbeakTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 28, SPECIES_TOUCANNON}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 27, SPECIES_TOUCANNON}),
     },
 
     [SPECIES_TOUCANNON] =

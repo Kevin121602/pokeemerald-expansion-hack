@@ -281,25 +281,25 @@ OldaleTown_Mart_Text_PokeBallsAreSoldOut:
 # 134 "data/maps/OldaleTown_Mart/scripts.pory"
 	.string "The clerk says they're all sold out.\n"
 # 135 "data/maps/OldaleTown_Mart/scripts.pory"
-	.string "I can't buy any POKé BALLS.$"
+	.string "I can't buy any Poké Balls.$"
 # 136 "data/maps/OldaleTown_Mart/scripts.pory"
 
 # 137 "data/maps/OldaleTown_Mart/scripts.pory"
 OldaleTown_Mart_Text_ImGoingToBuyPokeBalls:
 # 138 "data/maps/OldaleTown_Mart/scripts.pory"
-	.string "I'm going to buy a bunch of POKé BALLS\n"
+	.string "I'm going to buy a bunch of Poké Balls\n"
 # 139 "data/maps/OldaleTown_Mart/scripts.pory"
-	.string "and catch a bunch of POKéMON!$"
+	.string "and catch a bunch of Pokémon!$"
 # 140 "data/maps/OldaleTown_Mart/scripts.pory"
 
 # 141 "data/maps/OldaleTown_Mart/scripts.pory"
 OldaleTown_Mart_Text_RestoreHPWithPotion:
 # 142 "data/maps/OldaleTown_Mart/scripts.pory"
-	.string "If a POKéMON gets hurt and loses its HP\n"
+	.string "If a Pokémon gets hurt and loses its HP\n"
 # 143 "data/maps/OldaleTown_Mart/scripts.pory"
 	.string "and faints, it won't be able to battle.\p"
 # 144 "data/maps/OldaleTown_Mart/scripts.pory"
-	.string "To prevent your POKéMON from fainting,\n"
+	.string "To prevent your Pokémon from fainting,\n"
 # 145 "data/maps/OldaleTown_Mart/scripts.pory"
 	.string "restore its HP with a POTION.$"
 

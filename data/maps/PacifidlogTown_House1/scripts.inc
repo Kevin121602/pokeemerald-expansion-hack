@@ -27,7 +27,7 @@ PacifidlogTown_House1_Text_RegiStory:
 # 14 "data/maps/PacifidlogTown_House1/scripts.pory"
 	.string "In the HOENN region, there are three\n"
 # 15 "data/maps/PacifidlogTown_House1/scripts.pory"
-	.string "POKéMON that represent the power of\l"
+	.string "Pokémon that represent the power of\l"
 # 16 "data/maps/PacifidlogTown_House1/scripts.pory"
 	.string "rock, ice, and steel.\p"
 # 17 "data/maps/PacifidlogTown_House1/scripts.pory"

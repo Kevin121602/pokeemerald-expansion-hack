@@ -81,7 +81,7 @@
 #define FLAG_RECIEVED_MOON_STONE    0x43 // Unused Flag
 #define FLAG_RECIEVED_AERIAL_ACE    0x44 // Unused Flag
 #define FLAG_RECIEVED_WIDE_LENS    0x45 // Unused Flag
-#define FLAG_UNUSED_0x046    0x46 // Unused Flag
+#define FLAG_HIDE_ROUTE_103_NORMAN    0x46 // Unused Flag
 #define FLAG_UNUSED_0x047    0x47 // Unused Flag
 #define FLAG_UNUSED_0x048    0x48 // Unused Flag
 #define FLAG_UNUSED_0x049    0x49 // Unused Flag

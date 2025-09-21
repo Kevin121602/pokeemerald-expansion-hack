@@ -95,7 +95,7 @@ DewfordTown_House2_Text_ExplainSilkScarf:
 # 48 "data/maps/DewfordTown_House2/scripts.pory"
 	.string "It's a marvelous SCARF that will go\n"
 # 49 "data/maps/DewfordTown_House2/scripts.pory"
-	.string "with almost all POKéMON!$"
+	.string "with almost all Pokémon!$"
 # 50 "data/maps/DewfordTown_House2/scripts.pory"
 
 # 51 "data/maps/DewfordTown_House2/scripts.pory"

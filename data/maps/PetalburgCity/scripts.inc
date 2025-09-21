@@ -1429,7 +1429,7 @@ PetalburgCity_Text_AreYouRookieTrainer:
 # 715 "data/maps/PetalburgCity/scripts.pory"
 	.string "A rookie TRAINER?\p"
 # 716 "data/maps/PetalburgCity/scripts.pory"
-	.string "Do you know what POKéMON TRAINERS\n"
+	.string "Do you know what Pokémon TRAINERS\n"
 # 717 "data/maps/PetalburgCity/scripts.pory"
 	.string "do when they reach a new town?\p"
 # 718 "data/maps/PetalburgCity/scripts.pory"
@@ -1469,7 +1469,7 @@ PetalburgCity_Text_WaterReflection:
 # 735 "data/maps/PetalburgCity/scripts.pory"
 PetalburgCity_Text_FullPartyExplanation:
 # 736 "data/maps/PetalburgCity/scripts.pory"
-	.string "Let's say you have six POKéMON.\n"
+	.string "Let's say you have six Pokémon.\n"
 # 737 "data/maps/PetalburgCity/scripts.pory"
 	.string "If you catch another one…\p"
 # 738 "data/maps/PetalburgCity/scripts.pory"
@@ -1481,7 +1481,7 @@ PetalburgCity_Text_FullPartyExplanation:
 # 741 "data/maps/PetalburgCity/scripts.pory"
 PetalburgCity_Text_GymSign:
 # 742 "data/maps/PetalburgCity/scripts.pory"
-	.string "PETALBURG CITY POKéMON GYM\n"
+	.string "PETALBURG CITY Pokémon GYM\n"
 # 743 "data/maps/PetalburgCity/scripts.pory"
 	.string "LEADER: NORMAN\l"
 # 744 "data/maps/PetalburgCity/scripts.pory"
@@ -1509,7 +1509,7 @@ PetalburgCity_Text_AreYouATrainer:
 # 755 "data/maps/PetalburgCity/scripts.pory"
 	.string "Let me guess, from the way you're\n"
 # 756 "data/maps/PetalburgCity/scripts.pory"
-	.string "dressed, are you a POKéMON TRAINER?$"
+	.string "dressed, are you a Pokémon TRAINER?$"
 # 757 "data/maps/PetalburgCity/scripts.pory"
 
 # 758 "data/maps/PetalburgCity/scripts.pory"

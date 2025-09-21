@@ -347,9 +347,9 @@ Route123_EventScript_RematchFernando::
 # 174 "data/maps/Route123/scripts.pory"
 Route123_Text_LoveGrassMonsHaveAny:
 # 175 "data/maps/Route123/scripts.pory"
-	.string "I love GRASS-type POKéMON!\p"
+	.string "I love GRASS-type Pokémon!\p"
 # 176 "data/maps/Route123/scripts.pory"
-	.string "Do you have any GRASS-type POKéMON?$"
+	.string "Do you have any GRASS-type Pokémon?$"
 # 177 "data/maps/Route123/scripts.pory"
 
 # 178 "data/maps/Route123/scripts.pory"
@@ -357,7 +357,7 @@ Route123_Text_YouLikeGrassMonsTooHaveThis:
 # 179 "data/maps/Route123/scripts.pory"
 	.string "Oh?\p"
 # 180 "data/maps/Route123/scripts.pory"
-	.string "You like GRASS-type POKéMON, too,\n"
+	.string "You like GRASS-type Pokémon, too,\n"
 # 181 "data/maps/Route123/scripts.pory"
 	.string "don't you?\p"
 # 182 "data/maps/Route123/scripts.pory"
@@ -371,7 +371,7 @@ Route123_Text_CheckTreesWithMyGrassMon:
 # 186 "data/maps/Route123/scripts.pory"
 	.string "I check trees with my GRASS-type\n"
 # 187 "data/maps/Route123/scripts.pory"
-	.string "POKéMON. I'm like a tree doctor.$"
+	.string "Pokémon. I'm like a tree doctor.$"
 # 188 "data/maps/Route123/scripts.pory"
 
 # 189 "data/maps/Route123/scripts.pory"

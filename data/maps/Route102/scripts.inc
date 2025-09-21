@@ -145,7 +145,7 @@ Route102_Text_WatchMeCatchPokemon:
 # 73 "data/maps/Route102/scripts.pory"
 	.string "WALLY: {PLAYER}…\n"
 # 74 "data/maps/Route102/scripts.pory"
-	.string "POKéMON hide in tall grass like this,\l"
+	.string "Pokémon hide in tall grass like this,\l"
 # 75 "data/maps/Route102/scripts.pory"
 	.string "don't they?\p"
 # 76 "data/maps/Route102/scripts.pory"
@@ -161,7 +161,7 @@ Route102_Text_WallyIDidIt:
 # 81 "data/maps/Route102/scripts.pory"
 	.string "WALLY: I did it… It's my…\n"
 # 82 "data/maps/Route102/scripts.pory"
-	.string "My POKéMON!$"
+	.string "My Pokémon!$"
 # 83 "data/maps/Route102/scripts.pory"
 
 # 84 "data/maps/Route102/scripts.pory"
@@ -191,7 +191,7 @@ Route102_Text_CatchWholeBunchOfPokemon:
 # 96 "data/maps/Route102/scripts.pory"
 	.string "I'm going to catch a whole bunch of\n"
 # 97 "data/maps/Route102/scripts.pory"
-	.string "POKéMON!$"
+	.string "Pokémon!$"
 # 98 "data/maps/Route102/scripts.pory"
 
 # 99 "data/maps/Route102/scripts.pory"

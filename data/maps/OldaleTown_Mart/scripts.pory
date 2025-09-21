@@ -11,56 +11,56 @@ script Mart_BottleCap_Vendor{
 	}
 	if(flag(FLAG_BADGE01_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_2)){
-		msgbox("Oh is that the STONE BADGE?$")
+		msgbox("Oh is that the Stone Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_2)
 		}
 	}
 	if(flag(FLAG_BADGE04_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_3)){
-		msgbox("Oh is that the HEAT BADGE?$")
+		msgbox("Oh is that the Heat Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_3)
 		}
 	}
 	if(flag(FLAG_BADGE02_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_4)){
-		msgbox("Oh is that the KNUCKLE BADGE?$")
+		msgbox("Oh is that the Knuckle Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_4)
 		}
 	}
 	if(flag(FLAG_BADGE05_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_5)){
-		msgbox("Oh is that the BALANCE BADGE?$")
+		msgbox("Oh is that the Balance Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_5)
 		}
 	}
 	if(flag(FLAG_BADGE08_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_6)){
-		msgbox("Oh is that the RAIN BADGE?$")
+		msgbox("Oh is that the Rain Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_6)
 		}
 	}
 	if(flag(FLAG_BADGE06_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_7)){
-		msgbox("Oh is that the FEATHER BADGE?$")
+		msgbox("Oh is that the Feather Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_7)
 		}
 	}
 	if(flag(FLAG_BADGE07_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_8)){
-		msgbox("Oh is that the MIND BADGE?$")
+		msgbox("Oh is that the Mind Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_8)
 		}
 	}
 	if(flag(FLAG_BADGE03_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_9)){
-		msgbox("Oh is that the DYNAMO BADGE?$")
+		msgbox("Oh is that the Dynamo Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_9)
 		}
@@ -132,16 +132,16 @@ OldaleTown_Mart_EventScript_Boy::
 
 OldaleTown_Mart_Text_PokeBallsAreSoldOut:
 	.string "The clerk says they're all sold out.\n"
-	.string "I can't buy any POKé BALLS.$"
+	.string "I can't buy any Poké Balls.$"
 
 OldaleTown_Mart_Text_ImGoingToBuyPokeBalls:
-	.string "I'm going to buy a bunch of POKé BALLS\n"
-	.string "and catch a bunch of POKéMON!$"
+	.string "I'm going to buy a bunch of Poké Balls\n"
+	.string "and catch a bunch of Pokémon!$"
 
 OldaleTown_Mart_Text_RestoreHPWithPotion:
-	.string "If a POKéMON gets hurt and loses its HP\n"
+	.string "If a Pokémon gets hurt and loses its HP\n"
 	.string "and faints, it won't be able to battle.\p"
-	.string "To prevent your POKéMON from fainting,\n"
-	.string "restore its HP with a POTION.$"
+	.string "To prevent your Pokémon from fainting,\n"
+	.string "restore its HP with a Potion.$"
 
 `

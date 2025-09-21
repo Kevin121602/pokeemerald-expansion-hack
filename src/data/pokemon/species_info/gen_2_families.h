@@ -2351,7 +2351,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sSkiploomLevelUpLearnset,
         .teachableLearnset = sSkiploomTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 24, SPECIES_JUMPLUFF}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 23, SPECIES_JUMPLUFF}),
     },
 
     [SPECIES_JUMPLUFF] =

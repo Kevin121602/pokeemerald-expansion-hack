@@ -325,7 +325,7 @@ JaggedPass_Text_EricDefeat:
 # 163 "data/maps/JaggedPass/scripts.pory"
 JaggedPass_Text_EricPostBattle:
 # 164 "data/maps/JaggedPass/scripts.pory"
-	.string "Yes, I did lose at POKéMON…\p"
+	.string "Yes, I did lose at Pokémon…\p"
 # 165 "data/maps/JaggedPass/scripts.pory"
 	.string "But, when it comes to the love of\n"
 # 166 "data/maps/JaggedPass/scripts.pory"
@@ -371,7 +371,7 @@ JaggedPass_Text_DianaRematchIntro:
 # 186 "data/maps/JaggedPass/scripts.pory"
 	.string "Picnics are fun wherever you go.\n"
 # 187 "data/maps/JaggedPass/scripts.pory"
-	.string "Just like POKéMON!$"
+	.string "Just like Pokémon!$"
 # 188 "data/maps/JaggedPass/scripts.pory"
 
 # 189 "data/maps/JaggedPass/scripts.pory"
@@ -421,7 +421,7 @@ JaggedPass_Text_EthanRegister:
 # 211 "data/maps/JaggedPass/scripts.pory"
 	.string "I'll be sure to win!\p"
 # 212 "data/maps/JaggedPass/scripts.pory"
-	.string "Can you register me in your POKéNAV?$"
+	.string "Can you register me in your Pokénav?$"
 # 213 "data/maps/JaggedPass/scripts.pory"
 
 # 214 "data/maps/JaggedPass/scripts.pory"

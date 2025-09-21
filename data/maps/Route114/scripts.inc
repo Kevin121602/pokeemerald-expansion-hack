@@ -351,7 +351,7 @@ Route114_EventScript_Kai::
 # 176 "data/maps/Route114/scripts.pory"
 Route114_Text_AllMyMonDoesIsRoarTakeThis:
 # 177 "data/maps/Route114/scripts.pory"
-	.string "All my POKéMON does is ROAR…\n"
+	.string "All my Pokémon does is ROAR…\n"
 # 178 "data/maps/Route114/scripts.pory"
 	.string "No one dares to come near me…\p"
 # 179 "data/maps/Route114/scripts.pory"
@@ -365,7 +365,7 @@ Route114_Text_ExplainRoar:
 # 183 "data/maps/Route114/scripts.pory"
 	.string "TM05 contains ROAR.\n"
 # 184 "data/maps/Route114/scripts.pory"
-	.string "A ROAR sends POKéMON scurrying.$"
+	.string "A ROAR sends Pokémon scurrying.$"
 # 185 "data/maps/Route114/scripts.pory"
 
 # 186 "data/maps/Route114/scripts.pory"

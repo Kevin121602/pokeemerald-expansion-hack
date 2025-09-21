@@ -91,6 +91,6 @@ Route106_Text_TrainerTips:
 # 46 "data/maps/Route106/scripts.pory"
 	.string "TRAINER TIPS\p"
 # 47 "data/maps/Route106/scripts.pory"
-	.string "Advice on catching POKéMON with a ROD:\n"
+	.string "Advice on catching Pokémon with a ROD:\n"
 # 48 "data/maps/Route106/scripts.pory"
 	.string "Press the A Button if you get a bite.$"

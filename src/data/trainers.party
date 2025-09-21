@@ -1320,7 +1320,7 @@ Ability: Volt Absorb
 - Signal Beam
 - Heal Bell
 
-Arcanine @ Sitrus Berry
+Arcanine @ Silk Scarf
 Level: 29
 Nature: Jolly
 Ability: Intimidate
@@ -2644,7 +2644,7 @@ Manectric @ Lum Berry
 Nature: Timid
 Ability: Minus
 Level: 29
-- Discharge
+- Shock Wave
 - Signal Beam
 - Flame Burst
 - Snarl
@@ -2701,7 +2701,7 @@ Level: 31
 - Stored Power
 - Dazzling Gleam
 - Shadow Ball
-- Endure
+- Morning Sun
 
 === TRAINER_SHIRLEY ===
 Name: Shirley
@@ -15197,12 +15197,12 @@ Level: 27
 - Recover
 
 Spinda @ Chople Berry
-Nature: Jolly
+Nature: Naive
 Ability: Contrary
 Level: 28
 - Facade
 - Superpower
-- Sucker Punch
+- Shadow Ball
 - Teeter Dance
 
 === TRAINER_ANGELINA ===

@@ -49,7 +49,7 @@ DewfordTown_House1_Text_LotToBeSaidForLivingOnIsland:
 # 25 "data/maps/DewfordTown_House1/scripts.pory"
 	.string "a small island like this in harmony with\l"
 # 26 "data/maps/DewfordTown_House1/scripts.pory"
-	.string "POKéMON and the family.$"
+	.string "Pokémon and the family.$"
 # 27 "data/maps/DewfordTown_House1/scripts.pory"
 
 # 28 "data/maps/DewfordTown_House1/scripts.pory"

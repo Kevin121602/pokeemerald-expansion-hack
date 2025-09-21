@@ -784,7 +784,7 @@ PlayersHouse_1F_Text_IsntItNiceInHere:
 # 402 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 PlayersHouse_1F_Text_MoversPokemonGoSetClock:
 # 403 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
-	.string "The mover's POKéMON do all the work\n"
+	.string "The mover's Pokémon do all the work\n"
 # 404 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	.string "of moving us in and cleaning up after.\l"
 # 405 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
@@ -910,7 +910,7 @@ PlayersHouse_1F_Text_DontPushYourselfTooHard:
 # 465 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 PlayersHouse_1F_Text_IsThatAPokenav:
 # 466 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
-	.string "MOM: What is that, honey? A POKéNAV?\n"
+	.string "MOM: What is that, honey? A Pokénav?\n"
 # 467 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	.string "Someone from DEVON gave it to you?\p"
 # 468 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
@@ -926,7 +926,7 @@ PlayersHouse_1F_Text_RegisteredMom:
 # 473 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	.string "Registered MOM\n"
 # 474 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
-	.string "in the POKéNAV.$"
+	.string "in the Pokénav.$"
 # 475 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 
 # 476 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
@@ -1026,7 +1026,7 @@ PlayersHouse_1F_Text_DadShouldStayLonger:
 # 523 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	.string "He comes home for the first time in a\n"
 # 524 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
-	.string "while, but all he talks about is POKéMON.\p"
+	.string "while, but all he talks about is Pokémon.\p"
 # 525 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	.string "He should relax and stay a little longer.$"
 # 526 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
@@ -1048,9 +1048,9 @@ PlayersHouse_1F_Text_LatiEmergencyNewsFlash:
 # 534 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	.string "been reports of a BZZT…colored\l"
 # 535 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
-	.string "POKéMON in flight.\p"
+	.string "Pokémon in flight.\p"
 # 536 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
-	.string "The identity of this POKéMON is\n"
+	.string "The identity of this Pokémon is\n"
 # 537 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	.string "currently unknown.\p"
 # 538 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
@@ -1066,7 +1066,7 @@ PlayersHouse_1F_Text_WhatColorDidTheySay:
 # 543 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	.string "What color did the announcer say\n"
 # 544 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
-	.string "that POKéMON was?$"
+	.string "that Pokémon was?$"
 # 545 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 
 # 546 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
@@ -1074,7 +1074,7 @@ PlayersHouse_1F_Text_StillUnknownPokemon:
 # 547 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	.string "MOM: Well, isn't that something!\n"
 # 548 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
-	.string "There are still unknown POKéMON.$"
+	.string "There are still unknown Pokémon.$"
 
 LittlerootTown_BrendansHouse_1F_EventScript_StartingItems_Text_0:
 # 35 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"

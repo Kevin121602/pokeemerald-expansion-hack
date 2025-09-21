@@ -559,7 +559,7 @@ Route128_Text_MaxieThisDefiesBelief:
 # 280 "data/maps/Route128/scripts.pory"
 	.string "MAXIE: This defies belief…\p"
 # 281 "data/maps/Route128/scripts.pory"
-	.string "Those super-ancient POKéMON…\p"
+	.string "Those super-ancient Pokémon…\p"
 # 282 "data/maps/Route128/scripts.pory"
 	.string "Their power is unbelievable.\n"
 # 283 "data/maps/Route128/scripts.pory"

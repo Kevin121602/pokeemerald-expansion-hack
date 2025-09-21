@@ -87,7 +87,7 @@ OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC:
 # 44 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
 	.string "That PC in the corner there is\n"
 # 45 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
-	.string "for any POKéMON TRAINER to use.\p"
+	.string "for any Pokémon Trainer to use.\p"
 # 46 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
 	.string "Naturally, that means you're welcome\n"
 # 47 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
@@ -97,7 +97,7 @@ OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC:
 # 49 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
 OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat:
 # 50 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
-	.string "POKéMON CENTERS are great!\p"
+	.string "Pokémon Centers are great!\p"
 # 51 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
 	.string "You can use their services as much\n"
 # 52 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
@@ -109,7 +109,7 @@ OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat:
 # 55 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
 OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable:
 # 56 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
-	.string "The POKéMON WIRELESS CLUB on\n"
+	.string "The Pokémon Wireless Club on\n"
 # 57 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
 	.string "the second floor was built recently.\p"
 # 58 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
@@ -121,8 +121,8 @@ OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable:
 # 61 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
 OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
 # 62 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
-	.string "The POKéMON WIRELESS CLUB on\n"
+	.string "The Pokémon Wireless Club on\n"
 # 63 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
 	.string "the second floor was built recently.\p"
 # 64 "data/maps/OldaleTown_PokemonCenter_1F/scripts.pory"
-	.string "I traded POKéMON right away.$"
+	.string "I traded Pokémon right away.$"

@@ -109,11 +109,11 @@ FallarborTown_ContestHall_Text_MonAllTheseRibbons:
 # 55 "data/maps/FallarborTown_BattleTentCorridor/scripts.pory"
 	.string "See!\n"
 # 56 "data/maps/FallarborTown_BattleTentCorridor/scripts.pory"
-	.string "My POKéMON won all these RIBBONS!\p"
+	.string "My Pokémon won all these RIBBONS!\p"
 # 57 "data/maps/FallarborTown_BattleTentCorridor/scripts.pory"
-	.string "Have your POKéMON earned any RIBBONS?\n"
+	.string "Have your Pokémon earned any RIBBONS?\n"
 # 58 "data/maps/FallarborTown_BattleTentCorridor/scripts.pory"
-	.string "You can check them on your POKéNAV.$"
+	.string "You can check them on your Pokénav.$"
 # 59 "data/maps/FallarborTown_BattleTentCorridor/scripts.pory"
 
 # 60 "data/maps/FallarborTown_BattleTentCorridor/scripts.pory"
@@ -135,6 +135,6 @@ FallarborTown_ContestHall_Text_CantWinEverywhere:
 # 68 "data/maps/FallarborTown_BattleTentCorridor/scripts.pory"
 FallarborTown_ContestHall_Text_SuperRankStage:
 # 69 "data/maps/FallarborTown_BattleTentCorridor/scripts.pory"
-	.string "POKéMON CONTESTS\n"
+	.string "Pokémon CONTESTS\n"
 # 70 "data/maps/FallarborTown_BattleTentCorridor/scripts.pory"
 	.string "SUPER RANK STAGE!$"

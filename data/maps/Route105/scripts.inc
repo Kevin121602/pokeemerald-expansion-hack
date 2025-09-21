@@ -185,7 +185,7 @@ Route104_Text_DadPokenavCall:
 # 97 "data/maps/Route105/scripts.pory"
 	.string "I just heard from DEVON's MR. STONE\n"
 # 98 "data/maps/Route105/scripts.pory"
-	.string "about your POKéNAV, so I decided\l"
+	.string "about your Pokénav, so I decided\l"
 # 99 "data/maps/Route105/scripts.pory"
 	.string "to give you a call.\p"
 # 100 "data/maps/Route105/scripts.pory"
@@ -205,7 +205,7 @@ Route104_Text_RegisteredDadInPokenav:
 # 107 "data/maps/Route105/scripts.pory"
 	.string "Registered DAD NORMAN\n"
 # 108 "data/maps/Route105/scripts.pory"
-	.string "in the POKéNAV.$"
+	.string "in the Pokénav.$"
 
 Route105_EventScript_AquaGrunts_Text_0:
 # 4 "data/maps/Route105/scripts.pory"

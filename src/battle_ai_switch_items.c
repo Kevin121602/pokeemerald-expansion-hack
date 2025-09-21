@@ -2196,7 +2196,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
             }
 
             //sets hits to 2 if would ohko but blocked by sash or sturdy
-            if(hitsToKOAI == 1 && PartyMonHasInTactFocusSashSturdy(battler, opposingBattler, playerMove, aiMonHoldEffect, aiMonAbility, battleMon, TRUE)){
+            if(hitsToKOAI == 1 && PartyMonHasInTactFocusSashSturdy(battler, opposingBattler, playerMove, aiMonHoldEffect, aiMonAbility, battleMon, TRUE) && (battleMon.hp == battleMon.maxHP)){
                 hitsToKOAI++;
             }
 
@@ -2247,7 +2247,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
             }
 
             //sets hits to 2 if would ohko but blocked by sash or sturdy
-            if(hitsToKOPlayer == 1 && PartyMonHasInTactFocusSashSturdy(opposingBattler, battler, aiMove, playerHoldEffect, playerAbility, battleMon, FALSE)){
+            if(hitsToKOPlayer == 1 && PartyMonHasInTactFocusSashSturdy(opposingBattler, battler, aiMove, playerHoldEffect, playerAbility, battleMon, FALSE) && (gBattleMons[opposingBattler].hp == gBattleMons[opposingBattler].maxHP)){
                 hitsToKOPlayer++;
             }
 

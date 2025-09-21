@@ -71,6 +71,6 @@ MossdeepCity_PokemonCenter_1F_Text_AbilitiesMightChangeMoves:
 # 36 "data/maps/MossdeepCity_PokemonCenter_1F/scripts.pory"
 	.string "Depending on the special abilities of\n"
 # 37 "data/maps/MossdeepCity_PokemonCenter_1F/scripts.pory"
-	.string "POKéMON, some moves might change\l"
+	.string "Pokémon, some moves might change\l"
 # 38 "data/maps/MossdeepCity_PokemonCenter_1F/scripts.pory"
 	.string "or not work at all.$"

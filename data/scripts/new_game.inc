@@ -282,5 +282,6 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_TRICK_HOUSE_APPRENTICE
 	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
 	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
+	setflag FLAG_HIDE_ROUTE_103_NORMAN
 	call EventScript_ResetAllBerries
 	end

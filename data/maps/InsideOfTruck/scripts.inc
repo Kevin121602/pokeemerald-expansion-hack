@@ -109,8 +109,8 @@ InsideOfTruck_EventScript_MovingBox::
 # 55 "data/maps/InsideOfTruck/scripts.pory"
 InsideOfTruck_Text_BoxPrintedWithMonLogo:
 # 56 "data/maps/InsideOfTruck/scripts.pory"
-	.string "The box is printed with a POKéMON logo.\p"
+	.string "The box is printed with a Pokémon logo.\p"
 # 57 "data/maps/InsideOfTruck/scripts.pory"
-	.string "It's a POKéMON brand moving and\n"
+	.string "It's a Pokémon brand moving and\n"
 # 58 "data/maps/InsideOfTruck/scripts.pory"
 	.string "delivery service.$"
