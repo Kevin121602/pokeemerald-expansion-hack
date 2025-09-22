@@ -643,7 +643,7 @@ BattleFrontier_OutsideEast_Text_OnceBeatGymLeader:
 # 322 "data/maps/BattleFrontier_OutsideEast/scripts.pory"
 	.string "I may not look that impressive now,\n"
 # 323 "data/maps/BattleFrontier_OutsideEast/scripts.pory"
-	.string "but I once beat a GYM LEADER.\p"
+	.string "but I once beat a Gym Leader.\p"
 # 324 "data/maps/BattleFrontier_OutsideEast/scripts.pory"
 	.string "Who knows, maybe I should give it\n"
 # 325 "data/maps/BattleFrontier_OutsideEast/scripts.pory"

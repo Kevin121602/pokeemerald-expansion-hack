@@ -85,7 +85,7 @@ Moves all information from `gItemIconTable` to `gItemsInfo`.
             "A tool used for\n"
             "catching wild\n"
             "Pokémon."),
-        .pocket = POCKET_POKE_BALLS,
+        .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_POKE_BALL - FIRST_BALL,

@@ -75,4 +75,4 @@ GraniteCave_1F_Text_ExplainFlash:
 # 38 "data/maps/GraniteCave_1F/scripts.pory"
 	.string "But, to use it, you need the GYM BADGE\n"
 # 39 "data/maps/GraniteCave_1F/scripts.pory"
-	.string "from DEWFORD's Pokémon GYM.$"
+	.string "from DEWFORD's Pokémon Gym.$"

@@ -219,7 +219,7 @@ SootopolisCity_Gym_B1F_Text_BridgetIntro:
 # 110 "data/maps/SootopolisCity_Gym_B1F/scripts.pory"
 	.string "in the HOENN region…\p"
 # 111 "data/maps/SootopolisCity_Gym_B1F/scripts.pory"
-	.string "That's the SOOTOPOLIS GYM.$"
+	.string "That's the SOOTOPOLIS Gym.$"
 # 112 "data/maps/SootopolisCity_Gym_B1F/scripts.pory"
 
 # 113 "data/maps/SootopolisCity_Gym_B1F/scripts.pory"

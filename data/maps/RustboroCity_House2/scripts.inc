@@ -29,13 +29,13 @@ RustboroCity_House2_Text_TrainerSchoolExcellent:
 # 15 "data/maps/RustboroCity_House2/scripts.pory"
 	.string "If you study there, you could even\n"
 # 16 "data/maps/RustboroCity_House2/scripts.pory"
-	.string "become a GYM LEADER.$"
+	.string "become a Gym Leader.$"
 # 17 "data/maps/RustboroCity_House2/scripts.pory"
 
 # 18 "data/maps/RustboroCity_House2/scripts.pory"
 RustboroCity_House2_Text_RoxanneKnowsALot:
 # 19 "data/maps/RustboroCity_House2/scripts.pory"
-	.string "ROXANNE, the GYM LEADER, really knows\n"
+	.string "ROXANNE, the Gym Leader, really knows\n"
 # 20 "data/maps/RustboroCity_House2/scripts.pory"
 	.string "a lot about Pokémon.\p"
 # 21 "data/maps/RustboroCity_House2/scripts.pory"

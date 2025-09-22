@@ -31,8 +31,6 @@ PetalburgCity_PokemonCenter_1F_EventScript_Woman::
 	lock
 	faceplayer
 	msgbox PetalburgCity_PokemonCenter_1F_Text_ManyTypesOfPokemon, MSGBOX_DEFAULT
-	specialvar VAR_RESULT, IsStarterInParty
-	goto_if_eq VAR_RESULT, TRUE, PetalburgCity_PokemonCenter_1F_EventScript_SayStarterTypeInfo
 	release
 	end
 
@@ -63,7 +61,7 @@ PetalburgCity_PokemonCenter_1F_Text_PCStorageSystem:
 
 PetalburgCity_PokemonCenter_1F_Text_OranBerryRegainedHP:
 	.string "When my Pokémon ate an\n"
-	.string "ORAN BERRY, it regained HP!$"
+	.string "Oran Berry, it regained HP!$"
 
 PetalburgCity_PokemonCenter_1F_Text_ManyTypesOfPokemon:
 	.string "There are many types of Pokémon.\p"
@@ -73,11 +71,11 @@ PetalburgCity_PokemonCenter_1F_Text_ManyTypesOfPokemon:
 	.string "a battle could be easy or hard.$"
 
 PetalburgCity_PokemonCenter_1F_Text_TreeckoIsGrassType:
-	.string "For example, your TREECKO\n"
-	.string "is a GRASS type.\p"
-	.string "It's strong against the WATER and\n"
-	.string "GROUND types.\p"
-	.string "But, it's weak against FIRE-type\n"
+	.string "For example, your Treecko\n"
+	.string "is a Grass type.\p"
+	.string "It's strong against the Water and\n"
+	.string "Ground types.\p"
+	.string "But, it's weak against Fire-type\n"
 	.string "Pokémon.$"
 
 PetalburgCity_PokemonCenter_1F_Text_TorchicIsFireType:

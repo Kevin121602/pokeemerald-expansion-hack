@@ -279,4 +279,4 @@ Route110_TrickHousePuzzle2_Text_GeorgiaPostBattle:
 # 140 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
 	.string "You're strong, aren't you?\n"
 # 141 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
-	.string "Maybe even enough to be a GYM LEADER!$"
+	.string "Maybe even enough to be a Gym Leader!$"

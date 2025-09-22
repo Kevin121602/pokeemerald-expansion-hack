@@ -6,7 +6,7 @@
 #define POCKET_ITEMS       1
 #define POCKET_HELD_ITEMS  2
 #define POCKET_MEGA_STONES 3
-#define POCKET_POKE_BALLS  4
+#define POCKET_GEMS        4
 #define POCKET_TM_HM       5
 #define POCKET_BERRIES     6
 #define POCKET_KEY_ITEMS   7

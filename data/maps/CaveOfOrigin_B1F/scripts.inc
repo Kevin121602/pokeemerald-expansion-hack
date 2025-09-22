@@ -135,7 +135,7 @@ CaveOfOrigin_B1F_Text_WallaceStory:
 # 68 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	.string "My name is WALLACE.\p"
 # 69 "data/maps/CaveOfOrigin_B1F/scripts.pory"
-	.string "I was once the GYM LEADER of\n"
+	.string "I was once the Gym Leader of\n"
 # 70 "data/maps/CaveOfOrigin_B1F/scripts.pory"
 	.string "SOOTOPOLIS, but something came up.\p"
 # 71 "data/maps/CaveOfOrigin_B1F/scripts.pory"

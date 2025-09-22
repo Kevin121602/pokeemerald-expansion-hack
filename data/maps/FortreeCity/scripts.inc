@@ -303,7 +303,7 @@ FortreeCity_Text_CitySign:
 # 152 "data/maps/FortreeCity/scripts.pory"
 FortreeCity_Text_GymSign:
 # 153 "data/maps/FortreeCity/scripts.pory"
-	.string "FORTREE CITY Pokémon GYM\n"
+	.string "FORTREE CITY Pokémon Gym\n"
 # 154 "data/maps/FortreeCity/scripts.pory"
 	.string "LEADER: WINONA\p"
 # 155 "data/maps/FortreeCity/scripts.pory"

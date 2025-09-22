@@ -587,7 +587,7 @@ MauvilleCity_Gym_Text_ShawnDefeat:
 # 294 "data/maps/MauvilleCity_Gym/scripts.pory"
 MauvilleCity_Gym_Text_ShawnPostBattle:
 # 295 "data/maps/MauvilleCity_Gym/scripts.pory"
-	.string "WATTSON, our GYM LEADER, has been\n"
+	.string "WATTSON, our Gym Leader, has been\n"
 # 296 "data/maps/MauvilleCity_Gym/scripts.pory"
 	.string "around for a long, long time.\p"
 # 297 "data/maps/MauvilleCity_Gym/scripts.pory"
@@ -677,7 +677,7 @@ MauvilleCity_Gym_Text_WattsonIntro:
 # 339 "data/maps/MauvilleCity_Gym/scripts.pory"
 	.string "And so, I put my time into making\n"
 # 340 "data/maps/MauvilleCity_Gym/scripts.pory"
-	.string "door traps in my GYM.\p"
+	.string "door traps in my Gym.\p"
 # 341 "data/maps/MauvilleCity_Gym/scripts.pory"
 	.string "Oh? Now, what are you doing here?\p"
 # 342 "data/maps/MauvilleCity_Gym/scripts.pory"
@@ -745,7 +745,7 @@ MauvilleCity_Gym_Text_ExplainShockWave:
 # 373 "data/maps/MauvilleCity_Gym/scripts.pory"
 MauvilleCity_Gym_Text_RegisteredWattson:
 # 374 "data/maps/MauvilleCity_Gym/scripts.pory"
-	.string "Registered GYM LEADER WATTSON\n"
+	.string "Registered Gym Leader WATTSON\n"
 # 375 "data/maps/MauvilleCity_Gym/scripts.pory"
 	.string "in the Pokénav.$"
 # 376 "data/maps/MauvilleCity_Gym/scripts.pory"
@@ -775,7 +775,7 @@ MauvilleCity_Gym_Text_GymStatue:
 # 388 "data/maps/MauvilleCity_Gym/scripts.pory"
 MauvilleCity_Gym_Text_GymStatueCertified:
 # 389 "data/maps/MauvilleCity_Gym/scripts.pory"
-	.string "MAUVILLE CITY Pokémon GYM\p"
+	.string "MAUVILLE CITY Pokémon Gym\p"
 # 390 "data/maps/MauvilleCity_Gym/scripts.pory"
 	.string "WATTSON'S CERTIFIED TRAINERS:\n"
 # 391 "data/maps/MauvilleCity_Gym/scripts.pory"

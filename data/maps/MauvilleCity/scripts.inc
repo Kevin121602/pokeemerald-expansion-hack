@@ -1283,7 +1283,7 @@ MauvilleCity_Text_CitySign:
 # 642 "data/maps/MauvilleCity/scripts.pory"
 MauvilleCity_Text_GymSign:
 # 643 "data/maps/MauvilleCity/scripts.pory"
-	.string "MAUVILLE CITY Pokémon GYM\n"
+	.string "MAUVILLE CITY Pokémon Gym\n"
 # 644 "data/maps/MauvilleCity/scripts.pory"
 	.string "LEADER: WATTSON\l"
 # 645 "data/maps/MauvilleCity/scripts.pory"

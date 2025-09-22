@@ -8,7 +8,7 @@ LittlerootTown_MaysHouse_1F_EventScript_HeartScales::
 # 7 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	faceplayer
 # 8 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	goto_if_unset FLAG_RECEIVED_HEART_SCALES, LittlerootTown_MaysHouse_1F_EventScript_HeartScales_2
+	goto_if_unset FLAG_RECEIVED_HEART_SCALE, LittlerootTown_MaysHouse_1F_EventScript_HeartScales_2
 LittlerootTown_MaysHouse_1F_EventScript_HeartScales_1:
 # 18 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	msgbox LittlerootTown_MaysHouse_1F_EventScript_HeartScales_Text_2
@@ -26,9 +26,9 @@ LittlerootTown_MaysHouse_1F_EventScript_HeartScales_2:
 	msgbox LittlerootTown_MaysHouse_1F_EventScript_HeartScales_Text_1
 LittlerootTown_MaysHouse_1F_EventScript_HeartScales_4:
 # 15 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	giveitem ITEM_HEART_SCALE, 2
+	giveitem ITEM_HEART_SCALE
 # 16 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	setflag FLAG_RECEIVED_HEART_SCALES
+	setflag FLAG_RECEIVED_HEART_SCALE
 	goto LittlerootTown_MaysHouse_1F_EventScript_HeartScales_1
 
 LittlerootTown_MaysHouse_1F_EventScript_HeartScales_5:
@@ -826,7 +826,7 @@ RivalsHouse_1F_Text_BrendanWhoAreYou:
 # 416 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	.string "Dad, PROF. BIRCH, said that our new\n"
 # 417 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	.string "next-door neighbor is a GYM LEADER's\l"
+	.string "next-door neighbor is a Gym Leader's\l"
 # 418 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	.string "kid, so I assumed you'd be a guy.\p"
 # 419 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
@@ -861,13 +861,13 @@ RivalsHouse_1F_Text_DoYouHavePokemon:
 LittlerootTown_MaysHouse_1F_EventScript_HeartScales_Text_0:
 # 11 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	.string "Oh hi, {PLAYER}! {RIVAL} already\n"
-	.string "left earlier, she left these as a gift\l"
-	.string "for you.$"
+	.string "left earlier, she left this as a gift for\l"
+	.string "you.$"
 
 LittlerootTown_MaysHouse_1F_EventScript_HeartScales_Text_1:
 # 13 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	.string "Oh hi, {PLAYER}! {RIVAL} already\n"
-	.string "left earlier, he left these as a gift for\l"
+	.string "left earlier, he left this as a gift for\l"
 	.string "you.$"
 
 LittlerootTown_MaysHouse_1F_EventScript_HeartScales_Text_2:

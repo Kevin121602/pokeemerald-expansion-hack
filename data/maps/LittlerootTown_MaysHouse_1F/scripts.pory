@@ -5,15 +5,15 @@ mapscripts LittlerootTown_MaysHouse_1F_MapScripts{
 script LittlerootTown_MaysHouse_1F_EventScript_HeartScales{
 	lock
 	faceplayer
-	if(!flag(FLAG_RECEIVED_HEART_SCALES)){
+	if(!flag(FLAG_RECEIVED_HEART_SCALE)){
 		checkplayergender
 		if(var(VAR_RESULT) == MALE){
-			msgbox(format("Oh hi, {PLAYER}! {RIVAL} already left earlier, she left these as a gift for you."))
+			msgbox(format("Oh hi, {PLAYER}! {RIVAL} already left earlier, she left this as a gift for you."))
 		} else {
-			msgbox(format("Oh hi, {PLAYER}! {RIVAL} already left earlier, he left these as a gift for you."))
+			msgbox(format("Oh hi, {PLAYER}! {RIVAL} already left earlier, he left this as a gift for you."))
 		}
-		giveitem(ITEM_HEART_SCALE, 2)
-		setflag(FLAG_RECEIVED_HEART_SCALES)
+		giveitem(ITEM_HEART_SCALE)
+		setflag(FLAG_RECEIVED_HEART_SCALE)
 	}
 	msgbox(format("Heart Scales have a plethora of uses, you can spend them with the L menu!"))
 	releaseall
@@ -414,7 +414,7 @@ RivalsHouse_1F_Text_BrendanWhoAreYou:
 	.string "Moved in next door, right?\p"
 	.string "I didn't know that you're a girl.\p"
 	.string "Dad, PROF. BIRCH, said that our new\n"
-	.string "next-door neighbor is a GYM LEADER's\l"
+	.string "next-door neighbor is a Gym Leader's\l"
 	.string "kid, so I assumed you'd be a guy.\p"
 	.string "My name's BRENDAN.\n"
 	.string "So, hi, neighbor!\p"

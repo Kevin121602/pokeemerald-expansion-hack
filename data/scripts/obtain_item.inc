@@ -19,7 +19,7 @@ EventScript_BufferPocketNameAndTryFanfare::
 	switch VAR_RESULT
 	case POCKET_ITEMS,      	EventScript_BufferItemsPocket
 	case POCKET_KEY_ITEMS,  	EventScript_BufferKeyItemsPocket
-	case POCKET_POKE_BALLS, 	EventScript_BufferPokeballsPocket
+	case POCKET_GEMS, 		    EventScript_BufferGemsPocket
 	case POCKET_TM_HM,      	EventScript_BufferTMHMsPocket
 	case POCKET_BERRIES,    	EventScript_BufferBerriesPocket
 	case POCKET_HELD_ITEMS,     EventScript_BufferHeldItemsPocket
@@ -36,8 +36,8 @@ EventScript_BufferKeyItemsPocket::
 	call_if_eq VAR_0x8007, TRUE, EventScript_PlayFanfareObtainedItem
 	return
 
-EventScript_BufferPokeballsPocket::
-	bufferstdstring STR_VAR_3, STDSTRING_POKEBALLS
+EventScript_BufferGemsPocket::
+	bufferstdstring STR_VAR_3, STDSTRING_GEMS
 	call_if_eq VAR_0x8007, TRUE, EventScript_PlayFanfareObtainedItem
 	return
 

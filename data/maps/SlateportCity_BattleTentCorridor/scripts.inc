@@ -345,7 +345,7 @@ SlateportCity_ContestHall_Text_MyPapaIsContestJudge:
 # 173 "data/maps/SlateportCity_BattleTentCorridor/scripts.pory"
 	.string "I wonder what I should be when I\n"
 # 174 "data/maps/SlateportCity_BattleTentCorridor/scripts.pory"
-	.string "grow up, a JUDGE or a GYM LEADER?$"
+	.string "grow up, a JUDGE or a Gym Leader?$"
 # 175 "data/maps/SlateportCity_BattleTentCorridor/scripts.pory"
 
 # 176 "data/maps/SlateportCity_BattleTentCorridor/scripts.pory"

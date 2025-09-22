@@ -2212,7 +2212,7 @@ RustboroCity_Text_SneakyLookingManWentAroundCorner:
 # 1108 "data/maps/RustboroCity/scripts.pory"
 RustboroCity_Text_HaveYouChallengedGym:
 # 1109 "data/maps/RustboroCity/scripts.pory"
-	.string "Have you taken the Pokémon GYM\n"
+	.string "Have you taken the Pokémon Gym\n"
 # 1110 "data/maps/RustboroCity/scripts.pory"
 	.string "challenge?\p"
 # 1111 "data/maps/RustboroCity/scripts.pory"
@@ -2248,7 +2248,7 @@ RustboroCity_Text_YoureNewAroundHere:
 # 1126 "data/maps/RustboroCity/scripts.pory"
 RustboroCity_Text_GymLeaderIsntEasyWithFire:
 # 1127 "data/maps/RustboroCity/scripts.pory"
-	.string "I challenged the GYM LEADER, but…\p"
+	.string "I challenged the Gym Leader, but…\p"
 # 1128 "data/maps/RustboroCity/scripts.pory"
 	.string "It's not going to be easy winning with\n"
 # 1129 "data/maps/RustboroCity/scripts.pory"
@@ -2332,7 +2332,7 @@ RustboroCity_Text_TradePokemonGrowFast:
 # 1168 "data/maps/RustboroCity/scripts.pory"
 	.string "someone grows fast.\p"
 # 1169 "data/maps/RustboroCity/scripts.pory"
-	.string "But if you don't have certain GYM\n"
+	.string "But if you don't have certain Gym\n"
 # 1170 "data/maps/RustboroCity/scripts.pory"
 	.string "BADGES, it may not obey you…$"
 # 1171 "data/maps/RustboroCity/scripts.pory"
@@ -2626,7 +2626,7 @@ RustboroCity_Text_DevonCorpSign:
 # 1315 "data/maps/RustboroCity/scripts.pory"
 RustboroCity_Text_GymSign:
 # 1316 "data/maps/RustboroCity/scripts.pory"
-	.string "RUSTBORO CITY Pokémon GYM\n"
+	.string "RUSTBORO CITY Pokémon Gym\n"
 # 1317 "data/maps/RustboroCity/scripts.pory"
 	.string "LEADER: ROXANNE\p"
 # 1318 "data/maps/RustboroCity/scripts.pory"

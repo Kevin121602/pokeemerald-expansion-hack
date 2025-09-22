@@ -697,7 +697,7 @@ RivalsHouse_2F_Text_BrendanWhoAreYou:
 # 349 "data/maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "Dad, PROF. BIRCH, said that our new\n"
 # 350 "data/maps/LittlerootTown_MaysHouse_2F/scripts.pory"
-	.string "next-door neighbor is a GYM LEADER's\l"
+	.string "next-door neighbor is a Gym Leader's\l"
 # 351 "data/maps/LittlerootTown_MaysHouse_2F/scripts.pory"
 	.string "kid, so I assumed you'd be a guy.\p"
 # 352 "data/maps/LittlerootTown_MaysHouse_2F/scripts.pory"

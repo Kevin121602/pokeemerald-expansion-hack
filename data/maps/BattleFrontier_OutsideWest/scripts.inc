@@ -1001,7 +1001,7 @@ BattleFrontier_OutsideWest_Text_DomeAceIsMine:
 # 501 "data/maps/BattleFrontier_OutsideWest/scripts.pory"
 	.string "You fair-weather fans should stick\n"
 # 502 "data/maps/BattleFrontier_OutsideWest/scripts.pory"
-	.string "to cheering for some GYM LEADER!\p"
+	.string "to cheering for some Gym Leader!\p"
 # 503 "data/maps/BattleFrontier_OutsideWest/scripts.pory"
 	.string "The DOME ACE is mine!\n"
 # 504 "data/maps/BattleFrontier_OutsideWest/scripts.pory"

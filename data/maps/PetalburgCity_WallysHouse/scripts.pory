@@ -13,7 +13,6 @@ PetalburgCity_WallysHouse_EventScript_PlayerWallysDadFaceEachOther::
 	end
 
 PetalburgCity_WallysHouse_OnFrame:
-	map_script_2 VAR_PETALBURG_CITY_STATE, 4, PetalburgCity_WallysHouse_EventScript_GiveHMSurf
 	.2byte 0
 
 PetalburgCity_WallysHouse_EventScript_GiveHMSurf::
@@ -61,12 +60,12 @@ PetalburgCity_WallysHouse_EventScript_ReceivedHMSurf::
 	end
 
 PetalburgCity_WallysHouse_Text_ThanksForPlayingWithWally:
-	.string "He's already left, our WALLY.\p"
+	.string "He's already left, our Wally.\p"
 	.string "I wonder where he could have\n"
 	.string "gotten by now?$"
 
 PetalburgCity_WallysHouse_Text_WonderHowWallyIsDoing:
-	.string "I wonder how our WALLY is doing?$"
+	.string "I wonder how our Wally is doing?$"
 
 PetalburgCity_WallysHouse_Text_PleaseExcuseUs:
 	.string "{PLAYER}{KUN}! Please excuse us for\n"

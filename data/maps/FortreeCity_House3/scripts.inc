@@ -43,7 +43,7 @@ FortreeCity_House3_Text_MetStevenHadAmazingPokemon:
 # 22 "data/maps/FortreeCity_House3/scripts.pory"
 	.string "He might even be stronger than the\n"
 # 23 "data/maps/FortreeCity_House3/scripts.pory"
-	.string "GYM LEADER in this town…$"
+	.string "Gym Leader in this town…$"
 # 24 "data/maps/FortreeCity_House3/scripts.pory"
 
 # 25 "data/maps/FortreeCity_House3/scripts.pory"

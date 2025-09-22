@@ -801,7 +801,7 @@ MossdeepCity_Text_ItsAWhiteRock:
 # 401 "data/maps/MossdeepCity/scripts.pory"
 MossdeepCity_Text_GymSign:
 # 402 "data/maps/MossdeepCity/scripts.pory"
-	.string "MOSSDEEP CITY Pokémon GYM\n"
+	.string "MOSSDEEP CITY Pokémon Gym\n"
 # 403 "data/maps/MossdeepCity/scripts.pory"
 	.string "LEADERS: LIZA & TATE\p"
 # 404 "data/maps/MossdeepCity/scripts.pory"
@@ -831,7 +831,7 @@ MossdeepCity_Text_ScottSomethingWrongWithTown:
 # 416 "data/maps/MossdeepCity/scripts.pory"
 	.string "I'm doing great!\p"
 # 417 "data/maps/MossdeepCity/scripts.pory"
-	.string "I'd heard MOSSDEEP's GYM LEADER is\n"
+	.string "I'd heard MOSSDEEP's Gym Leader is\n"
 # 418 "data/maps/MossdeepCity/scripts.pory"
 	.string "pretty strong, so I decided to come\l"
 # 419 "data/maps/MossdeepCity/scripts.pory"

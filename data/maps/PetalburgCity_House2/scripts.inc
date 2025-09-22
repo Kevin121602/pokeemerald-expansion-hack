@@ -25,9 +25,9 @@ PetalburgCity_House2_EventScript_SchoolKid::
 # 13 "data/maps/PetalburgCity_House2/scripts.pory"
 PetalburgCity_House2_Text_NormanBecameGymLeader:
 # 14 "data/maps/PetalburgCity_House2/scripts.pory"
-	.string "NORMAN became our town's new\n"
+	.string "Norman became our town's new\n"
 # 15 "data/maps/PetalburgCity_House2/scripts.pory"
-	.string "GYM LEADER.\p"
+	.string "Gym Leader.\p"
 # 16 "data/maps/PetalburgCity_House2/scripts.pory"
 	.string "I think he called his family over from\n"
 # 17 "data/maps/PetalburgCity_House2/scripts.pory"
@@ -37,7 +37,7 @@ PetalburgCity_House2_Text_NormanBecameGymLeader:
 # 19 "data/maps/PetalburgCity_House2/scripts.pory"
 PetalburgCity_House2_Text_BattledNormanOnce:
 # 20 "data/maps/PetalburgCity_House2/scripts.pory"
-	.string "I battled NORMAN once, but, whew,\n"
+	.string "I battled Norman once, but, whew,\n"
 # 21 "data/maps/PetalburgCity_House2/scripts.pory"
 	.string "he was way too strong.\p"
 # 22 "data/maps/PetalburgCity_House2/scripts.pory"

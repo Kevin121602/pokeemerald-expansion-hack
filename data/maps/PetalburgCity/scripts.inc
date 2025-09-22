@@ -1433,7 +1433,7 @@ PetalburgCity_Text_AreYouRookieTrainer:
 # 717 "data/maps/PetalburgCity/scripts.pory"
 	.string "do when they reach a new town?\p"
 # 718 "data/maps/PetalburgCity/scripts.pory"
-	.string "They first check what kind of GYM\n"
+	.string "They first check what kind of Gym\n"
 # 719 "data/maps/PetalburgCity/scripts.pory"
 	.string "is in the town.$"
 # 720 "data/maps/PetalburgCity/scripts.pory"
@@ -1441,7 +1441,7 @@ PetalburgCity_Text_AreYouRookieTrainer:
 # 721 "data/maps/PetalburgCity/scripts.pory"
 PetalburgCity_Text_ThisIsPetalburgGym:
 # 722 "data/maps/PetalburgCity/scripts.pory"
-	.string "See? This is PETALBURG CITY's GYM.$"
+	.string "See? This is PETALBURG CITY's Gym.$"
 # 723 "data/maps/PetalburgCity/scripts.pory"
 
 # 724 "data/maps/PetalburgCity/scripts.pory"
@@ -1449,7 +1449,7 @@ PetalburgCity_Text_ThisIsGymSign:
 # 725 "data/maps/PetalburgCity/scripts.pory"
 	.string "This is the GYM's sign. Look for it\n"
 # 726 "data/maps/PetalburgCity/scripts.pory"
-	.string "whenever you're looking for a GYM.$"
+	.string "whenever you're looking for a Gym.$"
 # 727 "data/maps/PetalburgCity/scripts.pory"
 
 # 728 "data/maps/PetalburgCity/scripts.pory"
@@ -1481,7 +1481,7 @@ PetalburgCity_Text_FullPartyExplanation:
 # 741 "data/maps/PetalburgCity/scripts.pory"
 PetalburgCity_Text_GymSign:
 # 742 "data/maps/PetalburgCity/scripts.pory"
-	.string "PETALBURG CITY Pokémon GYM\n"
+	.string "PETALBURG CITY Pokémon Gym\n"
 # 743 "data/maps/PetalburgCity/scripts.pory"
 	.string "LEADER: NORMAN\l"
 # 744 "data/maps/PetalburgCity/scripts.pory"

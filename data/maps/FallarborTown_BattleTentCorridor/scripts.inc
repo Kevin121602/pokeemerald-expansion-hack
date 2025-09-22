@@ -121,7 +121,7 @@ FallarborTown_ContestHall_Text_MonAllTheseRibbons:
 # 61 "data/maps/FallarborTown_BattleTentCorridor/scripts.pory"
 FallarborTown_ContestHall_Text_CantWinEverywhere:
 # 62 "data/maps/FallarborTown_BattleTentCorridor/scripts.pory"
-	.string "I can't beat GYM LEADERS…\p"
+	.string "I can't beat Gym LeaderS…\p"
 # 63 "data/maps/FallarborTown_BattleTentCorridor/scripts.pory"
 	.string "I can't win any CONTESTS…\p"
 # 64 "data/maps/FallarborTown_BattleTentCorridor/scripts.pory"

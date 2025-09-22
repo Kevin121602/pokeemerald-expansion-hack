@@ -151,7 +151,7 @@ PetalburgCity_Mart_Text_WeakWillGrowStronger:
 # 76 "data/maps/PetalburgCity_Mart/scripts.pory"
 PetalburgCity_Mart_Text_RepelIsUseful:
 # 77 "data/maps/PetalburgCity_Mart/scripts.pory"
-	.string "Do you use REPEL?\n"
+	.string "Do you use Repel?\n"
 # 78 "data/maps/PetalburgCity_Mart/scripts.pory"
 	.string "It keeps Pokémon away, so it's\l"
 # 79 "data/maps/PetalburgCity_Mart/scripts.pory"
@@ -161,7 +161,7 @@ PetalburgCity_Mart_Text_RepelIsUseful:
 # 81 "data/maps/PetalburgCity_Mart/scripts.pory"
 PetalburgCity_Mart_Text_TakeSomeAntidotesWithYou:
 # 82 "data/maps/PetalburgCity_Mart/scripts.pory"
-	.string "Do you have any ANTIDOTES with\n"
+	.string "Do you have any Antidotes with\n"
 # 83 "data/maps/PetalburgCity_Mart/scripts.pory"
 	.string "you?\p"
 # 84 "data/maps/PetalburgCity_Mart/scripts.pory"

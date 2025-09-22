@@ -1330,7 +1330,7 @@ Route111_Text_ToughToKeepWinningUpTheRanks:
 # 695 "data/maps/Route111/scripts.pory"
 	.string "ELITE FOUR are far stronger than\l"
 # 696 "data/maps/Route111/scripts.pory"
-	.string "any GYM LEADER.$"
+	.string "any Gym Leader.$"
 # 697 "data/maps/Route111/scripts.pory"
 
 # 698 "data/maps/Route111/scripts.pory"
