@@ -33,8 +33,8 @@ script LittlerootTown_BrendansHouse_1F_EventScript_MomTriggerRight{
 
 script LittlerootTown_BrendansHouse_1F_EventScript_StartingItems{
 	msgbox(format("Good morning, {PLAYER}! I have some things to give you before you leave."))
-	giveitem(ITEM_POKE_BALL)
 	giveitem(ITEM_RARE_CANDY)
+	giveitem(ITEM_POKE_BALL)
 	msgbox(format("You'll need a Pokémon as well, luckily your father left a Spinda for you!"))
 	givemon(SPECIES_SPINDA, 5)
 	playfanfare(MUS_DP_OBTAIN_ITEM)
@@ -70,7 +70,7 @@ script LittlerootTown_BrendansHouse_1F_EventScript_GoodLuck{
 	lock
 	faceplayer
 	msgbox(format("Good luck, {PLAYER}!$"))
-	releaseall
+	release
 	end
 }
 

@@ -205,7 +205,7 @@ PetalburgCity_WallysHouse_Text_YouMetWallyInEverGrandeCity:
 # 103 "data/maps/PetalburgCity_WallysHouse/scripts.pory"
 PetalburgCity_WallysHouse_Text_WallyWasReallyHappy:
 # 104 "data/maps/PetalburgCity_WallysHouse/scripts.pory"
-	.string "WALLY was really happy when he told\n"
+	.string "Wally was really happy when he told\n"
 # 105 "data/maps/PetalburgCity_WallysHouse/scripts.pory"
 	.string "us that he caught a Pokémon.\p"
 # 106 "data/maps/PetalburgCity_WallysHouse/scripts.pory"

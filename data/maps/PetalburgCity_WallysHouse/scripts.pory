@@ -101,7 +101,7 @@ PetalburgCity_WallysHouse_Text_YouMetWallyInEverGrandeCity:
 	.string "that all by himself.$"
 
 PetalburgCity_WallysHouse_Text_WallyWasReallyHappy:
-	.string "WALLY was really happy when he told\n"
+	.string "Wally was really happy when he told\n"
 	.string "us that he caught a Pokémon.\p"
 	.string "It's been ages since I've seen him\n"
 	.string "smile like that.$"

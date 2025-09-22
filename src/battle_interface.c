@@ -2907,13 +2907,13 @@ static const struct SpriteSheet sSpriteSheet_LastUsedBallWindow =
 
 bool32 CanThrowLastUsedBall(void)
 {
-    if (B_LAST_USED_BALL == FALSE)
-        return FALSE;
+    //if (B_LAST_USED_BALL == FALSE)
+    //    return FALSE;
     if (!CanThrowBall())
         return FALSE;
     if (gBattleTypeFlags & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_FRONTIER))
         return FALSE;
-    if (!CheckBagHasItem(gBallToDisplay, 1))
+    if (!CheckBagHasItem(ITEM_POKE_BALL, 1))
         return FALSE;
 
     return TRUE;
@@ -2921,7 +2921,7 @@ bool32 CanThrowLastUsedBall(void)
 
 void TryAddLastUsedBallItemSprites(void)
 {
-    if (B_LAST_USED_BALL == FALSE)
+    /*if (B_LAST_USED_BALL == FALSE)
         return;
     if (gLastThrownBall == 0
       || (gLastThrownBall != 0 && !CheckBagHasItem(gLastThrownBall, 1)))
@@ -2930,12 +2930,14 @@ void TryAddLastUsedBallItemSprites(void)
         u16 firstBall;
 
         // we have to compact the bag first bc it is typically only compacted when you open it
-        CompactItemsInBagPocket(&gBagPockets[BALLS_POCKET]);
+        CompactItemsInBagPocket(&gBagPockets[BALLS_POCKET]);*/
 
-        firstBall = gBagPockets[BALLS_POCKET].itemSlots[0].itemId;
+        u16 firstBall;
+
+        firstBall = ITEM_POKE_BALL;
         if (firstBall > ITEM_NONE)
             gBallToDisplay = firstBall;
-    }
+    //}
 
     if (!CanThrowLastUsedBall())
         return;

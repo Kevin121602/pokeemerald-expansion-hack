@@ -48,9 +48,9 @@ LittlerootTown_BrendansHouse_1F_EventScript_StartingItems::
 # 35 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	msgbox LittlerootTown_BrendansHouse_1F_EventScript_StartingItems_Text_0
 # 36 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
-	giveitem ITEM_POKE_BALL
-# 37 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	giveitem ITEM_RARE_CANDY
+# 37 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
+	giveitem ITEM_POKE_BALL
 # 38 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	msgbox LittlerootTown_BrendansHouse_1F_EventScript_StartingItems_Text_1
 # 39 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
@@ -105,7 +105,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_GoodLuck::
 # 72 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	msgbox LittlerootTown_BrendansHouse_1F_EventScript_GoodLuck_Text_0
 # 73 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
-	releaseall
+	release
 	end
 
 

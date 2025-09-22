@@ -18211,7 +18211,7 @@ F_TRAINER_FEMALE |
 #line 7311
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 7310
-            .ability = ABILITY_INTIMIDATE,
+            .ability = ABILITY_KEEN_EYE,
 #line 7308
             .lvl = 10,
 #line 7309
