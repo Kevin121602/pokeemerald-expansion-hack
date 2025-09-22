@@ -27,15 +27,14 @@ script LittlerootTown_BrendansHouse_1F_EventScript_MomTriggerRight{
 	applymovement(LOCALID_MOM, MomMovement2)
 	waitmovement(0)
 	goto(LittlerootTown_BrendansHouse_1F_EventScript_StartingItems)
-	releaseall
+	release
 	end
 }
 
 script LittlerootTown_BrendansHouse_1F_EventScript_StartingItems{
 	msgbox(format("Good morning, {PLAYER}! I have some things to give you before you leave."))
-	giveitem(ITEM_RARE_CANDY)
 	giveitem(ITEM_POKE_BALL)
-	setflag(FLAG_SYS_B_DASH)
+	giveitem(ITEM_RARE_CANDY)
 	msgbox(format("You'll need a Pokémon as well, luckily your father left a Spinda for you!"))
 	givemon(SPECIES_SPINDA, 5)
 	playfanfare(MUS_DP_OBTAIN_ITEM)

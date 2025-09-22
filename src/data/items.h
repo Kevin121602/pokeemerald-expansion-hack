@@ -162,7 +162,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_POKE_BALL] =
     {
-        .name = _("Inf. Poké Ball"),
+        .name = _("Poké Ball"),
         .price = 200,
         .description = COMPOUND_STRING(
             "A tool used for\n"
@@ -170,6 +170,7 @@ const struct Item gItemsInfo[] =
             "Pokémon."),
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = ITEM_POKE_BALL - FIRST_BALL,
         .iconPic = gItemIcon_PokeBall,
@@ -1904,7 +1905,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_RARE_CANDY] =
     {
-        .name = _("Inf. Candy"),
+        .name = _("Rare Candy"),
         .pluralName = _("Rare Candies"),
         .price = 0,
         .description = COMPOUND_STRING(
