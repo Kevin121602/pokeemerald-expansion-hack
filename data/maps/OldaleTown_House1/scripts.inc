@@ -6,7 +6,7 @@ OldaleTown_House1_EventScript_PokeballChanger::
 # 4 "data/maps/OldaleTown_House1/scripts.pory"
 	msgbox OldaleTown_House1_EventScript_PokeballChanger_Text_0
 # 5 "data/maps/OldaleTown_House1/scripts.pory"
-	releaseall
+	release
 	end
 
 

@@ -583,7 +583,7 @@ PlayersHouse_2F_Text_Notebook:
 # 292 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 	.string "Adventure Rule No. 1\n"
 # 293 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
-	.string "Open the MENU with START.\p"
+	.string "Open the Menu with Start.\p"
 # 294 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"
 	.string "Adventure Rule No. 2\n"
 # 295 "data/maps/LittlerootTown_BrendansHouse_2F/scripts.pory"

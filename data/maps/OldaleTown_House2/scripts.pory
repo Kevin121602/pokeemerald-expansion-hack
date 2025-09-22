@@ -2,7 +2,7 @@ script OldaleTown_House2_EventScript_SawsbuckChanger{
 	lock
 	faceplayer
 	msgbox(format("Placeholder for Sawsbuck form NPC."))
-	releaseall
+	release
 	end
 }
 
@@ -10,7 +10,7 @@ script OldaleTown_House2_EventScript_VivillonChanger{
 	lock
 	faceplayer
 	msgbox(format("Placeholder for Vivillon form NPC."))
-	releaseall
+	release
 	end
 }
 

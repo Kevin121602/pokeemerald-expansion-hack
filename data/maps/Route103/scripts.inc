@@ -689,7 +689,7 @@ Route103_Text_ShouldHaveBroughtPotion:
 # 345 "data/maps/Route103/scripts.pory"
 	.string "My Pokémon is staggeringly tired…\n"
 # 346 "data/maps/Route103/scripts.pory"
-	.string "I should have brought a POTION…$"
+	.string "I should have brought a Potion…$"
 # 347 "data/maps/Route103/scripts.pory"
 
 # 348 "data/maps/Route103/scripts.pory"
@@ -705,6 +705,6 @@ Route103_Text_ShortcutToOldale:
 # 353 "data/maps/Route103/scripts.pory"
 Route103_Text_RouteSign:
 # 354 "data/maps/Route103/scripts.pory"
-	.string "ROUTE 103\n"
+	.string "Route 103\n"
 # 355 "data/maps/Route103/scripts.pory"
-	.string "{DOWN_ARROW} OLDALE TOWN$"
+	.string "{DOWN_ARROW} Oldale Town$"

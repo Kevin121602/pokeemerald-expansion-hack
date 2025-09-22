@@ -6,7 +6,7 @@ OldaleTown_House2_EventScript_SawsbuckChanger::
 # 4 "data/maps/OldaleTown_House2/scripts.pory"
 	msgbox OldaleTown_House2_EventScript_SawsbuckChanger_Text_0
 # 5 "data/maps/OldaleTown_House2/scripts.pory"
-	releaseall
+	release
 	end
 
 
@@ -18,7 +18,7 @@ OldaleTown_House2_EventScript_VivillonChanger::
 # 12 "data/maps/OldaleTown_House2/scripts.pory"
 	msgbox OldaleTown_House2_EventScript_VivillonChanger_Text_0
 # 13 "data/maps/OldaleTown_House2/scripts.pory"
-	releaseall
+	release
 	end
 
 

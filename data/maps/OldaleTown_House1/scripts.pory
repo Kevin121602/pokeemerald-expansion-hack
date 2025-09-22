@@ -2,7 +2,7 @@ script OldaleTown_House1_EventScript_PokeballChanger{
 	lock
 	faceplayer
 	msgbox(format("Placeholder for Pokéball changing NPC."))
-	releaseall
+	release
 	end
 }
 
