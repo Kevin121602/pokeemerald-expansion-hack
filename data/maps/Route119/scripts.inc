@@ -1201,7 +1201,7 @@ Route119_Text_CanYourMonMakeSecretBase:
 # 601 "data/maps/Route119/scripts.pory"
 Route119_Text_RouteSignFortree:
 # 602 "data/maps/Route119/scripts.pory"
-	.string "ROUTE 119\n"
+	.string "Route 119\n"
 # 603 "data/maps/Route119/scripts.pory"
 	.string "{RIGHT_ARROW} FORTREE CITY$"
 # 604 "data/maps/Route119/scripts.pory"

@@ -1346,7 +1346,7 @@ Route111_Text_WinstrateFamilyDestroyedMe:
 # 703 "data/maps/Route111/scripts.pory"
 Route111_Text_RouteSignMauville:
 # 704 "data/maps/Route111/scripts.pory"
-	.string "ROUTE 111\n"
+	.string "Route 111\n"
 # 705 "data/maps/Route111/scripts.pory"
 	.string "{DOWN_ARROW} MAUVILLE CITY$"
 # 706 "data/maps/Route111/scripts.pory"
@@ -1362,7 +1362,7 @@ Route111_Text_WinstrateHouseSign:
 # 711 "data/maps/Route111/scripts.pory"
 Route111_Text_RouteSign112:
 # 712 "data/maps/Route111/scripts.pory"
-	.string "ROUTE 111\n"
+	.string "Route 111\n"
 # 713 "data/maps/Route111/scripts.pory"
 	.string "{LEFT_ARROW} ROUTE 112$"
 # 714 "data/maps/Route111/scripts.pory"
@@ -1370,7 +1370,7 @@ Route111_Text_RouteSign112:
 # 715 "data/maps/Route111/scripts.pory"
 Route111_Text_RouteSign113:
 # 716 "data/maps/Route111/scripts.pory"
-	.string "ROUTE 111\n"
+	.string "Route 111\n"
 # 717 "data/maps/Route111/scripts.pory"
 	.string "{LEFT_ARROW} ROUTE 113$"
 # 718 "data/maps/Route111/scripts.pory"
@@ -1486,7 +1486,7 @@ Route111_Text_MauvilleUncleToldMeToTakeRockSmash:
 # 773 "data/maps/Route111/scripts.pory"
 	.string "ROCK SMASH with me if I was going to\l"
 # 774 "data/maps/Route111/scripts.pory"
-	.string "ROUTE 111!\p"
+	.string "Route 111!\p"
 # 775 "data/maps/Route111/scripts.pory"
 	.string "My uncle? He lives across from\n"
 # 776 "data/maps/Route111/scripts.pory"

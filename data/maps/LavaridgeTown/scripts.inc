@@ -623,7 +623,7 @@ LavaridgeTown_Text_BrendanExplainGoGogglesChallengeDad:
 # 312 "data/maps/LavaridgeTown/scripts.pory"
 	.string "planning on going into that desert near\l"
 # 313 "data/maps/LavaridgeTown/scripts.pory"
-	.string "ROUTE 111.\p"
+	.string "Route 111.\p"
 # 314 "data/maps/LavaridgeTown/scripts.pory"
 	.string "There should be some Pokémon that\n"
 # 315 "data/maps/LavaridgeTown/scripts.pory"

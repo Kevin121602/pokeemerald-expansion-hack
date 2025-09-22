@@ -871,7 +871,7 @@ Route116_Text_NotWhatImLookingFor:
 # 436 "data/maps/Route116/scripts.pory"
 Route116_Text_RouteSignRustboro:
 # 437 "data/maps/Route116/scripts.pory"
-	.string "ROUTE 116\n"
+	.string "Route 116\n"
 # 438 "data/maps/Route116/scripts.pory"
 	.string "{LEFT_ARROW} RUSTBORO CITY$"
 # 439 "data/maps/Route116/scripts.pory"

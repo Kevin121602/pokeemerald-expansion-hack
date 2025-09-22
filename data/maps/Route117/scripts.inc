@@ -467,7 +467,7 @@ Route117_Text_AirIsTastyHere:
 # 234 "data/maps/Route117/scripts.pory"
 Route117_Text_RouteSignVerdanturf:
 # 235 "data/maps/Route117/scripts.pory"
-	.string "ROUTE 117\n"
+	.string "Route 117\n"
 # 236 "data/maps/Route117/scripts.pory"
 	.string "{LEFT_ARROW} VERDANTURF TOWN$"
 # 237 "data/maps/Route117/scripts.pory"
@@ -475,7 +475,7 @@ Route117_Text_RouteSignVerdanturf:
 # 238 "data/maps/Route117/scripts.pory"
 Route117_Text_RouteSignMauville:
 # 239 "data/maps/Route117/scripts.pory"
-	.string "ROUTE 117\n"
+	.string "Route 117\n"
 # 240 "data/maps/Route117/scripts.pory"
 	.string "{RIGHT_ARROW} MAUVILLE CITY$"
 # 241 "data/maps/Route117/scripts.pory"

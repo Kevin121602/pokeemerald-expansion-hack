@@ -195,4 +195,4 @@ Route104_PrettyPetalFlowerShop_Text_HelpingHand:
 # 98 "data/maps/Route104_PrettyPetalFlowerShop/scripts.pory"
 	.string "Would you like to learn how to\n"
 # 99 "data/maps/Route104_PrettyPetalFlowerShop/scripts.pory"
-	.string "give a HELPING HAND?$"
+	.string "give a Helping Hand?$"

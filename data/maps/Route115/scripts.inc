@@ -265,7 +265,7 @@ Route115_Text_NeverKnowWhenCavePokemonWillAppear:
 # 133 "data/maps/Route115/scripts.pory"
 Route115_Text_RouteSignRustboro:
 # 134 "data/maps/Route115/scripts.pory"
-	.string "ROUTE 115\n"
+	.string "Route 115\n"
 # 135 "data/maps/Route115/scripts.pory"
 	.string "{DOWN_ARROW} RUSTBORO CITY$"
 # 136 "data/maps/Route115/scripts.pory"

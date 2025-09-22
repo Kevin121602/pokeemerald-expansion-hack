@@ -378,7 +378,7 @@ Route113_Text_FunWalkingThroughAsh:
 # 228 "data/maps/Route113/scripts.pory"
 Route113_Text_RouteSign111:
 # 229 "data/maps/Route113/scripts.pory"
-	.string "ROUTE 113\n"
+	.string "Route 113\n"
 # 230 "data/maps/Route113/scripts.pory"
 	.string "{RIGHT_ARROW} ROUTE 111$"
 # 231 "data/maps/Route113/scripts.pory"
@@ -386,7 +386,7 @@ Route113_Text_RouteSign111:
 # 232 "data/maps/Route113/scripts.pory"
 Route113_Text_RouteSignFallarbor:
 # 233 "data/maps/Route113/scripts.pory"
-	.string "ROUTE 113\n"
+	.string "Route 113\n"
 # 234 "data/maps/Route113/scripts.pory"
 	.string "{LEFT_ARROW} FALLARBOR TOWN$"
 # 235 "data/maps/Route113/scripts.pory"

@@ -853,7 +853,7 @@ Kecleon_Text_UseDevonScopeMonAttacked:
 # 427 "data/maps/Route120/scripts.pory"
 Route120_Text_RouteSignFortree:
 # 428 "data/maps/Route120/scripts.pory"
-	.string "ROUTE 120\n"
+	.string "Route 120\n"
 # 429 "data/maps/Route120/scripts.pory"
 	.string "{LEFT_ARROW} FORTREE CITY$"
 # 430 "data/maps/Route120/scripts.pory"

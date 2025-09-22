@@ -2085,7 +2085,7 @@ Route104_Text_MrBrineysCottage:
 # 1043 "data/maps/Route104/scripts.pory"
 Route104_Text_RouteSignPetalburg:
 # 1044 "data/maps/Route104/scripts.pory"
-	.string "ROUTE 1O4\n"
+	.string "Route 1O4\n"
 # 1045 "data/maps/Route104/scripts.pory"
 	.string "{RIGHT_ARROW} PETALBURG CITY$"
 # 1046 "data/maps/Route104/scripts.pory"
@@ -2093,7 +2093,7 @@ Route104_Text_RouteSignPetalburg:
 # 1047 "data/maps/Route104/scripts.pory"
 Route104_Text_RouteSignRustboro:
 # 1048 "data/maps/Route104/scripts.pory"
-	.string "ROUTE 1O4\n"
+	.string "Route 1O4\n"
 # 1049 "data/maps/Route104/scripts.pory"
 	.string "{UP_ARROW} RUSTBORO CITY$"
 # 1050 "data/maps/Route104/scripts.pory"

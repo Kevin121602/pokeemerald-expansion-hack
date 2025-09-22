@@ -2401,7 +2401,7 @@ SlateportCity_Text_OhPlayerWeMadeDiscovery:
 # 1201 "data/maps/SlateportCity/scripts.pory"
 	.string "We found an underwater cavern on\n"
 # 1202 "data/maps/SlateportCity/scripts.pory"
-	.string "ROUTE 128.\p"
+	.string "Route 128.\p"
 # 1203 "data/maps/SlateportCity/scripts.pory"
 	.string "We think it's the habitat of a Pokémon\n"
 # 1204 "data/maps/SlateportCity/scripts.pory"

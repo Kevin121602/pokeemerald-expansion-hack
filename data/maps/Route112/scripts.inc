@@ -281,6 +281,6 @@ Route112_Text_MtChimneySign:
 # 141 "data/maps/Route112/scripts.pory"
 Route112_Text_RouteSignLavaridge:
 # 142 "data/maps/Route112/scripts.pory"
-	.string "ROUTE 112\n"
+	.string "Route 112\n"
 # 143 "data/maps/Route112/scripts.pory"
 	.string "{LEFT_ARROW} LAVARIDGE TOWN$"

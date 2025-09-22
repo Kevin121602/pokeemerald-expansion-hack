@@ -591,7 +591,7 @@ Route118_Text_CanCrossRiversWithSurf:
 # 296 "data/maps/Route118/scripts.pory"
 Route118_Text_RouteSignMauville:
 # 297 "data/maps/Route118/scripts.pory"
-	.string "ROUTE 118\n"
+	.string "Route 118\n"
 # 298 "data/maps/Route118/scripts.pory"
 	.string "{LEFT_ARROW} MAUVILLE CITY$"
 # 299 "data/maps/Route118/scripts.pory"
@@ -599,6 +599,6 @@ Route118_Text_RouteSignMauville:
 # 300 "data/maps/Route118/scripts.pory"
 Route118_Text_RouteSign119:
 # 301 "data/maps/Route118/scripts.pory"
-	.string "ROUTE 118\n"
+	.string "Route 118\n"
 # 302 "data/maps/Route118/scripts.pory"
 	.string "{UP_ARROW} ROUTE 119$"

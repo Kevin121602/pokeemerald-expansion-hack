@@ -187,7 +187,7 @@ FortreeCity_Text_SawGiganticPokemonInSky:
 # 94 "data/maps/FortreeCity/scripts.pory"
 	.string "It seemed to squirm as it flew toward\n"
 # 95 "data/maps/FortreeCity/scripts.pory"
-	.string "ROUTE 131.\p"
+	.string "Route 131.\p"
 # 96 "data/maps/FortreeCity/scripts.pory"
 	.string "By the way… Sniff…\n"
 # 97 "data/maps/FortreeCity/scripts.pory"

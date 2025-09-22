@@ -1863,7 +1863,7 @@ Route110_Text_AcroBikesDoNotQualify:
 # 944 "data/maps/Route110/scripts.pory"
 Route110_Text_SlateportCitySign:
 # 945 "data/maps/Route110/scripts.pory"
-	.string "ROUTE 110\n"
+	.string "Route 110\n"
 # 946 "data/maps/Route110/scripts.pory"
 	.string "{DOWN_ARROW} SLATEPORT CITY$"
 # 947 "data/maps/Route110/scripts.pory"
@@ -1891,7 +1891,7 @@ Route110_Text_AquaWasHere:
 # 958 "data/maps/Route110/scripts.pory"
 Route110_Text_Route103Sign:
 # 959 "data/maps/Route110/scripts.pory"
-	.string "ROUTE 110\n"
+	.string "Route 110\n"
 # 960 "data/maps/Route110/scripts.pory"
 	.string "{LEFT_ARROW} ROUTE 103$"
 # 961 "data/maps/Route110/scripts.pory"
@@ -1905,7 +1905,7 @@ Route110_Text_SeasideParkingSign:
 # 965 "data/maps/Route110/scripts.pory"
 Route110_Text_MauvilleCitySign:
 # 966 "data/maps/Route110/scripts.pory"
-	.string "ROUTE 110\n"
+	.string "Route 110\n"
 # 967 "data/maps/Route110/scripts.pory"
 	.string "{UP_ARROW} MAUVILLE CITY$"
 # 968 "data/maps/Route110/scripts.pory"
