@@ -11889,19 +11889,19 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_VOLT_SWITCH,
     },
 
-    [ITEM_TM_HEAL_BLOCK] =
+    [ITEM_TM_DIG] =
     {
         .name = _("TM105"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Prevents foe from\n"
-            "recovering for 5\n"
-            "turns."),
+            "Digs underground in\n"
+            "the 1st turn, then\n"
+            "attacks next turn."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_HEAL_BLOCK,
+        .secondaryId = MOVE_DIG,
     },
 
     [ITEM_HM_CUT] =

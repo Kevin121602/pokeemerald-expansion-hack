@@ -101,7 +101,7 @@
     F(U_TURN)\
     F(FLIP_TURN)\
     F(VOLT_SWITCH)\
-    F(HEAL_BLOCK)
+    F(DIG)
 
 #define FOREACH_HM(F) \
     F(CUT) \
