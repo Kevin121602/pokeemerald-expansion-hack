@@ -209,7 +209,7 @@ Route110_TrickHousePuzzle2_Text_WroteSecretCodeLockOpened:
 # 105 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
 	.string "on the door.\p"
 # 106 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
-	.string "“TRICK MASTER is smart.”\n"
+	.string "“Trick Master is smart.”\n"
 # 107 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
 	.string "… … … … … … … …\p"
 # 108 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
@@ -241,7 +241,7 @@ Route110_TrickHousePuzzle2_Text_TedPostBattle:
 # 121 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
 Route110_TrickHousePuzzle2_Text_PaulIntro:
 # 122 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
-	.string "Oh! You're on your first TRICK HOUSE\n"
+	.string "Oh! You're on your first Trick House\n"
 # 123 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
 	.string "challenge!$"
 # 124 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
@@ -255,7 +255,7 @@ Route110_TrickHousePuzzle2_Text_PaulDefeat:
 # 128 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
 Route110_TrickHousePuzzle2_Text_PaulPostBattle:
 # 129 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
-	.string "The TRICK MASTER rigged all the tricks\n"
+	.string "The Trick Master rigged all the tricks\n"
 # 130 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
 	.string "in this house all by himself.$"
 # 131 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
@@ -263,7 +263,7 @@ Route110_TrickHousePuzzle2_Text_PaulPostBattle:
 # 132 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
 Route110_TrickHousePuzzle2_Text_GeorgiaIntro:
 # 133 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
-	.string "I want to make my own GYM one day.\n"
+	.string "I want to make my own Gym one day.\n"
 # 134 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"
 	.string "So, I'm studying how to set traps.$"
 # 135 "data/maps/Route110_TrickHousePuzzle2/scripts.pory"

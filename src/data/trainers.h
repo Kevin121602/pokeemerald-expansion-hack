@@ -38525,7 +38525,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_WORMADAM_TRASH,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 15322
-            .heldItem = ITEM_OCCA_BERRY,
+            .heldItem = ITEM_SITRUS_BERRY,
 #line 15326
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 15324

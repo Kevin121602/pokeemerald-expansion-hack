@@ -1,9 +1,9 @@
 script Route110_TrickHouseEntrance_Apprentice{
 	lock
 	faceplayer
-	msgbox("They call me the TRICK APPRENTICE,\n"
+	msgbox("They call me the Trick Apprentice,\n"
 				"loyal protégé to the one and only\l"
-				"TRICK MASTER!\p"
+				"Trick Master!\p"
 				"Would you like to pick up any of\n"
 				"your puzzle rewards?$")
 	waitmessage
@@ -14,7 +14,7 @@ script Route110_TrickHouseEntrance_Apprentice{
 		end
 	}
 	if(var(VAR_RESULT) > VAR_TRICK_HOUSE_LEVEL){
-		msgbox("The TRICK MASTER hasn't even devised\n"
+		msgbox("The Trick Master hasn't even devised\n"
 				"of that puzzle yet!$")
 		release
 		end
@@ -35,7 +35,7 @@ script Route110_TrickHouseEntrance_Apprentice{
 				msgbox("The first reward is either a Sandshrew\n"
 					"or an Alolan Sandshrew, both with\l"
 					"Spiky Shield.\p"
-					"Does that sound good?$", MSGBOX_YESNO)
+					"Do you want this reward?$", MSGBOX_YESNO)
 				if(var(VAR_RESULT) == NO){
 					release
 					end
@@ -76,7 +76,7 @@ script Route110_TrickHouseEntrance_Apprentice{
 			} else {
 				msgbox("The second reward is either a Solrock\n"
 					"or Lunatone, both with Photon Geyser.\p"
-					"Does that sound good?$", MSGBOX_YESNO)
+					"Do you want this reward?$", MSGBOX_YESNO)
 				if(var(VAR_RESULT) == NO){
 					release
 					end
@@ -118,7 +118,7 @@ script Route110_TrickHouseEntrance_Apprentice{
 				msgbox("The third reward is either a Murkrow\n"
 					"with Oblivion Wing, or a Misdreavus\l"
 					"with Moongeist Beam.\p"
-					"Does that sound good?$", MSGBOX_YESNO)
+					"Do you want this reward?$", MSGBOX_YESNO)
 				if(var(VAR_RESULT) == NO){
 					release
 					end
@@ -161,7 +161,7 @@ script Route110_TrickHouseEntrance_Apprentice{
 					"with Psycho Boost, an Electivire with\p"
 					"Volt Tackle, or a Magmortar with\n"
 					"Armor Cannon.\p"
-					"Does that sound good?$", MSGBOX_YESNO)
+					"Do you want this reward?$", MSGBOX_YESNO)
 				if(var(VAR_RESULT) == NO){
 					release
 					end
@@ -210,7 +210,7 @@ script Route110_TrickHouseEntrance_Apprentice{
 					"with Thunderous Kick, a Hitmonchan\p"
 					"with Wicked Blow, or a Hitmontop with\n"
 					"Surging Strikes.\p"
-					"Does that sound good?$", MSGBOX_YESNO)
+					"Do you want this reward?$", MSGBOX_YESNO)
 				if(var(VAR_RESULT) == NO){
 					release
 					end
@@ -258,7 +258,7 @@ script Route110_TrickHouseEntrance_Apprentice{
 				msgbox("The sixth reward is either a Relicanth\n"
 					"with Wave Crash, or an Aerodactyl\l"
 					"with Brave Bird.\p"
-					"Does that sound good?$", MSGBOX_YESNO)
+					"Do you want this reward?$", MSGBOX_YESNO)
 				if(var(VAR_RESULT) == NO){
 					release
 					end
@@ -300,7 +300,7 @@ script Route110_TrickHouseEntrance_Apprentice{
 				msgbox("The seventh reward is either a Togetic\n"
 					"with Aeroblast, or a Clefairy with\l"
 					"Light of Ruin.\p"
-					"Does that sound good?$", MSGBOX_YESNO)
+					"Do you want this reward?$", MSGBOX_YESNO)
 				if(var(VAR_RESULT) == NO){
 					release
 					end
@@ -343,7 +343,7 @@ script Route110_TrickHouseEntrance_Apprentice{
 					"with Extreme Speed, a Kleavor with\p"
 					"Mighty Cleave, or a Scizor with\n"
 					"Gear Grind.\p"
-					"Does that sound good?$", MSGBOX_YESNO)
+					"Do you want this reward?$", MSGBOX_YESNO)
 				if(var(VAR_RESULT) == NO){
 					release
 					end
@@ -1126,14 +1126,14 @@ Route110_TrickHouseEntrance_Text_ConcealedBeneathCushion:
 Route110_TrickHouseEntrance_Text_TheyCallMeTrickMaster:
 	.string "Behold!\p"
 	.string "For I am the greatest living mystery\n"
-	.string "of a man in all of HOENN!\l"
+	.string "of a man in all of Hoenn!\l"
 	.string "They call me…\p"
-	.string "The TRICK MASTER!\n"
+	.string "The Trick Master!\n"
 	.string "Wahahaha! Glad to meet you!$"
 
 Route110_TrickHouseEntrance_Text_ComeToChallengeTrickHouse:
 	.string "You, you've come to challenge\n"
-	.string "my TRICK HOUSE, haven't you?\p"
+	.string "my Trick house, haven't you?\p"
 	.string "That's why you're here, isn't it?\n"
 	.string "Yes, it is!\p"
 	.string "Consider your challenge accepted!\p"
@@ -1151,7 +1151,7 @@ Route110_TrickHouseEntrance_Text_GoInHoleBehindScroll:
 Route110_TrickHouseEntrance_Text_LeavingOnJourneyNote:
 	.string "There is a note affixed to the scroll…\p"
 	.string "“I am leaving on a journey.\n"
-	.string "Don't look for me. TRICK MASTER”$"
+	.string "Don't look for me. Trick Master”$"
 
 Route110_TrickHouseEntrance_Text_NextTimeUseThisTrick:
 	.string "For the next time, I'll use this trick,\n"

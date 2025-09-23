@@ -53,9 +53,7 @@ RustboroCity_DevonCorp_3F_EventScript_MeetPresident::
 	giveitem ITEM_LETTER
 	setflag FLAG_HIDE_RUSTBORO_CITY_POKEMON_SCHOOL_SCOTT
 	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp, MSGBOX_DEFAULT
-	closemessage
-	call Common_EventScript_OutOfCenterPartyHeal
-	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneGoWithCautionAndCare, MSGBOX_DEFAULT
+	clearflag FLAG_BLOCK_TRICK_HOUSE
 	setflag FLAG_HIDE_ROUTE_116_WANDAS_BOYFRIEND
 	clearflag FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
 	clearflag FLAG_HIDE_RUSTURF_TUNNEL_WANDA
@@ -157,13 +155,6 @@ RustboroCity_DevonCorp_3F_EventScript_MrStone::
 
 RustboroCity_DevonCorp_3F_EventScript_GiveExpShare::
 	msgbox RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter, MSGBOX_DEFAULT
-	giveitem ITEM_EXP_SHARE
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_EXP_SHARE
-	msgbox RustboroCity_DevonCorp_3F_Text_ExplainExpShare, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-	waitmovement 0
 	release
 	end
 
@@ -216,23 +207,27 @@ RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis:
 	.string "I am a great President.\p"
 	.string "So, I'd never be so cheap as to ask\n"
 	.string "a favor for nothing in return.\p"
-	.string "That's why I want you to have this!$"
+	.string "That's why one of our scientists has\n"
+	.string "a gift for you on the second floor!\p"
 
 RustboroCity_DevonCorp_3F_Text_ReceivedPokenav:
 	.string "{PLAYER} received a Pokénav.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp:
-	.string "By the way, I've heard that sinister\n"
-	.string "criminals--Magma and Aqua, I believe--\l"
-	.string "have been making trouble far and wide.\p"
-	.string "I think it would be best if you rested\n"
-	.string "up before you go on your way.$"
+	.string "Mr. Stone: Now, you should know that\n"
+	.string "I am a great President.\p"
+	.string "So, I'd never be so cheap as to ask\n"
+	.string "a favor for nothing in return.\p"
+	.string "That's why one of our scientists has\n"
+	.string "a gift for you on the second floor!\p"
+	.string "By the way, I've heard that the Trick\n"
+	.string "House on Route 110 is open now.\p"
+	.string "Well, then, {PLAYER}{KUN}, go with caution\n"
+	.string "and care!$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneGoWithCautionAndCare:
 	.string "Mr. Stone: Well, then, {PLAYER}{KUN},\n"
-	.string "go with caution and care!\p"
-	.string "Oh! One of our scientists downstairs\n"
-	.string "had something to give you as well.$"
+	.string "go with caution and care!$"
 
 
 RustboroCity_DevonCorp_3F_Text_CountingOnYou:

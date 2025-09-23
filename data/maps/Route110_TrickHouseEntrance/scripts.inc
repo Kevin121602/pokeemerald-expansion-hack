@@ -2224,11 +2224,11 @@ Route110_TrickHouseEntrance_Text_TheyCallMeTrickMaster:
 # 1128 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	.string "For I am the greatest living mystery\n"
 # 1129 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	.string "of a man in all of HOENN!\l"
+	.string "of a man in all of Hoenn!\l"
 # 1130 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	.string "They call me…\p"
 # 1131 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	.string "The TRICK MASTER!\n"
+	.string "The Trick Master!\n"
 # 1132 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	.string "Wahahaha! Glad to meet you!$"
 # 1133 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -2238,7 +2238,7 @@ Route110_TrickHouseEntrance_Text_ComeToChallengeTrickHouse:
 # 1135 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	.string "You, you've come to challenge\n"
 # 1136 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	.string "my TRICK HOUSE, haven't you?\p"
+	.string "my Trick house, haven't you?\p"
 # 1137 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	.string "That's why you're here, isn't it?\n"
 # 1138 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -2274,7 +2274,7 @@ Route110_TrickHouseEntrance_Text_LeavingOnJourneyNote:
 # 1153 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	.string "“I am leaving on a journey.\n"
 # 1154 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	.string "Don't look for me. TRICK MASTER”$"
+	.string "Don't look for me. Trick Master”$"
 # 1155 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 
 # 1156 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -2390,15 +2390,15 @@ Route110_TrickHouseEntrance_Text_DoorLockedWriteSecretCodeHere:
 
 Route110_TrickHouseEntrance_Apprentice_Text_0:
 # 4 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	.string "They call me the TRICK APPRENTICE,\n"
+	.string "They call me the Trick Apprentice,\n"
 	.string "loyal protégé to the one and only\l"
-	.string "TRICK MASTER!\p"
+	.string "Trick Master!\p"
 	.string "Would you like to pick up any of\n"
 	.string "your puzzle rewards?$"
 
 Route110_TrickHouseEntrance_Apprentice_Text_1:
 # 17 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	.string "The TRICK MASTER hasn't even devised\n"
+	.string "The Trick Master hasn't even devised\n"
 	.string "of that puzzle yet!$"
 
 Route110_TrickHouseEntrance_Apprentice_Text_2:
@@ -2415,7 +2415,7 @@ Route110_TrickHouseEntrance_Apprentice_Text_4:
 	.string "The first reward is either a Sandshrew\n"
 	.string "or an Alolan Sandshrew, both with\l"
 	.string "Spiky Shield.\p"
-	.string "Does that sound good?$"
+	.string "Do you want this reward?$"
 
 Route110_TrickHouseEntrance_Apprentice_Text_5:
 # 48 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -2429,7 +2429,7 @@ Route110_TrickHouseEntrance_Apprentice_Text_7:
 # 77 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	.string "The second reward is either a Solrock\n"
 	.string "or Lunatone, both with Photon Geyser.\p"
-	.string "Does that sound good?$"
+	.string "Do you want this reward?$"
 
 Route110_TrickHouseEntrance_Apprentice_Text_8:
 # 89 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -2444,7 +2444,7 @@ Route110_TrickHouseEntrance_Apprentice_Text_10:
 	.string "The third reward is either a Murkrow\n"
 	.string "with Oblivion Wing, or a Misdreavus\l"
 	.string "with Moongeist Beam.\p"
-	.string "Does that sound good?$"
+	.string "Do you want this reward?$"
 
 Route110_TrickHouseEntrance_Apprentice_Text_11:
 # 131 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -2460,7 +2460,7 @@ Route110_TrickHouseEntrance_Apprentice_Text_13:
 	.string "with Psycho Boost, an Electivire with\p"
 	.string "Volt Tackle, or a Magmortar with\n"
 	.string "Armor Cannon.\p"
-	.string "Does that sound good?$"
+	.string "Do you want this reward?$"
 
 Route110_TrickHouseEntrance_Apprentice_Text_14:
 # 174 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -2480,7 +2480,7 @@ Route110_TrickHouseEntrance_Apprentice_Text_17:
 	.string "with Thunderous Kick, a Hitmonchan\p"
 	.string "with Wicked Blow, or a Hitmontop with\n"
 	.string "Surging Strikes.\p"
-	.string "Does that sound good?$"
+	.string "Do you want this reward?$"
 
 Route110_TrickHouseEntrance_Apprentice_Text_18:
 # 223 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -2499,7 +2499,7 @@ Route110_TrickHouseEntrance_Apprentice_Text_21:
 	.string "The sixth reward is either a Relicanth\n"
 	.string "with Wave Crash, or an Aerodactyl\l"
 	.string "with Brave Bird.\p"
-	.string "Does that sound good?$"
+	.string "Do you want this reward?$"
 
 Route110_TrickHouseEntrance_Apprentice_Text_22:
 # 271 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -2514,7 +2514,7 @@ Route110_TrickHouseEntrance_Apprentice_Text_24:
 	.string "The seventh reward is either a Togetic\n"
 	.string "with Aeroblast, or a Clefairy with\l"
 	.string "Light of Ruin.\p"
-	.string "Does that sound good?$"
+	.string "Do you want this reward?$"
 
 Route110_TrickHouseEntrance_Apprentice_Text_25:
 # 313 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -2530,7 +2530,7 @@ Route110_TrickHouseEntrance_Apprentice_Text_27:
 	.string "with Extreme Speed, a Kleavor with\p"
 	.string "Mighty Cleave, or a Scizor with\n"
 	.string "Gear Grind.\p"
-	.string "Does that sound good?$"
+	.string "Do you want this reward?$"
 
 Route110_TrickHouseEntrance_Apprentice_Text_28:
 # 356 "data/maps/Route110_TrickHouseEntrance/scripts.pory"

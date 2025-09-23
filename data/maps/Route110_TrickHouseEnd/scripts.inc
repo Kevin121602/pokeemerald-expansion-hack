@@ -561,7 +561,7 @@ Route110_TrickHouseEnd_Text_AllNightToShoveBoulders:
 # 281 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 Route110_TrickHouseEnd_Text_AllNightToMakeMechadolls:
 # 282 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "It took me all night to make MECHADOLLS\n"
+	.string "It took me all night to make Mechadolls\n"
 # 283 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	.string "and another to think up the quiz…\p"
 # 284 "data/maps/Route110_TrickHouseEnd/scripts.pory"
@@ -675,7 +675,7 @@ Route110_TrickHouseEnd_Text_LeavingOnJourney:
 # 338 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 Route110_TrickHouseEnd_Text_YouHaveEarnedThisReward:
 # 339 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-	.string "Talk to my APPRENTICE if you want\n"
+	.string "Talk to my Apprentice if you want\n"
 # 340 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 	.string "a reward!$"
 # 341 "data/maps/Route110_TrickHouseEnd/scripts.pory"
