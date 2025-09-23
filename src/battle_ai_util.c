@@ -4837,8 +4837,13 @@ u32 GetDoublesTargeting(u32 battlerAtk, u32 battlerDef){
             return result;
         //AI slot 2 has kills on both
         } else{
+            //if slot 2 is slower than slot 1, random targeting
+            if(aiFasterThanPartner){
+                result = RANDOM_TARGETING;
+                return result;
+            }
             //Player slot 1 faster than AI slot 1 and player slot 2 slower, AI slot 2 targets slot 1
-            if(playerSlot1FasterThanAISlot1 && !playerSlot2FasterThanAISlot1){
+            else if(playerSlot1FasterThanAISlot1 && !playerSlot2FasterThanAISlot1){
                 result = PARALLEL_TARGETING;
                 return result;
             } else if (playerSlot2FasterThanAISlot1 && !playerSlot1FasterThanAISlot1){
@@ -4883,9 +4888,13 @@ u32 GetDoublesTargeting(u32 battlerAtk, u32 battlerDef){
     } else {
         //slot 2 has kill on neither
         if(!aiPartnerHasKillSlot1 && !aiPartnerHasKillSlot2){
-            //
+            //if slot 1 is slower than slot 2, random targeting
+            if(!aiFasterThanPartner){
+                result = RANDOM_TARGETING;
+                return result;
+            }
             //player slot 1 faster than ai slot 2, player slot 2 slower, AI slot 1 targets player slot 1
-            if(playerSlot1FasterThanAISlot2 && !playerSlot2FasterThanAISlot2){
+            else if(playerSlot1FasterThanAISlot2 && !playerSlot2FasterThanAISlot2){
                 result = DIAGONAL_TARGETING;
                 return result;
             //player slot 2 faster than ai slot 2, player slot 1 slower, AI slot 1 targets player slot 2
