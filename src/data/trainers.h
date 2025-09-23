@@ -17224,7 +17224,7 @@ F_TRAINER_FEMALE |
 #line 6914
             .lvl = 11,
 #line 6915
-            .nature = NATURE_ADAMANT,
+            .nature = NATURE_LONELY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 6917
@@ -28331,7 +28331,7 @@ F_TRAINER_FEMALE |
                 MOVE_BUG_BITE,
                 MOVE_SLASH,
                 MOVE_NIGHT_SLASH,
-                MOVE_ENDURE,
+                MOVE_DRILL_RUN,
             },
             },
             {

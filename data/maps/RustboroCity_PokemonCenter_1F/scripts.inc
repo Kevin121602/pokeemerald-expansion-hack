@@ -67,9 +67,9 @@ RustboroCity_PokemonCenter_1F_EventScript_Girl::
 # 34 "data/maps/RustboroCity_PokemonCenter_1F/scripts.pory"
 RustboroCity_PokemonCenter_1F_Text_PokemonHavePersonalities:
 # 35 "data/maps/RustboroCity_PokemonCenter_1F/scripts.pory"
-	.string "My Pokémon has a NAIVE nature, and my\n"
+	.string "My Pokémon has a Naive nature, and my\n"
 # 36 "data/maps/RustboroCity_PokemonCenter_1F/scripts.pory"
-	.string "friend's has a JOLLY nature.\p"
+	.string "friend's has a Jolly nature.\p"
 # 37 "data/maps/RustboroCity_PokemonCenter_1F/scripts.pory"
 	.string "It's fascinating how Pokémon have\n"
 # 38 "data/maps/RustboroCity_PokemonCenter_1F/scripts.pory"
@@ -95,4 +95,4 @@ RustboroCity_PokemonCenter_1F_Text_HMCutNextDoor:
 # 48 "data/maps/RustboroCity_PokemonCenter_1F/scripts.pory"
 	.string "I used it to teach my Pokémon how to\n"
 # 49 "data/maps/RustboroCity_PokemonCenter_1F/scripts.pory"
-	.string "CUT down skinny trees.$"
+	.string "Cut down skinny trees.$"

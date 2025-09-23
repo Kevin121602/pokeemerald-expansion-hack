@@ -284,7 +284,7 @@ Route104_Text_MiaNotEnoughMons:
 
 Route104_Text_IvanIntro:
 	.string "Why keep it a secret?\n"
-	.string "I'm the WATER Pokémon expert!\p"
+	.string "I'm the Water Pokémon expert!\p"
 	.string "Huh?\n"
 	.string "You don't know me?$"
 

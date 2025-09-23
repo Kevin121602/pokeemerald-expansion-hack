@@ -37,7 +37,7 @@ RustboroCity_Flat2_1F_EventScript_Skitty::
 # 19 "data/maps/RustboroCity_Flat2_1F/scripts.pory"
 RustboroCity_Flat2_1F_Text_DevonWorkersLiveHere:
 # 20 "data/maps/RustboroCity_Flat2_1F/scripts.pory"
-	.string "DEVON CORPORATION's workers live in\n"
+	.string "Devon Corporation's workers live in\n"
 # 21 "data/maps/RustboroCity_Flat2_1F/scripts.pory"
 	.string "this building.$"
 # 22 "data/maps/RustboroCity_Flat2_1F/scripts.pory"
@@ -45,4 +45,4 @@ RustboroCity_Flat2_1F_Text_DevonWorkersLiveHere:
 # 23 "data/maps/RustboroCity_Flat2_1F/scripts.pory"
 RustboroCity_Flat2_1F_Text_Skitty:
 # 24 "data/maps/RustboroCity_Flat2_1F/scripts.pory"
-	.string "SKITTY: Gyaaaah!$"
+	.string "Skitty: Gyaaaah!$"

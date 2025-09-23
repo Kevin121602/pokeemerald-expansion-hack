@@ -25,7 +25,7 @@ RustboroCity_Flat2_3F_EventScript_Woman::
 # 13 "data/maps/RustboroCity_Flat2_3F/scripts.pory"
 RustboroCity_Flat2_3F_Text_PresidentCollectsRareStones:
 # 14 "data/maps/RustboroCity_Flat2_3F/scripts.pory"
-	.string "DEVON's PRESIDENT likes to collect\n"
+	.string "Devon's President likes to collect\n"
 # 15 "data/maps/RustboroCity_Flat2_3F/scripts.pory"
 	.string "rare stones.$"
 # 16 "data/maps/RustboroCity_Flat2_3F/scripts.pory"
@@ -33,6 +33,6 @@ RustboroCity_Flat2_3F_Text_PresidentCollectsRareStones:
 # 17 "data/maps/RustboroCity_Flat2_3F/scripts.pory"
 RustboroCity_Flat2_3F_Text_PresidentsSonAlsoCollectsRareStones:
 # 18 "data/maps/RustboroCity_Flat2_3F/scripts.pory"
-	.string "I think the PRESIDENT's son also\n"
+	.string "I think the President's son also\n"
 # 19 "data/maps/RustboroCity_Flat2_3F/scripts.pory"
 	.string "collects rare stones.$"
