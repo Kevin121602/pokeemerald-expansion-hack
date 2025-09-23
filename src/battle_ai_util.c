@@ -3208,7 +3208,7 @@ bool32 ShouldRollout(u32 battlerAtk, u32 battlerDef, u32 move)
         return FALSE;
     }
 
-    if ((noOfHitsToFaint >= 2 && aiIsFaster) || (noOfHitsToFaint >= 3 && !aiIsFaster))
+    if ((!CanTargetFaintAi(battlerDef, battlerAtk) && aiIsFaster) || (noOfHitsToFaint >= 3 && !aiIsFaster))
         return TRUE;    // chance to trap if decent mu
 
     return FALSE;

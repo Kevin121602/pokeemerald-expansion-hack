@@ -602,7 +602,7 @@ RustboroCity_EventScript_ReturnGoods::
 	call_if_eq VAR_TEMP_1, 7, RustboroCity_EventScript_Employee2_Approach3
 	call_if_eq VAR_TEMP_1, 8, RustboroCity_EventScript_Employee2_Approach4
 	msgbox RustboroCity_Text_YouGotItThankYou, MSGBOX_DEFAULT
-	giveitem ITEM_BINDING_BAND
+	giveitem ITEM_HEART_SCALE
 	call_if_eq VAR_RESULT, FALSE, RustboroCity_EventScript_BagFull
 	msgbox RustboroCity_Text_PleaseComeWithMe, MSGBOX_DEFAULT
 	closemessage

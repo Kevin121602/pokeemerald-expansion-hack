@@ -33278,7 +33278,7 @@ F_TRAINER_FEMALE |
 #line 13217
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 13216
-            .ability = ABILITY_OVERCOAT,
+            .ability = ABILITY_DEFEATIST,
 #line 13214
             .lvl = 14,
 #line 13215

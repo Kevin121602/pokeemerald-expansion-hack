@@ -1204,7 +1204,7 @@ RustboroCity_EventScript_ReturnGoods::
 # 604 "data/maps/RustboroCity/scripts.pory"
 	msgbox RustboroCity_Text_YouGotItThankYou, MSGBOX_DEFAULT
 # 605 "data/maps/RustboroCity/scripts.pory"
-	giveitem ITEM_BINDING_BAND
+	giveitem ITEM_HEART_SCALE
 # 606 "data/maps/RustboroCity/scripts.pory"
 	call_if_eq VAR_RESULT, FALSE, RustboroCity_EventScript_BagFull
 # 607 "data/maps/RustboroCity/scripts.pory"
