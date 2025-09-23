@@ -4793,8 +4793,17 @@ u32 GetDoublesTargeting(u32 battlerAtk, u32 battlerDef){
     u32 abilityAI = AI_DATA->abilities[battlerAtk];
     u32 abilityAIPartner = AI_DATA->abilities[aiPartner];
 
+    u32 speedBattler, speedBattlerPartner;
+    u32 holdEffect = AI_DATA->holdEffects[battlerDef];
+    u32 holdEffectPartner = AI_DATA->holdEffects[playerPartner];
+    u32 ability = AI_DATA->abilities[battlerDef];
+    u32 abilityPartner = AI_DATA->abilities[playerPartner];
+
     speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAtk, abilityAI, holdEffectAI);
     speedBattlerAIPartner   = GetBattlerTotalSpeedStatArgs(aiPartner, abilityAIPartner, holdEffectAIPartner);
+
+    speedBattler = GetBattlerTotalSpeedStatArgs(battlerDef, ability, holdEffect);
+    speedBattlerPartner   = GetBattlerTotalSpeedStatArgs(playerPartner, abilityPartner, holdEffectPartner);
 
     bool32 aiHasKillSlot1 = (NoOfHitsForTargetToFaintAI(battlerAtk, battlerDef) <= 1);
     bool32 aiHasKillSlot2 = (NoOfHitsForTargetToFaintAI(battlerAtk, playerPartner) <= 1);
@@ -4802,6 +4811,10 @@ u32 GetDoublesTargeting(u32 battlerAtk, u32 battlerDef){
     bool32 aiPartnerHasKillSlot2 = (NoOfHitsForTargetToFaintAI(aiPartner, playerPartner) <= 1);
 
     bool32 aiFasterThanPartner = (speedBattlerAI > speedBattlerAIPartner);
+    bool32 playerSlot1FasterThanAISlot1 = (speedBattler > speedBattlerAI);
+    bool32 playerSlot1FasterThanAISlot2 = (speedBattler > speedBattlerAIPartner);
+    bool32 playerSlot2FasterThanAISlot1 = (speedBattlerPartner > speedBattlerAI);
+    bool32 playerSlot2FasterThanAISlot2 = (speedBattlerPartner > speedBattlerAIPartner);
 
     //if any slot has a dead mon return default targeting
     if(gBattleMons[battlerAtk].hp == 0 || gBattleMons[battlerDef].hp == 0 || gBattleMons[aiPartner].hp == 0 || gBattleMons[playerPartner].hp == 0){
@@ -4814,7 +4827,7 @@ u32 GetDoublesTargeting(u32 battlerAtk, u32 battlerDef){
         if(!aiPartnerHasKillSlot1 && !aiPartnerHasKillSlot2){
             result = DEFAULT_TARGETING;
             return result;
-        //only slot 1 has a kill on slot 2
+        //only slot 2 has a kill on player slot 1
         } else if (aiPartnerHasKillSlot1 && !aiPartnerHasKillSlot2){
             result = PARALLEL_TARGETING;
             return result;
@@ -4822,9 +4835,19 @@ u32 GetDoublesTargeting(u32 battlerAtk, u32 battlerDef){
         } else if (!aiPartnerHasKillSlot1 && aiPartnerHasKillSlot2){
             result = DIAGONAL_TARGETING;
             return result;
+        //AI slot 2 has kills on both
         } else{
-            result = RANDOM_TARGETING;
-            return result;
+            //Player slot 1 faster than AI slot 1 and player slot 2 slower, AI slot 2 targets slot 1
+            if(playerSlot1FasterThanAISlot1 && !playerSlot2FasterThanAISlot1){
+                result = PARALLEL_TARGETING;
+                return result;
+            } else if (playerSlot2FasterThanAISlot1 && !playerSlot1FasterThanAISlot1){
+                result = DIAGONAL_TARGETING;
+                return result;
+            } else {
+                result = RANDOM_TARGETING;
+                return result;
+            }
         }
     } else if (aiHasKillSlot1 && !aiHasKillSlot2){
         if(aiPartnerHasKillSlot1 && !aiPartnerHasKillSlot2){
@@ -4860,11 +4883,22 @@ u32 GetDoublesTargeting(u32 battlerAtk, u32 battlerDef){
     } else {
         //slot 2 has kill on neither
         if(!aiPartnerHasKillSlot1 && !aiPartnerHasKillSlot2){
-            result = RANDOM_TARGETING;
-            return result;
+            //
+            //player slot 1 faster than ai slot 2, player slot 2 slower, AI slot 1 targets player slot 1
+            if(playerSlot1FasterThanAISlot2 && !playerSlot2FasterThanAISlot2){
+                result = DIAGONAL_TARGETING;
+                return result;
+            //player slot 2 faster than ai slot 2, player slot 1 slower, AI slot 1 targets player slot 2
+            } else if (playerSlot2FasterThanAISlot2 && !playerSlot1FasterThanAISlot2){
+                result = PARALLEL_TARGETING;
+                return result;
+            } else {
+                result = RANDOM_TARGETING;
+                return result;
+            }
         //slot 2 only has kill on slot 2
         } else if(!aiPartnerHasKillSlot1 && aiPartnerHasKillSlot2){
-            result = DEFAULT_TARGETING;
+            result = DIAGONAL_TARGETING;
             return result;
         //slot 2 only has kill on slot 1
         } else if(aiPartnerHasKillSlot1 && !aiPartnerHasKillSlot2){
@@ -4872,8 +4906,34 @@ u32 GetDoublesTargeting(u32 battlerAtk, u32 battlerDef){
             return result;
         //both AI mons see kill on both player mons
         } else {
-            result = RANDOM_TARGETING;
-            return result;
+            //if ai slot 1 is faster than ai slot 2, look at whether or not player has one mon thats faster than ai slot 2
+            if(aiFasterThanPartner){
+                //player slot 1 faster than ai slot 2, player slot 2 slower, AI slot 1 targets player slot 1
+                if(playerSlot1FasterThanAISlot2 && !playerSlot2FasterThanAISlot2){
+                    result = DIAGONAL_TARGETING;
+                    return result;
+            //player slot 2 faster than ai slot 2, player slot 1 slower, AI slot 1 targets player slot 2
+                } else if (playerSlot2FasterThanAISlot2 && !playerSlot1FasterThanAISlot2){
+                    result = PARALLEL_TARGETING;
+                    return result;
+                } else {
+                    result = RANDOM_TARGETING;
+                    return result;
+                }
+            } else {
+                //if ai slot 2 is faster than ai slot 1, look at whether or not player has one mon thats faster than ai slot 1
+                //Player slot 1 faster than AI slot 1 and player slot 2 slower, AI slot 2 targets slot 1
+                if(playerSlot1FasterThanAISlot1 && !playerSlot2FasterThanAISlot1){
+                    result = PARALLEL_TARGETING;
+                    return result;
+                } else if (playerSlot2FasterThanAISlot1 && !playerSlot1FasterThanAISlot1){
+                    result = DIAGONAL_TARGETING;
+                    return result;
+                } else {
+                    result = RANDOM_TARGETING;
+                    return result;
+            }
+            }
         }
     }
 }
