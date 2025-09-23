@@ -1913,7 +1913,7 @@ Route110_Text_MauvilleCitySign:
 # 969 "data/maps/Route110/scripts.pory"
 Route110_Text_TrainerTipsPrlzSleep:
 # 970 "data/maps/Route110/scripts.pory"
-	.string "TRAINER TIPS\p"
+	.string "Trainer Tips\p"
 # 971 "data/maps/Route110/scripts.pory"
 	.string "The foe can be made helpless by\n"
 # 972 "data/maps/Route110/scripts.pory"
@@ -1927,7 +1927,7 @@ Route110_Text_TrainerTipsPrlzSleep:
 # 976 "data/maps/Route110/scripts.pory"
 Route110_Text_TrainerTipsRegisterItems:
 # 977 "data/maps/Route110/scripts.pory"
-	.string "TRAINER TIPS\p"
+	.string "Trainer Tips\p"
 # 978 "data/maps/Route110/scripts.pory"
 	.string "The items in the BAG can be reorganized\n"
 # 979 "data/maps/Route110/scripts.pory"

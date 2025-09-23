@@ -3,13 +3,13 @@
 # 2 "data/maps/RusturfTunnel/scripts.pory"
 .equ LOCALID_WANDAS_BF, 1
 # 3 "data/maps/RusturfTunnel/scripts.pory"
-.set LOCALID_BRINEY, 5
+.set LOCALID_BRINEY, 4
 # 4 "data/maps/RusturfTunnel/scripts.pory"
-.set LOCALID_GRUNT, 6
+.set LOCALID_GRUNT, 5
 # 5 "data/maps/RusturfTunnel/scripts.pory"
-.set LOCALID_PEEKO, 7
+.set LOCALID_PEEKO, 6
 # 6 "data/maps/RusturfTunnel/scripts.pory"
-.set LOCALID_ROXANNE, 11
+.set LOCALID_ROXANNE, 9
 # 7 "data/maps/RusturfTunnel/scripts.pory"
 .equ LOCALID_WANDA, 10
 # 8 "data/maps/RusturfTunnel/scripts.pory"
@@ -943,7 +943,7 @@ RusturfTunnel_Text_ComeAndGetSome:
 # 472 "data/maps/RusturfTunnel/scripts.pory"
 RusturfTunnel_Text_Peeko:
 # 473 "data/maps/RusturfTunnel/scripts.pory"
-	.string "PEEKO: Pii pihyoh!$"
+	.string "Peeko: Pii pihyoh!$"
 # 474 "data/maps/RusturfTunnel/scripts.pory"
 
 # 475 "data/maps/RusturfTunnel/scripts.pory"
@@ -977,13 +977,13 @@ RusturfTunnel_Text_GruntTakePackage:
 # 489 "data/maps/RusturfTunnel/scripts.pory"
 	.string "This is plain not right…\p"
 # 490 "data/maps/RusturfTunnel/scripts.pory"
-	.string "The BOSS told me this would be a\n"
+	.string "The Boss told me this would be a\n"
 # 491 "data/maps/RusturfTunnel/scripts.pory"
 	.string "slick-and-easy job to pull.\p"
 # 492 "data/maps/RusturfTunnel/scripts.pory"
 	.string "All I had to do was steal some package\n"
 # 493 "data/maps/RusturfTunnel/scripts.pory"
-	.string "from DEVON.\p"
+	.string "from Devon.\p"
 # 494 "data/maps/RusturfTunnel/scripts.pory"
 	.string "Tch!\n"
 # 495 "data/maps/RusturfTunnel/scripts.pory"
@@ -993,7 +993,7 @@ RusturfTunnel_Text_GruntTakePackage:
 # 497 "data/maps/RusturfTunnel/scripts.pory"
 RusturfTunnel_Text_PeekoGladToSeeYouSafe:
 # 498 "data/maps/RusturfTunnel/scripts.pory"
-	.string "PEEKO!\n"
+	.string "Peeko!\n"
 # 499 "data/maps/RusturfTunnel/scripts.pory"
 	.string "Am I glad to see you're safe!$"
 # 500 "data/maps/RusturfTunnel/scripts.pory"
@@ -1001,9 +1001,9 @@ RusturfTunnel_Text_PeekoGladToSeeYouSafe:
 # 501 "data/maps/RusturfTunnel/scripts.pory"
 RusturfTunnel_Text_ThankYouLetsGoHomePeeko:
 # 502 "data/maps/RusturfTunnel/scripts.pory"
-	.string "PEEKO owes her life to you!\p"
+	.string "Peeko owes her life to you!\p"
 # 503 "data/maps/RusturfTunnel/scripts.pory"
-	.string "They call me MR. BRINEY.\n"
+	.string "They call me Mr. Briney.\n"
 # 504 "data/maps/RusturfTunnel/scripts.pory"
 	.string "And, you are?\p"
 # 505 "data/maps/RusturfTunnel/scripts.pory"
@@ -1021,13 +1021,13 @@ RusturfTunnel_Text_ThankYouLetsGoHomePeeko:
 # 511 "data/maps/RusturfTunnel/scripts.pory"
 	.string "You can usually find me in my cottage\n"
 # 512 "data/maps/RusturfTunnel/scripts.pory"
-	.string "by the sea in DEWFORD TOWN.\p"
+	.string "by the sea in Dewford Town.\p"
 # 513 "data/maps/RusturfTunnel/scripts.pory"
-	.string "Come, PEEKO, we should make our way\n"
+	.string "Come, Peeko, we should make our way\n"
 # 514 "data/maps/RusturfTunnel/scripts.pory"
 	.string "home.\p"
 # 515 "data/maps/RusturfTunnel/scripts.pory"
-	.string "PEEKO: Pihyoh!$"
+	.string "Peeko: Pihyoh!$"
 # 516 "data/maps/RusturfTunnel/scripts.pory"
 
 # 517 "data/maps/RusturfTunnel/scripts.pory"
@@ -1037,7 +1037,7 @@ RusturfTunnel_Text_RoxanneThankYou:
 # 519 "data/maps/RusturfTunnel/scripts.pory"
 	.string "awful grunt!\p"
 # 520 "data/maps/RusturfTunnel/scripts.pory"
-	.string "I was just looking for ROCK Pokémon\n"
+	.string "I was just looking for Rock Pokémon\n"
 # 521 "data/maps/RusturfTunnel/scripts.pory"
 	.string "in this cave when he ambushed me!\p"
 # 522 "data/maps/RusturfTunnel/scripts.pory"
@@ -1049,7 +1049,7 @@ RusturfTunnel_Text_RoxanneThankYou:
 # 525 "data/maps/RusturfTunnel/scripts.pory"
 	.string "I'd love to take you on at my gym\n"
 # 526 "data/maps/RusturfTunnel/scripts.pory"
-	.string "in RUSTBORO CITY.\p"
+	.string "in Rustboro City.\p"
 # 527 "data/maps/RusturfTunnel/scripts.pory"
 	.string "See ya!$"
 # 528 "data/maps/RusturfTunnel/scripts.pory"

@@ -1119,7 +1119,7 @@ Route109_Text_SeashoreHouseSign:
 # 560 "data/maps/Route109/scripts.pory"
 Route109_Text_TrainerTipsSign:
 # 561 "data/maps/Route109/scripts.pory"
-	.string "TRAINER TIPS\p"
+	.string "Trainer Tips\p"
 # 562 "data/maps/Route109/scripts.pory"
 	.string "Pokémon at the same level may not\n"
 # 563 "data/maps/Route109/scripts.pory"

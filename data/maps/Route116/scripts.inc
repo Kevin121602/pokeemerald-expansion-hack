@@ -1,7 +1,7 @@
 # 1 "data/maps/Route116/scripts.pory"
 
 # 2 "data/maps/Route116/scripts.pory"
-.set LOCALID_BRINEY, 18
+.set LOCALID_BRINEY, 17
 # 3 "data/maps/Route116/scripts.pory"
 .set LOCALID_WANDAS_BF_OUTSIDE, 21
 # 4 "data/maps/Route116/scripts.pory"
@@ -691,15 +691,15 @@ Route116_Text_ScoundrelMadeOffWithPeeko:
 # 346 "data/maps/Route116/scripts.pory"
 	.string "Ohhh, what am I to do?\p"
 # 347 "data/maps/Route116/scripts.pory"
-	.string "We were on our walk, PEEKO and I, when\n"
+	.string "We were on our walk, Peeko and I, when\n"
 # 348 "data/maps/Route116/scripts.pory"
 	.string "we were jumped by an odd thug…\p"
 # 349 "data/maps/Route116/scripts.pory"
 	.string "The scoundrel made off with my\n"
 # 350 "data/maps/Route116/scripts.pory"
-	.string "darling PEEKO!\p"
+	.string "darling Peeko!\p"
 # 351 "data/maps/Route116/scripts.pory"
-	.string "Wrrrooooooaaaar! PEEKO!$"
+	.string "Wrrrooooooaaaar! Peeko!$"
 # 352 "data/maps/Route116/scripts.pory"
 
 # 353 "data/maps/Route116/scripts.pory"
@@ -873,15 +873,15 @@ Route116_Text_RouteSignRustboro:
 # 437 "data/maps/Route116/scripts.pory"
 	.string "Route 116\n"
 # 438 "data/maps/Route116/scripts.pory"
-	.string "{LEFT_ARROW} RUSTBORO CITY$"
+	.string "{LEFT_ARROW} Rustboro City$"
 # 439 "data/maps/Route116/scripts.pory"
 
 # 440 "data/maps/Route116/scripts.pory"
 Route116_Text_RusturfTunnelSign:
 # 441 "data/maps/Route116/scripts.pory"
-	.string "RUSTURF TUNNEL\n"
+	.string "Rusturf Tunnel\n"
 # 442 "data/maps/Route116/scripts.pory"
-	.string "“Linking RUSTBORO and VERDANTURF\p"
+	.string "“Linking Rustboro and Verdanturf\p"
 # 443 "data/maps/Route116/scripts.pory"
 	.string "“The tunnel project has been\n"
 # 444 "data/maps/Route116/scripts.pory"
@@ -891,13 +891,13 @@ Route116_Text_RusturfTunnelSign:
 # 446 "data/maps/Route116/scripts.pory"
 Route116_Text_TunnelersRestHouse:
 # 447 "data/maps/Route116/scripts.pory"
-	.string "ROCK SMASH HOUSE$"
+	.string "Rock Smash House$"
 # 448 "data/maps/Route116/scripts.pory"
 
 # 449 "data/maps/Route116/scripts.pory"
 Route116_Text_TrainerTipsBToStopEvolution:
 # 450 "data/maps/Route116/scripts.pory"
-	.string "TRAINER TIPS\p"
+	.string "Trainer Tips\p"
 # 451 "data/maps/Route116/scripts.pory"
 	.string "If you want to stop a Pokémon from\n"
 # 452 "data/maps/Route116/scripts.pory"
@@ -913,14 +913,14 @@ Route116_Text_TrainerTipsBToStopEvolution:
 # 457 "data/maps/Route116/scripts.pory"
 Route116_Text_TrainerTipsBagHasPockets:
 # 458 "data/maps/Route116/scripts.pory"
-	.string "TRAINER TIPS\p"
+	.string "Trainer Tips\p"
 # 459 "data/maps/Route116/scripts.pory"
-	.string "Your BAG has several POCKETS.\p"
+	.string "Your Bag has several Pockets.\p"
 # 460 "data/maps/Route116/scripts.pory"
 	.string "Items you obtain are automatically\n"
 # 461 "data/maps/Route116/scripts.pory"
-	.string "placed in the appropriate POCKETS.\p"
+	.string "placed in the appropriate Pockets.\p"
 # 462 "data/maps/Route116/scripts.pory"
-	.string "No TRAINER can afford to be without\n"
+	.string "No Trainer can afford to be without\n"
 # 463 "data/maps/Route116/scripts.pory"
-	.string "a BAG of their own.$"
+	.string "a Bag of their own.$"

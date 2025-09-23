@@ -1,9 +1,9 @@
 raw `
 .equ LOCALID_WANDAS_BF, 1
-.set LOCALID_BRINEY, 5
-.set LOCALID_GRUNT, 6
-.set LOCALID_PEEKO, 7
-.set LOCALID_ROXANNE, 11
+.set LOCALID_BRINEY, 4
+.set LOCALID_GRUNT, 5
+.set LOCALID_PEEKO, 6
+.set LOCALID_ROXANNE, 9
 .equ LOCALID_WANDA, 10
 
 RusturfTunnel_MapScripts::
@@ -470,7 +470,7 @@ RusturfTunnel_Text_ComeAndGetSome:
 	.string "Come and get some, then!$"
 
 RusturfTunnel_Text_Peeko:
-	.string "PEEKO: Pii pihyoh!$"
+	.string "Peeko: Pii pihyoh!$"
 
 RusturfTunnel_Text_GruntIntro:
 	.string "Grah, keelhaul it all!\p"
@@ -487,20 +487,20 @@ RusturfTunnel_Text_GruntDefeat:
 
 RusturfTunnel_Text_GruntTakePackage:
 	.string "This is plain not right…\p"
-	.string "The BOSS told me this would be a\n"
+	.string "The Boss told me this would be a\n"
 	.string "slick-and-easy job to pull.\p"
 	.string "All I had to do was steal some package\n"
-	.string "from DEVON.\p"
+	.string "from Devon.\p"
 	.string "Tch!\n"
 	.string "You want it back that badly, take it!$"
 
 RusturfTunnel_Text_PeekoGladToSeeYouSafe:
-	.string "PEEKO!\n"
+	.string "Peeko!\n"
 	.string "Am I glad to see you're safe!$"
 
 RusturfTunnel_Text_ThankYouLetsGoHomePeeko:
-	.string "PEEKO owes her life to you!\p"
-	.string "They call me MR. BRINEY.\n"
+	.string "Peeko owes her life to you!\p"
+	.string "They call me Mr. Briney.\n"
 	.string "And, you are?\p"
 	.string "… … … … … … … …\n"
 	.string "… … … … … … … …\p"
@@ -509,21 +509,21 @@ RusturfTunnel_Text_ThankYouLetsGoHomePeeko:
 	.string "Now, if there's anything that troubles\n"
 	.string "you, don't hesitate to tell me!\p"
 	.string "You can usually find me in my cottage\n"
-	.string "by the sea in DEWFORD TOWN.\p"
-	.string "Come, PEEKO, we should make our way\n"
+	.string "by the sea in Dewford Town.\p"
+	.string "Come, Peeko, we should make our way\n"
 	.string "home.\p"
-	.string "PEEKO: Pihyoh!$"
+	.string "Peeko: Pihyoh!$"
 
 RusturfTunnel_Text_RoxanneThankYou:
 	.string "Thank you for dealing with that\n"
 	.string "awful grunt!\p"
-	.string "I was just looking for ROCK Pokémon\n"
+	.string "I was just looking for Rock Pokémon\n"
 	.string "in this cave when he ambushed me!\p"
 	.string "…\p"
 	.string "{PLAYER} is it? you seem like a very\n"
 	.string "capable trainer!\p"
 	.string "I'd love to take you on at my gym\n"
-	.string "in RUSTBORO CITY.\p"
+	.string "in Rustboro City.\p"
 	.string "See ya!$"
 
 RusturfTunnel_Text_WhyCantTheyKeepDigging:

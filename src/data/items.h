@@ -10685,21 +10685,6 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_DRAGON_PULSE,
     },
 
-    [ITEM_TM_DRAGON_TAIL] =
-    {
-        .name = _("TM20"),
-        .price = 3000,
-        .description = COMPOUND_STRING(
-            "Knocks away target\n"
-            "and brings in a\n"
-            "different Pokémon."),
-        .importance = I_REUSABLE_TMS,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_DRAGON_TAIL,
-    },
-
     [ITEM_TM_DRAIN_PUNCH] =
     {
         .name = _("TM21"),
@@ -10803,21 +10788,6 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
         .secondaryId = MOVE_ENERGY_BALL,
-    },
-
-    [ITEM_TM_EXPANDING_FORCE] =
-    {
-        .name = _("TM28"),
-        .price = 2000,
-        .description = COMPOUND_STRING(
-            "Attacks with psychic\n"
-            "power. Hits all foes\n"
-            "in Psychic Terrain."),
-        .importance = I_REUSABLE_TMS,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_EXPANDING_FORCE,
     },
 
     [ITEM_TM_EXPLOSION] =
@@ -10925,21 +10895,6 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_FOCUS_PUNCH,
     },
 
-    [ITEM_TM_FROST_BREATH] =
-    {
-        .name = _("TM36"),
-        .price = 1000,
-        .description = COMPOUND_STRING(
-            "Cold breath which\n"
-            "always results in\n"
-            "a Critical Hit."),
-        .importance = I_REUSABLE_TMS,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_FROST_BREATH,
-    },
-
     [ITEM_TM_GIGA_DRAIN] =
     {
         .name = _("TM37"),
@@ -10968,21 +10923,6 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
         .secondaryId = MOVE_GRASS_KNOT,
-    },
-
-    [ITEM_TM_GRASSY_GLIDE] =
-    {
-        .name = _("TM39"),
-        .price = 3000,
-        .description = COMPOUND_STRING(
-            "Gliding attack that\n"
-            "goes first in\n"
-            "Grassy Terrain."),
-        .importance = I_REUSABLE_TMS,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_GRASSY_GLIDE,
     },
 
     [ITEM_TM_GRAVITY] =
@@ -11377,21 +11317,6 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
         .secondaryId = MOVE_REFLECT,
-    },
-
-    [ITEM_TM_RISING_VOLTAGE] =
-    {
-        .name = _("TM66"),
-        .price = 3000,
-        .description = COMPOUND_STRING(
-            "Strong voltage that\n"
-            "gets boosted in\n"
-            "Electric Terrain."),
-        .importance = I_REUSABLE_TMS,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_RISING_VOLTAGE,
     },
 
     [ITEM_TM_ROCK_BLAST] =
@@ -11902,6 +11827,81 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
         .secondaryId = MOVE_ZEN_HEADBUTT,
+    },
+
+    [ITEM_TM_PIN_MISSILE] =
+    {
+        .name = _("TM101"),
+        .price = 3000,
+        .description = COMPOUND_STRING(
+            "Shoots 2 to 5 pins\n"
+            "in a row to strike\n"
+            "the foe."),
+        .importance = I_REUSABLE_TMS,
+        .pocket = POCKET_TM_HM,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
+        .secondaryId = MOVE_PIN_MISSILE,
+    },
+
+    [ITEM_TM_U_TURN] =
+    {
+        .name = _("TM102"),
+        .price = 3000,
+        .description = COMPOUND_STRING(
+            "Attacks foe then\n"
+            "rushes back to\n"
+            "switch out."),
+        .importance = I_REUSABLE_TMS,
+        .pocket = POCKET_TM_HM,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
+        .secondaryId = MOVE_U_TURN,
+    },
+
+    [ITEM_TM_FLIP_TURN] =
+    {
+        .name = _("TM103"),
+        .price = 3000,
+        .description = COMPOUND_STRING(
+            "Attacks foe then\n"
+            "swims back to\n"
+            "switch out."),
+        .importance = I_REUSABLE_TMS,
+        .pocket = POCKET_TM_HM,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
+        .secondaryId = MOVE_FLIP_TURN,
+    },
+
+    [ITEM_TM_VOLT_SWITCH] =
+    {
+        .name = _("TM104"),
+        .price = 3000,
+        .description = COMPOUND_STRING(
+            "Shocks foe then\n"
+            "rushes back to\n"
+            "switch out."),
+        .importance = I_REUSABLE_TMS,
+        .pocket = POCKET_TM_HM,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
+        .secondaryId = MOVE_VOLT_SWITCH,
+    },
+
+    [ITEM_TM_HEAL_BLOCK] =
+    {
+        .name = _("TM105"),
+        .price = 3000,
+        .description = COMPOUND_STRING(
+            "Prevents foe from\n"
+            "recovering for 5\n"
+            "turns."),
+        .importance = I_REUSABLE_TMS,
+        .pocket = POCKET_TM_HM,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
+        .secondaryId = MOVE_HEAL_BLOCK,
     },
 
     [ITEM_HM_CUT] =

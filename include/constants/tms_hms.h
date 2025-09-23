@@ -21,7 +21,6 @@
     F(DEFOG) \
     F(DRAGON_CLAW) \
     F(DRAGON_PULSE) \
-    F(DRAGON_TAIL) \
     F(DRAIN_PUNCH) \
     F(DRAINING_KISS) \
     F(DUAL_WINGBEAT) \
@@ -29,7 +28,6 @@
     F(EARTHQUAKE) \
     F(ELECTROWEB) \
     F(ENERGY_BALL) \
-    F(EXPANDING_FORCE) \
     F(EXPLOSION) \
     F(FACADE) \
     F(FAKE_TEARS) \
@@ -37,10 +35,8 @@
     F(FLAMETHROWER) \
     F(FLASH_CANNON) \
     F(FOCUS_PUNCH) \
-    F(FROST_BREATH) \
     F(GIGA_DRAIN) \
     F(GRASS_KNOT) \
-    F(GRASSY_GLIDE) \
     F(GRAVITY) \
     F(HEAT_CRASH) \
     F(HEAVY_SLAM) \
@@ -67,7 +63,6 @@
     F(PSYCHIC) \
     F(PSYCHIC_FANGS) \
     F(REFLECT) \
-    F(RISING_VOLTAGE) \
     F(ROCK_BLAST) \
     F(ROCK_SLIDE) \
     F(ROCK_TOMB) \
@@ -101,7 +96,12 @@
     F(WEATHER_BALL) \
     F(WILL_O_WISP) \
     F(X_SCISSOR) \
-    F(ZEN_HEADBUTT)
+    F(ZEN_HEADBUTT)\
+    F(PIN_MISSILE)\
+    F(U_TURN)\
+    F(FLIP_TURN)\
+    F(VOLT_SWITCH)\
+    F(HEAL_BLOCK)
 
 #define FOREACH_HM(F) \
     F(CUT) \
