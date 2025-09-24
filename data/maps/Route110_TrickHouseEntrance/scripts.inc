@@ -858,7 +858,7 @@ Route110_TrickHouseEntrance_EventScript_CheckReadyForNextPuzzle::
 # 445 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 Route110_TrickHouseEntrance_EventScript_CheckReadyForPuzzle2::
 # 446 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	call_if_unset FLAG_BADGE01_GET, Route110_TrickHouseEntrance_EventScript_NotReadyForPuzzle
+	call_if_unset FLAG_HEAT_BADGE_TRICK_HOUSE_OPEN, Route110_TrickHouseEntrance_EventScript_NotReadyForPuzzle
 # 447 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	return
 # 448 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -866,7 +866,7 @@ Route110_TrickHouseEntrance_EventScript_CheckReadyForPuzzle2::
 # 449 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 Route110_TrickHouseEntrance_EventScript_CheckReadyForPuzzle3::
 # 450 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	call_if_unset FLAG_BADGE02_GET, Route110_TrickHouseEntrance_EventScript_NotReadyForPuzzle
+	call_if_unset FLAG_KNUCKLE_BADGE_TRICK_HOUSE_OPEN, Route110_TrickHouseEntrance_EventScript_NotReadyForPuzzle
 # 451 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	return
 # 452 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -874,7 +874,7 @@ Route110_TrickHouseEntrance_EventScript_CheckReadyForPuzzle3::
 # 453 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 Route110_TrickHouseEntrance_EventScript_CheckReadyForPuzzle4::
 # 454 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	call_if_unset FLAG_BADGE03_GET, Route110_TrickHouseEntrance_EventScript_NotReadyForPuzzle
+	call_if_unset FLAG_BALANCE_BADGE_TRICK_HOUSE_OPEN, Route110_TrickHouseEntrance_EventScript_NotReadyForPuzzle
 # 455 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	return
 # 456 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -882,7 +882,7 @@ Route110_TrickHouseEntrance_EventScript_CheckReadyForPuzzle4::
 # 457 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 Route110_TrickHouseEntrance_EventScript_CheckReadyForPuzzle5::
 # 458 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	call_if_unset FLAG_BADGE04_GET, Route110_TrickHouseEntrance_EventScript_NotReadyForPuzzle
+	call_if_unset FLAG_RAIN_BADGE_TRICK_HOUSE_OPEN, Route110_TrickHouseEntrance_EventScript_NotReadyForPuzzle
 # 459 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	return
 # 460 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -890,7 +890,7 @@ Route110_TrickHouseEntrance_EventScript_CheckReadyForPuzzle5::
 # 461 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 Route110_TrickHouseEntrance_EventScript_CheckReadyForPuzzle6::
 # 462 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	call_if_unset FLAG_BADGE05_GET, Route110_TrickHouseEntrance_EventScript_NotReadyForPuzzle
+	call_if_unset FLAG_FEATHER_BADGE_TRICK_HOUSE_OPEN, Route110_TrickHouseEntrance_EventScript_NotReadyForPuzzle
 # 463 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	return
 # 464 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -898,7 +898,7 @@ Route110_TrickHouseEntrance_EventScript_CheckReadyForPuzzle6::
 # 465 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 Route110_TrickHouseEntrance_EventScript_CheckReadyForPuzzle7::
 # 466 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	call_if_unset FLAG_BADGE06_GET, Route110_TrickHouseEntrance_EventScript_NotReadyForPuzzle
+	call_if_unset FLAG_MIND_BADGE_TRICK_HOUSE_OPEN, Route110_TrickHouseEntrance_EventScript_NotReadyForPuzzle
 # 467 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	return
 # 468 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
@@ -906,7 +906,7 @@ Route110_TrickHouseEntrance_EventScript_CheckReadyForPuzzle7::
 # 469 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 Route110_TrickHouseEntrance_EventScript_CheckReadyForPuzzle8::
 # 470 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	call_if_unset FLAG_BADGE07_GET, Route110_TrickHouseEntrance_EventScript_NotReadyForPuzzle
+	call_if_unset FLAG_DYNAMO_BADGE_TRICK_HOUSE_OPEN, Route110_TrickHouseEntrance_EventScript_NotReadyForPuzzle
 # 471 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	return
 # 472 "data/maps/Route110_TrickHouseEntrance/scripts.pory"

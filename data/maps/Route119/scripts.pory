@@ -596,7 +596,7 @@ Route119_Text_TallGrassSnaresBikeTires:
 Route119_Text_CanYourMonMakeSecretBase:
 	.string "Can your Pokémon use its SECRET POWER\n"
 	.string "on a big pile of grass and make a\l"
-	.string "SECRET BASE?$"
+	.string "Secret Base?$"
 
 Route119_Text_RouteSignFortree:
 	.string "Route 119\n"
@@ -609,8 +609,8 @@ Route119_Text_TrainerTipsDecoration:
 	.string "Trainer Tips\p"
 	.string "Up to sixteen decorations and\n"
 	.string "furniture items can be placed in\l"
-	.string "a SECRET BASE.\p"
+	.string "a Secret Base.\p"
 	.string "Pick your favorite items and create\n"
-	.string "your very own SECRET BASE exactly the\l"
+	.string "your very own Secret Base exactly the\l"
 	.string "way you want.$"
 `

@@ -139,6 +139,6 @@ FortreeCity_DecorationShop_Text_BuyingDeskForDolls:
 # 70 "data/maps/FortreeCity_DecorationShop/scripts.pory"
 	.string "If I don't, when I decorate my\n"
 # 71 "data/maps/FortreeCity_DecorationShop/scripts.pory"
-	.string "SECRET BASE, my DOLLS will get\l"
+	.string "Secret Base, my DOLLS will get\l"
 # 72 "data/maps/FortreeCity_DecorationShop/scripts.pory"
 	.string "dirty or poked with splinters.$"
