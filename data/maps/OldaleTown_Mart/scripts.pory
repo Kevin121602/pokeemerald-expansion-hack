@@ -11,56 +11,56 @@ script Mart_BottleCap_Vendor{
 	}
 	if(flag(FLAG_BADGE01_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_2)){
-		msgbox("Oh is that the Stone Badge?$")
+		msgbox("Oh, is that the Stone Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_2)
 		}
 	}
 	if(flag(FLAG_BADGE04_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_3)){
-		msgbox("Oh is that the Heat Badge?$")
+		msgbox("Oh, is that the Heat Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_3)
 		}
 	}
 	if(flag(FLAG_BADGE02_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_4)){
-		msgbox("Oh is that the Knuckle Badge?$")
+		msgbox("Oh, is that the Knuckle Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_4)
 		}
 	}
 	if(flag(FLAG_BADGE05_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_5)){
-		msgbox("Oh is that the Balance Badge?$")
+		msgbox("Oh, is that the Balance Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_5)
 		}
 	}
 	if(flag(FLAG_BADGE08_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_6)){
-		msgbox("Oh is that the Rain Badge?$")
+		msgbox("Oh, is that the Rain Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_6)
 		}
 	}
 	if(flag(FLAG_BADGE06_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_7)){
-		msgbox("Oh is that the Feather Badge?$")
+		msgbox("Oh, is that the Feather Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_7)
 		}
 	}
 	if(flag(FLAG_BADGE07_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_8)){
-		msgbox("Oh is that the Mind Badge?$")
+		msgbox("Oh, is that the Mind Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_8)
 		}
 	}
 	if(flag(FLAG_BADGE03_GET)){
 		if(!flag(FLAG_RECIEVED_BOTTLE_CAP_9)){
-		msgbox("Oh is that the Dynamo Badge?$")
+		msgbox("Oh, is that the Dynamo Badge?$")
 		giveitem(ITEM_BOTTLE_CAP)
 		setflag(FLAG_RECIEVED_BOTTLE_CAP_9)
 		}

@@ -75,104 +75,116 @@ Route114_FossilManiacsTunnel_EventScript_FossilManiac::
 # 38 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
 	faceplayer
 # 39 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	goto_if_set FLAG_RECEIVED_REVIVED_FOSSIL_MON, Route114_FossilManiacsTunnel_EventScript_PlayerRevivedFossil
-# 40 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	checkitem ITEM_ROOT_FOSSIL
-# 41 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil
-# 42 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	checkitem ITEM_CLAW_FOSSIL
-# 43 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	goto_if_eq VAR_RESULT, TRUE, Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil
-# 44 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
 	msgbox Route114_FossilManiacsTunnel_Text_LookInDesertForFossils, MSGBOX_DEFAULT
+# 40 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
+	goto_if_eq FLAG_RECIEVED_TM_DIG, FALSE, Route114_FossilManiacsTunnel_EventScript_GiveDig
+# 41 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
+	release
+# 42 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
+	end
+# 43 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
+
+# 44 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
+Route114_FossilManiacsTunnel_EventScript_GiveDig::
 # 45 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	release
+	giveitem ITEM_TM_DIG
 # 46 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	end
+	msgbox Route114_FossilManiacsTunnel_Text_IDontEvenWantDig, MSGBOX_DEFAULT
 # 47 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-
+	setflag FLAG_RECIEVED_TM_DIG
 # 48 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil::
+	return
 # 49 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	msgbox Route114_FossilManiacsTunnel_Text_DevonCorpRevivingFossils, MSGBOX_DEFAULT
+
 # 50 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	release
+Route114_FossilManiacsTunnel_EventScript_PlayerHasFossil::
 # 51 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	end
+	msgbox Route114_FossilManiacsTunnel_Text_DevonCorpRevivingFossils, MSGBOX_DEFAULT
 # 52 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-
-# 53 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-Route114_FossilManiacsTunnel_EventScript_PlayerRevivedFossil::
-# 54 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	msgbox Route114_FossilManiacsTunnel_Text_FossilsAreWonderful, MSGBOX_DEFAULT
-# 55 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
 	release
-# 56 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
+# 53 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
 	end
+# 54 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
+
+# 55 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
+Route114_FossilManiacsTunnel_EventScript_PlayerRevivedFossil::
+# 56 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
+	msgbox Route114_FossilManiacsTunnel_Text_FossilsAreWonderful, MSGBOX_DEFAULT
 # 57 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-
+	release
 # 58 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-Route114_FossilManiacsTunnel_Text_LookInDesertForFossils:
+	end
 # 59 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "I'm the Fossil Maniac…\n"
+
 # 60 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "I'm a nice guy who loves Fossils…\p"
+Route114_FossilManiacsTunnel_Text_LookInDesertForFossils:
 # 61 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "Do you want a Fossil?\p"
+	.string "I'm the Fossil Maniac…\n"
 # 62 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "Too bad, Devon Corp already came and\n"
+	.string "I'm a nice guy who loves Fossils…\p"
 # 63 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "took all of my fossils…\p"
+	.string "Do you want a Fossil?\p"
 # 64 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "All that's left is crummy sand…$"
+	.string "Too bad, Devon Corp already came and\n"
 # 65 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-
+	.string "took all of my fossils…\p"
 # 66 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-Route114_FossilManiacsTunnel_Text_DevonCorpRevivingFossils:
+	.string "All that's left is crummy sand…$"
 # 67 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "You found a FOSSIL, didn't you?\n"
+
 # 68 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "That's so nice… It's so dreamy…\p"
+Route114_FossilManiacsTunnel_Text_IDontEvenWantDig:
 # 69 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "What are you going to do with that\n"
+	.string "I used this to clear the tunnel,\n"
 # 70 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "FOSSIL?\p"
+	.string "but I don't even want it anymore…$"
 # 71 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "From what I've heard, DEVON is doing\n"
+
 # 72 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "research on reviving Pokémon from\l"
+Route114_FossilManiacsTunnel_Text_DevonCorpRevivingFossils:
 # 73 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "FOSSILS…\p"
+	.string "You found a FOSSIL, didn't you?\n"
 # 74 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "I love my FOSSILS, so I would never\n"
+	.string "That's so nice… It's so dreamy…\p"
 # 75 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "do anything like that…$"
+	.string "What are you going to do with that\n"
 # 76 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-
+	.string "FOSSIL?\p"
 # 77 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-Route114_FossilManiacsTunnel_Text_FossilsAreWonderful:
+	.string "From what I've heard, DEVON is doing\n"
 # 78 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "FOSSILS are so… Wonderful…\n"
+	.string "research on reviving Pokémon from\l"
 # 79 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "It's so dreamy…$"
+	.string "FOSSILS…\p"
 # 80 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-
+	.string "I love my FOSSILS, so I would never\n"
 # 81 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-Route114_FossilManiacsTunnel_Text_NotSafeThatWay:
+	.string "do anything like that…$"
 # 82 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "Oh…\n"
+
 # 83 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "It's not safe that way…\p"
+Route114_FossilManiacsTunnel_Text_FossilsAreWonderful:
 # 84 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "I was digging away, you see…\n"
+	.string "FOSSILS are so… Wonderful…\n"
 # 85 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "When the whole wall collapsed…\p"
+	.string "It's so dreamy…$"
 # 86 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "I think there's a giant cavern\n"
+
 # 87 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "underneath now…\p"
+Route114_FossilManiacsTunnel_Text_NotSafeThatWay:
 # 88 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-	.string "But I've left it alone because I don't\n"
+	.string "Oh…\n"
 # 89 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
+	.string "It's not safe that way…\p"
+# 90 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
+	.string "I was digging away, you see…\n"
+# 91 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
+	.string "When the whole wall collapsed…\p"
+# 92 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
+	.string "I think there's a giant cavern\n"
+# 93 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
+	.string "underneath now…\p"
+# 94 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
+	.string "But I've left it alone because I don't\n"
+# 95 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
 	.string "think there are any FOSSILS there…$"

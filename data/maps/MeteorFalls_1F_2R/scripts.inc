@@ -115,11 +115,11 @@ MeteorFalls_1F_2R_EventScript_RematchJay::
 # 58 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 MeteorFalls_1F_2R_Text_NicolasIntro:
 # 59 "data/maps/MeteorFalls_1F_2R/scripts.pory"
-	.string "This is where we DRAGON users do our\n"
+	.string "This is where we Dragon users do our\n"
 # 60 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 	.string "training.\p"
 # 61 "data/maps/MeteorFalls_1F_2R/scripts.pory"
-	.string "The CHAMPION even visits.\n"
+	.string "The Champion even visits.\n"
 # 62 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 	.string "Now do you see how special it is here?$"
 # 63 "data/maps/MeteorFalls_1F_2R/scripts.pory"
@@ -185,7 +185,7 @@ MeteorFalls_1F_2R_Text_NicolasPostRematch:
 # 93 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 MeteorFalls_1F_2R_Text_JohnIntro:
 # 94 "data/maps/MeteorFalls_1F_2R/scripts.pory"
-	.string "JOHN: We've always battled Pokémon\n"
+	.string "John: We've always battled Pokémon\n"
 # 95 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 	.string "together as a twosome.\l"
 # 96 "data/maps/MeteorFalls_1F_2R/scripts.pory"
@@ -195,7 +195,7 @@ MeteorFalls_1F_2R_Text_JohnIntro:
 # 98 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 MeteorFalls_1F_2R_Text_JohnDefeat:
 # 99 "data/maps/MeteorFalls_1F_2R/scripts.pory"
-	.string "JOHN: Oh, my.\n"
+	.string "John: Oh, my.\n"
 # 100 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 	.string "We've lost, dear wife.$"
 # 101 "data/maps/MeteorFalls_1F_2R/scripts.pory"
@@ -203,7 +203,7 @@ MeteorFalls_1F_2R_Text_JohnDefeat:
 # 102 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 MeteorFalls_1F_2R_Text_JohnPostBattle:
 # 103 "data/maps/MeteorFalls_1F_2R/scripts.pory"
-	.string "JOHN: We've been married for\n"
+	.string "John: We've been married for\n"
 # 104 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 	.string "fifty years.\p"
 # 105 "data/maps/MeteorFalls_1F_2R/scripts.pory"
@@ -233,7 +233,7 @@ MeteorFalls_1F_2R_Text_JohnRegister:
 # 117 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 MeteorFalls_1F_2R_Text_JayIntro:
 # 118 "data/maps/MeteorFalls_1F_2R/scripts.pory"
-	.string "JAY: We've been married for\n"
+	.string "Jay: We've been married for\n"
 # 119 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 	.string "fifty years.\p"
 # 120 "data/maps/MeteorFalls_1F_2R/scripts.pory"
@@ -245,7 +245,7 @@ MeteorFalls_1F_2R_Text_JayIntro:
 # 123 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 MeteorFalls_1F_2R_Text_JayDefeat:
 # 124 "data/maps/MeteorFalls_1F_2R/scripts.pory"
-	.string "JAY: Oh, dear.\n"
+	.string "Jay: Oh, dear.\n"
 # 125 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 	.string "We've lost, my dear husband.$"
 # 126 "data/maps/MeteorFalls_1F_2R/scripts.pory"
@@ -253,7 +253,7 @@ MeteorFalls_1F_2R_Text_JayDefeat:
 # 127 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 MeteorFalls_1F_2R_Text_JayPostBattle:
 # 128 "data/maps/MeteorFalls_1F_2R/scripts.pory"
-	.string "JAY: Fifty years of marriage…\p"
+	.string "Jay: Fifty years of marriage…\p"
 # 129 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 	.string "If we ever argued, we always settled\n"
 # 130 "data/maps/MeteorFalls_1F_2R/scripts.pory"
@@ -263,9 +263,9 @@ MeteorFalls_1F_2R_Text_JayPostBattle:
 # 132 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 MeteorFalls_1F_2R_Text_JayNotEnoughMons:
 # 133 "data/maps/MeteorFalls_1F_2R/scripts.pory"
-	.string "JAY: Well, well, aren't you a young\n"
+	.string "Jay: Well, well, aren't you a young\n"
 # 134 "data/maps/MeteorFalls_1F_2R/scripts.pory"
-	.string "TRAINER?\p"
+	.string "Trainer?\p"
 # 135 "data/maps/MeteorFalls_1F_2R/scripts.pory"
 	.string "If you'd care to battle with us, you'll\n"
 # 136 "data/maps/MeteorFalls_1F_2R/scripts.pory"

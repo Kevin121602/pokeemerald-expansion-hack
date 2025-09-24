@@ -56,9 +56,9 @@ MeteorFalls_1F_2R_EventScript_RematchJay::
 	end
 
 MeteorFalls_1F_2R_Text_NicolasIntro:
-	.string "This is where we DRAGON users do our\n"
+	.string "This is where we Dragon users do our\n"
 	.string "training.\p"
-	.string "The CHAMPION even visits.\n"
+	.string "The Champion even visits.\n"
 	.string "Now do you see how special it is here?$"
 
 MeteorFalls_1F_2R_Text_NicolasDefeat:
@@ -91,16 +91,16 @@ MeteorFalls_1F_2R_Text_NicolasPostRematch:
 	.string "can become stronger!$"
 
 MeteorFalls_1F_2R_Text_JohnIntro:
-	.string "JOHN: We've always battled Pokémon\n"
+	.string "John: We've always battled Pokémon\n"
 	.string "together as a twosome.\l"
 	.string "We've confidence in ourselves.$"
 
 MeteorFalls_1F_2R_Text_JohnDefeat:
-	.string "JOHN: Oh, my.\n"
+	.string "John: Oh, my.\n"
 	.string "We've lost, dear wife.$"
 
 MeteorFalls_1F_2R_Text_JohnPostBattle:
-	.string "JOHN: We've been married for\n"
+	.string "John: We've been married for\n"
 	.string "fifty years.\p"
 	.string "Come to think of it, I've yet to beat\n"
 	.string "my dear wife in a battle.$"
@@ -115,23 +115,23 @@ MeteorFalls_1F_2R_Text_JohnRegister:
 	.string "arises, will you battle with us again?$"
 
 MeteorFalls_1F_2R_Text_JayIntro:
-	.string "JAY: We've been married for\n"
+	.string "Jay: We've been married for\n"
 	.string "fifty years.\p"
 	.string "The bond we share as a couple could\n"
 	.string "never be broken.$"
 
 MeteorFalls_1F_2R_Text_JayDefeat:
-	.string "JAY: Oh, dear.\n"
+	.string "Jay: Oh, dear.\n"
 	.string "We've lost, my dear husband.$"
 
 MeteorFalls_1F_2R_Text_JayPostBattle:
-	.string "JAY: Fifty years of marriage…\p"
+	.string "Jay: Fifty years of marriage…\p"
 	.string "If we ever argued, we always settled\n"
 	.string "it with a Pokémon battle…$"
 
 MeteorFalls_1F_2R_Text_JayNotEnoughMons:
-	.string "JAY: Well, well, aren't you a young\n"
-	.string "TRAINER?\p"
+	.string "Jay: Well, well, aren't you a young\n"
+	.string "Trainer?\p"
 	.string "If you'd care to battle with us, you'll\n"
 	.string "have to come back with more Pokémon.$"
 

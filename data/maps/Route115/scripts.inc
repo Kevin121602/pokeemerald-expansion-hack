@@ -267,12 +267,12 @@ Route115_Text_RouteSignRustboro:
 # 134 "data/maps/Route115/scripts.pory"
 	.string "Route 115\n"
 # 135 "data/maps/Route115/scripts.pory"
-	.string "{DOWN_ARROW} RUSTBORO CITY$"
+	.string "{DOWN_ARROW} Rustboro City$"
 # 136 "data/maps/Route115/scripts.pory"
 
 # 137 "data/maps/Route115/scripts.pory"
 Route115_Text_MeteorFallsSign:
 # 138 "data/maps/Route115/scripts.pory"
-	.string "METEOR FALLS\n"
+	.string "Meteor Falls\n"
 # 139 "data/maps/Route115/scripts.pory"
-	.string "FALLARBOR TOWN THROUGH HERE$"
+	.string "Fallarbor Town through here$"

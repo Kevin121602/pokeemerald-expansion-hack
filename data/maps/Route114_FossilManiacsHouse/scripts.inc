@@ -23,7 +23,7 @@ Route114_FossilManiacsHouse_EventScript_FossilManiacsBrother::
 # 12 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
 	faceplayer
 # 13 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
-	goto_if_set FLAG_RECEIVED_TM_DIG, Route114_FossilManiacsHouse_EventScript_ReceivedDig
+	goto_if_set FLAG_RECEIVED_TM_DEFOG, Route114_FossilManiacsHouse_EventScript_ReceivedDig
 # 14 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
 	msgbox Route114_FossilManiacsHouse_Text_HaveThisToDigLikeMyBrother, MSGBOX_DEFAULT
 # 15 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
@@ -31,7 +31,7 @@ Route114_FossilManiacsHouse_EventScript_FossilManiacsBrother::
 # 16 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 17 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
-	setflag FLAG_RECEIVED_TM_DIG
+	setflag FLAG_RECEIVED_TM_DEFOG
 # 18 "data/maps/Route114_FossilManiacsHouse/scripts.pory"
 	release
 # 19 "data/maps/Route114_FossilManiacsHouse/scripts.pory"

@@ -312,35 +312,35 @@ Mart_BottleCap_Vendor_Text_0:
 
 Mart_BottleCap_Vendor_Text_1:
 # 14 "data/maps/OldaleTown_Mart/scripts.pory"
-	.string "Oh is that the Stone Badge?$"
+	.string "Oh, is that the Stone Badge?$"
 
 Mart_BottleCap_Vendor_Text_2:
 # 21 "data/maps/OldaleTown_Mart/scripts.pory"
-	.string "Oh is that the Heat Badge?$"
+	.string "Oh, is that the Heat Badge?$"
 
 Mart_BottleCap_Vendor_Text_3:
 # 28 "data/maps/OldaleTown_Mart/scripts.pory"
-	.string "Oh is that the Knuckle Badge?$"
+	.string "Oh, is that the Knuckle Badge?$"
 
 Mart_BottleCap_Vendor_Text_4:
 # 35 "data/maps/OldaleTown_Mart/scripts.pory"
-	.string "Oh is that the Balance Badge?$"
+	.string "Oh, is that the Balance Badge?$"
 
 Mart_BottleCap_Vendor_Text_5:
 # 42 "data/maps/OldaleTown_Mart/scripts.pory"
-	.string "Oh is that the Rain Badge?$"
+	.string "Oh, is that the Rain Badge?$"
 
 Mart_BottleCap_Vendor_Text_6:
 # 49 "data/maps/OldaleTown_Mart/scripts.pory"
-	.string "Oh is that the Feather Badge?$"
+	.string "Oh, is that the Feather Badge?$"
 
 Mart_BottleCap_Vendor_Text_7:
 # 56 "data/maps/OldaleTown_Mart/scripts.pory"
-	.string "Oh is that the Mind Badge?$"
+	.string "Oh, is that the Mind Badge?$"
 
 Mart_BottleCap_Vendor_Text_8:
 # 63 "data/maps/OldaleTown_Mart/scripts.pory"
-	.string "Oh is that the Dynamo Badge?$"
+	.string "Oh, is that the Dynamo Badge?$"
 
 Mart_BottleCap_Vendor_Text_9:
 # 68 "data/maps/OldaleTown_Mart/scripts.pory"

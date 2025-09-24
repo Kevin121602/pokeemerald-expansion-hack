@@ -377,20 +377,20 @@ Route114_Text_Poochyena:
 # 189 "data/maps/Route114/scripts.pory"
 Route114_Text_MeteorFallsSign:
 # 190 "data/maps/Route114/scripts.pory"
-	.string "METEOR FALLS\n"
+	.string "Meteor Falls\n"
 # 191 "data/maps/Route114/scripts.pory"
-	.string "RUSTBORO CITY THROUGH HERE$"
+	.string "Rustboro City through here$"
 # 192 "data/maps/Route114/scripts.pory"
 
 # 193 "data/maps/Route114/scripts.pory"
 Route114_Text_FossilManiacsHouseSign:
 # 194 "data/maps/Route114/scripts.pory"
-	.string "FOSSIL MANIAC'S HOUSE\n"
+	.string "Fossil Maniac's House\n"
 # 195 "data/maps/Route114/scripts.pory"
-	.string "“Fossils gratefully accepted!”$"
+	.string "Desert Underpass inside$"
 # 196 "data/maps/Route114/scripts.pory"
 
 # 197 "data/maps/Route114/scripts.pory"
 Route114_Text_LanettesHouse:
 # 198 "data/maps/Route114/scripts.pory"
-	.string "LANETTE'S HOUSE$"
+	.string "Lanette's House$"
