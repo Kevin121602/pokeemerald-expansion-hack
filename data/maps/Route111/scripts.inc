@@ -1362,9 +1362,9 @@ Route111_Text_WinstrateHouseSign:
 # 711 "data/maps/Route111/scripts.pory"
 Route111_Text_RouteSign112:
 # 712 "data/maps/Route111/scripts.pory"
-	.string "Route 111\n"
+	.string "Terra Cave\n"
 # 713 "data/maps/Route111/scripts.pory"
-	.string "{LEFT_ARROW} ROUTE 112$"
+	.string "{LEFT_ARROW} Route 112$"
 # 714 "data/maps/Route111/scripts.pory"
 
 # 715 "data/maps/Route111/scripts.pory"
@@ -1372,13 +1372,13 @@ Route111_Text_RouteSign113:
 # 716 "data/maps/Route111/scripts.pory"
 	.string "Route 111\n"
 # 717 "data/maps/Route111/scripts.pory"
-	.string "{LEFT_ARROW} ROUTE 113$"
+	.string "{LEFT_ARROW} Route 113$"
 # 718 "data/maps/Route111/scripts.pory"
 
 # 719 "data/maps/Route111/scripts.pory"
 Route111_Text_OldLadysRestStopSign:
 # 720 "data/maps/Route111/scripts.pory"
-	.string "OLD LADY'S REST STOP\n"
+	.string "Old Lady's Rest Stop\n"
 # 721 "data/maps/Route111/scripts.pory"
 	.string "“Come in and rest your tired bones.”$"
 # 722 "data/maps/Route111/scripts.pory"

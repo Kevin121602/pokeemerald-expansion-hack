@@ -607,7 +607,7 @@ Route113_GlassWorkshop_Text_GoCollectAshWithThis:
 # 304 "data/maps/Route113_GlassWorkshop/scripts.pory"
 Route113_GlassWorkshop_Text_ExplainSootSack:
 # 305 "data/maps/Route113_GlassWorkshop/scripts.pory"
-	.string "Just take that SOOT SACK and walk\n"
+	.string "Just take that Soot Sack and walk\n"
 # 306 "data/maps/Route113_GlassWorkshop/scripts.pory"
 	.string "through piles of ash, huff-puff.\p"
 # 307 "data/maps/Route113_GlassWorkshop/scripts.pory"
@@ -641,7 +641,7 @@ Route113_GlassWorkshop_Text_NotEnoughAshNeedX:
 # 321 "data/maps/Route113_GlassWorkshop/scripts.pory"
 	.string "you'll need to walk for me to make you\l"
 # 322 "data/maps/Route113_GlassWorkshop/scripts.pory"
-	.string "a BLUE FLUTE, huff-puff.$"
+	.string "a Blue Flute, huff-puff.$"
 # 323 "data/maps/Route113_GlassWorkshop/scripts.pory"
 
 # 324 "data/maps/Route113_GlassWorkshop/scripts.pory"
@@ -721,7 +721,7 @@ Route113_GlassWorkshop_Text_NoRoomInBag:
 # 361 "data/maps/Route113_GlassWorkshop/scripts.pory"
 	.string "Oh?\n"
 # 362 "data/maps/Route113_GlassWorkshop/scripts.pory"
-	.string "You've no room in your BAG, huff-puff.\p"
+	.string "You've no room in your Bag, huff-puff.\p"
 # 363 "data/maps/Route113_GlassWorkshop/scripts.pory"
 	.string "I'll hold on to it, so come back later,\n"
 # 364 "data/maps/Route113_GlassWorkshop/scripts.pory"
@@ -743,7 +743,7 @@ Route113_GlassWorkshop_Text_NoRoomInPC:
 # 372 "data/maps/Route113_GlassWorkshop/scripts.pory"
 Route113_GlassWorkshop_Text_HaventGotYourSootSack:
 # 373 "data/maps/Route113_GlassWorkshop/scripts.pory"
-	.string "Hah? You haven't got your SOOT SACK\n"
+	.string "Hah? You haven't got your Soot Sack\n"
 # 374 "data/maps/Route113_GlassWorkshop/scripts.pory"
 	.string "with you, huff-puff.\p"
 # 375 "data/maps/Route113_GlassWorkshop/scripts.pory"

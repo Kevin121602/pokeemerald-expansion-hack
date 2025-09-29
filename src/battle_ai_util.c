@@ -586,7 +586,8 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
     {
         s32 critChanceIndex, fixedBasePower, n;
 
-        ProteanTryChangeType(battlerAtk, aiData->abilities[battlerAtk], move, moveType);
+        //was causing AI to revert to the type of its last move at the start of every turn
+        //ProteanTryChangeType(battlerAtk, aiData->abilities[battlerAtk], move, moveType);
         // Certain moves like Rollout calculate damage based on values which change during the move execution, but before calling dmg calc.
         switch (moveEffect)
         {
@@ -658,6 +659,19 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
             }
             simDamage.expected = GetDamageByRollType(nonCritDmg, rollType);
             simDamage.minimum = LowestRollDmg(nonCritDmg);
+        }
+
+        if ((aiData->abilities[battlerAtk] == ABILITY_PROTEAN || aiData->abilities[battlerAtk] == ABILITY_LIBERO)
+            && !gDisableStructs[gBattlerAttacker].usedProteanLibero
+            && (gBattleMons[battlerAtk].types[0] != moveType || gBattleMons[battlerAtk].types[1] != moveType
+                || (gBattleMons[battlerAtk].types[2] != moveType && gBattleMons[battlerAtk].types[2] != TYPE_MYSTERY))
+            && move != MOVE_STRUGGLE
+            && GetActiveGimmick(battlerAtk) != GIMMICK_TERA)
+        {
+            simDamage.expected *= 3;
+            simDamage.expected /= 2;
+            simDamage.minimum *= 3;
+            simDamage.minimum /= 2;
         }
 
         if (GetActiveGimmick(battlerAtk) != GIMMICK_Z_MOVE)

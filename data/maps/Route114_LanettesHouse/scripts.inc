@@ -2,7 +2,7 @@ Route114_LanettesHouse_EventScript_FurfrouHaircut::
 # 2 "data/maps/Route114_LanettesHouse/scripts.pory"
 	lock
 # 3 "data/maps/Route114_LanettesHouse/scripts.pory"
-	face_player
+	faceplayer
 # 4 "data/maps/Route114_LanettesHouse/scripts.pory"
 	msgbox Route114_LanettesHouse_EventScript_FurfrouHaircut_Text_0
 # 5 "data/maps/Route114_LanettesHouse/scripts.pory"

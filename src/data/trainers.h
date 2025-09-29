@@ -16582,7 +16582,7 @@ F_TRAINER_FEMALE |
 #line 6657
                 MOVE_AERIAL_ACE,
                 MOVE_QUICK_ATTACK,
-                MOVE_LEAF_BLADE,
+                MOVE_NIGHT_SLASH,
                 MOVE_ROOST,
             },
             },
@@ -17860,8 +17860,8 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 7168
                 MOVE_FAKE_OUT,
+                MOVE_POISON_JAB,
                 MOVE_VENOSHOCK,
-                MOVE_MUD_BOMB,
                 MOVE_VACUUM_WAVE,
             },
             },
@@ -17914,7 +17914,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_BRUXISH,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7191
-            .heldItem = ITEM_LUM_BERRY,
+            .heldItem = ITEM_LEFTOVERS,
 #line 7195
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 7193
@@ -17937,7 +17937,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_VESPIQUEN,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7200
-            .heldItem = ITEM_LEFTOVERS,
+            .heldItem = ITEM_CHARTI_BERRY,
 #line 7204
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 7202
@@ -22177,7 +22177,7 @@ F_TRAINER_FEMALE |
 #line 8875
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 8873
-            .ability = ABILITY_COLOR_CHANGE,
+            .ability = ABILITY_PROTEAN,
 #line 8874
             .lvl = 27,
 #line 8872
@@ -37883,7 +37883,7 @@ F_TRAINER_FEMALE |
 #line 15068
                 MOVE_SIGNAL_BEAM,
                 MOVE_DRAINING_KISS,
-                MOVE_ROUND,
+                MOVE_PSYCHIC_NOISE,
                 MOVE_FAKE_TEARS,
             },
             },
@@ -37949,7 +37949,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 15095
                 MOVE_PSYSHOCK,
-                MOVE_AIR_CUTTER,
+                MOVE_AIR_SLASH,
                 MOVE_STORED_POWER,
                 MOVE_SHADOW_BALL,
             },
@@ -37974,7 +37974,7 @@ F_TRAINER_FEMALE |
                 MOVE_SIGNAL_BEAM,
                 MOVE_AIR_CUTTER,
                 MOVE_ACROBATICS,
-                MOVE_SHADOW_BALL,
+                MOVE_ROOST,
             },
             },
             {
@@ -37990,11 +37990,11 @@ F_TRAINER_FEMALE |
 #line 15112
             .lvl = 24,
 #line 15110
-            .nature = NATURE_TIMID,
+            .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 15113
-                MOVE_AIR_SLASH,
+                MOVE_DUAL_WINGBEAT,
                 MOVE_HEAT_WAVE,
                 MOVE_GIGA_DRAIN,
                 MOVE_CONFUSE_RAY,
@@ -38018,7 +38018,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 15122
                 MOVE_HYPER_VOICE,
-                MOVE_AIR_SLASH,
+                MOVE_AIR_CUTTER,
                 MOVE_NIGHT_SHADE,
                 MOVE_HYPNOSIS,
             },

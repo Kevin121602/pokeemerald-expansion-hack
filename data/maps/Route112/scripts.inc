@@ -263,7 +263,7 @@ Route112_Text_NotEasyToGetBackToLavaridge:
 # 132 "data/maps/Route112/scripts.pory"
 Route112_Text_MtChimneyCableCarSign:
 # 133 "data/maps/Route112/scripts.pory"
-	.string "MT. CHIMNEY CABLE CAR\n"
+	.string "Mt. Chimney Cable Car\n"
 # 134 "data/maps/Route112/scripts.pory"
 	.string "“A short walk {UP_ARROW} way!”$"
 # 135 "data/maps/Route112/scripts.pory"
@@ -271,11 +271,11 @@ Route112_Text_MtChimneyCableCarSign:
 # 136 "data/maps/Route112/scripts.pory"
 Route112_Text_MtChimneySign:
 # 137 "data/maps/Route112/scripts.pory"
-	.string "MT. CHIMNEY\p"
+	.string "Mt. Chimney\p"
 # 138 "data/maps/Route112/scripts.pory"
-	.string "“For LAVARIDGE TOWN or the summit,\n"
+	.string "“For Lavaridge Town or the summit,\n"
 # 139 "data/maps/Route112/scripts.pory"
-	.string "please take the CABLE CAR.”$"
+	.string "please take the Cable Car.”$"
 # 140 "data/maps/Route112/scripts.pory"
 
 # 141 "data/maps/Route112/scripts.pory"
@@ -283,4 +283,4 @@ Route112_Text_RouteSignLavaridge:
 # 142 "data/maps/Route112/scripts.pory"
 	.string "Route 112\n"
 # 143 "data/maps/Route112/scripts.pory"
-	.string "{LEFT_ARROW} LAVARIDGE TOWN$"
+	.string "{LEFT_ARROW} Lavaridge Town$"

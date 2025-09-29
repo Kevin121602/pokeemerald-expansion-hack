@@ -129,7 +129,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_TM_MAGICAL_LEAF",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_PETALBURG_WOODS_MAGICAL_LEAF"
+      "flag": "FLAG_ITEM_PETALBURG_WOODS_TM_MAGICAL_LEAF"
     }
   ],
   "warp_events": [

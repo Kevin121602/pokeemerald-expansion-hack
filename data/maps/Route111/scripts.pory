@@ -709,15 +709,15 @@ Route111_Text_WinstrateHouseSign:
 	.string "THE WINSTRATE'S HOUSE$"
 
 Route111_Text_RouteSign112:
-	.string "Route 111\n"
-	.string "{LEFT_ARROW} ROUTE 112$"
+	.string "Terra Cave\n"
+	.string "{LEFT_ARROW} Route 112$"
 
 Route111_Text_RouteSign113:
 	.string "Route 111\n"
-	.string "{LEFT_ARROW} ROUTE 113$"
+	.string "{LEFT_ARROW} Route 113$"
 
 Route111_Text_OldLadysRestStopSign:
-	.string "OLD LADY'S REST STOP\n"
+	.string "Old Lady's Rest Stop\n"
 	.string "“Come in and rest your tired bones.”$"
 
 Route111_Text_TrainerTipsSpAtkSpDef:

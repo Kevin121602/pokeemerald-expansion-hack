@@ -1544,9 +1544,9 @@ MtChimney_Text_MachineMakesNoResponse:
 # 801 "data/maps/MtChimney/scripts.pory"
 MtChimney_Text_RouteSign:
 # 802 "data/maps/MtChimney/scripts.pory"
-	.string "{DOWN_ARROW} JAGGED PATH\n"
+	.string "{DOWN_ARROW} Jagged Pass\n"
 # 803 "data/maps/MtChimney/scripts.pory"
-	.string "LAVARIDGE TOWN AHEAD$"
+	.string "Lavaridge Town Ahead$"
 # 804 "data/maps/MtChimney/scripts.pory"
 
 # 805 "data/maps/MtChimney/scripts.pory"
@@ -1630,7 +1630,7 @@ MtChimney_Text_MelissaDefeat:
 # 844 "data/maps/MtChimney/scripts.pory"
 MtChimney_Text_MelissaPostBattle:
 # 845 "data/maps/MtChimney/scripts.pory"
-	.string "The heat of MT. CHIMNEY warms\n"
+	.string "The heat of Mt. Chimney warms\n"
 # 846 "data/maps/MtChimney/scripts.pory"
 	.string "me up, baby!$"
 # 847 "data/maps/MtChimney/scripts.pory"
@@ -1638,7 +1638,7 @@ MtChimney_Text_MelissaPostBattle:
 # 848 "data/maps/MtChimney/scripts.pory"
 MtChimney_Text_SheilaIntro:
 # 849 "data/maps/MtChimney/scripts.pory"
-	.string "I've finally made it to MT. CHIMNEY.\n"
+	.string "I've finally made it to Mt. Chimney.\n"
 # 850 "data/maps/MtChimney/scripts.pory"
 	.string "I want to make my Pokémon battle!$"
 # 851 "data/maps/MtChimney/scripts.pory"
@@ -1648,7 +1648,7 @@ MtChimney_Text_SheilaDefeat:
 # 853 "data/maps/MtChimney/scripts.pory"
 	.string "The way you battle…\n"
 # 854 "data/maps/MtChimney/scripts.pory"
-	.string "It's like a MT. CHIMNEY eruption!$"
+	.string "It's like a Mt. Chimney eruption!$"
 # 855 "data/maps/MtChimney/scripts.pory"
 
 # 856 "data/maps/MtChimney/scripts.pory"
@@ -1656,13 +1656,13 @@ MtChimney_Text_SheilaPostBattle:
 # 857 "data/maps/MtChimney/scripts.pory"
 	.string "Like I said, I've finally made it to\n"
 # 858 "data/maps/MtChimney/scripts.pory"
-	.string "MT. CHIMNEY. It would be a shame if\l"
+	.string "Mt. Chimney. It would be a shame if\l"
 # 859 "data/maps/MtChimney/scripts.pory"
 	.string "I only do a little sightseeing…\p"
 # 860 "data/maps/MtChimney/scripts.pory"
 	.string "I want to get in some battles and buy\n"
 # 861 "data/maps/MtChimney/scripts.pory"
-	.string "COOKIES as souvenirs.$"
+	.string "Cookies as souvenirs.$"
 # 862 "data/maps/MtChimney/scripts.pory"
 
 # 863 "data/maps/MtChimney/scripts.pory"
@@ -1710,9 +1710,9 @@ MtChimney_Text_SawyerDefeat:
 # 884 "data/maps/MtChimney/scripts.pory"
 MtChimney_Text_SawyerPostBattle:
 # 885 "data/maps/MtChimney/scripts.pory"
-	.string "I think I need a dip in LAVARIDGE\n"
+	.string "I think I need a dip in Lavaridge\n"
 # 886 "data/maps/MtChimney/scripts.pory"
-	.string "HOT SPRING with the locals!$"
+	.string "Hot Spring with the locals!$"
 # 887 "data/maps/MtChimney/scripts.pory"
 
 # 888 "data/maps/MtChimney/scripts.pory"

@@ -1,6 +1,6 @@
 script Route114_LanettesHouse_EventScript_FurfrouHaircut{
 	lock
-	face_player
+	faceplayer
 	msgbox(format("Placeholder for Furfrou form changer NPC."))
 	release
 	end

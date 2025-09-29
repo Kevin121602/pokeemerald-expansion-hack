@@ -1,3 +1,11 @@
+script FallarborTown_CozmosHouse_EventScript_MiniorForms{
+	lock
+	faceplayer
+	msgbox(format("Placeholder for Minior form changer NPC."))
+	release
+	end
+}
+
 raw `
 FallarborTown_CozmosHouse_MapScripts::
 	.byte 0

@@ -6656,7 +6656,7 @@ Ability: Defiant
 Level: 21
 - Aerial Ace
 - Quick Attack
-- Leaf Blade
+- Night Slash
 - Roost
 
 === TRAINER_TIMOTHY_2 ===
@@ -7166,8 +7166,8 @@ Nature: Hasty
 Ability: Poison Touch
 Level: 27
 - Fake Out
+- Poison Jab
 - Venoshock
-- Mud Bomb
 - Vacuum Wave
 
 === TRAINER_DILLON ===
@@ -7188,7 +7188,7 @@ Level: 25
 - Drill Run
 - Focus Energy
 
-Bruxish @ Lum Berry
+Bruxish @ Leftovers
 Nature: Jolly
 Ability: Wonder Skin
 Level: 25
@@ -7197,7 +7197,7 @@ Level: 25
 - Psywave
 - Super Fang
 
-Vespiquen @ Leftovers
+Vespiquen @ Charti Berry
 Nature: Relaxed
 Ability: Unnerve
 Level: 26
@@ -8870,7 +8870,7 @@ AI: Check Bad Move / Try To Faint / Check Viability
 
 Kecleon @ Focus Sash
 Nature: Adamant
-Ability: Color Change
+Ability: Protean
 Level: 27
 - Body Slam
 - Drain Punch
@@ -15067,7 +15067,7 @@ Ability: Shield Dust
 Level: 24
 - Signal Beam
 - Draining Kiss
-- Round
+- Psychic Noise
 - Fake Tears
 
 Linoone @ Toxic Orb
@@ -15093,7 +15093,7 @@ Nature: Timid
 Ability: Simple
 Level: 24
 - Psyshock
-- Air Cutter
+- Air Slash
 - Stored Power
 - Shadow Ball
 
@@ -15104,13 +15104,13 @@ Level: 25
 - Signal Beam
 - Air Cutter
 - Acrobatics
-- Shadow Ball
+- Roost
 
 Golbat @ Eviolite
-Nature: Timid
+Nature: Naive
 Ability: Inner Focus
 Level: 24
-- Air Slash
+- Dual Wingbeat
 - Heat Wave
 - Giga Drain
 - Confuse Ray
@@ -15120,7 +15120,7 @@ Nature: Timid
 Ability: Insomnia
 Level: 25
 - Hyper Voice
-- Air Slash
+- Air Cutter
 - Night Shade
 - Hypnosis
 

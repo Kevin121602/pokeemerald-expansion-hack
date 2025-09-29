@@ -799,8 +799,8 @@ MtChimney_Text_MachineMakesNoResponse:
 	.string "It makes no response whatsoever.$"
 
 MtChimney_Text_RouteSign:
-	.string "{DOWN_ARROW} JAGGED PATH\n"
-	.string "LAVARIDGE TOWN AHEAD$"
+	.string "{DOWN_ARROW} Jagged Pass\n"
+	.string "Lavaridge Town Ahead$"
 
 MtChimney_Text_ShelbyIntro:
 	.string "I've been to the hot springs and\n"
@@ -842,23 +842,23 @@ MtChimney_Text_MelissaDefeat:
 	.string "Ooh, that was a scorching-hot match!$"
 
 MtChimney_Text_MelissaPostBattle:
-	.string "The heat of MT. CHIMNEY warms\n"
+	.string "The heat of Mt. Chimney warms\n"
 	.string "me up, baby!$"
 
 MtChimney_Text_SheilaIntro:
-	.string "I've finally made it to MT. CHIMNEY.\n"
+	.string "I've finally made it to Mt. Chimney.\n"
 	.string "I want to make my Pokémon battle!$"
 
 MtChimney_Text_SheilaDefeat:
 	.string "The way you battle…\n"
-	.string "It's like a MT. CHIMNEY eruption!$"
+	.string "It's like a Mt. Chimney eruption!$"
 
 MtChimney_Text_SheilaPostBattle:
 	.string "Like I said, I've finally made it to\n"
-	.string "MT. CHIMNEY. It would be a shame if\l"
+	.string "Mt. Chimney. It would be a shame if\l"
 	.string "I only do a little sightseeing…\p"
 	.string "I want to get in some battles and buy\n"
-	.string "COOKIES as souvenirs.$"
+	.string "Cookies as souvenirs.$"
 
 MtChimney_Text_ShirleyIntro:
 	.string "Since I bathed in the hot springs,\n"
@@ -882,8 +882,8 @@ MtChimney_Text_SawyerDefeat:
 	.string "Oh, you're a real firebrand, too!$"
 
 MtChimney_Text_SawyerPostBattle:
-	.string "I think I need a dip in LAVARIDGE\n"
-	.string "HOT SPRING with the locals!$"
+	.string "I think I need a dip in Lavaridge\n"
+	.string "Hot Spring with the locals!$"
 
 MtChimney_Text_SawyerRegister:
 	.string "I like little fireballs like you.\n"

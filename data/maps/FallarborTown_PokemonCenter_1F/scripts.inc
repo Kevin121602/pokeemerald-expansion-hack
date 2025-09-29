@@ -213,7 +213,7 @@ FallarborTown_PokemonCenter_1F_Text_FossilManiacEdgeOfTown:
 # 107 "data/maps/FallarborTown_PokemonCenter_1F/scripts.pory"
 	.string "long, long ago?\p"
 # 108 "data/maps/FallarborTown_PokemonCenter_1F/scripts.pory"
-	.string "Maybe the FOSSIL MANIAC at the edge\n"
+	.string "Maybe the Fossil Maniac at the edge\n"
 # 109 "data/maps/FallarborTown_PokemonCenter_1F/scripts.pory"
 	.string "of town will know.$"
 # 110 "data/maps/FallarborTown_PokemonCenter_1F/scripts.pory"
@@ -221,7 +221,7 @@ FallarborTown_PokemonCenter_1F_Text_FossilManiacEdgeOfTown:
 # 111 "data/maps/FallarborTown_PokemonCenter_1F/scripts.pory"
 FallarborTown_PokemonCenter_1F_Text_PlantHardyTrees:
 # 112 "data/maps/FallarborTown_PokemonCenter_1F/scripts.pory"
-	.string "In the fields of FALLARBOR, we plant\n"
+	.string "In the fields of Fallarbor, we plant\n"
 # 113 "data/maps/FallarborTown_PokemonCenter_1F/scripts.pory"
 	.string "seedlings of hardy trees that thrive\l"
 # 114 "data/maps/FallarborTown_PokemonCenter_1F/scripts.pory"

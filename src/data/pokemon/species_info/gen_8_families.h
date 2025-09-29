@@ -4565,7 +4565,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .levelUpLearnset = sMilceryLevelUpLearnset,
         .teachableLearnset = sMilceryTeachableLearnset,
         .eggMoveLearnset = sMilceryEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 28, SPECIES_ALCREMIE_STRAWBERRY_VANILLA_CREAM}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_ALCREMIE_STRAWBERRY_VANILLA_CREAM}),
     },
 
 #define ALCREMIE_MISC_INFO(color)                                               \
