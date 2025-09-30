@@ -37,16 +37,12 @@ LavaridgeTown_House_EventScript_Zigzagoon::
 # 19 "data/maps/LavaridgeTown_House/scripts.pory"
 LavaridgeTown_House_Text_WifeWarmingEggInHotSprings:
 # 20 "data/maps/LavaridgeTown_House/scripts.pory"
-	.string "My wife's warming an EGG in the hot\n"
+	.string "My wife knows a technique for stopping\n"
 # 21 "data/maps/LavaridgeTown_House/scripts.pory"
-	.string "springs. This is what she told me.\p"
+	.string "a foe's healing.$"
 # 22 "data/maps/LavaridgeTown_House/scripts.pory"
-	.string "She left two Pokémon with the DAY CARE.\n"
-# 23 "data/maps/LavaridgeTown_House/scripts.pory"
-	.string "And they discovered that EGG!$"
-# 24 "data/maps/LavaridgeTown_House/scripts.pory"
 
-# 25 "data/maps/LavaridgeTown_House/scripts.pory"
+# 23 "data/maps/LavaridgeTown_House/scripts.pory"
 LavaridgeTown_House_Text_Zigzagoon:
-# 26 "data/maps/LavaridgeTown_House/scripts.pory"
-	.string "ZIGZAGOON: Pshoo!$"
+# 24 "data/maps/LavaridgeTown_House/scripts.pory"
+	.string "Zigzagoon: Pshoo!$"

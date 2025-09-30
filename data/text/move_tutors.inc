@@ -269,3 +269,16 @@ MoveTutor_Text_PhasingTeach:
 	.string "My Poochyena loves to scare\n"
 	.string "people away.\p"
 	.string "It's an excellent technique!$"
+
+MoveTutor_Text_PunchTeach:
+	.string "I couldn't decide if I should jump\n"
+	.string "down this ledge or not.\p"
+	.string "So I've taken up karate to steel\n"
+	.string "my mind.$"
+
+MoveTutor_Text_HealBlock:
+	.string "The soothing steam in Lavaridge\n"
+	.string "Gym is pumped straight from these\l"
+	.string "Hot Springs.\p"
+	.string "But this move can nullify it.\n"
+	.string "Would you like to learn Heal Block?$"

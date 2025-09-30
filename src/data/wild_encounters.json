@@ -1300,7 +1300,7 @@
               {
                 "min_level": 7,
                 "max_level": 8,
-                "species": "SPECIES_RATTATA_ALOLAN"
+                "species": "SPECIES_MURKROW"
               },
               {
                 "min_level": 7,
@@ -1310,7 +1310,7 @@
               {
                 "min_level": 7,
                 "max_level": 8,
-                "species": "SPECIES_RATTATA_ALOLAN"
+                "species": "SPECIES_MURKROW"
               }
             ]
           }

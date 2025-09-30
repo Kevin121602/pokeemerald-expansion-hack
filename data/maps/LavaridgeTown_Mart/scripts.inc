@@ -75,9 +75,9 @@ LavaridgeTown_Mart_EventScript_OldWoman::
 # 38 "data/maps/LavaridgeTown_Mart/scripts.pory"
 LavaridgeTown_Mart_Text_XSpeedFirstStrike:
 # 39 "data/maps/LavaridgeTown_Mart/scripts.pory"
-	.string "Use X SPEED to add to a Pokémon's\n"
+	.string "Use a Salac to add to a Pokémon's\n"
 # 40 "data/maps/LavaridgeTown_Mart/scripts.pory"
-	.string "SPEED in battle.\p"
+	.string "Speed in battle.\p"
 # 41 "data/maps/LavaridgeTown_Mart/scripts.pory"
 	.string "That will help it get in the first\n"
 # 42 "data/maps/LavaridgeTown_Mart/scripts.pory"
@@ -87,7 +87,7 @@ LavaridgeTown_Mart_Text_XSpeedFirstStrike:
 # 44 "data/maps/LavaridgeTown_Mart/scripts.pory"
 LavaridgeTown_Mart_Text_LocalSpecialtyOnMtChimney:
 # 45 "data/maps/LavaridgeTown_Mart/scripts.pory"
-	.string "On MT. CHIMNEY's peak, there's a local\n"
+	.string "On Mt. Chimney's peak, there's a local\n"
 # 46 "data/maps/LavaridgeTown_Mart/scripts.pory"
 	.string "specialty that you can buy only there.\p"
 # 47 "data/maps/LavaridgeTown_Mart/scripts.pory"

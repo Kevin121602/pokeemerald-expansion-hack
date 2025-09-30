@@ -3174,4 +3174,9 @@ extern const u8 gText_MentalHerb[];
 extern const u8 gText_PowerHerb[];
 extern const u8 gText_WhiteHerb[];
 
+extern const u8 gText_BrickBreak[];
+extern const u8 gText_FirePunch[];
+extern const u8 gText_IcePunch[];
+extern const u8 gText_ThunderPunch[];
+
 #endif // GUARD_STRINGS_H

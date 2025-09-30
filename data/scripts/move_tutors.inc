@@ -420,3 +420,56 @@ Route114_EventScript_CircleThrowTutor::
 MoveTutor_EventScript_HelpingHandDeclined:
 	release
 	end
+
+Route112_EventScript_PunchTutor::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_PunchTeach
+	multichoice 21, 0, MULTI_PUNCH_TUTOR, FALSE
+	switch VAR_RESULT
+	case 0, Route112_EventScript_BrickBreakTutor
+	case 1, Route112_EventScript_FirePunchTutor
+	case 2, Route112_EventScript_IcePunchTutor
+	case 3, Route112_EventScript_ThunderPunchTutor
+	case MULTI_B_PRESSED, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+Route112_EventScript_BrickBreakTutor::
+	setvar VAR_0x8005, MOVE_BRICK_BREAK
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+Route112_EventScript_FirePunchTutor::
+	setvar VAR_0x8005, MOVE_FIRE_PUNCH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+Route112_EventScript_IcePunchTutor::
+	setvar VAR_0x8005, MOVE_ICE_PUNCH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+Route112_EventScript_ThunderPunchTutor::
+	setvar VAR_0x8005, MOVE_THUNDER_PUNCH
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end
+
+LavaridgeTown_EventScript_HealBlockTutor::
+	lock
+	faceplayer
+	msgbox MoveTutor_Text_HealBlock, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_HelpingHandDeclined
+	setvar VAR_0x8005, MOVE_HEAL_BLOCK
+	call MoveTutor_EventScript_OpenPartyMenu
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
+	release
+	end

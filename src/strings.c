@@ -1952,3 +1952,7 @@ const u8 gText_ThroatSpray[] =        _("Throat Spray");
 const u8 gText_MentalHerb[] =         _("Mental Herb");
 const u8 gText_PowerHerb[] =          _("Power Herb");
 const u8 gText_WhiteHerb[] =          _("White Herb");
+const u8 gText_BrickBreak[] =         _("Brick Break");
+const u8 gText_FirePunch[] =          _("Fire Punch");
+const u8 gText_IcePunch[] =           _("Ice Punch");
+const u8 gText_ThunderPunch[] =       _("Thunder Punch");

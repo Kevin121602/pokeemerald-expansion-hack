@@ -935,6 +935,14 @@ static const struct MenuAction MultichoiceList_HerbMenu[] =
     {gText_WhiteHerb},
 };
 
+static const struct MenuAction MultichoiceList_PunchTutor[] =
+{
+    {gText_BrickBreak},
+    {gText_FirePunch},
+    {gText_IcePunch},
+    {gText_ThunderPunch},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -1077,6 +1085,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BERRIES_MENU]               = MULTICHOICE(MultichoiceList_BerriesMenu),
     [MULTI_BOOST_ITEM_MENU]            = MULTICHOICE(MultichoiceList_BoostItemMenu),
     [MULTI_HERB_MENU]                  = MULTICHOICE(MultichoiceList_HerbMenu),
+    [MULTI_PUNCH_TUTOR]                = MULTICHOICE(MultichoiceList_PunchTutor),
 };
 
 const u8 *const gStdStrings[] =
