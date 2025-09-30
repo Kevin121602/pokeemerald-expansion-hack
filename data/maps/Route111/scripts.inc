@@ -1362,7 +1362,7 @@ Route111_Text_WinstrateHouseSign:
 # 711 "data/maps/Route111/scripts.pory"
 Route111_Text_RouteSign112:
 # 712 "data/maps/Route111/scripts.pory"
-	.string "Terra Cave\n"
+	.string "{UP_ARROW} Terra Cave\n"
 # 713 "data/maps/Route111/scripts.pory"
 	.string "{LEFT_ARROW} Route 112$"
 # 714 "data/maps/Route111/scripts.pory"

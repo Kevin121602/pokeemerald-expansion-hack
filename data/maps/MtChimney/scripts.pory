@@ -57,6 +57,43 @@ script MtChimney_EventScript_MiraDefeated{
 	end
 }
 
+script MtChimney_EventScript_AppleVendor{
+	lock
+	faceplayer
+	if(flag(FLAG_RECIEVED_MT_CHIMNEY_APPLE)){
+		msgbox("That was the last apple, I sold the\n"
+				"rest to a market in Slateport City!$")
+	} else {
+		showmoneybox(0, 0)
+		msgbox("Apples grown on Mt. Chimney are a\n"
+				"local specialty!\p"
+				"The soot makes them grow very tart\n"
+				"and sweet.\p"
+				"Would you like one? It's just ¥200.$", MSGBOX_YESNO)
+		if(var(VAR_RESULT) == NO){
+			msgbox(format("Oh, fine then.$"))
+			hidemoneybox
+			release
+			end
+		} else {
+			removemoney(200)
+			updatemoneybox
+			random(2)
+			switch(var(VAR_RESULT)){
+				case 0:
+					giveitem(ITEM_TART_APPLE)
+				case 1:
+					giveitem(ITEM_SWEET_APPLE)
+			}
+			hidemoneybox
+			msgbox("Thank you, dear!$")
+			setflag(FLAG_RECIEVED_MT_CHIMNEY_APPLE)
+		}
+	}
+	release
+	end
+}
+
 raw `
 .set LOCALID_ARCHIE, 1
 .set LOCALID_MAXIE, 2
@@ -502,6 +539,7 @@ MtChimney_EventScript_AquaPoochyena::
 
 MtChimney_EventScript_MeteoriteMachine::
 	lockall
+	goto_if_unset FLAG_HIDE_MT_CHIMNEY_TRAINERS, MtChimney_EventScript_MachineOff
 	goto_if_unset FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, MtChimney_EventScript_MachineOn
 	goto_if_set FLAG_RECEIVED_METEORITE, MtChimney_EventScript_MachineOff
 	msgbox MtChimney_Text_RemoveTheMeteorite, MSGBOX_YESNO

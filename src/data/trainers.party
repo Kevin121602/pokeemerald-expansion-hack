@@ -8868,7 +8868,7 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Kecleon @ Focus Sash
+Kecleon @ Quick Claw
 Nature: Adamant
 Ability: Protean
 Level: 27
@@ -8877,11 +8877,11 @@ Level: 27
 - Rock Slide
 - Aerial Ace
 
-Jumpluff @ Bright Powder
-Nature: Hasty
+Jumpluff @ Leftovers
+Nature: Timid
 Ability: Infiltrator
 Level: 26
-- Bounce
+- Air Slash
 - Giga Drain
 - Leech Seed
 - Sleep Powder
@@ -13092,7 +13092,7 @@ Level: 29
 
 Tsareena @ Miracle Seed
 Nature: Jolly
-Ability: Queenly Majesty
+Ability: Striker
 Level: 28
 - Trop Kick
 - Facade

@@ -1,6 +1,6 @@
 RustboroCity_DevonCorp_2F_EventScript_FossilScientistNew::
 # 2 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	lockall
+	lock
 # 3 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	faceplayer
 # 4 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"

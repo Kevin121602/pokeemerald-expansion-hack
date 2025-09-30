@@ -1,5 +1,5 @@
 script RustboroCity_DevonCorp_2F_EventScript_FossilScientistNew {
-	lockall
+	lock
 	faceplayer
 	if(flag(FLAG_RECIEVED_COMMON_FOSSIL)){
 		msgbox(format("I hope you find that fossil Pokémon useful!"))

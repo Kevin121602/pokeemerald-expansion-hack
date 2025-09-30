@@ -709,7 +709,7 @@ Route111_Text_WinstrateHouseSign:
 	.string "THE WINSTRATE'S HOUSE$"
 
 Route111_Text_RouteSign112:
-	.string "Terra Cave\n"
+	.string "{UP_ARROW} Terra Cave\n"
 	.string "{LEFT_ARROW} Route 112$"
 
 Route111_Text_RouteSign113:

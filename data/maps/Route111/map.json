@@ -657,8 +657,8 @@
     },
     {
       "type": "trigger",
-      "x": 11,
-      "y": 61,
+      "x": 1,
+      "y": 64,
       "elevation": 3,
       "var": "VAR_TEMP_3",
       "var_value": "0",
@@ -666,8 +666,8 @@
     },
     {
       "type": "trigger",
-      "x": 12,
-      "y": 61,
+      "x": 2,
+      "y": 65,
       "elevation": 3,
       "var": "VAR_TEMP_3",
       "var_value": "0",
@@ -675,8 +675,8 @@
     },
     {
       "type": "trigger",
-      "x": 13,
-      "y": 61,
+      "x": 3,
+      "y": 65,
       "elevation": 3,
       "var": "VAR_TEMP_3",
       "var_value": "0",
@@ -693,8 +693,8 @@
     },
     {
       "type": "trigger",
-      "x": 14,
-      "y": 61,
+      "x": 16,
+      "y": 62,
       "elevation": 3,
       "var": "VAR_TEMP_3",
       "var_value": "0",
@@ -834,6 +834,96 @@
       "var": "VAR_STAT_TRAINERS_STATE",
       "var_value": "2",
       "script": "Route111_EventScript_MarleyTriggered"
+    },
+    {
+      "type": "trigger",
+      "x": 1,
+      "y": 65,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route111_EventScript_SandstormTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 66,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route111_EventScript_SandstormTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 66,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route111_EventScript_SandstormTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 0,
+      "y": 66,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route111_EventScript_SunTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 1,
+      "y": 67,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route111_EventScript_SunTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 68,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route111_EventScript_SunTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 68,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route111_EventScript_SunTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 68,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route111_EventScript_SunTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 66,
+      "elevation": 0,
+      "var": "TRIGGER_RUN_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Route111_EventScript_SandstormTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 65,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "Route111_EventScript_ViciousSandstormTriggerDown"
     }
   ],
   "bg_events": [
@@ -855,8 +945,8 @@
     },
     {
       "type": "sign",
-      "x": 4,
-      "y": 66,
+      "x": 2,
+      "y": 69,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route111_EventScript_RouteSign112"

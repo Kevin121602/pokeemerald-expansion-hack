@@ -22173,7 +22173,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_KECLEON,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 8871
-            .heldItem = ITEM_FOCUS_SASH,
+            .heldItem = ITEM_QUICK_CLAW,
 #line 8875
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 8873
@@ -22196,7 +22196,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_JUMPLUFF,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 8880
-            .heldItem = ITEM_BRIGHT_POWDER,
+            .heldItem = ITEM_LEFTOVERS,
 #line 8884
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 8882
@@ -22204,11 +22204,11 @@ F_TRAINER_FEMALE |
 #line 8883
             .lvl = 26,
 #line 8881
-            .nature = NATURE_HASTY,
+            .nature = NATURE_TIMID,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 8884
-                MOVE_BOUNCE,
+                MOVE_AIR_SLASH,
                 MOVE_GIGA_DRAIN,
                 MOVE_LEECH_SEED,
                 MOVE_SLEEP_POWDER,
@@ -32977,7 +32977,7 @@ F_TRAINER_FEMALE |
 #line 13097
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 13095
-            .ability = ABILITY_QUEENLY_MAJESTY,
+            .ability = ABILITY_STRIKER,
 #line 13096
             .lvl = 28,
 #line 13094

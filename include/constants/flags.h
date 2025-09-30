@@ -69,6 +69,7 @@
 #define FLAG_RECIEVED_TRICK_HOUSE_GIFT_7    0x37 // Unused Flag
 #define FLAG_RECIEVED_TRICK_HOUSE_GIFT_8    0x38 // Unused Flag
 #define FLAG_HIDE_TRICK_HOUSE_APPRENTICE    0x39 // Unused Flag
+//turn into a var
 #define FLAG_RECIEVED_BOTTLE_CAP_1    0x3A // Unused Flag
 #define FLAG_RECIEVED_BOTTLE_CAP_2    0x3B // Unused Flag
 #define FLAG_RECIEVED_BOTTLE_CAP_3    0x3C // Unused Flag
@@ -83,7 +84,7 @@
 #define FLAG_RECIEVED_WIDE_LENS    0x45 // Unused Flag
 #define FLAG_HIDE_ROUTE_103_NORMAN    0x46 // Unused Flag
 #define FLAG_BLOCK_TRICK_HOUSE    0x47 // Unused Flag
-#define FLAG_UNUSED_0x048    0x48 // Unused Flag
+#define FLAG_RECIEVED_MT_CHIMNEY_APPLE    0x48 // Unused Flag
 #define FLAG_UNUSED_0x049    0x49 // Unused Flag
 #define FLAG_UNUSED_0x04A    0x4A // Unused Flag
 #define FLAG_UNUSED_0x04B    0x4B // Unused Flag
@@ -1121,7 +1122,7 @@
 #define FLAG_ITEM_TRICK_HOUSE_PUZZLE_6_GLITTER_MAIL                 0x42B
 #define FLAG_ITEM_TRICK_HOUSE_PUZZLE_7_TROPIC_MAIL                  0x42C
 #define FLAG_ITEM_TRICK_HOUSE_PUZZLE_8_BEAD_MAIL                    0x42D
-#define FLAG_ITEM_JAGGED_PASS_BURN_HEAL                             0x42E
+#define FLAG_ITEM_JAGGED_PASS_DRAGON_FANG                             0x42E
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_MAX_ELIXIR                       0x42F
 #define FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL                        0x430
 #define FLAG_ITEM_MT_PYRE_EXTERIOR_MAX_POTION                       0x431
