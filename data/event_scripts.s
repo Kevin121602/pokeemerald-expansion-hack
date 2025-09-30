@@ -586,6 +586,7 @@ gStdScripts_End::
 EventScript_WhiteOut::
 	call EverGrandeCity_HallOfFame_EventScript_ResetEliteFour
 	goto EventScript_ResetMrBriney
+	clearflag FLAG_SYS_GAUNTLET
 	end
 
 EventScript_ResetMrBriney::

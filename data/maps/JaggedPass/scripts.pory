@@ -1,3 +1,16 @@
+script JaggedPass_EventScript_GauntletStart{
+	setflag(FLAG_SYS_GAUNTLET)
+	release
+	end
+}
+
+script JaggedPass_EventScript_GauntletEnd{
+	clearflag(FLAG_SYS_GAUNTLET)
+	setvar(VAR_GAUNTLET_STATE, 1)
+	release
+	end
+}
+
 raw `
 .set LOCALID_HIDEOUT_GUARD, 5
 
@@ -99,9 +112,7 @@ JaggedPass_EventScript_Eric::
 	end
 
 JaggedPass_EventScript_Diana::
-	trainerbattle_single TRAINER_DIANA_1, JaggedPass_Text_DianaIntro, JaggedPass_Text_DianaDefeat, JaggedPass_EventScript_RegisterDiana
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, JaggedPass_EventScript_DianaRematch
+	trainerbattle_single TRAINER_DIANA_1, JaggedPass_Text_DianaIntro, JaggedPass_Text_DianaDefeat
 	msgbox JaggedPass_Text_DianaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -119,9 +130,7 @@ JaggedPass_EventScript_DianaRematch::
 	end
 
 JaggedPass_EventScript_Ethan::
-	trainerbattle_single TRAINER_ETHAN_1, JaggedPass_Text_EthanIntro, JaggedPass_Text_EthanDefeat, JaggedPass_EventScript_RegisterEthan
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, JaggedPass_EventScript_EthanRematch
+	trainerbattle_single TRAINER_ETHAN_1, JaggedPass_Text_EthanIntro, JaggedPass_Text_EthanDefeat
 	msgbox JaggedPass_Text_EthanPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -149,7 +158,7 @@ JaggedPass_EventScript_Autumn::
 	end
 
 JaggedPass_Text_EricIntro:
-	.string "MT. CHIMNEY's JAGGED PASS…\p"
+	.string "Mt. Chimney's Jagged Pass…\p"
 	.string "Now this is what I've always wanted\n"
 	.string "in a mountain.\p"
 	.string "This jagged bumpiness…\n"
@@ -193,7 +202,7 @@ JaggedPass_Text_DianaPostRematch:
 	.string "enjoy this bumpy hike.$"
 
 JaggedPass_Text_EthanIntro:
-	.string "JAGGED PASS is hard to walk on.\n"
+	.string "Jagged Pass is hard to walk on.\n"
 	.string "It's a good place for training.$"
 
 JaggedPass_Text_EthanDefeat:
@@ -201,7 +210,7 @@ JaggedPass_Text_EthanDefeat:
 	.string "trying to find a good footing…$"
 
 JaggedPass_Text_EthanPostBattle:
-	.string "If I had an ACRO BIKE, I'd be able to\n"
+	.string "If I had an Acro Bike, I'd be able to\n"
 	.string "jump ledges.$"
 
 JaggedPass_Text_EthanRegister:
@@ -240,7 +249,7 @@ JaggedPass_Text_GoWhereverYouWant:
 
 JaggedPass_Text_BoulderShakingInResponseToEmblem:
 	.string "Oh! This boulder is shaking in response\n"
-	.string "to the MAGMA EMBLEM!$"
+	.string "to the Magma Emblem!$"
 
 JaggedPass_Text_JulioIntro:
 	.string "Aiyeeh! It's awfully scary to shoot\n"

@@ -2685,14 +2685,14 @@ Level: 29
 - Giga Drain
 - Glare
 
-Dodrio @ Muscle Band
+Fearow @ Scope Lens
 Nature: Jolly
-Ability: Keen Eye
+Ability: Sniper
 Level: 30
 - Drill Peck
-- Facade
 - Quick Attack
 - Drill Run
+- Focus Energy
 
 Espeon @ Weakness Policy
 Nature: Timid
@@ -4112,73 +4112,211 @@ Level: 34
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_COLE ===
-Name: COLE
+Name: Cole
 Class: Kindler
 Pic: Kindler
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Numel
-Level: 23
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Galvantula @ Magnet
+Nature: Timid
+Ability: Unnerve
+Level: 31
+- Discharge
+- Signal Beam
+- Giga Drain
+- Toxic
+
+Seviper @ Wise Glasses
+Nature: Timid
+Ability: Infiltrator
+Level: 31
+- Venoshock
+- Flamethrower
+- Giga Drain
+- Glare
+
+Lycanroc Midnight @ Lum Berry
+Nature: Jolly
+Ability: Keen Eye
+Level: 32
+- Rock Tomb
+- Brick Break
+- Stomping Tantrum
+- Counter
 
 === TRAINER_JEFF ===
-Name: JEFF
+Name: Jeff
 Class: Kindler
 Pic: Kindler
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Slugma
-Level: 22
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Galvantula @ Magnet
+Nature: Timid
+Ability: Unnerve
+Level: 32
+- Discharge
+- Signal Beam
+- Giga Drain
+- Toxic
 
-Slugma
-Level: 22
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Lycanroc Midnight @ Lum Berry
+Nature: Jolly
+Ability: Keen Eye
+Level: 33
+- Rock Tomb
+- Brick Break
+- Stomping Tantrum
+- Counter
+
+Seviper @ Wise Glasses
+Nature: Timid
+Ability: Infiltrator
+Level: 32
+- Venoshock
+- Flamethrower
+- Giga Drain
+- Glare
+
+Fearow @ Scope Lens
+Nature: Jolly
+Ability: Sniper
+Level: 33
+- Drill Peck
+- Quick Attack
+- Drill Run
+- Focus Energy
+
+Espeon @ Weakness Policy
+Nature: Timid
+Ability: Synchronize
+Level: 34
+- Stored Power
+- Dazzling Gleam
+- Shadow Ball
+- Morning Sun
 
 === TRAINER_AXLE ===
-Name: AXLE
+Name: Axle
 Class: Kindler
 Pic: Kindler
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Numel
-Level: 23
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Galvantula @ Magnet
+Nature: Timid
+Ability: Unnerve
+Level: 32
+- Discharge
+- Signal Beam
+- Giga Drain
+- Toxic
+
+Seviper @ Wise Glasses
+Nature: Timid
+Ability: Infiltrator
+Level: 32
+- Venoshock
+- Flamethrower
+- Giga Drain
+- Glare
+
+Lycanroc Midnight @ Lum Berry
+Nature: Jolly
+Ability: Keen Eye
+Level: 32
+- Rock Tomb
+- Brick Break
+- Stomping Tantrum
+- Counter
 
 === TRAINER_JACE ===
-Name: JACE
+Name: Jace
 Class: Kindler
 Pic: Kindler
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Slugma
-Level: 23
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Galvantula @ Magnet
+Nature: Timid
+Ability: Unnerve
+Level: 31
+- Discharge
+- Signal Beam
+- Giga Drain
+- Toxic
+
+Lycanroc Midnight @ Lum Berry
+Nature: Jolly
+Ability: Keen Eye
+Level: 32
+- Rock Tomb
+- Brick Break
+- Stomping Tantrum
+- Counter
+
+Seviper @ Wise Glasses
+Nature: Timid
+Ability: Infiltrator
+Level: 31
+- Venoshock
+- Flamethrower
+- Giga Drain
+- Glare
+
+Fearow @ Scope Lens
+Nature: Jolly
+Ability: Sniper
+Level: 31
+- Drill Peck
+- Quick Attack
+- Drill Run
+- Focus Energy
 
 === TRAINER_KEEGAN ===
-Name: KEEGAN
+Name: Keegan
 Class: Kindler
 Pic: Kindler
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Slugma
-Level: 23
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+Galvantula @ Magnet
+Nature: Timid
+Ability: Unnerve
+Level: 32
+- Discharge
+- Signal Beam
+- Giga Drain
+- Toxic
+
+Lycanroc Midnight @ Lum Berry
+Nature: Jolly
+Ability: Keen Eye
+Level: 32
+- Rock Tomb
+- Brick Break
+- Stomping Tantrum
+- Counter
+
+Seviper @ Wise Glasses
+Nature: Timid
+Ability: Infiltrator
+Level: 33
+- Venoshock
+- Flamethrower
+- Giga Drain
+- Glare
 
 === TRAINER_BERNIE_1 ===
 Name: Bernie
@@ -4459,24 +4597,43 @@ Level: 24
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ETHAN_1 ===
-Name: ETHAN
+Name: Ethan
 Class: Camper
 Pic: Camper
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Zigzagoon
-Level: 20
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Crobat @ Lum Berry
+Nature: Naive
+Ability: Inner Focus
+Level: 31
+- Sludge Bomb
+- Dual Wingbeat
+- Super Fang
+- Hypnosis
 
-Taillow
-Level: 20
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Luxray @ Leftovers
+Nature: Adamant
+Ability: Intimidate
+Level: 31
+- Wild Charge
+- Crunch
+- Ice Fang
+- Scary Face
+
+Mr. Mime-Galarian @ Eviolite
+Nature: Timid
+Ability: Vital Spirit
+Level: 32
+- Psyshock
+- Freeze Dry
+- Shadow Ball
+- Grass Knot
 
 === TRAINER_AUTUMN ===
-Name: AUTUMN
+Name: Autumn
 Class: Picnicker
 Pic: Picnicker
 Gender: Female
@@ -4484,29 +4641,32 @@ Music: Girl
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Blitzle @ Expert Belt
-Level: 12
-Nature: Adamant
-Ability: Sap Sipper
--Spark
--Flame Charge
+Venomoth @ Focus Sash
+Nature: Timid
+Ability: Shield Dust
+Level: 30
+- Sludge Bomb
+- Signal Beam
+- Psychic
+- Toxic Spikes
 
-Roggenrola @ Leftovers
-Level: 13
-Nature: Careful
-Ability: Solid Rock
--Rock Tomb
--Bulldoze
--Sand Attack
+Xatu @ Leftovers
+Nature: Timid
+Ability: Magic Bounce
+Level: 30
+- Psyshock
+- Air Slash
+- Heat Wave
+- Roost
 
-Bulbasaur @ Berry Juice
-Level: 13
-Nature: Modest
-Ability: Chlorophyll
--Magical Leaf
--Venoshock
--Sleep Powder
--Synthesis
+Tropius @ Yache Berry
+Nature: Hasty
+Ability: Harvest
+Level: 31
+- Leaf Blade
+- Air Slash
+- Earthquake
+- Dragon Dance
 
 === TRAINER_TRAVIS ===
 Name: TRAVIS
@@ -7179,14 +7339,14 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Fearow @ Scope Lens
+Dodrio @ Muscle Band
 Nature: Jolly
-Ability: Sniper
+Ability: Keen Eye
 Level: 25
-- Aerial Ace
+- Pluck
 - Quick Attack
 - Drill Run
-- Focus Energy
+- Swords Dance
 
 Bruxish @ Leftovers
 Nature: Jolly
@@ -9945,19 +10105,34 @@ Pic: Picnicker
 Gender: Female
 Music: Girl
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Shroomish
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Liepard @ Focus Sash
+Nature: Jolly
+Ability: Prankster
+Level: 30
+- Night Slash
+- Play Rough
+- Baton Pass
+- Hone Claws
 
-Oddish
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Durant @ Lum Berry
+Nature: Jolly
+Ability: Hustle
+Level: 29
+- First Impression
+- Iron Head
+- X-Scissor
+- Aerial Ace
 
-Swablu
-Level: 19
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Zweilous @ Roseli Berry
+Nature: Jolly
+Ability: Hustle
+Level: 31
+- Crunch
+- Dragon Tail
+- Aqua Tail
+- Fire Fang
 
 === TRAINER_CEDRIC ===
 Name: CEDRIC
@@ -10492,7 +10667,7 @@ Level: 45
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_ELI ===
-Name: ELI
+Name: Eli
 Class: Hiker
 Pic: Hiker
 Gender: Male
@@ -10500,40 +10675,41 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Shuppet @ Spell Tag
-Level: 17
-Nature: Adamant
-Ability: Cursed Body
--Shadow Sneak
--Secret Power
--Night Shade
--Destiny Bond
+Galvantula @ Magnet
+Nature: Timid
+Ability: Unnerve
+Level: 31
+- Discharge
+- Signal Beam
+- Giga Drain
+- Toxic
 
-Mankey @ Focus Sash
-Level: 17
+Lycanroc Midnight @ Lum Berry
 Nature: Jolly
-Ability: Defiant
--Brick Break
--Rock Tomb
--Reversal
--Screech
+Ability: Keen Eye
+Level: 30
+- Rock Tomb
+- Brick Break
+- Stomping Tantrum
+- Counter
 
-Diglett @ Soft Sand
-Level: 17
+Seviper @ Wise Glasses
+Nature: Timid
+Ability: Infiltrator
+Level: 31
+- Venoshock
+- Flamethrower
+- Giga Drain
+- Glare
+
+Fearow @ Scope Lens
 Nature: Jolly
-Ability: Arena Trap
--Stomping Tantrum
--Rock Tomb
--Slash
-
-Parasect @ Coba Berry
-Level: 18
-Nature: Sassy
-Ability: Hyper Cutter
--Bug Bite
--Giga Drain
--Cross Poison
--Spore
+Ability: Sniper
+Level: 32
+- Drill Peck
+- Quick Attack
+- Drill Run
+- Focus Energy
 
 === TRAINER_ANNIKA ===
 Name: ANNIKA
@@ -11893,17 +12069,41 @@ Level: 39
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
 === TRAINER_JULIO ===
-Name: JULIO
+Name: Julio
 Class: Triathlete
 Pic: Cycling Triathlete M
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Magnemite
-Level: 21
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Pincurchin @ Lum Berry
+Nature: Brave
+Ability: Electric Surge
+Level: 31
+- Zing Zap
+- Scald
+- Poison Jab
+- Recover
+
+Electrode @ Leftovers
+Nature: Timid
+Ability: Static
+IVs: 31 HP / 30 Atk / 30 Def / 31 SpA / 31 SpD / 31 Spe
+Level: 30
+- Discharge
+- Foul Play
+- Hidden Power
+- Swagger
+
+Seaking @ Belue Berry
+Nature: Jolly
+Ability: Lightning Rod
+Level: 32
+- Waterfall
+- Natural Gift
+- Poison Jab
+- Quick Attack
 
 === TRAINER_GRUNT_SEAFLOOR_CAVERN_5 ===
 Name: GRUNT
@@ -13247,21 +13447,49 @@ Ability: Solid Rock
 -Aqua Jet
 
 === TRAINER_ERIC ===
-Name: ERIC
+Name: Eric
 Class: Hiker
 Pic: Hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Geodude
-Level: 20
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Throh @ Sitrus Berry
+Nature: Brave
+Ability: Mold Breaker
+Level: 30
+- Storm Throw
+- Payback
+- Zen Headbutt
+- Rock Slide
 
-Baltoy
-Level: 20
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Dugtrio-Alolan @ Dark Gem
+Nature: Jolly
+Ability: Tangling Hair
+Level: 29
+- Iron Head
+- Stomping Tantrum
+- Pursuit
+- Final Gambit
+
+Cradily @ Lum Berry
+Nature: Modest
+Ability: Storm Drain
+Level: 31
+- Giga Drain
+- Ancient Power
+- Earth Power
+- Recover
+
+Gumshoos @ Custap Berry
+Nature: Jolly
+Ability: Strong Jaw
+Level: 31
+- Body Slam
+- Crunch
+- Fire Fang
+- Endeavor
 
 === TRAINER_LUCAS_2 ===
 Name: LUCAS
@@ -13553,7 +13781,7 @@ Level: 13
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GERALD ===
-Name: GERALD
+Name: Gerald
 Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
@@ -13562,13 +13790,32 @@ Items: Hyper Potion
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Kecleon
-Level: 23
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Galvantula @ Magnet
+Nature: Timid
+Ability: Unnerve
+Level: 32
+- Discharge
+- Signal Beam
+- Giga Drain
+- Toxic
+
+Seviper @ Wise Glasses
+Nature: Timid
+Ability: Infiltrator
+Level: 31
+- Venoshock
 - Flamethrower
-- Fury Swipes
-- Feint Attack
-- Bind
+- Giga Drain
+- Glare
+
+Lycanroc Midnight @ Lum Berry
+Nature: Jolly
+Ability: Keen Eye
+Level: 32
+- Rock Tomb
+- Brick Break
+- Stomping Tantrum
+- Counter
 
 === TRAINER_VIVIAN ===
 Name: VIVIAN
@@ -13596,21 +13843,58 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Meditate
 
 === TRAINER_DANIELLE ===
-Name: DANIELLE
+Name: Danielle
 Class: Battle Girl
 Pic: Battle Girl
 Gender: Female
 Music: Intense
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Meditite
-Level: 23
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Bide
-- Detect
-- Confusion
-- Fire Punch
+Galvantula @ Magnet
+Nature: Timid
+Ability: Unnerve
+Level: 32
+- Discharge
+- Signal Beam
+- Giga Drain
+- Toxic
+
+Lycanroc Midnight @ Lum Berry
+Nature: Jolly
+Ability: Keen Eye
+Level: 33
+- Rock Tomb
+- Brick Break
+- Stomping Tantrum
+- Counter
+
+Seviper @ Wise Glasses
+Nature: Timid
+Ability: Infiltrator
+Level: 32
+- Venoshock
+- Flamethrower
+- Giga Drain
+- Glare
+
+Fearow @ Scope Lens
+Nature: Jolly
+Ability: Sniper
+Level: 32
+- Drill Peck
+- Quick Attack
+- Drill Run
+- Focus Energy
+
+Espeon @ Weakness Policy
+Nature: Timid
+Ability: Synchronize
+Level: 33
+- Stored Power
+- Dazzling Gleam
+- Shadow Ball
+- Morning Sun
 
 === TRAINER_HIDEO ===
 Name: HIDEO
