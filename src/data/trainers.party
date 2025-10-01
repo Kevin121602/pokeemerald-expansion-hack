@@ -17404,47 +17404,69 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Thunder
 - Protect
 
-=== TRAINER_FLANNERY_2 ===
-Name: FLANNERY
+=== TRAINER_BUCK ===
+Name: Buck
 Class: Leader
-Pic: Leader Flannery
-Gender: Female
+Pic: Buck
+Gender: Male
 Music: Female
-Items: Full Restore / Full Restore / Full Restore
-Double Battle: Yes
+Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
+Mugshot: Yellow
 
-Magcargo @ White Herb
-Level: 38
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Overheat
-- Attract
-- Light Screen
-- Rock Slide
-
-Ponyta
-Level: 36
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Flamethrower
-- Attract
+Torkoal @ Power Herb
+Level: 34
+Nature: Bold
+Ability: Shell Armor
+- Lava Plume
 - Solar Beam
-- Bounce
+- Body Press
+- Will-O-Wisp
 
-Camerupt @ White Herb
-Level: 38
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Overheat
-- Sunny Day
-- Earthquake
-- Attract
+Bewear @ Lum Berry
+Level: 33
+Nature: Jolly
+Ability: Fluffy
+- Body Slam
+- Drain Punch
+- Darkest Lariat
+- Stomping Tantrum
 
-Torkoal @ White Herb
-Level: 40
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Overheat
-- Sunny Day
-- Explosion
-- Attract
+Sylveon @ Fairy Feather
+Level: 34
+Nature: Hasty
+Ability: Pixilate
+- Round
+- Quick Attack
+- Psyshock
+- Mystical Fire
+
+Virizion @ Coba Berry
+Level: 33
+Nature: Jolly
+Ability: Justified
+- Leaf Blade
+- Sacred Sword
+- Stone Edge
+- Zen Headbutt
+
+Claydol @ Leftovers
+Level: 35
+Nature: Timid
+Ability: Levitate
+- Earth Power
+- Stored Power
+- Signal Beam
+- Calm Mind
+
+Slowbro @ Slowbronite
+Level: 35
+Nature: Calm
+Ability: Regenerator
+- Scald
+- Psybeam
+- Slack Off
+- Thunder Wave
 
 === TRAINER_FLANNERY_3 ===
 Name: FLANNERY

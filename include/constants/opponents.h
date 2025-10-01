@@ -785,7 +785,7 @@
 #define TRAINER_WATTSON_3                   779
 #define TRAINER_WATTSON_4                   780
 #define TRAINER_WATTSON_5                   781
-#define TRAINER_FLANNERY_2                  782
+#define TRAINER_BUCK                  782
 #define TRAINER_FLANNERY_3                  783
 #define TRAINER_FLANNERY_4                  784
 #define TRAINER_FLANNERY_5                  785

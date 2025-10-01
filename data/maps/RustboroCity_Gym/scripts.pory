@@ -22,7 +22,6 @@ RustboroCity_Gym_EventScript_RoxanneDefeated::
 	clearflag FLAG_DISABLE_EXP
 	setflag FLAG_BADGE01_GET
 	setvar VAR_RUSTBORO_CITY_STATE, 1
-	addvar VAR_PETALBURG_GYM_STATE, 1
 	setvar VAR_TRICK_HOUSE_LEVEL, 1
 	setvar VAR_0x8008, 1
 	setvar VAR_TRICK_HOUSE_BEING_WATCHED_STATE, 0
