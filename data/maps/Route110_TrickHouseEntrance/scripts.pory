@@ -55,10 +55,6 @@ script Route110_TrickHouseEntrance_Apprentice{
 							waitmessage
 							waitfanfare
 					}
-					msgbox("Give this Pokémon a nickname?", MSGBOX_YESNO)
-					if(var(VAR_RESULT) == YES){
-						call(Common_EventScript_NameReceivedPartyMon)
-					}
 					setflag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_1)
 				}
 			}

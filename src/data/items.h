@@ -11814,19 +11814,19 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_X_SCISSOR,
     },
 
-    [ITEM_TM_ZEN_HEADBUTT] =
+    [ITEM_TM_THROAT_CHOP] =
     {
         .name = _("TM100"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Focuses willpower\n"
-            "and attacks the\n"
-            "foe. May Flinch."),
+            "Prevents foe from\n"
+            "using sound-based\n"
+            "moves for 2 turns."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_ZEN_HEADBUTT,
+        .secondaryId = MOVE_THROAT_CHOP,
     },
 
     [ITEM_TM_PIN_MISSILE] =

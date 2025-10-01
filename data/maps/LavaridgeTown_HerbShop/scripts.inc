@@ -45,43 +45,43 @@ LavaridgeTown_HerbShop_Pokemart:
 # 23 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
 	.2byte ITEM_DAWN_STONE
 # 24 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.2byte ITEM_DUSK_STONE
-# 25 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
 	.2byte ITEM_SHINY_STONE
-# 26 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+# 25 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
 	.2byte ITEM_ICE_STONE
-# 27 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+# 26 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
 	.2byte ITEM_NONE
-# 28 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+# 27 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
 	release
+# 28 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+	end
 # 29 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	end
+
 # 30 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-
+	.align 2
 # 31 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-LavaridgeTown_HerbShop_EventScript_ExpertM::
+LavaridgeTown_HerbShop_PokemartWithDuskStone:
 # 32 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	msgbox LavaridgeTown_HerbShop_Text_HerbalMedicineWorksButMonWillDislike, MSGBOX_NPC
+	.2byte ITEM_FIRE_STONE
 # 33 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	end
+	.2byte ITEM_LEAF_STONE
 # 34 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-
+	.2byte ITEM_THUNDER_STONE
 # 35 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-LavaridgeTown_HerbShop_EventScript_OldMan::
+	.2byte ITEM_WATER_STONE
 # 36 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	lock
+	.2byte ITEM_MOON_STONE
 # 37 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	faceplayer
+	.2byte ITEM_SUN_STONE
 # 38 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	goto_if_set FLAG_RECEIVED_FAIRY_FEATHER, LavaridgeTown_HerbShop_EventScript_ExplainCharcoal
+	.2byte ITEM_DAWN_STONE
 # 39 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	msgbox LavaridgeTown_HerbShop_Text_YouveComeToLookAtHerbalMedicine, MSGBOX_DEFAULT
+	.2byte ITEM_DUSK_STONE
 # 40 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	giveitem ITEM_FAIRY_FEATHER
+	.2byte ITEM_SHINY_STONE
 # 41 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	.2byte ITEM_ICE_STONE
 # 42 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	setflag FLAG_RECEIVED_FAIRY_FEATHER
+	.2byte ITEM_NONE
 # 43 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
 	release
 # 44 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
@@ -89,56 +89,86 @@ LavaridgeTown_HerbShop_EventScript_OldMan::
 # 45 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
 
 # 46 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-LavaridgeTown_HerbShop_EventScript_ExplainCharcoal::
+LavaridgeTown_HerbShop_EventScript_ExpertM::
 # 47 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	msgbox LavaridgeTown_HerbShop_Text_ExplainCharcoal, MSGBOX_DEFAULT
+	msgbox LavaridgeTown_HerbShop_Text_HerbalMedicineWorksButMonWillDislike, MSGBOX_NPC
 # 48 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	release
-# 49 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
 	end
+# 49 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+
 # 50 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-
+LavaridgeTown_HerbShop_EventScript_OldMan::
 # 51 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-LavaridgeTown_HerbShop_Text_WelcomeToHerbShop:
+	lock
 # 52 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.string "Welcome to the Stone Emporium, home\n"
+	faceplayer
 # 53 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.string "of glistening Evolution Stones!$"
+	goto_if_set FLAG_RECEIVED_FAIRY_FEATHER, LavaridgeTown_HerbShop_EventScript_ExplainCharcoal
 # 54 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-
+	msgbox LavaridgeTown_HerbShop_Text_YouveComeToLookAtHerbalMedicine, MSGBOX_DEFAULT
 # 55 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-LavaridgeTown_HerbShop_Text_YouveComeToLookAtHerbalMedicine:
+	giveitem ITEM_FAIRY_FEATHER
 # 56 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.string "You've come to look at stones\n"
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 # 57 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.string "in Lavaridge?\p"
+	setflag FLAG_RECEIVED_FAIRY_FEATHER
 # 58 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.string "That's rather commendable.\p"
+	release
 # 59 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.string "I like you! Take this!$"
+	end
 # 60 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
 
 # 61 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-LavaridgeTown_HerbShop_Text_ExplainCharcoal:
+LavaridgeTown_HerbShop_EventScript_ExplainCharcoal::
 # 62 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.string "That Fairy Feather I gave you, it's\n"
+	msgbox LavaridgeTown_HerbShop_Text_ExplainCharcoal, MSGBOX_DEFAULT
 # 63 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.string "a prized possession.\p"
+	release
 # 64 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.string "It also does wonders when held by\n"
+	end
 # 65 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.string "a Pokémon.\p"
-# 66 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.string "It intensifies the power of Fairy\n"
-# 67 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.string "type moves.$"
-# 68 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
 
+# 66 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+LavaridgeTown_HerbShop_Text_WelcomeToHerbShop:
+# 67 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+	.string "Welcome to the Stone Emporium, home\n"
+# 68 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+	.string "of glistening Evolution Stones!$"
 # 69 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-LavaridgeTown_HerbShop_Text_HerbalMedicineWorksButMonWillDislike:
+
 # 70 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.string "Stones evolve a variety of Pokemon.\n"
+LavaridgeTown_HerbShop_Text_YouveComeToLookAtHerbalMedicine:
 # 71 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.string "But those Pokémon will learn fewer\l"
+	.string "You've come to look at stones\n"
 # 72 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+	.string "in Lavaridge?\p"
+# 73 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+	.string "That's rather commendable.\p"
+# 74 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+	.string "I like you! Take this!$"
+# 75 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+
+# 76 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+LavaridgeTown_HerbShop_Text_ExplainCharcoal:
+# 77 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+	.string "That Fairy Feather I gave you, it's\n"
+# 78 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+	.string "a prized possession.\p"
+# 79 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+	.string "It also does wonders when held by\n"
+# 80 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+	.string "a Pokémon.\p"
+# 81 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+	.string "It intensifies the power of Fairy\n"
+# 82 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+	.string "type moves.$"
+# 83 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+
+# 84 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+LavaridgeTown_HerbShop_Text_HerbalMedicineWorksButMonWillDislike:
+# 85 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+	.string "Stones evolve a variety of Pokemon.\n"
+# 86 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+	.string "But those Pokémon will learn fewer\l"
+# 87 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
 	.string "moves once they evolve!$"

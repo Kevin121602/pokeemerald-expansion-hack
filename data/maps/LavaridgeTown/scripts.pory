@@ -1,3 +1,25 @@
+const LOCALID_TRICK_MASTER = 11
+
+script LavaridgeTown_EventScript_TrickHouseOpen{
+	lockall
+	faceplayer
+	msgbox("Hey there, {PLAYER}!\p"
+			"I'm just here to let you know that the\n"
+			"next Trick House puzzle is open.\p"
+			"That's all!\n"
+			"I hope to see you there!$")
+	closemessage
+	delay(20)
+	applymovement(LOCALID_TRICK_MASTER, Route110_TrickHouse_Movement_TrickMasterSpin)
+	waitmovement(0)
+	applymovement(LOCALID_TRICK_MASTER, Route110_TrickHouse_Movement_TrickMasterJumpAway)
+	waitmovement(0)
+	removeobject(LOCALID_TRICK_MASTER)
+	setflag(FLAG_HEAT_BADGE_TRICK_HOUSE_OPEN)
+	releaseall
+	end
+}
+
 raw `
 .set LOCALID_RIVAL_ON_BIKE, 7
 .set LOCALID_RIVAL, 8

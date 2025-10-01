@@ -96,7 +96,7 @@
     F(WEATHER_BALL) \
     F(WILL_O_WISP) \
     F(X_SCISSOR) \
-    F(ZEN_HEADBUTT)\
+    F(THROAT_CHOP)\
     F(PIN_MISSILE)\
     F(U_TURN)\
     F(FLIP_TURN)\
