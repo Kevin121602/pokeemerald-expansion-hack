@@ -11679,19 +11679,19 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_TAILWIND,
     },
 
-    [ITEM_TM_THROAT_CHOP] =
+    [ITEM_TM_TELEPORT] =
     {
         .name = _("TM91"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Prevents foe from\n"
-            "using sound-based\n"
-            "moves for 2 turns."),
+            "Psychic powers\n"
+            "allow the user to\n"
+            "switch out."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_THROAT_CHOP,
+        .secondaryId = MOVE_TELEPORT,
     },
 
     [ITEM_TM_THUNDER] =

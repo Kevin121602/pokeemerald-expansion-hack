@@ -87,7 +87,7 @@
     F(SURF) \
     F(SWIFT) \
     F(TAILWIND) \
-    F(THROAT_CHOP) \
+    F(TELEPORT) \
     F(THUNDER) \
     F(THUNDER_WAVE) \
     F(THUNDERBOLT) \
