@@ -2659,13 +2659,13 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Galvantula @ Magnet
-Nature: Timid
+Nature: Hasty
 Ability: Unnerve
 Level: 29
 - Discharge
 - Signal Beam
 - Giga Drain
-- Toxic
+- Sucker Punch
 
 Lycanroc Midnight @ Lum Berry
 Nature: Jolly
@@ -2679,20 +2679,20 @@ Level: 30
 Seviper @ Wise Glasses
 Nature: Timid
 Ability: Infiltrator
-Level: 29
+Level: 30
 - Venoshock
 - Flamethrower
 - Giga Drain
 - Glare
 
-Fearow @ Scope Lens
+Dodrio @ Muscle Band
 Nature: Jolly
-Ability: Sniper
-Level: 30
+Ability: Keen Eye
+Level: 29
 - Drill Peck
+- Double Hit
 - Quick Attack
-- Drill Run
-- Focus Energy
+- Low Kick
 
 Espeon @ Weakness Policy
 Nature: Timid
@@ -4147,8 +4147,71 @@ Level: 32
 - Stomping Tantrum
 - Counter
 
+Lycanroc Midnight @ Lum Berry
+Nature: Jolly
+Ability: Keen Eye
+Level: 32
+- Rock Tomb
+- Brick Break
+- Stomping Tantrum
+- Counter
+
 === TRAINER_JEFF ===
 Name: Jeff
+Class: Kindler
+Pic: Kindler
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Check Viability
+
+Galvantula @ Magnet
+Nature: Timid
+Ability: Unnerve
+Level: 33
+- Discharge
+- Signal Beam
+- Giga Drain
+- Toxic
+
+Lycanroc Midnight @ Lum Berry
+Nature: Jolly
+Ability: Keen Eye
+Level: 33
+- Rock Tomb
+- Brick Break
+- Stomping Tantrum
+- Counter
+
+Seviper @ Wise Glasses
+Nature: Timid
+Ability: Infiltrator
+Level: 34
+- Venoshock
+- Flamethrower
+- Giga Drain
+- Glare
+
+Fearow @ Scope Lens
+Nature: Jolly
+Ability: Sniper
+Level: 33
+- Drill Peck
+- Quick Attack
+- Drill Run
+- Focus Energy
+
+Espeon @ Weakness Policy
+Nature: Timid
+Ability: Synchronize
+Level: 34
+- Stored Power
+- Dazzling Gleam
+- Shadow Ball
+- Morning Sun
+
+=== TRAINER_AXLE ===
+Name: Axle
 Class: Kindler
 Pic: Kindler
 Gender: Male
@@ -4195,47 +4258,11 @@ Level: 33
 Espeon @ Weakness Policy
 Nature: Timid
 Ability: Synchronize
-Level: 34
+Level: 33
 - Stored Power
 - Dazzling Gleam
 - Shadow Ball
 - Morning Sun
-
-=== TRAINER_AXLE ===
-Name: Axle
-Class: Kindler
-Pic: Kindler
-Gender: Male
-Music: Hiker
-Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability
-
-Galvantula @ Magnet
-Nature: Timid
-Ability: Unnerve
-Level: 32
-- Discharge
-- Signal Beam
-- Giga Drain
-- Toxic
-
-Seviper @ Wise Glasses
-Nature: Timid
-Ability: Infiltrator
-Level: 32
-- Venoshock
-- Flamethrower
-- Giga Drain
-- Glare
-
-Lycanroc Midnight @ Lum Berry
-Nature: Jolly
-Ability: Keen Eye
-Level: 32
-- Rock Tomb
-- Brick Break
-- Stomping Tantrum
-- Counter
 
 === TRAINER_JACE ===
 Name: Jace
@@ -4303,7 +4330,7 @@ Level: 32
 Lycanroc Midnight @ Lum Berry
 Nature: Jolly
 Ability: Keen Eye
-Level: 32
+Level: 33
 - Rock Tomb
 - Brick Break
 - Stomping Tantrum
@@ -4312,11 +4339,20 @@ Level: 32
 Seviper @ Wise Glasses
 Nature: Timid
 Ability: Infiltrator
-Level: 33
+Level: 32
 - Venoshock
 - Flamethrower
 - Giga Drain
 - Glare
+
+Fearow @ Scope Lens
+Nature: Jolly
+Ability: Sniper
+Level: 33
+- Drill Peck
+- Quick Attack
+- Drill Run
+- Focus Energy
 
 === TRAINER_BERNIE_1 ===
 Name: Bernie
@@ -7339,14 +7375,14 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Dodrio @ Muscle Band
+Fearow @ Scope Lens
 Nature: Jolly
-Ability: Keen Eye
+Ability: Sniper
 Level: 25
-- Pluck
+- Drill Peck
 - Quick Attack
 - Drill Run
-- Swords Dance
+- Focus Energy
 
 Bruxish @ Leftovers
 Nature: Jolly
@@ -7439,21 +7475,58 @@ Level: 36
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_EDDIE ===
-Name: EDDIE
+Name: Eddie
 Class: Youngster
 Pic: Youngster
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Zigzagoon
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Galvantula @ Magnet
+Nature: Timid
+Ability: Unnerve
+Level: 32
+- Discharge
+- Signal Beam
+- Giga Drain
+- Toxic
 
-Zigzagoon
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Lycanroc Midnight @ Lum Berry
+Nature: Jolly
+Ability: Keen Eye
+Level: 31
+- Rock Tomb
+- Brick Break
+- Stomping Tantrum
+- Counter
+
+Seviper @ Wise Glasses
+Nature: Timid
+Ability: Infiltrator
+Level: 31
+- Venoshock
+- Flamethrower
+- Giga Drain
+- Glare
+
+Fearow @ Scope Lens
+Nature: Jolly
+Ability: Sniper
+Level: 33
+- Drill Peck
+- Quick Attack
+- Drill Run
+- Focus Energy
+
+Espeon @ Weakness Policy
+Nature: Timid
+Ability: Synchronize
+Level: 33
+- Stored Power
+- Dazzling Gleam
+- Shadow Ball
+- Morning Sun
 
 === TRAINER_ALLEN ===
 Name: Allen
@@ -12878,7 +12951,7 @@ Level: 34
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_SALLY ===
-Name: SALLY
+Name: Sally
 Class: Lass
 Pic: Lass
 Gender: Female
@@ -12886,52 +12959,95 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Steenee @ Assault Vest
-Level: 15
-Nature: Jolly
-Ability: Oblivious
--Petal Blizzard
--Triple Axel
--Zen Headbutt
--Low Sweep
+Galvantula @ Magnet
+Nature: Timid
+Ability: Unnerve
+Level: 32
+- Discharge
+- Signal Beam
+- Giga Drain
+- Toxic
 
-Cleffa @ Life Orb
-Level: 16
-Nature: Bold
-Ability: Magic Guard
--Psybeam
--Draining Kiss
--Water Pulse
-
-Staravia @ Lum Berry
-Level: 16
+Lycanroc Midnight @ Lum Berry
 Nature: Jolly
-Ability: Intimidate
--Aerial Ace
--Steel Wing
--Quick Attack
--Endeavor
+Ability: Keen Eye
+Level: 31
+- Rock Tomb
+- Brick Break
+- Stomping Tantrum
+- Counter
+
+Seviper @ Wise Glasses
+Nature: Timid
+Ability: Infiltrator
+Level: 32
+- Venoshock
+- Flamethrower
+- Giga Drain
+- Glare
+
+Fearow @ Scope Lens
+Nature: Jolly
+Ability: Sniper
+Level: 32
+- Drill Peck
+- Quick Attack
+- Drill Run
+- Focus Energy
 
 === TRAINER_ROBIN ===
-Name: ROBIN
+Name: Robin
 Class: Lass
 Pic: Lass
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Skitty
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Galvantula @ Magnet
+Nature: Timid
+Ability: Unnerve
+Level: 32
+- Discharge
+- Signal Beam
+- Giga Drain
+- Toxic
 
-Shroomish
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Lycanroc Midnight @ Lum Berry
+Nature: Jolly
+Ability: Keen Eye
+Level: 31
+- Rock Tomb
+- Brick Break
+- Stomping Tantrum
+- Counter
 
-Marill
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Seviper @ Wise Glasses
+Nature: Timid
+Ability: Infiltrator
+Level: 32
+- Venoshock
+- Flamethrower
+- Giga Drain
+- Glare
+
+Fearow @ Scope Lens
+Nature: Jolly
+Ability: Sniper
+Level: 33
+- Drill Peck
+- Quick Attack
+- Drill Run
+- Focus Energy
+
+Espeon @ Weakness Policy
+Nature: Timid
+Ability: Synchronize
+Level: 33
+- Stored Power
+- Dazzling Gleam
+- Shadow Ball
+- Morning Sun
 
 === TRAINER_ANDREA ===
 Name: ANDREA
@@ -13799,23 +13915,32 @@ Level: 32
 - Giga Drain
 - Toxic
 
+Lycanroc Midnight @ Lum Berry
+Nature: Jolly
+Ability: Keen Eye
+Level: 31
+- Rock Tomb
+- Brick Break
+- Stomping Tantrum
+- Counter
+
 Seviper @ Wise Glasses
 Nature: Timid
 Ability: Infiltrator
-Level: 31
+Level: 32
 - Venoshock
 - Flamethrower
 - Giga Drain
 - Glare
 
-Lycanroc Midnight @ Lum Berry
+Fearow @ Scope Lens
 Nature: Jolly
-Ability: Keen Eye
-Level: 32
-- Rock Tomb
-- Brick Break
-- Stomping Tantrum
-- Counter
+Ability: Sniper
+Level: 33
+- Drill Peck
+- Quick Attack
+- Drill Run
+- Focus Energy
 
 === TRAINER_VIVIAN ===
 Name: VIVIAN
@@ -13854,7 +13979,7 @@ AI: Check Bad Move / Try To Faint / Check Viability
 Galvantula @ Magnet
 Nature: Timid
 Ability: Unnerve
-Level: 32
+Level: 33
 - Discharge
 - Signal Beam
 - Giga Drain
@@ -13881,7 +14006,7 @@ Level: 32
 Fearow @ Scope Lens
 Nature: Jolly
 Ability: Sniper
-Level: 32
+Level: 33
 - Drill Peck
 - Quick Attack
 - Drill Run
@@ -13890,7 +14015,7 @@ Level: 32
 Espeon @ Weakness Policy
 Nature: Timid
 Ability: Synchronize
-Level: 33
+Level: 34
 - Stored Power
 - Dazzling Gleam
 - Shadow Ball
