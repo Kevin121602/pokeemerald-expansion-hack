@@ -2667,13 +2667,13 @@ Level: 29
 - Giga Drain
 - Sucker Punch
 
-Lycanroc Midnight @ Lum Berry
+Rhydon @ Lum Berry
 Nature: Jolly
-Ability: Keen Eye
+Ability: Reckless
 Level: 30
-- Rock Tomb
-- Brick Break
-- Stomping Tantrum
+- Rock Slide
+- Drill Run
+- Take Down
 - Counter
 
 Seviper @ Wise Glasses
@@ -4120,41 +4120,41 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Galvantula @ Magnet
+Grumpig @ Throat Spray
 Nature: Timid
-Ability: Unnerve
+Ability: Thick Fat
 Level: 31
-- Discharge
+- Psychic Noise
+- Power Gem
 - Signal Beam
-- Giga Drain
-- Toxic
+- Mirror Coat
 
-Seviper @ Wise Glasses
+Gastrodon @ Wise Glasses
 Nature: Timid
-Ability: Infiltrator
+Ability: Sticky Hold
 Level: 31
-- Venoshock
-- Flamethrower
-- Giga Drain
-- Glare
+- Scald
+- Mud Bomb
+- Sludge Bomb
+- Recover
 
-Lycanroc Midnight @ Lum Berry
-Nature: Jolly
-Ability: Keen Eye
+Turtonator @ Leftovers
+Nature: Quiet
+Ability: Shell Armor
 Level: 32
-- Rock Tomb
-- Brick Break
-- Stomping Tantrum
-- Counter
+- Heat Crash
+- Heavy Slam
+- Scorching Sands
+- Protect
 
-Lycanroc Midnight @ Lum Berry
-Nature: Jolly
-Ability: Keen Eye
+Sandslash @ Loaded Dice
+Nature: Adamant
+Ability: Sand Rush
 Level: 32
-- Rock Tomb
-- Brick Break
-- Stomping Tantrum
-- Counter
+- Drill Run
+- Rock Slide
+- Pin Missile
+- Agility
 
 === TRAINER_JEFF ===
 Name: Jeff
@@ -4165,50 +4165,50 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Galvantula @ Magnet
+Klefki @ Lum Berry
 Nature: Timid
+Ability: Prankster
+Level: 33
+- Dazzling Gleam
+- Flash Cannon
+- Foul Play
+- Swagger
+
+Medicham @ Ability Shield
+Nature: Jolly
+Ability: Pure Power
+Level: 33
+- Zen Headbutt
+- Brick Break
+- Fire Punch
+- Power Swap
+
+Shiftry @ Muscle Band
+Nature: Jolly
+Ability: Wind Rider
+Level: 34
+- Seed Bomb
+- Knock Off
+- Swagger
+- Power Swap
+
+Houndoom @ Charcoal
+Nature: Hasty
 Ability: Unnerve
 Level: 33
-- Discharge
-- Signal Beam
-- Giga Drain
-- Toxic
+- Foul Play
+- Flame Burst
+- Pursuit
+- Thunder Fang
 
-Lycanroc Midnight @ Lum Berry
-Nature: Jolly
-Ability: Keen Eye
-Level: 33
-- Rock Tomb
-- Brick Break
-- Stomping Tantrum
-- Counter
-
-Seviper @ Wise Glasses
-Nature: Timid
-Ability: Infiltrator
-Level: 34
-- Venoshock
-- Flamethrower
-- Giga Drain
-- Glare
-
-Fearow @ Scope Lens
-Nature: Jolly
-Ability: Sniper
-Level: 33
-- Drill Peck
-- Quick Attack
-- Drill Run
-- Focus Energy
-
-Espeon @ Weakness Policy
+Umbreon @ Leftovers
 Nature: Timid
 Ability: Synchronize
 Level: 34
-- Stored Power
-- Dazzling Gleam
-- Shadow Ball
-- Morning Sun
+- Foul Play
+- Alluring Voice
+- Moonlight
+- Swagger
 
 === TRAINER_AXLE ===
 Name: Axle
@@ -4219,50 +4219,41 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Galvantula @ Magnet
-Nature: Timid
-Ability: Unnerve
-Level: 32
-- Discharge
-- Signal Beam
-- Giga Drain
-- Toxic
-
-Lycanroc Midnight @ Lum Berry
-Nature: Jolly
-Ability: Keen Eye
+Slurpuff @ Sitrus Berry
+Nature: Rash
+Ability: Unburden
 Level: 33
-- Rock Tomb
-- Brick Break
-- Stomping Tantrum
-- Counter
-
-Seviper @ Wise Glasses
-Nature: Timid
-Ability: Infiltrator
-Level: 32
-- Venoshock
-- Flamethrower
-- Giga Drain
-- Glare
-
-Fearow @ Scope Lens
-Nature: Jolly
-Ability: Sniper
-Level: 33
-- Drill Peck
-- Quick Attack
-- Drill Run
-- Focus Energy
-
-Espeon @ Weakness Policy
-Nature: Timid
-Ability: Synchronize
-Level: 33
-- Stored Power
 - Dazzling Gleam
-- Shadow Ball
-- Morning Sun
+- Drain Punch
+- Flamethrower
+- Sticky Web
+
+Huntail @ Mystic Water
+Nature: Jolly
+Ability: Water Veil
+Level: 32
+- Waterfall
+- Crunch
+- Sucker Punch
+- Ice Fang
+
+Tropius @ Yache Berry
+Nature: Hasty
+Ability: Harvest
+Level: 32
+- Leaf Blade
+- Air Slash
+- Earthquake
+- Roost
+
+Coalossal @ Lum Berry
+Nature: Careful
+Ability: Steam Engine
+Level: 32
+- Rock Slide
+- Fire Punch
+- High Horsepower
+- Fire Spin
 
 === TRAINER_JACE ===
 Name: Jace
@@ -4273,41 +4264,41 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Galvantula @ Magnet
+Meganium @ Light Clay
 Nature: Timid
-Ability: Unnerve
+Ability: Overgrow
 Level: 31
-- Discharge
-- Signal Beam
 - Giga Drain
-- Toxic
+- Body Press
+- Light Screen
+- Reflect
 
-Lycanroc Midnight @ Lum Berry
+Marowak-Alolan @ Lum Berry
 Nature: Jolly
-Ability: Keen Eye
+Ability: Lightning Rod
 Level: 32
-- Rock Tomb
-- Brick Break
+- Shadow Bone
+- Fire Punch
 - Stomping Tantrum
-- Counter
+- Will-O-Wisp
 
-Seviper @ Wise Glasses
+Aurorus @ Rock Gem
 Nature: Timid
-Ability: Infiltrator
+Ability: Refrigerate
 Level: 31
-- Venoshock
-- Flamethrower
-- Giga Drain
-- Glare
+- Hyper Voice
+- Ancient Power
+- Earth Power
+- Discharge
 
-Fearow @ Scope Lens
-Nature: Jolly
-Ability: Sniper
+Altaria @ Sharp Beak
+Nature: Timid
+Ability: Natural Cure
 Level: 31
-- Drill Peck
-- Quick Attack
-- Drill Run
-- Focus Energy
+- Dragon Pulse
+- Air Slash
+- Flamethrower
+- Roost
 
 === TRAINER_KEEGAN ===
 Name: Keegan
@@ -4318,41 +4309,41 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Galvantula @ Magnet
-Nature: Timid
-Ability: Unnerve
+Toucannon @ Sharp Beak
+Nature: Naive
+Ability: Sheer Force
 Level: 32
-- Discharge
-- Signal Beam
-- Giga Drain
-- Toxic
+- Beak Blast
+- Hyper Voice
+- Heat Wave
+- Steel Wing
 
-Lycanroc Midnight @ Lum Berry
-Nature: Jolly
-Ability: Keen Eye
+Dusclops @ Eviolite
+Nature: Calm
+Ability: Pressure
 Level: 33
-- Rock Tomb
-- Brick Break
-- Stomping Tantrum
-- Counter
+- Hex
+- Seismic Toss
+- Pain Split
+- Will-O-Wisp
 
-Seviper @ Wise Glasses
-Nature: Timid
-Ability: Infiltrator
+Electabuzz @ Punching Glove
+Nature: Jolly
+Ability: Vital Spirit
 Level: 32
-- Venoshock
-- Flamethrower
-- Giga Drain
-- Glare
+- Thunder Punch
+- Fire Punch
+- Ice Punch
+- Meditate
 
-Fearow @ Scope Lens
-Nature: Jolly
-Ability: Sniper
+Victreebel @ Salac Berry
+Nature: Rash
+Ability: Gluttony
 Level: 33
-- Drill Peck
-- Quick Attack
-- Drill Run
-- Focus Energy
+- Belch
+- Giga Drain
+- Knock Off
+- Sleep Powder
 
 === TRAINER_BERNIE_1 ===
 Name: Bernie
@@ -4695,14 +4686,14 @@ Level: 30
 - Heat Wave
 - Roost
 
-Tropius @ Yache Berry
-Nature: Hasty
-Ability: Harvest
+Pidgeot @ Lum Berry
+Nature: Jolly
+Ability: Keen Eye
 Level: 31
-- Leaf Blade
-- Air Slash
-- Earthquake
-- Dragon Dance
+- Return
+- Dual Wingbeat
+- Steel Wing
+- Whirlwind
 
 === TRAINER_TRAVIS ===
 Name: TRAVIS
@@ -7483,50 +7474,47 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Galvantula @ Magnet
-Nature: Timid
-Ability: Unnerve
+Zebstrika @ Air Balloon
+Nature: Naive
+Ability: Reckless
 Level: 32
-- Discharge
-- Signal Beam
-- Giga Drain
-- Toxic
-
-Lycanroc Midnight @ Lum Berry
-Nature: Jolly
-Ability: Keen Eye
-Level: 31
-- Rock Tomb
-- Brick Break
-- Stomping Tantrum
-- Counter
-
-Seviper @ Wise Glasses
-Nature: Timid
-Ability: Infiltrator
-Level: 31
-- Venoshock
+- Volt Tackle
 - Flamethrower
-- Giga Drain
-- Glare
+- Low Kick
+- Pursuit
 
-Fearow @ Scope Lens
+Barbaracle @ Muscle Band
 Nature: Jolly
-Ability: Sniper
-Level: 33
-- Drill Peck
-- Quick Attack
-- Drill Run
-- Focus Energy
+Ability: Tough Claws
+Level: 31
+- Razor Shell
+- Accelerock
+- Aerial Ace
+- Swords Dance
 
-Espeon @ Weakness Policy
+Flamigo @ Choice Scarf
+Nature: Adamant
+Ability: Scrappy
+Level: 31
+- Flying Press
+
+Salazzle @ Black Sludge
 Nature: Timid
-Ability: Synchronize
+Ability: Corrosion
 Level: 33
-- Stored Power
-- Dazzling Gleam
-- Shadow Ball
-- Morning Sun
+- Flame Burst
+- Venoshock
+- Protect
+- Toxic Thread
+
+Cacturne @ Focus Sash
+Nature: Brave
+Ability: Sand Veil
+Level: 33
+- Payback
+- Horn Leech
+- Drain Punch
+- Leech Seed
 
 === TRAINER_ALLEN ===
 Name: Allen
@@ -10748,41 +10736,42 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Galvantula @ Magnet
+Toedscruel @ Lum Berry
 Nature: Timid
-Ability: Unnerve
+Ability: Mycelium Might
 Level: 31
-- Discharge
-- Signal Beam
+- Earth Power
 - Giga Drain
-- Toxic
+- Hex
+- Spore
 
-Lycanroc Midnight @ Lum Berry
-Nature: Jolly
-Ability: Keen Eye
+Carbink @ Weakness Policy
+Nature: Modest
+Ability: Clear Body
+IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 30 Spe
 Level: 30
-- Rock Tomb
-- Brick Break
-- Stomping Tantrum
-- Counter
+- Dazzling Gleam
+- Ancient Power
+- Hidden Power
+- Rock Polish
 
-Seviper @ Wise Glasses
-Nature: Timid
-Ability: Infiltrator
+Rabsca @ Wise Glasses
+Nature: Modest
+Ability: Synchronize
 Level: 31
-- Venoshock
-- Flamethrower
-- Giga Drain
-- Glare
+- Extrasensory
+- Signal Beam
+- Shadow Ball
+- Speed Swap
 
-Fearow @ Scope Lens
+Golem-Alolan @ Fire Gem
 Nature: Jolly
-Ability: Sniper
+Ability: Magnet Pull
 Level: 32
-- Drill Peck
-- Quick Attack
-- Drill Run
-- Focus Energy
+- Wild Charge
+- Rock Slide
+- Fire Punch
+- Self-Destruct
 
 === TRAINER_ANNIKA ===
 Name: ANNIKA
@@ -12162,7 +12151,7 @@ Level: 31
 Electrode @ Leftovers
 Nature: Timid
 Ability: Static
-IVs: 31 HP / 30 Atk / 30 Def / 31 SpA / 31 SpD / 31 Spe
+IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 31 Spe
 Level: 30
 - Discharge
 - Foul Play
@@ -12170,13 +12159,13 @@ Level: 30
 - Swagger
 
 Seaking @ Belue Berry
-Nature: Jolly
+Nature: Naive
 Ability: Lightning Rod
 Level: 32
-- Waterfall
+- Surf
 - Natural Gift
 - Poison Jab
-- Quick Attack
+- Ice Beam
 
 === TRAINER_GRUNT_SEAFLOOR_CAVERN_5 ===
 Name: GRUNT
@@ -12959,41 +12948,41 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Galvantula @ Magnet
-Nature: Timid
-Ability: Unnerve
-Level: 32
-- Discharge
-- Signal Beam
-- Giga Drain
-- Toxic
-
-Lycanroc Midnight @ Lum Berry
+Veluza @ Muscle Band
 Nature: Jolly
-Ability: Keen Eye
+Ability: Sharpness
+Level: 32
+- Psyblade
+- Liquidation
+- Night Slash
+- Aqua Jet
+
+Banette @ Power Herb
+Nature: Jolly
+Ability: Insomnia
 Level: 31
-- Rock Tomb
-- Brick Break
-- Stomping Tantrum
-- Counter
+- Shadow Force
+- Gunk Shot
+- Knock Off
+- Thunder Wave
 
-Seviper @ Wise Glasses
+Vileplume @ Wise Glasses
 Nature: Timid
-Ability: Infiltrator
+Ability: Effect Spore
 Level: 32
-- Venoshock
-- Flamethrower
-- Giga Drain
-- Glare
+- Sludge Bomb
+- Apple Acid
+- Moonblast
+- Sleep Powder
 
-Fearow @ Scope Lens
-Nature: Jolly
-Ability: Sniper
+Lunatone @ Lum Berry
+Nature: Timid
+Ability: Levitate
 Level: 32
-- Drill Peck
-- Quick Attack
-- Drill Run
-- Focus Energy
+- Lumina Crash
+- Dazzling Gleam
+- Earth Power
+- Moonlight
 
 === TRAINER_ROBIN ===
 Name: Robin
@@ -13004,50 +12993,50 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Galvantula @ Magnet
-Nature: Timid
-Ability: Unnerve
-Level: 32
-- Discharge
-- Signal Beam
-- Giga Drain
-- Toxic
-
-Lycanroc Midnight @ Lum Berry
+Trevenant @ Custap Berry
 Nature: Jolly
-Ability: Keen Eye
+Ability: Harvest
+Level: 32
+- Seed Bomb
+- Shadow Claw
+- Rage Fist
+- Endure
+
+Gorebyss @ Throat Spray
+Nature: Timid
+Ability: Swift Swim
 Level: 31
-- Rock Tomb
-- Brick Break
-- Stomping Tantrum
-- Counter
+- Sparkling Aria
+- Psychic
+- Signal Beam
+- Infestation
 
-Seviper @ Wise Glasses
-Nature: Timid
-Ability: Infiltrator
-Level: 32
-- Venoshock
-- Flamethrower
-- Giga Drain
-- Glare
-
-Fearow @ Scope Lens
+Sandslash-Alolan @ Lum Berry
 Nature: Jolly
-Ability: Sniper
-Level: 33
-- Drill Peck
-- Quick Attack
+Ability: Slush Rush
+Level: 32
+- Iron Head
+- Ice Punch
 - Drill Run
-- Focus Energy
+- Spiky Shield
 
-Espeon @ Weakness Policy
-Nature: Timid
-Ability: Synchronize
+Misdreavus @ Eviolite
+Nature: Bold
+Ability: Levitate
 Level: 33
-- Stored Power
+- Moongeist Beam
 - Dazzling Gleam
-- Shadow Ball
-- Morning Sun
+- Mean Look
+- Perish Song
+
+Oricorio-Pau @ Leftovers
+Nature: Timid
+Ability: Dancer
+Level: 33
+- Aeroblast
+- Revelation Dance
+- Roost
+- Teeter Dance
 
 === TRAINER_ANDREA ===
 Name: ANDREA
@@ -13906,41 +13895,41 @@ Items: Hyper Potion
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Galvantula @ Magnet
-Nature: Timid
-Ability: Unnerve
+Garbodor @ Air Balloon
+Nature: Jolly
+Ability: Weak Armor
 Level: 32
-- Discharge
-- Signal Beam
-- Giga Drain
-- Toxic
+- Poison Jab
+- Drain Punch
+- Recycle
+- Toxic Spikes
 
 Lycanroc Midnight @ Lum Berry
 Nature: Jolly
-Ability: Keen Eye
+Ability: No Guard
 Level: 31
-- Rock Tomb
-- Brick Break
+- Rock Slide
 - Stomping Tantrum
-- Counter
+- Fire Fang
+- Reversal
 
-Seviper @ Wise Glasses
-Nature: Timid
-Ability: Infiltrator
+Poliwrath @ Mystic Water
+Nature: Naive
+Ability: Water Absorb
 Level: 32
-- Venoshock
-- Flamethrower
-- Giga Drain
-- Glare
+- Scald
+- Circle Throw
+- Ice Beam
+- Hypnosis
 
-Fearow @ Scope Lens
-Nature: Jolly
-Ability: Sniper
+Dipplin @ Custap Berry
+Nature: Modest
+Ability: Gluttony
 Level: 33
-- Drill Peck
-- Quick Attack
-- Drill Run
-- Focus Energy
+- Dragon Breath
+- Grass Knot
+- Pollen Puff
+- Infestation
 
 === TRAINER_VIVIAN ===
 Name: VIVIAN
@@ -13976,50 +13965,51 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Galvantula @ Magnet
-Nature: Timid
-Ability: Unnerve
-Level: 33
-- Discharge
-- Signal Beam
-- Giga Drain
-- Toxic
-
-Lycanroc Midnight @ Lum Berry
+Volbeat @ Eject Button
 Nature: Jolly
-Ability: Keen Eye
+Ability: Prankster
 Level: 33
-- Rock Tomb
-- Brick Break
-- Stomping Tantrum
-- Counter
+- Lunge
+- Zen Headbutt
+- Moonlight
+- Sunny Day
 
-Seviper @ Wise Glasses
-Nature: Timid
-Ability: Infiltrator
+Sudowoodo @ Hard Stone
+Nature: Jolly
+Ability: Rock Head
+Level: 33
+- Rock Slide
+- Wood Hammer
+- Fire Punch
+- Ice Punch
+
+Druddigon @ Muscle Band
+Nature: Jolly
+Ability: Mold Breaker
 Level: 32
-- Venoshock
-- Flamethrower
-- Giga Drain
+- Dragon Claw
+- Crunch
+- Fire Fang
 - Glare
 
-Fearow @ Scope Lens
-Nature: Jolly
-Ability: Sniper
+Magmar @ Eviolite
+Nature: Hasty
+Ability: Flame Body
 Level: 33
-- Drill Peck
-- Quick Attack
-- Drill Run
-- Focus Energy
+- Lava Plume
+- Psychic
+- Scorching Sands
+- Mach Punch
 
-Espeon @ Weakness Policy
-Nature: Timid
-Ability: Synchronize
+Leafeon @ Lum Berry
+Nature: Adamant
+Ability: Chlorophyll
 Level: 34
-- Stored Power
-- Dazzling Gleam
-- Shadow Ball
-- Morning Sun
+- Solar Blade
+- Leaf Blade
+- Iron Tail
+- X-Scissor
+
 
 === TRAINER_HIDEO ===
 Name: HIDEO

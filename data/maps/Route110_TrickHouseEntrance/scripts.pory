@@ -80,21 +80,17 @@ script Route110_TrickHouseEntrance_Apprentice{
 					random(2)
 					switch(var(VAR_RESULT)){
 						case 0:
-							givemon(SPECIES_SOLROCK, 15)
+							givemon(SPECIES_SOLROCK, 15, , , , , , , , , , , , , , , , , , MOVE_HYPNOSIS, MOVE_HEAL_BLOCK, MOVE_ROCK_TOMB, MOVE_PHOTON_GEYSER)
 							playfanfare(MUS_DP_OBTAIN_ITEM)
 							msgbox(format("{PLAYER} recieved Solrock!"))
 							waitmessage
 							waitfanfare
 						case 1:
-							givemon(SPECIES_LUNATONE, 15)
+							givemon(SPECIES_LUNATONE, 15, , , , , , , , , , , , , , , , , , MOVE_HYPNOSIS, MOVE_EMBARGO, MOVE_ANCIENT_POWER, MOVE_PHOTON_GEYSER)
 							playfanfare(MUS_DP_OBTAIN_ITEM)
 							msgbox(format("{PLAYER} recieved Lunatone!"))
 							waitmessage
 							waitfanfare
-					}
-					msgbox("Give this Pokémon a nickname?", MSGBOX_YESNO)
-					if(var(VAR_RESULT) == YES){
-						call(Common_EventScript_NameReceivedPartyMon)
 					}
 					setflag(FLAG_RECIEVED_TRICK_HOUSE_GIFT_2)
 				}

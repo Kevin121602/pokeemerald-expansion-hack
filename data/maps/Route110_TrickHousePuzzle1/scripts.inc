@@ -95,7 +95,7 @@ Route110_TrickHousePuzzle1_Text_SallyIntro:
 # 48 "data/maps/Route110_TrickHousePuzzle1/scripts.pory"
 	.string "I'll hack and slash my way to victory\n"
 # 49 "data/maps/Route110_TrickHousePuzzle1/scripts.pory"
-	.string "with the CUT we just learned!$"
+	.string "with the Cut we just learned!$"
 # 50 "data/maps/Route110_TrickHousePuzzle1/scripts.pory"
 
 # 51 "data/maps/Route110_TrickHousePuzzle1/scripts.pory"
@@ -137,7 +137,7 @@ Route110_TrickHousePuzzle1_Text_EddiePostBattle:
 # 69 "data/maps/Route110_TrickHousePuzzle1/scripts.pory"
 Route110_TrickHousePuzzle1_Text_RobinIntro:
 # 70 "data/maps/Route110_TrickHousePuzzle1/scripts.pory"
-	.string "Just who is the TRICK MASTER?$"
+	.string "Just who is the Trick Master?$"
 # 71 "data/maps/Route110_TrickHousePuzzle1/scripts.pory"
 
 # 72 "data/maps/Route110_TrickHousePuzzle1/scripts.pory"
