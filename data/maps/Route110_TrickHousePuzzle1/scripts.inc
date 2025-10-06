@@ -83,7 +83,7 @@ Route110_TrickHousePuzzle1_Text_WroteSecretCodeLockOpened::
 # 42 "data/maps/Route110_TrickHousePuzzle1/scripts.pory"
 	.string "on the door.\p"
 # 43 "data/maps/Route110_TrickHousePuzzle1/scripts.pory"
-	.string "“TRICK MASTER is fabulous.”\n"
+	.string "“Trick Master is fabulous.”\n"
 # 44 "data/maps/Route110_TrickHousePuzzle1/scripts.pory"
 	.string "… … … … … … … …\p"
 # 45 "data/maps/Route110_TrickHousePuzzle1/scripts.pory"

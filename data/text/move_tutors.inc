@@ -274,7 +274,8 @@ MoveTutor_Text_PunchTeach:
 	.string "I couldn't decide if I should jump\n"
 	.string "down this ledge or not.\p"
 	.string "So I've taken up karate to steel\n"
-	.string "my mind.$"
+	.string "my mind.\p"
+	.string "Let me confer some of my techniques.$"
 
 MoveTutor_Text_HealBlock:
 	.string "The soothing steam in Lavaridge\n"

@@ -1,3 +1,27 @@
+script LavaridgeTown_House_EventScript_GalaricaItems{
+	lock
+	faceplayer
+	if(flag(FLAG_RECIEVED_GALARICA_ITEM)){
+		msgbox("Where did I get these clothes?\n"
+				"The Slateport market of course!$")
+	} else {
+		msgbox("I just bought these accessories, now\n"
+				"I'm worried about being overdressed.\p"
+				"You should take one off my hands.$")
+		random(2)
+		switch(var(VAR_RESULT)){
+			case 0:
+				giveitem(ITEM_GALARICA_CUFF)
+			case 1:
+				giveitem(ITEM_GALARICA_WREATH)
+		}
+		msgbox("Now I look dapper!$")
+		setflag(FLAG_RECIEVED_GALARICA_ITEM)
+	}
+	release
+	end
+}
+
 raw `
 LavaridgeTown_House_MapScripts::
 	.byte 0

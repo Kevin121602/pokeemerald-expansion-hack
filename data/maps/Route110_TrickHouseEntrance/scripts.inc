@@ -2316,7 +2316,7 @@ Route110_TrickHouseEntrance_Text_MechadollWhichTent:
 # 1177 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	.string "IF REWARD IS NOT TAKEN BY YOU,\l"
 # 1178 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	.string "THEN TRICK MASTER YOU CANNOT FOLLOW.\p"
+	.string "THEN Trick Master YOU CANNOT FOLLOW.\p"
 # 1179 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	.string "RED TENT OR BLUE TENT,\n"
 # 1180 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
