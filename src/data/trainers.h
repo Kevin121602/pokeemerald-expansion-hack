@@ -25468,7 +25468,7 @@ F_TRAINER_FEMALE |
     [TRAINER_DIANA_1] =
     {
 #line 10163
-        .trainerName = _("DIANA"),
+        .trainerName = _("Diana"),
 #line 10164
         .trainerClass = TRAINER_CLASS_PICNICKER,
 #line 10165
@@ -25536,7 +25536,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_ZWEILOUS,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10189
-            .heldItem = ITEM_ROSELI_BERRY,
+            .heldItem = ITEM_DRAGON_FANG,
 #line 10193
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10191
@@ -30577,8 +30577,8 @@ F_TRAINER_FEMALE |
 #line 12165
                 MOVE_SURF,
                 MOVE_NATURAL_GIFT,
-                MOVE_POISON_JAB,
                 MOVE_ICE_BEAM,
+                MOVE_QUICK_ATTACK,
             },
             },
         },
@@ -32724,8 +32724,8 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 13000
                 MOVE_SEED_BOMB,
-                MOVE_SHADOW_CLAW,
                 MOVE_RAGE_FIST,
+                MOVE_LASH_OUT,
                 MOVE_ENDURE,
             },
             },

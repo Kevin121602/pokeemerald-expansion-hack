@@ -10160,7 +10160,7 @@ Level: 23
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DIANA_1 ===
-Name: DIANA
+Name: Diana
 Class: Picnicker
 Pic: Picnicker
 Gender: Female
@@ -10186,7 +10186,7 @@ Level: 29
 - X-Scissor
 - Aerial Ace
 
-Zweilous @ Roseli Berry
+Zweilous @ Dragon Fang
 Nature: Jolly
 Ability: Hustle
 Level: 31
@@ -12164,8 +12164,8 @@ Ability: Lightning Rod
 Level: 32
 - Surf
 - Natural Gift
-- Poison Jab
 - Ice Beam
+- Quick Attack
 
 === TRAINER_GRUNT_SEAFLOOR_CAVERN_5 ===
 Name: GRUNT
@@ -12998,8 +12998,8 @@ Nature: Jolly
 Ability: Harvest
 Level: 32
 - Seed Bomb
-- Shadow Claw
 - Rage Fist
+- Lash Out
 - Endure
 
 Gorebyss @ Throat Spray
