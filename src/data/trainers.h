@@ -43780,7 +43780,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_VIRIZION,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 17434
-            .heldItem = ITEM_COBA_BERRY,
+            .heldItem = ITEM_FOCUS_SASH,
 #line 17438
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 17437

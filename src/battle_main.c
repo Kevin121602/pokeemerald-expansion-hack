@@ -5528,6 +5528,8 @@ static void HandleEndTurn_BattleLost(void)
         gBattlescriptCurrInstr = BattleScript_LocalBattleLost;
     }
 
+    FlagClear(FLAG_SYS_GAUNTLET);
+
     gBattleMainFunc = HandleEndTurn_FinishBattle;
 }
 
