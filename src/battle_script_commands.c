@@ -9311,6 +9311,26 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_CHECK_IF_SOOTHING_STEAM_HEALS:
+    {
+        VARIOUS_ARGS(const u8 *failInstr);
+        if ((gStatuses3[battler] & STATUS3_HEAL_BLOCK)
+            || BATTLER_MAX_HP(battler)
+            || !gBattleMons[battler].hp)
+        {
+            gBattlescriptCurrInstr = cmd->failInstr;
+        }
+        else
+        {
+            gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 16;
+            if (gBattleMoveDamage == 0)
+                gBattleMoveDamage = 1;
+            gBattleMoveDamage *= -1;
+
+            gBattlescriptCurrInstr = cmd->nextInstr;
+        }
+        return;
+    }
     case VARIOUS_GRAVITY_ON_AIRBORNE_MONS:
     {
         VARIOUS_ARGS();

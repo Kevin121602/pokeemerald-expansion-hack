@@ -232,6 +232,7 @@
 #define VARIOUS_STORE_HEALING_WISH                   140
 #define VARIOUS_HIT_SWITCH_TARGET_FAILED             141
 #define VARIOUS_TRY_REVIVAL_BLESSING                 142
+#define VARIOUS_CHECK_IF_SOOTHING_STEAM_HEALS        143
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

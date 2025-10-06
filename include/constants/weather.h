@@ -22,7 +22,7 @@
 
 //overworld field effects
 #define FIELD_EFFECT_RICH_SEDIMENT      22
-#define FIELD_EFFECT_HOT_COALS          23
+#define FIELD_EFFECT_SOOTHING_STEAM     23
 #define FIELD_EFFECT_GRUDGE             24
 #define FIELD_EFFECT_RETALIATE          25
 #define FIELD_EFFECT_BOOSTED_CRITS      26

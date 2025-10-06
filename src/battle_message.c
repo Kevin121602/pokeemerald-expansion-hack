@@ -850,6 +850,8 @@ static const u8 sText_SupersweetAromaWafts[] = _("A supersweet aroma is wafting 
 static const u8 sText_TidyingUpComplete[] = _("Tidying up complete!");
 static const u8 sText_FickleBeamDoubled[] = _("{B_ATK_NAME_WITH_PREFIX} is going all\nout for this attack!");
 static const u8 sText_RichSediment[] = _("The battlefield's rich sediment\nheightens the effects of Rock,\lGround, and Steel type attacks!");
+static const u8 sText_SoothingSteam[] = _("A soothing steam wafted\nthrough the battlefield!");
+static const u8 sText_SoothingSteamHeals[] = _("{B_ATK_NAME_WITH_PREFIX} is healed\nby the soothing steam!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1555,6 +1557,8 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ATTACKERLOSTITSTYPE - BATTLESTRINGS_TABLE_START] = sText_AttackerLostItsType,
     [STRINGID_CLOAKEDINAHARSHLIGHT - BATTLESTRINGS_TABLE_START] = sText_PkmnIsCloakedInAHarshLight,
     [STRINGID_RICHSEDIMENT - BATTLESTRINGS_TABLE_START] = sText_RichSediment,
+    [STRINGID_SOOTHINGSTEAM - BATTLESTRINGS_TABLE_START] = sText_SoothingSteam,
+    [STRINGID_SOOTHINGSTEAMHEALS - BATTLESTRINGS_TABLE_START] = sText_SoothingSteamHeals,
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1952,7 +1956,8 @@ const u16 gWeatherStartsStringIds[] =
     [WEATHER_DOWNPOUR]           = STRINGID_ITISRAINING,
     [WEATHER_UNDERWATER_BUBBLES] = STRINGID_ITISRAINING,
     [WEATHER_ABNORMAL]           = STRINGID_ITISRAINING,
-    [FIELD_EFFECT_RICH_SEDIMENT] = STRINGID_RICHSEDIMENT
+    [FIELD_EFFECT_RICH_SEDIMENT] = STRINGID_RICHSEDIMENT,
+    [FIELD_EFFECT_SOOTHING_STEAM] = STRINGID_SOOTHINGSTEAM
 };
 
 const u16 gPrimalWeatherBlocksStringIds[] =

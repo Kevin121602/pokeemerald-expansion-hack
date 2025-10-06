@@ -1667,6 +1667,7 @@ enum
     ENDTURN_RAINBOW,
     ENDTURN_SEA_OF_FIRE,
     ENDTURN_SWAMP,
+    ENDTURN_SOOTHING_STEAM,
     ENDTURN_FIELD_COUNT,
 };
 
@@ -1687,6 +1688,15 @@ static bool32 EndTurnTerrain(u32 terrainFlag, u32 stringTableId)
                 BattleScriptExecute(BattleScript_TerrainEnds);
             return TRUE;
         }
+    }
+    return FALSE;
+}
+
+static bool32 EndTurnSoothingSteam(void)
+{
+    if(gFieldStatuses & STATUS_FIELD_SOOTHING_STEAM){
+        BattleScriptExecute(BattleScript_SoothingSteamHeals);
+        return TRUE;
     }
     return FALSE;
 }
@@ -2236,6 +2246,10 @@ u8 DoFieldEndTurnEffects(void)
                 gBattleStruct->turnCountersTracker++;
                 gBattleStruct->turnSideTracker = 0;
             }
+            break;
+        case ENDTURN_SOOTHING_STEAM:
+            effect = EndTurnSoothingSteam();
+            gBattleStruct->turnCountersTracker++;
             break;
         case ENDTURN_FIELD_COUNT:
             effect++;
@@ -4320,7 +4334,11 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             case FIELD_EFFECT_RICH_SEDIMENT:
                 gFieldStatuses |= STATUS_FIELD_RICH_SEDIMENT;
                 gBattleScripting.animArg1 = B_ANIM_RICH_SEDIMENT;
-                //BattleScriptPushCursorAndCallback(BattleScript_RichSediment);
+                effect++;
+                break;       
+            case FIELD_EFFECT_SOOTHING_STEAM:
+                gFieldStatuses |= STATUS_FIELD_SOOTHING_STEAM;
+                gBattleScripting.animArg1 = B_ANIM_SOOTHING_STEAM;
                 effect++;
                 break;       
             }
