@@ -4129,7 +4129,7 @@ Level: 31
 - Signal Beam
 - Mirror Coat
 
-Gastrodon @ Wise Glasses
+Gastrodon @ Rindo Berry
 Nature: Timid
 Ability: Sticky Hold
 Level: 31
@@ -4179,7 +4179,7 @@ Nature: Jolly
 Ability: Pure Power
 Level: 33
 - Zen Headbutt
-- Brick Break
+- Force Palm
 - Fire Punch
 - Power Swap
 
@@ -4219,13 +4219,13 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Slurpuff @ Sitrus Berry
-Nature: Rash
-Ability: Unburden
+Shuckle @ Iapapa Berry
+Nature: Careful
+Ability: Gluttony
 Level: 33
-- Dazzling Gleam
-- Drain Punch
-- Flamethrower
+- Knock Off
+- Sand Tomb
+- Toxic
 - Sticky Web
 
 Huntail @ Mystic Water
@@ -4251,7 +4251,7 @@ Nature: Careful
 Ability: Steam Engine
 Level: 32
 - Rock Slide
-- Fire Punch
+- Heat Crash
 - High Horsepower
 - Fire Spin
 
@@ -14007,7 +14007,7 @@ Ability: Chlorophyll
 Level: 34
 - Solar Blade
 - Leaf Blade
-- Iron Tail
+- Return
 - X-Scissor
 
 
@@ -17440,7 +17440,7 @@ Ability: Justified
 - Stone Edge
 - Zen Headbutt
 
-Claydol @ Leftovers
+Claydol @ Wise Glasses
 Level: 35
 Nature: Timid
 Ability: Levitate

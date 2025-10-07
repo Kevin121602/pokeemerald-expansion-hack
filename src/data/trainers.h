@@ -10258,7 +10258,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_GASTRODON,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4132
-            .heldItem = ITEM_WISE_GLASSES,
+            .heldItem = ITEM_RINDO_BERRY,
 #line 4136
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 4134
@@ -10384,7 +10384,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 4181
                 MOVE_ZEN_HEADBUTT,
-                MOVE_BRICK_BREAK,
+                MOVE_FORCE_PALM,
                 MOVE_FIRE_PUNCH,
                 MOVE_POWER_SWAP,
             },
@@ -10481,24 +10481,24 @@ F_TRAINER_FEMALE |
         {
             {
 #line 4222
-            .species = SPECIES_SLURPUFF,
+            .species = SPECIES_SHUCKLE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4222
-            .heldItem = ITEM_SITRUS_BERRY,
+            .heldItem = ITEM_IAPAPA_BERRY,
 #line 4226
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 4224
-            .ability = ABILITY_UNBURDEN,
+            .ability = ABILITY_GLUTTONY,
 #line 4225
             .lvl = 33,
 #line 4223
-            .nature = NATURE_RASH,
+            .nature = NATURE_CAREFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 4226
-                MOVE_DAZZLING_GLEAM,
-                MOVE_DRAIN_PUNCH,
-                MOVE_FLAMETHROWER,
+                MOVE_KNOCK_OFF,
+                MOVE_SAND_TOMB,
+                MOVE_TOXIC,
                 MOVE_STICKY_WEB,
             },
             },
@@ -10566,7 +10566,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 4253
                 MOVE_ROCK_SLIDE,
-                MOVE_FIRE_PUNCH,
+                MOVE_HEAT_CRASH,
                 MOVE_HIGH_HORSEPOWER,
                 MOVE_FIRE_SPIN,
             },
@@ -35279,7 +35279,7 @@ F_TRAINER_FEMALE |
 #line 14008
                 MOVE_SOLAR_BLADE,
                 MOVE_LEAF_BLADE,
-                MOVE_IRON_TAIL,
+                MOVE_RETURN,
                 MOVE_X_SCISSOR,
             },
             },
@@ -43803,7 +43803,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_CLAYDOL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 17443
-            .heldItem = ITEM_LEFTOVERS,
+            .heldItem = ITEM_WISE_GLASSES,
 #line 17447
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 17446

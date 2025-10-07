@@ -217,7 +217,7 @@ LavaridgeTown_EventScript_RivalExit::
 # 117 "data/maps/LavaridgeTown/scripts.pory"
 LavaridgeTown_EventScript_PlayMayMusic::
 # 118 "data/maps/LavaridgeTown/scripts.pory"
-	playbgm MUS_ENCOUNTER_MAY, TRUE
+	playbgm MUS_DP_RIVAL, TRUE
 # 119 "data/maps/LavaridgeTown/scripts.pory"
 	return
 # 120 "data/maps/LavaridgeTown/scripts.pory"
@@ -225,7 +225,7 @@ LavaridgeTown_EventScript_PlayMayMusic::
 # 121 "data/maps/LavaridgeTown/scripts.pory"
 LavaridgeTown_EventScript_PlayBrendanMusic::
 # 122 "data/maps/LavaridgeTown/scripts.pory"
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	playbgm MUS_DP_RIVAL, TRUE
 # 123 "data/maps/LavaridgeTown/scripts.pory"
 	return
 # 124 "data/maps/LavaridgeTown/scripts.pory"

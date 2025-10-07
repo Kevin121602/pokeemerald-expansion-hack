@@ -9313,6 +9313,14 @@ static void Cmd_various(void)
     }
     case VARIOUS_CHECK_IF_SOOTHING_STEAM_HEALS:
     {
+        u32 def = gBattleMons[battler].defense;
+        def *= gStatStageRatios[gBattleMons[battler].statStages[STAT_DEF]][0];
+        def /= gStatStageRatios[gBattleMons[battler].statStages[STAT_DEF]][1];
+
+        u32 spDef = gBattleMons[battler].spDefense;
+        spDef *= gStatStageRatios[gBattleMons[battler].statStages[STAT_SPDEF]][0];
+        spDef /= gStatStageRatios[gBattleMons[battler].statStages[STAT_SPDEF]][1];
+
         VARIOUS_ARGS(const u8 *failInstr);
         if ((gStatuses3[battler] & STATUS3_HEAL_BLOCK)
             || BATTLER_MAX_HP(battler)
@@ -9322,7 +9330,10 @@ static void Cmd_various(void)
         }
         else
         {
-            gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 16;
+            if(def > spDef)
+                gBattleMoveDamage = def / 12;
+            else
+                gBattleMoveDamage = spDef / 12;
             if (gBattleMoveDamage == 0)
                 gBattleMoveDamage = 1;
             gBattleMoveDamage *= -1;
