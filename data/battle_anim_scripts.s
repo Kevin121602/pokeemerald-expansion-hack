@@ -88,6 +88,7 @@ gBattleAnims_General::
 	.4byte General_SimpleHeal               @ B_ANIM_SIMPLE_HEAL
 	.4byte General_RichSediment				@ B_ANIM_RICH_SEDIMENT
 	.4byte General_SoothingSteam			@ B_ANIM_SOOTHING_STEAM
+	.4byte General_SweetDreams				@ B_ANIM_SWEET_DREAMS
 
 	.align 2
 gBattleAnims_Special::
@@ -27876,6 +27877,11 @@ General_LeechSeedDrain:
 	createvisualtask AnimTask_GetBattlersFromArg, 5
 	delay 0
 	goto Move_ABSORB
+
+General_SweetDreams:
+	createvisualtask AnimTask_GetBattlersFromArg, 5
+	delay 0
+	goto Move_DREAM_EATER
 
 General_MonHit:
 	loadspritegfx ANIM_TAG_IMPACT

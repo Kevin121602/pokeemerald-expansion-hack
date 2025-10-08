@@ -852,6 +852,7 @@ static const u8 sText_FickleBeamDoubled[] = _("{B_ATK_NAME_WITH_PREFIX} is going
 static const u8 sText_RichSediment[] = _("The battlefield's rich sediment\nheightens the effects of Rock,\lGround, and Steel type attacks!");
 static const u8 sText_SoothingSteam[] = _("A soothing steam wafted\nthrough the battlefield!");
 static const u8 sText_SoothingSteamHeals[] = _("{B_ATK_NAME_WITH_PREFIX} is healed\nby the soothing steam!");
+static const u8 sText_SweetDreamsDmg[] = _("{B_DEF_NAME_WITH_PREFIX}'s dreams are\nstolen!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1559,6 +1560,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_RICHSEDIMENT - BATTLESTRINGS_TABLE_START] = sText_RichSediment,
     [STRINGID_SOOTHINGSTEAM - BATTLESTRINGS_TABLE_START] = sText_SoothingSteam,
     [STRINGID_SOOTHINGSTEAMHEALS - BATTLESTRINGS_TABLE_START] = sText_SoothingSteamHeals,
+    [STRINGID_SWEETDREAMSDMG - BATTLESTRINGS_TABLE_START] = sText_SweetDreamsDmg,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

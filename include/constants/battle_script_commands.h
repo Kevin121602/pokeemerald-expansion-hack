@@ -243,6 +243,7 @@
 #define DMG_CURR_ATTACKER_HP       5
 #define DMG_BIG_ROOT               6
 #define DMG_RECOIL_FROM_IMMUNE     7 // Used to calculate recoil for the Gen 4 version of Jump Kick
+#define DMG_1_16_TARGET_HP         8
 
 // Cmd_jumpifcantswitch
 #define SWITCH_IGNORE_ESCAPE_PREVENTION   (1 << 7)

@@ -1535,6 +1535,12 @@ static bool32 AccuracyCalcHelper(u16 move)
             RecordAbilityBattle(gBattlerAttacker, ABILITY_FATAL_PRECISION);
         return TRUE;
     }
+    else if ((GetBattlerAbility(gBattlerAttacker) == ABILITY_SWEET_DREAMS) && (move == MOVE_HYPNOSIS))
+    {
+        if (!JumpIfMoveFailed(7, move))
+            RecordAbilityBattle(gBattlerAttacker, ABILITY_SWEET_DREAMS);
+        return TRUE;
+    }
     // If the target is under the effects of Telekinesis, and the move isn't a OH-KO move, move hits.
     else if (gStatuses3[gBattlerTarget] & STATUS3_TELEKINESIS
              && !(gStatuses3[gBattlerTarget] & STATUS3_SEMI_INVULNERABLE)
@@ -11458,6 +11464,11 @@ static void Cmd_manipulatedamage(void)
         break;
     case DMG_1_8_TARGET_HP:
         gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerTarget) / 8;
+        if (gBattleMoveDamage == 0)
+            gBattleMoveDamage = 1;
+        break;
+    case DMG_1_16_TARGET_HP:
+        gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerTarget) / 16;
         if (gBattleMoveDamage == 0)
             gBattleMoveDamage = 1;
         break;
