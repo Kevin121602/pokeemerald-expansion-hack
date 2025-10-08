@@ -3060,6 +3060,9 @@ bool32 AI_CanPutToSleep(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 move
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
       || PartnerMoveEffectIsStatusSameTarget(BATTLE_PARTNER(battlerAtk), battlerDef, partnerMove))   // shouldn't try to sleep mon that partner is trying to make sleep
         return FALSE;
+    if((AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_SLP
+      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS) && AI_DATA->abilities[battlerAtk] != ABILITY_UNNERVE && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE)
+        return FALSE;
     return TRUE;
 }
 
@@ -3090,6 +3093,10 @@ bool32 AI_CanPoison(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 move, u3
     else if (IsValidDoubleBattle(battlerAtk) && AI_DATA->abilities[BATTLE_PARTNER(battlerDef)] == ABILITY_PASTEL_VEIL)
         return FALSE;
 
+    if((AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_PSN
+      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS) && AI_DATA->abilities[battlerAtk] != ABILITY_UNNERVE && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE)
+        return FALSE;
+
     return TRUE;
 }
 
@@ -3100,6 +3107,10 @@ bool32 AI_CanParalyze(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 move, 
       || gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_SAFEGUARD
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
       || PartnerMoveEffectIsStatusSameTarget(BATTLE_PARTNER(battlerAtk), battlerDef, partnerMove))
+        return FALSE;
+
+    if((AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_PAR
+      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS) && AI_DATA->abilities[battlerAtk] != ABILITY_UNNERVE && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE)
         return FALSE;
     return TRUE;
 }
@@ -3124,6 +3135,10 @@ bool32 AI_CanConfuse(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 battler
 
     if (!AI_CanBeConfused(battlerAtk, battlerDef, move, defAbility)
      || DoesPartnerHaveSameMoveEffect(battlerAtkPartner, battlerDef, move, partnerMove))
+        return FALSE;
+
+    if((AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_CONFUSION
+      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS) && AI_DATA->abilities[battlerAtk] != ABILITY_UNNERVE && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE)
         return FALSE;
 
     return TRUE;
@@ -3164,6 +3179,10 @@ bool32 AI_CanBurn(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 battlerAtk
     {
         return FALSE;
     }
+
+    if((AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_BRN
+      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS) && AI_DATA->abilities[battlerAtk] != ABILITY_UNNERVE && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE)
+        return FALSE;
     return TRUE;
 }
 

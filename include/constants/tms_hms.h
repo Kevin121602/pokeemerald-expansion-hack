@@ -4,6 +4,7 @@
 #define FOREACH_TM(F) \
     F(ACROBATICS) \
     F(AERIAL_ACE) \
+    F(AFTER_YOU) \
     F(AIR_SLASH) \
     F(AURA_SPHERE) \
     F(AURORA_VEIL) \
@@ -13,12 +14,11 @@
     F(BUG_BUZZ) \
     F(BULLDOZE) \
     F(BULLET_SEED) \
-    F(CAPTIVATE) \
-    F(CHARM) \
     F(CHILLING_WATER) \
     F(DARK_PULSE) \
     F(DAZZLING_GLEAM) \
     F(DEFOG) \
+    F(DIG) \
     F(DRAGON_CLAW) \
     F(DRAGON_PULSE) \
     F(DRAIN_PUNCH) \
@@ -31,9 +31,11 @@
     F(EXPLOSION) \
     F(FACADE) \
     F(FAKE_TEARS) \
+    F(FEATHER_DANCE) \
     F(FEINT_ATTACK) \
     F(FLAMETHROWER) \
     F(FLASH_CANNON) \
+    F(FLIP_TURN)\
     F(FOCUS_PUNCH) \
     F(GIGA_DRAIN) \
     F(GRASS_KNOT) \
@@ -51,10 +53,12 @@
     F(LOW_KICK) \
     F(LOW_SWEEP) \
     F(MAGICAL_LEAF) \
+    F(ME_FIRST) \
     F(MISTY_EXPLOSION) \
     F(MUD_SHOT) \
     F(NIGHT_SHADE) \
     F(PAYBACK) \
+    F(PIN_MISSILE)\
     F(PLAY_ROUGH) \
     F(POISON_JAB) \
     F(POUNCE) \
@@ -84,24 +88,20 @@
     F(SOLAR_BLADE) \
     F(STRUGGLE_BUG) \
     F(SUPERCELL_SLAM) \
-    F(SURF) \
     F(SWIFT) \
     F(TAILWIND) \
     F(TELEPORT) \
+    F(THROAT_CHOP)\
     F(THUNDER) \
     F(THUNDER_WAVE) \
     F(THUNDERBOLT) \
     F(TOXIC) \
     F(TRIPLE_AXEL) \
+    F(U_TURN)\
+    F(VOLT_SWITCH)\
     F(WEATHER_BALL) \
     F(WILL_O_WISP) \
-    F(X_SCISSOR) \
-    F(THROAT_CHOP)\
-    F(PIN_MISSILE)\
-    F(U_TURN)\
-    F(FLIP_TURN)\
-    F(VOLT_SWITCH)\
-    F(DIG)
+    F(X_SCISSOR) 
 
 #define FOREACH_HM(F) \
     F(CUT) \
