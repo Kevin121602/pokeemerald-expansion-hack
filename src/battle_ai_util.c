@@ -721,6 +721,13 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
                     simDamage.minimum *= 3;
                 }
                 break;
+            case EFFECT_REVENGE:
+                if (!HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_STATUS))
+                {
+                    simDamage.expected *= 2;
+                    simDamage.minimum *= 2;
+                }
+                break;
             case EFFECT_ENDEAVOR:
                 // If target has less HP than user, Endeavor does no damage
                 simDamage.expected = simDamage.minimum = max(0, gBattleMons[battlerDef].hp - gBattleMons[battlerAtk].hp);
