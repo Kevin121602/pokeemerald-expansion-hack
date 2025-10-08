@@ -62,9 +62,9 @@ typedef s32 (*AiScoreFunc)(u32, u32, u32, s32);
 #define DISCOURAGED_KILL 6 // Hyper Beam
 #define KILL             7 // AI faints target
 #define ENCOURAGED_KILL  8 // Certain encouraged moves like speed drop/omniboost etc get an 80% 1 point increase
-#define FAST_KILL        9 //AI has priority kill on target
-#define REVENGE_KILL     10 //Kill With Pursuit
-#define LAST_CHANCE      11 // AI faints to target. It should try and do damage with a priority move
+#define LAST_CHANCE      9 // AI faints to target. It should try and do damage with a priority move
+#define FAST_KILL        10 //AI has priority kill on target
+#define REVENGE_KILL     11 //Kill With Pursuit
 
 // AI_Risky
 #define STRONG_RISKY_EFFECT     3

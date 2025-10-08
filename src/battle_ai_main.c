@@ -3574,7 +3574,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             break;
         //fallthrough
     case EFFECT_BATON_PASS:
-        if (AnyStatIsRaised(battlerAtk) || gBattleMons[battlerDef].status2 & (STATUS2_ESCAPE_PREVENTION))
+        if (AnyStatIsRaised(battlerAtk))
             ADJUST_SCORE(BEST_EFFECT);
         break;
     case EFFECT_DISABLE:
@@ -3977,9 +3977,12 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(DECENT_EFFECT);
         break;
     case EFFECT_RECYCLE:
-        if (GetUsedHeldItem(battlerAtk) != ITEM_NONE)
+        if (GetUsedHeldItem(battlerAtk) != ITEM_NONE){
             ADJUST_SCORE(WEAK_EFFECT);
-        if (IsRecycleEncouragedItem(GetUsedHeldItem(battlerAtk)))
+            if(Random() % 100 < 50)
+                ADJUST_SCORE(WEAK_EFFECT);
+        }
+        /*if (IsRecycleEncouragedItem(GetUsedHeldItem(battlerAtk)))
             ADJUST_SCORE(WEAK_EFFECT);
         if (aiData->abilities[battlerAtk] == ABILITY_RIPEN)
         {
@@ -3992,7 +3995,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
               && ((GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == 1 && CanTargetFaintAiWithMod(battlerDef, battlerAtk, 0, 0))
                || !CanTargetFaintAiWithMod(battlerDef, battlerAtk, toHeal, 0)))
                 ADJUST_SCORE(WEAK_EFFECT);    // Recycle healing berry if we can't otherwise faint the target and the target wont kill us after we activate the berry
-        }
+        }*/
         break;
     case EFFECT_SKILL_SWAP:
         if (GetActiveGimmick(battlerDef) == GIMMICK_DYNAMAX)

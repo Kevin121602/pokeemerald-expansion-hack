@@ -68,31 +68,32 @@ enum {
 
 // Button control text (upper right)
 #define PSS_LABEL_WINDOW_PROMPT_CANCEL 4
-#define PSS_LABEL_WINDOW_PROMPT_INFO 5
-#define PSS_LABEL_WINDOW_PROMPT_IVS 6
-#define PSS_LABEL_WINDOW_UNUSED1 7
+#define PSS_LABEL_WINDOW_PROMPT_IVS 5
+#define PSS_LABEL_WINDOW_PROMPT_STATS 6
+#define PSS_LABEL_WINDOW_PROMPT_INFO 7
+#define PSS_LABEL_WINDOW_PROMPT_SWITCH 8
 
 // Info screen
-#define PSS_LABEL_WINDOW_POKEMON_INFO_RENTAL 8
-#define PSS_LABEL_WINDOW_POKEMON_INFO_TYPE 9
+#define PSS_LABEL_WINDOW_POKEMON_INFO_RENTAL 9
+#define PSS_LABEL_WINDOW_POKEMON_INFO_TYPE 10
 
 // Skills screen
-#define PSS_LABEL_WINDOW_POKEMON_SKILLS_STATS_LEFT 10 // HP, Attack, Defense
-#define PSS_LABEL_WINDOW_POKEMON_SKILLS_STATS_RIGHT 11 // Sp. Attack, Sp. Defense, Speed
-#define PSS_LABEL_WINDOW_POKEMON_SKILLS_EXP 12 // EXP, Next Level
-#define PSS_LABEL_WINDOW_POKEMON_SKILLS_STATUS 13
+#define PSS_LABEL_WINDOW_POKEMON_SKILLS_STATS_LEFT 11 // HP, Attack, Defense
+#define PSS_LABEL_WINDOW_POKEMON_SKILLS_STATS_RIGHT 12 // Sp. Attack, Sp. Defense, Speed
+#define PSS_LABEL_WINDOW_POKEMON_SKILLS_EXP 13 // EXP, Next Level
+#define PSS_LABEL_WINDOW_POKEMON_SKILLS_STATUS 14
 
 // Moves screen
-#define PSS_LABEL_WINDOW_MOVES_POWER_ACC 14 // Also contains the power and accuracy values
-#define PSS_LABEL_WINDOW_MOVES_APPEAL_JAM 15
-#define PSS_LABEL_WINDOW_UNUSED2 16
+#define PSS_LABEL_WINDOW_MOVES_POWER_ACC 15 // Also contains the power and accuracy values
+#define PSS_LABEL_WINDOW_MOVES_APPEAL_JAM 16
+#define PSS_LABEL_WINDOW_UNUSED2 17
 
 // Above/below the pokemon's portrait (left)
-#define PSS_LABEL_WINDOW_PORTRAIT_DEX_NUMBER 17
-#define PSS_LABEL_WINDOW_PORTRAIT_NICKNAME 18 // The upper name
-#define PSS_LABEL_WINDOW_PORTRAIT_SPECIES 19 // The lower name
-#define PSS_LABEL_WINDOW_PROMPT_STATS 20
-#define PSS_LABEL_WINDOW_END 21
+#define PSS_LABEL_WINDOW_PORTRAIT_DEX_NUMBER 18
+#define PSS_LABEL_WINDOW_PORTRAIT_NICKNAME 19 // The upper name
+#define PSS_LABEL_WINDOW_PORTRAIT_SPECIES 20 // The lower name
+#define PSS_LABEL_WINDOW_PROMPT_UNUSED 21
+#define PSS_LABEL_WINDOW_END 22
 
 // Dynamic fields for the Pokémon Info page
 #define PSS_DATA_WINDOW_INFO_ORIGINAL_TRAINER 0
@@ -468,14 +469,14 @@ static const struct WindowTemplate sSummaryTemplate[] =
         .paletteNum = 7,
         .baseBlock = 121,
     },
-    [PSS_LABEL_WINDOW_UNUSED1] = {
+    [PSS_LABEL_WINDOW_PROMPT_SWITCH] = {
         .bg = 0,
-        .tilemapLeft = 11,
-        .tilemapTop = 4,
-        .width = 0,
+        .tilemapLeft = 22,
+        .tilemapTop = 0,
+        .width = 8,
         .height = 2,
-        .paletteNum = 6,
-        .baseBlock = 137,
+        .paletteNum = 7,
+        .baseBlock = 121,
     },
     [PSS_LABEL_WINDOW_POKEMON_INFO_RENTAL] = {
         .bg = 0,
@@ -1798,6 +1799,7 @@ static void ChangeSummaryPokemon(u8 taskId, s8 delta)
             if (sMonSummaryScreen->currPageIndex == PSS_PAGE_SKILLS)
             {
                 ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_STATS);
+                ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_SWITCH);
                 stringXPos = GetStringRightAlignXOffset(FONT_NORMAL, gText_IVs, 62);
                 iconXPos = stringXPos - 16;
                 if (iconXPos < 0)
@@ -1951,6 +1953,9 @@ static void ChangePage(u8 taskId, s8 delta)
     struct PokeSummary *summary = &sMonSummaryScreen->summary;
     s16 *data = gTasks[taskId].data;
 
+    int iconXPos;
+    int stringXPos;
+
     if (summary->isEgg)
         return;
     else if (delta == -1 && sMonSummaryScreen->currPageIndex == sMonSummaryScreen->minPageIndex)
@@ -1961,6 +1966,18 @@ static void ChangePage(u8 taskId, s8 delta)
     PlaySE(SE_SELECT);
     ClearPageWindowTilemaps(sMonSummaryScreen->currPageIndex);
     sMonSummaryScreen->currPageIndex += delta;
+    if (sMonSummaryScreen->currPageIndex == PSS_PAGE_SKILLS)
+            {
+                ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_STATS);
+                ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_SWITCH);
+                stringXPos = GetStringRightAlignXOffset(FONT_NORMAL, gText_IVs, 62);
+                iconXPos = stringXPos - 16;
+                if (iconXPos < 0)
+                    iconXPos = 0;
+                PrintAOrBButtonIcon(PSS_LABEL_WINDOW_PROMPT_IVS, FALSE, iconXPos);
+                PrintTextOnWindow(PSS_LABEL_WINDOW_PROMPT_IVS, gText_IVs, stringXPos, 1, 0, 0);
+                PutWindowTilemap(PSS_LABEL_WINDOW_PROMPT_IVS);
+            }
     data[0] = 0;
     if (delta == 1)
         SetTaskFuncWithFollowupFunc(taskId, PssScrollRight, gTasks[taskId].func);
@@ -2072,6 +2089,9 @@ static void SwitchToMoveSelection(u8 taskId)
 {
     u16 move;
 
+    int stringXPos;
+    int iconXPos;
+
     sMonSummaryScreen->firstMoveIndex = 0;
     move = sMonSummaryScreen->summary.moves[sMonSummaryScreen->firstMoveIndex];
     ClearWindowTilemap(PSS_LABEL_WINDOW_PORTRAIT_SPECIES);
@@ -2082,7 +2102,13 @@ static void SwitchToMoveSelection(u8 taskId)
     if (!sMonSummaryScreen->lockMovesFlag)
     {
         ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_INFO);
-        PutWindowTilemap(PSS_LABEL_WINDOW_PROMPT_IVS);
+        stringXPos = GetStringRightAlignXOffset(FONT_NORMAL, gText_Switch2, 62);
+        iconXPos = stringXPos - 16;
+        if (iconXPos < 0)
+            iconXPos = 0;
+        PrintAOrBButtonIcon(PSS_LABEL_WINDOW_PROMPT_SWITCH, FALSE, iconXPos);
+        PrintTextOnWindow(PSS_LABEL_WINDOW_PROMPT_SWITCH, gText_Switch2, stringXPos, 1, 0, 0);
+        PutWindowTilemap(PSS_LABEL_WINDOW_PROMPT_SWITCH);
     }
     TilemapFiveMovesDisplay(sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_BATTLE_MOVES][0], 3, FALSE);
     TilemapFiveMovesDisplay(sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_CONTEST_MOVES][0], 1, FALSE);
@@ -2210,7 +2236,8 @@ static void ChangeSelectedMove(s16 *taskData, s8 direction, u8 *moveIndexPtr)
 static void CloseMoveSelectMode(u8 taskId)
 {
     DestroyMoveSelectorSprites(SPRITE_ARR_ID_MOVE_SELECTOR1);
-    ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_IVS);
+    //ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_IVS);
+    ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_SWITCH);
     PutWindowTilemap(PSS_LABEL_WINDOW_PROMPT_INFO);
     PrintMoveDetails(0);
     TilemapFiveMovesDisplay(sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_BATTLE_MOVES][0], 3, TRUE);
@@ -3053,6 +3080,8 @@ static void PutPageWindowTilemaps(u8 page)
     ClearWindowTilemap(PSS_LABEL_WINDOW_POKEMON_SKILLS_TITLE);
     ClearWindowTilemap(PSS_LABEL_WINDOW_BATTLE_MOVES_TITLE);
     ClearWindowTilemap(PSS_LABEL_WINDOW_CONTEST_MOVES_TITLE);
+    ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_STATS);
+    ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_SWITCH);
 
     switch (page)
     {

@@ -10383,7 +10383,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 4181
-                MOVE_ZEN_HEADBUTT,
+                MOVE_PSYCHO_CUT,
                 MOVE_FORCE_PALM,
                 MOVE_FIRE_PUNCH,
                 MOVE_POWER_SWAP,
