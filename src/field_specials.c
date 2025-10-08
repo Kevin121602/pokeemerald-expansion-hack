@@ -2603,7 +2603,7 @@ static const u8 *const sScrollableMultichoiceOptions[][MAX_SCROLL_MULTI_LENGTH] 
     },
     [SCROLL_CHANGE_NATURE_TWO_SCALES] =
     {
-        gText_Natures_Hardy,
+        gText_Natures_Serious,
         gText_Natures_Lax,
         gText_Natures_Gentle,
         gText_Natures_Brave,
@@ -2618,7 +2618,7 @@ static const u8 *const sScrollableMultichoiceOptions[][MAX_SCROLL_MULTI_LENGTH] 
     },
     [SCROLL_CHANGE_NATURE_THREE_SCALES] =
     {
-        gText_Natures_Hardy,
+        gText_Natures_Serious,
         gText_Natures_Lax,
         gText_Natures_Gentle,
         gText_Natures_Brave,
@@ -4432,7 +4432,7 @@ void BufferNameAndNature(void)
     GetMonNickname(&gPlayerParty[gSpecialVar_0x8005], gStringVar1);
     switch(gSpecialVar_Result){
         case 0:
-            StringCopy(gStringVar2, gText_Natures_Hardy1);
+            StringCopy(gStringVar2, gText_Natures_Serious1);
             break;
         case 1:
             StringCopy(gStringVar2, gText_Natures_Lax1);
@@ -4495,7 +4495,7 @@ void BufferNameAndNature(void)
             StringCopy(gStringVar2, gText_Natures_Rash1);
             break;
         default:
-            StringCopy(gStringVar2, gText_Natures_Hardy1);   
+            StringCopy(gStringVar2, gText_Natures_Serious1);   
     }
 }
 
@@ -4505,7 +4505,7 @@ void ChangeNature(void)
 
     switch(gSpecialVar_0x8006){
         case 0:
-            nature = NATURE_HARDY;
+            nature = NATURE_SERIOUS;
             break;
         case 1:
             nature = NATURE_LAX;

@@ -3060,7 +3060,7 @@ extern const u8 gText_ExitLC[];
 extern const u8 gText_StatNameColon[];
 
 //For Nature Change Menu
-extern const u8 gText_Natures_Hardy[];
+extern const u8 gText_Natures_Serious[];
 extern const u8 gText_Natures_Lax[];
 extern const u8 gText_Natures_Gentle[];
 extern const u8 gText_Natures_Brave[];
@@ -3082,7 +3082,7 @@ extern const u8 gText_Natures_Modest[];
 extern const u8 gText_Natures_Mild[];
 extern const u8 gText_Natures_Rash[];
 
-extern const u8 gText_Natures_Hardy1[];
+extern const u8 gText_Natures_Serious1[];
 extern const u8 gText_Natures_Lax1[];
 extern const u8 gText_Natures_Gentle1[];
 extern const u8 gText_Natures_Brave1[];

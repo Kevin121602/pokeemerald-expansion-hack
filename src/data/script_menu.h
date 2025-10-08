@@ -791,7 +791,7 @@ static const struct MenuAction MultichoiceList_ChangeIV[] =
 
 static const struct MenuAction MultichoiceList_ChangeNature1[] =
 {
-    {gText_Natures_Hardy},
+    {gText_Natures_Serious},
     {gText_Natures_Lax},
     {gText_Natures_Gentle},
     {gText_ExitLC},
@@ -799,7 +799,7 @@ static const struct MenuAction MultichoiceList_ChangeNature1[] =
 
 static const struct MenuAction MultichoiceList_ChangeNature2[] =
 {
-    {gText_Natures_Hardy},
+    {gText_Natures_Serious},
     {gText_Natures_Lax},
     {gText_Natures_Gentle},
     {gText_Natures_Brave},
@@ -815,7 +815,7 @@ static const struct MenuAction MultichoiceList_ChangeNature2[] =
 
 static const struct MenuAction MultichoiceList_ChangeNature3[] =
 {
-    {gText_Natures_Hardy},
+    {gText_Natures_Serious},
     {gText_Natures_Lax},
     {gText_Natures_Gentle},
     {gText_Natures_Brave},

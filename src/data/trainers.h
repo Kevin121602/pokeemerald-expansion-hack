@@ -10538,14 +10538,14 @@ F_TRAINER_FEMALE |
 #line 4243
             .lvl = 32,
 #line 4241
-            .nature = NATURE_HASTY,
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 4244
                 MOVE_LEAF_BLADE,
-                MOVE_AIR_SLASH,
+                MOVE_DUAL_WINGBEAT,
                 MOVE_EARTHQUAKE,
-                MOVE_ROOST,
+                MOVE_DRAGON_DANCE,
             },
             },
             {

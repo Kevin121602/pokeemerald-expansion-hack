@@ -416,7 +416,10 @@ u8 PickWildMonNature(void)
         && GetMonAbility(&gPlayerParty[0]) == ABILITY_SYNCHRONIZE
         && (OW_SYNCHRONIZE_NATURE >= GEN_8 || Random() % 2 == 0))
     {
-        return GetMonData(&gPlayerParty[0], MON_DATA_PERSONALITY) % NUM_NATURES;
+        if(GetMonData(&gPlayerParty[0], MON_DATA_MINT_NATURE) == 0)
+            return GetMonData(&gPlayerParty[0], MON_DATA_PERSONALITY) % NUM_NATURES;
+        else
+            return GetMonData(&gPlayerParty[0], MON_DATA_MINT_NATURE);
     }
 
     // random nature
