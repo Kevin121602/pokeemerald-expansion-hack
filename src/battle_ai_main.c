@@ -2720,7 +2720,8 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     }
     else if (CanTargetFaintAi(battlerDef, battlerAtk)
             && speedBattlerAI < speedBattler
-            && GetMovePriority(battlerAtk, move) > 0)
+            && GetMovePriority(battlerAtk, move) > 0
+            && !(gBattleMons[battlerDef].status1 & STATUS1_SLEEP))
     {
         if(move == MOVE_FAKE_OUT){
             if(ShouldFakeOut(battlerAtk, battlerDef, move)){

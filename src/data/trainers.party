@@ -4219,13 +4219,13 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Shuckle @ Iapapa Berry
-Nature: Careful
-Ability: Gluttony
-Level: 33
-- Knock Off
-- Sand Tomb
-- Toxic
+Slurpuff @ Aguav Berry
+Nature: Hasty
+Ability: Unburden
+Level: 32
+- Dazzling Gleam
+- Energy Ball
+- Fire Punch
 - Sticky Web
 
 Huntail @ Mystic Water
@@ -4240,7 +4240,7 @@ Level: 32
 Tropius @ Yache Berry
 Nature: Jolly
 Ability: Harvest
-Level: 32
+Level: 33
 - Leaf Blade
 - Dual Wingbeat
 - Earthquake

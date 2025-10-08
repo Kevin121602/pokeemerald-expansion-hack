@@ -1146,11 +1146,11 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     }
 
     //player kills ai, more conditions for slow kill than fast kill
-    if (bestHitsToKOBattler == 1 && !canFakeOut)
+    if (bestHitsToKOBattler == 1 && !canFakeOut && !(gBattleMons[opposingBattler].status1 & STATUS1_SLEEP))
     {
         if(!faster){
             shouldSwitchStandard = TRUE;
-        } else if (faster && !willSetHazards && !willDestinyBond && bestHitsToKOPlayer != 1 && !MonHasRelevantStatsRaised(battler)){
+        } else if (faster && !willSetHazards && !willDestinyBond && (bestHitsToKOPlayer != 1 && !(gBattleMons[battler].status1 & STATUS1_SLEEP)) && !MonHasRelevantStatsRaised(battler)){
             if(canPivot){
                 //BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
                 //OpponentBufferExecCompleted(battler);

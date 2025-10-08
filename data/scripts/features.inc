@@ -220,7 +220,7 @@ EventScript_FeaturesMenu_BottleCapMenu::
 	case 2, EventScript_FeaturesMenu_BoostItemsMenu
 	case 3, EventScript_FeaturesMenu_HerbsMenu
 	case 6, EventScript_FeaturesMenu_Exit
-	case MULTI_B_PRESSED, EventScript_FeaturesMenu_Exit
+	case MULTI_B_PRESSED, EventScript_FeaturesMenu_ReturnToMainMenu
 	releaseall
 	end
 
@@ -279,6 +279,10 @@ EventScript_FeaturesMenu_HerbsMenu::
 	case MULTI_B_PRESSED, EventScript_FeaturesMenu_BottleCapMenu
 	releaseall
 	end 
+
+EventScript_FeaturesMenu_ReturnToMainMenu::
+	special ReturnToFeaturesMenu
+	end
 
 EventScript_FeaturesMenu_GiveEjectPack::
 	msgbox Text_BuyEjectPack, MSGBOX_YESNO

@@ -10481,24 +10481,24 @@ F_TRAINER_FEMALE |
         {
             {
 #line 4222
-            .species = SPECIES_SHUCKLE,
+            .species = SPECIES_SLURPUFF,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4222
-            .heldItem = ITEM_IAPAPA_BERRY,
+            .heldItem = ITEM_AGUAV_BERRY,
 #line 4226
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 4224
-            .ability = ABILITY_GLUTTONY,
+            .ability = ABILITY_UNBURDEN,
 #line 4225
-            .lvl = 33,
+            .lvl = 32,
 #line 4223
-            .nature = NATURE_CAREFUL,
+            .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 4226
-                MOVE_KNOCK_OFF,
-                MOVE_SAND_TOMB,
-                MOVE_TOXIC,
+                MOVE_DAZZLING_GLEAM,
+                MOVE_ENERGY_BALL,
+                MOVE_FIRE_PUNCH,
                 MOVE_STICKY_WEB,
             },
             },
@@ -10536,7 +10536,7 @@ F_TRAINER_FEMALE |
 #line 4242
             .ability = ABILITY_HARVEST,
 #line 4243
-            .lvl = 32,
+            .lvl = 33,
 #line 4241
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,

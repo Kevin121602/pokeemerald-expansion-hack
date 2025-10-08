@@ -9,6 +9,7 @@
 #include "diploma.h"
 #include "event_data.h"
 #include "event_object_movement.h"
+#include "features_menu.h"
 #include "fieldmap.h"
 #include "field_camera.h"
 #include "field_effect.h"
@@ -4617,4 +4618,8 @@ void ChangeSpDefenseIV(void){
 void ChangeSpeedIV(void){
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPEED_IV, &gSpecialVar_0x8005);
     CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
+}
+
+void ReturnToFeaturesMenu(void){
+    ShowFeaturesMenu();
 }

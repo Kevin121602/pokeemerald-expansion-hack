@@ -1810,18 +1810,25 @@ void ProtectChecks(u32 battlerAtk, u32 battlerDef, u32 move, u32 predictedMove, 
             }
         }
     } else {
-        //if (uses == 0)
-        //{
-            ADJUST_SCORE_PTR(WEAK_EFFECT);
-        //}
 
-        if (gBattleMons[battlerDef].status1 & (STATUS1_TOXIC_POISON | STATUS1_POISON | STATUS1_BURN)
-        || gBattleMons[battlerDef].status2 & STATUS2_CURSED
-        || gStatuses3[battlerDef] & (STATUS3_PERISH_SONG | STATUS3_LEECHSEED | STATUS3_YAWN))
-            ADJUST_SCORE_PTR(WEAK_EFFECT);
+        if (gBattleMons[battlerAtk].status1 & (STATUS1_TOXIC_POISON | STATUS1_POISON | STATUS1_BURN)
+        || gBattleMons[battlerAtk].status2 & STATUS2_CURSED
+        || gStatuses3[battlerAtk] & (STATUS3_PERISH_SONG | STATUS3_LEECHSEED | STATUS3_YAWN))
+            ADJUST_SCORE_PTR(NO_INCREASE);
+        else{
+            //if (uses == 0)
+            //{
+                ADJUST_SCORE_PTR(WEAK_EFFECT);
+            //}
 
-        if(gWishFutureKnock.wishCounter[battlerAtk] != 0){
-            ADJUST_SCORE_PTR(DECENT_EFFECT + WEAK_EFFECT);
+            if (gBattleMons[battlerDef].status1 & (STATUS1_TOXIC_POISON | STATUS1_POISON | STATUS1_BURN)
+            || gBattleMons[battlerDef].status2 & STATUS2_CURSED
+            || gStatuses3[battlerDef] & (STATUS3_PERISH_SONG | STATUS3_LEECHSEED | STATUS3_YAWN))
+                ADJUST_SCORE_PTR(WEAK_EFFECT);
+
+            if(gWishFutureKnock.wishCounter[battlerAtk] != 0){
+                ADJUST_SCORE_PTR(DECENT_EFFECT + WEAK_EFFECT);
+            }
         }
     }
 }
