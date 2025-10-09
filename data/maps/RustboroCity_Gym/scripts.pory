@@ -217,8 +217,8 @@ RustboroCity_Gym_Text_StoneBadgeInfoTakeThis:
 	.string "Please take this with you, too.$"
 
 RustboroCity_Gym_Text_ExplainRockTombGiveOtherItems:
-	.string "That Technical Machine, TM69,\n"
-	.string "contains Rock Tomb.\p"
+	.string "That Technical Machine contains Rock\n"
+	.string "Tomb.\p"
 	.string "It not only inflicts damage by dropping\n"
 	.string "rocks, it also lowers Speed.\p"
 	.string "If you use a TM, it instantly teaches\n"

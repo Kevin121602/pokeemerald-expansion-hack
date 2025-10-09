@@ -4441,6 +4441,8 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .catchRate = 120,
         .expYield = 67,
         .evYield_Defense = 1,
+        .itemCommon = ITEM_GOURD_SPLICER,
+        .itemRare = ITEM_GOURD_SPLICER,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -4489,6 +4491,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .teachableLearnset = sPumpkabooTeachableLearnset,
         .eggMoveLearnset = sPumpkabooEggMoveLearnset,
         .formSpeciesIdTable = sPumpkabooFormSpeciesIdTable,
+        .formChangeTable = sPumpkabooFormChangeTable,
         .evolutions = EVOLUTION({EVO_LEVEL, 28, SPECIES_GOURGEIST_AVERAGE}),
     },
 
@@ -4504,6 +4507,8 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .catchRate = 120,
         .expYield = 67,
         .evYield_Defense = 1,
+        .itemCommon = ITEM_GOURD_SPLICER,
+        .itemRare = ITEM_GOURD_SPLICER,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -4551,6 +4556,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .teachableLearnset = sPumpkabooTeachableLearnset,
         .eggMoveLearnset = sPumpkabooEggMoveLearnset,
         .formSpeciesIdTable = sPumpkabooFormSpeciesIdTable,
+        .formChangeTable = sPumpkabooFormChangeTable,
         .evolutions = EVOLUTION({EVO_LEVEL, 28, SPECIES_GOURGEIST_SMALL}),
     },
 
@@ -4566,6 +4572,8 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .catchRate = 120,
         .expYield = 67,
         .evYield_Defense = 1,
+        .itemCommon = ITEM_GOURD_SPLICER,
+        .itemRare = ITEM_GOURD_SPLICER,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -4613,6 +4621,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .teachableLearnset = sPumpkabooTeachableLearnset,
         .eggMoveLearnset = sPumpkabooEggMoveLearnset,
         .formSpeciesIdTable = sPumpkabooFormSpeciesIdTable,
+        .formChangeTable = sPumpkabooFormChangeTable,
         .evolutions = EVOLUTION({EVO_LEVEL, 28, SPECIES_GOURGEIST_LARGE}),
     },
 
@@ -4628,7 +4637,8 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .catchRate = 120,
         .expYield = 67,
         .evYield_Defense = 1,
-        .itemRare = ITEM_MIRACLE_SEED,
+        .itemCommon = ITEM_GOURD_SPLICER,
+        .itemRare = ITEM_GOURD_SPLICER,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -4676,6 +4686,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .teachableLearnset = sPumpkabooTeachableLearnset,
         .eggMoveLearnset = sPumpkabooEggMoveLearnset,
         .formSpeciesIdTable = sPumpkabooFormSpeciesIdTable,
+        .formChangeTable = sPumpkabooFormChangeTable,
         .evolutions = EVOLUTION({EVO_LEVEL, 28, SPECIES_GOURGEIST_SUPER}),
     },
 
@@ -4691,6 +4702,8 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .catchRate = 60,
         .expYield = 173,
         .evYield_Defense = 2,
+        .itemCommon = ITEM_GOURD_SPLICER,
+        .itemRare = ITEM_GOURD_SPLICER,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -4738,6 +4751,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .levelUpLearnset = sGourgeistLevelUpLearnset,
         .teachableLearnset = sGourgeistTeachableLearnset,
         .formSpeciesIdTable = sGourgeistFormSpeciesIdTable,
+        .formChangeTable = sGourgeistFormChangeTable,
     },
 
     [SPECIES_GOURGEIST_SMALL] =
@@ -4752,6 +4766,8 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .catchRate = 60,
         .expYield = 173,
         .evYield_Defense = 2,
+        .itemCommon = ITEM_GOURD_SPLICER,
+        .itemRare = ITEM_GOURD_SPLICER,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -4799,6 +4815,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .levelUpLearnset = sGourgeistLevelUpLearnset,
         .teachableLearnset = sGourgeistTeachableLearnset,
         .formSpeciesIdTable = sGourgeistFormSpeciesIdTable,
+        .formChangeTable = sGourgeistFormChangeTable,
     },
 
     [SPECIES_GOURGEIST_LARGE] =
@@ -4813,6 +4830,8 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .catchRate = 60,
         .expYield = 173,
         .evYield_Defense = 2,
+        .itemCommon = ITEM_GOURD_SPLICER,
+        .itemRare = ITEM_GOURD_SPLICER,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -4860,6 +4879,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .levelUpLearnset = sGourgeistLevelUpLearnset,
         .teachableLearnset = sGourgeistTeachableLearnset,
         .formSpeciesIdTable = sGourgeistFormSpeciesIdTable,
+        .formChangeTable = sGourgeistFormChangeTable,
     },
 
     [SPECIES_GOURGEIST_SUPER] =
@@ -4874,7 +4894,8 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .catchRate = 60,
         .expYield = 173,
         .evYield_Defense = 2,
-        .itemRare = ITEM_MIRACLE_SEED,
+        .itemCommon = ITEM_GOURD_SPLICER,
+        .itemRare = ITEM_GOURD_SPLICER,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
@@ -4922,6 +4943,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .levelUpLearnset = sGourgeistLevelUpLearnset,
         .teachableLearnset = sGourgeistTeachableLearnset,
         .formSpeciesIdTable = sGourgeistFormSpeciesIdTable,
+        .formChangeTable = sGourgeistFormChangeTable,
     },
 #endif //P_FAMILY_PUMPKABOO
 

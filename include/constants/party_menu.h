@@ -84,6 +84,7 @@
 #define PARTY_MSG_WHICH_STATUS              29
 #define PARTY_MSG_SET_HP                    30
 #define PARTY_MSG_ADD_EXP                   31
+#define PARTY_MSG_WHICH_FORM                32
 #define PARTY_MSG_NONE                      127
 
 // IDs for DisplayPartyPokemonDescriptionText, to display a message in the party pokemon's box
@@ -110,5 +111,7 @@
 #define SELECTWINDOW_STATUS      6
 #define SELECTWINDOW_HP          7
 #define SELECTWINDOW_EXP         8
+#define SELECTWINDOW_SPLICER     9
+#define SELECTWINDOW_NECTAR      10
 
 #endif // GUARD_CONSTANTS_PARTY_MENU_H

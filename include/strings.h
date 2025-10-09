@@ -2152,6 +2152,7 @@ extern const u8 gText_DoWhatWithItem[];
 extern const u8 gText_DoWhatWithMail[];
 extern const u8 gText_AlreadyHoldingOne[];
 extern const u8 gText_WhichAppliance[];
+extern const u8 gText_WhichForm[];
 extern const u8 gText_NoUse[];
 extern const u8 gText_Able[];
 extern const u8 gText_First_PM[];
@@ -3178,5 +3179,15 @@ extern const u8 gText_BrickBreak[];
 extern const u8 gText_FirePunch[];
 extern const u8 gText_IcePunch[];
 extern const u8 gText_ThunderPunch[];
+
+//gourd splicer and nectar text
+extern const u8 gText_SplicerSmall[];
+extern const u8 gText_SplicerAverage[];
+extern const u8 gText_SplicerLarge[];
+extern const u8 gText_SplicerSuper[];
+extern const u8 gText_NectarBaile[];
+extern const u8 gText_NectarPomPom[];
+extern const u8 gText_NectarPau[];
+extern const u8 gText_NectarSensu[];
 
 #endif // GUARD_STRINGS_H

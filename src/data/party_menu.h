@@ -658,6 +658,39 @@ static const struct WindowTemplate sUnusedWindowTemplate2 =
     .baseBlock = 0x39D,
 };
 
+static const struct WindowTemplate sGourdSplicerSelectWindowTemplate =
+{
+    .bg = 2,
+    .tilemapLeft = 21,
+    .tilemapTop = 9,
+    .width = 8,
+    .height = 10,
+    .paletteNum = 14,
+    .baseBlock = 0x2E9,
+};
+
+static const struct WindowTemplate sRainbowNectarSelectWindowTemplate =
+{
+    .bg = 2,
+    .tilemapLeft = 21,
+    .tilemapTop = 9,
+    .width = 8,
+    .height = 10,
+    .paletteNum = 14,
+    .baseBlock = 0x2E9,
+};
+
+static const struct WindowTemplate sWhichFormMsgWindowTemplate =
+{
+    .bg = 2,
+    .tilemapLeft = 1,
+    .tilemapTop = 17,
+    .width = 18,
+    .height = 2,
+    .paletteNum = 15,
+    .baseBlock = 0x279,
+};
+
 // Plain tilemaps for party menu slots.
 // The versions with no HP bar are used by eggs, and in certain displays like registering at a battle facility.
 // There is no empty version of the main slot because it shouldn't ever be empty.
@@ -728,6 +761,7 @@ static const u8 *const sActionStringTable[] =
     [PARTY_MSG_SET_HP]                 = gText_SetHP,
     [PARTY_MSG_ADD_EXP]                = gText_AddExp,
     [PARTY_MSG_CHOOSE_SECOND_FUSION]   = gText_NextFusionMon,
+    [PARTY_MSG_WHICH_FORM]             = gText_WhichForm,
 };
 
 static const u8 *const sDescriptionStringTable[] =
@@ -797,6 +831,14 @@ struct
     [MENU_PARALYZE] = {gText_Par, CursorCb_Paralyze},
     [MENU_POISON] = {gText_Psn, CursorCb_Poison},
     [MENU_SLEEP] = {gText_Slp, CursorCb_Sleep},
+    [MENU_SPLICER_SMALL] = {gText_SplicerSmall, CursorCb_SplicerSmall},
+    [MENU_SPLICER_AVERAGE] = {gText_SplicerAverage, CursorCb_SplicerAverage},
+    [MENU_SPLICER_LARGE] = {gText_SplicerLarge, CursorCb_SplicerLarge},
+    [MENU_SPLICER_SUPER] = {gText_SplicerSuper, CursorCb_SplicerSuper},
+    [MENU_NECTAR_BAILE] = {gText_NectarBaile, CursorCb_NectarBaile},
+    [MENU_NECTAR_POM_POM] = {gText_NectarPomPom, CursorCb_NectarPomPom},
+    [MENU_NECTAR_PAU] = {gText_NectarPau, CursorCb_NectarPau},
+    [MENU_NECTAR_SENSU] = {gText_NectarSensu, CursorCb_NectarSensu},
 };
 
 static const u8 sPartyMenuAction_SummarySwitchCancel[] = {MENU_SUMMARY, MENU_SWITCH, MENU_CANCEL1};
@@ -815,6 +857,8 @@ static const u8 sPartyMenuAction_TakeItemTossCancel[] = {MENU_TAKE_ITEM, MENU_TO
 static const u8 sPartyMenuAction_RotomCatalog[] = {MENU_CATALOG_BULB, MENU_CATALOG_OVEN, MENU_CATALOG_WASHING, MENU_CATALOG_FRIDGE, MENU_CATALOG_FAN, MENU_CATALOG_MOWER, MENU_CANCEL1};
 static const u8 sPartyMenuAction_ZygardeCube[] = {MENU_CHANGE_FORM, MENU_CHANGE_ABILITY, MENU_CANCEL1};
 static const u8 sPartyMenuAction_InflictStatus[] = {MENU_HP, MENU_EXP, MENU_BURN, MENU_FROSTBITE, MENU_PARALYZE, MENU_POISON, MENU_SLEEP, MENU_CANCEL1};
+static const u8 sPartyMenuAction_GourdSplicer[] = {MENU_SPLICER_SMALL, MENU_SPLICER_AVERAGE, MENU_SPLICER_LARGE, MENU_SPLICER_SUPER, MENU_CANCEL1};
+static const u8 sPartyMenuAction_RainbowNectar[] = {MENU_NECTAR_BAILE, MENU_NECTAR_POM_POM, MENU_NECTAR_PAU, MENU_NECTAR_SENSU, MENU_CANCEL1};
 
 
 
@@ -837,6 +881,8 @@ static const u8 *const sPartyMenuActions[] =
     [ACTIONS_ROTOM_CATALOG] = sPartyMenuAction_RotomCatalog,
     [ACTIONS_ZYGARDE_CUBE]  = sPartyMenuAction_ZygardeCube,
     [ACTIONS_STATUS]        = sPartyMenuAction_InflictStatus,
+    [ACTIONS_GOURD_SPLICER] = sPartyMenuAction_GourdSplicer,
+    [ACTIONS_RAINBOW_NECTAR] = sPartyMenuAction_RainbowNectar,
 };
 
 static const u8 sPartyMenuActionCounts[] =
@@ -858,6 +904,8 @@ static const u8 sPartyMenuActionCounts[] =
     [ACTIONS_ROTOM_CATALOG] = ARRAY_COUNT(sPartyMenuAction_RotomCatalog),
     [ACTIONS_ZYGARDE_CUBE]  = ARRAY_COUNT(sPartyMenuAction_ZygardeCube),
     [ACTIONS_STATUS]        = ARRAY_COUNT(sPartyMenuAction_InflictStatus),
+    [ACTIONS_GOURD_SPLICER] = ARRAY_COUNT(sPartyMenuAction_GourdSplicer),
+    [ACTIONS_RAINBOW_NECTAR] = ARRAY_COUNT(sPartyMenuAction_RainbowNectar),
 };
 
 static const u16 sFieldMoves[FIELD_MOVES_COUNT + 1] =

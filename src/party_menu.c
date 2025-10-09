@@ -114,6 +114,14 @@ enum {
     MENU_PARALYZE,
     MENU_POISON,
     MENU_SLEEP,
+    MENU_SPLICER_SMALL,
+    MENU_SPLICER_AVERAGE,
+    MENU_SPLICER_LARGE,
+    MENU_SPLICER_SUPER,
+    MENU_NECTAR_BAILE,
+    MENU_NECTAR_POM_POM,
+    MENU_NECTAR_PAU,
+    MENU_NECTAR_SENSU,
     MENU_FIELD_MOVES
 };
 
@@ -136,6 +144,8 @@ enum {
     ACTIONS_ROTOM_CATALOG,
     ACTIONS_ZYGARDE_CUBE,
     ACTIONS_STATUS,
+    ACTIONS_GOURD_SPLICER,
+    ACTIONS_RAINBOW_NECTAR,
 };
 
 // In CursorCb_FieldMove, field moves <= FIELD_MOVE_WATERFALL are assumed to line up with the badge flags.
@@ -525,6 +535,14 @@ static void CursorCb_CatalogFan(u8);
 static void CursorCb_CatalogMower(u8);
 static void CursorCb_ChangeForm(u8);
 static void CursorCb_ChangeAbility(u8);
+static void CursorCb_SplicerSmall(u8);
+static void CursorCb_SplicerAverage(u8);
+static void CursorCb_SplicerLarge(u8);
+static void CursorCb_SplicerSuper(u8);
+static void CursorCb_NectarBaile(u8);
+static void CursorCb_NectarPomPom(u8);
+static void CursorCb_NectarPau(u8);
+static void CursorCb_NectarSensu(u8);
 static bool8 SetUpFieldMove_Surf(void);
 static bool8 SetUpFieldMove_Fly(void);
 static bool8 SetUpFieldMove_Waterfall(void);
@@ -2694,6 +2712,9 @@ void DisplayPartyMenuStdMessage(u32 stringId)
         default:
             *windowPtr = AddWindow(&sDefaultPartyMsgWindowTemplate);
             break;
+        case PARTY_MSG_WHICH_FORM:
+            *windowPtr = AddWindow(&sWhichFormMsgWindowTemplate);
+            break;
         }
 
         if (stringId == PARTY_MSG_CHOOSE_MON)
@@ -2761,6 +2782,12 @@ static u8 DisplaySelectionWindow(u8 windowType)
         break;
     case SELECTWINDOW_EXP:
         window = sExpWindowTemplate;
+        break;
+    case SELECTWINDOW_SPLICER:
+        window = sGourdSplicerSelectWindowTemplate;
+        break;
+    case SELECTWINDOW_NECTAR:
+        window = sRainbowNectarSelectWindowTemplate;
         break;
     default: // SELECTWINDOW_MOVES
         window = sMoveSelectWindowTemplate;
@@ -6804,6 +6831,28 @@ void ItemUseCB_RotomCatalog(u8 taskId, TaskFunc task)
     gTasks[taskId].func = Task_HandleSelectionMenuInput;
 }
 
+void ItemUseCB_GourdSplicer(u8 taskId, TaskFunc task)
+{
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+    SetPartyMonSelectionActions(gPlayerParty, gPartyMenu.slotId, ACTIONS_GOURD_SPLICER);
+    DisplaySelectionWindow(SELECTWINDOW_SPLICER);
+    DisplayPartyMenuStdMessage(PARTY_MSG_WHICH_FORM);
+    gTasks[taskId].data[0] = 0xFF;
+    gTasks[taskId].func = Task_HandleSelectionMenuInput;
+}
+
+void ItemUseCB_RainbowNectar(u8 taskId, TaskFunc task)
+{
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+    SetPartyMonSelectionActions(gPlayerParty, gPartyMenu.slotId, ACTIONS_RAINBOW_NECTAR);
+    DisplaySelectionWindow(SELECTWINDOW_NECTAR);
+    DisplayPartyMenuStdMessage(PARTY_MSG_WHICH_FORM);
+    gTasks[taskId].data[0] = 0xFF;
+    gTasks[taskId].func = Task_HandleSelectionMenuInput;
+}
+
 bool32 TryMultichoiceFormChange(u8 taskId)
 {
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
@@ -6874,6 +6923,55 @@ static void CursorCb_CatalogMower(u8 taskId)
     gSpecialVar_0x8000 = MOVE_LEAF_STORM;
     TryMultichoiceFormChange(taskId);
 }
+
+static void CursorCb_SplicerSmall(u8 taskId){
+
+    gSpecialVar_Result = 0;
+    TryMultichoiceFormChange(taskId);
+}
+
+static void CursorCb_SplicerAverage(u8 taskId){
+    
+    gSpecialVar_Result = 1;
+    TryMultichoiceFormChange(taskId);
+}
+
+static void CursorCb_SplicerLarge(u8 taskId){
+    
+    gSpecialVar_Result = 2;
+    TryMultichoiceFormChange(taskId);
+}
+
+static void CursorCb_SplicerSuper(u8 taskId){
+    
+    gSpecialVar_Result = 3;
+    TryMultichoiceFormChange(taskId);
+}
+
+static void CursorCb_NectarBaile(u8 taskId){
+    
+    gSpecialVar_Result = 0;
+    TryMultichoiceFormChange(taskId);
+}
+
+static void CursorCb_NectarPomPom(u8 taskId){
+    
+    gSpecialVar_Result = 1;
+    TryMultichoiceFormChange(taskId);
+}
+
+static void CursorCb_NectarPau(u8 taskId){
+    
+    gSpecialVar_Result = 2;
+    TryMultichoiceFormChange(taskId);
+}
+
+static void CursorCb_NectarSensu(u8 taskId){
+    
+    gSpecialVar_Result = 3;
+    TryMultichoiceFormChange(taskId);
+}
+
 
 void ItemUseCB_ZygardeCube(u8 taskId, TaskFunc task)
 {

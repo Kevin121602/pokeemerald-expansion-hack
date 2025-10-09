@@ -437,9 +437,9 @@ RustboroCity_Gym_Text_StoneBadgeInfoTakeThis:
 # 219 "data/maps/RustboroCity_Gym/scripts.pory"
 RustboroCity_Gym_Text_ExplainRockTombGiveOtherItems:
 # 220 "data/maps/RustboroCity_Gym/scripts.pory"
-	.string "That Technical Machine, TM69,\n"
+	.string "That Technical Machine contains Rock\n"
 # 221 "data/maps/RustboroCity_Gym/scripts.pory"
-	.string "contains Rock Tomb.\p"
+	.string "Tomb.\p"
 # 222 "data/maps/RustboroCity_Gym/scripts.pory"
 	.string "It not only inflicts damage by dropping\n"
 # 223 "data/maps/RustboroCity_Gym/scripts.pory"

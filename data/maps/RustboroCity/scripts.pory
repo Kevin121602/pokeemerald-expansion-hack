@@ -1,3 +1,12 @@
+script RustboroCity_EventScript_Test{
+	lock
+	faceplayer
+	giveitem(ITEM_GOURD_SPLICER)
+	giveitem(ITEM_RAINBOW_NECTAR)
+	release
+	end
+}
+
 mapscripts RustboroCity_MapScripts{
 	MAP_SCRIPT_ON_TRANSITION{
 		setflag(FLAG_VISITED_RUSTBORO_CITY)

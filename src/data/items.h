@@ -14228,4 +14228,31 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_PokeshiDoll,
         .iconPalette = gItemIconPalette_PokeshiDoll,
     },
+
+    [ITEM_GOURD_SPLICER] =
+    {
+        .name = _("Gourd Splicer"),
+        .price = 2000,
+        .description = COMPOUND_STRING(
+            "Gadget that\n"
+            "changes the size of\n"
+            "certain Pokémon."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_GourdSplicer,
+        .iconPic = gItemIcon_DNASplicers,
+        .iconPalette = gItemIconPalette_DNASplicers,
+    },
+
+    [ITEM_RAINBOW_NECTAR] =
+    {
+        .name = _("Vibrant Nectar"),
+        .price = 2000,
+        .description = sNectarDesc,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_RainbowNectar,
+        .iconPic = gItemIcon_PinkNectar,
+        .iconPalette = gItemIconPalette_PinkNectar,
+    },
 };
