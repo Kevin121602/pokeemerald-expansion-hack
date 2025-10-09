@@ -3060,9 +3060,14 @@ bool32 AI_CanPutToSleep(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 move
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
       || PartnerMoveEffectIsStatusSameTarget(BATTLE_PARTNER(battlerAtk), battlerDef, partnerMove))   // shouldn't try to sleep mon that partner is trying to make sleep
         return FALSE;
+
     if((AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_SLP
-      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS) && AI_DATA->abilities[battlerAtk] != ABILITY_UNNERVE && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE)
+      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS)
+        && AI_DATA->abilities[battlerAtk] != ABILITY_UNNERVE 
+        && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE
+        && !CanUseStatusMoveTwice(battlerAtk, battlerDef, move))
         return FALSE;
+
     return TRUE;
 }
 
@@ -3094,7 +3099,10 @@ bool32 AI_CanPoison(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 move, u3
         return FALSE;
 
     if((AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_PSN
-      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS) && AI_DATA->abilities[battlerAtk] != ABILITY_UNNERVE && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE)
+      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS)
+        && AI_DATA->abilities[battlerAtk] != ABILITY_UNNERVE 
+        && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE
+        && !CanUseStatusMoveTwice(battlerAtk, battlerDef, move))
         return FALSE;
 
     return TRUE;
@@ -3110,7 +3118,10 @@ bool32 AI_CanParalyze(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 move, 
         return FALSE;
 
     if((AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_PAR
-      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS) && AI_DATA->abilities[battlerAtk] != ABILITY_UNNERVE && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE)
+      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS)
+        && AI_DATA->abilities[battlerAtk] != ABILITY_UNNERVE 
+        && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE
+        && !CanUseStatusMoveTwice(battlerAtk, battlerDef, move))
         return FALSE;
     return TRUE;
 }
@@ -3138,7 +3149,10 @@ bool32 AI_CanConfuse(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 battler
         return FALSE;
 
     if((AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_CONFUSION
-      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS) && AI_DATA->abilities[battlerAtk] != ABILITY_UNNERVE && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE)
+      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS)
+        && AI_DATA->abilities[battlerAtk] != ABILITY_UNNERVE 
+        && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE
+        && !CanUseStatusMoveTwice(battlerAtk, battlerDef, move))
         return FALSE;
 
     return TRUE;
@@ -3181,8 +3195,12 @@ bool32 AI_CanBurn(u32 battlerAtk, u32 battlerDef, u32 defAbility, u32 battlerAtk
     }
 
     if((AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_BRN
-      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS) && AI_DATA->abilities[battlerAtk] != ABILITY_UNNERVE && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE)
+      || AI_DATA->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS)
+        && AI_DATA->abilities[battlerAtk] != ABILITY_UNNERVE 
+        && AI_DATA->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE
+        && !CanUseStatusMoveTwice(battlerAtk, battlerDef, move))
         return FALSE;
+
     return TRUE;
 }
 
@@ -3232,7 +3250,7 @@ u32 ShouldTryToFlinch(u32 battlerAtk, u32 battlerDef, u32 atkAbility, u32 defAbi
 bool32 ShouldTrap(u32 battlerAtk, u32 battlerDef, u32 move)
 {
     u32 noOfHitsToFaint = NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk);
-    u32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, TRUE);
+    u32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, move);
 
     if (IsBattlerTrapped(battlerDef, TRUE))
         return FALSE;
@@ -3242,6 +3260,17 @@ bool32 ShouldTrap(u32 battlerAtk, u32 battlerDef, u32 move)
 
     if ((noOfHitsToFaint >= 2 && aiIsFaster) || (noOfHitsToFaint >= 3 && !aiIsFaster))
         return TRUE;    // chance to trap if decent mu
+
+    return FALSE;
+}
+
+bool32 CanUseStatusMoveTwice(u32 battlerAtk, u32 battlerDef, u32 move)
+{
+    u32 noOfHitsToFaint = NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk);
+    u32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, move);
+
+    if ((noOfHitsToFaint >= 2 && aiIsFaster) || (noOfHitsToFaint >= 3 && !aiIsFaster))
+        return TRUE;    // can click status move twice, wont go for move if player has cure berry and this func returns false
 
     return FALSE;
 }
