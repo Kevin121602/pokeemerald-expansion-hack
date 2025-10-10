@@ -15176,12 +15176,12 @@ F_TRAINER_FEMALE |
 #line 6116
             .lvl = 16,
 #line 6117
-            .nature = NATURE_ADAMANT,
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 6119
                 MOVE_AQUA_STEP,
-                MOVE_CUT,
+                MOVE_HEADBUTT,
                 MOVE_AQUA_JET,
                 MOVE_SUPER_FANG,
             },

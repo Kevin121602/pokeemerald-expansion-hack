@@ -11054,7 +11054,7 @@ const struct Item gItemsInfo[] =
         .name = _("TM43"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Shoots 2 to 5 spears\n"
+            "Shoots 2 - 5 spears\n"
             "in a row to strike\n"
             "the foe."),
         .importance = I_REUSABLE_TMS,
@@ -11160,7 +11160,7 @@ const struct Item gItemsInfo[] =
         .price = 3000,
         .description = COMPOUND_STRING(
             "Attacks foe with\n"
-            "strange leaves that\n"
+            "odd leaves that\n"
             "never miss."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,

@@ -5460,7 +5460,7 @@ static const struct LevelUpMove sMismagiusLevelUpLearnset[] = {
 
 #if P_FAMILY_UNOWN
 static const struct LevelUpMove sUnownLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_PSYCHIC),
+    LEVEL_UP_MOVE( 1, MOVE_PSYCHO_BOOST),
     LEVEL_UP_END
 };
 #endif //P_FAMILY_UNOWN
