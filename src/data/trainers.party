@@ -1284,7 +1284,7 @@ Ability: Aura Break
 - Skitter Smack
 - Reversal
 
-Sharpedo @ Lum Berry
+Sharpedo @ Black Glasses
 Level: 27
 Nature: Rash
 Ability: Speed Boost
@@ -1320,7 +1320,7 @@ Ability: Volt Absorb
 - Signal Beam
 - Heal Bell
 
-Arcanine @ Silk Scarf
+Arcanine @ Lum Berry
 Level: 29
 Nature: Jolly
 Ability: Intimidate
@@ -1450,7 +1450,7 @@ Glaceon @ Lum Berry
 Level: 31
 Nature: Naive
 Ability: Ice Body
-- Aurora Beam
+- Freeze-Dry
 - Ice Shard
 - Mud Shot
 - Mirror Coat
@@ -4687,12 +4687,13 @@ Level: 30
 - Roost
 
 Pidgeot @ Lum Berry
-Nature: Jolly
+Nature: Naive
 Ability: Keen Eye
+IVs: 30 HP / 30 Atk / 31 Def / 30 SpA / 30 SpD / 30 Spe
 Level: 31
-- Return
 - Dual Wingbeat
 - Steel Wing
+- Hidden Power
 - Whirlwind
 
 === TRAINER_TRAVIS ===
@@ -10089,12 +10090,12 @@ Level: 29
 - Endure
 
 Clefable @ Life Orb
-Nature: Hasty
+Nature: Jolly
 Ability: Magic Guard
 Level: 29
-- Draining Kiss
-- Fire Punch
-- Shock Wave
+- Play Rough
+- Zen Headbutt
+- Power-Up Punch
 - Moonlight
 
 Glalie @ Leftovers
@@ -10135,7 +10136,7 @@ Level: 23
 
 Hypno @ Leftovers
 Nature: Jolly
-Ability: No Guard
+Ability: Sweet Dreams
 Level: 24
 - Zen Headbutt
 - Brick Break
@@ -12165,7 +12166,7 @@ Level: 32
 - Surf
 - Natural Gift
 - Ice Beam
-- Quick Attack
+- Poison Jab
 
 === TRAINER_GRUNT_SEAFLOOR_CAVERN_5 ===
 Name: GRUNT
@@ -13442,10 +13443,10 @@ Level: 22
 
 Chatot @ Silk Scarf
 Nature: Timid
-Ability: Punk Rock
+Ability: Tangled Feet
 Level: 22
+- Air Slash
 - Round
-- Chatter
 - Heat Wave
 - Sing
 
@@ -15718,14 +15719,14 @@ Level: 24
 - Thunder Wave
 - Heal Bell
 
-Wormadam-Trash @ Sitrus Berry
+Wormadam-Trash @ Occa Berry
 Nature: Sassy
 Ability: Overcoat
 Level: 25
 - Mirror Shot
 - Struggle Bug
+- Bug Bite
 - Secret Power
-- Infestation
 
 === TRAINER_DEANDRE ===
 Name: DEANDRE

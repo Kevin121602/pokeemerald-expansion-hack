@@ -1543,7 +1543,7 @@
               {
                 "min_level": 26,
                 "max_level": 26,
-                "species": "SPECIES_MANECTRIC"
+                "species": "SPECIES_ORICORIO"
               },
               {
                 "min_level": 25,
@@ -2686,12 +2686,12 @@
               {
                 "min_level": 14,
                 "max_level": 15,
-                "species": "SPECIES_STONJOURNER"
+                "species": "SPECIES_NUMEL"
               },
               {
                 "min_level": 14,
                 "max_level": 15,
-                "species": "SPECIES_DRUDDIGON"
+                "species": "SPECIES_GRIMER"
               },
               {
                 "min_level": 14,
@@ -2919,72 +2919,72 @@
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_ROWLET"
+                "species": "SPECIES_KANGASKHAN"
               },
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_ROWLET"
+                "species": "SPECIES_TAUROS"
               },
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_BULBASAUR"
+                "species": "SPECIES_MILTANK"
               },
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_CHIKORITA"
+                "species": "SPECIES_BOUFFALANT"
               },
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_TREECKO"
+                "species": "SPECIES_AIPOM"
               },
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_TURTWIG"
+                "species": "SPECIES_TEDDIURSA"
               },
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_SNIVY"
+                "species": "SPECIES_ZANGOOSE"
               },
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_CHESPIN"
+                "species": "SPECIES_KOMALA"
               },
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_GROOKEY"
+                "species": "SPECIES_DUNSPARCE"
               },
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_GROOKEY"
+                "species": "SPECIES_MINCCINO"
               },
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_SPRIGATITO"
+                "species": "SPECIES_TANDEMAUS"
               },
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_SPRIGATITO"
+                "species": "SPECIES_LICKITUNG"
               },
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_SPRIGATITO"
+                "species": "SPECIES_SLAKOTH"
               },
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_SPRIGATITO"
+                "species": "SPECIES_SLAKOTH"
               }
             ]
           }
@@ -12414,12 +12414,12 @@
               {
                 "min_level": 11,
                 "max_level": 12,
-                "species": "SPECIES_APPLIN"
+                "species": "SPECIES_KECLEON"
               },
               {
                 "min_level": 11,
                 "max_level": 12,
-                "species": "SPECIES_APPLIN"
+                "species": "SPECIES_KECLEON"
               }
             ]
           }
@@ -14023,154 +14023,79 @@
               {
                 "min_level": 15,
                 "max_level": 16,
-                "species": "SPECIES_CYNDAQUIL"
+                "species": "SPECIES_DRUDDIGON"
               },
               {
                 "min_level": 15,
                 "max_level": 16,
-                "species": "SPECIES_CYNDAQUIL"
+                "species": "SPECIES_SWABLU"
               },
               {
                 "min_level": 15,
                 "max_level": 16,
-                "species": "SPECIES_CHARMANDER"
+                "species": "SPECIES_AXEW"
               },
               {
                 "min_level": 15,
                 "max_level": 16,
-                "species": "SPECIES_TORCHIC"
+                "species": "SPECIES_NOIBAT"
               },
               {
                 "min_level": 15,
                 "max_level": 16,
-                "species": "SPECIES_CHIMCHAR"
+                "species": "SPECIES_TRAPINCH"
               },
               {
                 "min_level": 15,
                 "max_level": 16,
-                "species": "SPECIES_TEPIG"
+                "species": "SPECIES_NONE"
               },
               {
                 "min_level": 15,
                 "max_level": 16,
-                "species": "SPECIES_FENNEKIN"
+                "species": "SPECIES_NONE"
               },
               {
                 "min_level": 15,
                 "max_level": 16,
-                "species": "SPECIES_LITTEN"
+                "species": "SPECIES_NONE"
               },
               {
                 "min_level": 15,
                 "max_level": 16,
-                "species": "SPECIES_SCORBUNNY"
+                "species": "SPECIES_APPLIN"
               },
               {
                 "min_level": 15,
                 "max_level": 16,
-                "species": "SPECIES_SCORBUNNY"
+                "species": "SPECIES_STONJOURNER"
               },
               {
                 "min_level": 15,
                 "max_level": 16,
-                "species": "SPECIES_FUECOCO"
+                "species": "SPECIES_FARFETCHD_GALARIAN"
               },
               {
                 "min_level": 15,
                 "max_level": 16,
-                "species": "SPECIES_FUECOCO"
+                "species": "SPECIES_MEOWTH_GALARIAN"
               },
               {
                 "min_level": 15,
                 "max_level": 16,
-                "species": "SPECIES_FUECOCO"
+                "species": "SPECIES_DRAMPA"
               },
               {
                 "min_level": 15,
                 "max_level": 16,
-                "species": "SPECIES_FUECOCO"
+                "species": "SPECIES_DRAMPA"
               }
             ]
           }
         },
         {
           "map": "MAP_LAVARIDGE_TOWN",
-          "base_label": "gLavaridgeTown",
-          "land_mons": {
-            "encounter_rate": 10,
-            "mons": [
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_OSHAWOTT"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_OSHAWOTT"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_SQUIRTLE"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_TOTODILE"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_MUDKIP"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_PIPLUP"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_FROAKIE"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_POPPLIO"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_SOBBLE"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_SOBBLE"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_QUAXLY"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_QUAXLY"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_QUAXLY"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_QUAXLY"
-              }
-            ]
-          }
+          "base_label": "gLavaridgeTown"
         }
       ]
     },

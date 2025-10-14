@@ -20,6 +20,77 @@ script LavaridgeTown_EventScript_TrickHouseOpen{
 	end
 }
 
+script LavaridgeTown_EventScript_ObtainEgg{
+	setflag(FLAG_RECEIVED_LAVARIDGE_EGG)
+	playfanfare(MUS_DP_OBTAIN_ITEM)
+	msgbox("{PLAYER} received the Egg.$")
+	waitfanfare
+	random(30)
+			switch(var(VAR_RESULT)){
+				case 0:
+					giveegg(SPECIES_BULBASAUR)
+				case 1:
+					giveegg(SPECIES_CHARMANDER)
+				case 2:
+					giveegg(SPECIES_SQUIRTLE)
+				case 3:
+					giveegg(SPECIES_CHIKORITA)
+				case 4:
+					giveegg(SPECIES_CYNDAQUIL)
+				case 5:
+					giveegg(SPECIES_CYNDAQUIL)
+				case 6:
+					giveegg(SPECIES_TOTODILE)
+				case 7:
+					giveegg(SPECIES_TREECKO)
+				case 8:
+					giveegg(SPECIES_TORCHIC)
+				case 9:
+					giveegg(SPECIES_MUDKIP)
+				case 10:
+					giveegg(SPECIES_TURTWIG)
+				case 11:
+					giveegg(SPECIES_CHIMCHAR)
+				case 12:
+					giveegg(SPECIES_PIPLUP)
+				case 13:
+					giveegg(SPECIES_SNIVY)
+				case 14:
+					giveegg(SPECIES_TEPIG)
+				case 15:
+					giveegg(SPECIES_OSHAWOTT)
+				case 16:
+					giveegg(SPECIES_OSHAWOTT)
+				case 17:
+					giveegg(SPECIES_CHESPIN)
+				case 18:
+					giveegg(SPECIES_FENNEKIN)
+				case 19:
+					giveegg(SPECIES_FROAKIE)
+				case 20:
+					giveegg(SPECIES_ROWLET)
+				case 21:
+					giveegg(SPECIES_ROWLET)
+				case 22:
+					giveegg(SPECIES_LITTEN)
+				case 23:
+					giveegg(SPECIES_POPPLIO)
+				case 24:
+					giveegg(SPECIES_GROOKEY)
+				case 25:
+					giveegg(SPECIES_SCORBUNNY)
+				case 26:
+					giveegg(SPECIES_SOBBLE)
+				case 27:
+					giveegg(SPECIES_SPRIGATITO)
+				case 28:
+					giveegg(SPECIES_FUECOCO)
+				case 29:
+					giveegg(SPECIES_QUAXLY)
+			}
+	return
+}	
+
 raw `
 .set LOCALID_RIVAL_ON_BIKE, 7
 .set LOCALID_RIVAL, 8
@@ -264,11 +335,7 @@ LavaridgeTown_EventScript_EggWoman::
 	getpartysize
 	goto_if_eq VAR_RESULT, PARTY_SIZE, LavaridgeTown_EventScript_NoRoomForEgg
 	msgbox LavaridgeTown_Text_HopeYoullWalkPlentyWithEgg, MSGBOX_DEFAULT
-	setflag FLAG_RECEIVED_LAVARIDGE_EGG
-	playfanfare MUS_OBTAIN_ITEM
-	message LavaridgeTown_Text_ReceivedTheEgg
-	waitfanfare
-	giveegg SPECIES_WYNAUT
+	goto LavaridgeTown_EventScript_ObtainEgg
 	release
 	end
 
@@ -344,33 +411,33 @@ LavaridgeTown_Text_BrendanExplainGoGogglesChallengeDad:
 	.string "See you around!$"
 
 LavaridgeTown_Text_HaveEggWillYouTakeIt:
-	.string "I have here an EGG.\p"
+	.string "I have here an Egg.\p"
 	.string "I'd hoped to hatch it by covering it in\n"
 	.string "hot sand by the hot springs.\l"
 	.string "But that doesn't seem to be enough…\p"
 	.string "I've heard it would be best if it were\n"
 	.string "kept together with Pokémon and\l"
 	.string "carried about.\p"
-	.string "You are a TRAINER, yes?\n"
+	.string "You are a Trainer, yes?\n"
 	.string "And your Pokémon radiate vitality.\p"
 	.string "So, what say you?\n"
-	.string "Will you take this EGG to hatch?$"
+	.string "Will you take this Egg to hatch?$"
 
 LavaridgeTown_Text_HopeYoullWalkPlentyWithEgg:
 	.string "Good! I hope you'll walk plenty with\n"
-	.string "this here EGG!$"
+	.string "this here Egg!$"
 
 LavaridgeTown_Text_ReceivedTheEgg:
-	.string "{PLAYER} received the EGG.$"
+	.string "{PLAYER} received the Egg.$"
 
 LavaridgeTown_Text_NoRoomForThisEgg:
 	.string "Oh? You've too many Pokémon.\n"
-	.string "There's no room for this EGG…$"
+	.string "There's no room for this Egg…$"
 
 LavaridgeTown_Text_AsYouWishThen:
 	.string "As you wish, then…\p"
 	.string "If you have a change of heart about\n"
-	.string "hatching this EGG, I will be here.$"
+	.string "hatching this Egg, I will be here.$"
 
 LavaridgeTown_Text_EverySoOftenEggFoundAtDayCare:
 	.string "Every so often, an Egg will be found at\n"

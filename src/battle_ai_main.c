@@ -3525,8 +3525,11 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(DECENT_EFFECT);
         break;
     case EFFECT_MEAN_LOOK:
-        if (ShouldTrap(battlerAtk, battlerDef, move))
+        if (ShouldTrap(battlerAtk, battlerDef, move)){
             ADJUST_SCORE(DECENT_EFFECT);
+            if(NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk) > 3)
+                ADJUST_SCORE(WEAK_EFFECT);
+        }
         break;
     case EFFECT_FOCUS_ENERGY:
     case EFFECT_LASER_FOCUS:
@@ -4622,6 +4625,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                     if (!HasMoveWithAdditionalEffect(battlerDef, MOVE_EFFECT_RAPID_SPIN) && ShouldTrap(battlerAtk, battlerDef, move)){
                         ADJUST_SCORE(WEAK_EFFECT);
                         if(Random() % 100 < 60)
+                            ADJUST_SCORE(WEAK_EFFECT);
+
+                        if(NoOfHitsForTargetToFaintAI(battlerDef, battlerAtk) > 3)
                             ADJUST_SCORE(WEAK_EFFECT);
                     }
                     break;

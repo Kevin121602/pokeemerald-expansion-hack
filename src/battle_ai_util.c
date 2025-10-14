@@ -4242,12 +4242,22 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
 
     if(speedBattler > speedBattlerAI && CanTargetFaintAi(battlerDef, battlerAtk)){
         shouldSetUp = FALSE;
-    } else if(aiIsFaster && (bestMultiHitDmgAfterBoosts < gBattleMons[battlerAtk].hp) && intactFocusSashOrSturdyAI){
-        shouldSetUp = TRUE;
-    } else if(aiIsFaster && ((bestOverallDmgAfterBoosts + bestPrioDmgAfterBoosts) < gBattleMons[battlerAtk].hp)){
+    } else if(aiIsFaster && (bestOverallDmgAfterBoosts < gBattleMons[battlerAtk].hp)){
         shouldSetUp = TRUE;
     } else if((bestOverallDmg + bestOverallDmgAfterBoosts) < gBattleMons[battlerAtk].hp){
         shouldSetUp = TRUE;
+    }
+
+    //setup logic if ai has focus sash or sturdy
+    if(intactFocusSashOrSturdyAI){
+        if(bestPrioDmgAfterBoosts > 0 && (bestOverallDmgAfterBoosts + bestPrioDmgAfterBoosts) > gBattleMons[battlerAtk].hp)
+            shouldSetUp = FALSE;
+        else if(aiIsFaster && (bestMultiHitDmgAfterBoosts > gBattleMons[battlerAtk].hp))
+            shouldSetUp = FALSE;
+        else if(!aiIsFaster && (bestOverallDmg + bestOverallDmgAfterBoosts) > gBattleMons[battlerAtk].hp)
+            shouldSetUp = FALSE;
+        else
+            shouldSetUp = TRUE;
     }
 
     if(intactFocusSashOrSturdyPlayer && bestAIDmgOnPlayer*2 >= gBattleMons[battlerDef].hp){
@@ -4555,6 +4565,9 @@ u32 IncreaseFollowMeScore(u32 battlerAtk, u32 battlerDef){
 
     for(i = 0; i < MAX_MON_MOVES; i++){
         if(CanIndexMoveFaintTarget(battlerDef, battlerPartner, i, 1)){
+            if(gMovesInfo[moves[i]].target == MOVE_TARGET_FOES_AND_ALLY || gMovesInfo[moves[i]].target == MOVE_TARGET_BOTH)
+                return NO_INCREASE;
+
             if(CanIndexMoveFaintTarget(battlerDef, battlerAtk, i, 1)){
                 return NO_INCREASE;
             }

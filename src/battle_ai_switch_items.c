@@ -1106,7 +1106,7 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     }
 
     for(l= 0; l < MAX_MON_MOVES; l++){
-        if (AI_THINKING_STRUCT->score[l] >= 100){
+        if (AI_THINKING_STRUCT->score[l] > 100){
             hasNoGoodMoves = FALSE;
         }
         if (gBattleMons[battler].moves[l] == MOVE_FAKE_OUT && AI_THINKING_STRUCT->score[l] >= 105){
@@ -1146,11 +1146,11 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     }
 
     //player kills ai, more conditions for slow kill than fast kill
-    if (bestHitsToKOBattler == 1 && !canFakeOut && !(gBattleMons[opposingBattler].status1 & STATUS1_SLEEP))
+    if (bestHitsToKOBattler == 1 && !canFakeOut)
     {
         if(!faster){
             shouldSwitchStandard = TRUE;
-        } else if (faster && !willSetHazards && !willDestinyBond && (bestHitsToKOPlayer != 1 && !(gBattleMons[battler].status1 & STATUS1_SLEEP)) && !MonHasRelevantStatsRaised(battler)){
+        } else if (faster && !willSetHazards && !willDestinyBond && (bestHitsToKOPlayer != 1 /*&& !(gBattleMons[battler].status1 & STATUS1_SLEEP)*/) && !MonHasRelevantStatsRaised(battler)){
             if(canPivot){
                 //BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
                 //OpponentBufferExecCompleted(battler);
@@ -1173,7 +1173,7 @@ bool32 ShouldSwitch(u32 battler, bool32 emitResult)
     }
 
     //AI cant 3hko player, player at least 3hkos in return, and AI has no viable status moves
-    if(bestHitsToKOPlayer > 3 && bestHitsToKOBattler <= 3 && (AI_DATA->hasViableStatus == FALSE)){
+    if(bestHitsToKOPlayer > 3 && bestHitsToKOBattler <= 3 && (AI_DATA->hasViableStatus == FALSE) && !MonHasRelevantStatsRaised(battler)){
         if(canPivot && (battlerSpeed >= playerSpeed)){
                 //BtlController_EmitTwoReturnValues(battler, BUFFER_B, 10, (pivot) | (opposingBattler << 8));
                 //OpponentBufferExecCompleted(battler);

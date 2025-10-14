@@ -568,7 +568,7 @@ Route111_EventScript_SunTrigger::
 # 314 "data/maps/Route111/scripts.pory"
 	setweather WEATHER_SUNNY
 # 315 "data/maps/Route111/scripts.pory"
-	fadenewbgm MUS_ROUTE110
+	fadenewbgm MUS_DP_ROUTE210_DAY
 # 316 "data/maps/Route111/scripts.pory"
 	doweather
 # 317 "data/maps/Route111/scripts.pory"
@@ -582,7 +582,7 @@ Route111_EventScript_SandstormTrigger::
 # 321 "data/maps/Route111/scripts.pory"
 	setweather WEATHER_SANDSTORM
 # 322 "data/maps/Route111/scripts.pory"
-	fadenewbgm MUS_DESERT
+	fadenewbgm MUS_DP_ROUTE228_DAY
 # 323 "data/maps/Route111/scripts.pory"
 	doweather
 # 324 "data/maps/Route111/scripts.pory"

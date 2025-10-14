@@ -2917,7 +2917,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .levelUpLearnset = sInkayLevelUpLearnset,
         .teachableLearnset = sInkayTeachableLearnset,
         .eggMoveLearnset = sInkayEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 24, SPECIES_MALAMAR}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 25, SPECIES_MALAMAR}),
     },
 
     [SPECIES_MALAMAR] =
