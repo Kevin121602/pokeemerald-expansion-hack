@@ -828,7 +828,7 @@ LavaridgeTown_Text_MayNiceBadgesTakeThis:
 # 380 "data/maps/LavaridgeTown/scripts.pory"
 LavaridgeTown_Text_MayExplainGoGogglesChallengeDad:
 # 381 "data/maps/LavaridgeTown/scripts.pory"
-	.string "MAY: With those Go-Goggles, you'll\n"
+	.string "May: With those Go-Goggles, you'll\n"
 # 382 "data/maps/LavaridgeTown/scripts.pory"
 	.string "have no trouble getting into the\l"
 # 383 "data/maps/LavaridgeTown/scripts.pory"

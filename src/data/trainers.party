@@ -4181,7 +4181,7 @@ Level: 33
 - Psycho Cut
 - Force Palm
 - Fire Punch
-- Power Swap
+- Detect
 
 Shiftry @ Muscle Band
 Nature: Jolly
@@ -4234,8 +4234,8 @@ Ability: Water Veil
 Level: 32
 - Waterfall
 - Crunch
-- Sucker Punch
 - Ice Fang
+- Super Fang
 
 Tropius @ Yache Berry
 Nature: Jolly
@@ -13966,7 +13966,7 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Volbeat @ Eject Button
+Volbeat @ Heat Rock
 Nature: Jolly
 Ability: Prankster
 Level: 33
@@ -13975,7 +13975,7 @@ Level: 33
 - Moonlight
 - Sunny Day
 
-Sudowoodo @ Hard Stone
+Sudowoodo @ Assault Vest
 Nature: Jolly
 Ability: Rock Head
 Level: 33

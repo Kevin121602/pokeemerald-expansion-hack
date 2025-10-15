@@ -13551,7 +13551,7 @@ static const struct LevelUpMove sCubchooLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sBearticLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_AQUA_JET),
+    LEVEL_UP_MOVE( 1, MOVE_ENCORE),
     LEVEL_UP_MOVE( 1, MOVE_PLAY_NICE),
     LEVEL_UP_MOVE( 1, MOVE_POWDER_SNOW),
     LEVEL_UP_MOVE( 3, MOVE_ENDURE),
@@ -13565,7 +13565,8 @@ static const struct LevelUpMove sBearticLevelUpLearnset[] = {
     LEVEL_UP_MOVE(27, MOVE_CHARM),
     LEVEL_UP_MOVE(30, MOVE_AVALANCHE),
     LEVEL_UP_MOVE(33, MOVE_BRICK_BREAK),
-    LEVEL_UP_MOVE(36, MOVE_LIQUIDATION),
+    LEVEL_UP_MOVE(35, MOVE_AQUA_JET),
+    LEVEL_UP_MOVE(38, MOVE_LIQUIDATION),
     LEVEL_UP_MOVE(41, MOVE_ICICLE_CRASH),
     LEVEL_UP_MOVE(46, MOVE_BLIZZARD),
     LEVEL_UP_MOVE(51, MOVE_SUPERPOWER),

@@ -10386,7 +10386,7 @@ F_TRAINER_FEMALE |
                 MOVE_PSYCHO_CUT,
                 MOVE_FORCE_PALM,
                 MOVE_FIRE_PUNCH,
-                MOVE_POWER_SWAP,
+                MOVE_DETECT,
             },
             },
             {
@@ -10521,8 +10521,8 @@ F_TRAINER_FEMALE |
 #line 4235
                 MOVE_WATERFALL,
                 MOVE_CRUNCH,
-                MOVE_SUCKER_PUNCH,
                 MOVE_ICE_FANG,
+                MOVE_SUPER_FANG,
             },
             },
             {
@@ -35173,7 +35173,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_VOLBEAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 13969
-            .heldItem = ITEM_EJECT_BUTTON,
+            .heldItem = ITEM_HEAT_ROCK,
 #line 13973
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 13971
@@ -35196,7 +35196,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_SUDOWOODO,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 13978
-            .heldItem = ITEM_HARD_STONE,
+            .heldItem = ITEM_ASSAULT_VEST,
 #line 13982
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 13980

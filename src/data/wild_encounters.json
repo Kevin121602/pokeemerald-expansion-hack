@@ -983,12 +983,12 @@
               {
                 "min_level": 13,
                 "max_level": 14,
-                "species": "SPECIES_VOLTORB_HISUIAN"
+                "species": "SPECIES_VOLTORB"
               },
               {
                 "min_level": 13,
                 "max_level": 14,
-                "species": "SPECIES_VOLTORB_HISUIAN"
+                "species": "SPECIES_VOLTORB"
               }
             ]
           }
