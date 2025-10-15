@@ -25,6 +25,7 @@ script LavaridgeTown_EventScript_ObtainEgg{
 	playfanfare(MUS_DP_OBTAIN_ITEM)
 	msgbox("{PLAYER} received the Egg.$")
 	waitfanfare
+	closemessage
 	random(30)
 			switch(var(VAR_RESULT)){
 				case 0:

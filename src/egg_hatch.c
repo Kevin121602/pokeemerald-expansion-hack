@@ -310,6 +310,25 @@ static const s16 sEggShardVelocities[][2] =
     {Q_8_8(2.5),        Q_8_8(-7.5)},
 };
 
+static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv)
+{
+    s32 i, j;
+    u8 temp[NUM_STATS];
+
+    ivs[selectedIv] = 0xFF;
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        temp[i] = ivs[i];
+    }
+
+    j = 0;
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        if (temp[i] != 0xFF)
+            ivs[j++] = temp[i];
+    }
+}
+
 static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
 {
     u16 species;
@@ -335,6 +354,47 @@ static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
     pokerus = GetMonData(egg, MON_DATA_POKERUS);
     isModernFatefulEncounter = GetMonData(egg, MON_DATA_MODERN_FATEFUL_ENCOUNTER);
     ball = GetMonData(egg, MON_DATA_POKEBALL);
+
+    u8 availableIVs[NUM_STATS];
+    u8 selectedIvs[LEGENDARY_PERFECT_IV_COUNT];
+    u8 iv = MAX_PER_STAT_IVS;
+            // Initialize a list of IV indices.
+            for (i = 0; i < NUM_STATS; i++)
+            {
+                availableIVs[i] = i;
+            }
+
+            // Select the 3 IVs that will be perfected.
+            for (i = 0; i < LEGENDARY_PERFECT_IV_COUNT; i++)
+            {
+                u8 index = Random() % (NUM_STATS - i);
+                selectedIvs[i] = availableIVs[index];
+                RemoveIVIndexFromList(availableIVs, index);
+            }
+            for (i = 0; i < LEGENDARY_PERFECT_IV_COUNT; i++)
+            {
+                switch (selectedIvs[i])
+                {
+                case STAT_HP:
+                    ivs[0] = iv;
+                    break;
+                case STAT_ATK:
+                    ivs[1] = iv;
+                    break;
+                case STAT_DEF:
+                    ivs[2] = iv;
+                    break;
+                case STAT_SPEED:
+                    ivs[3] = iv;
+                    break;
+                case STAT_SPATK:
+                    ivs[4] = iv;
+                    break;
+                case STAT_SPDEF:
+                    ivs[5] = iv;
+                    break;
+                }
+            }
 
     CreateMon(temp, species, EGG_HATCH_LEVEL, USE_RANDOM_IVS, TRUE, personality, OT_ID_PLAYER_ID, 0);
 
@@ -934,10 +994,10 @@ u8 GetEggCyclesToSubtract(void)
             if (ability == ABILITY_MAGMA_ARMOR
              || ability == ABILITY_FLAME_BODY
              || ability == ABILITY_STEAM_ENGINE)
-                return 2;
+                return 255;
         }
     }
-    return 1;
+    return 255;
 }
 
 u16 CountPartyAliveNonEggMons(void)
