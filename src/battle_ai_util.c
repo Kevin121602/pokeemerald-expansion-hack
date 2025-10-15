@@ -1155,6 +1155,9 @@ s32 AI_WhoStrikesFirst(u32 battlerAI, u32 battler, u32 moveConsidered)
     if (GetMovePriority(battlerAI, moveConsidered) > 0)
         return AI_IS_FASTER;
 
+    if (GetMovePriority(battlerAI, moveConsidered) < 0)
+        return AI_IS_SLOWER;
+
     speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAI, abilityAI, holdEffectAI);
     speedBattler   = GetBattlerTotalSpeedStatArgs(battler, abilityPlayer, holdEffectPlayer);
 
