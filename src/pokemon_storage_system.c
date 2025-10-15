@@ -6704,22 +6704,10 @@ static s8 RunCanReleaseMon(void)
                 sStorage->restrictedReleaseMonMoves &= ~(knownMoves);
             }
         }
-        if (sStorage->restrictedReleaseMonMoves == 0)
-        {
-            // No restricted moves on release Pokémon that
-            // aren't resolved by the party, it can be released.
-            sStorage->releaseStatusResolved = TRUE;
-            sStorage->canReleaseMon = TRUE;
-        }
-        else
-        {
-            // Release Pokémon has restricted moves not resolved by the party.
-            // Continue and check the PC next
-            sStorage->releaseCheckBoxId = 0;
-            sStorage->releaseCheckBoxPos = 0;
-            sStorage->releaseCheckState++;
-        }
-        break;
+        // No restricted moves on release Pokémon that
+        // aren't resolved by the party, it can be released.
+        sStorage->releaseStatusResolved = TRUE;
+        sStorage->canReleaseMon = TRUE;
     case 1:
         // Check PC for other Pokémon that know any restricted
         // moves the release Pokémon knows

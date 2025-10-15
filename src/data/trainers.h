@@ -6599,7 +6599,7 @@ F_TRAINER_FEMALE |
 #line 2674
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 2672
-            .ability = ABILITY_RECKLESS,
+            .ability = ABILITY_LIGHTNING_ROD,
 #line 2673
             .lvl = 30,
 #line 2671
@@ -6609,8 +6609,8 @@ F_TRAINER_FEMALE |
 #line 2674
                 MOVE_ROCK_SLIDE,
                 MOVE_DRILL_RUN,
-                MOVE_TAKE_DOWN,
                 MOVE_COUNTER,
+                MOVE_STEALTH_ROCK,
             },
             },
             {
