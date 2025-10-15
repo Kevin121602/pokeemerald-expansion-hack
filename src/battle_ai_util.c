@@ -2076,6 +2076,10 @@ bool32 IsMoveEncouragedKill(u32 battlerAtk, u32 battlerDef, u32 move){
         return TRUE;
     }
 
+    if(gMovesInfo[move].effect == EFFECT_HIT_SWITCH_TARGET){
+        return TRUE;
+    }
+
     if(gMovesInfo[move].additionalEffects[0].moveEffect == MOVE_EFFECT_ALL_STATS_UP){
         return TRUE;
     }

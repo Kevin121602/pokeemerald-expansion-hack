@@ -11399,6 +11399,7 @@ static const u16 sMismagiusTeachableLearnset[] = {
 
 #if P_FAMILY_UNOWN
 static const u16 sUnownTeachableLearnset[] = {
+    MOVE_HIDDEN_POWER,
     MOVE_UNAVAILABLE,
 };
 #endif //P_FAMILY_UNOWN
