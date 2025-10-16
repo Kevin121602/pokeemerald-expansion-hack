@@ -45,6 +45,7 @@
 #include "menu.h"
 #include "pokemon_summary_screen.h"
 #include "constants/abilities.h"
+#include "battle_info.h"
 
 static void PlayerBufferExecCompleted(u32 battler);
 static void PlayerHandleLoadMonSprite(u32 battler);
@@ -80,6 +81,7 @@ static void PlayerHandleLinkStandbyMsg(u32 battler);
 static void PlayerHandleResetActionMoveSelection(u32 battler);
 static void PlayerHandleEndLinkBattle(u32 battler);
 static void PlayerHandleBattleDebug(u32 battler);
+static void PlayerHandleBattleInfo(u32 battler);
 
 static void PlayerBufferRunCommand(u32 battler);
 static void HandleInputChooseTarget(u32 battler);
@@ -161,6 +163,7 @@ static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(u32 battler) =
     [CONTROLLER_RESETACTIONMOVESELECTION] = PlayerHandleResetActionMoveSelection,
     [CONTROLLER_ENDLINKBATTLE]            = PlayerHandleEndLinkBattle,
     [CONTROLLER_DEBUGMENU]                = PlayerHandleBattleDebug,
+    [CONTROLLER_BATTLEINFO]               = PlayerHandleBattleInfo,
     [CONTROLLER_TERMINATOR_NOP]           = BtlController_TerminatorNop
 };
 
@@ -417,6 +420,11 @@ static void HandleInputChooseAction(u32 battler)
     else if (DEBUG_BATTLE_MENU == TRUE && JOY_NEW(SELECT_BUTTON))
     {
         BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_DEBUG, 0);
+        PlayerBufferExecCompleted(battler);
+    }
+    else if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) && JOY_NEW(R_BUTTON))
+    {
+        BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_BATTLE_INFO, 0);
         PlayerBufferExecCompleted(battler);
     }
     else if (B_LAST_USED_BALL == TRUE && B_LAST_USED_BALL_CYCLE == FALSE
@@ -2384,5 +2392,12 @@ static void PlayerHandleBattleDebug(u32 battler)
 {
     BeginNormalPaletteFade(-1, 0, 0, 0x10, 0);
     SetMainCallback2(CB2_BattleDebugMenu);
+    gBattlerControllerFuncs[battler] = Controller_WaitForDebug;
+}
+
+static void PlayerHandleBattleInfo(u32 battler)
+{
+    BeginNormalPaletteFade(-1, 0, 0, 0x10, 0);
+    SetMainCallback2(CB2_BattleInfo);
     gBattlerControllerFuncs[battler] = Controller_WaitForDebug;
 }

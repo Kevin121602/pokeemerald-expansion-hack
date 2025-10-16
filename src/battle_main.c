@@ -4441,6 +4441,9 @@ static void HandleTurnActionSelectionState(void)
                     BtlController_EmitDebugMenu(battler, BUFFER_A);
                     MarkBattlerForControllerExec(battler);
                     break;
+                case B_ACTION_BATTLE_INFO:
+                    BtlController_ShowBattleInfo(battler, BUFFER_A);
+                    MarkBattlerForControllerExec(battler);
                 }
 
                 if (gBattleTypeFlags & BATTLE_TYPE_TRAINER
@@ -4600,6 +4603,9 @@ static void HandleTurnActionSelectionState(void)
                     gBattleCommunication[battler]++;
                     break;
                 case B_ACTION_DEBUG:
+                    gBattleCommunication[battler] = STATE_BEFORE_ACTION_CHOSEN;
+                    break;
+                case B_ACTION_BATTLE_INFO:
                     gBattleCommunication[battler] = STATE_BEFORE_ACTION_CHOSEN;
                     break;
                 }
