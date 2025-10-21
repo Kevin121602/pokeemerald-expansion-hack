@@ -2055,6 +2055,11 @@ void UpdateHealthboxAttribute(u8 healthboxSpriteId, struct Pokemon *mon, u8 elem
 #define B_EXPBAR_PIXELS 64
 #define B_HEALTHBAR_PIXELS 48
 
+//maxval = max hp
+//oldval = curr hp
+//recieved value = 0
+//curr value = -32768
+
 s32 MoveBattleBar(u8 battlerId, u8 healthboxSpriteId, u8 whichBar, u8 unused)
 {
     s32 currentBarValue;

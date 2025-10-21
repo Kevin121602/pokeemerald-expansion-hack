@@ -502,6 +502,11 @@ const u32 gBattleAnimSpriteGfx_Scratch2[] = INCBIN_U32("graphics/battle_anims/sp
 
 const u32 gUnusedHpBar_Gfx[] = INCBIN_U32("graphics/battle_interface/hpbar_unused.4bpp.lz");
 
+const u8 gBattleInfoHpBar_Gfx[] = INCBIN_U8("graphics/battle_interface/hpbar.4bpp",
+                                            "graphics/battle_interface/hpbar_anim.4bpp",
+                                            "graphics/battle_interface/misc_frameend.4bpp",
+                                            "graphics/battle_interface/misc_frameend2.4bpp");
+
 const u32 gBattleAnimSpriteGfx_BubbleBurst2[] = INCBIN_U32("graphics/battle_anims/sprites/bubble_burst_2.4bpp.lz");
 
 const u32 gBattleAnimSpritePal_BubbleBurst2[] = INCBIN_U32("graphics/battle_anims/sprites/bubble_burst_2.gbapal.lz");

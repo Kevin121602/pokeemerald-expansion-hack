@@ -1,4 +1,5 @@
 #include "global.h"
+#include "graphics.h"
 #include "battle.h"
 #include "battle_anim.h"
 #include "battle_message.h"
@@ -23,6 +24,7 @@
 #include "battle_ai_switch_items.h"
 #include "battle_ai_util.h"
 #include "battle_info.h"
+#include "battle_interface.h"
 #include "list_menu.h"
 #include "decompress.h"
 #include "trainer_pokemon_sprites.h"
@@ -39,10 +41,194 @@
 #include "constants/rgb.h"
 #include "constants/hold_effects.h"
 
+enum
+{   // Corresponds to gHealthboxElementsGfxTable (and the tables after it) in graphics.c
+    // These are indexes into the tables, which are filled with 8x8 square pixel data.
+    HEALTHBOX_GFX_0, //hp bar [black section]
+    HEALTHBOX_GFX_1, //hp bar "H"
+    HEALTHBOX_GFX_2, //hp bar "P"
+    HEALTHBOX_GFX_HP_BAR_GREEN, //hp bar [0 pixels]
+    HEALTHBOX_GFX_4,  //hp bar [1 pixels]
+    HEALTHBOX_GFX_5,  //hp bar [2 pixels]
+    HEALTHBOX_GFX_6,  //hp bar [3 pixels]
+    HEALTHBOX_GFX_7,  //hp bar [4 pixels]
+    HEALTHBOX_GFX_8,  //hp bar [5 pixels]
+    HEALTHBOX_GFX_9,  //hp bar [6 pixels]
+    HEALTHBOX_GFX_10, //hp bar [7 pixels]
+    HEALTHBOX_GFX_11, //hp bar [8 pixels]
+    HEALTHBOX_GFX_HP_BAR_YELLOW, //hp bar yellow [0 pixels]
+    HEALTHBOX_GFX_48, //hp bar yellow [1 pixels]
+    HEALTHBOX_GFX_49, //hp bar yellow [2 pixels]
+    HEALTHBOX_GFX_50, //hp bar yellow [3 pixels]
+    HEALTHBOX_GFX_51, //hp bar yellow [4 pixels]
+    HEALTHBOX_GFX_52, //hp bar yellow [5 pixels]
+    HEALTHBOX_GFX_53, //hp bar yellow [6 pixels]
+    HEALTHBOX_GFX_54, //hp bar yellow [7 pixels]
+    HEALTHBOX_GFX_55, //hp bar yellow [8 pixels]
+    HEALTHBOX_GFX_HP_BAR_RED,  //hp bar red [0 pixels]
+    HEALTHBOX_GFX_57, //hp bar red [1 pixels]
+    HEALTHBOX_GFX_58, //hp bar red [2 pixels]
+    HEALTHBOX_GFX_59, //hp bar red [3 pixels]
+    HEALTHBOX_GFX_60, //hp bar red [4 pixels]
+    HEALTHBOX_GFX_61, //hp bar red [5 pixels]
+    HEALTHBOX_GFX_62, //hp bar red [6 pixels]
+    HEALTHBOX_GFX_63, //hp bar red [7 pixels]
+    HEALTHBOX_GFX_64, //hp bar red [8 pixels]
+    HEALTHBOX_GFX_START, //hp bar frame end
+    HEALTHBOX_GFX_END,
+};
+
+static const u8 *GetHealthbarElementGfxPtr(u8);
 static void Task_BattleInfoFadeOut(u8 taskId);
 static void Task_BattleInfoFadeIn(u8 taskId);
 static void Task_BattleInfoProcessInput(u8 taskId);
 static void PrintOnBattleInfoWindow(u8 windowId);
+static s32 CalcInfoBarValue(s32, s32, s32, s32 *, u8, u16);
+static u8 CalcBarFilledPixels(s32, s32, s32, s32 *, u8 *, u8);
+
+static const struct OamData sOamData_Healthbar =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(32x8),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(32x8),
+    .tileNum = 0,
+    .priority = 1,
+    .paletteNum = 0,
+    .affineParam = 0,
+};
+
+static const struct Subsprite sHealthBar_Subsprites_Player[] =
+{
+    {
+        .x = -16,
+        .y = 0,
+        .shape = SPRITE_SHAPE(32x8),
+        .size = SPRITE_SIZE(32x8),
+        .tileOffset = 0,
+        .priority = 1
+    },
+    {
+        .x = 16,
+        .y = 0,
+        .shape = SPRITE_SHAPE(32x8),
+        .size = SPRITE_SIZE(32x8),
+        .tileOffset = 4,
+        .priority = 1
+    }
+};
+
+static const struct Subsprite sHealthBar_Subsprites_Opponent[] =
+{
+    {
+        .x = -16,
+        .y = 0,
+        .shape = SPRITE_SHAPE(32x8),
+        .size = SPRITE_SIZE(32x8),
+        .tileOffset = 0,
+        .priority = 1
+    },
+    {
+        .x = 16,
+        .y = 0,
+        .shape = SPRITE_SHAPE(32x8),
+        .size = SPRITE_SIZE(32x8),
+        .tileOffset = 4,
+        .priority = 1
+    },
+    {
+        .x = 48,
+        .y = 0,
+        .shape = SPRITE_SHAPE(8x8),
+        .size = SPRITE_SIZE(8x8),
+        .tileOffset = 9,
+        .priority = 1
+    }
+};
+
+static const struct SubspriteTable sHealthBar_SubspriteTables[] =
+{
+    [B_SIDE_PLAYER]   = {ARRAY_COUNT(sHealthBar_Subsprites_Player), sHealthBar_Subsprites_Player},
+    [B_SIDE_OPPONENT] = {ARRAY_COUNT(sHealthBar_Subsprites_Opponent), sHealthBar_Subsprites_Opponent}
+};
+
+const struct SpriteTemplate gSpriteTemplate_Healthbar[PARTY_SIZE] =
+{
+    {
+        .tileTag = TAG_HEALTHBAR_INFO_1,
+        .paletteTag = TAG_HEALTHBAR_PAL,
+        .oam = &sOamData_Healthbar,
+        .anims = gDummySpriteAnimTable,
+        .images = NULL,
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCallbackDummy,
+    },
+    {
+        .tileTag = TAG_HEALTHBAR_INFO_2,
+        .paletteTag = TAG_HEALTHBAR_PAL,
+        .oam = &sOamData_Healthbar,
+        .anims = gDummySpriteAnimTable,
+        .images = NULL,
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCallbackDummy,
+    },
+    {
+        .tileTag = TAG_HEALTHBAR_INFO_3,
+        .paletteTag = TAG_HEALTHBAR_PAL,
+        .oam = &sOamData_Healthbar,
+        .anims = gDummySpriteAnimTable,
+        .images = NULL,
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCallbackDummy,
+    },
+    {
+        .tileTag = TAG_HEALTHBAR_INFO_4,
+        .paletteTag = TAG_HEALTHBAR_PAL,
+        .oam = &sOamData_Healthbar,
+        .anims = gDummySpriteAnimTable,
+        .images = NULL,
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCallbackDummy,
+    },
+    {
+        .tileTag = TAG_HEALTHBAR_INFO_5,
+        .paletteTag = TAG_HEALTHBAR_PAL,
+        .oam = &sOamData_Healthbar,
+        .anims = gDummySpriteAnimTable,
+        .images = NULL,
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCallbackDummy,
+    },
+    {
+        .tileTag = TAG_HEALTHBAR_INFO_6,
+        .paletteTag = TAG_HEALTHBAR_PAL,
+        .oam = &sOamData_Healthbar,
+        .anims = gDummySpriteAnimTable,
+        .images = NULL,
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCallbackDummy,
+    },
+};
+
+static const struct CompressedSpriteSheet sSpriteSheets_BattleInfoHealthBar[PARTY_SIZE] =
+{
+    {gBlankGfxCompressed, 0x0100, TAG_HEALTHBAR_INFO_1},
+    {gBlankGfxCompressed, 0x0120, TAG_HEALTHBAR_INFO_2},
+    {gBlankGfxCompressed, 0x0100, TAG_HEALTHBAR_INFO_3},
+    {gBlankGfxCompressed, 0x0120, TAG_HEALTHBAR_INFO_4},
+    {gBlankGfxCompressed, 0x0100, TAG_HEALTHBAR_INFO_5},
+    {gBlankGfxCompressed, 0x0120, TAG_HEALTHBAR_INFO_6}
+};
+
+const struct SpritePalette sSpritePalettes_BattleInfoHealthBar =
+{
+    gBattleInterface_BallDisplayPal, TAG_HEALTHBAR_PAL
+};
 
 static struct BattleInfo *GetStructPtr(u8 taskId)
 {
@@ -60,6 +246,11 @@ static void SetStructPtr(u8 taskId, void *ptr)
     taskDataPtr[1] = structPtr >> 8;
     taskDataPtr[2] = structPtr >> 16;
     taskDataPtr[3] = structPtr >> 24;
+}
+
+static const u8 *GetHealthbarElementGfxPtr(u8 elementId)
+{
+    return gBattleInfoHpBar_Gfx[elementId];
 }
 
 static const u8 sText_AIParty[] = _("AI Party");
@@ -119,10 +310,23 @@ static const struct WindowTemplate sButtonControlWindowTemplate =
 
 struct BattleInfo
 {
+    u8 battlerId:2;
+
     u8 buttonControlWindowID;
-    u8 aiPartyTextWindowID;
 
     u8 activeWindow;
+
+    u8 aiViewState;
+
+    union
+    {
+        u8 aiIconSpriteIds[MAX_BATTLERS_COUNT];
+        u8 aiPartyIcons[PARTY_SIZE];
+        //u8 healthBarSprites[PARTY_SIZE];
+    } spriteIds;
+
+    s32 hpBarValue[PARTY_SIZE];
+    u8 pixelsCount[PARTY_SIZE];
 };
 
 enum
@@ -159,10 +363,249 @@ static void Task_BattleInfoFadeOut(u8 taskId)
     }
 }
 
+static s32 CalcInfoBarValue(s32 maxValue, s32 oldValue, s32 receivedValue, s32 *currValue, u8 scale, u16 toAdd)
+{
+    s32 ret, newValue;
+    scale *= 8;
+
+    if (*currValue == -32768) // first function call
+    {
+        if (maxValue < scale)
+            *currValue = Q_24_8(oldValue);
+        else
+            *currValue = oldValue;
+    }
+
+    newValue = oldValue - receivedValue;
+    if (newValue < 0)
+        newValue = 0;
+    else if (newValue > maxValue)
+        newValue = maxValue;
+
+    if (maxValue < scale)
+    {
+        if (newValue == Q_24_8_TO_INT(*currValue) && (*currValue & 0xFF) == 0)
+            return -1;
+    }
+    else
+    {
+        if (newValue == *currValue) // we're done, the bar's value has been updated
+            return -1;
+    }
+
+    if (maxValue < scale) // handle cases of max var having less pixels than the whole bar
+    {
+        s32 toAdd = Q_24_8(maxValue) / scale;
+
+        if (receivedValue < 0) // fill bar right
+        {
+            *currValue += toAdd;
+            ret = Q_24_8_TO_INT(*currValue);
+            if (ret >= newValue)
+            {
+                *currValue = Q_24_8(newValue);
+                ret = newValue;
+            }
+        }
+        else // move bar left
+        {
+            *currValue -= toAdd;
+            ret = Q_24_8_TO_INT(*currValue);
+            // try round up
+            if ((*currValue & 0xFF) > 0)
+                ret++;
+            if (ret <= newValue)
+            {
+                *currValue = Q_24_8(newValue);
+                ret = newValue;
+            }
+        }
+    }
+    else
+    {
+        if (receivedValue < 0) // fill bar right
+        {
+            *currValue += toAdd;
+            if (*currValue > newValue)
+                *currValue = newValue;
+            ret = *currValue;
+        }
+        else // move bar left
+        {
+            *currValue -= toAdd;
+            if (*currValue < newValue)
+                *currValue = newValue;
+            ret = *currValue;
+        }
+    }
+
+    return ret;
+}
+
+static u8 CalcBarFilledPixels(s32 maxValue, s32 oldValue, s32 receivedValue, s32 *currValue, u8 *pixelsArray, u8 scale)
+{
+    u8 pixels, filledPixels, totalPixels;
+    u8 i;
+
+    s32 newValue = oldValue - receivedValue;
+    if (newValue < 0)
+        newValue = 0;
+    else if (newValue > maxValue)
+        newValue = maxValue;
+
+    totalPixels = scale * 8;
+
+    for (i = 0; i < scale; i++)
+        pixelsArray[i] = 0;
+
+    if (maxValue < totalPixels)
+        pixels = (*currValue * totalPixels / maxValue) >> 8;
+    else
+        pixels = *currValue * totalPixels / maxValue;
+
+    filledPixels = pixels;
+
+    if (filledPixels == 0 && newValue > 0)
+    {
+        pixelsArray[0] = 1;
+        filledPixels = 1;
+    }
+    else
+    {
+        for (i = 0; i < scale; i++)
+        {
+            if (pixels >= 8)
+            {
+                pixelsArray[i] = 8;
+            }
+            else
+            {
+                pixelsArray[i] = pixels;
+                break;
+            }
+            pixels -= 8;
+        }
+    }
+
+    return filledPixels;
+}
+
+#define sConditionSpriteId data[1]
+#define sHealthBarId data[2]
+
+static void Task_ShowAiPartyIcons(u8 taskId)
+{
+    u32 i, ailment;
+    struct WindowTemplate winTemplate;
+    struct AiPartyMon *aiMons;
+    struct Pokemon *mon;
+    struct BattleInfo *data = GetStructPtr(taskId);
+    u8 xOffset;
+    u8 yOffset;
+    u8 filledPixelsCount;
+    u8 hpBarLevel;
+    u8 healthbarSpriteId;
+    struct Sprite *healthBarSpritePtr;
+
+    switch (data->aiViewState)
+    {
+    case 0:
+        //HideBg(0);
+        //ShowBg(1);
+
+        LoadMonIconPalettes();
+        LoadPartyMenuAilmentGfx();
+        LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
+        aiMons = AI_PARTY->mons[B_SIDE_OPPONENT];
+        for (i = 0; i < AI_PARTY->count[B_SIDE_OPPONENT]; i++)
+        {
+            u8 barElementId;
+            u8 array[8];
+            u8 j;
+            LoadCompressedSpriteSheet(&sSpriteSheets_BattleInfoHealthBar[i]);
+
+            xOffset = 39 + (i % 3) * 80;
+            if(i < 3)
+                yOffset = 40;
+            else
+                yOffset = 100;
+            mon = &gEnemyParty[i];
+            u16 species = SPECIES_NONE; // Question mark
+            species = aiMons[i].species;
+            data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
+            gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
+
+            gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_StatusIcons, xOffset + 6, yOffset, 0);
+            gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
+
+            if (aiMons[i].isFainted)
+                ailment = AILMENT_FNT;
+            else
+                ailment = GetAilmentFromStatus(mon->status);
+
+            if (ailment != AILMENT_NONE)
+                StartSpriteAnim(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId], ailment - 1);
+            else
+                gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].invisible = TRUE;
+
+            if (aiMons[i].isFainted)
+                continue;
+
+            gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId = CreateSprite(&gSpriteTemplate_Healthbar[i], xOffset - 15, yOffset + 19, 0);
+            SetSubspriteTables(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId], &sHealthBar_SubspriteTables[B_SIDE_OPPONENT]);
+            gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.priority = 0;
+
+            CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_START), (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
+
+            data->hpBarValue[i] = -32768;
+            CalcInfoBarValue(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], 6, 1);
+
+            data->pixelsCount[i] = CalcBarFilledPixels(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], array, 6);
+
+            if (data->pixelsCount[i] > 24) // more than 50 % hp
+                barElementId = HEALTHBOX_GFX_HP_BAR_GREEN;
+            else if (data->pixelsCount[i] > 9) // more than 20% hp
+                barElementId = HEALTHBOX_GFX_HP_BAR_YELLOW;
+            else
+                barElementId = HEALTHBOX_GFX_HP_BAR_RED; // 20 % or less
+
+            for (j = 0; j < 6; j++)
+            {
+                if (j < 2)
+                    CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
+                            (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + 1 + j) * TILE_SIZE_4BPP), 32);
+                else
+                    CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
+                            (void *)(OBJ_VRAM0 + 64 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + j - 1) * TILE_SIZE_4BPP), 32);
+            }
+
+            CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_END),
+                            (void *)(OBJ_VRAM0 + 64 + (5 + gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
+
+        }
+        for (; i < PARTY_SIZE; i++)
+            data->spriteIds.aiPartyIcons[i] = 0xFF;
+        data->aiViewState++;
+        break;
+    // Input
+    case 1:
+        if (JOY_NEW(R_BUTTON | B_BUTTON))
+        {
+            BeginNormalPaletteFade(-1, 0, 0, 0x10, 0);
+            gTasks[taskId].func = Task_BattleInfoFadeOut;
+            return;
+        }
+        break;
+    }
+}
+
+#undef sConditionSpriteId
+#undef sHealthBarId
+
 static void Task_BattleInfoFadeIn(u8 taskId)
 {
     if (!gPaletteFade.active)
-        gTasks[taskId].func = Task_BattleInfoProcessInput;
+        gTasks[taskId].func = Task_ShowAiPartyIcons;
 }
 
 static void PrintOnBattleInfoWindow(u8 windowId)
@@ -173,6 +616,7 @@ static void PrintOnBattleInfoWindow(u8 windowId)
     AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_Right_Battle_Info, 152, 3, 0, NULL);
     CopyWindowToVram(windowId, COPYWIN_FULL);
 }
+
 
 static void MainCB2(void)
 {
@@ -189,9 +633,13 @@ static void VBlankCB(void)
     TransferPlttBuffer();
 }
 
+#define sConditionSpriteId data[1]
+
 void CB2_BattleInfo(void)
 {
     u8 taskId;
+    u32 i, ailment;
+    struct AiPartyMon *aiMons;
     struct BattleInfo *data;
 
     switch (gMain.state)
@@ -242,6 +690,10 @@ void CB2_BattleInfo(void)
         BeginNormalPaletteFade(-1, 0, 0x10, 0, 0);
         SetVBlankCallback(VBlankCB);
         SetMainCallback2(MainCB2);
+        break;
         return;
     }
 }
+
+
+#undef sConditionSpriteId

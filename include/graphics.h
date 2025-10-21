@@ -2126,6 +2126,7 @@ extern const u32 gBattleAnimSpriteGfx_ClawSlash2[];
 extern const u32 gBattleAnimSpriteGfx_ClawSlash[];
 extern const u32 gBattleAnimSpriteGfx_Scratch3[];
 extern const u32 gBattleAnimSpriteGfx_Scratch2[];
+extern const u8 gBattleInfoHpBar_Gfx[][32];
 extern const u32 gBattleAnimSpriteGfx_BubbleBurst2[];
 extern const u32 gBattleAnimSpriteGfx_IceChunk[];
 extern const u32 gBattleAnimSpriteGfx_Glass2[];
