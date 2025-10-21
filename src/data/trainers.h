@@ -15067,7 +15067,7 @@ F_TRAINER_FEMALE |
 #line 6076
             TRAINER_ENCOUNTER_MUSIC_MALE,
 #line 6077
-        .doubleBattle = TRUE,
+        .doubleBattle = FALSE,
 #line 6078
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
         .partySize = 2,
@@ -32269,7 +32269,7 @@ F_TRAINER_FEMALE |
 #line 12828
             TRAINER_ENCOUNTER_MUSIC_FEMALE,
 #line 12829
-        .doubleBattle = TRUE,
+        .doubleBattle = FALSE,
 #line 12830
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
         .partySize = 2,

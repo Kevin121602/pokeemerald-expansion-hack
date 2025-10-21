@@ -6074,7 +6074,7 @@ Class: School Kid
 Pic: School Kid M
 Gender: Male
 Music: Male
-Double Battle: Yes
+Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Elekid @ Berry Juice
@@ -12826,7 +12826,7 @@ Class: Lass
 Pic: Lass
 Gender: Female
 Music: Female
-Double Battle: Yes
+Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Smoochum @ Focus Sash

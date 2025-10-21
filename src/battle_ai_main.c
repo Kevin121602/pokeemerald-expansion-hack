@@ -329,7 +329,7 @@ void Ai_InitPartyStruct(void)
         CopyBattlerDataToAIParty(B_POSITION_PLAYER_RIGHT, B_SIDE_PLAYER);
 
     // If player's partner is AI, save opponent mons
-    if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
+    if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
     {
         CopyBattlerDataToAIParty(B_POSITION_OPPONENT_LEFT, B_SIDE_OPPONENT);
         CopyBattlerDataToAIParty(B_POSITION_OPPONENT_RIGHT, B_SIDE_OPPONENT);
@@ -353,21 +353,41 @@ void Ai_InitPartyStruct(void)
             AI_PARTY->mons[B_SIDE_PLAYER][i].moves[j] = GetMonData(mon, MON_DATA_MOVE1 + j);
     }
 
-    for (i = 0; i < AI_PARTY->count[B_SIDE_OPPONENT]; i++)
-    {
-        if (GetMonData(&gEnemyParty[i], MON_DATA_HP) == 0)
-            AI_PARTY->mons[B_SIDE_OPPONENT][i].isFainted = TRUE;
+    if(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS){
+                for (i = 0; i < PARTY_SIZE; i++)
+        {
+            if (GetMonData(&gEnemyParty[i], MON_DATA_HP) == 0)
+                AI_PARTY->mons[B_SIDE_OPPONENT][i].isFainted = TRUE;
 
-        u32 j;
-        mon = &gEnemyParty[i];
-        AI_PARTY->mons[B_SIDE_OPPONENT][i].species = GetMonData(mon, MON_DATA_SPECIES);
-        AI_PARTY->mons[B_SIDE_OPPONENT][i].level = GetMonData(mon, MON_DATA_LEVEL);
-        AI_PARTY->mons[B_SIDE_OPPONENT][i].status = GetMonData(mon, MON_DATA_STATUS);
-        AI_PARTY->mons[B_SIDE_OPPONENT][i].item = GetMonData(mon, MON_DATA_HELD_ITEM);
-        AI_PARTY->mons[B_SIDE_OPPONENT][i].heldEffect = ItemId_GetHoldEffect(AI_PARTY->mons[B_SIDE_OPPONENT][i].item);
-        AI_PARTY->mons[B_SIDE_OPPONENT][i].ability = GetMonAbility(mon);
-        for (j = 0; j < MAX_MON_MOVES; j++)
-            AI_PARTY->mons[B_SIDE_OPPONENT][i].moves[j] = GetMonData(mon, MON_DATA_MOVE1 + j);
+            u32 j;
+            mon = &gEnemyParty[i];
+            AI_PARTY->mons[B_SIDE_OPPONENT][i].species = GetMonData(mon, MON_DATA_SPECIES);
+            AI_PARTY->mons[B_SIDE_OPPONENT][i].level = GetMonData(mon, MON_DATA_LEVEL);
+            AI_PARTY->mons[B_SIDE_OPPONENT][i].status = GetMonData(mon, MON_DATA_STATUS);
+            AI_PARTY->mons[B_SIDE_OPPONENT][i].item = GetMonData(mon, MON_DATA_HELD_ITEM);
+            AI_PARTY->mons[B_SIDE_OPPONENT][i].heldEffect = ItemId_GetHoldEffect(AI_PARTY->mons[B_SIDE_OPPONENT][i].item);
+            AI_PARTY->mons[B_SIDE_OPPONENT][i].ability = GetMonAbility(mon);
+            for (j = 0; j < MAX_MON_MOVES; j++)
+                AI_PARTY->mons[B_SIDE_OPPONENT][i].moves[j] = GetMonData(mon, MON_DATA_MOVE1 + j);
+        }
+
+    } else{
+        for (i = 0; i < AI_PARTY->count[B_SIDE_OPPONENT]; i++)
+        {
+            if (GetMonData(&gEnemyParty[i], MON_DATA_HP) == 0)
+                AI_PARTY->mons[B_SIDE_OPPONENT][i].isFainted = TRUE;
+
+            u32 j;
+            mon = &gEnemyParty[i];
+            AI_PARTY->mons[B_SIDE_OPPONENT][i].species = GetMonData(mon, MON_DATA_SPECIES);
+            AI_PARTY->mons[B_SIDE_OPPONENT][i].level = GetMonData(mon, MON_DATA_LEVEL);
+            AI_PARTY->mons[B_SIDE_OPPONENT][i].status = GetMonData(mon, MON_DATA_STATUS);
+            AI_PARTY->mons[B_SIDE_OPPONENT][i].item = GetMonData(mon, MON_DATA_HELD_ITEM);
+            AI_PARTY->mons[B_SIDE_OPPONENT][i].heldEffect = ItemId_GetHoldEffect(AI_PARTY->mons[B_SIDE_OPPONENT][i].item);
+            AI_PARTY->mons[B_SIDE_OPPONENT][i].ability = GetMonAbility(mon);
+            for (j = 0; j < MAX_MON_MOVES; j++)
+                AI_PARTY->mons[B_SIDE_OPPONENT][i].moves[j] = GetMonData(mon, MON_DATA_MOVE1 + j);
+        }
     }
 }
 

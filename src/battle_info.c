@@ -516,75 +516,226 @@ static void Task_ShowAiPartyIcons(u8 taskId)
         LoadMonIconPalettes();
         LoadPartyMenuAilmentGfx();
         LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
-        aiMons = AI_PARTY->mons[B_SIDE_OPPONENT];
-        for (i = 0; i < AI_PARTY->count[B_SIDE_OPPONENT]; i++)
-        {
-            u8 barElementId;
-            u8 array[8];
-            u8 j;
-            LoadCompressedSpriteSheet(&sSpriteSheets_BattleInfoHealthBar[i]);
-
-            xOffset = 39 + (i % 3) * 80;
-            if(i < 3)
-                yOffset = 40;
-            else
-                yOffset = 100;
-            mon = &gEnemyParty[i];
-            u16 species = SPECIES_NONE; // Question mark
-            species = aiMons[i].species;
-            data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
-            gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
-
-            gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_StatusIcons, xOffset + 6, yOffset, 0);
-            gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
-
-            if (aiMons[i].isFainted)
-                ailment = AILMENT_FNT;
-            else
-                ailment = GetAilmentFromStatus(mon->status);
-
-            if (ailment != AILMENT_NONE)
-                StartSpriteAnim(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId], ailment - 1);
-            else
-                gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].invisible = TRUE;
-
-            if (aiMons[i].isFainted)
-                continue;
-
-            gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId = CreateSprite(&gSpriteTemplate_Healthbar[i], xOffset - 15, yOffset + 19, 0);
-            SetSubspriteTables(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId], &sHealthBar_SubspriteTables[B_SIDE_OPPONENT]);
-            gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.priority = 0;
-
-            CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_START), (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
-
-            data->hpBarValue[i] = -32768;
-            CalcInfoBarValue(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], 6, 1);
-
-            data->pixelsCount[i] = CalcBarFilledPixels(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], array, 6);
-
-            if (data->pixelsCount[i] > 24) // more than 50 % hp
-                barElementId = HEALTHBOX_GFX_HP_BAR_GREEN;
-            else if (data->pixelsCount[i] > 9) // more than 20% hp
-                barElementId = HEALTHBOX_GFX_HP_BAR_YELLOW;
-            else
-                barElementId = HEALTHBOX_GFX_HP_BAR_RED; // 20 % or less
-
-            for (j = 0; j < 6; j++)
+        data->battlerId = B_POSITION_OPPONENT_LEFT;
+        if(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS){
+            aiMons = AI_PARTY->mons[GetBattlerSide(data->battlerId)];
+            for (i = 0; i < AI_PARTY->count[GetBattlerSide(data->battlerId)]; i++)
             {
-                if (j < 2)
-                    CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
-                            (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + 1 + j) * TILE_SIZE_4BPP), 32);
-                else
-                    CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
-                            (void *)(OBJ_VRAM0 + 64 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + j - 1) * TILE_SIZE_4BPP), 32);
-            }
+                u8 barElementId;
+                u8 array[8];
+                u8 j;
 
-            CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_END),
+                LoadCompressedSpriteSheet(&sSpriteSheets_BattleInfoHealthBar[i]);
+
+                xOffset = 39 + (i % 3) * 80;
+                yOffset = 40;
+
+                mon = &gEnemyParty[i];
+                u16 species = SPECIES_NONE; // Question mark
+                species = aiMons[i].species;
+
+                if (aiMons[i].species == SPECIES_NONE)
+                    continue;
+
+                data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
+                gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
+
+                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_StatusIcons, xOffset + 6, yOffset, 0);
+                gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
+
+                if (aiMons[i].isFainted)
+                    ailment = AILMENT_FNT;
+                else
+                    ailment = GetAilmentFromStatus(mon->status);
+
+                if (ailment != AILMENT_NONE)
+                    StartSpriteAnim(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId], ailment - 1);
+                else
+                    gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].invisible = TRUE;
+
+                if (aiMons[i].isFainted)
+                    continue;
+
+                gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId = CreateSprite(&gSpriteTemplate_Healthbar[i], xOffset - 15, yOffset + 19, 0);
+                SetSubspriteTables(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId], &sHealthBar_SubspriteTables[B_SIDE_OPPONENT]);
+                gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.priority = 0;
+
+                CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_START), (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
+
+                data->hpBarValue[i] = -32768;
+                CalcInfoBarValue(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], 6, 1);
+
+                data->pixelsCount[i] = CalcBarFilledPixels(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], array, 6);
+
+                if (data->pixelsCount[i] > 24) // more than 50 % hp
+                    barElementId = HEALTHBOX_GFX_HP_BAR_GREEN;
+                else if (data->pixelsCount[i] > 9) // more than 20% hp
+                    barElementId = HEALTHBOX_GFX_HP_BAR_YELLOW;
+                else
+                    barElementId = HEALTHBOX_GFX_HP_BAR_RED; // 20 % or less
+
+                for (j = 0; j < 6; j++)
+                {
+                    if (j < 2)
+                        CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
+                            (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + 1 + j) * TILE_SIZE_4BPP), 32);
+                    else
+                        CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
+                            (void *)(OBJ_VRAM0 + 64 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + j - 1) * TILE_SIZE_4BPP), 32);
+                }
+
+                CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_END),
                             (void *)(OBJ_VRAM0 + 64 + (5 + gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
 
+            }
+            for (; i < 3; i++)
+                data->spriteIds.aiPartyIcons[i] = 0xFF;
+
+            data->battlerId = B_POSITION_OPPONENT_RIGHT;
+            aiMons = AI_PARTY->mons[GetBattlerSide(data->battlerId)];
+            for (i = 2; i < PARTY_SIZE; i++)
+            {
+                u8 barElementId;
+                u8 array[8];
+                u8 j;
+
+                LoadCompressedSpriteSheet(&sSpriteSheets_BattleInfoHealthBar[i]);
+
+                xOffset = 39 + (i % 3) * 80;
+                yOffset = 100;
+
+                mon = &gEnemyParty[i];
+                u16 species = SPECIES_NONE; // Question mark
+                species = aiMons[i].species;
+
+                if (aiMons[i].species == SPECIES_NONE)
+                    continue;
+                
+                data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
+                gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
+
+                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_StatusIcons, xOffset + 6, yOffset, 0);
+                gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
+
+                if (aiMons[i].isFainted)
+                    ailment = AILMENT_FNT;
+                else
+                    ailment = GetAilmentFromStatus(mon->status);
+
+                if (ailment != AILMENT_NONE)
+                    StartSpriteAnim(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId], ailment - 1);
+                else
+                    gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].invisible = TRUE;
+
+                if (aiMons[i].isFainted)
+                    continue;
+
+                gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId = CreateSprite(&gSpriteTemplate_Healthbar[i], xOffset - 15, yOffset + 19, 0);
+                SetSubspriteTables(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId], &sHealthBar_SubspriteTables[B_SIDE_OPPONENT]);
+                gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.priority = 0;
+
+                CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_START), (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
+
+                data->hpBarValue[i] = -32768;
+                CalcInfoBarValue(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], 6, 1);
+
+                data->pixelsCount[i] = CalcBarFilledPixels(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], array, 6);
+
+                if (data->pixelsCount[i] > 24) // more than 50 % hp
+                    barElementId = HEALTHBOX_GFX_HP_BAR_GREEN;
+                else if (data->pixelsCount[i] > 9) // more than 20% hp
+                    barElementId = HEALTHBOX_GFX_HP_BAR_YELLOW;
+                else
+                    barElementId = HEALTHBOX_GFX_HP_BAR_RED; // 20 % or less
+
+                for (j = 0; j < 6; j++)
+                {
+                    if (j < 2)
+                        CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
+                            (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + 1 + j) * TILE_SIZE_4BPP), 32);
+                    else
+                        CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
+                            (void *)(OBJ_VRAM0 + 64 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + j - 1) * TILE_SIZE_4BPP), 32);
+                }
+
+                CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_END),
+                            (void *)(OBJ_VRAM0 + 64 + (5 + gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
+
+            }
+            for (; i < 3; i++)
+                data->spriteIds.aiPartyIcons[i] = 0xFF;
+        } else {
+            aiMons = AI_PARTY->mons[GetBattlerSide(data->battlerId)];
+            for (i = 0; i < AI_PARTY->count[GetBattlerSide(data->battlerId)]; i++)
+            {
+                u8 barElementId;
+                u8 array[8];
+                u8 j;
+
+                LoadCompressedSpriteSheet(&sSpriteSheets_BattleInfoHealthBar[i]);
+
+                xOffset = 39 + (i % 3) * 80;
+                if(i < 3)
+                    yOffset = 40;
+                else
+                    yOffset = 100;
+                mon = &gEnemyParty[i];
+                u16 species = SPECIES_NONE; // Question mark
+                species = aiMons[i].species;
+                data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
+                gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
+
+                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_StatusIcons, xOffset + 6, yOffset, 0);
+                gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
+
+                if (aiMons[i].isFainted)
+                    ailment = AILMENT_FNT;
+                else
+                    ailment = GetAilmentFromStatus(mon->status);
+
+                if (ailment != AILMENT_NONE)
+                    StartSpriteAnim(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId], ailment - 1);
+                else
+                    gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].invisible = TRUE;
+
+                if (aiMons[i].isFainted)
+                    continue;
+
+                gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId = CreateSprite(&gSpriteTemplate_Healthbar[i], xOffset - 15, yOffset + 19, 0);
+                SetSubspriteTables(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId], &sHealthBar_SubspriteTables[B_SIDE_OPPONENT]);
+                gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.priority = 0;
+
+                CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_START), (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
+
+                data->hpBarValue[i] = -32768;
+                CalcInfoBarValue(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], 6, 1);
+
+                data->pixelsCount[i] = CalcBarFilledPixels(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], array, 6);
+
+                if (data->pixelsCount[i] > 24) // more than 50 % hp
+                    barElementId = HEALTHBOX_GFX_HP_BAR_GREEN;
+                else if (data->pixelsCount[i] > 9) // more than 20% hp
+                    barElementId = HEALTHBOX_GFX_HP_BAR_YELLOW;
+                else
+                    barElementId = HEALTHBOX_GFX_HP_BAR_RED; // 20 % or less
+
+                for (j = 0; j < 6; j++)
+                {
+                    if (j < 2)
+                        CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
+                            (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + 1 + j) * TILE_SIZE_4BPP), 32);
+                    else
+                        CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
+                            (void *)(OBJ_VRAM0 + 64 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + j - 1) * TILE_SIZE_4BPP), 32);
+                }
+
+                CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_END),
+                            (void *)(OBJ_VRAM0 + 64 + (5 + gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
+
+            }
+            for (; i < PARTY_SIZE; i++)
+                data->spriteIds.aiPartyIcons[i] = 0xFF;
         }
-        for (; i < PARTY_SIZE; i++)
-            data->spriteIds.aiPartyIcons[i] = 0xFF;
         data->aiViewState++;
         break;
     // Input
