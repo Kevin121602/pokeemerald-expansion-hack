@@ -81,10 +81,13 @@ enum
 static const u8 *GetHealthbarElementGfxPtr(u8);
 static void Task_BattleInfoFadeOut(u8 taskId);
 static void Task_BattleInfoFadeIn(u8 taskId);
-static void Task_BattleInfoProcessInput(u8 taskId);
+static void Task_ShowBattleTimers(u8 taskId);
 static void PrintOnBattleInfoWindow(u8 windowId);
+static void PrintOnBattleTimersWindow(u8 windowId);
 static s32 CalcInfoBarValue(s32, s32, s32, s32 *, u8, u16);
 static u8 CalcBarFilledPixels(s32, s32, s32, s32 *, u8 *, u8);
+static void SwitchToTimerViewFromAiParty(u8 taskId);
+static void SwitchToPartyViewFromTimers(u8 taskId);
 
 static const struct OamData sOamData_Healthbar =
 {
@@ -269,11 +272,11 @@ static const u8 sText_Terrain[] = _("Terrain");
 static const u8 sText_MagicRoom[] = _("Magic Room");
 static const u8 sText_WonderRoom[] = _("Wonder Room");
 static const u8 sText_Weather[] = _("Weather");
-static const u8 sText_None[] = _("None");
-static const u8 sText_Sun[] = _("Sun");
-static const u8 sText_Rain[] = _("Rain");
-static const u8 sText_Sand[] = _("Sand");
-static const u8 sText_Snow[] = _("Snow");
+static const u8 sText_None[] = _("(None)");
+static const u8 sText_Sun[] = _("(Sun)");
+static const u8 sText_Rain[] = _("(Rain)");
+static const u8 sText_Sand[] = _("(Sand)");
+static const u8 sText_Snow[] = _("(Snow)");
 
 static const struct BgTemplate sBgTemplates[] =
 {
@@ -308,11 +311,24 @@ static const struct WindowTemplate sButtonControlWindowTemplate =
     .baseBlock = 0x1B5
 };
 
+static const struct WindowTemplate sBattleTimersWindowTemplate =
+{
+    .bg = 0,
+    .tilemapLeft = 0,
+    .tilemapTop = 0,
+    .width = 31,
+    .height = 18,
+    .paletteNum = 0xF,
+    .baseBlock = 0x1B5
+};
+
 struct BattleInfo
 {
     u8 battlerId:2;
 
-    u8 buttonControlWindowID;
+    u8 AIPartyWindowID;
+
+    u8 BattleTimersWindowID;
 
     u8 activeWindow;
 
@@ -336,20 +352,6 @@ enum
 };
 
 static const u16 sBgColor[] = {RGB_WHITE};
-
-static void Task_BattleInfoProcessInput(u8 taskId)
-{
-    s32 listItemId = 0;
-    struct BattleInfo *data = GetStructPtr(taskId);
-
-    // Exit the menu.
-    if (JOY_NEW(R_BUTTON) || JOY_NEW(B_BUTTON))
-    {
-        BeginNormalPaletteFade(-1, 0, 0, 0x10, 0);
-        gTasks[taskId].func = Task_BattleInfoFadeOut;
-        return;
-    }
-}
 
 static void Task_BattleInfoFadeOut(u8 taskId)
 {
@@ -758,12 +760,82 @@ static void Task_ShowAiPartyIcons(u8 taskId)
             gTasks[taskId].func = Task_BattleInfoFadeOut;
             return;
         }
+        if (JOY_NEW(DPAD_RIGHT))
+        {
+            SwitchToTimerViewFromAiParty(taskId);
+            //HideBg(1);
+            //ShowBg(0);
+            return;
+        }
         break;
     }
 }
 
+static void SwitchToTimerViewFromAiParty(u8 taskId)
+{
+    u32 i;
+    struct BattleInfo *data = GetStructPtr(taskId);
+
+    FreeMonIconPalettes();
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (data->spriteIds.aiPartyIcons[i] != 0xFF)
+        {
+            DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId]);
+            DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId]);
+            FreeAndDestroyMonIconSprite(&gSprites[data->spriteIds.aiPartyIcons[i]]);
+        }
+    }
+    ClearWindowTilemap(data->AIPartyWindowID);
+    RemoveWindow(data->AIPartyWindowID);
+
+    gTasks[taskId].func = Task_ShowBattleTimers;
+}
+
 #undef sConditionSpriteId
 #undef sHealthBarId
+
+static void Task_ShowBattleTimers(u8 taskId)
+{
+    u32 i, count;
+    struct WindowTemplate winTemplate;
+    struct BattleInfo *data = GetStructPtr(taskId);
+    struct Pokemon *mon;
+
+    switch (data->aiViewState)
+    {
+    case 0:
+        //HideBg(0);
+        //ShowBg(1);
+
+        data->aiViewState++;
+        break;
+    // Put text
+    case 1:
+        data->BattleTimersWindowID = AddWindow(&sBattleTimersWindowTemplate);
+        PutWindowTilemap(data->BattleTimersWindowID);
+        PrintOnBattleTimersWindow(data->BattleTimersWindowID);
+
+        data->aiViewState++;
+        break;
+    // Input
+    case 2:
+        if (JOY_NEW(R_BUTTON | B_BUTTON))
+        {
+            BeginNormalPaletteFade(-1, 0, 0, 0x10, 0);
+            gTasks[taskId].func = Task_BattleInfoFadeOut;
+            return;
+        }
+        if (JOY_NEW(DPAD_LEFT))
+        {
+            SwitchToPartyViewFromTimers(taskId);
+            //HideBg(1);
+            //ShowBg(0);
+            return;
+        }
+        break;
+    }
+}
 
 static void Task_BattleInfoFadeIn(u8 taskId)
 {
@@ -777,6 +849,90 @@ static void PrintOnBattleInfoWindow(u8 windowId)
     FillWindowPixelBuffer(windowId, 0x11);
     AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_B_Back, 15, 3, 0, NULL);
     AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_Right_Battle_Info, 152, 3, 0, NULL);
+    CopyWindowToVram(windowId, COPYWIN_FULL);
+}
+
+static void PrintOnBattleTimersWindow(u8 windowId)
+{
+    u8 *text = Alloc(0x50), *txtPtr;
+    u8 xOffset;
+    u8 yOffset;
+    u8 i;
+
+    FillWindowPixelBuffer(windowId, 0x11);
+    AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_B_Back, 15, 3, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_Left_AIParty, 169, 3, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Player, 87, 19, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_AI, 140, 19, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Tailwind, 15, 44, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].tailwindTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 44, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].tailwindTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 44, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Reflect, 15, 59, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].reflectTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 59, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].reflectTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 59, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_LightScreen, 15, 74, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].lightscreenTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 74, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].lightscreenTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 74, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_AuroraVeil, 15, 89, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].auroraVeilTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 89, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].auroraVeilTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 89, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_TrickRoom, 15, 114, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.trickRoomTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 70, 114, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Terrain, 15, 129, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.terrainTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 70, 129, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_MagicRoom, 87, 114, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.magicRoomTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 114, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_WonderRoom, 162, 114, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.wonderRoomTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 222, 114, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Weather, 87, 129, 0, NULL);
+    if(gBattleWeather & B_WEATHER_RAIN)
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Rain, 123, 129, 0, NULL);
+    else if(gBattleWeather & B_WEATHER_SUN)
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Sun, 123, 129, 0, NULL);
+    else if(gBattleWeather & B_WEATHER_SANDSTORM)
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Sand, 123, 129, 0, NULL);
+    else if(gBattleWeather & B_WEATHER_SNOW)
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Snow, 123, 129, 0, NULL);
+    else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_None, 123, 129, 0, NULL);
+
+    txtPtr = ConvertIntToDecimalStringN(text, gWishFutureKnock.weatherDuration, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 162, 129, 0, NULL);
+
     CopyWindowToVram(windowId, COPYWIN_FULL);
 }
 
@@ -794,6 +950,24 @@ static void VBlankCB(void)
     LoadOam();
     ProcessSpriteCopyRequests();
     TransferPlttBuffer();
+}
+
+static void SwitchToPartyViewFromTimers(u8 taskId)
+{
+    u32 i;
+    struct BattleInfo *data = GetStructPtr(taskId);
+    data->aiViewState = 0;
+
+    ClearWindowTilemap(data->BattleTimersWindowID);
+    RemoveWindow(data->BattleTimersWindowID);
+
+    data->AIPartyWindowID = AddWindow(&sButtonControlWindowTemplate);
+    PutWindowTilemap(data->AIPartyWindowID);
+    PrintOnBattleInfoWindow(data->AIPartyWindowID);
+
+    LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
+
+    gTasks[taskId].func = Task_BattleInfoFadeIn;
 }
 
 #define sConditionSpriteId data[1]
@@ -842,11 +1016,11 @@ void CB2_BattleInfo(void)
         data = AllocZeroed(sizeof(struct BattleInfo));
         SetStructPtr(taskId, data);
 
-        data->buttonControlWindowID = AddWindow(&sButtonControlWindowTemplate);
-        PutWindowTilemap(data->buttonControlWindowID);
-        PrintOnBattleInfoWindow(data->buttonControlWindowID);
+        data->AIPartyWindowID = AddWindow(&sButtonControlWindowTemplate);
+        PutWindowTilemap(data->AIPartyWindowID);
+        PrintOnBattleInfoWindow(data->AIPartyWindowID);
 
-        data->activeWindow = ACTIVE_WIN_PARTY;
+        //data->activeWindow = ACTIVE_WIN_PARTY;
         gMain.state++;
         break;
     case 5:
