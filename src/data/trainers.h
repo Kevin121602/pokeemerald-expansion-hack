@@ -10883,7 +10883,7 @@ F_TRAINER_FEMALE |
 #line 4379
                 MOVE_SCALD,
                 MOVE_AIR_SLASH,
-                MOVE_AURORA_BEAM,
+                MOVE_ICY_WIND,
                 MOVE_SWEET_KISS,
             },
             },
@@ -25427,7 +25427,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 10142
                 MOVE_BONE_RUSH,
-                MOVE_ROCK_TOMB,
+                MOVE_ROCK_SLIDE,
                 MOVE_RETALIATE,
                 MOVE_SING,
             },
