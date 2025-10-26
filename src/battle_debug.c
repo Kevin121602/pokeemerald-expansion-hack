@@ -1282,6 +1282,7 @@ static void Task_ShowAiParty(u8 taskId)
     u32 i, ailment;
     struct WindowTemplate winTemplate;
     struct AiPartyMon *aiMons;
+    struct Pokemon *mon;
     struct BattleDebugMenu *data = GetStructPtr(taskId);
 
     switch (data->aiViewState)
@@ -1296,6 +1297,7 @@ static void Task_ShowAiParty(u8 taskId)
         aiMons = AI_PARTY->mons[GetBattlerSide(data->aiBattlerId)];
         for (i = 0; i < AI_PARTY->count[GetBattlerSide(data->aiBattlerId)]; i++)
         {
+            mon = &gEnemyParty[i];
             u16 species = SPECIES_NONE; // Question mark
             if (aiMons[i].wasSentInBattle && aiMons[i].species)
                 species = aiMons[i].species;
@@ -1307,7 +1309,7 @@ static void Task_ShowAiParty(u8 taskId)
             if (aiMons[i].isFainted)
                 ailment = AILMENT_FNT;
             else
-                ailment = GetAilmentFromStatus(aiMons[i].status);
+                ailment = GetAilmentFromStatus(mon->status);
 
             if (ailment != AILMENT_NONE)
                 StartSpriteAnim(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId], ailment - 1);

@@ -646,10 +646,45 @@ static void OpponentHandleChoosePokemon(u32 battler)
     {
         chosenMonId = gSelectedMonPartyId = GetFirstFaintedPartyIndex(battler);
     }
+    //send out mon after faint
+    else if(*(gBattleStruct->AI_monToSwitchIntoId + battler) == PARTY_SIZE && (gHitMarker &= HITMARKER_FAINTED(battler))){
+        chosenMonId = GetMostSuitableMonToSwitchInto(battler, TRUE);
+        if (chosenMonId == PARTY_SIZE)
+        {
+            s32 battler1, battler2, firstId, lastId;
+
+            if (!(gBattleTypeFlags & BATTLE_TYPE_DOUBLE))
+            {
+                battler2 = battler1 = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+            }
+            else
+            {
+                battler1 = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+                battler2 = GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
+                pokemonInBattle = 2;
+            }
+
+            GetAIPartyIndexes(battler, &firstId, &lastId);
+
+            for (chosenMonId = (lastId-1); chosenMonId >= firstId; chosenMonId--)
+            {
+                if (IsValidForBattle(&gEnemyParty[chosenMonId])
+                    && chosenMonId != gBattlerPartyIndexes[battler1]
+                    && chosenMonId != gBattlerPartyIndexes[battler2]
+                    && (!(AI_THINKING_STRUCT->aiFlags[battler] & AI_FLAG_ACE_POKEMON)
+                        || chosenMonId != CalculateEnemyPartyCount() - 1
+                        || CountAIAliveNonEggMonsExcept(PARTY_SIZE) == pokemonInBattle))
+                {
+                    break;
+                }
+            }
+        }
+        *(gBattleStruct->monToSwitchIntoId + battler) = chosenMonId;
+    }
     // Switching out
     else if (*(gBattleStruct->AI_monToSwitchIntoId + battler) == PARTY_SIZE)
     {
-        chosenMonId = GetMostSuitableMonToSwitchInto(battler, TRUE);
+        chosenMonId = GetMostSuitableMonToSwitchInto(battler, FALSE);
         if (chosenMonId == PARTY_SIZE)
         {
             s32 battler1, battler2, firstId, lastId;

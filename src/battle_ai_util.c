@@ -2654,6 +2654,7 @@ static u32 GetTrapDamage(u32 battlerId)
 static u32 GetPoisonDamage(u32 battlerId)
 {
     u32 damage = 0;
+    u8 toxicTurn = (gBattleMons[battlerId].status1 & STATUS1_TOXIC_COUNTER) >> 8;
 
     if (AI_DATA->abilities[battlerId] == ABILITY_POISON_HEAL)
         return damage;
@@ -2670,8 +2671,8 @@ static u32 GetPoisonDamage(u32 battlerId)
         if (damage == 0)
             damage = 1;
         if ((gBattleMons[battlerId].status1 & STATUS1_TOXIC_COUNTER) != STATUS1_TOXIC_TURN(15)) // not 16 turns
-            gBattleMons[battlerId].status1 += STATUS1_TOXIC_TURN(1);
-        damage *= (gBattleMons[battlerId].status1 & STATUS1_TOXIC_COUNTER) >> 8;
+            toxicTurn += STATUS1_TOXIC_TURN(1);
+        damage *= toxicTurn;
     }
     return damage;
 }

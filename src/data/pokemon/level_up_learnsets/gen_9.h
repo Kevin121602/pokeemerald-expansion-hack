@@ -402,7 +402,6 @@ static const struct LevelUpMove sSpearowLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sFearowLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_DRILL_RUN),
     LEVEL_UP_MOVE( 1, MOVE_PECK),
     LEVEL_UP_MOVE( 1, MOVE_GROWL),
     LEVEL_UP_MOVE( 4, MOVE_LEER),
@@ -411,6 +410,7 @@ static const struct LevelUpMove sFearowLevelUpLearnset[] = {
     LEVEL_UP_MOVE(15, MOVE_PLUCK),
     LEVEL_UP_MOVE(18, MOVE_MIRROR_MOVE),
     LEVEL_UP_MOVE(20, MOVE_LASER_FOCUS),
+    LEVEL_UP_MOVE(20, MOVE_DRILL_RUN),
     LEVEL_UP_MOVE(23, MOVE_TAKE_DOWN),
     LEVEL_UP_MOVE(27, MOVE_DUAL_WINGBEAT),
     LEVEL_UP_MOVE(32, MOVE_FOCUS_ENERGY),
@@ -7390,10 +7390,10 @@ static const struct LevelUpMove sSlakingLevelUpLearnset[] = {
 static const struct LevelUpMove sNincadaLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_SAND_ATTACK),
     LEVEL_UP_MOVE( 1, MOVE_SCRATCH),
-    LEVEL_UP_MOVE( 5, MOVE_BUG_BITE),
-    LEVEL_UP_MOVE( 9, MOVE_AERIAL_ACE),
+    LEVEL_UP_MOVE( 5, MOVE_ABSORB),
+    LEVEL_UP_MOVE( 9, MOVE_BUG_BITE),
     LEVEL_UP_MOVE(13, MOVE_DIG),
-    LEVEL_UP_MOVE(17, MOVE_ABSORB),
+    LEVEL_UP_MOVE(17, MOVE_AERIAL_ACE),
     LEVEL_UP_MOVE(21, MOVE_MIND_READER),
     LEVEL_UP_MOVE(25, MOVE_METAL_CLAW),
     LEVEL_UP_MOVE(29, MOVE_X_SCISSOR),
@@ -7405,10 +7405,10 @@ static const struct LevelUpMove sNincadaLevelUpLearnset[] = {
 static const struct LevelUpMove sNinjaskLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_SAND_ATTACK),
     LEVEL_UP_MOVE( 1, MOVE_SCRATCH),
-    LEVEL_UP_MOVE( 5, MOVE_BUG_BITE),
-    LEVEL_UP_MOVE( 9, MOVE_AERIAL_ACE),
+    LEVEL_UP_MOVE( 5, MOVE_ABSORB),
+    LEVEL_UP_MOVE( 9, MOVE_BUG_BITE),
     LEVEL_UP_MOVE(13, MOVE_DIG),
-    LEVEL_UP_MOVE(17, MOVE_ABSORB),
+    LEVEL_UP_MOVE(17, MOVE_AERIAL_ACE),
     LEVEL_UP_MOVE(20, MOVE_SCREECH),
     LEVEL_UP_MOVE(23, MOVE_MIND_READER),
     LEVEL_UP_MOVE(29, MOVE_DUAL_WINGBEAT),
@@ -10017,8 +10017,8 @@ static const struct LevelUpMove sPachirisuLevelUpLearnset[] = {
     LEVEL_UP_MOVE(33, MOVE_SWEET_KISS),
     LEVEL_UP_MOVE(37, MOVE_FOLLOW_ME),
     LEVEL_UP_MOVE(41, MOVE_ENDURE),
-    LEVEL_UP_MOVE(45, MOVE_LAST_RESORT),
-    LEVEL_UP_MOVE(49, MOVE_THUNDER),
+    LEVEL_UP_MOVE(45, MOVE_THUNDER),
+    LEVEL_UP_MOVE(49, MOVE_U_TURN),
     LEVEL_UP_END
 };
 #endif //P_FAMILY_PACHIRISU

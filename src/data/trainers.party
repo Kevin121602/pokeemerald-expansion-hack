@@ -2468,7 +2468,7 @@ Ability: Swift Swim
 -Water Pulse
 -Air Cutter
 -Confuse Ray
--Roost
+-Rain Dance
 
 === TRAINER_DAPHNE ===
 Name: DAPHNE
@@ -6812,12 +6812,12 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Morgrem @ Black Glasses
+Morgrem @ Fairy Feather
 Nature: Jolly
 Ability: Prankster
 Level: 20
 - Fake Out
-- Assurance
+- Bite
 - Covet
 - Scary Face
 
@@ -6842,7 +6842,7 @@ Farfetch'd @ Leek
 Nature: Jolly
 Ability: Defiant
 Level: 21
-- Aerial Ace
+- Dual Wingbeat
 - Quick Attack
 - Night Slash
 - Roost
@@ -7825,21 +7825,31 @@ Level: 25
 - Roar
 
 === TRAINER_BARNY ===
-Name: BARNY
+Name: Test
 Class: Fisherman
 Pic: Fisherman
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint / Check Viability
 
-Tentacool
-Level: 25
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ninjask @ Choice Band
+Nature: Adamant
+Ability: Infiltrator
+Level: 41
+- U-Turn
 
-Carvanha
-Level: 25
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Baxcalibur @ Never-Melt Ice
+Nature: Jolly
+Ability: Ice Body
+Level: 41
+- Icicle Crash
+
+Alcremie @ Lum Berry
+Nature: Timid
+Ability: Aroma Veil
+Level: 41
+- Draining Kiss
 
 === TRAINER_WADE ===
 Name: WADE
@@ -16282,7 +16292,7 @@ Level: 21
 - Dig
 - Hone Claws
 
-Emolga @ Leftovers
+Emolga @ Lum Berry
 Nature: Naive
 Ability: Static
 Level: 21
@@ -16291,7 +16301,7 @@ Level: 21
 - Signal Beam
 - Roost
 
-Furret @ Lum Berry
+Furret @ Leftovers
 Nature: Jolly
 Ability: Adaptability
 Level: 20
@@ -17423,7 +17433,7 @@ Ability: Fluffy
 - Darkest Lariat
 - Stomping Tantrum
 
-Sylveon @ Fairy Feather
+Sylveon @ Wise Glasses
 Level: 34
 Nature: Hasty
 Ability: Pixilate
@@ -17441,13 +17451,13 @@ Ability: Justified
 - Stone Edge
 - Zen Headbutt
 
-Claydol @ Wise Glasses
+Claydol @ Twisted Spoon
 Level: 35
 Nature: Timid
 Ability: Levitate
 - Earth Power
 - Stored Power
-- Signal Beam
+- Ancient Power
 - Calm Mind
 
 Slowbro @ Slowbronite

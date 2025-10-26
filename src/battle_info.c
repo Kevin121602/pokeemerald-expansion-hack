@@ -144,14 +144,6 @@ static const struct Subsprite sHealthBar_Subsprites_Opponent[] =
         .tileOffset = 4,
         .priority = 1
     },
-    {
-        .x = 48,
-        .y = 0,
-        .shape = SPRITE_SHAPE(8x8),
-        .size = SPRITE_SIZE(8x8),
-        .tileOffset = 9,
-        .priority = 1
-    }
 };
 
 static const struct SubspriteTable sHealthBar_SubspriteTables[] =
