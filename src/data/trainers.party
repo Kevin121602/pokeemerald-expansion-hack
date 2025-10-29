@@ -1731,7 +1731,7 @@ Thievul @ Flying Gem
 Nature: Adamant
 Ability: Unburden
 Level: 28
-- Lash Out
+- Foul Play
 - Acrobatics
 - Play Rough
 - Sleep Talk
@@ -2644,7 +2644,7 @@ Manectric @ Lum Berry
 Nature: Timid
 Ability: Minus
 Level: 29
-- Shock Wave
+- Discharge
 - Signal Beam
 - Flame Burst
 - Snarl
@@ -4549,16 +4549,17 @@ AI: Check Bad Move / Try To Faint / Check Viability
 
 Jynx @ Focus Sash
 Nature: Timid
-Ability: Oblivious
+Ability: Dry Skin
+IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 30 Spe
 Level: 29
 - Frost Breath
 - Psybeam
-- Fake Out
+- Hidden Power
 - Lovely Kiss
 
 Sawsbuck @ Lum Berry
 Nature: Jolly
-Ability: Serene Grace
+Ability: Triage
 Level: 29
 - Horn Leech
 - Headbutt
@@ -4691,8 +4692,8 @@ Nature: Naive
 Ability: Keen Eye
 IVs: 30 HP / 30 Atk / 31 Def / 30 SpA / 30 SpD / 30 Spe
 Level: 31
+- Return
 - Dual Wingbeat
-- Steel Wing
 - Hidden Power
 - Whirlwind
 
@@ -7331,7 +7332,7 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Vanillish @ Focus Sash
+Vanilluxe @ Focus Sash
 Nature: Modest
 Ability: Weak Armor
 Level: 26
@@ -7353,10 +7354,10 @@ Toxicroak @ Payapa Berry
 Nature: Hasty
 Ability: Poison Touch
 Level: 27
-- Fake Out
 - Poison Jab
+- Brick Break
 - Venoshock
-- Vacuum Wave
+- Mud Bomb
 
 === TRAINER_DILLON ===
 Name: Dillon
@@ -9079,7 +9080,7 @@ Ability: Pressure
 Level: 25
 - Pursuit
 - Psycho Cut
-- Thunder Wave
+- Retaliate
 - Will-O-Wisp
 
 Drednaw @ Hard Stone
@@ -10105,8 +10106,8 @@ Ability: Magic Guard
 Level: 29
 - Play Rough
 - Zen Headbutt
+- Fire Punch
 - Power-Up Punch
-- Moonlight
 
 Glalie @ Leftovers
 Nature: Naive
@@ -15583,9 +15584,10 @@ Oricorio @ Lum Berry
 Nature: Timid
 Ability: Dancer
 Level: 27
+IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 31 Spe
 - Revelation Dance
 - Air Slash
-- Feather Dance
+- Hidden Power
 - Roost
 
 Persian-Alolan @ Wise Glasses
@@ -15729,14 +15731,13 @@ Level: 24
 - Thunder Wave
 - Heal Bell
 
-Wormadam-Trash @ Occa Berry
-Nature: Sassy
-Ability: Overcoat
+Gabite @ Rocky Helmet
+Nature: Jolly
+Ability: Rough Skin
 Level: 25
-- Mirror Shot
-- Struggle Bug
-- Bug Bite
-- Secret Power
+- Stomping Tantrum
+- Dragon Tail
+- Dragon Rage
 
 === TRAINER_DEANDRE ===
 Name: DEANDRE
@@ -17451,7 +17452,7 @@ Ability: Justified
 - Stone Edge
 - Zen Headbutt
 
-Claydol @ Twisted Spoon
+Claydol @ Hard Stone
 Level: 35
 Nature: Timid
 Ability: Levitate

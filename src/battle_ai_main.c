@@ -883,6 +883,9 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     if (gMovesInfo[move].powderMove && !IsAffectedByPowder(battlerDef, aiData->abilities[battlerDef], aiData->holdEffects[battlerDef]))
         RETURN_SCORE_MINUS(20);
 
+    if (atkPriority < 0 && CanTargetFaintAi(battlerDef, battlerAtk))
+        ADJUST_SCORE(-10);    // doesnt move last if KO'd
+
         //may remove this if too abuseable
     //if (IsSemiInvulnerable(battlerDef, move) && moveEffect != EFFECT_SEMI_INVULNERABLE && AI_IsFaster(battlerAtk, battlerDef, move))
     //    RETURN_SCORE_MINUS(20);
@@ -1132,10 +1135,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     // check move effects
     switch (moveEffect)
     {
-        case EFFECT_HIT: // only applies to Vital Throw
-            if (gMovesInfo[move].priority < 0 && CanTargetFaintAi(battlerDef, battlerAtk))
-                ADJUST_SCORE(-10);    // doesnt move last if KO'd
-            break;
         default:
             break;  // check move damage
         case EFFECT_SLEEP:
@@ -1473,8 +1472,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 }
             }
             break;
-        case EFFECT_PRESENT:
-        case EFFECT_FIXED_DAMAGE_ARG:
         case EFFECT_COUNTER:
             if (!HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL)) 
                 ADJUST_SCORE(-10);
