@@ -204,14 +204,14 @@
       "y": 6,
       "elevation": 3,
       "dest_map": "MAP_LAVARIDGE_TOWN_GYM_B1F",
-      "dest_warp_id": "17"
+      "dest_warp_id": "14"
     },
     {
       "x": 10,
       "y": 6,
       "elevation": 3,
       "dest_map": "MAP_LAVARIDGE_TOWN_GYM_B1F",
-      "dest_warp_id": "18"
+      "dest_warp_id": "20"
     },
     {
       "x": 12,

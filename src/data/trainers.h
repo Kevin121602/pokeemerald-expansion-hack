@@ -10262,7 +10262,7 @@ F_TRAINER_FEMALE |
 #line 4136
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 4134
-            .ability = ABILITY_STICKY_HOLD,
+            .ability = ABILITY_STORM_DRAIN,
 #line 4135
             .lvl = 31,
 #line 4133
@@ -10386,7 +10386,7 @@ F_TRAINER_FEMALE |
                 MOVE_PSYCHO_CUT,
                 MOVE_FORCE_PALM,
                 MOVE_FIRE_PUNCH,
-                MOVE_DETECT,
+                MOVE_PSYCH_UP,
             },
             },
             {
@@ -10635,7 +10635,7 @@ F_TRAINER_FEMALE |
                 MOVE_SHADOW_BONE,
                 MOVE_FIRE_PUNCH,
                 MOVE_STOMPING_TANTRUM,
-                MOVE_WILL_O_WISP,
+                MOVE_SWORDS_DANCE,
             },
             },
             {
@@ -10723,7 +10723,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 4316
                 MOVE_BEAK_BLAST,
-                MOVE_HYPER_VOICE,
+                MOVE_RETURN,
                 MOVE_HEAT_WAVE,
                 MOVE_STEEL_WING,
             },
@@ -10760,7 +10760,7 @@ F_TRAINER_FEMALE |
 #line 4334
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 4332
-            .ability = ABILITY_VITAL_SPIRIT,
+            .ability = ABILITY_STATIC,
 #line 4333
             .lvl = 32,
 #line 4331
@@ -35211,7 +35211,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_VOLBEAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 13980
-            .heldItem = ITEM_HEAT_ROCK,
+            .heldItem = ITEM_EJECT_BUTTON,
 #line 13984
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 13982
@@ -35318,7 +35318,7 @@ F_TRAINER_FEMALE |
                 MOVE_SOLAR_BLADE,
                 MOVE_LEAF_BLADE,
                 MOVE_RETURN,
-                MOVE_X_SCISSOR,
+                MOVE_SUNNY_DAY,
             },
             },
         },
@@ -43756,14 +43756,14 @@ F_TRAINER_FEMALE |
 #line 17420
             .lvl = 34,
 #line 17421
-            .nature = NATURE_BOLD,
+            .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 17423
                 MOVE_LAVA_PLUME,
                 MOVE_SOLAR_BEAM,
                 MOVE_BODY_PRESS,
-                MOVE_WILL_O_WISP,
+                MOVE_SELF_DESTRUCT,
             },
             },
             {

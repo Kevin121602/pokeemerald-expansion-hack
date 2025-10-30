@@ -4131,7 +4131,7 @@ Level: 31
 
 Gastrodon @ Rindo Berry
 Nature: Timid
-Ability: Sticky Hold
+Ability: Storm Drain
 Level: 31
 - Scald
 - Mud Bomb
@@ -4181,7 +4181,7 @@ Level: 33
 - Psycho Cut
 - Force Palm
 - Fire Punch
-- Detect
+- Psych Up
 
 Shiftry @ Muscle Band
 Nature: Jolly
@@ -4280,7 +4280,7 @@ Level: 32
 - Shadow Bone
 - Fire Punch
 - Stomping Tantrum
-- Will-O-Wisp
+- Swords Dance
 
 Aurorus @ Rock Gem
 Nature: Timid
@@ -4314,7 +4314,7 @@ Nature: Naive
 Ability: Sheer Force
 Level: 32
 - Beak Blast
-- Hyper Voice
+- Return
 - Heat Wave
 - Steel Wing
 
@@ -4329,7 +4329,7 @@ Level: 33
 
 Electabuzz @ Punching Glove
 Nature: Jolly
-Ability: Vital Spirit
+Ability: Static
 Level: 32
 - Thunder Punch
 - Fire Punch
@@ -13977,7 +13977,7 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Volbeat @ Heat Rock
+Volbeat @ Eject Button
 Nature: Jolly
 Ability: Prankster
 Level: 33
@@ -14020,7 +14020,7 @@ Level: 34
 - Solar Blade
 - Leaf Blade
 - Return
-- X-Scissor
+- Sunny Day
 
 
 === TRAINER_HIDEO ===
@@ -17418,12 +17418,12 @@ Mugshot: Yellow
 
 Torkoal @ Power Herb
 Level: 34
-Nature: Bold
+Nature: Relaxed
 Ability: Shell Armor
 - Lava Plume
 - Solar Beam
 - Body Press
-- Will-O-Wisp
+- Self-Destruct
 
 Bewear @ Lum Berry
 Level: 33

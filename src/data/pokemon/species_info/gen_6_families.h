@@ -3041,7 +3041,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .levelUpLearnset = sBinacleLevelUpLearnset,
         .teachableLearnset = sBinacleTeachableLearnset,
         .eggMoveLearnset = sBinacleEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 26, SPECIES_BARBARACLE}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 27, SPECIES_BARBARACLE}),
     },
 
     [SPECIES_BARBARACLE] =

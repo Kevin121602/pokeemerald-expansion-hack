@@ -3528,9 +3528,10 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_LIGHT_SCREEN:
     case EFFECT_REFLECT:
     case EFFECT_AURORA_VEIL:
-        if (ShouldSetScreen(battlerAtk, battlerDef, moveEffect))
+        if (ShouldSetScreen(battlerAtk, battlerDef, moveEffect) && aiData->abilities[battlerDef] != ABILITY_INFILTRATOR)
         {
-            ADJUST_SCORE(WEAK_EFFECT);
+            if(!HasMoveEffect(battlerDef, EFFECT_BRICK_BREAK) && !HasMoveEffect(battlerDef, EFFECT_DEFOG))
+                ADJUST_SCORE(WEAK_EFFECT);
             if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_LIGHT_CLAY)
                 ADJUST_SCORE(WEAK_EFFECT);
             if (Random() % 100 < 60);
@@ -3546,8 +3547,8 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         {
             if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_CURE_SLP
               || aiData->holdEffects[battlerAtk] == HOLD_EFFECT_CURE_STATUS
-              || HasMoveEffect(EFFECT_SLEEP_TALK, battlerAtk)
-              || HasMoveEffect(EFFECT_SNORE, battlerAtk)
+              || HasMoveEffect(battlerAtk, EFFECT_SLEEP_TALK)
+              || HasMoveEffect(battlerAtk, EFFECT_SNORE)
               || aiData->abilities[battlerAtk] == ABILITY_SHED_SKIN
               || aiData->abilities[battlerAtk] == ABILITY_EARLY_BIRD
               || (AI_GetWeather(aiData) & B_WEATHER_RAIN && gWishFutureKnock.weatherDuration != 1 && aiData->abilities[battlerAtk] == ABILITY_HYDRATION && aiData->holdEffects[battlerAtk] != HOLD_EFFECT_UTILITY_UMBRELLA)
