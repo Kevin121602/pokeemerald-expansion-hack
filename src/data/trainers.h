@@ -43756,12 +43756,12 @@ F_TRAINER_FEMALE |
 #line 17420
             .lvl = 33,
 #line 17421
-            .nature = NATURE_BOLD,
+            .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 17423
                 MOVE_FLAMETHROWER,
-                MOVE_DRAGON_PULSE,
+                MOVE_DRAGON_CLAW,
                 MOVE_SOLAR_BEAM,
                 MOVE_BODY_PRESS,
             },
