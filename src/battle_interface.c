@@ -2935,7 +2935,7 @@ void TryAddLastUsedBallItemSprites(void)
         u16 firstBall;
 
         // we have to compact the bag first bc it is typically only compacted when you open it
-        CompactItemsInBagPocket(&gBagPockets[BALLS_POCKET]);*/
+        CompactItemsInBagPocket(&gBagPockets[GEMS_POCKET]);*/
 
         u16 firstBall;
 

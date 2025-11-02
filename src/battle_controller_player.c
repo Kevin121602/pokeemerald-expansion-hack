@@ -212,16 +212,16 @@ static u16 GetPrevBall(u16 ballId)
 {
     u16 ballPrev;
     s32 i, j;
-    CompactItemsInBagPocket(&gBagPockets[BALLS_POCKET]);
-    for (i = 0; i < gBagPockets[BALLS_POCKET].capacity; i++)
+    CompactItemsInBagPocket(&gBagPockets[GEMS_POCKET]);
+    for (i = 0; i < gBagPockets[GEMS_POCKET].capacity; i++)
     {
-        if (ballId == gBagPockets[BALLS_POCKET].itemSlots[i].itemId)
+        if (ballId == gBagPockets[GEMS_POCKET].itemSlots[i].itemId)
         {
             if (i <= 0)
             {
-                for (j = gBagPockets[BALLS_POCKET].capacity - 1; j >= 0; j--)
+                for (j = gBagPockets[GEMS_POCKET].capacity - 1; j >= 0; j--)
                 {
-                    ballPrev = gBagPockets[BALLS_POCKET].itemSlots[j].itemId;
+                    ballPrev = gBagPockets[GEMS_POCKET].itemSlots[j].itemId;
                     if (ballPrev != ITEM_NONE)
                         return ballPrev;
                 }
@@ -230,24 +230,24 @@ static u16 GetPrevBall(u16 ballId)
             break;
         }
     }
-    return gBagPockets[BALLS_POCKET].itemSlots[i].itemId;
+    return gBagPockets[GEMS_POCKET].itemSlots[i].itemId;
 }
 
 static u32 GetNextBall(u32 ballId)
 {
     u32 ballNext = ITEM_NONE;
     s32 i;
-    CompactItemsInBagPocket(&gBagPockets[BALLS_POCKET]);
-    for (i = 1; i < gBagPockets[BALLS_POCKET].capacity; i++)
+    CompactItemsInBagPocket(&gBagPockets[GEMS_POCKET]);
+    for (i = 1; i < gBagPockets[GEMS_POCKET].capacity; i++)
     {
-        if (ballId == gBagPockets[BALLS_POCKET].itemSlots[i-1].itemId)
+        if (ballId == gBagPockets[GEMS_POCKET].itemSlots[i-1].itemId)
         {
-            ballNext = gBagPockets[BALLS_POCKET].itemSlots[i].itemId;
+            ballNext = gBagPockets[GEMS_POCKET].itemSlots[i].itemId;
             break;
         }
     }
     if (ballNext == ITEM_NONE)
-        return gBagPockets[BALLS_POCKET].itemSlots[0].itemId; // Zeroth slot
+        return gBagPockets[GEMS_POCKET].itemSlots[0].itemId; // Zeroth slot
     else
         return ballNext;
 }

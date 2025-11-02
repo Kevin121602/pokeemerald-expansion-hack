@@ -1927,14 +1927,14 @@ F_TRAINER_FEMALE |
 #line 829
             .lvl = 21,
 #line 830
-            .nature = NATURE_HASTY,
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 832
                 MOVE_FORCE_PALM,
                 MOVE_METAL_CLAW,
                 MOVE_BULLET_PUNCH,
-                MOVE_VACUUM_WAVE,
+                MOVE_PAYBACK,
             },
             },
         },
@@ -3468,7 +3468,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_TOXTRICITY_LOW_KEY,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1440
-            .heldItem = ITEM_THROAT_SPRAY,
+            .heldItem = ITEM_SHUCA_BERRY,
 #line 1444
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 1443
@@ -10278,7 +10278,7 @@ F_TRAINER_FEMALE |
             },
             {
 #line 4141
-            .species = SPECIES_TURTONATOR,
+            .species = SPECIES_TORKOAL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4141
             .heldItem = ITEM_LEFTOVERS,
@@ -10293,9 +10293,9 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 4145
-                MOVE_HEAT_CRASH,
+                MOVE_LAVA_PLUME,
                 MOVE_HEAVY_SLAM,
-                MOVE_SCORCHING_SANDS,
+                MOVE_ANCIENT_POWER,
                 MOVE_PROTECT,
             },
             },
@@ -11520,7 +11520,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_CROBAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4636
-            .heldItem = ITEM_LUM_BERRY,
+            .heldItem = ITEM_FLYING_GEM,
 #line 4640
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 4638
@@ -11532,8 +11532,8 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 4640
+                MOVE_ACROBATICS,
                 MOVE_SLUDGE_BOMB,
-                MOVE_DUAL_WINGBEAT,
                 MOVE_SUPER_FANG,
                 MOVE_HYPNOSIS,
             },
@@ -11658,7 +11658,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_PIDGEOT,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4690
-            .heldItem = ITEM_LUM_BERRY,
+            .heldItem = ITEM_WACAN_BERRY,
 #line 4693
             .iv = TRAINER_PARTY_IVS(30, 30, 31, 30, 30, 30),
 #line 4692
@@ -22827,7 +22827,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 9126
                 MOVE_SIGNAL_BEAM,
-                MOVE_VENOSHOCK,
+                MOVE_SLUDGE_BOMB,
                 MOVE_WATER_SHURIKEN,
                 MOVE_RECOVER,
             },
@@ -23645,7 +23645,7 @@ F_TRAINER_FEMALE |
 #line 9453
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 9451
-            .ability = ABILITY_CLOUD_NINE,
+            .ability = ABILITY_DAMP,
 #line 9452
             .lvl = 27,
 #line 9450
@@ -39345,12 +39345,12 @@ F_TRAINER_FEMALE |
 #line 15650
             .lvl = 23,
 #line 15648
-            .nature = NATURE_NAIVE,
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 15651
                 MOVE_STOMPING_TANTRUM,
-                MOVE_DRAGON_PULSE,
+                MOVE_DRAGON_RUSH,
                 MOVE_U_TURN,
                 MOVE_SUPERSONIC,
             },
@@ -40843,14 +40843,14 @@ F_TRAINER_FEMALE |
 #line 16239
             .lvl = 28,
 #line 16237
-            .nature = NATURE_TIMID,
+            .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 16240
                 MOVE_FIRE_PLEDGE,
                 MOVE_HEAT_WAVE,
                 MOVE_EXTRASENSORY,
-                MOVE_WILL_O_WISP,
+                MOVE_QUICK_ATTACK,
             },
             },
             {
@@ -40898,25 +40898,25 @@ F_TRAINER_FEMALE |
         {
             {
 #line 16260
-            .species = SPECIES_GROVYLE,
+            .species = SPECIES_SIMISAGE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 16260
             .heldItem = ITEM_GRASS_GEM,
 #line 16264
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 16262
-            .ability = ABILITY_UNBURDEN,
+            .ability = ABILITY_OVERGROW,
 #line 16263
             .lvl = 28,
 #line 16261
-            .nature = NATURE_MILD,
+            .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 16264
                 MOVE_GRASS_PLEDGE,
-                MOVE_X_SCISSOR,
+                MOVE_BRICK_BREAK,
                 MOVE_ACROBATICS,
-                MOVE_DETECT,
+                MOVE_PROTECT,
             },
             },
             {
@@ -43745,7 +43745,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 17419
-            .species = SPECIES_TORKOAL,
+            .species = SPECIES_TURTONATOR,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 17419
             .heldItem = ITEM_POWER_HERB,
@@ -43754,16 +43754,16 @@ F_TRAINER_FEMALE |
 #line 17422
             .ability = ABILITY_SHELL_ARMOR,
 #line 17420
-            .lvl = 34,
+            .lvl = 33,
 #line 17421
-            .nature = NATURE_RELAXED,
+            .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 17423
-                MOVE_LAVA_PLUME,
+                MOVE_FLAMETHROWER,
+                MOVE_DRAGON_PULSE,
                 MOVE_SOLAR_BEAM,
                 MOVE_BODY_PRESS,
-                MOVE_SELF_DESTRUCT,
             },
             },
             {
@@ -43794,7 +43794,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_SYLVEON,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 17437
-            .heldItem = ITEM_WISE_GLASSES,
+            .heldItem = ITEM_THROAT_SPRAY,
 #line 17441
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 17440
@@ -43823,7 +43823,7 @@ F_TRAINER_FEMALE |
 #line 17449
             .ability = ABILITY_JUSTIFIED,
 #line 17447
-            .lvl = 33,
+            .lvl = 34,
 #line 17448
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,

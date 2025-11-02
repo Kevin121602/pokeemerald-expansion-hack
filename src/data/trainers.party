@@ -827,12 +827,12 @@ Ability: Wonder Guard
 
 Lucario @ Muscle Band
 Level: 21
-Nature: Hasty
+Nature: Jolly
 Ability: Justified
 - Force Palm
 - Metal Claw
 - Bullet Punch
-- Vacuum Wave
+- Payback
 
 === TRAINER_ROSE_3 ===
 Name: ROSE
@@ -1437,7 +1437,7 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Yellow
 
-Toxtricity Low Key @ Throat Spray
+Toxtricity Low Key @ Shuca Berry
 Level: 32
 Nature: Timid
 Ability: Punk Rock
@@ -4138,13 +4138,13 @@ Level: 31
 - Sludge Bomb
 - Recover
 
-Turtonator @ Leftovers
+Torkoal @ Leftovers
 Nature: Quiet
 Ability: Shell Armor
 Level: 32
-- Heat Crash
+- Lava Plume
 - Heavy Slam
-- Scorching Sands
+- Ancient Power
 - Protect
 
 Sandslash @ Loaded Dice
@@ -4633,12 +4633,12 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Crobat @ Lum Berry
+Crobat @ Flying Gem
 Nature: Naive
 Ability: Inner Focus
 Level: 31
+- Acrobatics
 - Sludge Bomb
-- Dual Wingbeat
 - Super Fang
 - Hypnosis
 
@@ -4687,7 +4687,7 @@ Level: 30
 - Heat Wave
 - Roost
 
-Pidgeot @ Lum Berry
+Pidgeot @ Wacan Berry
 Nature: Naive
 Ability: Keen Eye
 IVs: 30 HP / 30 Atk / 31 Def / 30 SpA / 30 SpD / 30 Spe
@@ -9124,7 +9124,7 @@ Nature: Modest
 Ability: Sticky Hold
 Level: 27
 - Signal Beam
-- Venoshock
+- Sludge Bomb
 - Water Shuriken
 - Recover
 
@@ -9448,7 +9448,7 @@ Level: 26
 
 Golduck @ Muscle Band
 Nature: Naive
-Ability: Cloud Nine
+Ability: Damp
 Level: 27
 - Aqua Tail
 - Zen Headbutt
@@ -15645,11 +15645,11 @@ Level: 22
 - Swords Dance
 
 Vibrava @ Yache Berry
-Nature: Naive
+Nature: Jolly
 Ability: Levitate
 Level: 23
 - Stomping Tantrum
-- Dragon Pulse
+- Dragon Rush
 - U-Turn
 - Supersonic
 
@@ -16234,13 +16234,13 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Quilava @ Fire Gem
-Nature: Timid
+Nature: Naive
 Ability: Blaze
 Level: 28
 - Fire Pledge
 - Heat Wave
 - Extrasensory
-- Will-O-Wisp
+- Quick Attack
 
 Golem @ Metronome
 Nature: Jolly
@@ -16257,14 +16257,14 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Grovyle @ Grass Gem
-Nature: Mild
-Ability: Unburden
+Simisage @ Grass Gem
+Nature: Hasty
+Ability: Overgrow
 Level: 28
 - Grass Pledge
-- X-Scissor
+- Brick Break
 - Acrobatics
-- Detect
+- Protect
 
 Simipour @ Petaya Berry
 Nature: Timid
@@ -17416,14 +17416,14 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Yellow
 
-Torkoal @ Power Herb
-Level: 34
-Nature: Relaxed
+Turtonator @ Power Herb
+Level: 33
+Nature: Bold
 Ability: Shell Armor
-- Lava Plume
+- Flamethrower
+- Dragon Pulse
 - Solar Beam
 - Body Press
-- Self-Destruct
 
 Bewear @ Lum Berry
 Level: 33
@@ -17434,7 +17434,7 @@ Ability: Fluffy
 - Darkest Lariat
 - Stomping Tantrum
 
-Sylveon @ Wise Glasses
+Sylveon @ Throat Spray
 Level: 34
 Nature: Hasty
 Ability: Pixilate
@@ -17444,7 +17444,7 @@ Ability: Pixilate
 - Mystical Fire
 
 Virizion @ Focus Sash
-Level: 33
+Level: 34
 Nature: Jolly
 Ability: Justified
 - Leaf Blade

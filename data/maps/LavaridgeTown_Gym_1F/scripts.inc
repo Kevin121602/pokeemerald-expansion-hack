@@ -677,7 +677,7 @@ LavaridgeTown_Gym_1F_Text_ExplainHeatBadgeTakeThis:
 # 343 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
 LavaridgeTown_Gym_1F_Text_ExplainOverheat:
 # 344 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
-	.string "That TM07 contains Body Press.\p"
+	.string "That TM08 contains Body Press.\p"
 # 345 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
 	.string "That move uses the defense stat to\n"
 # 346 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"

@@ -1002,7 +1002,7 @@ struct SaveBlock1
               struct ItemSlot bagPocket_HeldItems[BAG_HELD_ITEMS_COUNT];
               struct ItemSlot bagPocket_MegaStones[BAG_MEGA_STONES_COUNT];
     /*0x5D8*/ struct ItemSlot bagPocket_KeyItems[BAG_KEYITEMS_COUNT];
-    /*0x650*/ struct ItemSlot bagPocket_PokeBalls[BAG_POKEBALLS_COUNT];
+    /*0x650*/ struct ItemSlot bagPocket_Gems[BAG_GEMS_COUNT];
     /*0x690*/ struct ItemSlot bagPocket_TMHM[BAG_TMHM_COUNT];
     /*0x790*/ struct ItemSlot bagPocket_Berries[BAG_BERRIES_COUNT];
     /*0x848*/ struct Pokeblock pokeblocks[POKEBLOCKS_COUNT];

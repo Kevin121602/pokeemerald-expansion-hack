@@ -341,7 +341,7 @@ LavaridgeTown_Gym_1F_Text_ExplainHeatBadgeTakeThis:
 	.string "Don't be shy about taking it!$"
 
 LavaridgeTown_Gym_1F_Text_ExplainOverheat:
-	.string "That TM07 contains Body Press.\p"
+	.string "That TM08 contains Body Press.\p"
 	.string "That move uses the defense stat to\n"
 	.string "deal damage.\p"
 	.string "You know the saying, the best offense\n"

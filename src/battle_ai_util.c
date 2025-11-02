@@ -1225,10 +1225,13 @@ u32 NoOfHitsForTargetToFaintAI(u32 battlerDef, u32 battlerAtk)
     u32 i;
     u32 currNumberOfHits;
     u32 leastNumberOfHits = UNKNOWN_NO_OF_HITS;
+    u16 *moves = GetMovesArray(battlerDef);
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         currNumberOfHits = GetNoOfHitsToKOBattler(battlerDef, battlerAtk, i);
+        if(MonHasInTactFocusSashSturdy(battlerAtk, battlerDef, AI_DATA->holdEffects[battlerAtk], AI_DATA->abilities[battlerDef], moves[i]) && currNumberOfHits == 1)
+            currNumberOfHits++;
         if (currNumberOfHits != 0)
         {
             if (currNumberOfHits < leastNumberOfHits)
@@ -4248,13 +4251,15 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
         intactFocusSashOrSturdyPlayer = TRUE;
     }
 
-    if(speedBattler > speedBattlerAI && CanTargetFaintAi(battlerDef, battlerAtk)){
+    if(speedBattler > speedBattlerAI && CanTargetFaintAi(battlerDef, battlerAtk))
         shouldSetUp = FALSE;
-    } else if(aiIsFaster && (bestOverallDmgAfterBoosts < gBattleMons[battlerAtk].hp)){
+    else if(bestPrioDmgAfterBoosts > 0 && (bestOverallDmgAfterBoosts + bestPrioDmgAfterBoosts) > gBattleMons[battlerAtk].hp)
+        shouldSetUp = FALSE;
+    else if(aiIsFaster && (bestOverallDmgAfterBoosts < gBattleMons[battlerAtk].hp))
         shouldSetUp = TRUE;
-    } else if((bestOverallDmg + bestOverallDmgAfterBoosts) < gBattleMons[battlerAtk].hp){
+    else if((bestOverallDmg + bestOverallDmgAfterBoosts) < gBattleMons[battlerAtk].hp)
         shouldSetUp = TRUE;
-    }
+    
 
     //setup logic if ai has focus sash or sturdy
     if(intactFocusSashOrSturdyAI){

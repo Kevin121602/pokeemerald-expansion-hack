@@ -1960,7 +1960,7 @@
               {
                 "min_level": 8,
                 "max_level": 9,
-                "species": "SPECIES_BONSLY"
+                "species": "SPECIES_GLIMMET"
               },
               {
                 "min_level": 8,
@@ -1970,12 +1970,12 @@
               {
                 "min_level": 8,
                 "max_level": 9,
-                "species": "SPECIES_GLIMMET"
+                "species": "SPECIES_BONSLY"
               },
               {
                 "min_level": 8,
                 "max_level": 9,
-                "species": "SPECIES_GLIMMET"
+                "species": "SPECIES_BONSLY"
               }
             ]
           }
@@ -13846,12 +13846,12 @@
               {
                 "min_level": 4,
                 "max_level": 5,
-                "species": "SPECIES_RALTS"
+                "species": "SPECIES_MIME_JR"
               },
               {
                 "min_level": 4,
                 "max_level": 5,
-                "species": "SPECIES_ABRA"
+                "species": "SPECIES_MIME_JR"
               }
             ]
           }

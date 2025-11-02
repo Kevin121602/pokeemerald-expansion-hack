@@ -14,7 +14,7 @@
 #define ITEMS_POCKET       0
 #define HELD_ITEMS_POCKET  1
 #define MEGA_STONES_POCKET 2
-#define BALLS_POCKET       3
+#define GEMS_POCKET       3
 #define TMHM_POCKET        4
 #define BERRIES_POCKET     5
 #define KEYITEMS_POCKET    6
