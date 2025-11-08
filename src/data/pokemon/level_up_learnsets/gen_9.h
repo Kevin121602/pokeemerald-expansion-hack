@@ -680,8 +680,9 @@ static const struct LevelUpMove sNidorinoLevelUpLearnset[] = {
 
 static const struct LevelUpMove sNidokingLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 0, MOVE_DRILL_RUN),
-    LEVEL_UP_MOVE( 1, MOVE_SLUDGE_WAVE),
+    LEVEL_UP_MOVE( 1, MOVE_HEAD_SMASH),
     LEVEL_UP_MOVE( 1, MOVE_MEGAHORN),
+    LEVEL_UP_MOVE( 1, MOVE_SLUDGE_WAVE),
     LEVEL_UP_MOVE( 1, MOVE_TOXIC),
     LEVEL_UP_MOVE( 1, MOVE_SUPER_FANG),
     LEVEL_UP_MOVE(35, MOVE_POISON_JAB),
