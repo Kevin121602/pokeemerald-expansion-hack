@@ -813,6 +813,8 @@ bool32 ShouldSwitchIfStatusedNaturalCure(u32 battler, bool32 emitResult){
 
 static bool32 MonHasRelevantStatsRaised(u32 battler)
 {
+    //If mon has raised relevant stats and isnt at full hp, this function returns True
+
     u8 i;
     u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
     u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
@@ -825,6 +827,10 @@ static bool32 MonHasRelevantStatsRaised(u32 battler)
     }
 
     if(!anyStatIsRaised){
+        return FALSE;
+    }
+
+    if(gBattleMons[battler].hp == gBattleMons[battler].maxHP){
         return FALSE;
     }
 

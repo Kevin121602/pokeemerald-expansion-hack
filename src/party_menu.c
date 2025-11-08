@@ -2492,6 +2492,14 @@ static void DisplayPartyPokemonNickname(struct Pokemon *mon, struct PartyMenuBox
     }
 }
 
+static void RemovePartyPokemonLevel(u8 level, struct PartyMenuBox *menuBox)
+{
+    //ConvertIntToDecimalStringN(gStringVar2, 0, STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringCopy(gStringVar1, gText_EmptyString2);
+    //StringAppend(gStringVar1, " ");
+    DisplayPartyPokemonBarDetail(menuBox->windowId, gStringVar1, 0, &menuBox->infoRects->dimensions[4]);
+}
+
 static void DisplayPartyPokemonLevelCheck(struct Pokemon *mon, struct PartyMenuBox *menuBox, u8 c)
 {
     if (GetMonData(mon, MON_DATA_SPECIES) != SPECIES_NONE)
@@ -2503,6 +2511,11 @@ static void DisplayPartyPokemonLevelCheck(struct Pokemon *mon, struct PartyMenuB
                 menuBox->infoRects->blitFunc(menuBox->windowId, menuBox->infoRects->dimensions[4] >> 3, (menuBox->infoRects->dimensions[5] >> 3) + 1, menuBox->infoRects->dimensions[6] >> 3, menuBox->infoRects->dimensions[7] >> 3, FALSE);
             if (c != 2)
                 DisplayPartyPokemonLevel(GetMonData(mon, MON_DATA_LEVEL), menuBox);
+        } else {
+            if (c != 0)
+                menuBox->infoRects->blitFunc(menuBox->windowId, menuBox->infoRects->dimensions[4] >> 3, (menuBox->infoRects->dimensions[5] >> 3) + 1, menuBox->infoRects->dimensions[6] >> 3, menuBox->infoRects->dimensions[7] >> 3, FALSE);
+            if (c != 2)
+                RemovePartyPokemonLevel(GetMonData(mon, MON_DATA_LEVEL), menuBox);
         }
     }
 }
@@ -3376,88 +3389,108 @@ static void CursorCb_Cancel1(u8 taskId)
 
 static void CursorCb_Burn(u8 taskId)
 {
-    u32 status1 = STATUS1_BURN;
+    u32 status1 = 0;
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
 
     u16 species = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
     if (species != SPECIES_NONE && species != SPECIES_EGG && GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HP) != 0){
         PlaySE(SE_SELECT);
+        if(GetAilmentFromStatus(GetMonData(mon, MON_DATA_STATUS)) != AILMENT_BRN){
+            status1 = STATUS1_BURN;
+        }  
         SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
     }
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
     DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
     SetPartyMonAilmentGfx(mon, &sPartyMenuBoxes[gPartyMenu.slotId]);
+    DisplayPartyPokemonLevelCheck(mon, &sPartyMenuBoxes[gPartyMenu.slotId], 1);
     gTasks[taskId].func = Task_HandleChooseMonInput;
 }
 
 static void CursorCb_Paralyze(u8 taskId)
 {
-    u32 status1 = STATUS1_PARALYSIS;
+    u32 status1 = 0;
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
 
     u16 species = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
     if (species != SPECIES_NONE && species != SPECIES_EGG && GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HP) != 0){
         PlaySE(SE_SELECT);
+        if(GetAilmentFromStatus(GetMonData(mon, MON_DATA_STATUS)) != AILMENT_PRZ){
+            status1 = STATUS1_PARALYSIS;
+        }  
         SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
     }
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
     DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
     SetPartyMonAilmentGfx(mon, &sPartyMenuBoxes[gPartyMenu.slotId]);
+    DisplayPartyPokemonLevelCheck(mon, &sPartyMenuBoxes[gPartyMenu.slotId], 1);
     gTasks[taskId].func = Task_HandleChooseMonInput;
 }
 
 static void CursorCb_Sleep(u8 taskId)
 {
     //u32 status1 = STATUS1_SLEEP;
-    u32 status1 = STATUS1_SLEEP_TURN(1 + RandomUniform(RNG_SLEEP_TURNS, 1, 3));
+    u32 status1 = 0;
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
 
     u16 species = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
     if (species != SPECIES_NONE && species != SPECIES_EGG && GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HP) != 0){
         PlaySE(SE_SELECT);
+        if(GetAilmentFromStatus(GetMonData(mon, MON_DATA_STATUS)) != AILMENT_SLP){
+            status1 = STATUS1_SLEEP_TURN(1 + RandomUniform(RNG_SLEEP_TURNS, 1, 3));;
+        }  
         SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
     }
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
     DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
     SetPartyMonAilmentGfx(mon, &sPartyMenuBoxes[gPartyMenu.slotId]);
+    DisplayPartyPokemonLevelCheck(mon, &sPartyMenuBoxes[gPartyMenu.slotId], 1);
     gTasks[taskId].func = Task_HandleChooseMonInput;
 }
 
 static void CursorCb_Frostbite(u8 taskId)
 {
-    u32 status1 = STATUS1_FROSTBITE;
+    u32 status1 = 0;
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
 
     u16 species = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
     if (species != SPECIES_NONE && species != SPECIES_EGG && GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HP) != 0){
         PlaySE(SE_SELECT);
+        if(GetAilmentFromStatus(GetMonData(mon, MON_DATA_STATUS)) != AILMENT_FRB){
+            status1 = STATUS1_FROSTBITE;
+        }  
         SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
     }
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
     DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
     SetPartyMonAilmentGfx(mon, &sPartyMenuBoxes[gPartyMenu.slotId]);
+    DisplayPartyPokemonLevelCheck(mon, &sPartyMenuBoxes[gPartyMenu.slotId], 1);
     gTasks[taskId].func = Task_HandleChooseMonInput;
 }
 
 
 static void CursorCb_Poison(u8 taskId)
 {
-    u32 status1 = STATUS1_POISON;
+    u32 status1 = 0;
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
 
     u16 species = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
     if (species != SPECIES_NONE && species != SPECIES_EGG && GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HP) != 0){
         PlaySE(SE_SELECT);
+        if(GetAilmentFromStatus(GetMonData(mon, MON_DATA_STATUS)) != AILMENT_PSN){
+            status1 = STATUS1_POISON;
+        }  
         SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
     }
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
     DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_MON);
     SetPartyMonAilmentGfx(mon, &sPartyMenuBoxes[gPartyMenu.slotId]);
+    DisplayPartyPokemonLevelCheck(mon, &sPartyMenuBoxes[gPartyMenu.slotId], 1);
     gTasks[taskId].func = Task_HandleChooseMonInput;
 }
 

@@ -1816,7 +1816,7 @@ void ProtectChecks(u32 battlerAtk, u32 battlerDef, u32 move, u32 predictedMove, 
         if(CanTargetFaintAi(battlerDef, battlerAtk)){
             //if player has kill on AI and AI is faster
             if(speedBattlerAI >= speedBattler){
-                ADJUST_SCORE_PTR(BEST_EFFECT);
+                ADJUST_SCORE_PTR(4);
             } else {
                 //if AI is slower, protect incentivised over all other moves
                 ADJUST_SCORE_PTR(20);

@@ -2954,27 +2954,27 @@
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_KOMALA"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_DUNSPARCE"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
-                "species": "SPECIES_MINCCINO"
-              },
-              {
-                "min_level": 16,
-                "max_level": 17,
                 "species": "SPECIES_TANDEMAUS"
               },
               {
                 "min_level": 16,
                 "max_level": 17,
-                "species": "SPECIES_LICKITUNG"
+                "species": "SPECIES_STUFFUL"
+              },
+              {
+                "min_level": 16,
+                "max_level": 17,
+                "species": "SPECIES_ORANGURU"
+              },
+              {
+                "min_level": 16,
+                "max_level": 17,
+                "species": "SPECIES_INDEEDEE_MALE"
+              },
+              {
+                "min_level": 16,
+                "max_level": 17,
+                "species": "SPECIES_INDEEDEE_FEMALE"
               },
               {
                 "min_level": 16,

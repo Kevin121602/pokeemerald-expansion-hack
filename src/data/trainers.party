@@ -1437,14 +1437,14 @@ Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 Mugshot: Yellow
 
-Toxtricity Low Key @ Shuca Berry
+Vikavolt @ Wise Glasses
 Level: 32
 Nature: Timid
-Ability: Punk Rock
-- Sludge Bomb
-- Discharge
-- Psychic Noise
-- Hex
+Ability: Levitate
+- Signal Beam
+- Charge Beam
+- Air Slash
+- Roost
 
 Glaceon @ Lum Berry
 Level: 31
@@ -2644,7 +2644,7 @@ Manectric @ Lum Berry
 Nature: Timid
 Ability: Minus
 Level: 29
-- Discharge
+- Shock Wave
 - Signal Beam
 - Flame Burst
 - Snarl
@@ -4139,11 +4139,11 @@ Level: 31
 - Recover
 
 Torkoal @ Leftovers
-Nature: Quiet
+Nature: Modest
 Ability: Shell Armor
 Level: 32
 - Lava Plume
-- Heavy Slam
+- Body Press
 - Ancient Power
 - Protect
 
@@ -7341,12 +7341,12 @@ Level: 26
 - Signal Beam
 - Mirror Coat
 
-Wigglytuff @ Big Root
+Wigglytuff @ Leftovers
 Nature: Naive
 Ability: Competitive
 Level: 26
 - Hyper Voice
-- Draining Kiss
+- Dazzling Gleam
 - Drain Punch
 - Counter
 
@@ -7499,6 +7499,7 @@ Nature: Adamant
 Ability: Scrappy
 Level: 31
 - Flying Press
+- Close Combat
 
 Salazzle @ Black Sludge
 Nature: Timid

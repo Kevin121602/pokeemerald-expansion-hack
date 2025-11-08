@@ -4444,7 +4444,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                     ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
                         break;
                 case MOVE_EFFECT_SPD_PLUS_1:
-                    if(AI_DATA->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected + (GetBestDmgFromBattler(battlerAtk, battlerDef) * 3) < gBattleMons[battlerDef].hp)
+                    if(AI_DATA->simulatedDmg[battlerAtk][battlerDef][moveIndex].expected + (GetBestDmgFromBattler(battlerAtk, battlerDef) * 3) > gBattleMons[battlerDef].hp){
+                        ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED));
+                    }
                         break;
                 case MOVE_EFFECT_SP_ATK_PLUS_1:
                     ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPATK));
