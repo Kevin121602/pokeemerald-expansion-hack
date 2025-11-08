@@ -5129,7 +5129,7 @@ static const u16 sTyruntEggMoveLearnset[] = {
     MOVE_THUNDER_FANG,
     MOVE_ICE_FANG,
     MOVE_POISON_FANG,
-    MOVE_ROCK_POLISH,
+    
     MOVE_FIRE_FANG,
     
     MOVE_UNAVAILABLE,
