@@ -7835,23 +7835,20 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Ninjask @ Choice Band
-Nature: Adamant
-Ability: Infiltrator
-Level: 41
-- U-Turn
-
-Baxcalibur @ Never-Melt Ice
-Nature: Jolly
-Ability: Ice Body
-Level: 41
-- Icicle Crash
-
-Alcremie @ Lum Berry
+Volbeat @ Leftovers
 Nature: Timid
-Ability: Aroma Veil
+Ability: Prankster
 Level: 41
-- Draining Kiss
+- Sunny Day
+- Light Screen
+
+Venomoth @ Black Sludge
+Nature: Timid
+Ability: Shield Dust
+Level: 41
+- Sludge Bomb
+-   Psychic
+- Heal Bell
 
 === TRAINER_WADE ===
 Name: WADE
