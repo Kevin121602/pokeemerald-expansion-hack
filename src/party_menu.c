@@ -2492,11 +2492,9 @@ static void DisplayPartyPokemonNickname(struct Pokemon *mon, struct PartyMenuBox
     }
 }
 
-static void RemovePartyPokemonLevel(u8 level, struct PartyMenuBox *menuBox)
+static void RemovePartyPokemonLevel(struct PartyMenuBox *menuBox)
 {
-    //ConvertIntToDecimalStringN(gStringVar2, 0, STR_CONV_MODE_LEFT_ALIGN, 3);
     StringCopy(gStringVar1, gText_EmptyString2);
-    //StringAppend(gStringVar1, " ");
     DisplayPartyPokemonBarDetail(menuBox->windowId, gStringVar1, 0, &menuBox->infoRects->dimensions[4]);
 }
 
@@ -2515,7 +2513,7 @@ static void DisplayPartyPokemonLevelCheck(struct Pokemon *mon, struct PartyMenuB
             if (c != 0)
                 menuBox->infoRects->blitFunc(menuBox->windowId, menuBox->infoRects->dimensions[4] >> 3, (menuBox->infoRects->dimensions[5] >> 3) + 1, menuBox->infoRects->dimensions[6] >> 3, menuBox->infoRects->dimensions[7] >> 3, FALSE);
             if (c != 2)
-                RemovePartyPokemonLevel(GetMonData(mon, MON_DATA_LEVEL), menuBox);
+                RemovePartyPokemonLevel(menuBox);
         }
     }
 }
