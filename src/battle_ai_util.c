@@ -4115,7 +4115,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
                 bestPhysicalDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
                 bestPhysicalMove = i;
             }
-            if((AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > ignoreBoostsDmg) && gMovesInfo[moves[i]].ignoresTargetDefenseEvasionStages){
+            if((AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > ignoreBoostsDmg) && (gMovesInfo[moves[i]].ignoresTargetDefenseEvasionStages || CalcCritChanceStageArgs(battlerAtk, battlerDef, moves[i], FALSE, AI_DATA->abilities[battlerAtk], AI_DATA->abilities[battlerDef], AI_DATA->holdEffects[battlerAtk]) == -2)){
                 ignoreBoostsDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
             }
             if(AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > bestPhysPrioDmg && GetMovePriority(battlerDef, moves[i]) > 0){

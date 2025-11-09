@@ -342,7 +342,7 @@ static void CB2_LoadCableCar(void)
         break;
     case 8:
         BeginNormalPaletteFade(PALETTES_ALL, 3, 16, 0, RGB_BLACK);
-        FadeInNewBGM(MUS_CABLE_CAR, 1);
+        FadeInNewBGM(MUS_DP_SPEAR_PILLAR, 1);
         SetBgRegs(TRUE);
         gMain.state++;
         break;
