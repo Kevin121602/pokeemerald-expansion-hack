@@ -4038,6 +4038,13 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                 ADJUST_SCORE(WEAK_EFFECT);    // Recycle healing berry if we can't otherwise faint the target and the target wont kill us after we activate the berry
         }*/
         break;
+    case EFFECT_PAIN_SPLIT:
+        if (!AI_IsFaster(battlerAtk, battlerDef, move) && (gBattleMons[battlerDef].hp > gBattleMons[battlerAtk].hp)){
+            ADJUST_SCORE(WEAK_EFFECT);
+            if(Random() % 100 < 50)
+                ADJUST_SCORE(WEAK_EFFECT);
+        }
+        break;
     case EFFECT_SKILL_SWAP:
         if (GetActiveGimmick(battlerDef) == GIMMICK_DYNAMAX)
             break;
