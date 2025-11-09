@@ -569,4 +569,3 @@ gSpecials::
 	def_special BufferNameAndNature
 	def_special ChangeNature
 	def_special HealPlayerPartyNonFainted
-	def_special ReturnToFeaturesMenu

@@ -4619,7 +4619,3 @@ void ChangeSpeedIV(void){
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPEED_IV, &gSpecialVar_0x8005);
     CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
 }
-
-void ReturnToFeaturesMenu(void){
-    ShowFeaturesMenu();
-}
