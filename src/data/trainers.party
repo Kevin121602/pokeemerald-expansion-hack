@@ -7835,20 +7835,12 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Volbeat @ Leftovers
-Nature: Timid
-Ability: Prankster
-Level: 41
-- Sunny Day
-- Light Screen
-
-Venomoth @ Black Sludge
-Nature: Timid
-Ability: Shield Dust
-Level: 41
-- Sludge Bomb
--   Psychic
-- Heal Bell
+Swampert @ Lum Berry
+Nature: Jolly
+Ability: Torrent
+Level: 44
+- Tackle
+- Bulk Up
 
 === TRAINER_WADE ===
 Name: WADE

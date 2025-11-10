@@ -4053,6 +4053,8 @@ static u32 GetDamageRollAfterDefBoost(u32 battlerAtk, u32 damageRoll, u32 statId
     return finalRoll;
 }
 
+static const u8 sCriticalHitOdds[] = {16, 8, 2, 1, 1};
+
 static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statId, bool32 considerContrary)
 {
     u32 tempScore = NO_INCREASE;
@@ -4115,7 +4117,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
                 bestPhysicalDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
                 bestPhysicalMove = i;
             }
-            if((AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > ignoreBoostsDmg) && (gMovesInfo[moves[i]].ignoresTargetDefenseEvasionStages || CalcCritChanceStageArgs(battlerAtk, battlerDef, moves[i], FALSE, AI_DATA->abilities[battlerAtk], AI_DATA->abilities[battlerDef], AI_DATA->holdEffects[battlerAtk]) == -2)){
+            if((AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > ignoreBoostsDmg) && (gMovesInfo[moves[i]].ignoresTargetDefenseEvasionStages || sCriticalHitOdds[CalcCritChanceStage(battlerDef, battlerAtk, moves[i], FALSE)] == 1 || CalcCritChanceStage(battlerDef, battlerAtk, moves[i], FALSE) == -2)){
                 ignoreBoostsDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
             }
             if(AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > bestPhysPrioDmg && GetMovePriority(battlerDef, moves[i]) > 0){
