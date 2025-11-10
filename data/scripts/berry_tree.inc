@@ -21,16 +21,12 @@ BerryTree_EventScript_Sparkling::
 	end
 
 BerryTree_EventScript_CheckSoil::
-	@lock
-	@faceplayer
-	@specialvar VAR_RESULT, PlayerHasBerries
-	@goto_if_eq VAR_RESULT, TRUE, BerryTree_EventScript_WantToPlant
-	@specialvar VAR_RESULT, PlayerHasMulch
-	@goto_if_eq VAR_RESULT, TRUE, BerryTree_EventScript_WantToMulch
-	@message BerryTree_Text_ItsSoftLoamySoil
-	@waitmessage
-	@waitbuttonpress
-	@release
+	lock
+	faceplayer
+	message BerryTree_Text_ItsSoftLoamySoil
+	waitmessage
+	waitbuttonpress
+	release
 	end
 
 BerryTree_EventScript_WantToPlant::
