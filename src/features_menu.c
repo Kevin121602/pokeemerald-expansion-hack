@@ -95,58 +95,6 @@ enum ItemsMenu
     ITEM_MENU_EXIT,
 };
 
-enum SwitchItems
-{
-    SWITCH_ITEM_MENU_EJECT_PACK,
-    SWITCH_ITEM_MENU_EJECT_BUTTON,
-    SWITCH_ITEM_MENU_RED_CARD,
-    SWITCH_ITEM_MENU_EXIT,
-};
-
-enum Berries1
-{
-    BERRIES_MENU_LIECHI_BERRY,
-    BERRIES_MENU_GANLON_BERRY,
-    BERRIES_MENU_SALAC_BERRY,
-    BERRIES_MENU_PETAYA_BERRY,
-    BERRIES_MENU_APICOT_BERRY,
-    BERRIES_MENU_LANSAT_BERRY,
-    BERRIES_MENU_NEXT,
-    BERRIES_MENU_EXIT_1,
-};
-
-enum Berries2
-{
-    BERRIES_MENU_MICLE_BERRY,
-    BERRIES_MENU_CUSTAP_BERRY,
-    BERRIES_MENU_JABOCA_BERRY,
-    BERRIES_MENU_ROWAP_BERRY,
-    BERRIES_MENU_KEE_BERRY,
-    BERRIES_MENU_MARANGA_BERRY,
-    BERRIES_MENU_BACK,
-    BERRIES_MENU_EXIT_2,
-};
-
-enum BoostItems
-{
-    BOOST_ITEM_MENU_ABSORB_BULB,
-    BOOST_ITEM_MENU_CELL_BATTERY,
-    BOOST_ITEM_MENU_LUMINOUS_MOSS,
-    BOOST_ITEM_MENU_SNOWBALL,
-    BOOST_ITEM_MENU_ADRENALINE_ORB,
-    BOOST_ITEM_MENU_ROOM_SERVICE,
-    BOOST_ITEM_MENU_THROAT_SPRAY,
-    BOOST_ITEM_MENU_EXIT,
-};
-
-enum Herbs
-{
-    HERB_MENU_MENTAL_HERB,
-    HERB_MENU_POWER_HERB,
-    HERB_MENU_WHITE_HERB,
-    HERB_MENU_EXIT,
-};
-
 //just for keeping track for now
 enum MoveTutors
 {
@@ -187,38 +135,18 @@ void ShowFeaturesMenu(void);
 static void AddFeaturesMenuAction(u8 action);
 static void AddHeartScalesMenuAction(u8 action);
 static void AddItemsMenuAction(u8 action);
-static void AddSwitchItemsMenuAction(u8 action);
-static void AddBerries1MenuAction(u8 action);
-static void AddBerries2MenuAction(u8 action);
-static void AddBoostItemsMenuAction(u8 action);
-static void AddHerbsMenuAction(u8 action);
 
 static void CreateFeaturesMenuTask(TaskFunc followupFunc);
 static void CreateHeartScalesMenuTask(TaskFunc followupFunc);
 static void CreateItemsMenuTask(TaskFunc followupFunc);
-static void CreateSwitchItemsMenuTask(TaskFunc followupFunc);
-static void CreateBerries1MenuTask(TaskFunc followupFunc);
-static void CreateBerries2MenuTask(TaskFunc followupFunc);
-static void CreateBoostItemsMenuTask(TaskFunc followupFunc);
-static void CreateHerbsMenuTask(TaskFunc followupFunc);
 
 static void BuildFeaturesMenuActions(void);
 static void BuildHeartScalesMenuActions(void);
 static void BuildItemsMenuActions(void);
-static void BuildSwitchItemsMenuActions(void);
-static void BuildBerries1MenuActions(void);
-static void BuildBerries2MenuActions(void);
-static void BuildBoostItemsMenuActions(void);
-static void BuildHerbsMenuActions(void);
 
 static void HideFeaturesMenu(void);
 static void HideHeartScalesMenu(void);
 static void HideItemsMenu(void);
-static void HideSwitchItemsMenu(void);
-static void HideBerries1Menu(void);
-static void HideBerries2Menu(void);
-static void HideBoostItemsMenu(void);
-static void HideHerbsMenu(void);
 
 static void FeaturesMenu_PreformScript(const u8 *script);
 
@@ -255,53 +183,11 @@ static bool8 FeaturesAction_Items_BoostItems(void);
 static bool8 FeaturesAction_Items_Herbs(void);
 static bool8 FeaturesAction_Items_Exit(void);
 
-static bool8 FeaturesAction_SwitchItems_EjectPack(void);
-static bool8 FeaturesAction_SwitchItems_EjectButton(void);
-static bool8 FeaturesAction_SwitchItems_RedCard(void);
-static bool8 FeaturesAction_SwitchItems_Exit(void);
-
-static bool8 FeaturesAction_Berries1_LiechiBerry(void);
-static bool8 FeaturesAction_Berries1_GanlonBerry(void);
-static bool8 FeaturesAction_Berries1_SalacBerry(void);
-static bool8 FeaturesAction_Berries1_PetayaBerry(void);
-static bool8 FeaturesAction_Berries1_ApicotBerry(void);
-static bool8 FeaturesAction_Berries1_LansatBerry(void);
-static bool8 FeaturesAction_Berries1_Next(void);
-static bool8 FeaturesAction_Berries1_Exit(void);
-
-static bool8 FeaturesAction_Berries2_MicleBerry(void);
-static bool8 FeaturesAction_Berries2_CustapBerry(void);
-static bool8 FeaturesAction_Berries2_JabocaBerry(void);
-static bool8 FeaturesAction_Berries2_RowapBerry(void);
-static bool8 FeaturesAction_Berries2_KeeBerry(void);
-static bool8 FeaturesAction_Berries2_MarangaBerry(void);
-static bool8 FeaturesAction_Berries2_Back(void);
-static bool8 FeaturesAction_Berries2_Exit(void);
-
-static bool8 FeaturesAction_BoostItems_AbsorbBulb(void);
-static bool8 FeaturesAction_BoostItems_CellBattery(void);
-static bool8 FeaturesAction_BoostItems_LuminousMoss(void);
-static bool8 FeaturesAction_BoostItems_Snowball(void);
-static bool8 FeaturesAction_BoostItems_AdrenalineOrb(void);
-static bool8 FeaturesAction_BoostItems_RoomService(void);
-static bool8 FeaturesAction_BoostItems_ThroatSpray(void);
-static bool8 FeaturesAction_BoostItems_Exit(void);
-
-static bool8 FeaturesAction_Herbs_MentalHerb(void);
-static bool8 FeaturesAction_Herbs_PowerHerb(void);
-static bool8 FeaturesAction_Herbs_WhiteHerb(void);
-static bool8 FeaturesAction_Herbs_Exit(void);
-
 
 //Task Callbacks
 static void FeaturesMenuTask(u8 taskId);
 static void HeartScalesMenuTask(u8 taskId);
 static void ItemsMenuTask(u8 taskId);
-static void SwitchItemsMenuTask(u8 taskId);
-static void Berries1MenuTask(u8 taskId);
-static void Berries2MenuTask(u8 taskId);
-static void BoostItemsMenuTask(u8 taskId);
-static void HerbsMenuTask(u8 taskId);
 
 //Text
 //Features Main Menu
@@ -325,38 +211,6 @@ static const u8 sFeaturesText_Items_SwitchItems[] =             _("Switch Items"
 static const u8 sFeaturesText_Items_Berries[] =                 _("Berries");
 static const u8 sFeaturesText_Items_BoostingItems[] =           _("Boost Items");
 static const u8 sFeaturesText_Items_Herbs[] =                   _("Herbs");
-//Switch Items
-static const u8 sFeaturesText_Items_EjectPack[] =               _("Eject Pack");
-static const u8 sFeaturesText_Items_EjectButton[] =             _("Eject Button");
-static const u8 sFeaturesText_Items_RedCard[] =                 _("Red Card");
-//Berries
-static const u8 sFeaturesText_Items_LiechiBerry[] =             _("Liechi Berry");
-static const u8 sFeaturesText_Items_GanlonBerry[] =             _("Ganlon Berry");
-static const u8 sFeaturesText_Items_SalacBerry[] =              _("Salac Berry");
-static const u8 sFeaturesText_Items_PetayaBerry[] =             _("Petaya Berry");
-static const u8 sFeaturesText_Items_ApicotBerry[] =             _("Apicot Berry");
-static const u8 sFeaturesText_Items_LansatBerry[] =             _("Lansat Berry");
-//static const u8 sFeaturesText_Items_StarfBerry[] =              _("Starf Berry");
-static const u8 sFeaturesText_Items_MicleBerry[] =              _("Micle Berry");
-static const u8 sFeaturesText_Items_CustapBerry[] =             _("Custap Berry");
-static const u8 sFeaturesText_Items_JabocaBerry[] =             _("Jaboca Berry");
-static const u8 sFeaturesText_Items_RowapBerry[] =              _("Rowap Berry");
-static const u8 sFeaturesText_Items_KeeBerry[] =                _("Kee Berry");
-static const u8 sFeaturesText_Items_MarangaBerry[] =            _("Maranga Berry");
-static const u8 sFeaturesText_Items_Next[] =                    _("Next {RIGHT_ARROW}");
-static const u8 sFeaturesText_Items_Back[] =                    _("Back {LEFT_ARROW}");
-//Boosting Items
-static const u8 sFeaturesText_Items_AbsorbBulb[] =              _("Absorb Bulb");
-static const u8 sFeaturesText_Items_CellBattery[] =             _("Cell Battery");
-static const u8 sFeaturesText_Items_LuminousMoss[] =            _("Luminous Moss");
-static const u8 sFeaturesText_Items_Snowball[] =                _("Snowball");
-static const u8 sFeaturesText_Items_AdrenalineOrb[] =           _("Adrenaline Orb");
-static const u8 sFeaturesText_Items_RoomService[] =             _("Room Service");
-static const u8 sFeaturesText_Items_ThroatSpray[] =             _("Throat Spray");
-//Herbs
-static const u8 sFeaturesText_Items_MentalHerb[] =              _("Mental Herb");
-static const u8 sFeaturesText_Items_PowerHerb[] =               _("Power Herb");
-static const u8 sFeaturesText_Items_WhiteHerb[] =               _("White Herb");
 
 extern const u8 LilycoveCity_MoveDeletersHouse_EventScript_ChooseMonAndMoveToForget[];
 extern const u8 EventScript_FeaturesMenu_Repel[];
@@ -368,34 +222,12 @@ extern const u8 EventScript_FeaturesMenu_ChangeAbility[];
 extern const u8 EventScript_FeaturesMenu_ChangeIV[];
 extern const u8 EventScript_FeaturesMenu_ChangeNature[];
 extern const u8 FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon[];
-extern const u8 EventScript_FeaturesMenu_GiveEjectPack[];
-extern const u8 EventScript_FeaturesMenu_GiveEjectButton[];
-extern const u8 EventScript_FeaturesMenu_GiveRedCard[];
-extern const u8 EventScript_FeaturesMenu_GiveLiechiBerry[];
-extern const u8 EventScript_FeaturesMenu_GiveGanlonBerry[];
-extern const u8 EventScript_FeaturesMenu_GiveSalacBerry[];
-extern const u8 EventScript_FeaturesMenu_GivePetayaBerry[];
-extern const u8 EventScript_FeaturesMenu_GiveApicotBerry[];
-extern const u8 EventScript_FeaturesMenu_GiveLansatBerry[];
-extern const u8 EventScript_FeaturesMenu_GiveStarfBerry[];
-extern const u8 EventScript_FeaturesMenu_GiveMicleBerry[];
-extern const u8 EventScript_FeaturesMenu_GiveCustapBerry[];
-extern const u8 EventScript_FeaturesMenu_GiveJabocaBerry[];
-extern const u8 EventScript_FeaturesMenu_GiveRowapBerry[];
-extern const u8 EventScript_FeaturesMenu_GiveKeeBerry[];
-extern const u8 EventScript_FeaturesMenu_GiveMarangaBerry[];
-extern const u8 EventScript_FeaturesMenu_GiveAbsorbBulb[];
-extern const u8 EventScript_FeaturesMenu_GiveCellBattery[];
-extern const u8 EventScript_FeaturesMenu_GiveLuminousMoss[];
-extern const u8 EventScript_FeaturesMenu_GiveSnowball[];
-extern const u8 EventScript_FeaturesMenu_GiveAdrenalineOrb[];
-extern const u8 EventScript_FeaturesMenu_GiveRoomService[];
-extern const u8 EventScript_FeaturesMenu_GiveThroatSpray[];
-extern const u8 EventScript_FeaturesMenu_GiveMentalHerb[];
-extern const u8 EventScript_FeaturesMenu_GivePowerHerb[];
-extern const u8 EventScript_FeaturesMenu_GiveWhiteHerb[];
 extern const u8 EventScript_AccessPokemonStorage[];
 extern const u8 EventScript_FeaturesMenu_BottleCapMenu[];
+extern const u8 EventScript_FeaturesMenu_SwitchItemsMenu[];
+extern const u8 EventScript_FeaturesMenu_BerriesMenu[];
+extern const u8 EventScript_FeaturesMenu_BoostItemsMenu[];
+extern const u8 EventScript_FeaturesMenu_HerbsMenu[];
 
 static const struct WindowTemplate sFeaturesMenuWindowTemplateMain =
 {
@@ -432,63 +264,11 @@ static const struct MenuAction sFeaturesMenu_Items_HeartScales[] =
 
 static const struct MenuAction sFeaturesMenu_Items_BottleCaps[] =
 {
-    [ITEM_MENU_SWITCH_ITEMS]                    = {sFeaturesText_Items_SwitchItems,             {.u8_void = FeaturesAction_Items_Exit}},
-    [ITEM_MENU_BERRIES]                         = {sFeaturesText_Items_Berries,                 {.u8_void = FeaturesAction_Items_Exit}},
-    [ITEM_MENU_BOOST_ITEMS]                     = {sFeaturesText_Items_BoostingItems,           {.u8_void = FeaturesAction_Items_Exit}},
-    [ITEM_MENU_HERBS]                           = {sFeaturesText_Items_Herbs,                   {.u8_void = FeaturesAction_Items_Exit}},
+    [ITEM_MENU_SWITCH_ITEMS]                    = {sFeaturesText_Items_SwitchItems,             {.u8_void = FeaturesAction_Items_SwitchItems}},
+    [ITEM_MENU_BERRIES]                         = {sFeaturesText_Items_Berries,                 {.u8_void = FeaturesAction_Items_Berries}},
+    [ITEM_MENU_BOOST_ITEMS]                     = {sFeaturesText_Items_BoostingItems,           {.u8_void = FeaturesAction_Items_BoostItems}},
+    [ITEM_MENU_HERBS]                           = {sFeaturesText_Items_Herbs,                   {.u8_void = FeaturesAction_Items_Herbs}},
     [ITEM_MENU_EXIT]                            = {sFeaturesText_Exit,                          {.u8_void = FeaturesAction_Items_Exit}},
-};
-
-static const struct MenuAction sFeaturesMenu_Items_SwitchItems[] =
-{
-    [SWITCH_ITEM_MENU_EJECT_PACK]                      = {sFeaturesText_Items_EjectPack,               {.u8_void = FeaturesAction_Items_Exit}},
-    [SWITCH_ITEM_MENU_EJECT_BUTTON]                    = {sFeaturesText_Items_EjectButton,             {.u8_void = FeaturesAction_Items_Exit}},
-    [SWITCH_ITEM_MENU_RED_CARD]                        = {sFeaturesText_Items_RedCard,                 {.u8_void = FeaturesAction_Items_Exit}},
-    [SWITCH_ITEM_MENU_EXIT]                            = {sFeaturesText_Exit,                          {.u8_void = FeaturesAction_Items_Exit}},
-};
-
-static const struct MenuAction sFeaturesMenu_Items_Berries1[] =
-{
-    [BERRIES_MENU_LIECHI_BERRY]                     = {sFeaturesText_Items_LiechiBerry,             {.u8_void = FeaturesAction_Items_Exit}},
-    [BERRIES_MENU_GANLON_BERRY]                     = {sFeaturesText_Items_GanlonBerry,             {.u8_void = FeaturesAction_Items_Exit}},
-    [BERRIES_MENU_SALAC_BERRY]                      = {sFeaturesText_Items_SalacBerry,              {.u8_void = FeaturesAction_Items_Exit}},
-    [BERRIES_MENU_PETAYA_BERRY]                     = {sFeaturesText_Items_PetayaBerry,             {.u8_void = FeaturesAction_Items_Exit}},
-    [BERRIES_MENU_APICOT_BERRY]                     = {sFeaturesText_Items_PetayaBerry,             {.u8_void = FeaturesAction_Items_Exit}},
-    [BERRIES_MENU_LANSAT_BERRY]                     = {sFeaturesText_Items_LansatBerry,             {.u8_void = FeaturesAction_Items_Exit}},
-    [BERRIES_MENU_NEXT]                             = {sFeaturesText_Items_Next,                    {.u8_void = FeaturesAction_Items_Exit}},
-    [BERRIES_MENU_EXIT_1]                           = {sFeaturesText_Exit,                          {.u8_void = FeaturesAction_Items_Exit}},
-};
-
-static const struct MenuAction sFeaturesMenu_Items_Berries2[] =
-{
-    [BERRIES_MENU_MICLE_BERRY]                      = {sFeaturesText_Items_MicleBerry,              {.u8_void = FeaturesAction_Items_Exit}},
-    [BERRIES_MENU_CUSTAP_BERRY]                     = {sFeaturesText_Items_CustapBerry,             {.u8_void = FeaturesAction_Items_Exit}},
-    [BERRIES_MENU_JABOCA_BERRY]                     = {sFeaturesText_Items_JabocaBerry,             {.u8_void = FeaturesAction_Items_Exit}},
-    [BERRIES_MENU_ROWAP_BERRY]                      = {sFeaturesText_Items_RowapBerry,              {.u8_void = FeaturesAction_Items_Exit}},
-    [BERRIES_MENU_KEE_BERRY]                        = {sFeaturesText_Items_KeeBerry,                {.u8_void = FeaturesAction_Items_Exit}},
-    [BERRIES_MENU_MARANGA_BERRY]                    = {sFeaturesText_Items_MarangaBerry,            {.u8_void = FeaturesAction_Items_Exit}},
-    [BERRIES_MENU_BACK]                             = {sFeaturesText_Items_Back,                    {.u8_void = FeaturesAction_Items_Exit}},
-    [BERRIES_MENU_EXIT_2]                           = {sFeaturesText_Exit,                          {.u8_void = FeaturesAction_Items_Exit}},
-};
-
-static const struct MenuAction sFeaturesMenu_Items_BoostItems[] =
-{
-    [BOOST_ITEM_MENU_ABSORB_BULB]                   = {sFeaturesText_Items_AbsorbBulb,              {.u8_void = FeaturesAction_Items_Exit}},
-    [BOOST_ITEM_MENU_CELL_BATTERY]                  = {sFeaturesText_Items_CellBattery,             {.u8_void = FeaturesAction_Items_Exit}},
-    [BOOST_ITEM_MENU_LUMINOUS_MOSS]                 = {sFeaturesText_Items_LuminousMoss,            {.u8_void = FeaturesAction_Items_Exit}},
-    [BOOST_ITEM_MENU_SNOWBALL]                      = {sFeaturesText_Items_Snowball,                {.u8_void = FeaturesAction_Items_Exit}},
-    [BOOST_ITEM_MENU_ADRENALINE_ORB]                = {sFeaturesText_Items_AdrenalineOrb,           {.u8_void = FeaturesAction_Items_Exit}},
-    [BOOST_ITEM_MENU_ROOM_SERVICE]                  = {sFeaturesText_Items_RoomService,             {.u8_void = FeaturesAction_Items_Exit}},
-    [BOOST_ITEM_MENU_THROAT_SPRAY]                  = {sFeaturesText_Items_ThroatSpray,             {.u8_void = FeaturesAction_Items_Exit}},
-    [BOOST_ITEM_MENU_EXIT]                          = {sFeaturesText_Exit,                          {.u8_void = FeaturesAction_Items_Exit}},
-};
-
-static const struct MenuAction sFeaturesMenu_Items_Herbs[] =
-{
-    [HERB_MENU_MENTAL_HERB]                    = {sFeaturesText_Items_MentalHerb,               {.u8_void = FeaturesAction_Items_Exit}},
-    [HERB_MENU_POWER_HERB]                     = {sFeaturesText_Items_PowerHerb,                {.u8_void = FeaturesAction_Items_Exit}},
-    [HERB_MENU_WHITE_HERB]                     = {sFeaturesText_Items_WhiteHerb,                {.u8_void = FeaturesAction_Items_Exit}},
-    [HERB_MENU_EXIT]                           = {sFeaturesText_Exit,                           {.u8_void = FeaturesAction_Items_Exit}},
 };
 
 //Functions
@@ -1104,72 +884,52 @@ static bool8 FeaturesAction_HeartScales_Exit(void){
     return FALSE;
 }
 
-static bool8 FeaturesAction_SwitchItems_EjectPack(void){
+static bool8 FeaturesAction_Items_SwitchItems(void){
     if (!gPaletteFade.active)
     {
         PlaySE(SE_SELECT);
         ClearStdWindowAndFrame(GetItemsMenuWindowId(), TRUE);
         RemoveItemsMenuWindow();
-        FeaturesMenu_PreformScript(EventScript_FeaturesMenu_GiveEjectPack);
+        FeaturesMenu_PreformScript(EventScript_FeaturesMenu_SwitchItemsMenu);
         return TRUE;
     }
 
     return FALSE;
 }
 
-static bool8 FeaturesAction_Items_EjectButton(void){
+static bool8 FeaturesAction_Items_Berries(void){
     if (!gPaletteFade.active)
     {
         PlaySE(SE_SELECT);
         ClearStdWindowAndFrame(GetItemsMenuWindowId(), TRUE);
         RemoveItemsMenuWindow();
-        FeaturesMenu_PreformScript(EventScript_FeaturesMenu_GiveEjectButton);
+        FeaturesMenu_PreformScript(EventScript_FeaturesMenu_BerriesMenu);
         return TRUE;
     }
 
     return FALSE;
 }
 
-static bool8 FeaturesAction_Items_RedCard(void){
+static bool8 FeaturesAction_Items_BoostItems(void){
     if (!gPaletteFade.active)
     {
         PlaySE(SE_SELECT);
         ClearStdWindowAndFrame(GetItemsMenuWindowId(), TRUE);
         RemoveItemsMenuWindow();
-        FeaturesMenu_PreformScript(EventScript_FeaturesMenu_GiveRedCard);
+        FeaturesMenu_PreformScript(EventScript_FeaturesMenu_BoostItemsMenu);
         return TRUE;
     }
 
     return FALSE;
 }
 
-static bool8 FeaturesAction_Items_Gems(void){
+static bool8 FeaturesAction_Items_Herbs(void){
     if (!gPaletteFade.active)
     {
         PlaySE(SE_SELECT);
-        HideItemsMenu();
-        return TRUE;
-    }
-
-    return FALSE;
-}
-
-static bool8 FeaturesAction_Items_ResistBerries(void){
-    if (!gPaletteFade.active)
-    {
-        PlaySE(SE_SELECT);
-        HideItemsMenu();
-        return TRUE;
-    }
-
-    return FALSE;
-}
-
-static bool8 FeaturesAction_Items_PinchBerries(void){
-    if (!gPaletteFade.active)
-    {
-        PlaySE(SE_SELECT);
-        HideItemsMenu();
+        ClearStdWindowAndFrame(GetItemsMenuWindowId(), TRUE);
+        RemoveItemsMenuWindow();
+        FeaturesMenu_PreformScript(EventScript_FeaturesMenu_HerbsMenu);
         return TRUE;
     }
 

@@ -3170,6 +3170,7 @@ extern const u8 gText_Snowball[];
 extern const u8 gText_AdrenalineOrb[];
 extern const u8 gText_RoomService[];
 extern const u8 gText_ThroatSpray[];
+extern const u8 gText_BoosterEnergy[];
 
 extern const u8 gText_MentalHerb[];
 extern const u8 gText_PowerHerb[];

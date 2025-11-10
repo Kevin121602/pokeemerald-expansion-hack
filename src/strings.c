@@ -1950,6 +1950,7 @@ const u8 gText_Snowball[] =           _("Snowball");
 const u8 gText_AdrenalineOrb[] =      _("Adrenaline Orb");
 const u8 gText_RoomService[] =        _("Room Service");
 const u8 gText_ThroatSpray[] =        _("Throat Spray");
+const u8 gText_BoosterEnergy[] =      _("Booster Energy");
 const u8 gText_MentalHerb[] =         _("Mental Herb");
 const u8 gText_PowerHerb[] =          _("Power Herb");
 const u8 gText_WhiteHerb[] =          _("White Herb");

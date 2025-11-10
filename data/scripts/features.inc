@@ -230,7 +230,7 @@ EventScript_FeaturesMenu_SwitchItemsMenu::
 	case 0, EventScript_FeaturesMenu_GiveEjectPack
 	case 1, EventScript_FeaturesMenu_GiveEjectButton
 	case 2, EventScript_FeaturesMenu_GiveRedCard
-	case MULTI_B_PRESSED, EventScript_FeaturesMenu_BottleCapMenu
+	case MULTI_B_PRESSED, EventScript_FeaturesMenu_Exit
 	releaseall
 	end
 
@@ -252,7 +252,7 @@ EventScript_FeaturesMenu_BerriesMenu::
 	case 10, EventScript_FeaturesMenu_GiveRowapBerry
 	case 11, EventScript_FeaturesMenu_GiveKeeBerry
 	case 12, EventScript_FeaturesMenu_GiveMarangaBerry
-	case MULTI_B_PRESSED, EventScript_FeaturesMenu_BottleCapMenu
+	case MULTI_B_PRESSED, EventScript_FeaturesMenu_Exit
 	releaseall
 	end
 
@@ -266,7 +266,8 @@ EventScript_FeaturesMenu_BoostItemsMenu::
 	case 4, EventScript_FeaturesMenu_GiveAdrenalineOrb
 	case 5, EventScript_FeaturesMenu_GiveRoomService
 	case 6, EventScript_FeaturesMenu_GiveThroatSpray
-	case MULTI_B_PRESSED, EventScript_FeaturesMenu_BottleCapMenu
+	case 7, EventScript_FeaturesMenu_GiveBoosterEnergy
+	case MULTI_B_PRESSED, EventScript_FeaturesMenu_Exit
 	releaseall
 	end
 
@@ -276,7 +277,7 @@ EventScript_FeaturesMenu_HerbsMenu::
 	case 0, EventScript_FeaturesMenu_GiveMentalHerb
 	case 1, EventScript_FeaturesMenu_GivePowerHerb
 	case 2, EventScript_FeaturesMenu_GiveWhiteHerb
-	case MULTI_B_PRESSED, EventScript_FeaturesMenu_BottleCapMenu
+	case MULTI_B_PRESSED, EventScript_FeaturesMenu_Exit
 	releaseall
 	end 
 
@@ -482,6 +483,15 @@ EventScript_FeaturesMenu_GiveThroatSpray::
 	msgbox Text_BuyThroatSpray, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
 	giveitem ITEM_THROAT_SPRAY
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveBoosterEnergy::
+	msgbox Text_BuyBoosterEnergy, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_BOOSTER_ENERGY
 	removeitem ITEM_BOTTLE_CAP
 	msgbox Text_SpentBottleCap
 	releaseall
@@ -705,6 +715,10 @@ Text_BuyRoomService::
 
 Text_BuyThroatSpray::
 	.string "Buy Throat Spray for one Bottle Cap?$"
+
+Text_BuyBoosterEnergy::
+	.string "Buy a Booster Energy for one Bottle\n"
+	.string "Cap?$"
 
 Text_BuyMentalHerb::
 	.string "Buy a Mental Herb for one Bottle Cap?$"

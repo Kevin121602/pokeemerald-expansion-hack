@@ -926,6 +926,7 @@ static const struct MenuAction MultichoiceList_BoostItemMenu[] =
     {gText_AdrenalineOrb},
     {gText_RoomService},
     {gText_ThroatSpray},
+    {gText_BoosterEnergy},
 };
 
 static const struct MenuAction MultichoiceList_HerbMenu[] =
