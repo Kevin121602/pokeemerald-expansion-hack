@@ -4069,6 +4069,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     u32 bestPhysicalMove = MAX_MON_MOVES;
     u32 bestSpecialMove = MAX_MON_MOVES;
     u32 bestOverallMove = MAX_MON_MOVES;
+    u32 bestIgnoreBoostsMove = MAX_MON_MOVES;
 
     u32 bestPhysPrioMove = MAX_MON_MOVES;
     u32 bestSpecialPrioMove = MAX_MON_MOVES;
@@ -4119,6 +4120,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
             }
             if((AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > ignoreBoostsDmg) && (gMovesInfo[moves[i]].ignoresTargetDefenseEvasionStages || sCriticalHitOdds[CalcCritChanceStage(battlerDef, battlerAtk, moves[i], FALSE)] == 1 || CalcCritChanceStage(battlerDef, battlerAtk, moves[i], FALSE) == -2)){
                 ignoreBoostsDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
+                bestIgnoreBoostsMove = i;
             }
             if(AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected > bestPhysPrioDmg && GetMovePriority(battlerDef, moves[i]) > 0){
                 bestPhysPrioDmg = AI_DATA->simulatedDmg[battlerDef][battlerAtk][i].expected;
@@ -4161,8 +4163,13 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, u32 statI
     if(bestPhysMultiHitMove != MAX_MON_MOVES){
         bestPhysMultiHitDmg = AI_CalcDamage(moves[bestPhysMultiHitMove], battlerDef, battlerAtk, &effectiveness, TRUE, AI_GetWeather(AI_DATA), DMG_ROLL_DEFAULT).expected;
     }
+
     if(bestSpecialMultiHitMove != MAX_MON_MOVES){
         bestSpecialMultiHitDmg = AI_CalcDamage(moves[bestSpecialMultiHitMove], battlerDef, battlerAtk, &effectiveness, TRUE, AI_GetWeather(AI_DATA), DMG_ROLL_DEFAULT).expected;
+    }
+
+    if(bestIgnoreBoostsMove != MAX_MON_MOVES){
+        ignoreBoostsDmg = AI_CalcDamage(moves[bestIgnoreBoostsMove], battlerDef, battlerAtk, &effectiveness, TRUE, AI_GetWeather(AI_DATA), DMG_ROLL_DEFAULT).expected;
     }
 
     bestOverallDmg = (bestPhysicalDmg > bestSpecialDmg) ? bestPhysicalDmg : bestSpecialDmg;
