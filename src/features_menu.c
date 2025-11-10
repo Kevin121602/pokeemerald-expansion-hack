@@ -147,6 +147,19 @@ enum Herbs
     HERB_MENU_EXIT,
 };
 
+//just for keeping track for now
+enum MoveTutors
+{
+    MOVE_TUTORS_LITTLEROOT_TOWN,
+    MOVE_TUTORS_OLDALE_MEADOW,
+    MOVE_TUTORS_ROUTE_104,
+    MOVE_TUTORS_ROUTE_115,
+    MOVE_TUTORS_ROUTE_114,
+    MOVE_TUTORS_ROUTE_112, //Next Here
+    MOVE_TUTORS_LAVARIDGE_TOWN,
+    MOVE_TUTORS_EXIT,
+};
+
 
 struct FeaturesMenuListData
 {
@@ -170,18 +183,43 @@ EWRAM_DATA static u8 sHeartScalesMenuCursorPos = 0;
 EWRAM_DATA static u8 sItemsMenuCursorPos = 0;
 
 void ShowFeaturesMenu(void);
+
 static void AddFeaturesMenuAction(u8 action);
 static void AddHeartScalesMenuAction(u8 action);
 static void AddItemsMenuAction(u8 action);
+static void AddSwitchItemsMenuAction(u8 action);
+static void AddBerries1MenuAction(u8 action);
+static void AddBerries2MenuAction(u8 action);
+static void AddBoostItemsMenuAction(u8 action);
+static void AddHerbsMenuAction(u8 action);
+
 static void CreateFeaturesMenuTask(TaskFunc followupFunc);
 static void CreateHeartScalesMenuTask(TaskFunc followupFunc);
 static void CreateItemsMenuTask(TaskFunc followupFunc);
+static void CreateSwitchItemsMenuTask(TaskFunc followupFunc);
+static void CreateBerries1MenuTask(TaskFunc followupFunc);
+static void CreateBerries2MenuTask(TaskFunc followupFunc);
+static void CreateBoostItemsMenuTask(TaskFunc followupFunc);
+static void CreateHerbsMenuTask(TaskFunc followupFunc);
+
 static void BuildFeaturesMenuActions(void);
 static void BuildHeartScalesMenuActions(void);
 static void BuildItemsMenuActions(void);
+static void BuildSwitchItemsMenuActions(void);
+static void BuildBerries1MenuActions(void);
+static void BuildBerries2MenuActions(void);
+static void BuildBoostItemsMenuActions(void);
+static void BuildHerbsMenuActions(void);
+
 static void HideFeaturesMenu(void);
 static void HideHeartScalesMenu(void);
 static void HideItemsMenu(void);
+static void HideSwitchItemsMenu(void);
+static void HideBerries1Menu(void);
+static void HideBerries2Menu(void);
+static void HideBoostItemsMenu(void);
+static void HideHerbsMenu(void);
+
 static void FeaturesMenu_PreformScript(const u8 *script);
 
 static bool32 InitFeaturesMenuStep(void);
