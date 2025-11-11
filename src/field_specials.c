@@ -32,6 +32,7 @@
 #include "overworld.h"
 #include "party_menu.h"
 #include "pokeblock.h"
+#include "pokedex.h"
 #include "pokemon.h"
 #include "pokemon_storage_system.h"
 #include "random.h"
@@ -71,7 +72,7 @@
 #include "constants/metatile_labels.h"
 #include "palette.h"
 #include "battle_util.h"
-#include "level_caps.h"
+#include "caps.h"
 
 #define TAG_ITEM_ICON 5500
 
@@ -4385,7 +4386,7 @@ void IncreaseLevelCap(void)
 
 void IsMonWeezingGalar(void)
 {
-    if(GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES) == SPECIES_WEEZING_GALARIAN)
+    if(GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES) == SPECIES_WEEZING_GALAR)
         gSpecialVar_Result = TRUE;
     else
         gSpecialVar_Result = FALSE;
@@ -4618,4 +4619,60 @@ void ChangeSpDefenseIV(void){
 void ChangeSpeedIV(void){
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPEED_IV, &gSpecialVar_0x8005);
     CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
+}
+
+void GetObjectPosition(u16* xPointer, u16* yPointer, u32 localId, u32 useTemplate)
+{
+    u32 objectId;
+    struct ObjectEvent* objEvent;
+
+    if (useTemplate)
+    {
+        const struct ObjectEventTemplate *objTemplate = FindObjectEventTemplateByLocalId(localId, gSaveBlock1Ptr->objectEventTemplates, gMapHeader.events->objectEventCount);
+        *xPointer = objTemplate->x;
+        *yPointer = objTemplate->y;
+        return;
+    }
+
+    objectId = GetObjectEventIdByLocalId(localId);
+    objEvent = &gObjectEvents[objectId];
+    *xPointer = objEvent->currentCoords.x - 7;
+    *yPointer = objEvent->currentCoords.y - 7;
+}
+
+bool32 CheckObjectAtXY(u32 x, u32 y)
+{
+    u32 i;
+
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        if (!gObjectEvents[i].active)
+            continue;
+
+        if (gObjectEvents[i].currentCoords.x != x)
+            continue;
+
+        if (gObjectEvents[i].currentCoords.y != y)
+            continue;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool32 CheckPartyHasSpecies(u32 givenSpecies)
+{
+    u32 partyIndex;
+
+    for (partyIndex = 0; partyIndex < CalculatePlayerPartyCount(); partyIndex++)
+        if (GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES) == givenSpecies)
+            return TRUE;
+
+    return FALSE;
+}
+
+void UseBlankMessageToCancelPokemonPic(void)
+{
+    u8 t = EOS;
+    AddTextPrinterParameterized(0, FONT_NORMAL, &t, 0, 1, 0, NULL);
+    ScriptMenu_HidePokemonPic();
 }

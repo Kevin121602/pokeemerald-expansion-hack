@@ -258,6 +258,9 @@ const u8 gText_TheBattle[] = _("the battle");
 const u8 gText_ThePokemonList[] = _("the Pokémon List");
 const u8 gText_TheShop[] = _("the shop");
 const u8 gText_ThePC[] = _("the PC");
+const u8 gText_PlayedPokeFluteCatchy[] = _("Played the POKé FLUTE.\pNow, that's a catchy tune!{PAUSE_UNTIL_PRESS}");
+const u8 gText_PlayedPokeFlute[] = _("Played the POKé FLUTE.");
+const u8 gText_PokeFluteAwakenedMon[] = _("The POKé FLUTE awakened sleeping\nPokémon.{PAUSE_UNTIL_PRESS}");
 
 const u8 *const gBagMenu_ReturnToStrings[] =
 {
@@ -285,24 +288,19 @@ const u8 *const gPyramidBagMenu_ReturnToStrings[] =
 };
 
 const u8 gText_ReturnToVar1[] = _("Return to\n{STR_VAR_1}.");
-const u8 gText_ItemsPocket[] = _("Items");
-const u8 gText_HeldItemsPocket[] = _("Held Items");
-const u8 gText_MegaStonesPocket[] = _("Mega Stones");
-const u8 gText_GemsPocket[] = _("Gems");
-const u8 gText_TMHMPocket[] = _("TMs & HMs");
-const u8 gText_BerriesPocket[] = _("Berries");
-const u8 gText_KeyItemsPocket[] = _("Key Items");
 
 const u8 *const gPocketNamesStringsTable[] =
 {
-    [ITEMS_POCKET] = gText_ItemsPocket,
-    [HELD_ITEMS_POCKET] = gText_HeldItemsPocket,
-    [MEGA_STONES_POCKET] = gText_MegaStonesPocket,
-    [GEMS_POCKET] = gText_GemsPocket,
-    [TMHM_POCKET]  = gText_TMHMPocket,
-    [BERRIES_POCKET] = gText_BerriesPocket,
-    [KEYITEMS_POCKET] = gText_KeyItemsPocket
+    [ITEMS_POCKET] =        COMPOUND_STRING("Items"),
+    [HELD_ITEMS_POCKET] =   COMPOUND_STRING("Held Items"),
+    [MEGA_STONES_POCKET] =  COMPOUND_STRING("Mega Stones"),
+    [GEMS_POCKET] =         COMPOUND_STRING("Gems"),
+    [TMHM_POCKET]  =        COMPOUND_STRING("TMs & HMs"),
+    [BERRIES_POCKET] =      COMPOUND_STRING("Berries"),
+    [KEYITEMS_POCKET] =     COMPOUND_STRING("Key Items")
 };
+
+
 
 const u8 gText_NumberItem_TMBerry[] = _("{NO}{STR_VAR_1}{CLEAR 0x07}{STR_VAR_2}");
 const u8 gText_NumberItem_HM[] = _("{CLEAR_TO 0x11}{STR_VAR_1}{CLEAR 0x05}{STR_VAR_2}");
@@ -1320,6 +1318,8 @@ const u8 gText_MatchCallMay_Pokemon[] = _("I'll use any Pokémon!");
 const u8 gText_MatchCallMay_Intro1[] = _("My Pokémon and I help");
 const u8 gText_MatchCallMay_Intro2[] = _("my father's research.");
 const u8 gText_HatchedFromEgg[] = _("{STR_VAR_1} hatched from the Egg!");
+const u8 gText_PlayerScurriedToCenter[] = _("{PLAYER} scurried to a Pokémon Center,\nprotecting the exhausted and fainted\nPokémon from further harm…\p");
+const u8 gText_PlayerScurriedBackHome[] = _("{PLAYER} scurried back home, protecting\nthe exhausted and fainted Pokémon from\nfurther harm…\p");
 const u8 gText_NicknameHatchPrompt[] = _("Would you like to nickname the newly\nhatched {STR_VAR_1}?");
 ALIGNED(4) const u8 gText_ReadyPickBerry[] = _("Are you ready to Berry-Crush?\nPlease pick a Berry for use.\p");
 ALIGNED(4) const u8 gText_WaitForAllChooseBerry[] = _("Please wait while each member\nchooses a Berry.");
@@ -1966,3 +1966,5 @@ const u8 gText_NectarBaile[] =        _("Baile");
 const u8 gText_NectarPomPom[] =       _("Pom-Pom");
 const u8 gText_NectarPau[] =          _("Pa'u");
 const u8 gText_NectarSensu[] =        _("Sensu");
+const u8 gText_Relearn[] = _("{START_BUTTON} RELEARN"); // future note: don't decap this, because it mimics the summary screen BG graphics which will not get decapped
+const u8 gText_Rename[] = _("RENAME");

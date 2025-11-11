@@ -448,7 +448,7 @@ Route110_TrickHouseEntrance_Apprentice_93:
 
 Route110_TrickHouseEntrance_Apprentice_94:
 # 52 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-	givemon SPECIES_SANDSHREW_ALOLAN, 5, , , , , , , , , , , , , , , , , , MOVE_BIDE, MOVE_SCRATCH, MOVE_MIST, MOVE_SPIKY_SHIELD
+	givemon SPECIES_SANDSHREW_ALOLA, 5, , , , , , , , , , , , , , , , , , MOVE_BIDE, MOVE_SCRATCH, MOVE_MIST, MOVE_SPIKY_SHIELD
 # 53 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 	playfanfare MUS_DP_OBTAIN_ITEM
 # 54 "data/maps/Route110_TrickHouseEntrance/scripts.pory"

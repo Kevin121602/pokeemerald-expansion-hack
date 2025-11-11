@@ -988,7 +988,7 @@ static const struct InGameTrade sIngameTrades[] =
     [INGAME_TRADE_GALARIAN_FARFETCHD] =
     {
         .nickname = _("Karoo"),
-        .species = SPECIES_FARFETCHD_GALARIAN,
+        .species = SPECIES_FARFETCHD_GALAR,
         .ivs = {5, 4, 5, 4, 4, 4},
         .abilityNum = 1,
         .otId = 38726,

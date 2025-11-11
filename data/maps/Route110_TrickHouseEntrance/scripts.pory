@@ -49,7 +49,7 @@ script Route110_TrickHouseEntrance_Apprentice{
 							waitmessage
 							waitfanfare
 						case 1:
-							givemon(SPECIES_SANDSHREW_ALOLAN, 5, , , , , , , , , , , , , , , , , , MOVE_BIDE, MOVE_SCRATCH, MOVE_MIST, MOVE_SPIKY_SHIELD)
+							givemon(SPECIES_SANDSHREW_ALOLA, 5, , , , , , , , , , , , , , , , , , MOVE_BIDE, MOVE_SCRATCH, MOVE_MIST, MOVE_SPIKY_SHIELD)
 							playfanfare(MUS_DP_OBTAIN_ITEM)
 							msgbox(format("{PLAYER} recieved Sandshrew!"))
 							waitmessage

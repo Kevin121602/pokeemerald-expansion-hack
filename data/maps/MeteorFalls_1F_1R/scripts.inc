@@ -697,7 +697,7 @@ MeteorFalls_1F_1R_EventScript_Riley_Text_0:
 
 MeteorFalls_1F_1R_Text_RileyIntro::
 # 29 "data/maps/MeteorFalls_1F_1R/scripts.pory"
-	.string "Hello there, my name is Riley.\p"
+	.string "Hi, my name is Riley.\p"
 	.string "I traveled here from Sinnoh to hone\n"
 	.string "my offensive skills.\p"
 	.string "There's something about you that seems\n"
