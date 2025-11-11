@@ -2095,7 +2095,7 @@ bool32 IsMoveEncouragedKill(u32 battlerAtk, u32 battlerDef, u32 move){
                 case MOVE_EFFECT_ACC_PLUS_2:
                 case MOVE_EFFECT_EVS_PLUS_1:
                 case MOVE_EFFECT_EVS_PLUS_2:
-                case MOVE_EFFECT_RAPID_SPIN:
+                case EFFECT_RAPID_SPIN:
                         return TRUE;
                     break;
                 }
@@ -4877,7 +4877,8 @@ bool32 AI_ShouldCopyStatChanges(u32 battlerAtk, u32 battlerDef)
 bool32 AI_ShouldSetUpHazards(u32 battlerAtk, u32 battlerDef, struct AiLogicData *aiData)
 {
     if (aiData->abilities[battlerDef] == ABILITY_MAGIC_BOUNCE
-     || CountUsablePartyMons(battlerDef) == 0)
+     || CountUsablePartyMons(battlerDef) == 0
+     || CountUsablePartyMons(battlerAtk) == 1)
         return FALSE;
 
     return TRUE;

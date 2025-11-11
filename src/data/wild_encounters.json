@@ -8793,12 +8793,12 @@
               {
                 "min_level": 9,
                 "max_level": 10,
-                "species": "SPECIES_MAWILE"
+                "species": "SPECIES_SANDSHREW_ALOLA"
               },
               {
                 "min_level": 9,
                 "max_level": 10,
-                "species": "SPECIES_CUFANT"
+                "species": "SPECIES_SANDSHREW_ALOLA"
               }
             ]
           },
