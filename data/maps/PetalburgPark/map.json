@@ -34,13 +34,7 @@
       "flag": "FLAG_ITEM_PETALBURG_CITY_MUSCLE_BAND"
     }
   ],
-  "warp_events": [
-
-  ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": []
 }

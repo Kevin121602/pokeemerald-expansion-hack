@@ -8783,12 +8783,12 @@
               {
                 "min_level": 9,
                 "max_level": 10,
-                "species": "SPECIES_SANDSHREW_ALOLA"
+                "species": "SPECIES_MAWILE"
               },
               {
                 "min_level": 9,
                 "max_level": 10,
-                "species": "SPECIES_DIGLETT_ALOLA"
+                "species": "SPECIES_CUFANT"
               },
               {
                 "min_level": 9,
@@ -13905,7 +13905,7 @@
               {
                 "min_level": 6,
                 "max_level": 7,
-                "species": "SPECIES_DRILBUR"
+                "species": "SPECIES_SANDILE"
               },
               {
                 "min_level": 6,
@@ -13915,7 +13915,7 @@
               {
                 "min_level": 6,
                 "max_level": 7,
-                "species": "SPECIES_SANDILE"
+                "species": "SPECIES_DRILBUR"
               },
               {
                 "min_level": 6,
