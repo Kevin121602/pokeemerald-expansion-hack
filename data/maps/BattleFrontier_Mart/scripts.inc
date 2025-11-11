@@ -60,13 +60,7 @@ BattleFrontier_Mart_Pokemart:
 	.2byte ITEM_CARBOS
 # 31 "data/maps/BattleFrontier_Mart/scripts.pory"
 	.2byte ITEM_HP_UP
-# 32 "data/maps/BattleFrontier_Mart/scripts.pory"
-	.2byte ITEM_NONE
-# 33 "data/maps/BattleFrontier_Mart/scripts.pory"
-	release
-# 34 "data/maps/BattleFrontier_Mart/scripts.pory"
-	end
-# 35 "data/maps/BattleFrontier_Mart/scripts.pory"
+	pokemartlistend
 
 # 36 "data/maps/BattleFrontier_Mart/scripts.pory"
 BattleFrontier_Mart_EventScript_OldMan::

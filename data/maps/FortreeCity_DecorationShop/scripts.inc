@@ -62,13 +62,7 @@ FortreeCity_DecorationShop_PokemartDecor_Desks:
 	.2byte DECOR_CAMP_DESK
 # 32 "data/maps/FortreeCity_DecorationShop/scripts.pory"
 	.2byte DECOR_HARD_DESK
-# 33 "data/maps/FortreeCity_DecorationShop/scripts.pory"
-	.2byte DECOR_NONE
-# 34 "data/maps/FortreeCity_DecorationShop/scripts.pory"
-	release
-# 35 "data/maps/FortreeCity_DecorationShop/scripts.pory"
-	end
-# 36 "data/maps/FortreeCity_DecorationShop/scripts.pory"
+	pokemartlistend
 
 # 37 "data/maps/FortreeCity_DecorationShop/scripts.pory"
 FortreeCity_DecorationShop_EventScript_ClerkChairs::
@@ -110,13 +104,7 @@ FortreeCity_DecorationShop_PokemartDecor_Chairs:
 	.2byte DECOR_CAMP_CHAIR
 # 56 "data/maps/FortreeCity_DecorationShop/scripts.pory"
 	.2byte DECOR_HARD_CHAIR
-# 57 "data/maps/FortreeCity_DecorationShop/scripts.pory"
-	.2byte DECOR_NONE
-# 58 "data/maps/FortreeCity_DecorationShop/scripts.pory"
-	release
-# 59 "data/maps/FortreeCity_DecorationShop/scripts.pory"
-	end
-# 60 "data/maps/FortreeCity_DecorationShop/scripts.pory"
+	pokemartlistend
 
 # 61 "data/maps/FortreeCity_DecorationShop/scripts.pory"
 FortreeCity_DecorationShop_Text_MerchandiseSentToPC:

@@ -48,13 +48,7 @@ MossdeepCity_Mart_Pokemart:
 	.2byte ITEM_X_ATTACK
 # 25 "data/maps/MossdeepCity_Mart/scripts.pory"
 	.2byte ITEM_X_DEFENSE
-# 26 "data/maps/MossdeepCity_Mart/scripts.pory"
-	.2byte ITEM_NONE
-# 27 "data/maps/MossdeepCity_Mart/scripts.pory"
-	release
-# 28 "data/maps/MossdeepCity_Mart/scripts.pory"
-	end
-# 29 "data/maps/MossdeepCity_Mart/scripts.pory"
+	pokemartlistend
 
 # 30 "data/maps/MossdeepCity_Mart/scripts.pory"
 MossdeepCity_Mart_EventScript_Woman::

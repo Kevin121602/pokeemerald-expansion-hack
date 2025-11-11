@@ -48,13 +48,7 @@ SootopolisCity_Mart_Pokemart:
 	.2byte ITEM_X_DEFENSE
 # 25 "data/maps/SootopolisCity_Mart/scripts.pory"
 	.2byte ITEM_SHADOW_MAIL
-# 26 "data/maps/SootopolisCity_Mart/scripts.pory"
-	.2byte ITEM_NONE
-# 27 "data/maps/SootopolisCity_Mart/scripts.pory"
-	release
-# 28 "data/maps/SootopolisCity_Mart/scripts.pory"
-	end
-# 29 "data/maps/SootopolisCity_Mart/scripts.pory"
+	pokemartlistend
 
 # 30 "data/maps/SootopolisCity_Mart/scripts.pory"
 SootopolisCity_Mart_EventScript_FatMan::

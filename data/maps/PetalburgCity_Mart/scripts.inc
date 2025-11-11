@@ -54,13 +54,7 @@ PetalburgCity_Mart_Pokemart_Basic:
 	.2byte ITEM_X_DEFENSE
 # 28 "data/maps/PetalburgCity_Mart/scripts.pory"
 	.2byte ITEM_ORANGE_MAIL
-# 29 "data/maps/PetalburgCity_Mart/scripts.pory"
-	.2byte ITEM_NONE
-# 30 "data/maps/PetalburgCity_Mart/scripts.pory"
-	release
-# 31 "data/maps/PetalburgCity_Mart/scripts.pory"
-	end
-# 32 "data/maps/PetalburgCity_Mart/scripts.pory"
+	pokemartlistend
 
 # 33 "data/maps/PetalburgCity_Mart/scripts.pory"
 PetalburgCity_Mart_EventScript_ExpandedItems::
@@ -104,13 +98,7 @@ PetalburgCity_Mart_Pokemart_Expanded:
 	.2byte ITEM_X_DEFENSE
 # 53 "data/maps/PetalburgCity_Mart/scripts.pory"
 	.2byte ITEM_ORANGE_MAIL
-# 54 "data/maps/PetalburgCity_Mart/scripts.pory"
-	.2byte ITEM_NONE
-# 55 "data/maps/PetalburgCity_Mart/scripts.pory"
-	release
-# 56 "data/maps/PetalburgCity_Mart/scripts.pory"
-	end
-# 57 "data/maps/PetalburgCity_Mart/scripts.pory"
+	pokemartlistend
 
 # 58 "data/maps/PetalburgCity_Mart/scripts.pory"
 PetalburgCity_Mart_EventScript_Woman::

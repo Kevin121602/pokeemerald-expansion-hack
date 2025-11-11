@@ -42,13 +42,7 @@ LilycoveCity_DepartmentStore_3F_Pokemart_Vitamins:
 	.2byte ITEM_CARBOS
 # 22 "data/maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
 	.2byte ITEM_HP_UP
-# 23 "data/maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_NONE
-# 24 "data/maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	release
-# 25 "data/maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	end
-# 26 "data/maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
+	pokemartlistend
 
 # 27 "data/maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
 LilycoveCity_DepartmentStore_3F_EventScript_ClerkRight::
@@ -88,13 +82,7 @@ LilycoveCity_DepartmentStore_3F_Pokemart_StatBoosters:
 	.2byte ITEM_GUARD_SPEC
 # 45 "data/maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
 	.2byte ITEM_X_ACCURACY
-# 46 "data/maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	.2byte ITEM_NONE
-# 47 "data/maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	release
-# 48 "data/maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
-	end
-# 49 "data/maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
+	pokemartlistend
 
 # 50 "data/maps/LilycoveCity_DepartmentStore_3F/scripts.pory"
 LilycoveCity_DepartmentStore_3F_EventScript_TriathleteM::

@@ -54,21 +54,11 @@ LilycoveCity_DepartmentStore_4F_EventScript_ClerkLeft::
 	.align 2
 # 28 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
 LilycoveCity_DepartmentStore_4F_Pokemart_AttackTMs:
-# 29 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
 	.2byte ITEM_TM_ACROBATICS
-# 30 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
 	.2byte ITEM_TM_ACROBATICS
-# 31 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
 	.2byte ITEM_TM_ACROBATICS
-# 32 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
 	.2byte ITEM_TM_ACROBATICS
-# 33 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
-	.2byte ITEM_NONE
-# 34 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
-	release
-# 35 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
-	end
-# 36 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
+	pokemartlistend
 
 # 37 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
 LilycoveCity_DepartmentStore_4F_EventScript_ClerkRight::
@@ -94,21 +84,11 @@ LilycoveCity_DepartmentStore_4F_EventScript_ClerkRight::
 	.align 2
 # 48 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
 LilycoveCity_DepartmentStore_4F_Pokemart_DefenseTMs:
-# 49 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
-	.2byte ITEM_TM_ACROBATICS
-# 50 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
-	.2byte ITEM_TM_ACROBATICS
-# 51 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
-	.2byte ITEM_TM_ACROBATICS
-# 52 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
-	.2byte ITEM_TM_ACROBATICS
-# 53 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
-	.2byte ITEM_NONE
-# 54 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
-	release
-# 55 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
-	end
-# 56 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
+	.2byte ITEM_TM_PROTECT
+	.2byte ITEM_TM_PROTECT
+	.2byte ITEM_TM_REFLECT
+	.2byte ITEM_TM_LIGHT_SCREEN
+	pokemartlistend
 
 # 57 "data/maps/LilycoveCity_DepartmentStore_4F/scripts.pory"
 LilycoveCity_DepartmentStore_4F_Text_AttackOrDefenseTM:

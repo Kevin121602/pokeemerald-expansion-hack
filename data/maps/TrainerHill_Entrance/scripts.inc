@@ -538,13 +538,7 @@ TrainerHill_Entrance_Pokemart_Basic:
 	.2byte ITEM_GUARD_SPEC
 # 270 "data/maps/TrainerHill_Entrance/scripts.pory"
 	.2byte ITEM_X_ACCURACY
-# 271 "data/maps/TrainerHill_Entrance/scripts.pory"
-	.2byte ITEM_NONE
-# 272 "data/maps/TrainerHill_Entrance/scripts.pory"
-	release
-# 273 "data/maps/TrainerHill_Entrance/scripts.pory"
-	end
-# 274 "data/maps/TrainerHill_Entrance/scripts.pory"
+	pokemartlistend
 
 # 275 "data/maps/TrainerHill_Entrance/scripts.pory"
 TrainerHill_Entrance_EventScript_ExpandedPokemart::
@@ -586,13 +580,7 @@ TrainerHill_Entrance_Pokemart_Expanded:
 	.2byte ITEM_GUARD_SPEC
 # 294 "data/maps/TrainerHill_Entrance/scripts.pory"
 	.2byte ITEM_X_ACCURACY
-# 295 "data/maps/TrainerHill_Entrance/scripts.pory"
-	.2byte ITEM_NONE
-# 296 "data/maps/TrainerHill_Entrance/scripts.pory"
-	release
-# 297 "data/maps/TrainerHill_Entrance/scripts.pory"
-	end
-# 298 "data/maps/TrainerHill_Entrance/scripts.pory"
+	pokemartlistend
 
 # 299 "data/maps/TrainerHill_Entrance/scripts.pory"
 TrainerHill_Entrance_Text_StillGettingReady:

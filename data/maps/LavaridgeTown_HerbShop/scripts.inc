@@ -49,12 +49,7 @@ LavaridgeTown_HerbShop_Pokemart:
 # 25 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
 	.2byte ITEM_ICE_STONE
 # 26 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	.2byte ITEM_NONE
-# 27 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	release
-# 28 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
-	end
-# 29 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
+	pokemartlistend
 
 # 30 "data/maps/LavaridgeTown_HerbShop/scripts.pory"
 	.align 2

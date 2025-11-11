@@ -200,13 +200,7 @@ OldaleTown_Mart_Pokemart_Basic:
 	.2byte ITEM_PARALYZE_HEAL
 # 94 "data/maps/OldaleTown_Mart/scripts.pory"
 	.2byte ITEM_AWAKENING
-# 95 "data/maps/OldaleTown_Mart/scripts.pory"
-	.2byte ITEM_NONE
-# 96 "data/maps/OldaleTown_Mart/scripts.pory"
-	release
-# 97 "data/maps/OldaleTown_Mart/scripts.pory"
-	end
-# 98 "data/maps/OldaleTown_Mart/scripts.pory"
+	pokemartlistend
 
 # 99 "data/maps/OldaleTown_Mart/scripts.pory"
 OldaleTown_Mart_ExpandedItems::
@@ -234,13 +228,7 @@ OldaleTown_Mart_Pokemart_Expanded:
 	.2byte ITEM_PARALYZE_HEAL
 # 111 "data/maps/OldaleTown_Mart/scripts.pory"
 	.2byte ITEM_AWAKENING
-# 112 "data/maps/OldaleTown_Mart/scripts.pory"
-	.2byte ITEM_NONE
-# 113 "data/maps/OldaleTown_Mart/scripts.pory"
-	release
-# 114 "data/maps/OldaleTown_Mart/scripts.pory"
-	end
-# 115 "data/maps/OldaleTown_Mart/scripts.pory"
+	pokemartlistend
 
 # 116 "data/maps/OldaleTown_Mart/scripts.pory"
 OldaleTown_Mart_EventScript_Woman::

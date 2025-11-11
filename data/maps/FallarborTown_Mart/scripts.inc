@@ -54,13 +54,7 @@ FallarborTown_Mart_Pokemart:
 	.2byte ITEM_DIRE_HIT
 # 28 "data/maps/FallarborTown_Mart/scripts.pory"
 	.2byte ITEM_GUARD_SPEC
-# 29 "data/maps/FallarborTown_Mart/scripts.pory"
-	.2byte ITEM_NONE
-# 30 "data/maps/FallarborTown_Mart/scripts.pory"
-	release
-# 31 "data/maps/FallarborTown_Mart/scripts.pory"
-	end
-# 32 "data/maps/FallarborTown_Mart/scripts.pory"
+	pokemartlistend
 
 # 33 "data/maps/FallarborTown_Mart/scripts.pory"
 FallarborTown_Mart_EventScript_Woman::

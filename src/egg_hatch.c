@@ -310,7 +310,7 @@ static const s16 sEggShardVelocities[][2] =
     {Q_8_8(2.5),        Q_8_8(-7.5)},
 };
 
-static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv)
+/*static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv)
 {
     s32 i, j;
     u8 temp[NUM_STATS];
@@ -327,7 +327,7 @@ static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv)
         if (temp[i] != 0xFF)
             ivs[j++] = temp[i];
     }
-}
+}*/
 
 static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
 {

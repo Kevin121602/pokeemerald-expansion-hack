@@ -50,13 +50,7 @@ FortreeCity_Mart_Pokemart:
 	.2byte ITEM_SUPER_REPEL
 # 26 "data/maps/FortreeCity_Mart/scripts.pory"
 	.2byte ITEM_WOOD_MAIL
-# 27 "data/maps/FortreeCity_Mart/scripts.pory"
-	.2byte ITEM_NONE
-# 28 "data/maps/FortreeCity_Mart/scripts.pory"
-	release
-# 29 "data/maps/FortreeCity_Mart/scripts.pory"
-	end
-# 30 "data/maps/FortreeCity_Mart/scripts.pory"
+	pokemartlistend
 
 # 31 "data/maps/FortreeCity_Mart/scripts.pory"
 FortreeCity_Mart_EventScript_Woman::

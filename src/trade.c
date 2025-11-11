@@ -4616,7 +4616,7 @@ static void CreateInGameTradePokemonInternal(u8 whichPlayerMon, u8 whichInGameTr
     CalculateMonStats(&gEnemyParty[0]);
 }
 
-static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv)
+/*static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv)
 {
     s32 i, j;
     u8 temp[NUM_STATS];
@@ -4633,7 +4633,7 @@ static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv)
         if (temp[i] != 0xFF)
             ivs[j++] = temp[i];
     }
-}
+}*/
 
 static void GetInGameTradeMail(struct Mail *mail, const struct InGameTrade *trade)
 {

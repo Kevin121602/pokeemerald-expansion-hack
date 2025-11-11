@@ -52,13 +52,7 @@ VerdanturfTown_Mart_Pokemart:
 	.2byte ITEM_X_SP_ATK
 # 27 "data/maps/VerdanturfTown_Mart/scripts.pory"
 	.2byte ITEM_FLUFFY_TAIL
-# 28 "data/maps/VerdanturfTown_Mart/scripts.pory"
-	.2byte ITEM_NONE
-# 29 "data/maps/VerdanturfTown_Mart/scripts.pory"
-	release
-# 30 "data/maps/VerdanturfTown_Mart/scripts.pory"
-	end
-# 31 "data/maps/VerdanturfTown_Mart/scripts.pory"
+	pokemartlistend
 
 # 32 "data/maps/VerdanturfTown_Mart/scripts.pory"
 VerdanturfTown_Mart_EventScript_Boy::
