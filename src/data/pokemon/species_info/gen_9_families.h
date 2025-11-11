@@ -6982,6 +6982,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .levelUpLearnset = sPoltchageistLevelUpLearnset,
         .teachableLearnset = sPoltchageistTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 35, SPECIES_SINISTCHA_UNREMARKABLE}),
+        .formSpeciesIdTable = sPoltchageistFormSpeciesIdTable,
     },
     [SPECIES_POLTCHAGEIST_ARTISAN] =
     {
@@ -7043,7 +7044,8 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         )
         .levelUpLearnset = sPoltchageistLevelUpLearnset,
         .teachableLearnset = sPoltchageistTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 35, SPECIES_SINISTCHA_UNREMARKABLE}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 35, SPECIES_SINISTCHA_MASTERPIECE}),
+        .formSpeciesIdTable = sPoltchageistFormSpeciesIdTable,
     },
 
     [SPECIES_SINISTCHA_UNREMARKABLE] =
@@ -7106,6 +7108,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         )
         .levelUpLearnset = sSinistchaLevelUpLearnset,
         .teachableLearnset = sSinistchaTeachableLearnset,
+        .formSpeciesIdTable = sSinistchaFormSpeciesIdTable,
     },
     [SPECIES_SINISTCHA_MASTERPIECE] =
     {
@@ -7167,6 +7170,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         )
         .levelUpLearnset = sSinistchaLevelUpLearnset,
         .teachableLearnset = sSinistchaTeachableLearnset,
+        .formSpeciesIdTable = sSinistchaFormSpeciesIdTable,
     },
 #endif //P_FAMILY_POLTCHAGEIST
 

@@ -229,5 +229,6 @@ bool32 IsMoveEncouragedKill(u32 battlerAtk, u32 battlerDef, u32 move);
 
 u32 GetDoublesTargeting(u32 battlerAtk, u32 battlerDef);
 void IncreaseSubstituteMoveScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
+bool32 IsBattlerItemEnabled(u32 battler);
 
 #endif //GUARD_BATTLE_AI_UTIL_H
