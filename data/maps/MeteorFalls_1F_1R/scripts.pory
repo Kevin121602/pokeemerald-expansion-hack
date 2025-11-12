@@ -16,7 +16,7 @@ script MeteorFalls_1F_1R_EventScript_Riley{
 	lock
 	faceplayer
 	setflag(FLAG_DISABLE_EXP)
-	trainerbattle(TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, TRAINER_RILEY_METEOR_FALLS, LOCALID_RILEY, MeteorFalls_1F_1R_Text_RileyIntro, MeteorFalls_1F_1R_Text_RileyDefeat, MeteorFalls_1F_1R_EventScript_RileyDefeated)
+	trainerbattle(TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, LOCALID_RILEY, TRAINER_RILEY_METEOR_FALLS, MeteorFalls_1F_1R_Text_RileyIntro, MeteorFalls_1F_1R_Text_RileyDefeat, MeteorFalls_1F_1R_EventScript_RileyDefeated, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE)
 	msgbox("Some of my friends are visiting Hoenn\n"
 		   "as well.\p"
 		   "Maybe you'll run into them on your\n"

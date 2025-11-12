@@ -16,7 +16,7 @@ script MtChimney_EventScript_Mira{
 	lock
 	faceplayer
 	setflag(FLAG_DISABLE_EXP)
-	trainerbattle(TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, TRAINER_MIRA_MT_CHIMNEY, LOCALID_MIRA, MtChimney_Text_MiraIntro, MtChimney_EventScript_MiraDefeat, MtChimney_EventScript_MiraDefeated)
+	trainerbattle(TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, LOCALID_MIRA, TRAINER_MIRA_MT_CHIMNEY, MtChimney_Text_MiraIntro, MtChimney_Text_MiraDefeat, MtChimney_EventScript_MiraDefeated, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE)
 	msgbox("You must have a very strong bond with\n"
 		   "your Pokémon, {PLAYER}.\p"
 		   "I hope I can be like you one day.$")
@@ -34,7 +34,7 @@ text MtChimney_Text_MiraIntro{
 	"Now I'm bored, can we battle?$"
 }
 
-text MtChimney_EventScript_MiraDefeat{
+text MtChimney_Text_MiraDefeat{
 	"Oh, no! You're too much for me!$"
 }
 

@@ -26,7 +26,7 @@ MtChimney_EventScript_Mira::
 # 18 "data/maps/MtChimney/scripts.pory"
 	setflag FLAG_DISABLE_EXP
 # 19 "data/maps/MtChimney/scripts.pory"
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, TRAINER_MIRA_MT_CHIMNEY, 32, MtChimney_Text_MiraIntro, MtChimney_EventScript_MiraDefeat, MtChimney_EventScript_MiraDefeated
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, 32, TRAINER_MIRA_MT_CHIMNEY, MtChimney_Text_MiraIntro, MtChimney_Text_MiraDefeat, MtChimney_EventScript_MiraDefeated, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 # 20 "data/maps/MtChimney/scripts.pory"
 	msgbox MtChimney_EventScript_Mira_Text_0
 # 23 "data/maps/MtChimney/scripts.pory"
@@ -1855,6 +1855,6 @@ MtChimney_Text_MiraIntro::
 	.string "getting lost…\p"
 	.string "Now I'm bored, can we battle?$"
 
-MtChimney_EventScript_MiraDefeat::
+MtChimney_Text_MiraDefeat::
 # 37 "data/maps/MtChimney/scripts.pory"
 	.string "Oh, no! You're too much for me!$"

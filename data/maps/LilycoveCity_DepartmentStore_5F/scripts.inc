@@ -86,7 +86,13 @@ LilycoveCity_DepartmentStore_5F_Pokemart_Dolls:
 	.2byte DECOR_SWABLU_DOLL
 # 44 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
 	.2byte DECOR_GULPIN_DOLL
-	pokemartlistend
+# 45 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
+	.2byte DECOR_NONE
+# 46 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
+	release
+# 47 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
+	end
+# 48 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
 
 # 49 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
 LilycoveCity_DepartmentStore_5F_EventScript_ClerkMidLeft::
@@ -130,7 +136,13 @@ LilycoveCity_DepartmentStore_5F_Pokemart_Cushions:
 	.2byte DECOR_FIRE_CUSHION
 # 69 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
 	.2byte DECOR_WATER_CUSHION
-	pokemartlistend
+# 70 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
+	.2byte DECOR_NONE
+# 71 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
+	release
+# 72 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
+	end
+# 73 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
 
 # 74 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
 LilycoveCity_DepartmentStore_5F_EventScript_ClerkMidRight::
@@ -174,7 +186,13 @@ LilycoveCity_DepartmentStore_5F_Pokemart_Posters:
 	.2byte DECOR_SEA_POSTER
 # 94 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
 	.2byte DECOR_SKY_POSTER
-	pokemartlistend
+# 95 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
+	.2byte DECOR_NONE
+# 96 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
+	release
+# 97 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
+	end
+# 98 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
 
 # 99 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
 LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarRight::
@@ -220,7 +238,13 @@ LilycoveCity_DepartmentStore_5F_Pokemart_Mats:
 	.2byte DECOR_JUMP_MAT
 # 120 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
 	.2byte DECOR_SPIN_MAT
-	pokemartlistend
+# 121 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
+	.2byte DECOR_NONE
+# 122 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
+	release
+# 123 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
+	end
+# 124 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
 
 # 125 "data/maps/LilycoveCity_DepartmentStore_5F/scripts.pory"
 LilycoveCity_DepartmentStore_5F_EventScript_PokefanF::

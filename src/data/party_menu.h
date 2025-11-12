@@ -762,6 +762,8 @@ static const u8 *const sActionStringTable[] =
     [PARTY_MSG_ADD_EXP]                = gText_AddExp,
     [PARTY_MSG_CHOOSE_SECOND_FUSION]   = gText_NextFusionMon,
     [PARTY_MSG_WHICH_FORM]             = gText_WhichForm,
+    [PARTY_MSG_NO_POKEMON]             = COMPOUND_STRING("You have no POKéMON."),
+    [PARTY_MSG_CHOOSE_MON_FOR_BOX]     = gText_SendWhichMonToPC,
 };
 
 static const u8 *const sDescriptionStringTable[] =
@@ -789,56 +791,58 @@ static const u16 sUnusedData[] =
     0x0121, 0x013b, 0x000f, 0x0013, 0x0039, 0x0046, 0x0094, 0x00f9, 0x007f, 0x0123,
 };
 
+static const u8 sText_Trade4[] = _("Trade");
+
 struct
 {
     const u8 *text;
     TaskFunc func;
 } static const sCursorOptions[MENU_FIELD_MOVES] =
 {
-    [MENU_SUMMARY] = {gText_Summary5, CursorCb_Summary},
-    [MENU_SWITCH] = {gText_Switch2, CursorCb_Switch},
-    [MENU_NICKNAME] = {gText_Nickname, CursorCb_Nickname},
-    [MENU_STATUS] = {gText_Status, CursorCb_Status},
+    [MENU_SUMMARY] = {COMPOUND_STRING("Summary"), CursorCb_Summary},
+    [MENU_SWITCH] = {COMPOUND_STRING("Switch"), CursorCb_Switch},
+    [MENU_NICKNAME] = {COMPOUND_STRING("Nickname"), CursorCb_Nickname},
+    [MENU_STATUS] = {COMPOUND_STRING("Status"), CursorCb_Status},
     [MENU_CANCEL1] = {gText_Cancel2, CursorCb_Cancel1},
-    [MENU_ITEM] = {gText_Item, CursorCb_Item},
+    [MENU_ITEM] = {COMPOUND_STRING("Item"), CursorCb_Item},
     [MENU_GIVE] = {gMenuText_Give, CursorCb_Give},
-    [MENU_TAKE_ITEM] = {gText_Take, CursorCb_TakeItem},
-    [MENU_MAIL] = {gText_Mail, CursorCb_Mail},
-    [MENU_TAKE_MAIL] = {gText_Take2, CursorCb_TakeMail},
-    [MENU_READ] = {gText_Read2, CursorCb_Read},
+    [MENU_TAKE_ITEM] = {COMPOUND_STRING("Take"), CursorCb_TakeItem},
+    [MENU_MAIL] = {COMPOUND_STRING("Mail"), CursorCb_Mail},
+    [MENU_TAKE_MAIL] = {COMPOUND_STRING("Take"), CursorCb_TakeMail},
+    [MENU_READ] = {COMPOUND_STRING("Read"), CursorCb_Read},
     [MENU_CANCEL2] = {gText_Cancel2, CursorCb_Cancel2},
-    [MENU_SHIFT] = {gText_Shift, CursorCb_SendMon},
-    [MENU_SEND_OUT] = {gText_SendOut, CursorCb_SendMon},
-    [MENU_ENTER] = {gText_Enter, CursorCb_Enter},
-    [MENU_NO_ENTRY] = {gText_NoEntry, CursorCb_NoEntry},
-    [MENU_STORE] = {gText_Store, CursorCb_Store},
+    [MENU_SHIFT] = {COMPOUND_STRING("Shift"), CursorCb_SendMon},
+    [MENU_SEND_OUT] = {COMPOUND_STRING("Send Out"), CursorCb_SendMon},
+    [MENU_ENTER] = {COMPOUND_STRING("Enter"), CursorCb_Enter},
+    [MENU_NO_ENTRY] = {COMPOUND_STRING("No Entry"), CursorCb_NoEntry},
+    [MENU_STORE] = {COMPOUND_STRING("Store"), CursorCb_Store},
     [MENU_REGISTER] = {gText_Register, CursorCb_Register},
-    [MENU_TRADE1] = {gText_Trade4, CursorCb_Trade1},
-    [MENU_TRADE2] = {gText_Trade4, CursorCb_Trade2},
+    [MENU_TRADE1] = {sText_Trade4, CursorCb_Trade1},
+    [MENU_TRADE2] = {sText_Trade4, CursorCb_Trade2},
     [MENU_TOSS] = {gMenuText_Toss, CursorCb_Toss},
-    [MENU_CATALOG_BULB] = {gText_LightBulb, CursorCb_CatalogBulb},
-    [MENU_CATALOG_OVEN] = {gText_MicrowaveOven, CursorCb_CatalogOven},
-    [MENU_CATALOG_WASHING] = {gText_WashingMachine, CursorCb_CatalogWashing},
-    [MENU_CATALOG_FRIDGE] = {gText_Refrigerator, CursorCb_CatalogFridge},
-    [MENU_CATALOG_FAN] = {gText_ElectricFan, CursorCb_CatalogFan},
-    [MENU_CATALOG_MOWER] = {gText_LawnMower, CursorCb_CatalogMower},
-    [MENU_CHANGE_FORM] = {gText_ChangeForm, CursorCb_ChangeForm},
-    [MENU_CHANGE_ABILITY] = {gText_ChangeAbility, CursorCb_ChangeAbility},
-    [MENU_HP] = {gText_HP3, CursorCb_HP},
-    [MENU_EXP] = {gText_EXP, CursorCb_Exp},
-    [MENU_BURN] = {gText_Brn, CursorCb_Burn},
-    [MENU_FROSTBITE] = {gText_Frz, CursorCb_Frostbite},
-    [MENU_PARALYZE] = {gText_Par, CursorCb_Paralyze},
-    [MENU_POISON] = {gText_Psn, CursorCb_Poison},
-    [MENU_SLEEP] = {gText_Slp, CursorCb_Sleep},
-    [MENU_SPLICER_SMALL] = {gText_SplicerSmall, CursorCb_SplicerSmall},
-    [MENU_SPLICER_AVERAGE] = {gText_SplicerAverage, CursorCb_SplicerAverage},
-    [MENU_SPLICER_LARGE] = {gText_SplicerLarge, CursorCb_SplicerLarge},
-    [MENU_SPLICER_SUPER] = {gText_SplicerSuper, CursorCb_SplicerSuper},
-    [MENU_NECTAR_BAILE] = {gText_NectarBaile, CursorCb_NectarBaile},
-    [MENU_NECTAR_POM_POM] = {gText_NectarPomPom, CursorCb_NectarPomPom},
-    [MENU_NECTAR_PAU] = {gText_NectarPau, CursorCb_NectarPau},
-    [MENU_NECTAR_SENSU] = {gText_NectarSensu, CursorCb_NectarSensu},
+    [MENU_CATALOG_BULB] = {COMPOUND_STRING("Light bulb"), CursorCb_CatalogBulb},
+    [MENU_CATALOG_OVEN] = {COMPOUND_STRING("Microwave oven"), CursorCb_CatalogOven},
+    [MENU_CATALOG_WASHING] = {COMPOUND_STRING("Washing machine"), CursorCb_CatalogWashing},
+    [MENU_CATALOG_FRIDGE] = {COMPOUND_STRING("Refrigerator"), CursorCb_CatalogFridge},
+    [MENU_CATALOG_FAN] = {COMPOUND_STRING("Electric fan"), CursorCb_CatalogFan},
+    [MENU_CATALOG_MOWER] = {COMPOUND_STRING("Lawn mower"), CursorCb_CatalogMower},
+    [MENU_CHANGE_FORM] = {COMPOUND_STRING("Change form"), CursorCb_ChangeForm},
+    [MENU_CHANGE_ABILITY] = {COMPOUND_STRING("Change Ability"), CursorCb_ChangeAbility},
+    [MENU_HP] = {COMPOUND_STRING("HP"), CursorCb_HP},
+    [MENU_EXP] = {COMPOUND_STRING("EXP"), CursorCb_Exp},
+    [MENU_BURN] = {COMPOUND_STRING("BRN"), CursorCb_Burn},
+    [MENU_FROSTBITE] = {COMPOUND_STRING("FRB"), CursorCb_Frostbite},
+    [MENU_PARALYZE] = {COMPOUND_STRING("PRZ"), CursorCb_Paralyze},
+    [MENU_POISON] = {COMPOUND_STRING("PSN"), CursorCb_Poison},
+    [MENU_SLEEP] = {COMPOUND_STRING("SLP"), CursorCb_Sleep},
+    [MENU_SPLICER_SMALL] = {COMPOUND_STRING("Small"), CursorCb_SplicerSmall},
+    [MENU_SPLICER_AVERAGE] = {COMPOUND_STRING("Average"), CursorCb_SplicerAverage},
+    [MENU_SPLICER_LARGE] = {COMPOUND_STRING("Large"), CursorCb_SplicerLarge},
+    [MENU_SPLICER_SUPER] = {COMPOUND_STRING("Super"), CursorCb_SplicerSuper},
+    [MENU_NECTAR_BAILE] = {COMPOUND_STRING("Baile"), CursorCb_NectarBaile},
+    [MENU_NECTAR_POM_POM] = {COMPOUND_STRING("Pom-Pom"), CursorCb_NectarPomPom},
+    [MENU_NECTAR_PAU] = {COMPOUND_STRING("Pa'u"), CursorCb_NectarPau},
+    [MENU_NECTAR_SENSU] = {COMPOUND_STRING("Sensu"), CursorCb_NectarSensu},
 };
 
 static const u8 sPartyMenuAction_SummarySwitchCancel[] = {MENU_SUMMARY, MENU_SWITCH, MENU_CANCEL1};
@@ -965,7 +969,7 @@ static const u8 *const sUnionRoomTradeMessages[] =
 };
 
 static const u32 sHeldItemGfx[] = INCBIN_U32("graphics/party_menu/hold_icons.4bpp");
-static const u16 sHeldItemPalette[] = INCBIN_U16("graphics/party_menu/hold_icons.gbapal");
+const u16 gHeldItemPalette[] = INCBIN_U16("graphics/party_menu/hold_icons.gbapal");
 
 static const struct OamData sOamData_HeldItem =
 {
@@ -1002,14 +1006,14 @@ static const union AnimCmd *const sSpriteAnimTable_HeldItem[] =
     sSpriteAnim_HeldMail,
 };
 
-static const struct SpriteSheet sSpriteSheet_HeldItem =
+const struct SpriteSheet gSpriteSheet_HeldItem =
 {
     .data = sHeldItemGfx, .size = sizeof(sHeldItemGfx), .tag = TAG_HELD_ITEM
 };
 
 static const struct SpritePalette sSpritePalette_HeldItem =
 {
-    .data = sHeldItemPalette, .tag = TAG_HELD_ITEM
+    .data = gHeldItemPalette, .tag = TAG_HELD_ITEM
 };
 
 static const struct SpriteTemplate sSpriteTemplate_HeldItem =

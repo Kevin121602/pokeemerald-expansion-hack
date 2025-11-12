@@ -54,7 +54,13 @@ MauvilleCity_Mart_Pokemart:
 	.2byte ITEM_DIRE_HIT
 # 28 "data/maps/MauvilleCity_Mart/scripts.pory"
 	.2byte ITEM_X_ACCURACY
-	pokemartlistend
+# 29 "data/maps/MauvilleCity_Mart/scripts.pory"
+	.2byte ITEM_NONE
+# 30 "data/maps/MauvilleCity_Mart/scripts.pory"
+	release
+# 31 "data/maps/MauvilleCity_Mart/scripts.pory"
+	end
+# 32 "data/maps/MauvilleCity_Mart/scripts.pory"
 
 # 33 "data/maps/MauvilleCity_Mart/scripts.pory"
 MauvilleCity_Mart_EventScript_ExpertM::

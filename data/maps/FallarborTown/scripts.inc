@@ -19,7 +19,7 @@ FallarborTown_EventScript_KingsRockMart::
 KingsRockMart:
 # 14 "data/maps/FallarborTown/scripts.pory"
 	.2byte ITEM_KINGS_ROCK
-	pokemartlistend
+	.2byte ITEM_NONE
 
 # 17 "data/maps/FallarborTown/scripts.pory"
 

@@ -76,7 +76,13 @@ LilycoveCity_DepartmentStore_2F_Pokemart1:
 	.2byte ITEM_AWAKENING
 # 39 "data/maps/LilycoveCity_DepartmentStore_2F/scripts.pory"
 	.2byte ITEM_FLUFFY_TAIL
-	pokemartlistend
+# 40 "data/maps/LilycoveCity_DepartmentStore_2F/scripts.pory"
+	.2byte ITEM_NONE
+# 41 "data/maps/LilycoveCity_DepartmentStore_2F/scripts.pory"
+	release
+# 42 "data/maps/LilycoveCity_DepartmentStore_2F/scripts.pory"
+	end
+# 43 "data/maps/LilycoveCity_DepartmentStore_2F/scripts.pory"
 
 # 44 "data/maps/LilycoveCity_DepartmentStore_2F/scripts.pory"
 LilycoveCity_DepartmentStore_2F_EventScript_ClerkRight::
@@ -122,7 +128,13 @@ LilycoveCity_DepartmentStore_2F_Pokemart2:
 	.2byte ITEM_WAVE_MAIL
 # 65 "data/maps/LilycoveCity_DepartmentStore_2F/scripts.pory"
 	.2byte ITEM_MECH_MAIL
-	pokemartlistend
+# 66 "data/maps/LilycoveCity_DepartmentStore_2F/scripts.pory"
+	.2byte ITEM_NONE
+# 67 "data/maps/LilycoveCity_DepartmentStore_2F/scripts.pory"
+	release
+# 68 "data/maps/LilycoveCity_DepartmentStore_2F/scripts.pory"
+	end
+# 69 "data/maps/LilycoveCity_DepartmentStore_2F/scripts.pory"
 
 # 70 "data/maps/LilycoveCity_DepartmentStore_2F/scripts.pory"
 LilycoveCity_DepartmentStore_2F_Text_LearnToUseItemsProperly:

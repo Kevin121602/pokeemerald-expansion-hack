@@ -60,7 +60,13 @@ RustboroCity_Mart_Pokemart_Basic:
 	.2byte ITEM_X_ATTACK
 # 31 "data/maps/RustboroCity_Mart/scripts.pory"
 	.2byte ITEM_X_DEFENSE
-	pokemartlistend
+# 32 "data/maps/RustboroCity_Mart/scripts.pory"
+	.2byte ITEM_NONE
+# 33 "data/maps/RustboroCity_Mart/scripts.pory"
+	release
+# 34 "data/maps/RustboroCity_Mart/scripts.pory"
+	end
+# 35 "data/maps/RustboroCity_Mart/scripts.pory"
 
 # 36 "data/maps/RustboroCity_Mart/scripts.pory"
 RustboroCity_Mart_EventScript_PokemartExpanded::
@@ -102,7 +108,13 @@ RustboroCity_Mart_Pokemart_Expanded:
 	.2byte ITEM_X_ATTACK
 # 55 "data/maps/RustboroCity_Mart/scripts.pory"
 	.2byte ITEM_X_DEFENSE
-	pokemartlistend
+# 56 "data/maps/RustboroCity_Mart/scripts.pory"
+	.2byte ITEM_NONE
+# 57 "data/maps/RustboroCity_Mart/scripts.pory"
+	release
+# 58 "data/maps/RustboroCity_Mart/scripts.pory"
+	end
+# 59 "data/maps/RustboroCity_Mart/scripts.pory"
 
 # 60 "data/maps/RustboroCity_Mart/scripts.pory"
 RustboroCity_Mart_EventScript_PokefanF::

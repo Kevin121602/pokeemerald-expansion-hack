@@ -916,7 +916,7 @@ static void PrintOnBattleTimersWindow(u8 windowId)
         AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Sun, 123, 129, 0, NULL);
     else if(gBattleWeather & B_WEATHER_SANDSTORM)
         AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Sand, 123, 129, 0, NULL);
-    else if(gBattleWeather & B_WEATHER_SNOW)
+    else if(gBattleWeather & B_WEATHER_SNOW_NORMAL)
         AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Snow, 123, 129, 0, NULL);
     else
         AddTextPrinterParameterized(windowId, FONT_SMALL, sText_None, 123, 129, 0, NULL);

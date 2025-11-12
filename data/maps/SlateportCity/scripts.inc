@@ -312,7 +312,13 @@ SlateportCity_Pokemart_EnergyGuru:
 	.2byte ITEM_CALCIUM
 # 157 "data/maps/SlateportCity/scripts.pory"
 	.2byte ITEM_HP_UP
-	pokemartlistend
+# 158 "data/maps/SlateportCity/scripts.pory"
+	.2byte ITEM_NONE
+# 159 "data/maps/SlateportCity/scripts.pory"
+	release
+# 160 "data/maps/SlateportCity/scripts.pory"
+	end
+# 161 "data/maps/SlateportCity/scripts.pory"
 
 # 162 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_EffortRibbonWoman::
@@ -1026,7 +1032,13 @@ SlateportCity_PokemartDecor_Dolls:
 	.2byte DECOR_MARILL_DOLL
 # 517 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_SKITTY_DOLL
-	pokemartlistend
+# 518 "data/maps/SlateportCity/scripts.pory"
+	.2byte DECOR_NONE
+# 519 "data/maps/SlateportCity/scripts.pory"
+	release
+# 520 "data/maps/SlateportCity/scripts.pory"
+	end
+# 521 "data/maps/SlateportCity/scripts.pory"
 
 # 522 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_ComeBackWithSecretPower::
@@ -1092,7 +1104,13 @@ SlateportCity_PokemartDecor:
 	.2byte DECOR_B_NOTE_MAT
 # 553 "data/maps/SlateportCity/scripts.pory"
 	.2byte DECOR_C_HIGH_NOTE_MAT
-	pokemartlistend
+# 554 "data/maps/SlateportCity/scripts.pory"
+	.2byte DECOR_NONE
+# 555 "data/maps/SlateportCity/scripts.pory"
+	release
+# 556 "data/maps/SlateportCity/scripts.pory"
+	end
+# 557 "data/maps/SlateportCity/scripts.pory"
 
 # 558 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_EventScript_PowerTMClerk::
@@ -1118,9 +1136,17 @@ SlateportCity_EventScript_PowerTMClerk::
 	.align 2
 # 569 "data/maps/SlateportCity/scripts.pory"
 SlateportCity_Pokemart_PowerTMs:
+# 570 "data/maps/SlateportCity/scripts.pory"
 	.2byte ITEM_TM_ACROBATICS
+# 571 "data/maps/SlateportCity/scripts.pory"
 	.2byte ITEM_TM_ACROBATICS
-	pokemartlistend
+# 572 "data/maps/SlateportCity/scripts.pory"
+	.2byte ITEM_NONE
+# 573 "data/maps/SlateportCity/scripts.pory"
+	release
+# 574 "data/maps/SlateportCity/scripts.pory"
+	end
+# 575 "data/maps/SlateportCity/scripts.pory"
 
 # 576 "data/maps/SlateportCity/scripts.pory"
 @ Scene with Capt Sterns interview and Team Aqua announcing plans to steal Submarine

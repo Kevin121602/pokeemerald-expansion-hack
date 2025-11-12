@@ -26,7 +26,7 @@ Route113_EventScript_Cheryl::
 # 18 "data/maps/Route113/scripts.pory"
 	setflag FLAG_DISABLE_EXP
 # 19 "data/maps/Route113/scripts.pory"
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, TRAINER_CHERYL_ROUTE_113, 18, Route113_Text_CherylIntro, Route113_EventScript_CherylDefeat, Route113_EventScript_CherylDefeated
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, 18, TRAINER_CHERYL_ROUTE_113, Route113_Text_CherylIntro, Route113_Text_CherylDefeat, Route113_EventScript_CherylDefeated, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 # 20 "data/maps/Route113/scripts.pory"
 	msgbox Route113_EventScript_Cheryl_Text_0
 # 23 "data/maps/Route113/scripts.pory"
@@ -454,6 +454,6 @@ Route113_Text_CherylIntro::
 	.string "Would you like to keep me company with\n"
 	.string "a battle?$"
 
-Route113_EventScript_CherylDefeat::
+Route113_Text_CherylDefeat::
 # 41 "data/maps/Route113/scripts.pory"
 	.string "I can't keep up with healing…$"

@@ -94,7 +94,13 @@ EverGrandeCity_PokemonLeague_1F_Pokemart:
 	.2byte ITEM_REVIVE
 # 48 "data/maps/EverGrandeCity_PokemonLeague_1F/scripts.pory"
 	.2byte ITEM_MAX_REPEL
-	pokemartlistend
+# 49 "data/maps/EverGrandeCity_PokemonLeague_1F/scripts.pory"
+	.2byte ITEM_NONE
+# 50 "data/maps/EverGrandeCity_PokemonLeague_1F/scripts.pory"
+	release
+# 51 "data/maps/EverGrandeCity_PokemonLeague_1F/scripts.pory"
+	end
+# 52 "data/maps/EverGrandeCity_PokemonLeague_1F/scripts.pory"
 
 # 53 "data/maps/EverGrandeCity_PokemonLeague_1F/scripts.pory"
 @ The door guards only check for FLAG_BADGE06_GET because Winonas badge is the only one that can be skipped

@@ -26,7 +26,7 @@ Route111_EventScript_Marley::
 # 18 "data/maps/Route111/scripts.pory"
 	setflag FLAG_DISABLE_EXP
 # 19 "data/maps/Route111/scripts.pory"
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, TRAINER_MARLEY_ROUTE_111, 43, Route111_Text_MarleyIntro, Route111_EventScript_MarleyDefeat, Route111_EventScript_MarleyDefeated
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, 43, TRAINER_MARLEY_ROUTE_111, Route111_Text_MarleyIntro, Route111_Text_MarleyDefeat, Route111_EventScript_MarleyDefeated, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 # 20 "data/maps/Route111/scripts.pory"
 	msgbox Route111_EventScript_Marley_Text_0
 # 24 "data/maps/Route111/scripts.pory"
@@ -1519,6 +1519,6 @@ Route111_Text_MarleyIntro::
 	.string "all the talking for me!\p"
 	.string "Are you ready?$"
 
-Route111_EventScript_MarleyDefeat::
+Route111_Text_MarleyDefeat::
 # 39 "data/maps/Route111/scripts.pory"
 	.string "I got left in the dust…$"

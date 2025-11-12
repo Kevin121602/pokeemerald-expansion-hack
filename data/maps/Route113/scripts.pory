@@ -16,7 +16,7 @@ script Route113_EventScript_Cheryl{
 	lock
 	faceplayer
 	setflag(FLAG_DISABLE_EXP)
-	trainerbattle(TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, TRAINER_CHERYL_ROUTE_113, LOCALID_CHERYL, Route113_Text_CherylIntro, Route113_EventScript_CherylDefeat, Route113_EventScript_CherylDefeated)
+	trainerbattle(TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, LOCALID_CHERYL, TRAINER_CHERYL_ROUTE_113, Route113_Text_CherylIntro, Route113_Text_CherylDefeat, Route113_EventScript_CherylDefeated, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE)
 	msgbox("Battling isn't easy.\p"
 		   "You have a bright future ahead of you,\n"
 		   "{PLAYER}.$")
@@ -38,7 +38,7 @@ text Route113_Text_CherylIntro{
 	"a battle?$"
 }
 
-text Route113_EventScript_CherylDefeat{
+text Route113_Text_CherylDefeat{
 	"I can't keep up with healing…$"
 }
 

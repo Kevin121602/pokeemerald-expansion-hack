@@ -26,7 +26,7 @@ MeteorFalls_1F_1R_EventScript_Riley::
 # 18 "data/maps/MeteorFalls_1F_1R/scripts.pory"
 	setflag FLAG_DISABLE_EXP
 # 19 "data/maps/MeteorFalls_1F_1R/scripts.pory"
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, TRAINER_RILEY_METEOR_FALLS, 4, MeteorFalls_1F_1R_Text_RileyIntro, MeteorFalls_1F_1R_Text_RileyDefeat, MeteorFalls_1F_1R_EventScript_RileyDefeated
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, 4, TRAINER_RILEY_METEOR_FALLS, MeteorFalls_1F_1R_Text_RileyIntro, MeteorFalls_1F_1R_Text_RileyDefeat, MeteorFalls_1F_1R_EventScript_RileyDefeated, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 # 20 "data/maps/MeteorFalls_1F_1R/scripts.pory"
 	msgbox MeteorFalls_1F_1R_EventScript_Riley_Text_0
 # 24 "data/maps/MeteorFalls_1F_1R/scripts.pory"

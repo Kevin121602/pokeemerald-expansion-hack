@@ -19,6 +19,7 @@
 #define WEATHER_ABNORMAL                15  // The alternating weather during Groudon/Kyogre conflict
 #define WEATHER_ROUTE119_CYCLE          20
 #define WEATHER_ROUTE123_CYCLE          21
+#define WEATHER_COUNT                   22
 
 //overworld field effects
 #define FIELD_EFFECT_RICH_SEDIMENT      22

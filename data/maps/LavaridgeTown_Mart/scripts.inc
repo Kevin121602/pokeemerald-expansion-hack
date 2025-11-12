@@ -48,7 +48,13 @@ LavaridgeTown_Mart_Pokemart:
 	.2byte ITEM_SUPER_REPEL
 # 25 "data/maps/LavaridgeTown_Mart/scripts.pory"
 	.2byte ITEM_X_SPEED
-	pokemartlistend
+# 26 "data/maps/LavaridgeTown_Mart/scripts.pory"
+	.2byte ITEM_NONE
+# 27 "data/maps/LavaridgeTown_Mart/scripts.pory"
+	release
+# 28 "data/maps/LavaridgeTown_Mart/scripts.pory"
+	end
+# 29 "data/maps/LavaridgeTown_Mart/scripts.pory"
 
 # 30 "data/maps/LavaridgeTown_Mart/scripts.pory"
 LavaridgeTown_Mart_EventScript_ExpertM::
