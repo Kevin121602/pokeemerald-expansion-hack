@@ -1548,7 +1548,7 @@ bool32 IsConfusionMoveEffect(u32 moveEffect)
 bool32 IsHazardMove(u32 move)
 {
     // Hazard setting moves like Stealth Rock, Spikes, etc.
-    u32 i, moveEffect = gMovesInfo[move].effect;
+    u32 i, moveEffect = GetMoveEffect(move);
     switch (moveEffect)
     {
     case EFFECT_SPIKES:
@@ -1574,7 +1574,7 @@ bool32 IsHazardMove(u32 move)
 bool32 IsHazardClearingMove(u32 move)
 {
     // Hazard clearing effects like Rapid Spin, Tidy Up, etc.
-    u32 i, moveEffect = gMovesInfo[move].effect;
+    u32 i, moveEffect = GetMoveEffect(move);
     switch (moveEffect)
     {
     case EFFECT_RAPID_SPIN:

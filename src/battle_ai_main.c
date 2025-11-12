@@ -519,6 +519,8 @@ void SetAiLogicDataForTurn(struct AiLogicData *aiData)
     battlersCount = gBattlersCount;
 
     AI_DATA->aiCalcInProgress = TRUE;
+    if (DEBUG_AI_DELAY_TIMER)
+        CycleCountStart();
     for (battlerAtk = 0; battlerAtk < battlersCount; battlerAtk++)
     {
         if (!IsBattlerAlive(battlerAtk))
@@ -545,6 +547,11 @@ void SetAiLogicDataForTurn(struct AiLogicData *aiData)
                 aiData->targetingCase = DIAGONAL_TARGETING;
         }
     }
+
+    if (DEBUG_AI_DELAY_TIMER)
+        // We add to existing to compound multiple calls
+        gBattleStruct->aiDelayCycles += CycleCountEnd();
+    AI_DATA->aiCalcInProgress = FALSE;
 }
 
 static bool32 AI_SwitchMonIfSuitable(u32 battler, bool32 doubleBattle)
@@ -593,7 +600,6 @@ static bool32 AI_ShouldSwitchIfBadMoves(u32 battler, bool32 doubleBattle)
 
     }*/
     return FALSE;
-    AI_DATA->aiCalcInProgress = FALSE;
 }
 
 static u32 ChooseMoveOrAction_Singles(u32 battlerAi)
