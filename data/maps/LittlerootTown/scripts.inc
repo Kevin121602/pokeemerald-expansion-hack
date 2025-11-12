@@ -40,7 +40,7 @@ LittlerootTown_EventScript_SuperRod_2:
 # 23 "data/maps/LittlerootTown/scripts.pory"
 .set LOCALID_TWIN, 1
 # 24 "data/maps/LittlerootTown/scripts.pory"
-.set LOCALID_PLAYERS_HOUSE_1F_MOM, 4
+@ .set LOCALID_PLAYERS_HOUSE_1F_MOM, 4
 # 25 "data/maps/LittlerootTown/scripts.pory"
 .set LOCALID_RIVAL, 7
 # 26 "data/maps/LittlerootTown/scripts.pory"

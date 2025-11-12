@@ -21,7 +21,7 @@ script LittlerootTown_MaysHouse_1F_EventScript_HeartScales{
 }
 
 raw `
-.set LOCALID_PLAYERS_HOUSE_1F_MOM, 1
+@ .set LOCALID_PLAYERS_HOUSE_1F_MOM, 1
 .set LOCALID_RIVAL_MOM, 4
 .set LOCALID_RIVAL, 7
 

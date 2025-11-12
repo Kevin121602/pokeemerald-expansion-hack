@@ -87,6 +87,7 @@
 #define PARTY_MSG_SET_HP                    32
 #define PARTY_MSG_ADD_EXP                   33
 #define PARTY_MSG_WHICH_FORM                34
+#define PARTY_MSG_MOVE_ITEM_WHERE           35
 
 #define PARTY_MSG_NONE                      127
 

@@ -13,7 +13,7 @@
 # 7 "data/maps/BattleFrontier_BattleArenaBattleRoom/scripts.pory"
 .set LOCALID_OPPONENT, 7
 # 8 "data/maps/BattleFrontier_BattleArenaBattleRoom/scripts.pory"
-.set LOCALID_PLAYER, 8
+@ .set LOCALID_PLAYER, 8
 # 9 "data/maps/BattleFrontier_BattleArenaBattleRoom/scripts.pory"
 .set LOCALID_ANNOUNCER, 9
 # 10 "data/maps/BattleFrontier_BattleArenaBattleRoom/scripts.pory"

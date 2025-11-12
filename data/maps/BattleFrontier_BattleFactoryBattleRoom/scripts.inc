@@ -15,7 +15,7 @@
 # 8 "data/maps/BattleFrontier_BattleFactoryBattleRoom/scripts.pory"
 .set LOCALID_SCIENTIST_6, 7
 # 9 "data/maps/BattleFrontier_BattleFactoryBattleRoom/scripts.pory"
-.set LOCALID_PLAYER, 8
+@.set LOCALID_PLAYER, 8
 # 10 "data/maps/BattleFrontier_BattleFactoryBattleRoom/scripts.pory"
 
 # 11 "data/maps/BattleFrontier_BattleFactoryBattleRoom/scripts.pory"

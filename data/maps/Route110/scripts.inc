@@ -21,7 +21,7 @@ Route110_EventScript_OldWoman_2:
 # 23 "data/maps/Route110/scripts.pory"
 
 # 24 "data/maps/Route110/scripts.pory"
-.set LOCALID_CHALLENGE_BIKER, 21
+@.set LOCALID_CHALLENGE_BIKER, 21
 # 25 "data/maps/Route110/scripts.pory"
 .set LOCALID_RIVAL, 28
 # 26 "data/maps/Route110/scripts.pory"

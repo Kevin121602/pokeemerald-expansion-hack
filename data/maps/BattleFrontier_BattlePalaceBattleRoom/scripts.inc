@@ -1,7 +1,7 @@
 # 1 "data/maps/BattleFrontier_BattlePalaceBattleRoom/scripts.pory"
 
 # 2 "data/maps/BattleFrontier_BattlePalaceBattleRoom/scripts.pory"
-.set LOCALID_PLAYER, 1
+@.set LOCALID_PLAYER, 1
 # 3 "data/maps/BattleFrontier_BattlePalaceBattleRoom/scripts.pory"
 .set LOCALID_OPPONENT, 2
 # 4 "data/maps/BattleFrontier_BattlePalaceBattleRoom/scripts.pory"

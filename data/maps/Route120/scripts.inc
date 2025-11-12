@@ -1,11 +1,11 @@
 # 1 "data/maps/Route120/scripts.pory"
 
 # 2 "data/maps/Route120/scripts.pory"
-.set LOCALID_BRIDGE_KECLEON, 30
+@.set LOCALID_BRIDGE_KECLEON, 30
 # 3 "data/maps/Route120/scripts.pory"
 .set LOCALID_STEVEN, 31
 # 4 "data/maps/Route120/scripts.pory"
-.set LOCALID_BRIDGE_KECLEON_SHADOW, 36  @ They use a second object which is identical to Kecleon but has a reflection palette tag for the bridge shadow
+@.set LOCALID_BRIDGE_KECLEON_SHADOW, 36  @ They use a second object which is identical to Kecleon but has a reflection palette tag for the bridge shadow
 # 5 "data/maps/Route120/scripts.pory"
 
 # 6 "data/maps/Route120/scripts.pory"

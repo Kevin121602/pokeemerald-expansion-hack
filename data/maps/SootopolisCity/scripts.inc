@@ -5,7 +5,7 @@
 # 3 "data/maps/SootopolisCity/scripts.pory"
 .set LOCALID_WOMAN_2, 2
 # 4 "data/maps/SootopolisCity/scripts.pory"
-.set LOCALID_KIRI, 3
+@.set LOCALID_KIRI, 3
 # 5 "data/maps/SootopolisCity/scripts.pory"
 .set LOCALID_NINJA_BOY, 4
 # 6 "data/maps/SootopolisCity/scripts.pory"

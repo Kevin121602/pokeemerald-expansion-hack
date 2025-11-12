@@ -3,7 +3,7 @@
 # 2 "data/maps/SlateportCity_BattleTentBattleRoom/scripts.pory"
 .set LOCALID_OPPONENT, 2
 # 3 "data/maps/SlateportCity_BattleTentBattleRoom/scripts.pory"
-.set LOCALID_PLAYER, 3
+@ .set LOCALID_PLAYER, 3
 # 4 "data/maps/SlateportCity_BattleTentBattleRoom/scripts.pory"
 
 # 5 "data/maps/SlateportCity_BattleTentBattleRoom/scripts.pory"

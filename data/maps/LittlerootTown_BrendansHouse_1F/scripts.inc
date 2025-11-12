@@ -428,7 +428,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_GoSeeRoom::
 # 224 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	lockall
 # 225 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
-	setvar VAR_0x8004, LOCALID_MOM
+	setvar VAR_0x8004, LOCALID_PLAYERS_HOUSE_1F_MOM
 # 226 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"
 	setvar VAR_0x8005, MALE
 # 227 "data/maps/LittlerootTown_BrendansHouse_1F/scripts.pory"

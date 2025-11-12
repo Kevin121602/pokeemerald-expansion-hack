@@ -3,7 +3,7 @@
 # 2 "data/maps/BattleFrontier_BattlePyramidTop/scripts.pory"
 .set LOCALID_ATTENDANT, 1
 # 3 "data/maps/BattleFrontier_BattlePyramidTop/scripts.pory"
-.set LOCALID_BRANDON, 2
+@ .set LOCALID_BRANDON, 2
 # 4 "data/maps/BattleFrontier_BattlePyramidTop/scripts.pory"
 
 # 5 "data/maps/BattleFrontier_BattlePyramidTop/scripts.pory"

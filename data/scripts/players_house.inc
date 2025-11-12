@@ -62,39 +62,13 @@ PlayersHouse_2F_EventScript_WallClock::
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2
 	checkplayergender
-	call_if_eq VAR_RESULT, MALE, PlayersHouse_2F_EventScript_MomComesUpstairsMale
-	call_if_eq VAR_RESULT, FEMALE, PlayersHouse_2F_EventScript_MomComesUpstairsFemale
+	call_if_eq VAR_RESULT, MALE, PlayersHouse_2F_EventScript_SetWallClock
+	call_if_eq VAR_RESULT, FEMALE, PlayersHouse_2F_EventScript_SetWallClock
 	playse SE_EXIT
 	removeobject VAR_0x8008
 	releaseall
 	end
-
-PlayersHouse_2F_EventScript_MomComesUpstairsMale::
-	setvar VAR_0x8008, LOCALID_PLAYERS_HOUSE_2F_MOM
-	addobject VAR_0x8008
-	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomEntersMale
-	waitmovement 0
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	msgbox PlayersHouse_2F_Text_HowDoYouLikeYourRoom, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomExitsMale
-	waitmovement 0
-	return
-
-PlayersHouse_2F_EventScript_MomComesUpstairsFemale::
-	setvar VAR_0x8008, LOCALID_PLAYERS_HOUSE_2F_MOM
-	addobject VAR_0x8008
-	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomEntersFemale
-	waitmovement 0
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	msgbox PlayersHouse_2F_Text_HowDoYouLikeYourRoom, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomExitsFemale
-	waitmovement 0
-	return
-
+	
 PlayersHouse_2F_EventScript_CheckWallClock::
 	incrementgamestat GAME_STAT_CHECKED_CLOCK
 	fadescreen FADE_TO_BLACK
@@ -487,13 +461,11 @@ PlayersHouse_1F_EventScript_AirLatiBroadcast::
 
 PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale::
 	setvar VAR_0x8008, MALE
-	setvar VAR_0x8009, LOCALID_PLAYERS_HOUSE_1F_DAD
 	setvar VAR_0x800A, LOCALID_PLAYERS_HOUSE_1F_MOM
 	return
 
 PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale::
 	setvar VAR_0x8008, FEMALE
-	setvar VAR_0x8009, LOCALID_PLAYERS_HOUSE_1F_DAD
 	setvar VAR_0x800A, LOCALID_PLAYERS_HOUSE_1F_MOM
 	return
 

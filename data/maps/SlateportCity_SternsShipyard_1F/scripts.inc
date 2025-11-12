@@ -1,7 +1,7 @@
 # 1 "data/maps/SlateportCity_SternsShipyard_1F/scripts.pory"
 
 # 2 "data/maps/SlateportCity_SternsShipyard_1F/scripts.pory"
-.set LOCALID_DOCK, 1
+@ .set LOCALID_DOCK, 1
 # 3 "data/maps/SlateportCity_SternsShipyard_1F/scripts.pory"
 
 # 4 "data/maps/SlateportCity_SternsShipyard_1F/scripts.pory"

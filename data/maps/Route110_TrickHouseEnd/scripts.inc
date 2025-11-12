@@ -1,7 +1,7 @@
 # 1 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 
 # 2 "data/maps/Route110_TrickHouseEnd/scripts.pory"
-.set LOCALID_TRICK_MASTER, 1
+@ .set LOCALID_TRICK_MASTER, 1
 # 3 "data/maps/Route110_TrickHouseEnd/scripts.pory"
 
 # 4 "data/maps/Route110_TrickHouseEnd/scripts.pory"

@@ -40,7 +40,7 @@ LittlerootTown_MaysHouse_1F_EventScript_HeartScales_5:
 # 23 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 
 # 24 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-.set LOCALID_PLAYERS_HOUSE_1F_MOM, 1
+@ .set LOCALID_PLAYERS_HOUSE_1F_MOM, 1
 # 25 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 .set LOCALID_RIVAL_MOM, 4
 # 26 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"

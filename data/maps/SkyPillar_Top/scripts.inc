@@ -1,7 +1,7 @@
 # 1 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 2 "data/maps/SkyPillar_Top/scripts.pory"
-.set LOCALID_RAYQUAZA_SLEEPING, 1
+@ .set LOCALID_RAYQUAZA_SLEEPING, 1
 # 3 "data/maps/SkyPillar_Top/scripts.pory"
 
 # 4 "data/maps/SkyPillar_Top/scripts.pory"

@@ -149,9 +149,9 @@ BirthIsland_Exterior_EventScript_Deoxys::
 # 75 "data/maps/BirthIsland_Exterior/scripts.pory"
 	setfieldeffectargument 0, LOCALID_BIRTH_ISLAND_EXTERIOR_ROCK
 # 76 "data/maps/BirthIsland_Exterior/scripts.pory"
-	setfieldeffectargument 1, MAP_NUM(BIRTH_ISLAND_EXTERIOR)
+	setfieldeffectargument 1, MAP_NUM(MAP_BIRTH_ISLAND_EXTERIOR)
 # 77 "data/maps/BirthIsland_Exterior/scripts.pory"
-	setfieldeffectargument 2, MAP_GROUP(BIRTH_ISLAND_EXTERIOR)
+	setfieldeffectargument 2, MAP_GROUP(MAP_BIRTH_ISLAND_EXTERIOR)
 # 78 "data/maps/BirthIsland_Exterior/scripts.pory"
 	dofieldeffect FLDEFF_DESTROY_DEOXYS_ROCK
 # 79 "data/maps/BirthIsland_Exterior/scripts.pory"

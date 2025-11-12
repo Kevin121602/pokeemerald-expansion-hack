@@ -1,7 +1,7 @@
 # 1 "data/maps/LilycoveCity_DepartmentStore_1F/scripts.pory"
 
 # 2 "data/maps/LilycoveCity_DepartmentStore_1F/scripts.pory"
-.set LOCALID_LOTTERY_CLERK, 2
+@ .set LOCALID_LOTTERY_CLERK, 2
 # 3 "data/maps/LilycoveCity_DepartmentStore_1F/scripts.pory"
 
 # 4 "data/maps/LilycoveCity_DepartmentStore_1F/scripts.pory"

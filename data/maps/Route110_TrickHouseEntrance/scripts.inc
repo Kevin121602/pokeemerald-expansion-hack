@@ -714,7 +714,7 @@ Route110_TrickHouseEntrance_Apprentice_142:
 # 376 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 
 # 377 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
-.set LOCALID_TRICK_MASTER, 1
+@ .set LOCALID_TRICK_MASTER, 1
 # 378 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
 
 # 379 "data/maps/Route110_TrickHouseEntrance/scripts.pory"
