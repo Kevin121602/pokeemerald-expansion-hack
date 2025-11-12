@@ -40,7 +40,7 @@ LittlerootTown_MaysHouse_1F_EventScript_HeartScales_5:
 # 23 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 
 # 24 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-.set LOCALID_MOM, 1
+.set LOCALID_PLAYERS_HOUSE_1F_MOM, 1
 # 25 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 .set LOCALID_RIVAL_MOM, 4
 # 26 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
@@ -112,9 +112,9 @@ LittlerootTown_MaysHouse_1F_OnTransition:
 # 59 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 LittlerootTown_MaysHouse_1F_EventScript_MoveMomToStairs::
 # 60 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	setobjectxyperm LOCALID_MOM, 2, 4
+	setobjectxyperm LOCALID_PLAYERS_HOUSE_1F_MOM, 2, 4
 # 61 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_UP
+	setobjectmovementtype LOCALID_PLAYERS_HOUSE_1F_MOM, MOVEMENT_TYPE_FACE_UP
 # 62 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	return
 # 63 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
@@ -122,9 +122,9 @@ LittlerootTown_MaysHouse_1F_EventScript_MoveMomToStairs::
 # 64 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 LittlerootTown_MaysHouse_1F_EventScript_MoveMomToTV::
 # 65 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	setobjectxyperm LOCALID_MOM, 6, 5
+	setobjectxyperm LOCALID_PLAYERS_HOUSE_1F_MOM, 6, 5
 # 66 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_UP
+	setobjectmovementtype LOCALID_PLAYERS_HOUSE_1F_MOM, MOVEMENT_TYPE_FACE_UP
 # 67 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	return
 # 68 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
@@ -132,9 +132,9 @@ LittlerootTown_MaysHouse_1F_EventScript_MoveMomToTV::
 # 69 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 LittlerootTown_MaysHouse_1F_EventScript_MoveMomToDoor::
 # 70 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	setobjectxyperm LOCALID_MOM, 1, 8
+	setobjectxyperm LOCALID_PLAYERS_HOUSE_1F_MOM, 1, 8
 # 71 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_UP
+	setobjectmovementtype LOCALID_PLAYERS_HOUSE_1F_MOM, MOVEMENT_TYPE_FACE_UP
 # 72 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	return
 # 73 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
@@ -168,7 +168,7 @@ LittlerootTown_MaysHouse_1F_EventScript_GoUpstairsToSetClock::
 # 87 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_1F_Movement_PushTowardStairs
 # 88 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	applymovement LOCALID_MOM, LittlerootTown_MaysHouse_1F_Movement_PushTowardStairs
+	applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, LittlerootTown_MaysHouse_1F_Movement_PushTowardStairs
 # 89 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	waitmovement 0
 # 90 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
@@ -194,7 +194,7 @@ LittlerootTown_MaysHouse_1F_EventScript_EnterHouseMovingIn::
 # 100 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	lockall
 # 101 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	setvar VAR_0x8004, LOCALID_MOM
+	setvar VAR_0x8004, LOCALID_PLAYERS_HOUSE_1F_MOM
 # 102 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	setvar VAR_0x8005, FEMALE
 # 103 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
@@ -210,7 +210,7 @@ LittlerootTown_MaysHouse_1F_EventScript_PetalburgGymReport::
 # 108 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	setvar VAR_0x8004, FEMALE
 # 109 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	setvar VAR_0x8005, LOCALID_MOM
+	setvar VAR_0x8005, LOCALID_PLAYERS_HOUSE_1F_MOM
 # 110 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	goto PlayersHouse_1F_EventScript_PetalburgGymReportFemale
 # 111 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
@@ -342,7 +342,7 @@ LittlerootTown_MaysHouse_1F_EventScript_GoSeeRoom::
 # 174 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	lockall
 # 175 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	setvar VAR_0x8004, LOCALID_MOM
+	setvar VAR_0x8004, LOCALID_PLAYERS_HOUSE_1F_MOM
 # 176 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	setvar VAR_0x8005, FEMALE
 # 177 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
