@@ -310,8 +310,8 @@ void Ai_InitPartyStruct(void)
     bool32 isOmniscient = TRUE;
     struct Pokemon *mon;
 
-    AI_PARTY->count[B_SIDE_PLAYER] = gPlayerPartyCount;
-    AI_PARTY->count[B_SIDE_OPPONENT] = gEnemyPartyCount;
+    AI_PARTY->count[B_SIDE_PLAYER] = CalculatePlayerPartyCount();
+    AI_PARTY->count[B_SIDE_OPPONENT] = CalculateEnemyPartyCount();
 
     // Save first 2 or 4(in doubles) mons
     CopyBattlerDataToAIParty(B_POSITION_PLAYER_LEFT, B_SIDE_PLAYER);
@@ -338,7 +338,7 @@ void Ai_InitPartyStruct(void)
         AI_PARTY->mons[B_SIDE_PLAYER][i].level = GetMonData(mon, MON_DATA_LEVEL);
         AI_PARTY->mons[B_SIDE_PLAYER][i].status = GetMonData(mon, MON_DATA_STATUS);
         AI_PARTY->mons[B_SIDE_PLAYER][i].item = GetMonData(mon, MON_DATA_HELD_ITEM);
-        AI_PARTY->mons[B_SIDE_PLAYER][i].heldEffect = ItemId_GetHoldEffect(AI_PARTY->mons[B_SIDE_PLAYER][i].item);
+        AI_PARTY->mons[B_SIDE_PLAYER][i].heldEffect = GetItemHoldEffect(AI_PARTY->mons[B_SIDE_PLAYER][i].item);
         AI_PARTY->mons[B_SIDE_PLAYER][i].ability = GetMonAbility(mon);
         for (j = 0; j < MAX_MON_MOVES; j++)
             AI_PARTY->mons[B_SIDE_PLAYER][i].moves[j] = GetMonData(mon, MON_DATA_MOVE1 + j);
@@ -356,7 +356,7 @@ void Ai_InitPartyStruct(void)
             AI_PARTY->mons[B_SIDE_OPPONENT][i].level = GetMonData(mon, MON_DATA_LEVEL);
             AI_PARTY->mons[B_SIDE_OPPONENT][i].status = GetMonData(mon, MON_DATA_STATUS);
             AI_PARTY->mons[B_SIDE_OPPONENT][i].item = GetMonData(mon, MON_DATA_HELD_ITEM);
-            AI_PARTY->mons[B_SIDE_OPPONENT][i].heldEffect = ItemId_GetHoldEffect(AI_PARTY->mons[B_SIDE_OPPONENT][i].item);
+            AI_PARTY->mons[B_SIDE_OPPONENT][i].heldEffect = GetItemHoldEffect(AI_PARTY->mons[B_SIDE_OPPONENT][i].item);
             AI_PARTY->mons[B_SIDE_OPPONENT][i].ability = GetMonAbility(mon);
             for (j = 0; j < MAX_MON_MOVES; j++)
                 AI_PARTY->mons[B_SIDE_OPPONENT][i].moves[j] = GetMonData(mon, MON_DATA_MOVE1 + j);
@@ -374,7 +374,7 @@ void Ai_InitPartyStruct(void)
             AI_PARTY->mons[B_SIDE_OPPONENT][i].level = GetMonData(mon, MON_DATA_LEVEL);
             AI_PARTY->mons[B_SIDE_OPPONENT][i].status = GetMonData(mon, MON_DATA_STATUS);
             AI_PARTY->mons[B_SIDE_OPPONENT][i].item = GetMonData(mon, MON_DATA_HELD_ITEM);
-            AI_PARTY->mons[B_SIDE_OPPONENT][i].heldEffect = ItemId_GetHoldEffect(AI_PARTY->mons[B_SIDE_OPPONENT][i].item);
+            AI_PARTY->mons[B_SIDE_OPPONENT][i].heldEffect = GetItemHoldEffect(AI_PARTY->mons[B_SIDE_OPPONENT][i].item);
             AI_PARTY->mons[B_SIDE_OPPONENT][i].ability = GetMonAbility(mon);
             for (j = 0; j < MAX_MON_MOVES; j++)
                 AI_PARTY->mons[B_SIDE_OPPONENT][i].moves[j] = GetMonData(mon, MON_DATA_MOVE1 + j);
@@ -1243,7 +1243,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_SCORE(-20);
             break;
         case EFFECT_STUFF_CHEEKS:
-            if (ItemId_GetPocket(gBattleMons[battlerAtk].item) != POCKET_BERRIES)
+            if (GetItemPocket(gBattleMons[battlerAtk].item) != POCKET_BERRIES)
                 return 0;   // cannot even select
             //fallthrough
         case EFFECT_DEFENSE_UP:
@@ -4136,7 +4136,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         if (aiData->abilities[battlerAtk] == ABILITY_RIPEN)
         {
             u32 item = GetUsedHeldItem(battlerAtk);
-            u32 toHeal = (ItemId_GetHoldEffectParam(item) == 10) ? 10 : gBattleMons[battlerAtk].maxHP / ItemId_GetHoldEffectParam(item);
+            u32 toHeal = (GetItemHoldEffectParam(item) == 10) ? 10 : gBattleMons[battlerAtk].maxHP / GetItemHoldEffectParam(item);
 
             if (IsStatBoostingBerry(item) && aiData->hpPercents[battlerAtk] > 60)
                 ADJUST_SCORE(WEAK_EFFECT);
@@ -5397,19 +5397,19 @@ static s32 AI_PowerfulStatus(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             ADJUST_SCORE(POWERFUL_STATUS_MOVE);
         break;
     case EFFECT_SUNNY_DAY:
-        if (!(AI_GetWeather() & (B_WEATHER_SUN | B_WEATHER_PRIMAL_ANY)))
+        if (IsWeatherActive(B_WEATHER_SUN | B_WEATHER_PRIMAL_ANY) == WEATHER_INACTIVE)
             ADJUST_SCORE(POWERFUL_STATUS_MOVE);
         break;
     case EFFECT_RAIN_DANCE:
-        if (!(AI_GetWeather() & (B_WEATHER_RAIN | B_WEATHER_PRIMAL_ANY)))
+        if (IsWeatherActive(B_WEATHER_RAIN | B_WEATHER_PRIMAL_ANY) == WEATHER_INACTIVE)
             ADJUST_SCORE(POWERFUL_STATUS_MOVE);
         break;
     case EFFECT_HAIL:
-        if (!(AI_GetWeather() & (B_WEATHER_HEAVY_HAIL | B_WEATHER_PRIMAL_ANY)))
+        if (IsWeatherActive(B_WEATHER_SNOW | B_WEATHER_PRIMAL_ANY) == WEATHER_INACTIVE)
             ADJUST_SCORE(POWERFUL_STATUS_MOVE);
         break;
     case EFFECT_SNOWSCAPE:
-        if (!(AI_GetWeather() & (B_WEATHER_SNOW_NORMAL | B_WEATHER_PRIMAL_ANY)))
+        if (IsWeatherActive(B_WEATHER_SNOW | B_WEATHER_PRIMAL_ANY) == WEATHER_INACTIVE)
             ADJUST_SCORE(POWERFUL_STATUS_MOVE);
     }
 
