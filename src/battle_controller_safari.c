@@ -268,7 +268,7 @@ static void SafariHandlePrintString(u32 battler)
 
 static void SafariHandlePrintSelectionString(u32 battler)
 {
-    if (GetBattlerSide(battler) == B_SIDE_PLAYER)
+    if (IsOnPlayerSide(battler))
         SafariHandlePrintString(battler);
     else
         SafariBufferExecCompleted(battler);
@@ -308,7 +308,7 @@ static void SafariHandleChooseItem(u32 battler)
 
 static void SafariHandleStatusIconUpdate(u32 battler)
 {
-    UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], &gPlayerParty[gBattlerPartyIndexes[battler]], HEALTHBOX_SAFARI_BALLS_TEXT);
+    UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], GetBattlerMon(battler), HEALTHBOX_SAFARI_BALLS_TEXT);
     SafariBufferExecCompleted(battler);
 }
 
@@ -316,7 +316,7 @@ static void SafariHandleStatusIconUpdate(u32 battler)
 // Player is not a pokemon, so it can't really faint in the Safari anyway.
 static void SafariHandleFaintingCry(u32 battler)
 {
-    u16 species = GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_SPECIES);
+    u16 species = GetMonData(GetBattlerMon(battler), MON_DATA_SPECIES);
 
     PlayCry_Normal(species, 25);
     SafariBufferExecCompleted(battler);
@@ -325,7 +325,7 @@ static void SafariHandleFaintingCry(u32 battler)
 
 static void SafariHandleIntroTrainerBallThrow(u32 battler)
 {
-    UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], &gPlayerParty[gBattlerPartyIndexes[battler]], HEALTHBOX_SAFARI_ALL_TEXT);
+    UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], GetBattlerMon(battler), HEALTHBOX_SAFARI_ALL_TEXT);
     StartHealthboxSlideIn(battler);
     SetHealthboxSpriteVisible(gHealthboxSpriteIds[battler]);
     gBattlerControllerFuncs[battler] = Controller_WaitForHealthbox;
