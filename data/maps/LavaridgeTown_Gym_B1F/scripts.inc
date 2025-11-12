@@ -1,13 +1,13 @@
 # 1 "data/maps/LavaridgeTown_Gym_B1F/scripts.pory"
 
 # 2 "data/maps/LavaridgeTown_Gym_B1F/scripts.pory"
-.equ LOCALID_JACE, 1
+@.equ LOCALID_JACE, 1
 # 3 "data/maps/LavaridgeTown_Gym_B1F/scripts.pory"
-.equ LOCALID_KEEGAN, 2
+@.equ LOCALID_KEEGAN, 2
 # 4 "data/maps/LavaridgeTown_Gym_B1F/scripts.pory"
-.equ LOCALID_JEFF, 3
+@.equ LOCALID_JEFF, 3
 # 5 "data/maps/LavaridgeTown_Gym_B1F/scripts.pory"
-.equ LOCALID_ELI, 4
+@.equ LOCALID_ELI, 4
 # 6 "data/maps/LavaridgeTown_Gym_B1F/scripts.pory"
 .set LOCALID_DANIELLE, 5
 # 7 "data/maps/LavaridgeTown_Gym_B1F/scripts.pory"

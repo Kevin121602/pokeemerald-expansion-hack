@@ -192,7 +192,7 @@ RustboroCity_DevonCorp_2F_EventScript_FossilScientistNew_19:
 # 93 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 
 # 94 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-.set LOCALID_FOSSIL_SCIENTIST, 5
+@ .set LOCALID_FOSSIL_SCIENTIST, 5
 # 95 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 
 # 96 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"

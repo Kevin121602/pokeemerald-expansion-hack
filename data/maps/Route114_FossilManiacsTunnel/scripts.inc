@@ -1,7 +1,7 @@
 # 1 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
 
 # 2 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
-.set LOCALID_FOSSIL_MANIAC, 1
+@ .set LOCALID_FOSSIL_MANIAC, 1
 # 3 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"
 
 # 4 "data/maps/Route114_FossilManiacsTunnel/scripts.pory"

@@ -9,7 +9,7 @@
 # 5 "data/maps/BattleFrontier_BattleTowerMultiBattleRoom/scripts.pory"
 .set LOCALID_OPPONENT_2, 4
 # 6 "data/maps/BattleFrontier_BattleTowerMultiBattleRoom/scripts.pory"
-.set LOCALID_PLAYER, 5
+@ .set LOCALID_PLAYER, 5
 # 7 "data/maps/BattleFrontier_BattleTowerMultiBattleRoom/scripts.pory"
 .set LOCALID_PARTNER, 6
 # 8 "data/maps/BattleFrontier_BattleTowerMultiBattleRoom/scripts.pory"

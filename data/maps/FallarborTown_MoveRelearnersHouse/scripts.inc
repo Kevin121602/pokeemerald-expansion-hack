@@ -51,7 +51,7 @@ FallarborTown_MoveRelearnersHouse_EventScript_MoveRelearner_7:
 # 33 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
 
 # 34 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
-.set LOCALID_MOVE_RELEARNER, 1
+@ .set LOCALID_MOVE_RELEARNER, 1
 # 35 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"
 
 # 36 "data/maps/FallarborTown_MoveRelearnersHouse/scripts.pory"

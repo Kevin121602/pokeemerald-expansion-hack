@@ -19,11 +19,11 @@ LavaridgeTown_Gym_1F_EventScript_GauntletEnd::
 # 14 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
 
 # 15 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
-.set LOCALID_COLE, 2
+@.set LOCALID_COLE, 2
 # 16 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
-.set LOCALID_GERALD, 3
+@.set LOCALID_GERALD, 3
 # 17 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
-.set LOCALID_AXLE, 4
+@.set LOCALID_AXLE, 4
 # 18 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
 
 # 19 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"

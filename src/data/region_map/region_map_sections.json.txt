@@ -7,6 +7,10 @@
 ## endfor
 
 ## for map_section in map_sections
+{% if existsIn(map_section, "name") and isEmptyString(getVar(map_section.name)) and not existsIn(map_section, "name_clone") %}{{ setVar(map_section.name, map_section.id) }}{% endif %}
+## endfor
+
+## for map_section in map_sections
 {% if existsIn(map_section, "name") %}
 {% if getVar(map_section.name) == map_section.id %}
 static const u8 sMapName_{{ cleanString(map_section.name) }}[] = _("{{ map_section.name }}");

@@ -1,8 +1,8 @@
 raw `
-.equ LOCALID_JACE, 1
-.equ LOCALID_KEEGAN, 2
-.equ LOCALID_JEFF, 3
-.equ LOCALID_ELI, 4
+@.equ LOCALID_JACE, 1
+@.equ LOCALID_KEEGAN, 2
+@.equ LOCALID_JEFF, 3
+@.equ LOCALID_ELI, 4
 .set LOCALID_DANIELLE, 5
 
 LavaridgeTown_Gym_B1F_MapScripts::

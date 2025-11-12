@@ -3,7 +3,7 @@
 # 2 "data/maps/OldaleTown/scripts.pory"
 .set LOCALID_MART_EMPLOYEE, 2
 # 3 "data/maps/OldaleTown/scripts.pory"
-.set LOCALID_FOOTPRINTS_MAN, 3
+@.set LOCALID_FOOTPRINTS_MAN, 3
 # 4 "data/maps/OldaleTown/scripts.pory"
 .set LOCALID_RIVAL, 4
 # 5 "data/maps/OldaleTown/scripts.pory"

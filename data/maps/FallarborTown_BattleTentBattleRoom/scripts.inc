@@ -1,7 +1,7 @@
 # 1 "data/maps/FallarborTown_BattleTentBattleRoom/scripts.pory"
 
 # 2 "data/maps/FallarborTown_BattleTentBattleRoom/scripts.pory"
-.set LOCALID_PLAYER, 1
+@.set LOCALID_PLAYER, 1
 # 3 "data/maps/FallarborTown_BattleTentBattleRoom/scripts.pory"
 .set LOCALID_ATTENDANT, 2
 # 4 "data/maps/FallarborTown_BattleTentBattleRoom/scripts.pory"
