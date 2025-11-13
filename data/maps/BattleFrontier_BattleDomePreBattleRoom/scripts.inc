@@ -44,7 +44,7 @@ BattleFrontier_BattleDomePreBattleRoom_OnFrame:
 BattleFrontier_BattleDomePreBattleRoom_EventScript_EnterRoom::
 # 23 "data/maps/BattleFrontier_BattleDomePreBattleRoom/scripts.pory"
 	goto_if_eq VAR_0x8006, 1, BattleFrontier_BattleDomePreBattleRoom_EventScript_ReturnFromBattle
-	delay 1
+# 24 "data/maps/BattleFrontier_BattleDomePreBattleRoom/scripts.pory"
 	frontier_set FRONTIER_DATA_RECORD_DISABLED, TRUE
 # 25 "data/maps/BattleFrontier_BattleDomePreBattleRoom/scripts.pory"
 	setvar VAR_TEMP_0, 1
