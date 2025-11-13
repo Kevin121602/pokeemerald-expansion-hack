@@ -357,7 +357,7 @@ static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, u
     u8 genderRatio = gSpeciesInfo[species].genderRatio;
     u16 targetSpecies;
     u8 availableIVs[NUM_STATS];
-    u8 selectedIvs[LEGENDARY_PERFECT_IV_COUNT];
+    u8 selectedIvs[3];
     u8 iv = MAX_PER_STAT_IVS;
             // Initialize a list of IV indices.
             for (i = 0; i < NUM_STATS; i++)
@@ -366,13 +366,13 @@ static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, u
             }
 
             // Select the 3 IVs that will be perfected.
-            for (i = 0; i < LEGENDARY_PERFECT_IV_COUNT; i++)
+            for (i = 0; i < 3; i++)
             {
                 u8 index = Random() % (NUM_STATS - i);
                 selectedIvs[i] = availableIVs[index];
                 RemoveIVIndexFromList(availableIVs, index);
             }
-            for (i = 0; i < LEGENDARY_PERFECT_IV_COUNT; i++)
+            for (i = 0; i < 3; i++)
             {
                 switch (selectedIvs[i])
                 {
@@ -603,6 +603,7 @@ void ScrCmd_createmon(struct ScriptContext *ctx)
             }
         }
     }
+
     hpIv                     = PARSE_FLAG(11, hpIv);
     atkIv                    = PARSE_FLAG(12, atkIv);
     defIv                    = PARSE_FLAG(13, defIv);
