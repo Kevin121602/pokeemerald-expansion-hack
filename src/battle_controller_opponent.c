@@ -624,6 +624,7 @@ static void OpponentHandleChoosePokemon(u32 battler)
 {
     s32 chosenMonId;
     s32 pokemonInBattle = 1;
+    enum SwitchType switchType = SWITCH_AFTER_KO;
 
     // Choosing Revival Blessing target
     if ((gBattleResources->bufferA[battler][1] & 0xF) == PARTY_ACTION_CHOOSE_FAINTED_MON)
