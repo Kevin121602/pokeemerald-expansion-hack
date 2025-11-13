@@ -954,7 +954,7 @@
 #define HG_MUSIC_END                      MUS_HG_WIN_MINIGAME
 
 #define SONGS_END                         HG_MUSIC_END
-#define END_MUS                           SONGS_END
+#define END_MUS                           MUS_RG_TEACHY_TV_MENU
 
 #define MUS_ROUTE118                      0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 

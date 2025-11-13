@@ -84,7 +84,7 @@ struct GFRomHeader
     u8 bagCountHeldItems;
     u8 bagCountMegaStones;
     u8 bagCountKeyItems;
-    u8 bagCountPokeballs;
+    u8 bagCountGems;
     u8 bagCountTMHMs;
     u8 bagCountBerries;
     u8 pcItemsCount;
@@ -99,9 +99,8 @@ struct GFRomHeader
 };
 
 // This seems to need to be in the text section for some reason.
-// To avoid a changed section attributes warning it's put in a special .text.consts section.
-__attribute__((section(".text.consts")))
-USED static const struct GFRomHeader sGFRomHeader = {
+// To avoid a changed section attributes warning it's put in a special .text.header_gf section.
+__attribute__((section(".text.header_gf"))) USED static const struct GFRomHeader sGFRomHeader = {
     .version = GAME_VERSION,
     .language = GAME_LANGUAGE,
     .gameName = "pokemon emerald version",
@@ -169,7 +168,7 @@ USED static const struct GFRomHeader sGFRomHeader = {
     .bagCountHeldItems = BAG_HELD_ITEMS_COUNT,
     .bagCountMegaStones = BAG_MEGA_STONES_COUNT,
     .bagCountKeyItems = BAG_KEYITEMS_COUNT,
-    .bagCountPokeballs = BAG_GEMS_COUNT,
+    .bagCountGems = BAG_GEMS_COUNT,
     .bagCountTMHMs = BAG_TMHM_COUNT,
     .bagCountBerries = BAG_BERRIES_COUNT,
     .pcItemsCount = PC_ITEMS_COUNT,

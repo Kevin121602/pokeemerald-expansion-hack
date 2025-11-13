@@ -1,24 +1,18 @@
 #ifndef GUARD_ITEM_CONSTANTS_H
 #define GUARD_ITEM_CONSTANTS_H
 
-// These constants are used in gItemsInfo
-#define POCKET_NONE        0
-#define POCKET_ITEMS       1
-#define POCKET_HELD_ITEMS  2
-#define POCKET_MEGA_STONES 3
-#define POCKET_GEMS        4
-#define POCKET_TM_HM       5
-#define POCKET_BERRIES     6
-#define POCKET_KEY_ITEMS   7
-
-#define ITEMS_POCKET       0
-#define HELD_ITEMS_POCKET  1
-#define MEGA_STONES_POCKET 2
-#define GEMS_POCKET       3
-#define TMHM_POCKET        4
-#define BERRIES_POCKET     5
-#define KEYITEMS_POCKET    6
-#define POCKETS_COUNT      7
+enum Pocket
+{
+    POCKET_ITEMS,
+    POCKET_HELD_ITEMS,
+    POCKET_MEGA_STONES,
+    POCKET_GEMS,
+    POCKET_TM_HM,
+    POCKET_BERRIES,
+    POCKET_KEY_ITEMS,
+    POCKETS_COUNT,
+    POCKET_DUMMY = POCKETS_COUNT,
+};
 
 #define REPEL_LURE_MASK         (1 << 15)
 #define IS_LAST_USED_LURE(var)  (var & REPEL_LURE_MASK)

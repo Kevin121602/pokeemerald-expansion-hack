@@ -18,24 +18,8 @@ const u8 gText_ExpandedPlaceholder_Kyogre[] = _("Kyogre");
 const u8 gText_ExpandedPlaceholder_Groudon[] = _("Groudon");
 const u8 gText_ExpandedPlaceholder_Brendan[] = _("Brendan");
 const u8 gText_ExpandedPlaceholder_May[] = _("May");
-const u8 gText_EggNickname[] = _("Egg");
-const u8 gText_Pokemon[] = _("Pokémon");
-const u8 gText_ProfBirchMatchCallName[] = _("Prof. Birch");
-const u8 gText_MainMenuNewGame[] = _("New Game");
-const u8 gText_MainMenuContinue[] = _("Continue");
-const u8 gText_MainMenuOption[] = _("Option");
-const u8 gText_MainMenuMysteryGift[] = _("Mystery Gift");
-const u8 gText_MainMenuMysteryGift2[] = _("Mystery Gift");
-const u8 gText_MainMenuMysteryEvents[] = _("Mystery Events");
-const u8 gText_WirelessNotConnected[] = _("The Wireless Adapter is not\nconnected.");
-const u8 gText_MysteryGiftCantUse[] = _("Mystery Gift can't be used while\nthe Wireless Adapter is attached.");
-const u8 gText_MysteryEventsCantUse[] = _("Mystery Events can't be used while\nthe Wireless Adapter is attached.");
-const u8 gText_UpdatingSaveExternalData[] = _("Updating save file using external\ndata. Please wait."); // Unused
-const u8 gText_SaveFileUpdated[] = _("The save file has been updated."); // Unused
-const u8 gText_SaveFileCorrupted[] = _("The save file is corrupted. The\nprevious save file will be loaded.");
-const u8 gText_SaveFileErased[] = _("The save file has been erased\ndue to corruption or damage.");
-const u8 gJPText_No1MSubCircuit[] = _("1Mサブきばんが ささっていません！");
-const u8 gText_BatteryRunDry[] = _("The internal battery has run dry.\nThe game can be played.\pHowever, clock-based events will\nno longer occur.");
+const u8 gText_EggNickname[POKEMON_NAME_LENGTH + 1] = _("Egg");
+const u8 gText_Pokemon[POKEMON_NAME_LENGTH + 1] = _("Pokémon");
 const u8 gText_Player[] = _("Player"); // Unused
 const u8 gText_Pokedex[] = _("Pokédex"); // Unused
 const u8 gText_Time[] = _("Time");
@@ -285,13 +269,13 @@ const u8 gText_ReturnToVar1[] = _("Return to\n{STR_VAR_1}.");
 
 const u8 *const gPocketNamesStringsTable[] =
 {
-    [ITEMS_POCKET] =        COMPOUND_STRING("Items"),
-    [HELD_ITEMS_POCKET] =   COMPOUND_STRING("Held Items"),
-    [MEGA_STONES_POCKET] =  COMPOUND_STRING("Mega Stones"),
-    [GEMS_POCKET] =         COMPOUND_STRING("Gems"),
-    [TMHM_POCKET]  =        COMPOUND_STRING("TMs & HMs"),
-    [BERRIES_POCKET] =      COMPOUND_STRING("Berries"),
-    [KEYITEMS_POCKET] =     COMPOUND_STRING("Key Items")
+    [POCKET_ITEMS] =        COMPOUND_STRING("Items"),
+    [POCKET_HELD_ITEMS] =   COMPOUND_STRING("Held Items"),
+    [POCKET_MEGA_STONES] =  COMPOUND_STRING("Mega Stones"),
+    [POCKET_GEMS] =         COMPOUND_STRING("Gems"),
+    [POCKET_TM_HM]  =        COMPOUND_STRING("TMs & HMs"),
+    [POCKET_BERRIES] =      COMPOUND_STRING("Berries"),
+    [POCKET_KEY_ITEMS] =     COMPOUND_STRING("Key Items")
 };
 
 
