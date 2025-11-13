@@ -19515,14 +19515,14 @@ F_TRAINER_FEMALE |
         {
             {
 #line 7838
-            .species = SPECIES_SWAMPERT,
+            .species = SPECIES_WALKING_WAKE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7838
-            .heldItem = ITEM_LUM_BERRY,
+            .heldItem = ITEM_BOOSTER_ENERGY,
 #line 7842
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 7840
-            .ability = ABILITY_TORRENT,
+            .ability = ABILITY_PROTOSYNTHESIS,
 #line 7841
             .lvl = 44,
 #line 7839
