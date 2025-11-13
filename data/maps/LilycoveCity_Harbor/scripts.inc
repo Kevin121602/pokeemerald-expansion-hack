@@ -681,7 +681,7 @@ LilycoveCity_Harbor_EventScript_BoardFerryWithSailor::
 # 341 "data/maps/LilycoveCity_Harbor/scripts.pory"
 	delay 30
 # 342 "data/maps/LilycoveCity_Harbor/scripts.pory"
-	hideobjectat OBJ_EVENT_ID_PLAYER, 0
+	hideplayer
 # 343 "data/maps/LilycoveCity_Harbor/scripts.pory"
 	setvar VAR_0x8004, LOCALID_SS_TIDAL
 # 344 "data/maps/LilycoveCity_Harbor/scripts.pory"
@@ -801,7 +801,7 @@ LilycoveCity_Harbor_EventScript_BoardFerry::
 # 401 "data/maps/LilycoveCity_Harbor/scripts.pory"
 	delay 30
 # 402 "data/maps/LilycoveCity_Harbor/scripts.pory"
-	hideobjectat OBJ_EVENT_ID_PLAYER, 0
+	hideplayer
 # 403 "data/maps/LilycoveCity_Harbor/scripts.pory"
 	setvar VAR_0x8004, LOCALID_SS_TIDAL
 # 404 "data/maps/LilycoveCity_Harbor/scripts.pory"
