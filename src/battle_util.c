@@ -8360,7 +8360,7 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageContext *ctx)
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
         break;
     case ABILITY_LIQUID_VOICE:
-        if (gMovesInfo[move].soundMove)
+        if (IsSoundMove(move))
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
         break;
     case ABILITY_STEELY_SPIRIT:
@@ -11760,6 +11760,7 @@ bool32 CanMoveSkipAccuracyCalc(u32 battlerAtk, u32 battlerDef, u32 abilityAtk, u
 
     if ((gBattleMons[battlerDef].volatiles.lockOn && gDisableStructs[battlerDef].battlerWithSureHit == battlerAtk)
      || (GetGenConfig(GEN_CONFIG_TOXIC_NEVER_MISS) >= GEN_6 && nonVolatileStatus == MOVE_EFFECT_TOXIC && IS_BATTLER_OF_TYPE(battlerAtk, TYPE_POISON))
+     || (move == MOVE_THUNDER_WAVE && IS_BATTLER_OF_TYPE(battlerAtk, TYPE_ELECTRIC))
      || gBattleMons[battlerDef].volatiles.glaiveRush)
     {
         effect = TRUE;
@@ -11770,6 +11771,11 @@ bool32 CanMoveSkipAccuracyCalc(u32 battlerAtk, u32 battlerDef, u32 abilityAtk, u
     {
         effect = TRUE;
         ability = ABILITY_FATAL_PRECISION;
+    }
+    else if(abilityAtk == ABILITY_SWEET_DREAMS && move == MOVE_HYPNOSIS)
+    {
+        effect = TRUE;
+        ability = ABILITY_SWEET_DREAMS;
     }
     // If the attacker has the ability No Guard and they aren't targeting a Pokemon involved in a Sky Drop with the move Sky Drop, move hits.
     else if (abilityAtk == ABILITY_NO_GUARD

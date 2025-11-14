@@ -4430,10 +4430,10 @@ F_TRAINER_FEMALE |
         {
             {
 #line 1776
-            .species = SPECIES_SNORLAX,
+            .species = SPECIES_ACCELGOR,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1776
-            .heldItem = ITEM_LUM_BERRY,
+            .heldItem = ITEM_METRONOME,
 #line 1780
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 1779
@@ -4445,7 +4445,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 1780
-                MOVE_CHILLING_WATER,
+                MOVE_DIG,
             },
             },
         },
