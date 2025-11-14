@@ -2788,7 +2788,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .teachableLearnset = sKirliaTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_GARDEVOIR}
                             #if P_GEN_4_CROSS_EVOS
-                                ,{EVO_ITEM, ITEM_DAWN_STONE, SPECIES_GALLADE, CONDITIONS({IF_GENDER, MON_MALE})}
+                                ,{EVO_ITEM, ITEM_DAWN_STONE, SPECIES_GALLADE}
                             #endif
                             ),
     },
@@ -10944,7 +10944,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .teachableLearnset = sClamperlTeachableLearnset,
         .eggMoveLearnset = sClamperlEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 22, SPECIES_GOREBYSS, CONDITIONS({IF_PID_UPPER_MODULO_10_GT, 4})},
-                                {EVO_LEVEL, 22, SPECIES_HUNTAIL, CONDITIONS({IF_PID_UPPER_MODULO_10_GT, 4})}),
+                                {EVO_LEVEL, 22, SPECIES_HUNTAIL, CONDITIONS({IF_PID_UPPER_MODULO_10_LT, 4})}),
     },
 
     [SPECIES_HUNTAIL] =
