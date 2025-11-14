@@ -4433,7 +4433,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_REGIELEKI,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1776
-            .heldItem = ITEM_POWER_HERB,
+            .heldItem = ITEM_LUM_BERRY,
 #line 1780
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 1779
@@ -4445,7 +4445,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 1780
-                MOVE_SPLASH,
+                MOVE_DIG,
             },
             },
         },

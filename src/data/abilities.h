@@ -2426,11 +2426,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
 
     [ABILITY_FATAL_PRECISION] =
     {
-    #if B_EXPANDED_ABILITY_NAMES == TRUE
         .name = _("Fatal Precision"),
-    #else
-        .name = _("FtlPrecision"),
-    #endif
         .description = COMPOUND_STRING("Strong moves can't miss."),
         .aiRating = 10,
     },
