@@ -3294,6 +3294,9 @@ void SetMoveEffect(u32 battler, u32 effectBattler, bool32 primary, bool32 certai
     case MOVE_EFFECT_ACC_MINUS_2:
     case MOVE_EFFECT_EVS_MINUS_2:
         flags.certain = affectsUser;
+        if(affectsUser && (GetBattlerAbility(gBattlerAttacker) == ABILITY_BAD_COMPANY))
+            break;
+        
         if (mirrorArmorReflected && !affectsUser)
             flags.allowPtr = TRUE;
         else
