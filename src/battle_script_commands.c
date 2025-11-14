@@ -3350,14 +3350,16 @@ void SetMoveEffect(u32 battler, u32 effectBattler, bool32 primary, bool32 certai
         }
         break;
     case MOVE_EFFECT_ATK_DEF_DOWN: // SuperPower
-        if (!NoAliveMonsForEitherParty())
+        if(GetBattlerAbility(gBattlerAttacker) == ABILITY_BAD_COMPANY)
+            break;
+        if (!NoAliveMonsForEitherParty() || GetBattlerAbility(gBattlerAttacker) == ABILITY_BAD_COMPANY)
         {
             BattleScriptPush(gBattlescriptCurrInstr + 1);
             gBattlescriptCurrInstr = BattleScript_AtkDefDown;
         }
         break;
     case MOVE_EFFECT_DEF_SPDEF_DOWN: // Close Combat
-        if (!NoAliveMonsForEitherParty())
+        if (!NoAliveMonsForEitherParty() || GetBattlerAbility(gBattlerAttacker) == ABILITY_BAD_COMPANY)
         {
             BattleScriptPush(gBattlescriptCurrInstr + 1);
             gBattlescriptCurrInstr = BattleScript_DefSpDefDown;
@@ -3436,7 +3438,7 @@ void SetMoveEffect(u32 battler, u32 effectBattler, bool32 primary, bool32 certai
         }
         break;
     case MOVE_EFFECT_V_CREATE:
-        if (!NoAliveMonsForEitherParty())
+        if (!NoAliveMonsForEitherParty() || GetBattlerAbility(gBattlerAttacker) == ABILITY_BAD_COMPANY)
         {
             BattleScriptPush(gBattlescriptCurrInstr + 1);
             gBattlescriptCurrInstr = BattleScript_VCreateStatLoss;
@@ -3602,7 +3604,8 @@ void SetMoveEffect(u32 battler, u32 effectBattler, bool32 primary, bool32 certai
     case MOVE_EFFECT_TERA_BLAST:
         if (GetActiveGimmick(gEffectBattler) == GIMMICK_TERA
             && GetBattlerTeraType(gEffectBattler) == TYPE_STELLAR
-            && !NoAliveMonsForEitherParty())
+            && !NoAliveMonsForEitherParty()
+            && GetBattlerAbility(gBattlerAttacker) != ABILITY_BAD_COMPANY)
         {
             BattleScriptPush(gBattlescriptCurrInstr + 1);
             gBattlescriptCurrInstr = BattleScript_LowerAtkSpAtk;
