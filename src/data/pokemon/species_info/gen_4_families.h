@@ -1870,7 +1870,9 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .teachableLearnset = sBurmyTeachableLearnset,
         .formSpeciesIdTable = sBurmyFormSpeciesIdTable,
         .formChangeTable = sBurmyFormChangeTable,
-        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_WORMADAM_PLANT, CONDITIONS({IF_GENDER, MON_FEMALE})},
+        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_WORMADAM_PLANT, CONDITIONS({IF_ATK_LT_SPA}, {IF_GENDER, MON_FEMALE})},
+                                {EVO_LEVEL, 20, SPECIES_WORMADAM_SANDY, CONDITIONS({IF_ATK_GT_SPA}, {IF_GENDER, MON_FEMALE})},
+                                {EVO_LEVEL, 20, SPECIES_WORMADAM_TRASH, CONDITIONS({IF_ATK_EQ_SPA}, {IF_GENDER, MON_FEMALE})},
                                 {EVO_LEVEL, 20, SPECIES_MOTHIM_PLANT, CONDITIONS({IF_GENDER, MON_MALE})}),
     },
 
@@ -1939,7 +1941,9 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .teachableLearnset = sBurmyTeachableLearnset,
         .formSpeciesIdTable = sBurmyFormSpeciesIdTable,
         .formChangeTable = sBurmyFormChangeTable,
-        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_WORMADAM_SANDY, CONDITIONS({IF_GENDER, MON_FEMALE})},
+        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_WORMADAM_PLANT, CONDITIONS({IF_ATK_LT_SPA}, {IF_GENDER, MON_FEMALE})},
+                                {EVO_LEVEL, 20, SPECIES_WORMADAM_SANDY, CONDITIONS({IF_ATK_GT_SPA}, {IF_GENDER, MON_FEMALE})},
+                                {EVO_LEVEL, 20, SPECIES_WORMADAM_TRASH, CONDITIONS({IF_ATK_EQ_SPA}, {IF_GENDER, MON_FEMALE})},
                                 {EVO_LEVEL, 20, SPECIES_MOTHIM_SANDY, CONDITIONS({IF_GENDER, MON_MALE})}),
     },
 
@@ -2008,7 +2012,9 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .teachableLearnset = sBurmyTeachableLearnset,
         .formSpeciesIdTable = sBurmyFormSpeciesIdTable,
         .formChangeTable = sBurmyFormChangeTable,
-        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_WORMADAM_TRASH, CONDITIONS({IF_GENDER, MON_FEMALE})},
+        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_WORMADAM_PLANT, CONDITIONS({IF_ATK_LT_SPA}, {IF_GENDER, MON_FEMALE})},
+                                {EVO_LEVEL, 20, SPECIES_WORMADAM_SANDY, CONDITIONS({IF_ATK_GT_SPA}, {IF_GENDER, MON_FEMALE})},
+                                {EVO_LEVEL, 20, SPECIES_WORMADAM_TRASH, CONDITIONS({IF_ATK_EQ_SPA}, {IF_GENDER, MON_FEMALE})},
                                 {EVO_LEVEL, 20, SPECIES_MOTHIM_TRASH, CONDITIONS({IF_GENDER, MON_MALE})}),
     },
 
