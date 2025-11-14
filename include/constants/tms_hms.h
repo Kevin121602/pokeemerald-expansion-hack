@@ -57,6 +57,7 @@
     F(MISTY_EXPLOSION) \
     F(MUD_SHOT) \
     F(NIGHT_SHADE) \
+    F(PARTING_SHOT) \
     F(PAYBACK) \
     F(PIN_MISSILE)\
     F(PLAY_ROUGH) \
@@ -77,7 +78,6 @@
     F(SEED_BOMB) \
     F(SEISMIC_TOSS) \
     F(SHADOW_BALL) \
-    F(SHADOW_CLAW) \
     F(SHADOW_PUNCH) \
     F(SHOCK_WAVE) \
     F(SKILL_SWAP) \
