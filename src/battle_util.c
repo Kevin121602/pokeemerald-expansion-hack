@@ -5046,6 +5046,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
              && IsBattleMoveSpecial(gCurrentMove)
              && IsBattlerTurnDamaged(gBattlerTarget)) // Need to actually hit the target
             {
+                gEffectBattler = gBattlerTarget;
                 gBattleScripting.moveEffect = MOVE_EFFECT_SPD_MINUS_1;
                 PREPARE_ABILITY_BUFFER(gBattleTextBuff1, gLastUsedAbility);
                 BattleScriptPushCursor();
