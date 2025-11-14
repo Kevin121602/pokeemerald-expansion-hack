@@ -10420,7 +10420,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .teachableLearnset = sSnoruntTeachableLearnset,
         .eggMoveLearnset = sSnoruntEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 24, SPECIES_GLALIE},
-                                {EVO_ITEM, ITEM_MOON_STONE, SPECIES_FROSLASS}),
+                                {EVO_ITEM, ITEM_ICE_STONE, SPECIES_FROSLASS}),
     },
 
     [SPECIES_GLALIE] =
@@ -10587,7 +10587,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FAIRY, EGG_GROUP_MINERAL),
-        .abilities = { ABILITY_MYSTIC_CHARM, ABILITY_NONE, ABILITY_SNOW_CLOAK },
+        .abilities = { ABILITY_CURSED_BODY, ABILITY_NONE, ABILITY_SNOW_CLOAK },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Froslass"),
         .cryId = CRY_FROSLASS,
