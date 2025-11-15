@@ -6072,6 +6072,18 @@ static void Cmd_moveend(void)
                         effect = 1;
                     }
                     break;
+                case PROTECT_FLOWER_SHIELD:
+                    if (!IsProtectivePadsProtected(gBattlerAttacker, GetBattlerHoldEffect(gBattlerAttacker, TRUE)))
+                    {
+                        gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
+                        i = gBattlerAttacker;
+                        gBattlerAttacker = gBattlerTarget;
+                        gBattlerTarget = i; // gBattlerTarget and gBattlerAttacker are swapped in order to activate Defiant, if applicable
+                        gBattleScripting.moveEffect = MOVE_EFFECT_SP_DEF_MINUS_1;
+                        BattleScriptCall(BattleScript_KingsShieldEffect);
+                        effect = 1;
+                    }
+                    break;
                 default:
                     break;
                 }

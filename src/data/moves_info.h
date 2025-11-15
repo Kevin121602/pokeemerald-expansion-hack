@@ -14836,6 +14836,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = MOVE_TARGET_USER,
         .priority = 4,
         .category = DAMAGE_CATEGORY_STATUS,
+        .argument = { .protectMethod = PROTECT_FLOWER_SHIELD },
         .zMove = { .effect = Z_EFFECT_DEF_UP_1 },
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,

@@ -7603,6 +7603,8 @@ bool32 IsBattlerProtected(u32 battlerAtk, u32 battlerDef, u32 move)
         isProtected = TRUE;
     else if (IsSideProtected(battlerDef, PROTECT_MAT_BLOCK) && !IsBattleMoveStatus(move))
         isProtected = TRUE;
+    else if (gProtectStructs[battlerDef].protected == PROTECT_FLOWER_SHIELD && !IsBattleMoveStatus(move))
+        isProtected = TRUE;
     else
         isProtected = FALSE;
 
@@ -7626,6 +7628,7 @@ u32 GetProtectType(enum ProtectMethod method)
     case PROTECT_OBSTRUCT:
     case PROTECT_SILK_TRAP:
     case PROTECT_MAX_GUARD:
+    case PROTECT_FLOWER_SHIELD:
         return PROTECT_TYPE_SINGLE;
     case PROTECT_WIDE_GUARD:
     case PROTECT_QUICK_GUARD:
