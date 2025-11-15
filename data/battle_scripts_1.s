@@ -7828,11 +7828,35 @@ BattleScript_SweetDreams_Dmg:
 BattleScript_SweetDreams_DmgAfterPopUp:
 	printstring STRINGID_SWEETDREAMSDMG
 	waitmessage B_WAIT_TIME_LONG
+	destroyabilitypopup
+	tryfaintmon BS_TARGET
 	dmg_1_12_targethp
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_HP_UPDATE
 	call BattleScript_SweetDreamsTurnDrain
 	waitmessage B_WAIT_TIME_LONG
-	jumpifhasnohp BS_TARGET, BattleScript_SweetDreams_HidePopUp
+	jumpifhasnohp BS_TARGET, BattleScript_SweetDreamsIncrement
+	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_SweetDreamsManipulateDmg
+	jumpifvolatile BS_ATTACKER, VOLATILE_HEAL_BLOCK, BattleScript_SweetDreamsIncrement
+	jumpiffullhp BS_ATTACKER, BattleScript_SweetDreamsIncrement
+BattleScript_SweetDreamsManipulateDmg:
+	getsweetdreamsdrain
+	manipulatedamage DMG_BIG_ROOT
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_SweetDreamsLiquidOoze
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_SweetDreamsIncrement
+BattleScript_SweetDreamsLiquidOoze:
+	call BattleScript_AbilityPopUpTarget
+	manipulatedamage DMG_CHANGE_SIGN
+	setbyte cMULTISTRING_CHOOSER, B_MSG_ABSORB_OOZE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
+	printfromtable gAbsorbDrainStringIds
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_ATTACKER
+	goto BattleScript_SweetDreamsIncrement
 BattleScript_SweetDreamsIncrement:
 	addbyte gBattlerTarget, 1
 	addbyte sB_ANIM_ARG2, 1

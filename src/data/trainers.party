@@ -1770,7 +1770,7 @@ Pic: Cooltrainer M
 Gender: Male
 Music: Cool
 Items: Full Restore
-Double Battle: Yes
+Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
 Meowstic-F @ Metronome
@@ -1778,13 +1778,6 @@ Level: 100
 Nature: Hardy
 Ability: Thick Fat
 - Splash
-
-Meowstic-F @ Metronome
-Level: 100
-Nature: Hardy
-Ability: Thick Fat
-- Splash
-
 
 === TRAINER_SAMUEL ===
 Name: SAMUEL

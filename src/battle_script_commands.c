@@ -16825,6 +16825,13 @@ void BS_GetStatValue(void)
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
+void BS_GetSweetDreamsDrain(void)
+{
+    NATIVE_ARGS();
+    gBattleStruct->moveDamage[gBattlerAttacker] = max(1, GetNonDynamaxMaxHP(gBattlerTarget) / 12);
+    gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
 void BS_JumpIfFullHp(void)
 {
     NATIVE_ARGS(u8 battler, const u8 *jumpInstr);
