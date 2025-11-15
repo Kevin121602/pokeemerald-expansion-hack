@@ -253,6 +253,7 @@ static const u8* const sBattleAnims_General[NUM_B_ANIMS_GENERAL] =
     [B_ANIM_TERA_ACTIVATE]          = gBattleAnimGeneral_TeraActivate,
     [B_ANIM_SIMPLE_HEAL]            = gBattleAnimGeneral_SimpleHeal,
     [B_ANIM_POWER_CONSTRUCT]        = gBattleAnimGeneral_PowerConstruct,
+    [B_ANIM_SWEET_DREAMS_DRAIN]     = gBattleAnimGeneral_SweetDreamsDrain,
 };
 
 static const u8* const sBattleAnims_Special[NUM_B_ANIMS_SPECIAL] =
@@ -345,6 +346,7 @@ void LaunchBattleAnimation(u32 animType, u32 animId)
         {
         case B_ANIM_TURN_TRAP:
         case B_ANIM_LEECH_SEED_DRAIN:
+        case B_ANIM_SWEET_DREAMS_DRAIN:
         case B_ANIM_MON_HIT:
         case B_ANIM_SNATCH_MOVE:
         case B_ANIM_FUTURE_SIGHT_HIT:

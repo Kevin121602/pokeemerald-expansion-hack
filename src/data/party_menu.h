@@ -808,6 +808,7 @@ struct
     [MENU_ITEM] = {COMPOUND_STRING("Item"), CursorCb_Item},
     [MENU_GIVE] = {gMenuText_Give, CursorCb_Give},
     [MENU_TAKE_ITEM] = {COMPOUND_STRING("Take"), CursorCb_TakeItem},
+    [MENU_MOVE_ITEM] = {COMPOUND_STRING("Move"), CursorCb_MoveItem},
     [MENU_MAIL] = {COMPOUND_STRING("Mail"), CursorCb_Mail},
     [MENU_TAKE_MAIL] = {COMPOUND_STRING("Take"), CursorCb_TakeMail},
     [MENU_READ] = {COMPOUND_STRING("Read"), CursorCb_Read},

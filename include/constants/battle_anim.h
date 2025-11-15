@@ -593,7 +593,7 @@
 #define B_ANIM_POWER_CONSTRUCT          53
 #define B_ANIM_RICH_SEDIMENT            54
 #define B_ANIM_SOOTHING_STEAM           55
-#define B_ANIM_SWEET_DREAMS             56
+#define B_ANIM_SWEET_DREAMS_DRAIN       56
 
 #define NUM_B_ANIMS_GENERAL             57
 

@@ -4430,7 +4430,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 1776
-            .species = SPECIES_ACCELGOR,
+            .species = SPECIES_MEOWSTIC_F,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 1776
             .heldItem = ITEM_METRONOME,
@@ -4445,7 +4445,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 1780
-                MOVE_DIG,
+                MOVE_SPLASH,
             },
             },
         },

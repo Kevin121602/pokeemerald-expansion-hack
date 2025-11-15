@@ -4447,6 +4447,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 break;
             case ABILITY_SWEET_DREAMS:
                 gBattleScripting.animArg1 = gBattlerAttacker;
+                gBattleScripting.animArg2 = gBattlerTarget;
                 BattleScriptPushCursorAndCallback(BattleScript_SweetDreamsActivates);
                 effect++;
                 break;

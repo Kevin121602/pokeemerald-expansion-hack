@@ -100,7 +100,7 @@ enum CmdVarious
 #define DMG_1_8_TARGET_HP       3
 #define DMG_FULL_ATTACKER_HP    4
 #define DMG_BIG_ROOT            5
-#define DMG_1_16_TARGET_HP      6
+#define DMG_1_12_TARGET_HP      6
 
 // Cmd_jumpifcantswitch
 #define SWITCH_IGNORE_ESCAPE_PREVENTION   (1 << 7)

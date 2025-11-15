@@ -7819,37 +7819,19 @@ BattleScript_SweetDreamsActivates::
 BattleScript_SweetDreamsLoop:
 	jumpiftargetally BattleScript_SweetDreamsIncrement
 	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_SweetDreamsIncrement
-	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_SweetDreams_Drain
-	jumpifstatus BS_TARGET, STATUS1_SLEEP, BattleScript_SweetDreams_Drain
+	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_SweetDreams_Dmg
+	jumpifstatus BS_TARGET, STATUS1_SLEEP, BattleScript_SweetDreams_Dmg
 	goto BattleScript_SweetDreamsIncrement
-BattleScript_SweetDreams_Drain:
+BattleScript_SweetDreams_Dmg:
 	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_SweetDreams_ShowPopUp
-BattleScript_SweetDreams_DrainAfterPopUp::
-	playanimation BS_TARGET, B_ANIM_SWEET_DREAMS, gBattlerAttacker
-	dmg_1_16_targethp
-	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_HP_UPDATE
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
-	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_SweetDreamsTurnPrintLiquidOoze
+BattleScript_SweetDreams_DmgAfterPopUp:
 	printstring STRINGID_SWEETDREAMSDMG
-	manipulatedamage DMG_BIG_ROOT
-	goto BattleScript_SweetDreamsTurnPrintAndUpdateHp
-BattleScript_SweetDreamsTurnPrintLiquidOoze::
-	copybyte gBattlerAbility, gBattlerTarget
-	call BattleScript_AbilityPopUp
-	printstring STRINGID_ITSUCKEDLIQUIDOOZE
-	goto BattleScript_SweetDreamsTurnPrintAndUpdateHp
-BattleScript_SweetDreamsHealBlock:
-	goto BattleScript_SweetDreamsTurnPrintAndUpdateHp
-BattleScript_SweetDreamsTurnPrintAndUpdateHp::
-	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_HP_UPDATE
-	healthbarupdate BS_ATTACKER
-	datahpupdate BS_ATTACKER
-	jumpifhasnohp BS_TARGET, BattleScript_SweetDreams_HidePopUp
-	@ printfromtable gLeechSeedStringIds
 	waitmessage B_WAIT_TIME_LONG
-	tryfaintmon BS_ATTACKER
-	tryfaintmon BS_TARGET
+	dmg_1_12_targethp
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_HP_UPDATE
+	call BattleScript_SweetDreamsTurnDrain
+	waitmessage B_WAIT_TIME_LONG
+	jumpifhasnohp BS_TARGET, BattleScript_SweetDreams_HidePopUp
 BattleScript_SweetDreamsIncrement:
 	addbyte gBattlerTarget, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_SweetDreamsLoop
@@ -7862,11 +7844,18 @@ BattleScript_SweetDreams_ShowPopUp:
 	copybyte gBattlerAbility, gBattlerAttacker
 	call BattleScript_AbilityPopUp
 	setbyte sFIXED_ABILITY_POPUP, TRUE
-	goto BattleScript_SweetDreams_HidePopUp
+	goto BattleScript_SweetDreams_DmgAfterPopUp
 BattleScript_SweetDreams_HidePopUp:
 	destroyabilitypopup
 	tryfaintmon BS_TARGET
-	goto BattleScript_SweetDreams_DrainAfterPopUp
+	goto BattleScript_SweetDreamsIncrement
+
+BattleScript_SweetDreamsTurnDrain:
+	playanimation BS_TARGET, B_ANIM_SWEET_DREAMS_DRAIN, sB_ANIM_ARG1
+	healthbarupdate BS_TARGET
+	datahpupdate BS_TARGET
+	tryfaintmon BS_TARGET
+	return
 
 BattleScript_TookAttack::
 	attackstring

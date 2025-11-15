@@ -31362,7 +31362,7 @@ gBattleAnimGeneral_LeechSeedDrain::
 	delay 0
 	goto gBattleAnimMove_Absorb
 
-General_SweetDreams:
+gBattleAnimGeneral_SweetDreamsDrain::
 	createvisualtask AnimTask_GetBattlersFromArg, 5
 	delay 0
 	loadspritegfx ANIM_TAG_ORBS

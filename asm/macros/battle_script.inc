@@ -1909,8 +1909,8 @@
 	manipulatedamage DMG_1_8_TARGET_HP
 	.endm
 
-	.macro dmg_1_16_targethp
-	manipulatedamage DMG_1_16_TARGET_HP
+	.macro dmg_1_12_targethp
+	manipulatedamage DMG_1_12_TARGET_HP
 	.endm
 
 	.macro dmgtomaxattackerhp
