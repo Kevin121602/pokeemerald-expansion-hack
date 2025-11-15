@@ -245,6 +245,39 @@ bool8 AdjustQuantityAccordingToDPadInput(s16 *quantity, u16 max)
             return TRUE;
         }
     }
+    else if (JOY_REPEAT(R_BUTTON))
+    {
+        *quantity += 100;
+        if (*quantity > max)
+            *quantity = max;
+
+        if (*quantity == valBefore)
+        {
+        
+            return FALSE;
+        }
+        else
+        {
+            PlaySE(SE_SELECT);
+            return TRUE;
+        }
+    }
+    else if (JOY_REPEAT(L_BUTTON))
+    {
+        *quantity -= 100;
+        if (*quantity < 0)
+            *quantity = 0;
+
+        if (*quantity == valBefore)
+        {
+            return FALSE;
+        }
+        else
+        {
+            PlaySE(SE_SELECT);
+            return TRUE;
+        }
+    }
 
     return FALSE;
 }
@@ -305,6 +338,39 @@ bool8 AdjustQuantityAccordingToDPadInputZero(s16 *quantity, u16 max)
     else if (JOY_REPEAT(DPAD_ANY) == DPAD_LEFT)
     {
         *quantity -= 10;
+        if (*quantity < 0)
+            *quantity = 0;
+
+        if (*quantity == valBefore)
+        {
+            return FALSE;
+        }
+        else
+        {
+            PlaySE(SE_SELECT);
+            return TRUE;
+        }
+    }
+    else if (JOY_REPEAT(R_BUTTON))
+    {
+        *quantity += 100;
+        if (*quantity > max)
+            *quantity = max;
+
+        if (*quantity == valBefore)
+        {
+        
+            return FALSE;
+        }
+        else
+        {
+            PlaySE(SE_SELECT);
+            return TRUE;
+        }
+    }
+    else if (JOY_REPEAT(L_BUTTON))
+    {
+        *quantity -= 100;
         if (*quantity < 0)
             *quantity = 0;
 
