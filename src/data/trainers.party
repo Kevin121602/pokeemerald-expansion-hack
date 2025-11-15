@@ -1770,8 +1770,14 @@ Pic: Cooltrainer M
 Gender: Male
 Music: Cool
 Items: Full Restore
-Double Battle: No
+Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
+
+Meowstic-F @ Metronome
+Level: 100
+Nature: Hardy
+Ability: Thick Fat
+- Splash
 
 Meowstic-F @ Metronome
 Level: 100

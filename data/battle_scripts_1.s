@@ -7816,6 +7816,7 @@ BattleScript_BadDreams_HidePopUp:
 
 BattleScript_SweetDreamsActivates::
 	setbyte gBattlerTarget, 0
+	setbyte sB_ANIM_ARG2, 0
 BattleScript_SweetDreamsLoop:
 	jumpiftargetally BattleScript_SweetDreamsIncrement
 	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_SweetDreamsIncrement
@@ -7834,6 +7835,7 @@ BattleScript_SweetDreams_DmgAfterPopUp:
 	jumpifhasnohp BS_TARGET, BattleScript_SweetDreams_HidePopUp
 BattleScript_SweetDreamsIncrement:
 	addbyte gBattlerTarget, 1
+	addbyte sB_ANIM_ARG2, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_SweetDreamsLoop
 	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_SweetDreamsEnd
 	destroyabilitypopup
