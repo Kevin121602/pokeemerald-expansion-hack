@@ -130,7 +130,7 @@ u32 AI_GetDamage(u32 battlerAtk, u32 battlerDef, u32 moveIndex, enum DamageCalcC
             return aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].maximum;
         if ((gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_CONSERVATIVE) && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_RISKY)) // Conservative assumes it deals min damage
             return aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum;
-        return aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].median; // Default assumes it deals median damage
+        return aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum; // Default assumes it deals median damage
     }
     else if (calcContext == AI_DEFENDING && BattlerHasAi(battlerDef))
     {
@@ -138,11 +138,11 @@ u32 AI_GetDamage(u32 battlerAtk, u32 battlerDef, u32 moveIndex, enum DamageCalcC
             return aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum;
         if ((gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_CONSERVATIVE) && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_RISKY)) // Conservative assumes it takes max damage
             return aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].maximum;
-        return aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].median; // Default assumes it takes median damage
+        return aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum; // Default assumes it takes median damage
     }
     else
     {
-        return aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].median;
+        return aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum;
     }
 }
 
@@ -4624,7 +4624,7 @@ s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct Battl
         else if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_CONSERVATIVE && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_RISKY))
             return dmg.minimum;
         else
-            return dmg.median;
+            return dmg.minimum;
     }
 
     else if (calcContext == AI_DEFENDING)
@@ -4635,10 +4635,10 @@ s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct Battl
         else if (gAiThinkingStruct->aiFlags[battlerDef] & AI_FLAG_CONSERVATIVE && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_RISKY))
             return dmg.maximum;
         else
-            return dmg.median;
+            return dmg.minimum;
     }
 
-    return dmg.median;
+    return dmg.minimum;
 }
 
 u32 AI_WhoStrikesFirstPartyMon(u32 battlerAtk, u32 battlerDef, struct BattlePokemon switchinCandidate, u32 aiMoveConsidered, u32 playerMoveConsidered, enum ConsiderPriority considerPriority)
@@ -5123,32 +5123,6 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
         }
     }
 
-    if(bestPhysicalMove != MAX_MON_MOVES){
-        bestPhysicalDmg = AI_CalcDamage(moves[bestPhysicalMove], battlerDef, battlerAtk, &effectiveness, NO_GIMMICK, NO_GIMMICK, AI_GetWeather()).median;
-    }
-    if(bestSpecialMove != MAX_MON_MOVES){
-        bestSpecialDmg = AI_CalcDamage(moves[bestSpecialMove], battlerDef, battlerAtk, &effectiveness, NO_GIMMICK, NO_GIMMICK, AI_GetWeather()).median;
-    }
-
-    if(bestPhysPrioMove != MAX_MON_MOVES){
-        bestPhysPrioDmg = AI_CalcDamage(moves[bestPhysPrioMove], battlerDef, battlerAtk, &effectiveness, NO_GIMMICK, NO_GIMMICK, AI_GetWeather()).median;
-    }
-    if(bestSpecialPrioMove != MAX_MON_MOVES){
-        bestSpecialPrioDmg = AI_CalcDamage(moves[bestSpecialPrioMove], battlerDef, battlerAtk, &effectiveness, NO_GIMMICK, NO_GIMMICK, AI_GetWeather()).median;
-    }
-
-    if(bestPhysMultiHitMove != MAX_MON_MOVES){
-        bestPhysMultiHitDmg = AI_CalcDamage(moves[bestPhysMultiHitMove], battlerDef, battlerAtk, &effectiveness, NO_GIMMICK, NO_GIMMICK, AI_GetWeather()).median;
-    }
-
-    if(bestSpecialMultiHitMove != MAX_MON_MOVES){
-        bestSpecialMultiHitDmg = AI_CalcDamage(moves[bestSpecialMultiHitMove], battlerDef, battlerAtk, &effectiveness, NO_GIMMICK, NO_GIMMICK, AI_GetWeather()).median;
-    }
-
-    if(bestIgnoreBoostsMove != MAX_MON_MOVES){
-        ignoreBoostsDmg = AI_CalcDamage(moves[bestIgnoreBoostsMove], battlerDef, battlerAtk, &effectiveness, NO_GIMMICK, NO_GIMMICK, AI_GetWeather()).median;
-    }
-
     bestOverallDmg = (bestPhysicalDmg > bestSpecialDmg) ? bestPhysicalDmg : bestSpecialDmg;
     bestPrioDmg = (bestPhysPrioDmg > bestSpecialPrioDmg) ? bestPhysPrioDmg : bestSpecialPrioDmg;
     bestMultiHitDmg = (bestPhysMultiHitDmg > bestSpecialMultiHitDmg) ? bestPhysMultiHitDmg : bestSpecialMultiHitDmg;
@@ -5615,8 +5589,8 @@ u32 IncreaseFollowMeScore(u32 battlerAtk, u32 battlerDef){
                 return NO_INCREASE;
             }
 
-            if(gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].median > maxRedirectedDmg){
-                maxRedirectedDmg = gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].median;
+            if(gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].minimum > maxRedirectedDmg){
+                maxRedirectedDmg = gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].minimum;
             }
         }
     }
@@ -5648,11 +5622,11 @@ u32 IncreaseMagnetRiseScore(u32 battlerAtk, u32 battlerDef){
             //returns no increase if a non ground move can faint user
             if(CanIndexMoveFaintTarget(battlerDef, battlerAtk, i, 0))
                 return NO_INCREASE;
-            else if (gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].median > maxNonGroundDmg)
-                maxNonGroundDmg = gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].median;
+            else if (gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].minimum > maxNonGroundDmg)
+                maxNonGroundDmg = gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].minimum;
         } else {
-            if (gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].median > maxGroundDmg)
-                maxGroundDmg = gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].median;
+            if (gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].minimum > maxGroundDmg)
+                maxGroundDmg = gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].minimum;
         }
     }
 
@@ -5932,13 +5906,13 @@ enum AIConsiderGimmick ShouldTeraFromCalcs(u32 battler, u32 opposingBattler, str
 
     for (int i = 0; i < MAX_MON_MOVES; i++)
     {
-        if (dealtWithTera[i].median >= oppHp)
+        if (dealtWithTera[i].minimum >= oppHp)
         {
             u16 move = aiMoves[i];
             if (killingMove == MOVE_NONE || GetBattleMovePriority(battler, gAiLogicData->abilities[battler], move) > GetBattleMovePriority(battler, gAiLogicData->abilities[battler], killingMove))
                 killingMove = move;
         }
-        if (dealtWithoutTera[i].median >= oppHp)
+        if (dealtWithoutTera[i].minimum >= oppHp)
             hasKoWithout = TRUE;
     }
 
@@ -5978,10 +5952,10 @@ enum AIConsiderGimmick ShouldTeraFromCalcs(u32 battler, u32 opposingBattler, str
     bool32 savedFromAllBigHits = TRUE;
     for (int i = 0; i < MAX_MON_MOVES; i++)
     {
-        if (takenWithoutTera[i].median > aiHp/2)
+        if (takenWithoutTera[i].minimum > aiHp/2)
         {
             takesBigHit = TRUE;
-            if (takenWithTera[i].median > aiHp/4)
+            if (takenWithTera[i].minimum > aiHp/4)
                 savedFromAllBigHits = FALSE;
         }
     }
@@ -5990,7 +5964,7 @@ enum AIConsiderGimmick ShouldTeraFromCalcs(u32 battler, u32 opposingBattler, str
     bool32 anyOffensiveBenefit = FALSE;
     for (int i = 0; i < MAX_MON_MOVES; i++)
     {
-        if (dealtWithTera[i].median > dealtWithoutTera[i].median)
+        if (dealtWithTera[i].minimum > dealtWithoutTera[i].median)
             anyOffensiveBenefit = TRUE;
     }
 
@@ -5998,10 +5972,10 @@ enum AIConsiderGimmick ShouldTeraFromCalcs(u32 battler, u32 opposingBattler, str
     bool32 anyDefensiveDrawback = FALSE;
     for (int i = 0; i < MAX_MON_MOVES; i++)
     {
-        if (takenWithTera[i].median < takenWithoutTera[i].median)
+        if (takenWithTera[i].minimum < takenWithoutTera[i].minimum)
             anyDefensiveBenefit = TRUE;
 
-        if (takenWithTera[i].median > takenWithoutTera[i].median)
+        if (takenWithTera[i].minimum > takenWithoutTera[i].minimum)
             anyDefensiveDrawback = TRUE;
     }
 

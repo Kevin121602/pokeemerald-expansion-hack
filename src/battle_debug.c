@@ -787,7 +787,7 @@ static void PutAIMovesPointsText(struct BattleDebugMenu *data)
             battlerDef = gSprites[data->spriteIds.aiIconSpriteIds[j]].data[0];
 
             ConvertIntToDecimalStringN(text,
-                                       gAiLogicData->simulatedDmg[battlerDef][data->aiBattlerId][i].median,
+                                       gAiLogicData->simulatedDmg[battlerDef][data->aiBattlerId][i].minimum,
                                        STR_CONV_MODE_RIGHT_ALIGN, 3);
             AddTextPrinterParameterized(data->aiMovesWindowId, FONT_NORMAL, text, 110 + count * 54, i * 15, 0, NULL);
 

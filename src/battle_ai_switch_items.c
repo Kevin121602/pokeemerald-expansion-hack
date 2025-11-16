@@ -939,7 +939,7 @@ bool32 ShouldSwitch(u32 battler)
         if (battlerMove != MOVE_NONE && gMovesInfo[battlerMove].power != 0 && gMovesInfo[battlerMove].effect != EFFECT_EXPLOSION 
             && gAiThinkingStruct->score[j] >= 100)
         {
-            dmg = gAiLogicData->simulatedDmg[battler][opposingBattler][j].median;
+            dmg = gAiLogicData->simulatedDmg[battler][opposingBattler][j].minimum;
             if (gMovesInfo[battlerMove].effect == EFFECT_HIT_ESCAPE){
                 canPivot = TRUE;
                 pivot = j;
@@ -981,7 +981,7 @@ bool32 ShouldSwitch(u32 battler)
 
         if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION && !DoesSubstituteBlockMove(opposingBattler, battler, playerMove))
         {
-            dmg = gAiLogicData->simulatedDmg[opposingBattler][battler][k].median;
+            dmg = gAiLogicData->simulatedDmg[opposingBattler][battler][k].minimum;
             hitsToKOBattler = GetNoOfHitsToKO(dmg, gBattleMons[battler].hp);
             //continues if move does 0 damage
             if(hitsToKOBattler == 0){

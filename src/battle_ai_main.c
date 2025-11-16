@@ -480,9 +480,8 @@ void Ai_InitPartyStruct(void)
         for (j = 0; j < MAX_MON_MOVES; j++)
             gAiPartyData->mons[B_SIDE_PLAYER][i].moves[j] = GetMonData(mon, MON_DATA_MOVE1 + j);
     }
-
     if(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS){
-                for (i = 0; i < PARTY_SIZE; i++)
+        for (i = 0; i < PARTY_SIZE; i++)
         {
             if (GetMonData(&gEnemyParty[i], MON_DATA_HP) == 0)
                 gAiPartyData->mons[B_SIDE_OPPONENT][i].isFainted = TRUE;
@@ -642,7 +641,7 @@ static void CalcBattlerAiMovesData(struct AiLogicData *aiData, u32 battlerAtk, u
 
         aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex] = dmg;
         if(AI_GetMoveEffectiveness(move, battlerAtk, battlerDef) <= Q_4_12(1.0) && aiData->abilities[battlerDef] == ABILITY_WONDER_GUARD && !IsMoldBreakerTypeAbility(battlerAtk, aiData->abilities[battlerAtk])){
-                aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].median = 0;
+                aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum = 0;
             }
         aiData->effectiveness[battlerAtk][battlerDef][moveIndex] = effectiveness;
     }
@@ -3796,7 +3795,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     struct AiLogicData *aiData = gAiLogicData;
     u32 movesetIndex = gAiThinkingStruct->movesetIndex;
     uq4_12_t effectiveness = aiData->effectiveness[battlerAtk][battlerDef][movesetIndex];
-    u32 dmg = aiData->simulatedDmg[battlerAtk][battlerDef][movesetIndex].median;
+    u32 dmg = aiData->simulatedDmg[battlerAtk][battlerDef][movesetIndex].minimum;
 
     s32 score = 0;
     u32 predictedMove = GetIncomingMove(battlerAtk, battlerDef, gAiLogicData);
@@ -5120,7 +5119,7 @@ case EFFECT_GUARD_SPLIT:
                 continue;
             }
 
-            if(aiData->simulatedDmg[battlerAtk][battlerDef][j].median > aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].median
+            if(aiData->simulatedDmg[battlerAtk][battlerDef][j].minimum > aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum
             && (gMovesInfo[moves[j]].additionalEffects[i].moveEffect == gMovesInfo[move].additionalEffects[i].moveEffect) 
             && MoveEffectIsGuaranteed(battlerAtk, aiData->abilities[battlerAtk], &gMovesInfo[moves[j]].additionalEffects[i])){
                 hasSameEffectMoveWithHigherDamage = TRUE;
@@ -5146,7 +5145,7 @@ case EFFECT_GUARD_SPLIT:
                     ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF));
                         break;
                 case MOVE_EFFECT_SPD_PLUS_1:
-                    if(gAiLogicData->simulatedDmg[battlerAtk][battlerDef][moveIndex].median + (GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING) * 3) > gBattleMons[battlerDef].hp){
+                    if(gAiLogicData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum + (GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING) * 3) > gBattleMons[battlerDef].hp){
                         ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED));
                     }
                         break;
@@ -5165,7 +5164,7 @@ case EFFECT_GUARD_SPLIT:
                     ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_DEF_2));
                         break;
                 case MOVE_EFFECT_SPD_PLUS_2:
-                    if(gAiLogicData->simulatedDmg[battlerAtk][battlerDef][moveIndex].median + (GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING) * 3) < gBattleMons[battlerDef].hp)
+                    if(gAiLogicData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum + (GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING) * 3) < gBattleMons[battlerDef].hp)
                         break;
                 case MOVE_EFFECT_SP_ATK_PLUS_2:
                     ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPATK_2));
@@ -5238,7 +5237,7 @@ case EFFECT_GUARD_SPLIT:
                 //    score += ShouldTryToFlinch(battlerAtk, battlerDef, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], move);
                 //    break;
                 case MOVE_EFFECT_SPD_MINUS_1:
-                    if(aiData->abilities[battlerDef] != ABILITY_SHIELD_DUST && (gAiLogicData->simulatedDmg[battlerAtk][battlerDef][moveIndex].median + (GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING) * 3) >= gBattleMons[battlerDef].hp)){
+                    if(aiData->abilities[battlerDef] != ABILITY_SHIELD_DUST && (gAiLogicData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum + (GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING) * 3) >= gBattleMons[battlerDef].hp)){
                         if(gFieldStatuses & STATUS_FIELD_RICH_SEDIMENT && (gMovesInfo[move].type == TYPE_GROUND || gMovesInfo[move].type == TYPE_ROCK || gMovesInfo[move].type == TYPE_STEEL))
                             ADJUST_SCORE(IncreaseStatLoweringScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED, 2));
                         else
@@ -5246,7 +5245,7 @@ case EFFECT_GUARD_SPLIT:
                     }
                     break;
                 case MOVE_EFFECT_SPD_MINUS_2:
-                    if(aiData->abilities[battlerDef] != ABILITY_SHIELD_DUST && (gAiLogicData->simulatedDmg[battlerAtk][battlerDef][moveIndex].median + (GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING) * 3) >= gBattleMons[battlerDef].hp))
+                    if(aiData->abilities[battlerDef] != ABILITY_SHIELD_DUST && (gAiLogicData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum + (GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING) * 3) >= gBattleMons[battlerDef].hp))
                         ADJUST_SCORE(IncreaseStatLoweringScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED, 2));
                     break;
                 case MOVE_EFFECT_ATK_MINUS_1:
@@ -5346,10 +5345,10 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS); // No point in checking the move further so return early
         else
         {
-            if (moveIndex != MAX_MON_MOVES && gMovesInfo[move].effect != EFFECT_EXPLOSION && aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].median >= GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING) && !CanAIFaintTarget(battlerAtk, battlerDef, 0)){
+            if (moveIndex != MAX_MON_MOVES && gMovesInfo[move].effect != EFFECT_EXPLOSION && aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum >= GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING) && !CanAIFaintTarget(battlerAtk, battlerDef, 0)){
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
                 isMoveHighestDmg = TRUE;
-                if(aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].median*3 >= gBattleMons[battlerDef].hp && Random() % 100 < 40)
+                if(aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum*3 >= gBattleMons[battlerDef].hp && Random() % 100 < 40)
                     ADJUST_SCORE(DECENT_EFFECT);
             }
         }
@@ -5367,7 +5366,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     if(statusScore > 0 && score > 100){
         gAiLogicData->hasViableStatus = TRUE;
         //however, dont permanently increase the score if move is highest damage
-        //if(isMoveHighestDmg || (aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].median >= gBattleMons[battlerDef].hp && !MonHasInTactFocusSashSturdy(battlerAtk, battlerDef, GetBattlerHoldEffect(battlerAtk, TRUE), GetBattlerAbility(battlerAtk), move))){
+        //if(isMoveHighestDmg || (aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum >= gBattleMons[battlerDef].hp && !MonHasInTactFocusSashSturdy(battlerAtk, battlerDef, GetBattlerHoldEffect(battlerAtk, TRUE), GetBattlerAbility(battlerAtk), move))){
         //    score = scoreTemp;
         //}
     }
