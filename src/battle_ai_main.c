@@ -35,7 +35,6 @@
 #define AI_ACTION_WATCH         (1 << 2)
 #define AI_ACTION_DO_NOT_ATTACK (1 << 3)
 
-static u32 ChooseMoveOrAction(u32 battler);
 static u32 ChooseMoveOrAction_Singles(u32 battler);
 static u32 ChooseMoveOrAction_Doubles(u32 battler, u32 doublesTargeting);
 static inline void BattleAI_DoAIProcessing(struct AiThinkingStruct *aiThink, u32 battlerAtk, u32 battlerDef);
@@ -398,13 +397,6 @@ void ReconsiderGimmick(u32 battlerAtk, u32 battlerDef, u16 move)
 
     if (gBattleStruct->gimmick.usableGimmick[battlerAtk] == GIMMICK_TERA && GetMoveEffect(move) == EFFECT_PROTECT)
         SetAIUsingGimmick(battlerAtk, NO_GIMMICK);
-}
-
-static u32 ChooseMoveOrAction(u32 battler)
-{
-    if (IsDoubleBattle())
-        return ChooseMoveOrAction_Doubles(battler, gAiLogicData->targetingCase);
-    return ChooseMoveOrAction_Singles(battler);
 }
 
 u32 BattleAI_ChooseMoveIndex(u32 battler)
