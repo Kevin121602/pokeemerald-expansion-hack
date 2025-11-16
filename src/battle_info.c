@@ -269,6 +269,7 @@ static const u8 sText_Sun[] = _("(Sun)");
 static const u8 sText_Rain[] = _("(Rain)");
 static const u8 sText_Sand[] = _("(Sand)");
 static const u8 sText_Snow[] = _("(Snow)");
+static const u8 sText_Hail[] = _("(Hail)");
 
 static const struct BgTemplate sBgTemplates[] =
 {
@@ -916,8 +917,10 @@ static void PrintOnBattleTimersWindow(u8 windowId)
         AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Sun, 123, 129, 0, NULL);
     else if(gBattleWeather & B_WEATHER_SANDSTORM)
         AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Sand, 123, 129, 0, NULL);
-    else if(gBattleWeather & B_WEATHER_SNOW_NORMAL)
+    else if(gBattleWeather & B_WEATHER_SNOW)
         AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Snow, 123, 129, 0, NULL);
+    else if(gBattleWeather & B_WEATHER_HAIL)
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Hail, 123, 129, 0, NULL);
     else
         AddTextPrinterParameterized(windowId, FONT_SMALL, sText_None, 123, 129, 0, NULL);
 

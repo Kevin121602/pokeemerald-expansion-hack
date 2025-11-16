@@ -1387,7 +1387,7 @@ u32 GetSwitchInSpeedStatArgs(struct BattlePokemon battleMon, u32 battler, u32 ab
             speed *= 2;
         else if (ability == ABILITY_SLUSH_RUSH  && (gBattleWeather & B_WEATHER_SNOW))
             speed *= 2;
-        else if (ability == ABILITY_FORECAST && (gBattleWeather & (B_WEATHER_HEAVY_HAIL | B_WEATHER_SNOW_NORMAL | B_WEATHER_RAIN | B_WEATHER_SUN)))
+        else if (ability == ABILITY_FORECAST && (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW | B_WEATHER_RAIN | B_WEATHER_SUN)))
             speed = (speed * 150) / 100;
     }
 
@@ -1639,7 +1639,7 @@ static s32 GetSwitchinWeatherImpact(void)
         // Damage
         if (holdEffect != HOLD_EFFECT_SAFETY_GOGGLES && ability != ABILITY_MAGIC_GUARD && ability != ABILITY_OVERCOAT)
         {
-            if ((gBattleWeather & B_WEATHER_HEAVY_HAIL)
+            if ((gBattleWeather & B_WEATHER_HAIL)
              && (gAiLogicData->switchinCandidate.battleMon.types[0] != TYPE_ICE || gAiLogicData->switchinCandidate.battleMon.types[1] != TYPE_ICE)
              && ability != ABILITY_SNOW_CLOAK && ability != ABILITY_ICE_BODY)
             {
@@ -1682,7 +1682,7 @@ static s32 GetSwitchinWeatherImpact(void)
                     weatherImpact = -1;
             }
         }
-        if (((gBattleWeather & B_WEATHER_HEAVY_HAIL) || (gBattleWeather & B_WEATHER_SNOW_NORMAL)) && ability == ABILITY_ICE_BODY)
+        if (((gBattleWeather & B_WEATHER_HAIL) || (gBattleWeather & B_WEATHER_SNOW)) && ability == ABILITY_ICE_BODY)
         {
             weatherImpact = -(maxHP / 16);
             if (weatherImpact == 0)

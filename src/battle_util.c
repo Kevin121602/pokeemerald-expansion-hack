@@ -161,16 +161,16 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
 
     [BATTLE_WEATHER_SANDSTORM] =
     {
-        .flag = B_WEATHER_SANDSTORM,
+        .flag = B_WEATHER_SANDSTORM_NORMAL,
         .rock = HOLD_EFFECT_SMOOTH_ROCK,
         .endMessage = B_MSG_WEATHER_END_SANDSTORM,
         .continuesMessage = B_MSG_WEATHER_TURN_SANDSTORM,
         .animation = B_ANIM_SANDSTORM_CONTINUES,
     },
 
-    [BATTLE_WEATHER_HEAVY_HAIL] =
+    [BATTLE_WEATHER_HAIL] =
     {
-        .flag = B_WEATHER_HEAVY_HAIL,
+        .flag = B_WEATHER_HAIL_NORMAL,
         .rock = HOLD_EFFECT_ICY_ROCK,
         .endMessage = B_MSG_WEATHER_END_HAIL,
         .continuesMessage = B_MSG_WEATHER_TURN_HAIL,
@@ -3497,7 +3497,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             case WEATHER_SANDSTORM:
                 if (!(gBattleWeather & B_WEATHER_SANDSTORM))
                 {
-                    gBattleWeather = B_WEATHER_SANDSTORM;
+                    gBattleWeather = B_WEATHER_SANDSTORM_NORMAL;
                     gBattleScripting.animArg1 = B_ANIM_SANDSTORM_CONTINUES;
                     effect++;
                 }
@@ -3520,7 +3520,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     }
                     else
                     {
-                        gBattleWeather = B_WEATHER_HEAVY_HAIL;
+                        gBattleWeather = B_WEATHER_HAIL_NORMAL;
                         gBattleScripting.animArg1 = B_ANIM_HAIL_CONTINUES;
                     }
                     effect++;
@@ -4179,7 +4179,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             }
             break;
         case ABILITY_ICE_FACE:
-            if (IsBattlerWeatherAffected(battler, B_WEATHER_HEAVY_HAIL | B_WEATHER_SNOW_NORMAL)
+            if (IsBattlerWeatherAffected(battler, B_WEATHER_HAIL | B_WEATHER_SNOW)
              && gBattleMons[battler].species == SPECIES_EISCUE_NOICE
              && !(gBattleMons[battler].volatiles.transformed))
             {
@@ -5217,7 +5217,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             break;
         case ABILITY_ICE_FACE:
         {
-            u32 battlerWeatherAffected = IsBattlerWeatherAffected(battler, B_WEATHER_HEAVY_HAIL | B_WEATHER_SNOW_NORMAL);
+            u32 battlerWeatherAffected = IsBattlerWeatherAffected(battler, B_WEATHER_HAIL | B_WEATHER_SNOW);
             if (battlerWeatherAffected && gBattleMons[battler].species == SPECIES_EISCUE)
             {
                 // If Hail/Snow activates when in Eiscue is in base, prevent reversion when Eiscue Noice gets broken
@@ -8226,7 +8226,7 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageContext *ctx)
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
         break;
     case EFFECT_SOLAR_BEAM:
-        if (IsBattlerWeatherAffected(battlerAtk, (B_WEATHER_HEAVY_HAIL | B_WEATHER_SANDSTORM | B_WEATHER_RAIN | B_WEATHER_SNOW_NORMAL)))
+        if (IsBattlerWeatherAffected(battlerAtk, (B_WEATHER_HAIL | B_WEATHER_SANDSTORM | B_WEATHER_RAIN | B_WEATHER_SNOW)))
             modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
         break;
     case EFFECT_STOMPING_TANTRUM:
@@ -8662,7 +8662,7 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
     case ABILITY_FORECAST:
         if ((((gBattleMons[battlerAtk].species == SPECIES_CASTFORM_SUNNY && (IsBattlerWeatherAffected(battlerAtk, B_WEATHER_SUN))))
             || (gBattleMons[battlerAtk].species == SPECIES_CASTFORM_RAINY && (IsBattlerWeatherAffected(battlerAtk, B_WEATHER_RAIN)))
-            || (gBattleMons[battlerAtk].species == SPECIES_CASTFORM_SNOWY && (IsBattlerWeatherAffected(battlerAtk, B_WEATHER_SNOW_NORMAL)))) && IsBattleMoveSpecial(move))
+            || (gBattleMons[battlerAtk].species == SPECIES_CASTFORM_SNOWY && (IsBattlerWeatherAffected(battlerAtk, B_WEATHER_SNOW)))) && IsBattleMoveSpecial(move))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
         break;
     case ABILITY_HUSTLE:
@@ -8964,8 +8964,11 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
     // sandstorm sp.def boost for rock types
     if (B_SANDSTORM_SPDEF_BOOST >= GEN_4 && IS_BATTLER_OF_TYPE(battlerDef, TYPE_ROCK) && IsBattlerWeatherAffected(battlerDef, B_WEATHER_SANDSTORM) && !usesDefStat)
         modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
+    // vicious sandstorm sp.def boost for ground types (E4 effect)
+    if (B_SANDSTORM_SPDEF_BOOST >= GEN_4 && IS_BATTLER_OF_TYPE(battlerDef, TYPE_GROUND) && IsBattlerWeatherAffected(battlerDef, B_WEATHER_VICIOUS_SANDSTORM) && !usesDefStat)
+        modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
     // snow def boost for ice types
-    if (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ICE) && IsBattlerWeatherAffected(battlerDef, B_WEATHER_SNOW_NORMAL) && usesDefStat)
+    if (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ICE) && IsBattlerWeatherAffected(battlerDef, B_WEATHER_SNOW) && usesDefStat)
         modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
 
     // The defensive stats of a Player's Pokémon are boosted by x1.1 (+10%) if they have the corresponding flags set (eg. Badges)
