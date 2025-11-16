@@ -843,8 +843,8 @@ static u32 ChooseMoveOrAction_Singles(u32 battler)
         gAiThinkingStruct->aiLogicId++;
     }
 
-    if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_CHECK_VIABILITY)
-        AI_CompareDamagingMoves(battler, opposingBattler);
+    //if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_CHECK_VIABILITY)
+    //    AI_CompareDamagingMoves(battler, opposingBattler);
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
@@ -926,8 +926,8 @@ static u32 ChooseMoveOrAction_Doubles(u32 battler, u32 doublesTargeting)
                 flags >>= (u64)1;
                 gAiThinkingStruct->aiLogicId++;
             }
-            if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_CHECK_VIABILITY)
-                AI_CompareDamagingMoves(battler, gBattlerTarget);
+            //if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_CHECK_VIABILITY)
+            //    AI_CompareDamagingMoves(battler, gBattlerTarget);
 
             mostViableMovesScores[0] = gAiThinkingStruct->score[0];
             mostViableMovesIndices[0] = 0;
@@ -975,12 +975,6 @@ static u32 ChooseMoveOrAction_Doubles(u32 battler, u32 doublesTargeting)
 
     for (i = 1; i < MAX_BATTLERS_COUNT; i++)
     {
-        //if(doublesTargeting == PARALLEL_TARGETING && i == opposingPosition)
-        //    continue;
-
-        //if(doublesTargeting == DIAGONAL_TARGETING && i == parallelPosition)
-        //    continue;
-
         if (mostMovePoints == bestMovePointsForTarget[i])
         {
             mostViableTargetsArray[mostViableTargetsNo] = i;
@@ -1219,17 +1213,17 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         RETURN_SCORE_MINUS(20);
 
     // Don't setup into expected Focus Punch.
-    if (GetMoveCategory(move) == DAMAGE_CATEGORY_STATUS
+    /*if (GetMoveCategory(move) == DAMAGE_CATEGORY_STATUS
         && nonVolatileStatus != MOVE_EFFECT_SLEEP
         && GetMoveEffect(predictedMove) != EFFECT_FOCUS_PUNCH
         && GetMoveEffect(GetBestDmgMoveFromBattler(battlerDef, battlerAtk, AI_DEFENDING)) == EFFECT_FOCUS_PUNCH
         && RandomPercentage(RNG_AI_STATUS_FOCUS_PUNCH, STATUS_MOVE_FOCUS_PUNCH_CHANCE))
     {
         RETURN_SCORE_MINUS(20);
-    }
+    }*/
 
     // Don't use anything but super effective thawing moves if target is frozen if any other attack available
-    if (((GetMoveType(move) == TYPE_FIRE && GetMovePower(move) != 0) || CanBurnHitThaw(move)) && effectiveness < UQ_4_12(2.0) && (gBattleMons[battlerDef].status1 & STATUS1_ICY_ANY))
+    /*if (((GetMoveType(move) == TYPE_FIRE && GetMovePower(move) != 0) || CanBurnHitThaw(move)) && effectiveness < UQ_4_12(2.0) && (gBattleMons[battlerDef].status1 & STATUS1_ICY_ANY))
     {
         u32 aiMove;
         for (i = 0; i < MAX_MON_MOVES; i++)
@@ -1241,23 +1235,23 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 break;
             }
         }
-    }
+    }*/
 
     if (effectiveness == UQ_4_12(0.0))
         RETURN_SCORE_MINUS(20);
+
+    if (DoesBattlerIgnoreAbilityChecks(battlerAtk, abilityAtk, move))
+        abilityDef = ABILITY_NONE;
 
     if ((gMovesInfo[move].soundMove && aiData->abilities[battlerDef] == ABILITY_SOUNDPROOF)){
         RETURN_SCORE_MINUS(20);
     }
 
-    if (DoesBattlerIgnoreAbilityChecks(battlerAtk, abilityAtk, move))
-        abilityDef = ABILITY_NONE;
-
     // If a pokemon can be guaranteed flinched, don't target the pokemon that can't be flinched.
-    if (hasTwoOpponents
-     && !IsFlinchGuaranteed(battlerAtk, battlerDef, move) && IsFlinchGuaranteed(battlerAtk, BATTLE_PARTNER(battlerDef), move)
-     && aiData->effectiveness[battlerAtk][BATTLE_PARTNER(battlerDef)][gAiThinkingStruct->movesetIndex] != UQ_4_12(0.0))
-        ADJUST_SCORE(-5);
+    //if (hasTwoOpponents
+    // && !IsFlinchGuaranteed(battlerAtk, battlerDef, move) && IsFlinchGuaranteed(battlerAtk, BATTLE_PARTNER(battlerDef), move)
+    // && aiData->effectiveness[battlerAtk][BATTLE_PARTNER(battlerDef)][gAiThinkingStruct->movesetIndex] != UQ_4_12(0.0))
+    //    ADJUST_SCORE(-5);
 
     // check non-user target
     if (!(moveTarget & MOVE_TARGET_USER))
@@ -1298,15 +1292,6 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case ABILITY_WONDER_GUARD:
             if (effectiveness < UQ_4_12(2.0))
                 RETURN_SCORE_MINUS(20);
-            break;
-        case ABILITY_JUSTIFIED:
-            if (moveType == TYPE_DARK && !IsBattleMoveStatus(move) && !IsTargetingPartner(battlerAtk, battlerDef))
-                RETURN_SCORE_MINUS(10);
-            break;
-        case ABILITY_RATTLED:
-            if (!IsBattleMoveStatus(move)
-              && (moveType == TYPE_DARK || moveType == TYPE_GHOST || moveType == TYPE_BUG))
-                RETURN_SCORE_MINUS(10);
             break;
         case ABILITY_AROMA_VEIL:
             if (IsAromaVeilProtectedEffect(moveEffect))
@@ -5345,7 +5330,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS); // No point in checking the move further so return early
         else
         {
-            if (moveIndex != MAX_MON_MOVES && gMovesInfo[move].effect != EFFECT_EXPLOSION && aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum >= GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING) && !CanAIFaintTarget(battlerAtk, battlerDef, 0)){
+            if (moveIndex != MAX_MON_MOVES && gMovesInfo[move].effect != EFFECT_EXPLOSION && gMovesInfo[move].effect != EFFECT_MISTY_EXPLOSION && aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum >= GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING) && !CanAIFaintTarget(battlerAtk, battlerDef, 0)){
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
                 isMoveHighestDmg = TRUE;
                 if(aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum*3 >= gBattleMons[battlerDef].hp && Random() % 100 < 40)

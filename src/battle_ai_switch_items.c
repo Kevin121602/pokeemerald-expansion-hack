@@ -936,7 +936,7 @@ bool32 ShouldSwitch(u32 battler)
         battlerMove = gBattleMons[battler].moves[j];
         battlerMovePriority = GetBattleMovePriority(battler, battlerAbility, battlerMove);
 
-        if (battlerMove != MOVE_NONE && gMovesInfo[battlerMove].power != 0 && gMovesInfo[battlerMove].effect != EFFECT_EXPLOSION 
+        if (battlerMove != MOVE_NONE && gMovesInfo[battlerMove].power != 0 && gMovesInfo[battlerMove].effect != EFFECT_EXPLOSION && gMovesInfo[battlerMove].effect != EFFECT_MISTY_EXPLOSION 
             && gAiThinkingStruct->score[j] >= 100)
         {
             dmg = gAiLogicData->simulatedDmg[battler][opposingBattler][j].minimum;
@@ -979,7 +979,7 @@ bool32 ShouldSwitch(u32 battler)
         playerMove = gBattleMons[opposingBattler].moves[k];
         playerMovePriority = GetBattleMovePriority(opposingBattler, playerAbility, playerMove);
 
-        if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION && !DoesSubstituteBlockMove(opposingBattler, battler, playerMove))
+        if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION && gMovesInfo[battlerMove].effect != EFFECT_MISTY_EXPLOSION && !DoesSubstituteBlockMove(opposingBattler, battler, playerMove))
         {
             dmg = gAiLogicData->simulatedDmg[opposingBattler][battler][k].minimum;
             hitsToKOBattler = GetNoOfHitsToKO(dmg, gBattleMons[battler].hp);
@@ -2104,7 +2104,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         playerMove = gBattleMons[opposingBattler].moves[i];
         playerMovePriority = GetBattleMovePriority(opposingBattler, playerAbility, playerMove);
 
-        if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION)
+        if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION && gMovesInfo[playerMove].effect != EFFECT_MISTY_EXPLOSION)
         {
             damageDealt = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, AI_DEFENDING);
             if(CalcPartyMonTypeEffectivenessMultiplier(playerMove, battleMon.species, aiMonAbility) == UQ_4_12(0.0) && !IsMoldBreakerTypeAbility(battler, playerAbility)){
@@ -2156,7 +2156,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         aiMove = battleMon.moves[j];
         aiMovePriority = GetPartyMovePriority(battleMon, aiMove, aiMonAbility);
 
-        if (aiMove != MOVE_NONE && gMovesInfo[aiMove].power != 0 && gMovesInfo[aiMove].effect != EFFECT_EXPLOSION)
+        if (aiMove != MOVE_NONE && gMovesInfo[aiMove].power != 0 && gMovesInfo[aiMove].effect != EFFECT_EXPLOSION && gMovesInfo[aiMove].effect != EFFECT_MISTY_EXPLOSION)
         {
             damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, battleMon, AI_ATTACKING);
             if(gMovesInfo[aiMove].effect == EFFECT_RETALIATE && switchAfterMonKOd)
@@ -2318,7 +2318,7 @@ static s32 GetMaxDamagePlayerCouldDealToSwitchin(u32 battler, u32 opposingBattle
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         playerMove = gBattleMons[opposingBattler].moves[i];
-        if (playerMove != MOVE_NONE && !IsBattleMoveStatus(playerMove) && GetMoveEffect(playerMove) != EFFECT_EXPLOSION)
+        if (playerMove != MOVE_NONE && !IsBattleMoveStatus(playerMove) && GetMoveEffect(playerMove) != EFFECT_EXPLOSION && GetMoveEffect(playerMove) != EFFECT_MISTY_EXPLOSION)
         {
             damageTaken = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, AI_DEFENDING);
             if(CalcPartyMonTypeEffectivenessMultiplier(playerMove, battleMon.species, battleMon.ability) == UQ_4_12(0.0) && !IsMoldBreakerTypeAbility(opposingBattler, gBattleMons[opposingBattler].ability)){
@@ -2378,7 +2378,7 @@ static s32 GetMaxDamageMovePlayerCouldUseOnSwitchin(u32 battler, u32 opposingBat
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         playerMove = gBattleMons[opposingBattler].moves[i];
-        if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION)
+        if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION && gMovesInfo[playerMove].effect != EFFECT_MISTY_EXPLOSION)
         {
             damageTaken = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, AI_DEFENDING);
             //if (damageTaken >= battleMon.hp && PartyMonHasInTactFocusSashSturdy(battler, opposingBattler, playerMove, ItemId_GetHoldEffect(gBattleMons[battler].item), GetBattlerAbility(battler), battleMon, TRUE)){
@@ -2818,7 +2818,7 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, enum SwitchType switchType)
             {
                 aiMove = gAiLogicData->switchinCandidate.battleMon.moves[j];
 
-                if (aiMove != MOVE_NONE && gMovesInfo[aiMove].power != 0 && gMovesInfo[aiMove].effect != EFFECT_EXPLOSION)
+                if (aiMove != MOVE_NONE && gMovesInfo[aiMove].power != 0 && gMovesInfo[aiMove].effect != EFFECT_EXPLOSION && gMovesInfo[aiMove].effect != EFFECT_MISTY_EXPLOSION)
                 {
                     aiMove = GetMonData(&party[consideredMonArray[i]], MON_DATA_MOVE1 + j);
                     damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, gAiLogicData->switchinCandidate.battleMon, AI_ATTACKING);

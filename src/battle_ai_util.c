@@ -1309,7 +1309,8 @@ u32 GetBestNoOfHitsToKO(u32 battlerAtk, u32 battlerDef, enum DamageCalcContext c
             continue;
 
         if(gMovesInfo[gBattleMons[battlerAtk].moves[moveIndex]].effect == EFFECT_EXPLOSION
-            || gMovesInfo[gBattleMons[battlerAtk].moves[moveIndex]].effect == EFFECT_FINAL_GAMBIT)
+            || gMovesInfo[gBattleMons[battlerAtk].moves[moveIndex]].effect == EFFECT_FINAL_GAMBIT
+            || gMovesInfo[gBattleMons[battlerAtk].moves[moveIndex]].effect == EFFECT_MISTY_EXPLOSION)
             continue;
 
         tempResult = GetNoOfHitsToKOBattler(battlerAtk, battlerDef, moveIndex, calcContext);
@@ -1528,6 +1529,7 @@ u32 GetBestDmgMoveFromBattler(u32 battlerAtk, u32 battlerDef, enum DamageCalcCon
         if ((gBattleMons[battlerAtk].moves[moveIndex] != MOVE_NONE && gBattleMons[battlerAtk].moves[moveIndex] != MOVE_UNAVAILABLE && !IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations))
             && bestDmg < AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, aiData)
             && gMovesInfo[gBattleMons[battlerAtk].moves[moveIndex]].effect != EFFECT_EXPLOSION
+            && gMovesInfo[gBattleMons[battlerAtk].moves[moveIndex]].effect != EFFECT_MISTY_EXPLOSION
             && gMovesInfo[gBattleMons[battlerAtk].moves[moveIndex]].effect != EFFECT_FINAL_GAMBIT)
         {
             if(BattlerHasAi(battlerAtk) && gAiThinkingStruct->score[moveIndex] < 100)
@@ -1554,6 +1556,7 @@ u32 GetBestDmgFromBattler(u32 battler, u32 battlerTarget, enum DamageCalcContext
          && !IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations)
          && bestDmg < AI_GetDamage(battler, battlerTarget, moveIndex, calcContext, aiData)
          && gMovesInfo[moves[moveIndex]].effect != EFFECT_EXPLOSION
+         && gMovesInfo[moves[moveIndex]].effect != EFFECT_MISTY_EXPLOSION
          && gMovesInfo[moves[moveIndex]].effect != EFFECT_FINAL_GAMBIT
          && !IsTwoTurnNotSemiInvulnerableMove(battler, moves[moveIndex])
          && gAiThinkingStruct->score[moveIndex] >= 100)
@@ -1576,7 +1579,7 @@ bool32 CanAIFaintTarget(u32 battlerAtk, u32 battlerDef, u32 numHits)
 
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        if (moves[moveIndex] != MOVE_NONE && !IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations) && gMovesInfo[moves[moveIndex]].effect != EFFECT_EXPLOSION)
+        if (moves[moveIndex] != MOVE_NONE && !IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations) && gMovesInfo[moves[moveIndex]].effect != EFFECT_EXPLOSION && gMovesInfo[moves[moveIndex]].effect != EFFECT_MISTY_EXPLOSION)
         {
             // Use the pre-calculated value in simulatedDmg instead of re-calculating it
             dmg = AI_GetDamage(battlerAtk, battlerDef, moveIndex, AI_ATTACKING, aiData);
