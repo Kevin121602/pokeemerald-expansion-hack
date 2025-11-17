@@ -44,7 +44,7 @@ enum SwitchType
 void GetAIPartyIndexes(u32 battlerId, s32 *firstId, s32 *lastId);
 void AI_TrySwitchOrUseItem(u32 battler);
 void InitializeSwitchinCandidate(struct Pokemon *mon);
-u32 GetMostSuitableMonToSwitchInto(u32 battler, enum SwitchType switchType);
+u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd);
 bool32 ShouldSwitch(u32 battler);
 bool32 ShouldSwitchIfOutspedAndKOd(u32 battler, bool32 emitResult);
 bool32 ShouldSwitchIfFasterButKOd(u32 battler, bool32 emitResult);

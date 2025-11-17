@@ -534,12 +534,12 @@ static void OpponentHandleChoosePokemon(u32 battler)
         chosenMonId = gSelectedMonPartyId = GetFirstFaintedPartyIndex(battler);
     }
     // Switching out
-    else if (gBattleStruct->AI_monToSwitchIntoId[battler] == PARTY_SIZE)
+    else
     {
         if((gHitMarker &= HITMARKER_FAINTED(battler)) || GetBattlerTurnOrderNum(battler) == gBattlersCount - 1)
-            chosenMonId = GetMostSuitableMonToSwitchInto(battler, SWITCH_AFTER_KO);
+            chosenMonId = GetMostSuitableMonToSwitchInto(battler, TRUE);
         else
-            chosenMonId = GetMostSuitableMonToSwitchInto(battler, SWITCH_MID_BATTLE);
+            chosenMonId = GetMostSuitableMonToSwitchInto(battler, FALSE);
         if (chosenMonId == PARTY_SIZE)
         {
             s32 battler1, battler2, firstId, lastId;
@@ -571,13 +571,13 @@ static void OpponentHandleChoosePokemon(u32 battler)
         gBattleStruct->monToSwitchIntoId[battler] = chosenMonId;
         GetBattlerPartyState(battler)->sentOut = TRUE;
     }
-    else
+    /*else
     {
         chosenMonId = gBattleStruct->AI_monToSwitchIntoId[battler];
         gBattleStruct->AI_monToSwitchIntoId[battler] = PARTY_SIZE;
         gBattleStruct->monToSwitchIntoId[battler] = chosenMonId;
         GetBattlerPartyState(battler)->sentOut = TRUE;
-    }
+    }*/
     #if TESTING
     TestRunner_Battle_CheckSwitch(battler, chosenMonId);
     #endif // TESTING

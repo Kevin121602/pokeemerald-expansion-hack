@@ -843,19 +843,16 @@ bool32 ShouldSwitch(u32 battler)
     bool32 hasNoGoodMoves = TRUE;
 
     bool32 canPivot = FALSE;
-    bool32 canEjectPack = FALSE;
     bool32 canTeleport = FALSE;
 
     bool32 shouldSwitchLiberal = FALSE;
     bool32 shouldSwitchStandard = FALSE;
 
     bool32 shouldPivot = FALSE;
-    bool32 shouldEjectPack = FALSE;
     bool32 shouldTeleport = FALSE;
 
     u8 pivot = 0;
     u8 teleport = 0;
-    u8 ejectPack = 0;
 
     if (gBattleMons[battler].volatiles.wrapped)
         return FALSE;
@@ -942,10 +939,6 @@ bool32 ShouldSwitch(u32 battler)
             if (gMovesInfo[battlerMove].effect == EFFECT_HIT_ESCAPE){
                 canPivot = TRUE;
                 pivot = j;
-            }
-            if(battlerHoldEffect == HOLD_EFFECT_EJECT_PACK && MoveActivatesEjectPack(battlerMove)){
-                canEjectPack = TRUE;
-                ejectPack = j;
             }
             if(dmg > bestDmg){
                 aiHighestDmg = j;
@@ -1055,14 +1048,6 @@ bool32 ShouldSwitch(u32 battler)
                 shouldPivot = TRUE;
                 //gBattleStruct->aiMoveOrAction[battler] = pivot;
                 //return FALSE;
-            }
-            if(canEjectPack){
-                //BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, 10, (ejectPack) | (opposingBattler << 8));
-                //OpponentBufferExecCompleted(battler);
-                //AiThinkingStruct->score[ejectPack] = 120;
-                shouldEjectPack = TRUE;
-                //gBattleStruct->aiMoveOrAction[battler] = ejectPack;
-                //return FALSE;
             } else {
                 shouldSwitchStandard = TRUE;
             }
@@ -1091,7 +1076,7 @@ bool32 ShouldSwitch(u32 battler)
     }
 
     if (shouldPivot){
-        bestCandidate = GetMostSuitableMonToSwitchInto(battler, SWITCH_MID_BATTLE);
+        bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
 
         InitializeSwitchinCandidate(&party[bestCandidate]);
 
@@ -1103,21 +1088,8 @@ bool32 ShouldSwitch(u32 battler)
             gAiBattleData->chosenMoveIndex[battler] = pivot;
             return FALSE;
         }
-    } else if (shouldEjectPack){
-        bestCandidate = GetMostSuitableMonToSwitchInto(battler, SWITCH_MID_BATTLE);
-
-        InitializeSwitchinCandidate(&party[bestCandidate]);
-
-        bestMonSwitchScore = GetMonSwitchScore(gAiLogicData->switchinCandidate.battleMon, battler, opposingBattler, FALSE);
-
-        if(bestMonSwitchScore < 10){
-            return FALSE;
-        } else {
-            gAiBattleData->chosenMoveIndex[battler] = ejectPack;
-            return FALSE;
-        }
     } else if (shouldTeleport){
-        bestCandidate = GetMostSuitableMonToSwitchInto(battler, SWITCH_MID_BATTLE);
+        bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
 
         InitializeSwitchinCandidate(&party[bestCandidate]);
 
@@ -1130,7 +1102,7 @@ bool32 ShouldSwitch(u32 battler)
             return FALSE;
         }
     } else if(shouldSwitchLiberal){
-        bestCandidate = GetMostSuitableMonToSwitchInto(battler, SWITCH_MID_BATTLE);
+        bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
 
         InitializeSwitchinCandidate(&party[bestCandidate]);
 
@@ -1145,7 +1117,7 @@ bool32 ShouldSwitch(u32 battler)
                 return TRUE;
         }
     } else if (shouldSwitchStandard){
-        bestCandidate = GetMostSuitableMonToSwitchInto(battler, SWITCH_MID_BATTLE);
+        bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
 
         InitializeSwitchinCandidate(&party[bestCandidate]);
 
@@ -2055,19 +2027,21 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
        }
 
        calcHP = (battleMon.hp - highestDmgtoSwitchIn);
-       
-       if (hazardDamage*3 >= calcHP){
-            takesOverAThirdFromHazards = TRUE;
-       }
-
        if(aiMonHoldEffect == HOLD_EFFECT_FOCUS_SASH || aiMonHoldEffect == HOLD_EFFECT_AIR_BALLOON || (aiMonHoldEffect == HOLD_EFFECT_RESIST_BERRY 
         && HasDamagingMoveOfType(opposingBattler, GetItemHoldEffectParam(battleMon.item)))){
             aiMonHoldEffect == HOLD_EFFECT_NONE;
-       }
+        }
     }
 
-    if(hazardDamage > calcHP)
+    if (hazardDamage*3 >= calcHP){
+            takesOverAThirdFromHazards = TRUE;
+       }
+
+    if(hazardDamage > calcHP){
         calcHP = 0;
+        canDieOnSwitch = TRUE;
+        fastKilled = TRUE;
+    }
     else
         calcHP -= hazardDamage;
 
@@ -2079,13 +2053,16 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         aiMonSpeed /= 3;
     }
 
-    if(!switchAfterMonKOd && aiMonAbility == ABILITY_MULTISCALE){
+    if(calcHP < battleMon.hp && aiMonAbility == ABILITY_MULTISCALE){
         aiMonAbility ==  ABILITY_NONE;
     }
 
-    if(!switchAfterMonKOd && aiMonAbility == ABILITY_STURDY){
+    if(calcHP < battleMon.hp && aiMonAbility == ABILITY_STURDY){
         aiMonAbility ==  ABILITY_NONE;
     }
+
+    if(calcHP < battleMon.hp && (aiMonHoldEffect == HOLD_EFFECT_FOCUS_SASH || aiMonHoldEffect == HOLD_EFFECT_AIR_BALLOON))
+        aiMonHoldEffect == HOLD_EFFECT_NONE;
 
     // Get best move for player to use on switch in candidate
     for (i = 0; i < MAX_MON_MOVES; i++)
@@ -2107,7 +2084,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
             }
 
             //sets hits to 2 if would ohko but blocked by sash or sturdy
-            if(hitsToKOAI == 1 && PartyMonHasInTactFocusSashSturdy(battler, opposingBattler, playerMove, aiMonHoldEffect, aiMonAbility, battleMon, TRUE) && (battleMon.hp == battleMon.maxHP)){
+            if(hitsToKOAI == 1 && PartyMonHasInTactFocusSashSturdy(battler, opposingBattler, playerMove, aiMonHoldEffect, aiMonAbility, battleMon, TRUE)){
                 hitsToKOAI++;
             }
 
@@ -2225,7 +2202,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         }
     }
 
-    if((battleMon.species == SPECIES_WOBBUFFET || battleMon.species == SPECIES_WYNAUT) && !fastKilled && switchAfterMonKOd){
+    if((battleMon.species == SPECIES_WOBBUFFET || battleMon.species == SPECIES_WYNAUT) && !fastKilled && !takesOverAThirdOnSwitch){
         switchScore = 10;
         return switchScore;
     }
@@ -2261,8 +2238,6 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         else if(takesOverAThirdOnSwitch == TRUE)                return 9;
         else if(takesOverAThirdFromHazards == TRUE && !faster)  return 8;
         else if(takesOverAThirdFromHazards == TRUE)             return 9;
-        else if(battleMon.species == SPECIES_WOBBUFFET || battleMon.species == SPECIES_WYNAUT)
-            return 10;
     }
     if (fastTrapper == TRUE)                return 15;
     else if (slowTrapper == TRUE)           return 14;
@@ -2678,7 +2653,7 @@ static u32 GetNextMonInParty(struct Pokemon *party, int firstId, int lastId, u32
     return PARTY_SIZE;
 }
 
-u32 GetMostSuitableMonToSwitchInto(u32 battler, enum SwitchType switchType)
+u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
 {
     u32 opposingBattler = 0;
     u32 bestMonId = PARTY_SIZE;
@@ -2696,10 +2671,6 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, enum SwitchType switchType)
     s32 j = 0;
     u32 aiMove = 0;
     u32 invalidMons = 0;
-    bool32 switchAfterMonKOd = FALSE;
-
-    if(switchType == SWITCH_AFTER_KO)
-        switchAfterMonKOd == TRUE;
 
     //if (*(gBattleStruct->monToSwitchIntoId + battler) != PARTY_SIZE)
     //    return *(gBattleStruct->monToSwitchIntoId + battler);
@@ -2792,8 +2763,8 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, enum SwitchType switchType)
     }
 
     u8 bestCandidate = 0;
-    int bestDamage = 0;
-    int damageDealt = 0;
+    u8 bestDamage = 0;
+    u8 damageDealt = 0;
 
     if(currentMonArray[0] >= 12){
         return consideredMonArray[Random() % numberOfBestMons];

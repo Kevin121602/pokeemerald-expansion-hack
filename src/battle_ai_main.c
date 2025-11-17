@@ -343,7 +343,7 @@ void SetupAIPredictionData(u32 battler, enum SwitchType switchType)
     // Switch prediction
     if ((gAiThinkingStruct->aiFlags[battler] & AI_FLAG_PREDICT_SWITCH))
     {
-        gAiLogicData->mostSuitableMonId[opposingBattler] = GetMostSuitableMonToSwitchInto(opposingBattler, switchType);
+        gAiLogicData->mostSuitableMonId[opposingBattler] = GetMostSuitableMonToSwitchInto(opposingBattler, FALSE);
         if (ShouldSwitch(opposingBattler))
             gAiLogicData->shouldSwitch |= (1u << opposingBattler);
         gBattleStruct->prevTurnSpecies[opposingBattler] = gBattleMons[opposingBattler].species;
@@ -369,20 +369,20 @@ void ComputeBattlerDecisions(u32 battler)
         BattleAI_SetupAIData(0xF, battler);
         SetupAIPredictionData(battler, switchType);
 
-        // AI's own switching data
-        if (isAiBattler)
-        {
-            gAiLogicData->mostSuitableMonId[battler] = GetMostSuitableMonToSwitchInto(battler, switchType);
-            if (ShouldSwitch(battler))
-                gAiLogicData->shouldSwitch |= (1u << battler);
-            gBattleStruct->prevTurnSpecies[battler] = gBattleMons[battler].species;
-        }
-
         // AI's move scoring
         gAiBattleData->chosenMoveIndex[battler] = BattleAI_ChooseMoveIndex(battler); // Calculate score and chose move index
         if (isAiBattler)
             BattlerChooseNonMoveAction();
-        ModifySwitchAfterMoveScoring(battler);
+        //ModifySwitchAfterMoveScoring(battler);
+
+        // AI's own switching data
+        if (isAiBattler)
+        {
+            gAiLogicData->mostSuitableMonId[battler] = GetMostSuitableMonToSwitchInto(battler, FALSE);
+            if (ShouldSwitch(battler))
+                gAiLogicData->shouldSwitch |= (1u << battler);
+            gBattleStruct->prevTurnSpecies[battler] = gBattleMons[battler].species;
+        }
 
         gAiLogicData->aiCalcInProgress = FALSE;
     }
@@ -731,7 +731,7 @@ void SetAiLogicDataForTurn(struct AiLogicData *aiData)
 
 static bool32 AI_SwitchMonIfSuitable(u32 battler, bool32 doubleBattle)
 {
-    u32 monToSwitchId = gAiLogicData->mostSuitableMonId[battler];
+    //u32 monToSwitchId = gAiLogicData->mostSuitableMonId[battler];
     /*if (monToSwitchId != PARTY_SIZE && IsValidForBattle(&GetBattlerParty(battler)[monToSwitchId]))
     {
         gBattleMoveDamage = monToSwitchId;
@@ -4332,6 +4332,8 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     //best_status if player is gonna defog away screens or hazards, not used otherwise
     case EFFECT_TAUNT:
         break;
+    case EFFECT_METRONOME:
+        ADJUST_SCORE(DECENT_EFFECT);
     case EFFECT_TRICK:
     case EFFECT_BESTOW:
         switch (aiData->holdEffects[battlerAtk])
