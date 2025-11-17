@@ -635,9 +635,6 @@ static void CalcBattlerAiMovesData(struct AiLogicData *aiData, u32 battlerAtk, u
         if (IsMoveUnusable(moveIndex, move, moveLimitations))
             continue;
 
-        if (gMovesInfo[move].effect == EFFECT_EXPLOSION || gMovesInfo[move].effect == EFFECT_MISTY_EXPLOSION)
-            continue;
-
         // Also get effectiveness of status moves
         dmg = AI_CalcDamage(move, battlerAtk, battlerDef, &effectiveness, USE_GIMMICK, NO_GIMMICK, weather);
         aiData->moveAccuracy[battlerAtk][battlerDef][moveIndex] = Ai_SetMoveAccuracy(aiData, battlerAtk, battlerDef, move);
@@ -646,9 +643,11 @@ static void CalcBattlerAiMovesData(struct AiLogicData *aiData, u32 battlerAtk, u
         if(AI_GetMoveEffectiveness(move, battlerAtk, battlerDef) <= Q_4_12(1.0) && aiData->abilities[battlerDef] == ABILITY_WONDER_GUARD && !IsMoldBreakerTypeAbility(battlerAtk, aiData->abilities[battlerAtk])){
             aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum = 0;
         }
-        if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, gAiLogicData->holdEffects[battlerDef], gAiLogicData->abilities[battlerDef], moves[moveIndex])){
+        if(aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum >= gBattleMons[battlerDef].maxHP && MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, gAiLogicData->holdEffects[battlerDef], gAiLogicData->abilities[battlerDef], moves[moveIndex])){
             aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum = gBattleMons[battlerDef].maxHP - 1;
         }
+        if (gMovesInfo[move].effect == EFFECT_EXPLOSION || gMovesInfo[move].effect == EFFECT_MISTY_EXPLOSION)
+            aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum = 0;
         aiData->effectiveness[battlerAtk][battlerDef][moveIndex] = effectiveness;
     }
 }
@@ -3745,7 +3744,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         IncreaseBurnScore(battlerAtk, battlerDef, move, &score);
         break;
     }
-    
+
     // move effect checks
     switch (moveEffect)
     {

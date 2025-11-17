@@ -1111,9 +1111,9 @@ bool32 ShouldSwitch(u32 battler)
         if(bestMonSwitchScore <= 3){
             return FALSE;
         } else {
-                gBattleStruct->AI_monToSwitchIntoId[battler] = bestCandidate;
+                gAiLogicData->mostSuitableMonId[battler] = bestCandidate;
                 //if (emitResult)
-                    BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_SWITCH, 0);
+                //    BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_SWITCH, 0);
                 return TRUE;
         }
     } else if (shouldSwitchStandard){
@@ -1126,9 +1126,9 @@ bool32 ShouldSwitch(u32 battler)
         if(bestMonSwitchScore < 10){
             return FALSE;
         } else {
-                gBattleStruct->AI_monToSwitchIntoId[battler] = bestCandidate;
+                gAiLogicData->mostSuitableMonId[battler] = bestCandidate;
                 //if (emitResult)
-                    BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_SWITCH, 0);
+                //    BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_SWITCH, 0);
                 return TRUE;
         }
     } else {
