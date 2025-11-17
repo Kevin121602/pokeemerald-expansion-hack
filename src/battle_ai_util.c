@@ -790,7 +790,7 @@ static inline void CalcDynamicMoveDamage(struct DamageContext *ctx, u16 *medianD
         else
         {
             median *= 3;
-            minimum *= 2;
+            minimum *= 3;
             maximum *= 5;
         }
         break;
@@ -1459,8 +1459,7 @@ bool32 CanTargetFaintAi(u32 battlerDef, u32 battlerAtk)
 
             if (AI_GetDamage(battlerDef, battlerAtk, moveIndex, AI_DEFENDING, aiData) >= gBattleMons[battlerAtk].hp)
             {
-                if(!MonHasInTactFocusSashSturdy(battlerAtk, battlerDef, gAiLogicData->holdEffects[battlerAtk], gAiLogicData->abilities[battlerAtk], moves[moveIndex]))
-                    return TRUE;
+                return TRUE;
             }
         }
     }
@@ -2063,27 +2062,23 @@ s32 ProtectChecks(u32 battlerAtk, u32 battlerDef, u32 move, u32 predictedMove, s
         if(CanTargetFaintAi(battlerDef, battlerAtk)){
             //if player has kill on AI and AI is faster
             if(speedBattlerAI >= speedBattler){
-                ADJUST_SCORE_PTR(4);
+                ADJUST_SCORE_PTR(BEST_EFFECT);
             } else {
-                //if AI is slower, protect incentivised over all other moves
-                ADJUST_SCORE_PTR(20);
+                //if AI is slower, protect incentivised over all other moves besides fast kill
+                ADJUST_SCORE_PTR(10);
             }
         }
     } else {
-
-        if (IsBattlerDamagedByStatus(battlerAtk))
-            ADJUST_SCORE_PTR(NO_INCREASE);
-        else{
-            //if (uses == 0)
-            //{
-                ADJUST_SCORE_PTR(WEAK_EFFECT);
-            //}
-
-            if (IsBattlerDamagedByStatus(battlerDef))
+        if(gWishFutureKnock.wishCounter[battlerAtk] != 0){
+            ADJUST_SCORE_PTR(BEST_EFFECT);
+        } else {
+            if (IsBattlerDamagedByStatus(battlerAtk))
+                ADJUST_SCORE_PTR(NO_INCREASE);
+            else{
                 ADJUST_SCORE_PTR(WEAK_EFFECT);
 
-            if(gWishFutureKnock.wishCounter[battlerAtk] != 0){
-                ADJUST_SCORE_PTR(DECENT_EFFECT + WEAK_EFFECT);
+                if (IsBattlerDamagedByStatus(battlerDef))
+                    ADJUST_SCORE_PTR(WEAK_EFFECT);
             }
         }
     }
@@ -2143,9 +2138,7 @@ bool32 CanLowerStat(u32 battlerAtk, u32 battlerDef, struct AiLogicData *aiData, 
     {
         u32 predictedMoveSpeedCheck = GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData);
         // If AI is faster and doesn't have any mons left, lowering speed doesn't give any
-        return !(AI_IsFaster(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, DONT_CONSIDER_PRIORITY)
-            && CountUsablePartyMons(battlerAtk) == 0
-            && !HasBattlerSideMoveWithEffect(battlerAtk, EFFECT_ELECTRO_BALL));
+        return !(AI_IsFaster(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, DONT_CONSIDER_PRIORITY));
     }
 
     return TRUE;
@@ -2157,14 +2150,6 @@ u32 IncreaseStatDownScore(u32 battlerAtk, u32 battlerDef, u32 stat)
 
     // Don't increase score if target is already -3 stat stage
     if (stat != STAT_SPEED && gBattleMons[battlerDef].statStages[stat] <= DEFAULT_STAT_STAGE - 3)
-        return NO_INCREASE;
-
-    // Don't decrease stat if target will die to residual damage
-    if (GetBattlerSecondaryDamage(battlerDef) >= gBattleMons[battlerDef].hp)
-        return NO_INCREASE;
-
-    // Don't decrease stat if opposing battler has Encore
-    if (HasBattlerSideMoveWithEffect(battlerDef, EFFECT_ENCORE))
         return NO_INCREASE;
 
     if (DoesAbilityRaiseStatsWhenLowered(gAiLogicData->abilities[battlerDef]))
@@ -2200,24 +2185,9 @@ u32 IncreaseStatDownScore(u32 battlerAtk, u32 battlerDef, u32 stat)
             tempScore += DECENT_EFFECT;
         break;
     case STAT_ACC:
-        if (gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY)
-            tempScore += WEAK_EFFECT;
-        if (gBattleMons[battlerDef].volatiles.leechSeed)
-            tempScore += WEAK_EFFECT;
-        if (gBattleMons[battlerDef].volatiles.root)
-            tempScore += WEAK_EFFECT;
-        if (gBattleMons[battlerDef].volatiles.cursed)
-            tempScore += WEAK_EFFECT;
+            tempScore += DECENT_EFFECT;
         break;
     case STAT_EVASION:
-        if (gBattleMons[battlerDef].status1 & STATUS1_PSN_ANY)
-            tempScore += WEAK_EFFECT;
-        if (gBattleMons[battlerDef].volatiles.leechSeed)
-            tempScore += WEAK_EFFECT;
-        if (gBattleMons[battlerDef].volatiles.root)
-            tempScore += WEAK_EFFECT;
-        if (gBattleMons[battlerDef].volatiles.cursed)
-            tempScore += WEAK_EFFECT;
         break;
     }
 
@@ -3955,7 +3925,7 @@ bool32 ShouldTrap(u32 battlerAtk, u32 battlerDef, u32 move)
 bool32 CanUseStatusMoveTwice(u32 battlerAtk, u32 battlerDef, u32 move)
 {
     u32 noOfHitsToFaint = NoOfHitsForTargetToFaintBattler(battlerDef, battlerAtk);
-    u32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, move, 0, DONT_CONSIDER_PRIORITY);
+    u32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, move, 0, CONSIDER_PRIORITY);
 
     if ((noOfHitsToFaint >= 2 && aiIsFaster) || (noOfHitsToFaint >= 3 && !aiIsFaster))
         return TRUE;    // can click status move twice, wont go for move if player has cure berry and this func returns false
@@ -3973,7 +3943,7 @@ bool32 ShouldRollout(u32 battlerAtk, u32 battlerDef, u32 move)
     }
 
     if ((!CanTargetFaintAi(battlerDef, battlerAtk) && aiIsFaster) || (noOfHitsToFaint >= 3 && !aiIsFaster))
-        return TRUE;    // chance to trap if decent mu
+        return TRUE;    // chance to rollout if decent mu and no protect
 
     return FALSE;
 }
@@ -4161,7 +4131,7 @@ bool32 ShouldRecover(u32 battlerAtk, u32 battlerDef, u32 move, u32 healPercent)
         for (i = 0; i < MAX_MON_MOVES; i++)
         {
             if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE && !IsMoveUnusable(i, moves[i], moveLimitations)
-                && AI_CalcDamage(moves[i], battlerDef, battlerAtk, &effectiveness, NO_GIMMICK, NO_GIMMICK, AI_GetWeather()).median >= healAmount)
+                && gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].median >= healAmount)
             {
                 return FALSE;
             }
@@ -4900,6 +4870,18 @@ static bool32 HasMoveThatChangesKOThreshold(u32 battlerId, u32 noOfHitsToFaint, 
     return FALSE;
 }
 
+static u32 GetMoveIndex(u32 battler, u32 move){
+    u8 i;
+
+    for(i = 0; i < MAX_MON_MOVES; i++){
+        if(move == gBattleMons[battler].moves[i]){
+            return i;
+        }
+    }
+
+    return MAX_MON_MOVES;
+}
+
 bool32 ShouldBellyDrum(u32 battlerAtk, u32 battlerDef){
 
     u32 battlerHP;
@@ -4912,7 +4894,8 @@ bool32 ShouldBellyDrum(u32 battlerAtk, u32 battlerDef){
     u32 abilityPlayer = gAiLogicData->abilities[battlerDef];
 
     u32 bestMove = GetBestDmgMoveFromBattler(battlerDef, battlerAtk, AI_DEFENDING);
-    u32 bestMoveDmg = AI_CalcDamage(bestMove, battlerDef, battlerAtk, &effectiveness, NO_GIMMICK, NO_GIMMICK, AI_GetWeather()).median;
+    u8 bestMoveIndex = GetMoveIndex(battlerDef, bestMove);
+    u32 bestMoveDmg = gAiLogicData->simulatedDmg[battlerDef][battlerAtk][bestMoveIndex].median;
 
     speedBattlerAI = gAiLogicData->speedStats[battlerAtk];
     speedBattler   = gAiLogicData->speedStats[battlerDef];
@@ -5229,15 +5212,11 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
             shouldSetUp = TRUE;
     }
 
-    if(intactFocusSashOrSturdyPlayer && bestAIDmgOnPlayer*2 >= gBattleMons[battlerDef].hp){
+    if(intactFocusSashOrSturdyPlayer && bestAIDmgOnPlayer*2 >= gBattleMons[battlerDef].hp && (AISpeedAfterBoosts < speedBattler || speedBattler > speedBattlerAI) ){
         shouldSetUp = FALSE;
     }
 
     if (considerContrary && gAiLogicData->abilities[battlerAtk] == ABILITY_CONTRARY)
-        return NO_INCREASE;
-
-    // Don't increase stats if opposing battler has Unaware
-    if (HasBattlerSideAbility(battlerDef, ABILITY_UNAWARE, gAiLogicData))
         return NO_INCREASE;
 
     if(gAiLogicData->abilities[battlerDef] == ABILITY_UNAWARE && (AISpeedAfterBoosts < speedBattler || speedBattler > speedBattlerAI))
@@ -5254,42 +5233,6 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     // Don't increase stats if opposing battler has Opportunist
     if (gAiLogicData->abilities[battlerDef] == ABILITY_OPPORTUNIST)
         return NO_INCREASE;
-
-    // Don't increase stats if opposing battler has Encore
-    if (HasBattlerSideMoveWithEffect(battlerDef, EFFECT_ENCORE))
-        return NO_INCREASE;
-
-    // Don't increase stats if opposing battler has used Haze effect or AI effect
-    if (!RandomPercentage(RNG_AI_BOOST_INTO_HAZE, BOOST_INTO_HAZE_CHANCE)
-      && HasBattlerSideUsedMoveWithEffect(battlerDef, EFFECT_HAZE))
-        return NO_INCREASE;
-
-    // Don't increase if AI is at +1 and opponent has Haze effect
-    if (gBattleMons[battlerAtk].statStages[statId] >= MAX_STAT_STAGE - 5
-      && HasBattlerSideMoveWithAIEffect(battlerDef, AI_EFFECT_RESET_STATS))
-        return NO_INCREASE;
-
-    // Don't increase stats if AI could KO target through Sturdy effect, as otherwise it always 2HKOs
-    if (CanBattlerKOTargetIgnoringSturdy(battlerAtk, battlerDef))
-        return NO_INCREASE;
-
-    // Predicting switch
-    if (IsBattlerPredictedToSwitch(battlerDef))
-    {
-        struct Pokemon *playerParty = GetBattlerParty(battlerDef);
-        // If expected switchin outspeeds and has Encore, don't increase
-        for (i = 0; i < MAX_MON_MOVES; i++)
-        {
-            if (GetMoveEffect(GetMonData(&playerParty[gAiLogicData->mostSuitableMonId[battlerDef]], MON_DATA_MOVE1 + i, NULL)) == EFFECT_ENCORE
-                && GetMonData(&playerParty[gAiLogicData->mostSuitableMonId[battlerDef]], MON_DATA_PP1 + i, NULL) > 0);
-            {
-                if (GetMonData(&playerParty[gAiLogicData->mostSuitableMonId[battlerDef]], MON_DATA_SPEED, NULL) > gBattleMons[battlerAtk].speed)
-                    return NO_INCREASE;
-            }
-        }
-        // Otherwise if predicting switch, stat increases are great momentum
-        tempScore += WEAK_EFFECT;
-    }
 
     switch (statId)
     {

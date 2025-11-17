@@ -45,7 +45,7 @@ enum StatChange
 };
 
 #define BEST_DAMAGE_MOVE         1  // Move with the most amount of hits with the best accuracy/effect
-#define POWERFUL_STATUS_MOVE     12 // Moves with this score will be chosen over a move that faints target
+#define POWERFUL_STATUS_MOVE     15 // Moves with this score will be chosen over a move that faints target
 #define NO_DAMAGE_OR_FAILS      -20 // Move fails or does no damage
 
 // Scores given in AI_CalcMoveEffectScore and AI_CalcHoldEffectMoveScore
@@ -74,8 +74,8 @@ enum MoveComparisonResult
 #define KILL             7 // AI faints target
 #define ENCOURAGED_KILL  8 // Certain encouraged moves like speed drop/omniboost etc get an 80% 1 point increase
 #define LAST_CHANCE      9 // AI faints to target. It should try and do damage with a priority move
-#define FAST_KILL        10 //AI has priority kill on target
-#define REVENGE_KILL     11 //Kill With Pursuit
+#define FAST_KILL        11 //AI has priority kill on target
+#define REVENGE_KILL     12 //Kill With Pursuit
 
 // AI_Risky
 #define STRONG_RISKY_EFFECT     3
