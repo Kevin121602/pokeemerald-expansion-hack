@@ -3727,6 +3727,25 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PREFER_STATUS_MOVES && IsBattleMoveStatus(move) && effectiveness != UQ_4_12(0.0))
         ADJUST_SCORE(10);
 
+
+    // Non-volatile statuses
+    switch(GetMoveNonVolatileStatus(move))
+    {
+    case MOVE_EFFECT_POISON:
+    case MOVE_EFFECT_TOXIC:
+        IncreasePoisonScore(battlerAtk, battlerDef, move, &score);
+        break;
+    case MOVE_EFFECT_SLEEP:
+        IncreaseSleepScore(battlerAtk, battlerDef, move, &score);
+        break;
+    case MOVE_EFFECT_PARALYSIS:
+        IncreaseParalyzeScore(battlerAtk, battlerDef, move, &score);
+        break;
+    case MOVE_EFFECT_BURN:
+        IncreaseBurnScore(battlerAtk, battlerDef, move, &score);
+        break;
+    }
+    
     // move effect checks
     switch (moveEffect)
     {
