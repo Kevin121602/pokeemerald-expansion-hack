@@ -1478,8 +1478,6 @@ u32 NoOfHitsForTargetToFaintBattler(u32 battlerDef, u32 battlerAtk)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         currNumberOfHits = GetNoOfHitsToKOBattler(battlerDef, battlerAtk, i, AI_DEFENDING);
-        if(MonHasInTactFocusSashSturdy(battlerAtk, battlerDef, gAiLogicData->holdEffects[battlerAtk], gAiLogicData->abilities[battlerDef], moves[i]) && currNumberOfHits == 1)
-            currNumberOfHits++;
         if (currNumberOfHits != 0)
         {
             if (currNumberOfHits < leastNumberOfHits)
@@ -1527,10 +1525,7 @@ u32 GetBestDmgMoveFromBattler(u32 battlerAtk, u32 battlerDef, enum DamageCalcCon
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
         if ((gBattleMons[battlerAtk].moves[moveIndex] != MOVE_NONE && gBattleMons[battlerAtk].moves[moveIndex] != MOVE_UNAVAILABLE && !IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations))
-            && bestDmg < AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, aiData)
-            && gMovesInfo[gBattleMons[battlerAtk].moves[moveIndex]].effect != EFFECT_EXPLOSION
-            && gMovesInfo[gBattleMons[battlerAtk].moves[moveIndex]].effect != EFFECT_MISTY_EXPLOSION
-            && gMovesInfo[gBattleMons[battlerAtk].moves[moveIndex]].effect != EFFECT_FINAL_GAMBIT)
+            && bestDmg < AI_GetDamage(battlerAtk, battlerDef, moveIndex, calcContext, aiData))
         {
             if(BattlerHasAi(battlerAtk) && gAiThinkingStruct->score[moveIndex] < 100)
                 continue;
@@ -1555,9 +1550,6 @@ u32 GetBestDmgFromBattler(u32 battler, u32 battlerTarget, enum DamageCalcContext
         if (moves[moveIndex] != MOVE_NONE
          && !IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations)
          && bestDmg < AI_GetDamage(battler, battlerTarget, moveIndex, calcContext, aiData)
-         && gMovesInfo[moves[moveIndex]].effect != EFFECT_EXPLOSION
-         && gMovesInfo[moves[moveIndex]].effect != EFFECT_MISTY_EXPLOSION
-         && gMovesInfo[moves[moveIndex]].effect != EFFECT_FINAL_GAMBIT
          && !IsTwoTurnNotSemiInvulnerableMove(battler, moves[moveIndex])
          && gAiThinkingStruct->score[moveIndex] >= 100)
         {
@@ -1579,12 +1571,12 @@ bool32 CanAIFaintTarget(u32 battlerAtk, u32 battlerDef, u32 numHits)
 
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        if (moves[moveIndex] != MOVE_NONE && !IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations) && gMovesInfo[moves[moveIndex]].effect != EFFECT_EXPLOSION && gMovesInfo[moves[moveIndex]].effect != EFFECT_MISTY_EXPLOSION)
+        if (moves[moveIndex] != MOVE_NONE && !IsMoveUnusable(moveIndex, moves[moveIndex], moveLimitations))
         {
             // Use the pre-calculated value in simulatedDmg instead of re-calculating it
             dmg = AI_GetDamage(battlerAtk, battlerDef, moveIndex, AI_ATTACKING, aiData);
 
-            if (gBattleMons[battlerDef].hp <= dmg && !MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, gAiLogicData->holdEffects[battlerDef], gAiLogicData->abilities[battlerDef], moves[moveIndex]))
+            if (gBattleMons[battlerDef].hp <= dmg)
                 return TRUE;
         }
     }

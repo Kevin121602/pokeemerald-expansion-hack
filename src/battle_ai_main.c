@@ -635,14 +635,20 @@ static void CalcBattlerAiMovesData(struct AiLogicData *aiData, u32 battlerAtk, u
         if (IsMoveUnusable(moveIndex, move, moveLimitations))
             continue;
 
+        if (gMovesInfo[move].effect == EFFECT_EXPLOSION || gMovesInfo[move].effect == EFFECT_MISTY_EXPLOSION)
+            continue;
+
         // Also get effectiveness of status moves
         dmg = AI_CalcDamage(move, battlerAtk, battlerDef, &effectiveness, USE_GIMMICK, NO_GIMMICK, weather);
         aiData->moveAccuracy[battlerAtk][battlerDef][moveIndex] = Ai_SetMoveAccuracy(aiData, battlerAtk, battlerDef, move);
 
         aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex] = dmg;
         if(AI_GetMoveEffectiveness(move, battlerAtk, battlerDef) <= Q_4_12(1.0) && aiData->abilities[battlerDef] == ABILITY_WONDER_GUARD && !IsMoldBreakerTypeAbility(battlerAtk, aiData->abilities[battlerAtk])){
-                aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum = 0;
-            }
+            aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum = 0;
+        }
+        if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, gAiLogicData->holdEffects[battlerDef], gAiLogicData->abilities[battlerDef], moves[moveIndex])){
+            aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum = gBattleMons[battlerDef].maxHP - 1;
+        }
         aiData->effectiveness[battlerAtk][battlerDef][moveIndex] = effectiveness;
     }
 }
@@ -2930,57 +2936,24 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 
     if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && gMovesInfo[move].effect == EFFECT_PURSUIT)
     {
-        //kill with trapping or boosting move
-        if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, holdEffectPlayer, abilityPlayer, move)){
-            ADJUST_SCORE(BEST_DAMAGE_MOVE);
-            if(Random() % 100 < 40)
-                ADJUST_SCORE(DECENT_EFFECT);
-        } else {
-            RETURN_SCORE_PLUS(REVENGE_KILL);
-        }
-    } else if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && (gMovesInfo[move].additionalEffects[0].moveEffect == MOVE_EFFECT_RECHARGE || gMovesInfo[move].effect == EFFECT_FINAL_GAMBIT))
+        RETURN_SCORE_PLUS(REVENGE_KILL);
+    } 
+    else if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && (gMovesInfo[move].additionalEffects[0].moveEffect == MOVE_EFFECT_RECHARGE || gMovesInfo[move].effect == EFFECT_FINAL_GAMBIT))
     {
-        //kill with trapping or boosting move
-        if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, holdEffectPlayer, abilityPlayer, move)){
-            ADJUST_SCORE(BEST_DAMAGE_MOVE);
-            if(Random() % 100 < 40)
-                ADJUST_SCORE(DECENT_EFFECT);
-        } else {
-            RETURN_SCORE_PLUS(DISCOURAGED_KILL);
-        }
-    } else if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && IsMoveEncouragedKill(battlerAtk, battlerDef, move) && Random() % 100 < 80)
+        RETURN_SCORE_PLUS(DISCOURAGED_KILL);
+    } 
+    else if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && IsMoveEncouragedKill(battlerAtk, battlerDef, move) && Random() % 100 < 80)
     {
-        //kill with trapping or boosting move
-        if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, holdEffectPlayer, abilityPlayer, move)){
-            ADJUST_SCORE(BEST_DAMAGE_MOVE);
-            if(Random() % 100 < 40)
-                ADJUST_SCORE(DECENT_EFFECT);
-        } else {
-            RETURN_SCORE_PLUS(ENCOURAGED_KILL);
-        }
+        RETURN_SCORE_PLUS(ENCOURAGED_KILL);
     }
     else if ((CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && GetBattleMovePriority(battlerAtk, abilityAI, move) > 0) 
         && speedBattlerAI < speedBattler)
     {
-        //kill with prio move
-        if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, holdEffectPlayer, abilityPlayer, move)){
-            ADJUST_SCORE(BEST_DAMAGE_MOVE);
-            if(Random() % 100 < 40)
-                ADJUST_SCORE(DECENT_EFFECT);
-        } else {
             RETURN_SCORE_PLUS(FAST_KILL);
-        }
     }
-    else if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && gMovesInfo[move].effect != EFFECT_EXPLOSION && gMovesInfo[move].effect != EFFECT_MISTY_EXPLOSION)
+    else if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0))
     {
-        //fast kill and slow kill not differentiated
-        if(MonHasInTactFocusSashSturdy(battlerDef, battlerAtk, holdEffectPlayer, abilityPlayer, move)){
-            ADJUST_SCORE(BEST_DAMAGE_MOVE);
-            if(Random() % 100 < 40)
-                ADJUST_SCORE(DECENT_EFFECT);
-        } else {
             RETURN_SCORE_PLUS(KILL);
-        }
     }
     else if (CanTargetFaintAi(battlerDef, battlerAtk)
             && speedBattlerAI < speedBattler
@@ -5263,7 +5236,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS); // No point in checking the move further so return early
         else
         {
-            if (moveIndex != MAX_MON_MOVES && gMovesInfo[move].effect != EFFECT_EXPLOSION && gMovesInfo[move].effect != EFFECT_MISTY_EXPLOSION && aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum >= GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING) && !CanAIFaintTarget(battlerAtk, battlerDef, 0)){
+            if (moveIndex != MAX_MON_MOVES && aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum >= GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING) && !CanAIFaintTarget(battlerAtk, battlerDef, 0)){
                 ADJUST_SCORE(BEST_DAMAGE_MOVE);
                 isMoveHighestDmg = TRUE;
                 if(aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum*3 >= gBattleMons[battlerDef].hp && Random() % 100 < 40)

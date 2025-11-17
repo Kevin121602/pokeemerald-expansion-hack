@@ -936,8 +936,7 @@ bool32 ShouldSwitch(u32 battler)
         battlerMove = gBattleMons[battler].moves[j];
         battlerMovePriority = GetBattleMovePriority(battler, battlerAbility, battlerMove);
 
-        if (battlerMove != MOVE_NONE && gMovesInfo[battlerMove].power != 0 && gMovesInfo[battlerMove].effect != EFFECT_EXPLOSION && gMovesInfo[battlerMove].effect != EFFECT_MISTY_EXPLOSION 
-            && gAiThinkingStruct->score[j] >= 100)
+        if (battlerMove != MOVE_NONE && gMovesInfo[battlerMove].power != 0 && gAiThinkingStruct->score[j] >= 100)
         {
             dmg = gAiLogicData->simulatedDmg[battler][opposingBattler][j].minimum;
             if (gMovesInfo[battlerMove].effect == EFFECT_HIT_ESCAPE){
@@ -958,11 +957,6 @@ bool32 ShouldSwitch(u32 battler)
                 continue;
             }
 
-            //sets hits to 2 if would ohko but blocked by sash or sturdy
-            if(hitsToKOPlayer == 1 && MonHasInTactFocusSashSturdy(opposingBattler, battler, playerHoldEffect, playerAbility, battlerMove)){
-                hitsToKOPlayer++;
-            }
-
             //gets best move based on hits to KO, if hits to KO are tied, best move is based on highest prio
             if(hitsToKOPlayer < bestHitsToKOPlayer){
                 bestHitsToKOPlayer = hitsToKOPlayer;
@@ -979,18 +973,13 @@ bool32 ShouldSwitch(u32 battler)
         playerMove = gBattleMons[opposingBattler].moves[k];
         playerMovePriority = GetBattleMovePriority(opposingBattler, playerAbility, playerMove);
 
-        if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION && gMovesInfo[battlerMove].effect != EFFECT_MISTY_EXPLOSION && !DoesSubstituteBlockMove(opposingBattler, battler, playerMove))
+        if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && !DoesSubstituteBlockMove(opposingBattler, battler, playerMove))
         {
             dmg = gAiLogicData->simulatedDmg[opposingBattler][battler][k].minimum;
             hitsToKOBattler = GetNoOfHitsToKO(dmg, gBattleMons[battler].hp);
             //continues if move does 0 damage
             if(hitsToKOBattler == 0){
                 continue;
-            }
-
-            //sets hits to 2 if would ohko but blocked by sash or sturdy
-            if(hitsToKOBattler == 1 && MonHasInTactFocusSashSturdy(battler, opposingBattler, battlerHoldEffect, battlerAbility, playerMove)){
-                hitsToKOBattler++;
             }
 
             //gets best move based on hits to KO, if hits to KO are tied, best move is based on highest prio
