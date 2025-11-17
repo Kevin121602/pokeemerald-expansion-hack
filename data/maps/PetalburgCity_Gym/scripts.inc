@@ -3101,15 +3101,15 @@ PetalburgCity_Gym_Text_EnterGymLeadersRoom:
 # 1551 "data/maps/PetalburgCity_Gym/scripts.pory"
 PetalburgCity_Gym_Text_GymStatue:
 # 1552 "data/maps/PetalburgCity_Gym/scripts.pory"
-	.string "PETALBURG CITY Pokémon GYM$"
+	.string "Petalburg City Pokémon Gym$"
 # 1553 "data/maps/PetalburgCity_Gym/scripts.pory"
 
 # 1554 "data/maps/PetalburgCity_Gym/scripts.pory"
 PetalburgCity_Gym_Text_GymStatueCertified:
 # 1555 "data/maps/PetalburgCity_Gym/scripts.pory"
-	.string "PETALBURG CITY Pokémon Gym\p"
+	.string "Petalburg City Pokémon Gym\p"
 # 1556 "data/maps/PetalburgCity_Gym/scripts.pory"
-	.string "NORMAN'S CERTIFIED TRAINERS:\n"
+	.string "Norman's Certified Trainers:\n"
 # 1557 "data/maps/PetalburgCity_Gym/scripts.pory"
 	.string "{PLAYER}$"
 # 1558 "data/maps/PetalburgCity_Gym/scripts.pory"
