@@ -3650,7 +3650,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .levelUpLearnset = sClauncherLevelUpLearnset,
         .teachableLearnset = sClauncherTeachableLearnset,
         .eggMoveLearnset = sClauncherEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_CLAWITZER}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 27, SPECIES_CLAWITZER}),
     },
 
     [SPECIES_CLAWITZER] =
