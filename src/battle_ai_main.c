@@ -3714,7 +3714,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     else if (CanTargetFaintAi(battlerDef, battlerAtk)
             && speedBattlerAI < speedBattler
             && GetBattleMovePriority(battlerAtk, abilityAI, move) > 0
-            && !(gBattleMons[battlerDef].status1 & STATUS1_SLEEP))
+            && !(gBattleMons[battlerDef].status1 & STATUS1_SLEEP)
+            && !(gBattleMons[battlerAtk].hp < gBattleMons[battlerAtk].maxHP / 4 // Pinch berry couldn't have activated yet
+             && holdEffectAI == HOLD_EFFECT_CUSTAP_BERRY))
     {
         if(move == MOVE_FAKE_OUT){
             if(gDisableStructs[battlerAtk].isFirstTurn){

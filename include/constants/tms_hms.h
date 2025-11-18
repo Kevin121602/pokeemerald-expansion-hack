@@ -57,11 +57,11 @@
     F(MISTY_EXPLOSION) \
     F(MUD_SHOT) \
     F(NIGHT_SHADE) \
-    F(PARTING_SHOT) \
     F(PAYBACK) \
     F(PIN_MISSILE)\
     F(PLAY_ROUGH) \
     F(POISON_JAB) \
+    F(POLTERGEIST) \
     F(POUNCE) \
     F(POWER_GEM) \
     F(PROTECT) \

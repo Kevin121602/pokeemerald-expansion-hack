@@ -11715,23 +11715,9 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM_PARTING_SHOT] =
-    {
-        .name = ITEM_NAME("TM56"),
-        .price = 3000,
-        .description = COMPOUND_STRING(
-            "Ushers a parting\n"
-            "threat and then\n"
-            "switches out."),
-        .importance = I_REUSABLE_TMS,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-    },
-
     [ITEM_TM_PAYBACK] =
     {
-        .name = ITEM_NAME("TM57"),
+        .name = ITEM_NAME("TM56"),
         .price = 3000,
         .description = COMPOUND_STRING(
             "Does double damage\n"
@@ -11745,7 +11731,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_TM_PIN_MISSILE] =
     {
-        .name = ITEM_NAME("TM58"),
+        .name = ITEM_NAME("TM57"),
         .price = 3000,
         .description = COMPOUND_STRING(
             "Shoots 2 to 5 pins\n"
@@ -11759,7 +11745,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_TM_PLAY_ROUGH] =
     {
-        .name = ITEM_NAME("TM59"),
+        .name = ITEM_NAME("TM58"),
         .price = 3000,
         .description = COMPOUND_STRING(
             "Plays rough with\n"
@@ -11773,12 +11759,26 @@ const struct Item gItemsInfo[] =
 
     [ITEM_TM_POISON_JAB] =
     {
-        .name = ITEM_NAME("TM60"),
+        .name = ITEM_NAME("TM59"),
         .price = 3000,
         .description = COMPOUND_STRING(
             "Target is stabbed\n"
             "with limbs steeped\n"
             "in poison."),
+        .importance = I_REUSABLE_TMS,
+        .pocket = POCKET_TM_HM,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
+    },
+
+    [ITEM_TM_POLTERGEIST] =
+    {
+        .name = ITEM_NAME("TM60"),
+        .price = 3000,
+        .description = COMPOUND_STRING(
+            "Attacks the foe\n"
+            "by controlling\n"
+            "their item."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
