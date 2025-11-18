@@ -782,8 +782,7 @@ static inline void CalcDynamicMoveDamage(struct DamageContext *ctx, u16 *medianD
         }
         else if (ctx->holdEffectAtk == HOLD_EFFECT_LOADED_DICE)
         {
-            median *= 9;
-            median /= 2;
+            median *= 4;
             minimum *= 4;
             maximum *= 5;
         }
@@ -989,6 +988,12 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
 
         if (GetActiveGimmick(battlerAtk) != GIMMICK_Z_MOVE)
             CalcDynamicMoveDamage(&ctx, &simDamage.median, &simDamage.minimum, &simDamage.maximum);
+
+        if(moveEffect == EFFECT_REVENGE && !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_STATUS)){
+            simDamage.minimum *= 2;
+            simDamage.median *= 2;
+            simDamage.maximum *= 2;
+        }
 
         AI_RestoreBattlerTypes(battlerAtk, types);
     }

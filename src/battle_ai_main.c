@@ -2954,21 +2954,6 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     {
             RETURN_SCORE_PLUS(KILL);
     }
-    else if (CanTargetFaintAi(battlerDef, battlerAtk)
-            && speedBattlerAI < speedBattler
-            && GetBattleMovePriority(battlerAtk, abilityAI, move) > 0
-            && !(gBattleMons[battlerDef].status1 & STATUS1_SLEEP))
-    {
-        if(move == MOVE_FAKE_OUT){
-            if(gDisableStructs[battlerAtk].isFirstTurn){
-                RETURN_SCORE_PLUS(LAST_CHANCE);
-            }
-            else{
-                RETURN_SCORE_MINUS(20);
-            }
-        }
-        RETURN_SCORE_PLUS(LAST_CHANCE);
-    }
 
     return score;
 }
@@ -3726,6 +3711,22 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_PREFER_STATUS_MOVES && IsBattleMoveStatus(move) && effectiveness != UQ_4_12(0.0))
         ADJUST_SCORE(10);
 
+    else if (CanTargetFaintAi(battlerDef, battlerAtk)
+            && speedBattlerAI < speedBattler
+            && GetBattleMovePriority(battlerAtk, abilityAI, move) > 0
+            && !(gBattleMons[battlerDef].status1 & STATUS1_SLEEP))
+    {
+        if(move == MOVE_FAKE_OUT){
+            if(gDisableStructs[battlerAtk].isFirstTurn){
+                RETURN_SCORE_PLUS(LAST_CHANCE);
+            }
+            else{
+                RETURN_SCORE_MINUS(20);
+            }
+        }
+        RETURN_SCORE_PLUS(LAST_CHANCE);
+    }
+
 
     // Non-volatile statuses
     switch(GetMoveNonVolatileStatus(move))
@@ -4170,7 +4171,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         {
             //50/50 if player has hazard removal or one layer of hazards up, guaranteed otherwise
             if (AreAnyHazardsOnSide(GetBattlerSide(battlerDef)) 
-                || HasMoveWithAdditionalEffect(battlerDef, EFFECT_RAPID_SPIN)
+                || HasMoveWithEffect(battlerDef, EFFECT_RAPID_SPIN)
                 || HasMoveWithEffect(battlerDef, EFFECT_DEFOG)){
                 ADJUST_SCORE(WEAK_EFFECT);
                 if(Random() % 100 < 40)
