@@ -812,7 +812,7 @@ F_TRAINER_FEMALE |
 #line 385
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 384
-            .ability = ABILITY_MIMICRY,
+            .ability = ABILITY_FILTER,
 #line 382
             .lvl = 15,
 #line 383

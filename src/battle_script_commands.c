@@ -10264,6 +10264,7 @@ static u32 ChangeStatBuffs(u32 battler, s8 statValue, u32 statId, union StatChan
     battlerAbility = GetBattlerAbility(battler);
     battlerHoldEffect = GetBattlerHoldEffect(battler, TRUE);
     gSpecialStatuses[battler].changedStatsBattlerId = gBattlerAttacker;
+    u32 moveType = GetBattleMoveType(gCurrentMove);
 
     if (battlerAbility == ABILITY_CONTRARY)
     {
@@ -10277,6 +10278,12 @@ static u32 ChangeStatBuffs(u32 battler, s8 statValue, u32 statId, union StatChan
         }
     }
     else if (battlerAbility == ABILITY_SIMPLE && !flags.onlyChecking)
+    {
+        statValue = (SET_STAT_BUFF_VALUE(GET_STAT_BUFF_VALUE(statValue) * 2)) | ((statValue <= -1) ? STAT_BUFF_NEGATIVE : 0);
+        RecordAbilityBattle(battler, battlerAbility);
+    }
+
+    if ((moveType == TYPE_GROUND || moveType == TYPE_ROCK || moveType == TYPE_STEEL) && gFieldStatuses & STATUS_FIELD_RICH_SEDIMENT && !flags.onlyChecking)
     {
         statValue = (SET_STAT_BUFF_VALUE(GET_STAT_BUFF_VALUE(statValue) * 2)) | ((statValue <= -1) ? STAT_BUFF_NEGATIVE : 0);
         RecordAbilityBattle(battler, battlerAbility);

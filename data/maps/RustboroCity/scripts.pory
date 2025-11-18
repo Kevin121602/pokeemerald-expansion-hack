@@ -259,7 +259,7 @@ RustboroCity_EventScript_StolenGoodsTrigger4::
 RustboroCity_EventScript_StolenGoodsScene::
 	msgbox RustboroCity_Text_OutOfTheWay, MSGBOX_DEFAULT
 	closemessage
-	playbgm MUS_HG_ENCOUNTER_ROCKET, FALSE
+	playbgm MUS_DP_ENCOUNTER_GALACTIC, FALSE
 	addobject LOCALID_GRUNT
 	addobject LOCALID_DEVON_EMPLOYEE
 	applymovement LOCALID_GRUNT, RustboroCity_Movement_GruntEscape

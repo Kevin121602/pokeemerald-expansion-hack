@@ -253,6 +253,8 @@ static const u8* const sBattleAnims_General[NUM_B_ANIMS_GENERAL] =
     [B_ANIM_TERA_ACTIVATE]          = gBattleAnimGeneral_TeraActivate,
     [B_ANIM_SIMPLE_HEAL]            = gBattleAnimGeneral_SimpleHeal,
     [B_ANIM_POWER_CONSTRUCT]        = gBattleAnimGeneral_PowerConstruct,
+    [B_ANIM_RICH_SEDIMENT]          = gBattleAnimGeneral_RichSediment,
+    [B_ANIM_SOOTHING_STEAM]         = gBattleAnimGeneral_SoothingSteam,
     [B_ANIM_SWEET_DREAMS_DRAIN]     = gBattleAnimGeneral_SweetDreamsDrain,
 };
 

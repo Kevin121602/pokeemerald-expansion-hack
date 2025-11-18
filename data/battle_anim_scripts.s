@@ -31536,10 +31536,10 @@ gBattleAnimGeneral_SimpleHeal::
 	waitforvisualfinish
 	end
 
-gBattleAnimGeneral_RichSediment:
+gBattleAnimGeneral_RichSediment::
 	goto gBattleAnimMove_Rototiller
 
-gBattleAnimGeneral_SoothingSteam:
+gBattleAnimGeneral_SoothingSteam::
 	goto gBattleAnimMove_Haze
 
 gBattleAnimGeneral_IllusionOff::

@@ -514,7 +514,7 @@ RustboroCity_EventScript_StolenGoodsScene::
 # 261 "data/maps/RustboroCity/scripts.pory"
 	closemessage
 # 262 "data/maps/RustboroCity/scripts.pory"
-	playbgm MUS_HG_ENCOUNTER_ROCKET, FALSE
+	playbgm MUS_DP_ENCOUNTER_GALACTIC, FALSE
 # 263 "data/maps/RustboroCity/scripts.pory"
 	addobject LOCALID_GRUNT
 # 264 "data/maps/RustboroCity/scripts.pory"
