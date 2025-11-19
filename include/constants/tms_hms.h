@@ -36,7 +36,6 @@
     F(FLAMETHROWER) \
     F(FLASH_CANNON) \
     F(FLIP_TURN)\
-    F(FOCUS_PUNCH) \
     F(GIGA_DRAIN) \
     F(GRASS_KNOT) \
     F(GRAVITY) \
@@ -50,6 +49,7 @@
     F(IRON_HEAD) \
     F(LEECH_LIFE) \
     F(LIGHT_SCREEN) \
+    F(LIQUIDATION) \
     F(LOW_KICK) \
     F(LOW_SWEEP) \
     F(MAGICAL_LEAF) \
@@ -61,7 +61,6 @@
     F(PIN_MISSILE)\
     F(PLAY_ROUGH) \
     F(POISON_JAB) \
-    F(POLTERGEIST) \
     F(POUNCE) \
     F(POWER_GEM) \
     F(PROTECT) \
@@ -72,6 +71,7 @@
     F(ROCK_SLIDE) \
     F(ROCK_TOMB) \
     F(ROOST) \
+    F(SCALD) \
     F(SCALE_SHOT) \
     F(SCARY_FACE) \
     F(SCREECH) \

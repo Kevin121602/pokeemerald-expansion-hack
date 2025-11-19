@@ -7588,7 +7588,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         )
         .levelUpLearnset = sVanillishLevelUpLearnset,
         .teachableLearnset = sVanillishTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_VANILLUXE}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_VANILLUXE}),
     },
 
     [SPECIES_VANILLUXE] =

@@ -17619,7 +17619,7 @@ F_TRAINER_FEMALE |
 #line 6833
             .ability = ABILITY_MAGIC_BOUNCE,
 #line 6834
-            .lvl = 20,
+            .lvl = 21,
 #line 6832
             .nature = NATURE_BOLD,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -17642,7 +17642,7 @@ F_TRAINER_FEMALE |
 #line 6842
             .ability = ABILITY_DEFIANT,
 #line 6843
-            .lvl = 21,
+            .lvl = 20,
 #line 6841
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -17650,7 +17650,7 @@ F_TRAINER_FEMALE |
 #line 6844
                 MOVE_DUAL_WINGBEAT,
                 MOVE_QUICK_ATTACK,
-                MOVE_NIGHT_SLASH,
+                MOVE_LEAF_BLADE,
                 MOVE_ROOST,
             },
             },

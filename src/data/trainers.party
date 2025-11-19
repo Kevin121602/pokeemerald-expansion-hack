@@ -6831,7 +6831,7 @@ Level: 19
 Hattrem @ Berry Juice
 Nature: Bold
 Ability: Magic Bounce
-Level: 20
+Level: 21
 - Psybeam
 - Draining Kiss
 - Mystical Fire
@@ -6840,10 +6840,10 @@ Level: 20
 Farfetch'd @ Leek
 Nature: Jolly
 Ability: Defiant
-Level: 21
+Level: 20
 - Dual Wingbeat
 - Quick Attack
-- Night Slash
+- Leaf Blade
 - Roost
 
 === TRAINER_TIMOTHY_2 ===
