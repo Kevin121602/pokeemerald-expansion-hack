@@ -10140,7 +10140,7 @@ Level: 24
 - Zen Headbutt
 - Brick Break
 - Hypnosis
-- Nightmare
+- Wish
 
 === TRAINER_MARTHA ===
 Name: MARTHA
@@ -13462,9 +13462,10 @@ Castform @ Petaya Berry
 Nature: Timid
 Ability: Forecast
 Level: 22
-- Ice Beam
-- Flamethrower
-- Thunderbolt
+IVs: 28 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Blizzard
+- Fire Blast
+- Thunder
 - Substitute
 
 Boldore @ Leftovers

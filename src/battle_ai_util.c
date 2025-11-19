@@ -3915,7 +3915,7 @@ bool32 ShouldTrap(u32 battlerAtk, u32 battlerDef, u32 move)
     u32 noOfHitsToFaint = NoOfHitsForTargetToFaintBattler(battlerDef, battlerAtk);
     u32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, move, 0, DONT_CONSIDER_PRIORITY);
 
-    if (IsBattlerTrapped(battlerDef, TRUE))
+    if (IsBattlerTrapped(battlerAtk, battlerDef))
         return FALSE;
 
     if(gSpeciesInfo[battlerDef].types[0] == TYPE_GHOST || gSpeciesInfo[battlerDef].types[1] == TYPE_GHOST)
