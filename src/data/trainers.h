@@ -5202,7 +5202,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_GRANBULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2068
-            .heldItem = ITEM_LUM_BERRY,
+            .heldItem = ITEM_EXPERT_BELT,
 #line 2072
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 2070
@@ -5214,7 +5214,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 2072
-                MOVE_COVET,
+                MOVE_PLAY_ROUGH,
                 MOVE_FIRE_FANG,
                 MOVE_THUNDER_FANG,
                 MOVE_SCARY_FACE,
@@ -11749,7 +11749,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_SAWSBUCK,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4558
-            .heldItem = ITEM_LUM_BERRY,
+            .heldItem = ITEM_SILK_SCARF,
 #line 4562
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 4560
@@ -23477,7 +23477,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 9060
                 MOVE_IRON_HEAD,
-                MOVE_ROCK_TOMB,
+                MOVE_ROCK_SLIDE,
                 MOVE_BODY_SLAM,
                 MOVE_METAL_BURST,
             },
@@ -24471,7 +24471,7 @@ F_TRAINER_FEMALE |
 #line 9441
                 MOVE_AQUA_TAIL,
                 MOVE_ZEN_HEADBUTT,
-                MOVE_POWER_GEM,
+                MOVE_SIGNAL_BEAM,
                 MOVE_AQUA_JET,
             },
             },
@@ -38504,7 +38504,7 @@ F_TRAINER_FEMALE |
 #line 14776
                 MOVE_PSYSHOCK,
                 MOVE_SHADOW_BALL,
-                MOVE_SHOCK_WAVE,
+                MOVE_THUNDERBOLT,
                 MOVE_FAKE_OUT,
             },
             },
@@ -42275,7 +42275,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_QUILAVA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 16225
-            .heldItem = ITEM_FIRE_GEM,
+            .heldItem = ITEM_CHARCOAL,
 #line 16229
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 16227
@@ -42343,7 +42343,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_SIMISAGE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 16249
-            .heldItem = ITEM_GRASS_GEM,
+            .heldItem = ITEM_MIRACLE_SEED,
 #line 16253
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 16251
@@ -42357,7 +42357,7 @@ F_TRAINER_FEMALE |
 #line 16253
                 MOVE_GRASS_PLEDGE,
                 MOVE_BRICK_BREAK,
-                MOVE_ACROBATICS,
+                MOVE_KNOCK_OFF,
                 MOVE_PROTECT,
             },
             },
@@ -45366,7 +45366,7 @@ F_TRAINER_FEMALE |
                 MOVE_EARTH_POWER,
                 MOVE_STORED_POWER,
                 MOVE_ANCIENT_POWER,
-                MOVE_CALM_MIND,
+                MOVE_COSMIC_POWER,
             },
             },
             {

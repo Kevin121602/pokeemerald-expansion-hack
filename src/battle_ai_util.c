@@ -920,10 +920,10 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
     ctx.updateFlags = FALSE;
     ctx.weather = weather;
     ctx.fixedBasePower = SetFixedMoveBasePower(battlerAtk, move);
-    ctx.holdEffectAtk = aiData->holdEffects[battlerAtk];
-    ctx.holdEffectDef = aiData->holdEffects[battlerDef];
-    ctx.abilityAtk = aiData->abilities[battlerAtk];
-    ctx.abilityDef = AI_GetMoldBreakerSanitizedAbility(battlerAtk, ctx.abilityAtk, aiData->abilities[battlerDef], ctx.holdEffectDef, move);
+    ctx.holdEffectAtk = AI_DecideHoldEffectForTurn(battlerAtk);
+    ctx.holdEffectDef = AI_DecideHoldEffectForTurn(battlerDef);
+    ctx.abilityAtk = GetBattlerAbilityIgnoreMoldBreaker(battlerAtk);
+    ctx.abilityDef = AI_GetMoldBreakerSanitizedAbility(battlerAtk, ctx.abilityAtk, GetBattlerAbilityIgnoreMoldBreaker(battlerDef), ctx.holdEffectDef, move);
     ctx.typeEffectivenessModifier = CalcTypeEffectivenessMultiplier(&ctx);
 
     u32 movePower = GetMovePower(move);
@@ -1670,25 +1670,27 @@ bool32 AI_IsAbilityOnSide(u32 battlerId, u32 ability)
 // does NOT include ability suppression checks
 s32 AI_DecideKnownAbilityForTurn(u32 battlerId)
 {
-    u32 validAbilities[NUM_ABILITY_SLOTS];
-    u8 i, numValidAbilities = 0;
+    //u32 validAbilities[NUM_ABILITY_SLOTS];
+    //u8 i, numValidAbilities = 0;
     u32 knownAbility = GetBattlerAbilityIgnoreMoldBreaker(battlerId); // during ai checking for mold breaker could lead to inaccuracies
-    u32 indexAbility;
-    u32 abilityAiRatings[NUM_ABILITY_SLOTS] = {0};
+    //u32 indexAbility;
+    //u32 abilityAiRatings[NUM_ABILITY_SLOTS] = {0};
 
     // We've had ability overwritten by e.g. Worry Seed. It is not part of gAiPartyData in case of switching
-    if (gDisableStructs[battlerId].overwrittenAbility)
-        return gDisableStructs[battlerId].overwrittenAbility;
+    //if (gDisableStructs[battlerId].overwrittenAbility)
+    //    return gDisableStructs[battlerId].overwrittenAbility;
 
     // The AI knows its own ability, and omniscience handling
-    if (IsAiBattlerAware(battlerId) || (IsAiBattlerAssumingStab() && ASSUME_STAB_SEES_ABILITY))
-        return knownAbility;
+    //if (IsAiBattlerAware(battlerId) || (IsAiBattlerAssumingStab() && ASSUME_STAB_SEES_ABILITY))
+    //    return knownAbility;
 
     // Check neutralizing gas, gastro acid
-    if (knownAbility == ABILITY_NONE)
-        return knownAbility;
+    //if (knownAbility == ABILITY_NONE)
+    //    return knownAbility;
 
-    if (gAiPartyData->mons[GetBattlerSide(battlerId)][gBattlerPartyIndexes[battlerId]].ability != ABILITY_NONE)
+    return knownAbility;
+
+    /*if (gAiPartyData->mons[GetBattlerSide(battlerId)][gBattlerPartyIndexes[battlerId]].ability != ABILITY_NONE)
         return gAiPartyData->mons[GetBattlerSide(battlerId)][gBattlerPartyIndexes[battlerId]].ability;
 
     // Abilities that prevent fleeing - treat as always known
@@ -1703,12 +1705,12 @@ s32 AI_DecideKnownAbilityForTurn(u32 battlerId)
             abilityAiRatings[numValidAbilities] = gAbilitiesInfo[indexAbility].aiRating;
             validAbilities[numValidAbilities++] = indexAbility;
         }
-    }
+    }*/
 
     //if (numValidAbilities > 0)
     //    return validAbilities[RandomUniform(RNG_AI_ABILITY, 0, numValidAbilities - 1)];
 
-    return knownAbility; // Unknown.
+    //return knownAbility; // Unknown.
 }
 
 enum ItemHoldEffect AI_DecideHoldEffectForTurn(u32 battlerId)
@@ -1718,10 +1720,10 @@ enum ItemHoldEffect AI_DecideHoldEffectForTurn(u32 battlerId)
     if (gBattleMons[battlerId].item == ITEM_NONE) // Failsafe for when user recorded an item but it was consumed
         return holdEffect;
 
-    if (!IsAiBattlerAware(battlerId))
-        holdEffect = gAiPartyData->mons[GetBattlerSide(battlerId)][gBattlerPartyIndexes[battlerId]].heldEffect;
-    else
-        holdEffect = GetBattlerHoldEffect(battlerId, FALSE);
+    //if (!IsAiBattlerAware(battlerId))
+    //    holdEffect = gAiPartyData->mons[GetBattlerSide(battlerId)][gBattlerPartyIndexes[battlerId]].heldEffect;
+    //else
+    holdEffect = GetBattlerHoldEffect(battlerId, FALSE);
 
     if (gAiThinkingStruct->aiFlags[battlerId] & AI_FLAG_NEGATE_UNAWARE)
         return holdEffect;
@@ -4586,7 +4588,7 @@ s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct Battl
     // restores original gBattleMon struct
     FreeRestoreBattleMons(savedBattleMons);
 
-    if (calcContext == AI_ATTACKING)
+    /*if (calcContext == AI_ATTACKING)
     {
         SetBattlerAiData(battlerAtk, gAiLogicData);
         if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_RISKY && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_CONSERVATIVE))
@@ -4606,7 +4608,7 @@ s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct Battl
             return dmg.maximum;
         else
             return dmg.minimum;
-    }
+    }*/
 
     return dmg.minimum;
 }

@@ -80,16 +80,16 @@ MtChimney_EventScript_AppleVendor::
 # 81 "data/maps/MtChimney/scripts.pory"
 	random 2
 # 82 "data/maps/MtChimney/scripts.pory"
-	switch VAR_RESULT
+	msgbox MtChimney_EventScript_AppleVendor_Text_3
 # 83 "data/maps/MtChimney/scripts.pory"
-	case 0, MtChimney_EventScript_AppleVendor_10
+	hidemoneybox
+# 84 "data/maps/MtChimney/scripts.pory"
+	switch VAR_RESULT
 # 85 "data/maps/MtChimney/scripts.pory"
+	case 0, MtChimney_EventScript_AppleVendor_10
+# 87 "data/maps/MtChimney/scripts.pory"
 	case 1, MtChimney_EventScript_AppleVendor_11
 MtChimney_EventScript_AppleVendor_8:
-# 88 "data/maps/MtChimney/scripts.pory"
-	hidemoneybox
-# 89 "data/maps/MtChimney/scripts.pory"
-	msgbox MtChimney_EventScript_AppleVendor_Text_3
 # 90 "data/maps/MtChimney/scripts.pory"
 	setflag FLAG_RECIEVED_MT_CHIMNEY_APPLE
 MtChimney_EventScript_AppleVendor_1:
@@ -112,12 +112,12 @@ MtChimney_EventScript_AppleVendor_5:
 	end
 
 MtChimney_EventScript_AppleVendor_10:
-# 84 "data/maps/MtChimney/scripts.pory"
+# 86 "data/maps/MtChimney/scripts.pory"
 	giveitem ITEM_TART_APPLE
 	goto MtChimney_EventScript_AppleVendor_8
 
 MtChimney_EventScript_AppleVendor_11:
-# 86 "data/maps/MtChimney/scripts.pory"
+# 88 "data/maps/MtChimney/scripts.pory"
 	giveitem ITEM_SWEET_APPLE
 	goto MtChimney_EventScript_AppleVendor_8
 
@@ -1843,7 +1843,7 @@ MtChimney_EventScript_AppleVendor_Text_2:
 	.string "Oh, fine then.$"
 
 MtChimney_EventScript_AppleVendor_Text_3:
-# 89 "data/maps/MtChimney/scripts.pory"
+# 82 "data/maps/MtChimney/scripts.pory"
 	.string "Thank you, dear!$"
 
 MtChimney_Text_MiraIntro::

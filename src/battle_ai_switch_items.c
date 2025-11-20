@@ -2125,8 +2125,8 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         if (aiMove != MOVE_NONE && gMovesInfo[aiMove].power != 0 && gMovesInfo[aiMove].effect != EFFECT_EXPLOSION && gMovesInfo[aiMove].effect != EFFECT_MISTY_EXPLOSION)
         {
             damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, battleMon, AI_ATTACKING);
-            if(gMovesInfo[aiMove].effect == EFFECT_RETALIATE && switchAfterMonKOd)
-                damageDealt *= 2;
+            //if(gMovesInfo[aiMove].effect == EFFECT_RETALIATE && switchAfterMonKOd)
+            //    damageDealt *= 2;
             hitsToKOPlayer = GetNoOfHitsToKOBattlerDmg(damageDealt, opposingBattler);
 
             //continues if move does 0 damage
@@ -2782,8 +2782,8 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
                 {
                     aiMove = GetMonData(&party[consideredMonArray[i]], MON_DATA_MOVE1 + j);
                     damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, gAiLogicData->switchinCandidate.battleMon, AI_ATTACKING);
-                    if(gMovesInfo[aiMove].effect == EFFECT_RETALIATE && switchAfterMonKOd)
-                        damageDealt *= 2;
+                    //if(gMovesInfo[aiMove].effect == EFFECT_RETALIATE && switchAfterMonKOd)
+                    //    damageDealt *= 2;
                     if(damageDealt > bestDamage){
                         bestDamage = damageDealt;
                         bestCandidate = i;

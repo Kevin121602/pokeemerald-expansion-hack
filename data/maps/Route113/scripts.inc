@@ -396,7 +396,7 @@ Route113_Text_TrainerTipsRegisterKeyItems:
 # 237 "data/maps/Route113/scripts.pory"
 	.string "Trainer Tips\p"
 # 238 "data/maps/Route113/scripts.pory"
-	.string "You may register one of the KEY ITEMS\n"
+	.string "You may register one of the Key Items\n"
 # 239 "data/maps/Route113/scripts.pory"
 	.string "in your Bag as Select.\p"
 # 240 "data/maps/Route113/scripts.pory"

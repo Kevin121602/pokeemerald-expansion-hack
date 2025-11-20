@@ -8772,7 +8772,7 @@ const struct Item gItemsInfo[] =
     [ITEM_KINGS_ROCK] =
     {
         .name = ITEM_NAME("King's Rock"),
-        .price = (I_PRICE >= GEN_9) ? 10000 : ((I_PRICE >= GEN_7) ? 5000 : 100),
+        .price = (I_PRICE >= GEN_9) ? 500 : ((I_PRICE >= GEN_7) ? 5000 : 100),
         .holdEffect = HOLD_EFFECT_FLINCH,
         .holdEffectParam = 10,
         .description = sKingsRockDesc,

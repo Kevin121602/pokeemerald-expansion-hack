@@ -2065,11 +2065,11 @@ Music: Cool
 Double Battle: No
 AI: Basic Trainer
 
-Granbull @ Lum Berry
+Granbull @ Expert Belt
 Nature: Jolly
 Ability: Intimidate
 Level: 27
-- Covet
+- Play Rough
 - Fire Fang
 - Thunder Fang
 - Scary Face
@@ -4555,7 +4555,7 @@ Level: 29
 - Hidden Power
 - Lovely Kiss
 
-Sawsbuck @ Lum Berry
+Sawsbuck @ Silk Scarf
 Nature: Jolly
 Ability: Triage
 Level: 29
@@ -9058,7 +9058,7 @@ Nature: Sassy
 Ability: Sturdy
 Level: 26
 - Iron Head
-- Rock Tomb
+- Rock Slide
 - Body Slam
 - Metal Burst
 
@@ -9440,7 +9440,7 @@ Ability: Damp
 Level: 27
 - Aqua Tail
 - Zen Headbutt
-- Power Gem
+- Signal Beam
 - Aqua Jet
 
 Tangela @ Leftovers
@@ -14775,7 +14775,7 @@ Ability: Competitive
 Level: 26
 - Psyshock
 - Shadow Ball
-- Shock Wave
+- Thunderbolt
 - Fake Out
 
 === TRAINER_KIM_AND_IRIS ===
@@ -16222,7 +16222,7 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Quilava @ Fire Gem
+Quilava @ Charcoal
 Nature: Naive
 Ability: Blaze
 Level: 28
@@ -16246,13 +16246,13 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Simisage @ Grass Gem
+Simisage @ Miracle Seed
 Nature: Hasty
 Ability: Overgrow
 Level: 28
 - Grass Pledge
 - Brick Break
-- Acrobatics
+- Knock Off
 - Protect
 
 Simipour @ Petaya Berry
@@ -17448,7 +17448,7 @@ Ability: Levitate
 - Earth Power
 - Stored Power
 - Ancient Power
-- Calm Mind
+- Cosmic Power
 
 Slowbro @ Slowbronite
 Level: 35
