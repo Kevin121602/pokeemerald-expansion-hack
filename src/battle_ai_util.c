@@ -3651,10 +3651,19 @@ bool32 CanKnockOffItem(u32 battler, u32 item)
 // status checks
 bool32 IsBattlerIncapacitated(u32 battler, u32 ability)
 {
-    if ((gBattleMons[battler].status1 & STATUS1_FREEZE) && !HasThawingMove(battler))
-        return TRUE;    // if battler has thawing move we assume they will definitely use it, and thus being frozen should be neglected
+    //if ((gBattleMons[battler].status1 & STATUS1_FREEZE) && !HasThawingMove(battler))
+    //    return TRUE;    // if battler has thawing move we assume they will definitely use it, and thus being frozen should be neglected
 
-    if (gBattleMons[battler].status1 & STATUS1_SLEEP && !HasMoveWithEffect(battler, EFFECT_SLEEP_TALK))
+    if (gBattleMons[battler].status1 & STATUS1_SLEEP)
+        return TRUE;
+
+    if (gBattleMons[battler].status1 & STATUS1_PARALYSIS)
+        return TRUE;
+
+    if (gBattleMons[battler].volatiles.confusionTurns > 0)
+        return TRUE;
+
+    if (gBattleMons[battler].volatiles.infatuation)
         return TRUE;
 
     if (gBattleMons[battler].volatiles.recharge || (ability == ABILITY_TRUANT && gDisableStructs[battler].truantCounter != 0))

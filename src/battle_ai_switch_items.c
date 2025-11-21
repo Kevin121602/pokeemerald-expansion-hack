@@ -821,7 +821,7 @@ bool32 ShouldSwitch(u32 battler)
     u32 bestMonSwitchScore = 0;
     u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
     u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
-    bool32 faster = FALSE;
+    bool32 aiIsFaster = FALSE;
     u32 playerMove = 0, battlerMove = 0, hitsToKOPlayer = 0, hitsToKOBattler = 0;
     s32 battlerAbility = gAiLogicData->abilities[battler];
     s32 battlerHoldEffect = gAiLogicData->holdEffects[battler];
@@ -839,20 +839,13 @@ bool32 ShouldSwitch(u32 battler)
     bool32 canFakeOut = FALSE;
     bool32 willSetHazards = FALSE;
     bool32 willDestinyBond = FALSE;
-    //bool32 hasViableStatus = FALSE;
     bool32 hasNoGoodMoves = TRUE;
 
     bool32 canPivot = FALSE;
     bool32 canTeleport = FALSE;
 
-    bool32 shouldSwitchLiberal = FALSE;
-    bool32 shouldSwitchStandard = FALSE;
-
-    bool32 shouldPivot = FALSE;
-    bool32 shouldTeleport = FALSE;
-
-    u8 pivot = 0;
-    u8 teleport = 0;
+    u8 pivot = MAX_MON_MOVES;
+    u8 teleport = MAX_MON_MOVES;
 
     if (gBattleMons[battler].volatiles.wrapped)
         return FALSE;
@@ -866,8 +859,6 @@ bool32 ShouldSwitch(u32 battler)
         return FALSE;
     if(!CanMonSurviveHazardSwitchin(battler))
         return FALSE;
-    //if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
-    //    return FALSE;
 
     // Sequence Switching AI never switches mid-battle
     if (gAiThinkingStruct->aiFlags[battler] & AI_FLAG_SEQUENCE_SWITCHING)
@@ -875,6 +866,8 @@ bool32 ShouldSwitch(u32 battler)
 
     availableToSwitch = 0;
 
+    //make second function for switching in doubles that checks all 3 score sets
+    //will only be used for encored into ineffectual moves or perish song
     if (IsDoubleBattle())
     {
         return FALSE;
@@ -911,21 +904,49 @@ bool32 ShouldSwitch(u32 battler)
         return FALSE;
     }
 
-    //only used for perish song
-    //if (ShouldSwitchIfGameStatePrompt(battler, emitResult, bestCandidate)){
-    //    return TRUE;
-    //}
+    //gets most suitable candidate for mid turn switching
+    bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
+    InitializeSwitchinCandidate(&party[bestCandidate]);
+    bestMonSwitchScore = GetMonSwitchScore(gAiLogicData->switchinCandidate.battleMon, battler, opposingBattler, FALSE);
+
+    //returns false if score -5 or lower, wont switch even if all moves have negative score or will faint to perish song
+    if(bestMonSwitchScore <= SCORE_FASTER_BUT_KOD)
+        return FALSE;
 
     if (gBattleMons[battler].volatiles.perishSong
         && gDisableStructs[battler].perishSongTimer == 0
         && battlerAbility != ABILITY_SOUNDPROOF){
-            shouldSwitchLiberal = TRUE;
+            gAiLogicData->mostSuitableMonId[battler] = bestCandidate;
+            return TRUE;
     }
 
-    //if(bestMonSwitchScore < 10){
-    //    return FALSE;
-    //}
+    for(l= 0; l < MAX_MON_MOVES; l++){
+        if (gAiThinkingStruct->score[l] > 100){
+            hasNoGoodMoves = FALSE;
+        }
+        if (gBattleMons[battler].moves[l] == MOVE_FAKE_OUT && gAiThinkingStruct->score[l] >= 105){
+            canFakeOut = TRUE;
+        }
+        if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_TELEPORT && gAiThinkingStruct->score[l] >= 100){
+            canTeleport = TRUE;
+            teleport = l;
+        }
+        if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_DESTINY_BOND && gAiThinkingStruct->score[l] >= 105){
+            willDestinyBond = TRUE;
+        }
+        if (IsHazardMove(gBattleMons[battler].moves[l]) && gAiThinkingStruct->score[l] >= 105){
+            willSetHazards = TRUE;
+        }
+    }
 
+    if(hasNoGoodMoves){
+        gAiLogicData->mostSuitableMonId[battler] = bestCandidate;
+        return TRUE;
+    }
+
+    //all other switch functions require a score of +2, return false here if none found
+    if(bestMonSwitchScore < SCORE_SLOW_THREATEN)
+        return FALSE;
     
     // Get best move for AI to use on player
     for (j = 0; j < MAX_MON_MOVES; j++)
@@ -935,10 +956,12 @@ bool32 ShouldSwitch(u32 battler)
 
         if (battlerMove != MOVE_NONE && gMovesInfo[battlerMove].power != 0 && gAiThinkingStruct->score[j] >= 100)
         {
+            //finds highest damage pivot move in the case of AI pokemon having multiple
             dmg = gAiLogicData->simulatedDmg[battler][opposingBattler][j].minimum;
-            if (gMovesInfo[battlerMove].effect == EFFECT_HIT_ESCAPE){
+            if (gMovesInfo[battlerMove].effect == EFFECT_HIT_ESCAPE && !IsBattlerIncapacitated(battler, battlerAbility)){
                 canPivot = TRUE;
-                pivot = j;
+                if(pivot == MAX_MON_MOVES || dmg > gAiLogicData->simulatedDmg[battler][opposingBattler][pivot].minimum )
+                    pivot = j;
             }
             if(dmg > bestDmg){
                 aiHighestDmg = j;
@@ -985,154 +1008,64 @@ bool32 ShouldSwitch(u32 battler)
         }
     }
 
-    //faster bool represents whether or not the AI is faster
+    //represents whether or not the AI is faster
     if(GetBattleMovePriority(battler, battlerAbility, bestBattlerMove) > GetBattleMovePriority(opposingBattler, playerAbility, bestPlayerMove)){
-        faster = TRUE;
+        aiIsFaster = TRUE;
     } else if (GetBattleMovePriority(opposingBattler, playerAbility, bestPlayerMove) > GetBattleMovePriority(battler, battlerAbility, bestBattlerMove)){
-        faster = FALSE;
+        aiIsFaster = FALSE;
     } else if (battlerSpeed >= playerSpeed){
         //move prios are tied
-        faster = TRUE;
+        aiIsFaster = TRUE;
     }
 
-    for(l= 0; l < MAX_MON_MOVES; l++){
-        if (gAiThinkingStruct->score[l] > 100){
-            hasNoGoodMoves = FALSE;
+    //reverse faster value if trick room on field
+    if(gFieldStatuses & STATUS_FIELD_TRICK_ROOM){
+        if(aiIsFaster){
+            aiIsFaster = FALSE;
+        } else {
+            aiIsFaster = TRUE;
         }
-        if (gBattleMons[battler].moves[l] == MOVE_FAKE_OUT && gAiThinkingStruct->score[l] >= 105){
-            canFakeOut = TRUE;
-        }
-        if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_TELEPORT && gAiThinkingStruct->score[l] >= 100){
-            canTeleport = TRUE;
-            teleport = l;
-        }
-        if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_DESTINY_BOND && gAiThinkingStruct->score[l] >= 105){
-            willDestinyBond = TRUE;
-        }
-        if (IsHazardMove(gBattleMons[battler].moves[l]) && gAiThinkingStruct->score[l] >= 105){
-            willSetHazards = TRUE;
-        }
-        //if(l != aiHighestDmg && AiThinkingStruct->score[l] > 100){
-        //    hasViableStatus = TRUE;
-        //}
-    }
-
-    //all moves scored under 100
-    if(hasNoGoodMoves){
-        shouldSwitchLiberal = TRUE;
     }
 
     if(battlerAbility == ABILITY_NATURAL_CURE && gBattleMons[battler].status1 & STATUS1_ANY){
-        if(canPivot && (battlerSpeed >= playerSpeed)){
-                //BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, 10, (pivot) | (opposingBattler << 8));
-                //OpponentBufferExecCompleted(battler);
-                //AiThinkingStruct->score[pivot] = 120;
-                shouldPivot = TRUE;
-                //gBattleStruct->aiMoveOrAction[battler] = pivot;
-                //return FALSE;
+        if(canPivot){
+            gAiBattleData->chosenMoveIndex[battler] = pivot;
+            return FALSE;
         } else {
-            shouldSwitchStandard = TRUE;
+            gAiLogicData->mostSuitableMonId[battler] = bestCandidate;
+            return TRUE;
         }
     }
 
     //player kills ai, more conditions for slow kill than fast kill
     if (bestHitsToKOBattler == 1 && !canFakeOut)
     {
-        if(!faster){
-            shouldSwitchStandard = TRUE;
-        } else if (faster && !willSetHazards && !willDestinyBond && (bestHitsToKOPlayer != 1 /*&& !(gBattleMons[battler].status1 & STATUS1_SLEEP)*/) && !MonHasRelevantStatsRaised(battler)){
+        if(!aiIsFaster){
+            gAiLogicData->mostSuitableMonId[battler] = bestCandidate;
+            return TRUE;
+        } else if (aiIsFaster && !willSetHazards && !willDestinyBond && bestHitsToKOPlayer != 1 && !MonHasRelevantStatsRaised(battler)){
             if(canPivot){
-                //BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, 10, (pivot) | (opposingBattler << 8));
-                //OpponentBufferExecCompleted(battler);
-                //AiThinkingStruct->score[pivot] = 120;
-                shouldPivot = TRUE;
-                //gBattleStruct->aiMoveOrAction[battler] = pivot;
-                //return FALSE;
+                gAiBattleData->chosenMoveIndex[battler] = pivot;
+                return FALSE;
             } else {
-                shouldSwitchStandard = TRUE;
+                gAiLogicData->mostSuitableMonId[battler] = bestCandidate;
+                return TRUE;
             }
         }
     }
 
     //AI cant 3hko player, player at least 3hkos in return, and AI has no viable status moves
-    if(bestHitsToKOPlayer > 3 && bestHitsToKOBattler <= 3 && (gAiLogicData->hasViableStatus == FALSE) && !MonHasRelevantStatsRaised(battler)){
-        if(canPivot && (battlerSpeed >= playerSpeed)){
-                //BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, 10, (pivot) | (opposingBattler << 8));
-                //OpponentBufferExecCompleted(battler);
-                //AiThinkingStruct->score[pivot] = 120;
-                //gBattleStruct->aiMoveOrAction[battler] = pivot;
-                //return FALSE;
-                shouldPivot = TRUE;
+    if(bestHitsToKOPlayer > 3 && bestHitsToKOBattler <= 3 && !gAiLogicData->hasViableStatus && !MonHasRelevantStatsRaised(battler)){
+        if(canPivot){
+                gAiBattleData->chosenMoveIndex[battler] = pivot;
+                return FALSE;
         } else if (canTeleport){
-                //BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, 10, (teleport) | (opposingBattler << 8));
-                //OpponentBufferExecCompleted(battler);
-                //AiThinkingStruct->score[teleport] = 120;
-                //gBattleStruct->aiMoveOrAction[battler] = teleport;
-                //return FALSE;
-                shouldTeleport = TRUE;
-        } else {
-                shouldSwitchStandard = TRUE;
-        }
-    }
-
-    if (shouldPivot){
-        bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
-
-        InitializeSwitchinCandidate(&party[bestCandidate]);
-
-        bestMonSwitchScore = GetMonSwitchScore(gAiLogicData->switchinCandidate.battleMon, battler, opposingBattler, FALSE);
-
-        if(bestMonSwitchScore < 10){
-            return FALSE;
-        } else {
-            gAiBattleData->chosenMoveIndex[battler] = pivot;
-            return FALSE;
-        }
-    } else if (shouldTeleport){
-        bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
-
-        InitializeSwitchinCandidate(&party[bestCandidate]);
-
-        bestMonSwitchScore = GetMonSwitchScore(gAiLogicData->switchinCandidate.battleMon, battler, opposingBattler, FALSE);
-
-        if(bestMonSwitchScore < 10){
-            return FALSE;
-        } else {
-            gAiBattleData->chosenMoveIndex[battler] = teleport;
-            return FALSE;
-        }
-    } else if(shouldSwitchLiberal){
-        bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
-
-        InitializeSwitchinCandidate(&party[bestCandidate]);
-
-        bestMonSwitchScore = GetMonSwitchScore(gAiLogicData->switchinCandidate.battleMon, battler, opposingBattler, FALSE);
-
-        if(bestMonSwitchScore <= 3){
-            return FALSE;
+                gAiBattleData->chosenMoveIndex[battler] = teleport;
+                return FALSE;
         } else {
                 gAiLogicData->mostSuitableMonId[battler] = bestCandidate;
-                //if (emitResult)
-                //    BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_SWITCH, 0);
                 return TRUE;
         }
-    } else if (shouldSwitchStandard){
-        bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
-
-        InitializeSwitchinCandidate(&party[bestCandidate]);
-
-        bestMonSwitchScore = GetMonSwitchScore(gAiLogicData->switchinCandidate.battleMon, battler, opposingBattler, FALSE);
-
-        if(bestMonSwitchScore < 10){
-            return FALSE;
-        } else {
-                gAiLogicData->mostSuitableMonId[battler] = bestCandidate;
-                //if (emitResult)
-                //    BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_SWITCH, 0);
-                return TRUE;
-        }
-    } else {
-        return FALSE;
     }
 
     return FALSE;
