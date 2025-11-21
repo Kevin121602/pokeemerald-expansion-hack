@@ -92,6 +92,7 @@ enum ItemsMenu
     ITEM_MENU_BERRIES,
     ITEM_MENU_BOOST_ITEMS,
     ITEM_MENU_HERBS,
+    ITEM_MENU_SEEDS,
     ITEM_MENU_EXIT,
 };
 
@@ -181,6 +182,7 @@ static bool8 FeaturesAction_Items_SwitchItems(void);
 static bool8 FeaturesAction_Items_Berries(void);
 static bool8 FeaturesAction_Items_BoostItems(void);
 static bool8 FeaturesAction_Items_Herbs(void);
+static bool8 FeaturesAction_Items_Seeds(void);
 static bool8 FeaturesAction_Items_Exit(void);
 
 
@@ -211,6 +213,7 @@ static const u8 sFeaturesText_Items_SwitchItems[] =             _("Switch Items"
 static const u8 sFeaturesText_Items_Berries[] =                 _("Berries");
 static const u8 sFeaturesText_Items_BoostingItems[] =           _("Boost Items");
 static const u8 sFeaturesText_Items_Herbs[] =                   _("Herbs");
+static const u8 sFeaturesText_Items_Seeds[] =                   _("Seeds");
 
 extern const u8 LilycoveCity_MoveDeletersHouse_EventScript_ChooseMonAndMoveToForget[];
 extern const u8 EventScript_FeaturesMenu_Repel[];
@@ -228,6 +231,7 @@ extern const u8 EventScript_FeaturesMenu_SwitchItemsMenu[];
 extern const u8 EventScript_FeaturesMenu_BerriesMenu[];
 extern const u8 EventScript_FeaturesMenu_BoostItemsMenu[];
 extern const u8 EventScript_FeaturesMenu_HerbsMenu[];
+extern const u8 EventScript_FeaturesMenu_SeedsMenu[];
 
 static const struct WindowTemplate sFeaturesMenuWindowTemplateMain =
 {
@@ -268,6 +272,7 @@ static const struct MenuAction sFeaturesMenu_Items_BottleCaps[] =
     [ITEM_MENU_BERRIES]                         = {sFeaturesText_Items_Berries,                 {.u8_void = FeaturesAction_Items_Berries}},
     [ITEM_MENU_BOOST_ITEMS]                     = {sFeaturesText_Items_BoostingItems,           {.u8_void = FeaturesAction_Items_BoostItems}},
     [ITEM_MENU_HERBS]                           = {sFeaturesText_Items_Herbs,                   {.u8_void = FeaturesAction_Items_Herbs}},
+    [ITEM_MENU_SEEDS]                           = {sFeaturesText_Items_Seeds,                   {.u8_void = FeaturesAction_Items_Seeds}},
     [ITEM_MENU_EXIT]                            = {sFeaturesText_Exit,                          {.u8_void = FeaturesAction_Items_Exit}},
 };
 
@@ -930,6 +935,19 @@ static bool8 FeaturesAction_Items_Herbs(void){
         ClearStdWindowAndFrame(GetItemsMenuWindowId(), TRUE);
         RemoveItemsMenuWindow();
         FeaturesMenu_PreformScript(EventScript_FeaturesMenu_HerbsMenu);
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool8 FeaturesAction_Items_Seeds(void){
+    if (!gPaletteFade.active)
+    {
+        PlaySE(SE_SELECT);
+        ClearStdWindowAndFrame(GetItemsMenuWindowId(), TRUE);
+        RemoveItemsMenuWindow();
+        FeaturesMenu_PreformScript(EventScript_FeaturesMenu_SeedsMenu);
         return TRUE;
     }
 

@@ -138,6 +138,7 @@
 #define MULTI_BOOST_ITEM_MENU              127
 #define MULTI_HERB_MENU                    128
 #define MULTI_PUNCH_TUTOR                  129
+#define MULTI_SEEDS_MENU                   130
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

@@ -281,6 +281,17 @@ EventScript_FeaturesMenu_HerbsMenu::
 	releaseall
 	end 
 
+EventScript_FeaturesMenu_SeedsMenu::
+	multichoice 0, 0, MULTI_SEEDS_MENU, FALSE
+	switch VAR_RESULT
+	case 0, EventScript_FeaturesMenu_GiveElectricSeed
+	case 1, EventScript_FeaturesMenu_GivePsychicSeed
+	case 2, EventScript_FeaturesMenu_GiveMistySeed
+	case 3, EventScript_FeaturesMenu_GiveGrassySeed
+	case MULTI_B_PRESSED, EventScript_FeaturesMenu_Exit
+	releaseall
+	end 
+
 EventScript_FeaturesMenu_GiveEjectPack::
 	msgbox Text_BuyEjectPack, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
@@ -524,6 +535,42 @@ EventScript_FeaturesMenu_GiveWhiteHerb::
 	releaseall
 	end
 
+EventScript_FeaturesMenu_GiveElectricSeed::
+	msgbox Text_BuyElectricSeed, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_ELECTRIC_SEED
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GivePsychicSeed::
+	msgbox Text_BuyPsychicSeed, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_PSYCHIC_SEED
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveMistySeed::
+	msgbox Text_BuyMistySeed, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_MISTY_SEED
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
+EventScript_FeaturesMenu_GiveGrassySeed::
+	msgbox Text_BuyGrassySeed, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
+	giveitem ITEM_GRASSY_SEED
+	removeitem ITEM_BOTTLE_CAP
+	msgbox Text_SpentBottleCap
+	releaseall
+	end
+
 EventScript_FeaturesMenu_Exit::
 	releaseall
 	end
@@ -728,3 +775,17 @@ Text_BuyPowerHerb::
 
 Text_BuyWhiteHerb::
 	.string "Buy a White Herb for one Bottle Cap?$"
+
+Text_BuyElectricSeed::
+	.string "Buy an Electric Seed for one Bottle\n"
+	.string "Cap?$"
+
+Text_BuyPsychicSeed::
+	.string "Buy a Psychic Seed for one Bottle\n"
+	.string "Cap?$"
+
+Text_BuyMistySeed::
+	.string "Buy a Misty Seed for one Bottle Cap?$"
+
+Text_BuyGrassySeed::
+	.string "Buy a Grassy Seed for one Bottle Cap?$"

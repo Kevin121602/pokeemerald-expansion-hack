@@ -2592,6 +2592,11 @@ extern const u8 gText_MentalHerb[];
 extern const u8 gText_PowerHerb[];
 extern const u8 gText_WhiteHerb[];
 
+extern const u8 gText_ElectricSeed[];
+extern const u8 gText_PsychicSeed[];
+extern const u8 gText_MistySeed[];
+extern const u8 gText_GrassySeed[];
+
 extern const u8 gText_BrickBreak[];
 extern const u8 gText_FirePunch[];
 extern const u8 gText_IcePunch[];
