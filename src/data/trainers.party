@@ -7833,12 +7833,29 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Walking Wake @ Booster Energy
+Volbeat @ Eject Button
 Nature: Jolly
-Ability: Protosynthesis
-Level: 44
-- Tackle
-- Bulk Up
+Ability: Prankster
+Level: 36
+- U-Turn
+
+Sudowoodo @ Assault Vest
+Nature: Jolly
+Ability: Rock Head
+Level: 35
+- Rock Slide
+- Wood Hammer
+- Fire Punch
+- Ice Punch
+
+Magmar @ Eviolite
+Nature: Hasty
+Ability: Flame Body
+Level: 36
+- Lava Plume
+- Psychic
+- Scorching Sands
+- Mach Punch
 
 === TRAINER_WADE ===
 Name: WADE

@@ -536,7 +536,7 @@ static void OpponentHandleChoosePokemon(u32 battler)
     // Switching out
     else if (gBattleStruct->AI_monToSwitchIntoId[battler] == PARTY_SIZE)
     {
-        if((gHitMarker &= HITMARKER_FAINTED(battler)) || GetBattlerTurnOrderNum(battler) == gBattlersCount - 1)
+        if((gHitMarker &= HITMARKER_FAINTED(battler)) || GetBattlerTurnOrderNum(battler) == gBattlersCount - 1 || gAiLogicData->ejectButtonSwitch)
             chosenMonId = GetMostSuitableMonToSwitchInto(battler, TRUE);
         else
             chosenMonId = GetMostSuitableMonToSwitchInto(battler, FALSE);
