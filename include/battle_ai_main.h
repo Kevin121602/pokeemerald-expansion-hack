@@ -41,7 +41,10 @@ enum StatChange
     STAT_CHANGE_CRIT_RATE,
     STAT_CHANGE_CURSE,
     STAT_CHANGE_SHELL_SMASH,
-    STAT_CHANGE_ATK_SPATK
+    STAT_CHANGE_ATK_SPATK,
+    STAT_CHANGE_ATK_DEF_2,      //stuff cheeks liechi
+    STAT_CHANGE_SPATK_DEF_2,    //stuff cheeks petaya
+    STAT_CHANGE_SPEED_DEF_2     //stuff cheeks salac
 };
 
 #define BEST_DAMAGE_MOVE         1  // Move with the most amount of hits with the best accuracy/effect

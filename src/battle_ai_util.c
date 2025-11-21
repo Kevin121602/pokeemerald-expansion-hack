@@ -5142,7 +5142,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     if(statId == STAT_CHANGE_CURSE){
         AISpeedAfterBoosts = GetSpeedStatAfterBoost(battlerAtk, speedBattlerAI, 1, FALSE);
     } else if (statId == STAT_CHANGE_SPEED || statId == STAT_CHANGE_SPEED || statId ==  STAT_CHANGE_ATK_SPEED || statId == STAT_CHANGE_SPATK_SPDEF_SPEED
-        || statId == STAT_CHANGE_ATK_DEF_SPEED){
+        || statId == STAT_CHANGE_ATK_DEF_SPEED || statId == STAT_CHANGE_SPEED_DEF_2){
         AISpeedAfterBoosts = GetSpeedStatAfterBoost(battlerAtk, speedBattlerAI, 1, TRUE);
     } else if (statId == STAT_CHANGE_SPEED_2 || statId == STAT_CHANGE_ATK_SPEED_2 || statId == STAT_CHANGE_SHELL_SMASH){
         AISpeedAfterBoosts = GetSpeedStatAfterBoost(battlerAtk, speedBattlerAI, 2, TRUE);
@@ -5156,7 +5156,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
         bestPhysMultiHitDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestPhysMultiHitDmg, STAT_DEF, 1, TRUE);
     }
 
-    if(statId == STAT_CHANGE_DEF_2){
+    if(statId == STAT_CHANGE_DEF_2 || statId == STAT_CHANGE_ATK_DEF_2 || statId == STAT_CHANGE_SPATK_DEF_2 || statId == STAT_CHANGE_SPEED_DEF_2){
         bestPhysicalDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestPhysicalDmg, STAT_DEF, 2, TRUE);
         bestPhysMultiHitDmgAfterBoosts = GetDamageRollAfterDefBoost(battlerAtk, bestPhysMultiHitDmg, STAT_DEF, 2, TRUE);
     }
@@ -5259,6 +5259,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     case STAT_CHANGE_ATK:
     case STAT_CHANGE_ATK_2:
     case STAT_CHANGE_ATK_DEF:
+    case STAT_CHANGE_ATK_DEF_2:
         if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
             return NO_INCREASE;
         if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp){
@@ -5299,6 +5300,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
         break;
     case STAT_CHANGE_ATK_DEF_SPEED:
     case STAT_CHANGE_ATK_SPEED:
+    case STAT_CHANGE_SPEED_DEF_2:
         if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
             return NO_INCREASE;
         if (shouldSetUp){
@@ -5337,6 +5339,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     case STAT_CHANGE_SPATK:
     case STAT_CHANGE_SPATK_2:
     case STAT_CHANGE_SPATK_SPDEF:
+    case STAT_CHANGE_SPATK_DEF_2:
         if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPATK] >= MAX_STAT_STAGE)
             return NO_INCREASE;
         if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)

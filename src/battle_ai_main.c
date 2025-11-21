@@ -3758,11 +3758,11 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_STUFF_CHEEKS:
         //create new stat vars to take the defense boost into account
         if(aiData->holdEffects[battlerAtk] == HOLD_EFFECT_ATTACK_UP){
-            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ATK));
+            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_ATK_DEF_2));
         } else if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_SP_ATTACK_UP){
-            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPATK));
+            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPATK_DEF_2));
         } else if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_SPEED_UP){
-            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED));
+            ADJUST_SCORE(IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED_DEF_2));
         }
         break;
     case EFFECT_MISTY_EXPLOSION:
