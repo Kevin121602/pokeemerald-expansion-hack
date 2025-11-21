@@ -7833,29 +7833,21 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Volbeat @ Eject Button
-Nature: Jolly
+Klefki @ Aguav Berry
+Nature: Hasty
 Ability: Prankster
-Level: 36
-- U-Turn
+Level: 20
+- Dazzling Gleam
+- Spikes
 
-Sudowoodo @ Assault Vest
-Nature: Jolly
-Ability: Rock Head
+Coalossal @ Lum Berry
+Nature: Careful
+Ability: Steam Engine
 Level: 35
 - Rock Slide
-- Wood Hammer
-- Fire Punch
-- Ice Punch
-
-Magmar @ Eviolite
-Nature: Hasty
-Ability: Flame Body
-Level: 36
-- Lava Plume
-- Psychic
-- Scorching Sands
-- Mach Punch
+- Heat Crash
+- High Horsepower
+- Fire Spin
 
 === TRAINER_WADE ===
 Name: WADE

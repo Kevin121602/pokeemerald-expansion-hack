@@ -823,12 +823,12 @@ bool32 ShouldSwitch(u32 battler)
     u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
     bool32 aiIsFaster = FALSE;
     u32 playerMove = 0, battlerMove = 0, hitsToKOPlayer = 0, hitsToKOBattler = 0;
-    s32 battlerAbility = gAiLogicData->abilities[battler];
-    s32 battlerHoldEffect = gAiLogicData->holdEffects[battler];
-    s32 playerAbility = gAiLogicData->abilities[opposingBattler];
-    s32 playerHoldEffect = gAiLogicData->holdEffects[opposingBattler];
-    u32 battlerSpeed = gAiLogicData->speedStats[battler];
-    u32 playerSpeed = gAiLogicData->speedStats[opposingBattler];
+    s32 battlerAbility = AI_DecideKnownAbilityForTurn(battler);
+    s32 battlerHoldEffect = AI_DecideHoldEffectForTurn(battler);
+    s32 playerAbility = AI_DecideKnownAbilityForTurn(opposingBattler);
+    s32 playerHoldEffect = AI_DecideHoldEffectForTurn(opposingBattler);
+    u32 battlerSpeed = GetBattlerTotalSpeedStatArgs(battler, battlerAbility, battlerHoldEffect);
+    u32 playerSpeed = GetBattlerTotalSpeedStatArgs(opposingBattler, playerAbility, playerHoldEffect);
     s32 battlerMovePriority = 0, playerMovePriority = 0, maxDamageDealt = 0, damageDealt = 0;
     u32 bestBattlerMove = 0, bestPlayerMove = 0;
     u32 bestHitsToKOPlayer = INT_MAX, bestHitsToKOBattler = INT_MAX;
@@ -924,20 +924,20 @@ bool32 ShouldSwitch(u32 battler)
         if (gAiThinkingStruct->score[l] > 100){
             hasNoGoodMoves = FALSE;
         }
-        if (gBattleMons[battler].moves[l] == MOVE_FAKE_OUT && gAiThinkingStruct->score[l] >= 105){
-            canFakeOut = TRUE;
-        }
         if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_TELEPORT && gAiThinkingStruct->score[l] >= 100){
             canTeleport = TRUE;
             teleport = l;
         }
-        if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_DESTINY_BOND && gAiThinkingStruct->score[l] >= 105){
-            willDestinyBond = TRUE;
-        }
-        if (IsHazardMove(gBattleMons[battler].moves[l]) && gAiThinkingStruct->score[l] >= 105){
-            willSetHazards = TRUE;
-        }
     }
+
+    if (gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]] == MOVE_FAKE_OUT)
+        canFakeOut = TRUE;
+    
+    if (gMovesInfo[gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]].effect == EFFECT_DESTINY_BOND)
+        willDestinyBond = TRUE;
+        
+    if (IsHazardMove(gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]))
+        willSetHazards = TRUE;
 
     if(hasNoGoodMoves){
         gAiLogicData->mostSuitableMonId[battler] = bestCandidate;
@@ -1009,9 +1009,9 @@ bool32 ShouldSwitch(u32 battler)
     }
 
     //represents whether or not the AI is faster
-    if(GetBattleMovePriority(battler, battlerAbility, bestBattlerMove) > GetBattleMovePriority(opposingBattler, playerAbility, bestPlayerMove)){
+    if(GetBattleMovePriority(battler, battlerAbility, gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]) > GetBattleMovePriority(opposingBattler, playerAbility, bestPlayerMove)){
         aiIsFaster = TRUE;
-    } else if (GetBattleMovePriority(opposingBattler, playerAbility, bestPlayerMove) > GetBattleMovePriority(battler, battlerAbility, bestBattlerMove)){
+    } else if (GetBattleMovePriority(opposingBattler, playerAbility, bestPlayerMove) > GetBattleMovePriority(battler, battlerAbility, gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]])){
         aiIsFaster = FALSE;
     } else if (battlerSpeed >= playerSpeed){
         //move prios are tied

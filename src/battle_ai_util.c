@@ -6047,7 +6047,7 @@ bool32 AI_ShouldSetUpHazards(u32 battlerAtk, u32 battlerDef, u32 move, struct Ai
 {
     if (aiData->abilities[battlerDef] == ABILITY_MAGIC_BOUNCE
      || CountUsablePartyMons(battlerDef) == 0
-     || CountUsablePartyMons(battlerAtk) == 1)
+     || CountUsablePartyMons(battlerAtk) == 0)
         return FALSE;
 
     if (IsBattleMoveStatus(move))
