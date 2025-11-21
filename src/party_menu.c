@@ -219,6 +219,8 @@ struct PartyMenuInternal
     // bin2c, the utility used to encode the compressed palette data.
     u16 palBuffer[BG_PLTT_SIZE / sizeof(u16)];
     s16 data[16];
+    u32 monCurrExp;
+    u32 monMaxExp;
 };
 
 struct PartyMenuBox
@@ -3546,8 +3548,6 @@ static void CursorCb_Poison(u8 taskId)
 #define tMaxHP      data[1]
 #define tMonId      data[2]
 #define tMonExp     data[3]
-#define tMonMaxExp  data[4]
-#define tMonCurrExp data[5]
 
 static void CursorCb_HP(u8 taskId)
 {
@@ -3583,8 +3583,8 @@ static void CursorCb_Exp(u8 taskId)
 
     tMonId = gPartyMenu.slotId;
     tMonExp = 0;
-    tMonMaxExp = (gExperienceTables[gSpeciesInfo[species].growthRate][level + 1] - exp) - 1;
-    tMonCurrExp = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_EXP);
+    sPartyMenuInternal->monMaxExp = (gExperienceTables[gSpeciesInfo[species].growthRate][level + 1] - exp) - 1;
+    sPartyMenuInternal->monCurrExp = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_EXP);
 
     PlaySE(SE_SELECT);
     PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
@@ -3655,13 +3655,13 @@ void Task_HandleExpInput(u8 taskId)
     struct Pokemon *mon = &gPlayerParty[tMonId];
     u32 finalExp;
 
-    if (AdjustQuantityAccordingToDPadInputZero(&tMonExp, tMonMaxExp) == TRUE)
+    if (AdjustQuantityAccordingToDPadInputZero(&tMonExp, sPartyMenuInternal->monMaxExp) == TRUE)
     {
         PrintExpQuantity(sPartyMenuInternal->windowId[0], tMonExp);
     }
     else if (JOY_NEW(A_BUTTON))
     {
-        finalExp = (tMonCurrExp + tMonExp);
+        finalExp = (sPartyMenuInternal->monCurrExp + tMonExp);
         PlaySE(SE_SELECT);
         PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
         PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
@@ -3687,8 +3687,6 @@ void Task_HandleExpInput(u8 taskId)
 #undef tMaxHp
 #undef tMonId
 #undef tMonExp
-#undef tMonMaxExp
-#undef tMonCurrExp
 
 static void CursorCb_Item(u8 taskId)
 {

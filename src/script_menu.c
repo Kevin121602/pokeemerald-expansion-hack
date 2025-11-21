@@ -205,7 +205,7 @@ static void InitQuantityMenu(s16 quantity, s16 value, u8 windowID){
 
 static void Task_HandleQuantityInput(u8 taskId){
     //s16 selection;
-    s16 maxValue;
+    u32 maxValue;
     s16 *data = gTasks[taskId].data;
 
     //selection = tValue;

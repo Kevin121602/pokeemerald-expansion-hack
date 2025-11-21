@@ -7833,21 +7833,11 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Klefki @ Aguav Berry
-Nature: Hasty
-Ability: Prankster
-Level: 20
-- Dazzling Gleam
-- Spikes
-
-Coalossal @ Lum Berry
-Nature: Careful
-Ability: Steam Engine
-Level: 35
-- Rock Slide
-- Heat Crash
-- High Horsepower
-- Fire Spin
+Magikarp @ Punching Glove
+Nature: Jolly
+Ability: Rattled
+Level: 1
+- Splash
 
 === TRAINER_WADE ===
 Name: WADE
