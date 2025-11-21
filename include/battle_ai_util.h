@@ -299,7 +299,7 @@ u32 IncreaseFollowMeScore(u32 battlerAtk, u32 battlerDef);
 u32 IncreaseMagnetRiseScore(u32 battlerAtk, u32 battlerDef);
 u32 IncreaseStatLoweringScore(u32 battlerAtk, u32 battlerDef, u32 statId, u32 stages);
 
-s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct BattlePokemon switchinCandidate, enum DamageCalcContext calcContext);
+s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct BattlePokemon switchinCandidate, enum DamageCalcContext calcContext, bool32 ignoreItem, bool32 ignoreAbility);
 u32 AI_WhoStrikesFirstPartyMon(u32 battlerAtk, u32 battlerDef, struct BattlePokemon switchinCandidate, u32 aiMoveConsidered, u32 playerMoveConsidered, enum ConsiderPriority ConsiderPriority);
 s32 AI_TryToClearStats(u32 battlerAtk, u32 battlerDef, bool32 isDoubleBattle);
 bool32 AI_ShouldCopyStatChanges(u32 battlerAtk, u32 battlerDef);

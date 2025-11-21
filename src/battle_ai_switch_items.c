@@ -1484,7 +1484,7 @@ static u32 GetBestMonDmg(struct Pokemon *party, int firstId, int lastId, u8 inva
             if (aiMove != MOVE_NONE && !IsBattleMoveStatus(aiMove))
             {
                 aiMove = GetMonData(&party[i], MON_DATA_MOVE1 + j);
-                dmg = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, gAiLogicData->switchinCandidate.battleMon, AI_DEFENDING);
+                dmg = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, gAiLogicData->switchinCandidate.battleMon, AI_DEFENDING, FALSE, FALSE);
                 if (bestDmg < dmg)
                 {
                     bestDmg = dmg;
@@ -1986,9 +1986,8 @@ s8 GetPartyMovePriority(struct BattlePokemon battleMon, u16 move, u16 ability)
 
 u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingBattler, bool32 switchAfterMonKOd)
 {
-    u32 switchScore = 0;
-    bool32 fastTrapper = FALSE, slowTrapper = FALSE, fastRevengeKiller = FALSE, slowRevengeKiller = FALSE;
-    bool32 fastThreaten = FALSE, slowThreaten = FALSE, faster = FALSE, slowKilled = FALSE, fastKilled = FALSE;
+    bool32 slowKilled = FALSE;
+    bool32 aiIsFaster = FALSE;
     u32 aiMove = 0, playerMove = 0, hitsToKOAI, hitsToKOPlayer;
     s32 playerAbility = gBattleMons[opposingBattler].ability;
     s32 playerHoldEffect = GetItemHoldEffect(gBattleMons[opposingBattler].item);
@@ -2001,50 +2000,48 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
     u32 bestPlayerMove = 0, bestAIMove = 0;
     u32 bestHitsToKOAI = INT_MAX, bestHitsToKOPlayer = INT_MAX;
     s32 highestDmgtoSwitchIn = 0;
-    bool32 canDieOnSwitch = FALSE;
     bool32 takesOverAThirdOnSwitch = FALSE;
-    bool32 takesOverAThirdFromHazards = FALSE;
     u32 hazardDamage = 0;
-    s32 calcHP = battleMon.hp;
+    u16 calcHP = battleMon.hp;
     s32 bestPlayerDmg = 0;
     s32 bestAIDmg = 0;
+    bool32 ignoreItem = FALSE;
+    bool32 ignoreAbility = FALSE;
 
     //always returns 10 if species is ditto
     if(battleMon.species == SPECIES_DITTO && switchAfterMonKOd){
-        switchScore = 10;
-        return switchScore;
+        return SCORE_SPECIAL_CASE;
     }
-
 
     hazardDamage = GetSwitchinHazardsDamage(battler, &battleMon);
 
+    //gets highest damage player could deal to switch in for mid-battle switches
     if(!switchAfterMonKOd){
-       highestDmgtoSwitchIn = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, battleMon);
-       if(highestDmgtoSwitchIn >= battleMon.hp){
-            canDieOnSwitch = TRUE;
-       } else if (highestDmgtoSwitchIn*3 >= battleMon.hp){
+        //adds hazard damage to highest damage on switchin and tests whether or not ai mon could take over a third on the switch
+        highestDmgtoSwitchIn = GetMaxDamagePlayerCouldDealToSwitchin(battler, opposingBattler, battleMon);
+        if(highestDmgtoSwitchIn + hazardDamage >= battleMon.hp){
+            return SCORE_SLOWER_AND_KOD;
+        } else if ((highestDmgtoSwitchIn + hazardDamage)*3 >= battleMon.hp){
             takesOverAThirdOnSwitch = TRUE;
-       }
+        }
 
-       calcHP = (battleMon.hp - highestDmgtoSwitchIn);
-       if(aiMonHoldEffect == HOLD_EFFECT_FOCUS_SASH || aiMonHoldEffect == HOLD_EFFECT_AIR_BALLOON || (aiMonHoldEffect == HOLD_EFFECT_RESIST_BERRY 
-        && HasDamagingMoveOfType(opposingBattler, GetItemHoldEffectParam(battleMon.item)))){
+        //if can take direct damage on switch, ignore air balloon
+        //if player has move of resist berry param type, ignore resist berry
+        calcHP = (battleMon.hp - highestDmgtoSwitchIn);
+        if(calcHP < battleMon.hp && (aiMonHoldEffect == HOLD_EFFECT_AIR_BALLOON || (aiMonHoldEffect == HOLD_EFFECT_RESIST_BERRY 
+        && HasDamagingMoveOfType(opposingBattler, GetItemHoldEffectParam(battleMon.item))))){
             aiMonHoldEffect == HOLD_EFFECT_NONE;
+            ignoreItem = TRUE;
         }
     }
 
-    if (hazardDamage*3 >= calcHP){
-            takesOverAThirdFromHazards = TRUE;
-       }
-
-    if(hazardDamage > calcHP){
-        calcHP = 0;
-        canDieOnSwitch = TRUE;
-        fastKilled = TRUE;
+    //subtracts hazard damage from hp arg, if hp is 0 pokemon will get score of 0
+    calcHP -= hazardDamage;
+    if(calcHP == 0){
+        return SCORE_SLOWER_AND_KOD;
     }
-    else
-        calcHP -= hazardDamage;
 
+    //checks sticky web and applies prospective speed drop
     if(IsHazardOnSide(GetBattlerSide(battler), HAZARDS_STICKY_WEB) && aiMonHoldEffect != HOLD_EFFECT_WHITE_HERB
         && aiMonHoldEffect != HOLD_EFFECT_HEAVY_DUTY_BOOTS && aiMonHoldEffect != HOLD_EFFECT_CLEAR_AMULET && IsPartyMonGrounded(battleMon, battler, aiMonHoldEffect)
         && aiMonAbility != ABILITY_CLEAR_BODY && aiMonAbility != ABILITY_WHITE_SMOKE && aiMonAbility != ABILITY_FULL_METAL_BODY
@@ -2053,16 +2050,22 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         aiMonSpeed /= 3;
     }
 
+    //ignore multiscale if switch in candidate takes damage on switch from player or hazards
     if(calcHP < battleMon.hp && aiMonAbility == ABILITY_MULTISCALE){
-        aiMonAbility ==  ABILITY_NONE;
+        ignoreAbility = TRUE;
     }
 
+    //ignore sturdy if switch in candidate takes damage on switch from player or hazards
     if(calcHP < battleMon.hp && aiMonAbility == ABILITY_STURDY){
         aiMonAbility ==  ABILITY_NONE;
+        ignoreAbility = TRUE;
     }
 
-    if(calcHP < battleMon.hp && (aiMonHoldEffect == HOLD_EFFECT_FOCUS_SASH || aiMonHoldEffect == HOLD_EFFECT_AIR_BALLOON))
+    //ignore focus sash if switch in candidate takes damage on switch from player or hazards
+    if(calcHP < battleMon.hp && aiMonHoldEffect == HOLD_EFFECT_FOCUS_SASH){
+        ignoreItem = TRUE;
         aiMonHoldEffect == HOLD_EFFECT_NONE;
+    }
 
     // Get best move for player to use on switch in candidate
     for (i = 0; i < MAX_MON_MOVES; i++)
@@ -2072,7 +2075,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
 
         if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION && gMovesInfo[playerMove].effect != EFFECT_MISTY_EXPLOSION)
         {
-            damageDealt = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, AI_DEFENDING);
+            damageDealt = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, AI_DEFENDING, ignoreItem, ignoreAbility);
             if(CalcPartyMonTypeEffectivenessMultiplier(playerMove, battleMon.species, aiMonAbility) == UQ_4_12(0.0) && !IsMoldBreakerTypeAbility(battler, playerAbility)){
                 damageDealt = 0;
             }
@@ -2106,13 +2109,6 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
                     bestPlayerMove = gBattleMons[opposingBattler].moves[i];
                 }
             }
-            //gets best move based on hits to KO, if hits to KO are tied, best move is based on highest prio
-            //if(hitsToKOAI < bestHitsToKOAI){
-            //    bestHitsToKOAI = hitsToKOAI;
-            //    bestPlayerMove = gBattleMons[opposingBattler].moves[i];
-            //} else if (hitsToKOAI == bestHitsToKOAI && playerMovePriority > gMovesInfo[bestPlayerMove].priority){
-            //    bestPlayerMove = gBattleMons[opposingBattler].moves[i];
-            //}
         }
     }
 
@@ -2124,9 +2120,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
 
         if (aiMove != MOVE_NONE && gMovesInfo[aiMove].power != 0 && gMovesInfo[aiMove].effect != EFFECT_EXPLOSION && gMovesInfo[aiMove].effect != EFFECT_MISTY_EXPLOSION)
         {
-            damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, battleMon, AI_ATTACKING);
-            //if(gMovesInfo[aiMove].effect == EFFECT_RETALIATE && switchAfterMonKOd)
-            //    damageDealt *= 2;
+            damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, battleMon, AI_ATTACKING, FALSE, FALSE);
             hitsToKOPlayer = GetNoOfHitsToKOBattlerDmg(damageDealt, opposingBattler);
 
             //continues if move does 0 damage
@@ -2158,98 +2152,77 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
                     break;
                 }
             }
-            //gets best move based on hits to KO, if hits to KO are tied, best move is based on highest prio
-            //if(hitsToKOPlayer < bestHitsToKOPlayer){
-            //    bestHitsToKOPlayer = hitsToKOPlayer;
-            //    bestAIMove = aiMove;
-            //} else if (hitsToKOPlayer == bestHitsToKOPlayer && aiMovePriority > gMovesInfo[bestAIMove].priority){
-            //    bestAIMove = aiMove;
-            //}
-
-            //if ai has pursuit kill, set pursuit to best move then break for loop
-            //if(hitsToKOPlayer == 1 && aiMove == MOVE_PURSUIT){
-            //    bestAIMove = aiMove;
-            //    break;
-            //}
         }
     }
 
-    //faster bool represents whether or not the AI is faster
+    //whether or not ai is faster
     if(GetPartyMovePriority(battleMon, bestAIMove, aiMonAbility) > GetBattleMovePriority(opposingBattler, playerAbility, bestPlayerMove)){
-        faster = TRUE;
+        aiIsFaster = TRUE;
     } else if (GetBattleMovePriority(opposingBattler, playerAbility, bestPlayerMove) > GetPartyMovePriority(battleMon, bestAIMove, aiMonAbility)){
-        faster = FALSE;
+        aiIsFaster = FALSE;
     } else if (aiMonSpeed >= playerMonSpeed){
         //move prios are tied
-        faster = TRUE;
+        aiIsFaster = TRUE;
     }
 
     //reverse faster value if trick room on field
     if(gFieldStatuses & STATUS_FIELD_TRICK_ROOM){
-        if(faster){
-            faster = FALSE;
+        if(aiIsFaster){
+            aiIsFaster = FALSE;
         } else {
-            faster = TRUE;
+            aiIsFaster = TRUE;
         }
     }
 
+    //return min score if slower and KO'd, if is faster and KO'd there are still more checks to be done
     if(bestHitsToKOAI == 1)
     {
-        if(faster){
+        if(aiIsFaster){
             slowKilled = TRUE;
         } else {
-            fastKilled = TRUE;
+            return SCORE_SLOWER_AND_KOD;
         }
     }
 
-    if((battleMon.species == SPECIES_WOBBUFFET || battleMon.species == SPECIES_WYNAUT) && !fastKilled && !takesOverAThirdOnSwitch){
-        switchScore = 10;
-        return switchScore;
+    if(!switchAfterMonKOd){
+        if (slowKilled && bestHitsToKOPlayer > 1)               return SCORE_FASTER_BUT_KOD;
+        else if(takesOverAThirdOnSwitch == TRUE && !aiIsFaster) return SCORE_DEFAULT;
+        else if(takesOverAThirdOnSwitch == TRUE)                return SCORE_FASTER;
+    }
+
+    //no need to check if player can fast kill wobb or wobb takes over a third, function would have already returned in that case
+    if((battleMon.species == SPECIES_WOBBUFFET || battleMon.species == SPECIES_WYNAUT)){
+        return SCORE_SPECIAL_CASE;
     }
 
     if(bestHitsToKOPlayer == 1)
     {
-        if(faster){
-            fastRevengeKiller = TRUE;
-            if ((CanAbilityTrapOpponent(battleMon.ability, opposingBattler) && gBattleMons[opposingBattler].item != ITEM_SHED_SHELL) || bestAIMove == MOVE_PURSUIT){
-                fastTrapper = TRUE;
-            }
+        if(aiIsFaster){
+            if ((CanAbilityTrapOpponent(battleMon.ability, opposingBattler) && gBattleMons[opposingBattler].item != ITEM_SHED_SHELL) || bestAIMove == MOVE_PURSUIT)
+                return SCORE_FAST_TRAPPING_KO;
+            else 
+                return SCORE_FAST_KO;
         } else {
-            slowRevengeKiller = TRUE;
-            if ((CanAbilityTrapOpponent(battleMon.ability, opposingBattler) && gBattleMons[opposingBattler].item != ITEM_SHED_SHELL) || bestAIMove == MOVE_PURSUIT){
-                slowTrapper = TRUE;
-            }
+            if ((CanAbilityTrapOpponent(battleMon.ability, opposingBattler) && gBattleMons[opposingBattler].item != ITEM_SHED_SHELL) || bestAIMove == MOVE_PURSUIT)
+                return SCORE_SLOW_TRAPPING_KO;
+            else 
+                return SCORE_SLOW_KO;
         }
     }
 
-    if((bestHitsToKOPlayer <= bestHitsToKOAI) && faster){
-        fastThreaten = TRUE;
-    }
+    if(slowKilled)
+        return SCORE_FASTER_BUT_KOD;
 
-    if((bestHitsToKOPlayer < bestHitsToKOAI) && !faster){
-        slowThreaten = TRUE;
-    }
+    if((bestHitsToKOPlayer <= bestHitsToKOAI) && aiIsFaster)
+        return SCORE_FAST_THREATEN;
 
-    if (fastKilled == TRUE)                 return 0;
-    if(!switchAfterMonKOd){
-        if(canDieOnSwitch == TRUE)                              return 0;
-        else if (slowKilled == TRUE)                            return 3;
-        else if(takesOverAThirdOnSwitch == TRUE && !faster)     return 8;
-        else if(takesOverAThirdOnSwitch == TRUE)                return 9;
-        else if(takesOverAThirdFromHazards == TRUE && !faster)  return 8;
-        else if(takesOverAThirdFromHazards == TRUE)             return 9;
-    }
-    if (fastTrapper == TRUE)                return 15;
-    else if (slowTrapper == TRUE)           return 14;
-    else if (fastRevengeKiller == TRUE)     return 13;
-    else if (slowKilled == TRUE)            return 3;
-    else if (slowRevengeKiller == TRUE)     return 12;
-    else if (fastThreaten == TRUE)          return 11;
-    else if (slowThreaten == TRUE)          return 10;
-    else if (faster == TRUE)                return 9;
-    else                                    return 8;
+    if((bestHitsToKOPlayer < bestHitsToKOAI) && !aiIsFaster)
+        return SCORE_SLOW_THREATEN;
 
-    return switchScore;
+    if(aiIsFaster)
+        return SCORE_FASTER;
+
+    return SCORE_DEFAULT;
 }
 
 static int GetRandomSwitchinWithBatonPass(int aliveCount, int bits, int firstId, int lastId, int currentMonId)
@@ -2284,7 +2257,7 @@ static s32 GetMaxDamagePlayerCouldDealToSwitchin(u32 battler, u32 opposingBattle
         playerMove = gBattleMons[opposingBattler].moves[i];
         if (playerMove != MOVE_NONE && !IsBattleMoveStatus(playerMove) && GetMoveEffect(playerMove) != EFFECT_EXPLOSION && GetMoveEffect(playerMove) != EFFECT_MISTY_EXPLOSION)
         {
-            damageTaken = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, AI_DEFENDING);
+            damageTaken = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, AI_DEFENDING, FALSE, FALSE);
             if(CalcPartyMonTypeEffectivenessMultiplier(playerMove, battleMon.species, battleMon.ability) == UQ_4_12(0.0) && !IsMoldBreakerTypeAbility(opposingBattler, gBattleMons[opposingBattler].ability)){
                 damageTaken = 0;
             }
@@ -2316,7 +2289,7 @@ static s32 GetMaxPriorityDamagePlayerCouldDealToSwitchin(u32 battler, u32 opposi
         if (GetBattleMovePriority(opposingBattler, gAiLogicData->abilities[opposingBattler], playerMove) > 0
             && playerMove != MOVE_NONE && !IsBattleMoveStatus(playerMove) && GetMoveEffect(playerMove) != EFFECT_FOCUS_PUNCH && gBattleMons[opposingBattler].pp[i] > 0)
         {
-            damageTaken = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, AI_DEFENDING);
+            damageTaken = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, AI_DEFENDING, FALSE, FALSE);
             if (playerMove == gBattleStruct->choicedMove[opposingBattler]) // If player is choiced, only care about the choice locked move
             {
                 *bestPlayerPriorityMove = playerMove;
@@ -2344,7 +2317,7 @@ static s32 GetMaxDamageMovePlayerCouldUseOnSwitchin(u32 battler, u32 opposingBat
         playerMove = gBattleMons[opposingBattler].moves[i];
         if (playerMove != MOVE_NONE && gMovesInfo[playerMove].power != 0 && gMovesInfo[playerMove].effect != EFFECT_EXPLOSION && gMovesInfo[playerMove].effect != EFFECT_MISTY_EXPLOSION)
         {
-            damageTaken = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, AI_DEFENDING);
+            damageTaken = AI_CalcPartyMonDamage(playerMove, opposingBattler, battler, battleMon, AI_DEFENDING, FALSE, FALSE);
             //if (damageTaken >= battleMon.hp && PartyMonHasInTactFocusSashSturdy(battler, opposingBattler, playerMove, ItemId_GetHoldEffect(gBattleMons[battler].item), GetBattlerAbility(battler), battleMon, TRUE)){
             //    damageTaken = (battleMon.hp - 1);
             //}
@@ -2491,7 +2464,7 @@ static u32 GetBestMonIntegrated(struct Pokemon *party, int firstId, int lastId, 
                 continue;
 
             aiMove = gAiLogicData->switchinCandidate.battleMon.moves[j];
-            damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, gAiLogicData->switchinCandidate.battleMon, AI_ATTACKING);
+            damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, gAiLogicData->switchinCandidate.battleMon, AI_ATTACKING, FALSE, FALSE);
             hitsToKOPlayer = GetNoOfHitsToKOBattlerDmg(damageDealt, opposingBattler);
 
             // Offensive switchin decisions are based on which whether switchin moves first and whether it can win a 1v1
@@ -2781,9 +2754,7 @@ u32 GetMostSuitableMonToSwitchInto(u32 battler, bool32 switchAfterMonKOd)
                 if (aiMove != MOVE_NONE && gMovesInfo[aiMove].power != 0 && gMovesInfo[aiMove].effect != EFFECT_EXPLOSION && gMovesInfo[aiMove].effect != EFFECT_MISTY_EXPLOSION)
                 {
                     aiMove = GetMonData(&party[consideredMonArray[i]], MON_DATA_MOVE1 + j);
-                    damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, gAiLogicData->switchinCandidate.battleMon, AI_ATTACKING);
-                    //if(gMovesInfo[aiMove].effect == EFFECT_RETALIATE && switchAfterMonKOd)
-                    //    damageDealt *= 2;
+                    damageDealt = AI_CalcPartyMonDamage(aiMove, battler, opposingBattler, gAiLogicData->switchinCandidate.battleMon, AI_ATTACKING, FALSE, FALSE);
                     if(damageDealt > bestDamage){
                         bestDamage = damageDealt;
                         bestCandidate = i;

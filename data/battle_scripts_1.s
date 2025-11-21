@@ -8027,21 +8027,12 @@ BattleScript_GrassyTerrainHeals::
 	end2
 
 BattleScript_SoothingSteamHeals::
-	setbyte gBattleCommunication, 0
-BattleScript_SoothingSteamLoop:
-	copyarraywithindex gBattlerAttacker, gBattlerByTurnOrder, gBattleCommunication, 1
-	@ checksoothingsteamheal BS_ATTACKER, BattleScript_SoothingSteamLoopIncrement
 	printstring STRINGID_SOOTHINGSTEAMHEALS
 	waitmessage B_WAIT_TIME_LONG
 	orword gHitMarker, HITMARKER_IGNORE_BIDE | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_HP_UPDATE
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
-BattleScript_SoothingSteamLoopIncrement::
-	addbyte gBattleCommunication, 1
-	jumpifbytenotequal gBattleCommunication, gBattlersCount, BattleScript_SoothingSteamLoop
 	bicword gHitMarker, HITMARKER_IGNORE_BIDE | HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_HP_UPDATE
-	jumpifword CMP_COMMON_BITS, gFieldStatuses, STATUS_FIELD_SOOTHING_STEAM, BattleScript_SoothingSteamHealEnd
-BattleScript_SoothingSteamHealEnd:
 	end2
 
 BattleScript_AbilityNoSpecificStatLoss::

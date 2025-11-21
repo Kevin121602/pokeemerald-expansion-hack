@@ -74,6 +74,7 @@ enum FirstEventBlock
     FIRST_EVENT_BLOCK_SEA_OF_FIRE_DAMAGE,
     FIRST_EVENT_BLOCK_THRASH, // Thrash isn't handled here in vanilla but for now it is that best place for it.
     FIRST_EVENT_BLOCK_GRASSY_TERRAIN_HEAL,
+    FIRST_EVENT_BLOCK_SOOTHING_STEAM,
     FIRST_EVENT_BLOCK_ABILITIES,
     FIRST_EVENT_BLOCK_HEAL_ITEMS,
 };
@@ -424,6 +425,24 @@ static bool32 HandleEndTurnWish(u32 battler)
     return effect;
 }
 
+static u32 GetBattlerHighestDefenseStat(u32 battler)
+{
+    u32 def, spDef;
+
+    def = gBattleMons[battler].defense;
+    def *= gStatStageRatios[gBattleMons[battler].statStages[STAT_DEF]][0];
+    def /= gStatStageRatios[gBattleMons[battler].statStages[STAT_DEF]][1];
+
+    spDef = gBattleMons[battler].spDefense;
+    spDef *= gStatStageRatios[gBattleMons[battler].statStages[STAT_SPDEF]][0];
+    spDef /= gStatStageRatios[gBattleMons[battler].statStages[STAT_SPDEF]][1];
+
+    if(def > spDef)
+        return def;
+    else
+        return spDef;
+}
+
 static bool32 HandleEndTurnFirstEventBlock(u32 battler)
 {
     bool32 effect = FALSE;
@@ -497,6 +516,21 @@ static bool32 HandleEndTurnFirstEventBlock(u32 battler)
             if (gBattleStruct->moveDamage[battler] == 0)
                 gBattleStruct->moveDamage[battler] = -1;
             BattleScriptExecute(BattleScript_GrassyTerrainHeals);
+            effect = TRUE;
+        }
+        gBattleStruct->eventBlockCounter++;
+        break;
+    case FIRST_EVENT_BLOCK_SOOTHING_STEAM:
+        if (gFieldStatuses & STATUS_FIELD_SOOTHING_STEAM
+         && IsBattlerAlive(battler)
+         && !IsBattlerAtMaxHp(battler)
+         && !gBattleMons[battler].volatiles.healBlock)
+        {
+            gBattlerAttacker = battler;
+            gBattleStruct->moveDamage[battler] = -(GetBattlerHighestDefenseStat(battler) / 12);
+            if (gBattleStruct->moveDamage[battler] == 0)
+                gBattleStruct->moveDamage[battler] = -1;
+            BattleScriptExecute(BattleScript_SoothingSteamHeals);
             effect = TRUE;
         }
         gBattleStruct->eventBlockCounter++;

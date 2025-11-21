@@ -34,6 +34,18 @@ enum ShouldSwitchScenario
     SHOULD_SWITCH_ATTACKING_STAT_MINUS_THREE_PLUS,
     SHOULD_SWITCH_ALL_SCORES_BAD,
 };
+ 
+#define SCORE_FAST_TRAPPING_KO    15
+#define SCORE_SLOW_TRAPPING_KO    14
+#define SCORE_FAST_KO             13
+#define SCORE_SLOW_KO             12
+#define SCORE_FAST_THREATEN       11
+#define SCORE_SLOW_THREATEN       10
+#define SCORE_SPECIAL_CASE        10
+#define SCORE_FASTER              9
+#define SCORE_DEFAULT             8
+#define SCORE_FASTER_BUT_KOD      3
+#define SCORE_SLOWER_AND_KOD      0
 
 enum SwitchType
 {

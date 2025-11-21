@@ -357,7 +357,7 @@ static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
     ball = GetMonData(egg, MON_DATA_POKEBALL);
 
     u8 availableIVs[NUM_STATS];
-    u8 selectedIvs[LEGENDARY_PERFECT_IV_COUNT];
+    u8 selectedIvs[3];
     u8 iv = MAX_PER_STAT_IVS;
             // Initialize a list of IV indices.
             for (i = 0; i < NUM_STATS; i++)
@@ -366,13 +366,13 @@ static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
             }
 
             // Select the 3 IVs that will be perfected.
-            for (i = 0; i < LEGENDARY_PERFECT_IV_COUNT; i++)
+            for (i = 0; i < 3; i++)
             {
                 u8 index = Random() % (NUM_STATS - i);
                 selectedIvs[i] = availableIVs[index];
                 RemoveIVIndexFromList(availableIVs, index);
             }
-            for (i = 0; i < LEGENDARY_PERFECT_IV_COUNT; i++)
+            for (i = 0; i < 3; i++)
             {
                 switch (selectedIvs[i])
                 {
@@ -995,10 +995,10 @@ u8 GetEggCyclesToSubtract(void)
             if (ability == ABILITY_MAGMA_ARMOR
              || ability == ABILITY_FLAME_BODY
              || ability == ABILITY_STEAM_ENGINE)
-                return 255;
+                return 40;
         }
     }
-    return 255;
+    return 20;
 }
 
 u16 CountPartyAliveNonEggMons(void)

@@ -4205,34 +4205,19 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(WEAK_EFFECT);
         break;
     case EFFECT_SANDSTORM:
-        if (ShouldSetWeather(battlerAtk, B_WEATHER_SANDSTORM))
-        {
             ADJUST_SCORE(GOOD_EFFECT);
-        }
         break;
     case EFFECT_HAIL:
-        if (ShouldSetWeather(battlerAtk, B_WEATHER_HAIL))
-        {
             ADJUST_SCORE(GOOD_EFFECT);
-        }
         break;
     case EFFECT_SNOWSCAPE:
-        if (ShouldSetWeather(battlerAtk, B_WEATHER_SNOW))
-        {
             ADJUST_SCORE(GOOD_EFFECT);
-        }
         break;
     case EFFECT_RAIN_DANCE:
-        if (ShouldSetWeather(battlerAtk, B_WEATHER_RAIN))
-        {
             ADJUST_SCORE(GOOD_EFFECT);
-        }
         break;
     case EFFECT_SUNNY_DAY:
-        if (ShouldSetWeather(battlerAtk, B_WEATHER_SUN))
-        {
             ADJUST_SCORE(GOOD_EFFECT);
-        }
         break;
         //create use case for belly drum in battle_ai_util
         //Wont use if outsped and 2hkod, taking into account berry, priority(linoone)

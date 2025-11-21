@@ -1173,10 +1173,10 @@ static bool8 TryProduceOrHatchEgg(struct DayCare *daycare)
 
     // Try to hatch Egg
     daycare->stepCounter++;
-    if (((P_EGG_CYCLE_LENGTH <= GEN_3 || P_EGG_CYCLE_LENGTH == GEN_7) && daycare->stepCounter >= 1)
-     || (P_EGG_CYCLE_LENGTH == GEN_4 && daycare->stepCounter >= 1)
-     || ((P_EGG_CYCLE_LENGTH == GEN_5 || P_EGG_CYCLE_LENGTH == GEN_6) && daycare->stepCounter >= 1)
-     || (P_EGG_CYCLE_LENGTH >= GEN_8 && daycare->stepCounter >= 1))
+    if (((P_EGG_CYCLE_LENGTH <= GEN_3 || P_EGG_CYCLE_LENGTH == GEN_7) && daycare->stepCounter >= 50)
+     || (P_EGG_CYCLE_LENGTH == GEN_4 && daycare->stepCounter >= 50)
+     || ((P_EGG_CYCLE_LENGTH == GEN_5 || P_EGG_CYCLE_LENGTH == GEN_6) && daycare->stepCounter >= 50)
+     || (P_EGG_CYCLE_LENGTH >= GEN_8 && daycare->stepCounter >= 50))
     {
         u32 eggCycles = 0;
         u8 toSub = GetEggCyclesToSubtract();
@@ -1190,8 +1190,21 @@ static bool8 TryProduceOrHatchEgg(struct DayCare *daycare)
             if (GetMonData(&gPlayerParty[i], MON_DATA_SANITY_IS_BAD_EGG))
                 continue;
 
+            eggCycles = GetMonData(&gPlayerParty[i], MON_DATA_FRIENDSHIP);
+            if (eggCycles != 0)
+            {
+                if (eggCycles >= toSub)
+                    eggCycles -= toSub;
+                else
+                    eggCycles -= 1;
+
+                SetMonData(&gPlayerParty[i], MON_DATA_FRIENDSHIP, &eggCycles);
+            }
+            else
+            {
                 gSpecialVar_0x8004 = i;
                 return TRUE;
+            }
         }
     }
 

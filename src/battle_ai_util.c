@@ -1723,7 +1723,7 @@ enum ItemHoldEffect AI_DecideHoldEffectForTurn(u32 battlerId)
     //if (!IsAiBattlerAware(battlerId))
     //    holdEffect = gAiPartyData->mons[GetBattlerSide(battlerId)][gBattlerPartyIndexes[battlerId]].heldEffect;
     //else
-    holdEffect = GetBattlerHoldEffect(battlerId, FALSE);
+    holdEffect = GetItemHoldEffect(gBattleMons[battlerId].item);
 
     if (gAiThinkingStruct->aiFlags[battlerId] & AI_FLAG_NEGATE_UNAWARE)
         return holdEffect;
@@ -4563,7 +4563,7 @@ void FreeRestoreBattleMons(struct BattlePokemon *savedBattleMons)
 }
 
 // party logic
-s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct BattlePokemon switchinCandidate, enum DamageCalcContext calcContext)
+s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct BattlePokemon switchinCandidate, enum DamageCalcContext calcContext, bool32 ignoreItem, bool32 ignoreAbility)
 {
     struct SimulatedDamage dmg;
     uq4_12_t effectiveness;
@@ -4578,6 +4578,10 @@ s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct Battl
     }
     else if (calcContext == AI_DEFENDING)
     {
+        if(ignoreItem)
+            switchinCandidate.item = HOLD_EFFECT_NONE;
+        if(ignoreAbility)
+            switchinCandidate.ability = ABILITY_NONE;
         gBattleMons[battlerDef] = switchinCandidate;
         gAiThinkingStruct->saved[battlerAtk].saved = TRUE;
         SetBattlerAiData(battlerDef, gAiLogicData); // set known opposing battler data
