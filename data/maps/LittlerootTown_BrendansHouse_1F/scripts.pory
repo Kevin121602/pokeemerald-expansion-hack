@@ -47,13 +47,11 @@ script LittlerootTown_BrendansHouse_1F_EventScript_StartingItems{
 	}
 	setmonmetlocation(0, 0xFF)
 	msgbox("Our next door neighbours have a gift\n"
-		   "for you.\p"
-		   "Make sure to pay them a visit before\n"
-		   "you leave.\p"
+		   "for you, make sure to pay them a\l"
+		   "visit before you leave.\p"
 			"Come back home if you need any more\n"
-			"Pokéballs or money,\p"
-			"and stop by Professor Birch's lab\n"
-			"if you have any questions.\p"
+			"money, and stop by Professor Birch's\l"
+			"lab if you have any questions.\p"
 			"Good luck, {PLAYER}!$")
 	setflag(FLAG_SYS_POKEMON_GET)
 	setflag(FLAG_SYS_POKEDEX_GET)
@@ -62,6 +60,7 @@ script LittlerootTown_BrendansHouse_1F_EventScript_StartingItems{
 	setrespawn(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE)
 	special(EnableNationalPokedex)
 	setvar(VAR_LITTLEROOT_INTRO_STATE, 1)
+	setflag(FLAG_TEMP_10)
 	releaseall
 	end
 }
@@ -69,7 +68,19 @@ script LittlerootTown_BrendansHouse_1F_EventScript_StartingItems{
 script LittlerootTown_BrendansHouse_1F_EventScript_GoodLuck{
 	lock
 	faceplayer
-	msgbox(format("Good luck, {PLAYER}!$"))
+	if(flag(FLAG_TEMP_10)){
+		msgbox(format("Good luck, {PLAYER}!$"))
+	} else {
+		showmoneybox(0, 0)
+		msgbox("I hope things are going well, {PLAYER}.\p"
+				"Here, I have some extra money for you!$")
+		addmoney(999999)
+		updatemoneybox
+		msgbox(format("Good luck!$"))
+		waitmessage
+		hidemoneybox
+		setflag(FLAG_TEMP_10)
+	}
 	release
 	end
 }
