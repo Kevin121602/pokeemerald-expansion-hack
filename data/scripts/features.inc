@@ -109,6 +109,8 @@ EventScript_FeaturesMenu_ChangeNature2::
 
 EventScript_FeaturesMenu_ChangeNature1Scale::
 	special BufferNameAndNature
+	special CheckMonNature
+	goto_if_eq VAR_RESULT, FALSE, EventScript_FeaturesMenu_CannotChangeNature
 	msgbox Text_ChangeNameToNature, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
 	special ChangeNature
@@ -120,6 +122,8 @@ EventScript_FeaturesMenu_ChangeNature1Scale::
 
 EventScript_FeaturesMenu_ChangeNature2Scales::
 	special BufferNameAndNature
+	special CheckMonNature
+	goto_if_eq VAR_RESULT, FALSE, EventScript_FeaturesMenu_CannotChangeNature
 	msgbox Text_ChangeNameToNature, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
 	special ChangeNature
@@ -131,6 +135,8 @@ EventScript_FeaturesMenu_ChangeNature2Scales::
 
 EventScript_FeaturesMenu_ChangeNature3Scales::
 	special BufferNameAndNature
+	special CheckMonNature
+	goto_if_eq VAR_RESULT, FALSE, EventScript_FeaturesMenu_CannotChangeNature
 	msgbox Text_ChangeNameToNature, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_FeaturesMenu_Exit
 	special ChangeNature
@@ -571,6 +577,11 @@ EventScript_FeaturesMenu_GiveGrassySeed::
 	releaseall
 	end
 
+EventScript_FeaturesMenu_CannotChangeNature::
+	msgbox Text_NatureChangeWouldHaveNoEffect
+	releaseall
+	end
+
 EventScript_FeaturesMenu_Exit::
 	releaseall
 	end
@@ -596,6 +607,10 @@ EventScript_FeaturesMenu_CantChangeAbility::
 	msgbox Text_CantChangeAbility
 	releaseall
 	end
+
+Text_NatureChangeWouldHaveNoEffect::
+	.string "Changing {STR_VAR_1}'s Nature would\n"
+	.string "have no effect.$"
 
 Text_ChangeNameToNature::
 	.string "Change {STR_VAR_1}'s Nature to\n"

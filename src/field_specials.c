@@ -4721,3 +4721,101 @@ void SetHiddenNature(void)
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HIDDEN_NATURE, &hiddenNature);
     CalculateMonStats(&gPlayerParty[gSpecialVar_0x8004]);
 }
+
+void CheckMonNature(void){
+    u32 nature = GetMonData(&gPlayerParty[gSpecialVar_0x8005], MON_DATA_HIDDEN_NATURE);
+    if (nature == 0)
+        nature = GetNature(&gPlayerParty[gSpecialVar_0x8005]);
+
+    gSpecialVar_Result = TRUE;
+
+    switch(gSpecialVar_0x8006){
+        case 0:
+            if(nature == NATURE_SERIOUS || nature == NATURE_HARDY 
+                || nature == NATURE_BASHFUL || nature == NATURE_DOCILE || nature == NATURE_QUIRKY)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 1:
+            if(nature == NATURE_LAX)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 2:
+            if(nature == NATURE_GENTLE)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 3:
+            if(nature == NATURE_BRAVE)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 4:
+            if(nature == NATURE_BOLD)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 5:
+            if(nature == NATURE_RELAXED)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 6:
+            if(nature == NATURE_IMPISH)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 7:
+            if(nature == NATURE_QUIET)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 8:
+            if(nature == NATURE_CALM)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 9:
+            if(nature == NATURE_SASSY)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 10:
+            if(nature == NATURE_CAREFUL)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 11:
+            if(nature == NATURE_LONELY)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 12:
+            if(nature == NATURE_ADAMANT)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 13:
+            if(nature == NATURE_NAUGHTY)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 14:
+            if(nature == NATURE_TIMID)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 15:
+            if(nature == NATURE_HASTY)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 16:
+            if(nature == NATURE_JOLLY)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 17:
+            if(nature == NATURE_NAIVE)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 18:
+            if(nature == NATURE_MODEST)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 19:
+            if(nature == NATURE_MILD)
+                gSpecialVar_Result = FALSE;
+            break;
+        case 20:
+            if(nature == NATURE_RASH)
+                gSpecialVar_Result = FALSE;
+            break;
+        default:
+            break;  
+    }
+}
