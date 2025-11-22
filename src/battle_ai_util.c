@@ -2076,7 +2076,7 @@ s32 ProtectChecks(u32 battlerAtk, u32 battlerDef, u32 move, u32 predictedMove, s
             }
         }
     } else {
-        if(gWishFutureKnock.wishCounter[battlerAtk] != 0){
+        if(gWishFutureKnock.wishCounter[battlerAtk] > gBattleTurnCounter){
             ADJUST_SCORE_PTR(BEST_EFFECT);
         } else {
             if (IsBattlerDamagedByStatus(battlerAtk))
@@ -4134,6 +4134,9 @@ bool32 ShouldRecover(u32 battlerAtk, u32 battlerDef, u32 move, u32 healPercent)
     u32 moveLimitations = gAiLogicData->moveLimitations[battlerDef];
     u16 *moves = GetMovesArray(battlerDef);
     uq4_12_t effectiveness;
+
+    if(gWishFutureKnock.wishCounter[battlerAtk] > gBattleTurnCounter)
+        return FALSE;
 
     //s32 damage = gAiLogicData->simulatedDmg[battlerAtk][battlerDef][AiThinkingStruct->movesetIndex].median;
     s32 healAmount = (healPercent * gBattleMons[battlerAtk].maxHP) / 100;

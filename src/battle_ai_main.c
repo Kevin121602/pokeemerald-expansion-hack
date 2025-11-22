@@ -4111,9 +4111,13 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         //TODO - predicted move
         break;
     case EFFECT_WISH:
+        if(ShouldRecover(battlerAtk, battlerDef, move, 50) && (HasMoveWithEffect(battlerAtk, EFFECT_PROTECT) || GetBestNoOfHitsToKO(battlerDef, battlerAtk, AI_DEFENDING) > 2)){
+            ADJUST_SCORE(BEST_EFFECT);
+        }
+        break;
     case EFFECT_HEAL_BELL:
         if (ShouldUseWishAromatherapy(battlerAtk, battlerDef, move))
-            ADJUST_SCORE(DECENT_EFFECT);
+            ADJUST_SCORE(GOOD_EFFECT);
         break;
     case EFFECT_CURSE:
         if (IS_BATTLER_OF_TYPE(battlerAtk, TYPE_GHOST))

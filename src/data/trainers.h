@@ -20214,7 +20214,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 7840
-                MOVE_SPLASH,
+                MOVE_TACKLE,
             },
             },
         },
