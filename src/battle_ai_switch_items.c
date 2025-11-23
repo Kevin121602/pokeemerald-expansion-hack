@@ -839,6 +839,8 @@ bool32 ShouldSwitch(u32 battler)
     bool32 canFakeOut = FALSE;
     bool32 willSetHazards = FALSE;
     bool32 willDestinyBond = FALSE;
+    bool32 battlerCanKOPlayerMon = FALSE;
+    bool32 willHeal = FALSE;
     bool32 hasNoGoodMoves = TRUE;
 
     bool32 canPivot = FALSE;
@@ -847,14 +849,6 @@ bool32 ShouldSwitch(u32 battler)
     u8 pivot = MAX_MON_MOVES;
     u8 teleport = MAX_MON_MOVES;
 
-    if (gBattleMons[battler].volatiles.wrapped)
-        return FALSE;
-    if (gBattleMons[battler].volatiles.escapePrevention)
-        return FALSE;
-    if (gBattleMons[battler].volatiles.root)
-        return FALSE;
-    if (IsAbilityPreventingEscape(battler))
-        return FALSE;
     if(gBattleMons[battler].hp*5 <= gBattleMons[battler].maxHP)
         return FALSE;
     if(!CanMonSurviveHazardSwitchin(battler))
@@ -938,6 +932,9 @@ bool32 ShouldSwitch(u32 battler)
         
     if (IsHazardMove(gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]))
         willSetHazards = TRUE;
+
+    if (IsHealingMove(gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]))
+        willHeal = TRUE;
 
     if(hasNoGoodMoves){
         gAiLogicData->mostSuitableMonId[battler] = bestCandidate;
@@ -1027,9 +1024,17 @@ bool32 ShouldSwitch(u32 battler)
         }
     }
 
-    if(battlerAbility == ABILITY_NATURAL_CURE && gBattleMons[battler].status1 & STATUS1_ANY){
+    if(bestHitsToKOPlayer == 1 && !IsBattlerIncapacitated(battler, battlerAbility))
+        battlerCanKOPlayerMon = TRUE;
+
+    if(battlerAbility == ABILITY_NATURAL_CURE && gBattleMons[battler].status1 & STATUS1_ANY && !battlerCanKOPlayerMon){
         if(canPivot){
             gAiBattleData->chosenMoveIndex[battler] = pivot;
+            return FALSE;
+        } else if (gBattleMons[battler].volatiles.wrapped
+                    || gBattleMons[battler].volatiles.escapePrevention
+                    || gBattleMons[battler].volatiles.root
+                    || IsAbilityPreventingEscape(battler)){
             return FALSE;
         } else {
             gAiLogicData->mostSuitableMonId[battler] = bestCandidate;
@@ -1043,9 +1048,14 @@ bool32 ShouldSwitch(u32 battler)
         if(!aiIsFaster){
             gAiLogicData->mostSuitableMonId[battler] = bestCandidate;
             return TRUE;
-        } else if (aiIsFaster && !willSetHazards && !willDestinyBond && bestHitsToKOPlayer != 1 && !MonHasRelevantStatsRaised(battler)){
+        } else if (aiIsFaster && !willSetHazards && !willHeal && !willDestinyBond && !battlerCanKOPlayerMon && !MonHasRelevantStatsRaised(battler)){
             if(canPivot){
                 gAiBattleData->chosenMoveIndex[battler] = pivot;
+                return FALSE;
+            } else if (gBattleMons[battler].volatiles.wrapped
+                    || gBattleMons[battler].volatiles.escapePrevention
+                    || gBattleMons[battler].volatiles.root
+                    || IsAbilityPreventingEscape(battler)){
                 return FALSE;
             } else {
                 gAiLogicData->mostSuitableMonId[battler] = bestCandidate;
@@ -1061,6 +1071,11 @@ bool32 ShouldSwitch(u32 battler)
                 return FALSE;
         } else if (canTeleport){
                 gAiBattleData->chosenMoveIndex[battler] = teleport;
+                return FALSE;
+        } else if (gBattleMons[battler].volatiles.wrapped
+                    || gBattleMons[battler].volatiles.escapePrevention
+                    || gBattleMons[battler].volatiles.root
+                    || IsAbilityPreventingEscape(battler)){
                 return FALSE;
         } else {
                 gAiLogicData->mostSuitableMonId[battler] = bestCandidate;

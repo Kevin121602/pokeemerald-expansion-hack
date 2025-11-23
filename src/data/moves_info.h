@@ -490,10 +490,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_CUT] =
     {
         .name = COMPOUND_STRING("Cut"),
-        .description = COMPOUND_STRING(
-            "Cuts the foe with sharp\n"
-            "scythes, claws, etc."),
-        .effect = EFFECT_HIT,
+        .description = sFalseSwipeDescription,
+        .effect = EFFECT_FALSE_SWIPE,
         .power = 50,
         .type = TYPE_NORMAL,
         .accuracy = 100,

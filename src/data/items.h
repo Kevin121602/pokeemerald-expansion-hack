@@ -12350,9 +12350,9 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("HM01"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "Attacks the foe\n"
-            "with sharp blades\n"
-            "or claws."),
+            "A slash that always\n"
+            "leaves the foe with\n"
+            "at least 1 HP."),
         .importance = 1,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,

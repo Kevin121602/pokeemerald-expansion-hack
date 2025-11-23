@@ -185,7 +185,7 @@ bool8 AdjustQuantityAccordingToDPadInput(s16 *quantity, u16 max)
     {
         (*quantity)++;
         if (*quantity > max)
-            *quantity = 1;
+            *quantity = max;
 
         if (*quantity == valBefore)
         {
@@ -200,8 +200,8 @@ bool8 AdjustQuantityAccordingToDPadInput(s16 *quantity, u16 max)
     else if (JOY_REPEAT(DPAD_ANY) == DPAD_DOWN)
     {
         (*quantity)--;
-        if (*quantity <= 0)
-            *quantity = max;
+        if (*quantity <= 1)
+            *quantity = 1;
 
         if (*quantity == valBefore)
         {
@@ -217,7 +217,7 @@ bool8 AdjustQuantityAccordingToDPadInput(s16 *quantity, u16 max)
     {
         *quantity += 10;
         if (*quantity > max)
-            *quantity = 1;
+            *quantity = max;
 
         if (*quantity == valBefore)
         {
@@ -232,8 +232,8 @@ bool8 AdjustQuantityAccordingToDPadInput(s16 *quantity, u16 max)
     else if (JOY_REPEAT(DPAD_ANY) == DPAD_LEFT)
     {
         *quantity -= 10;
-        if (*quantity <= 0)
-            *quantity = max;
+        if (*quantity <= 1)
+            *quantity = 1;
 
         if (*quantity == valBefore)
         {
@@ -249,7 +249,7 @@ bool8 AdjustQuantityAccordingToDPadInput(s16 *quantity, u16 max)
     {
         *quantity += 100;
         if (*quantity > max)
-            *quantity = 1;
+            *quantity = max;
 
         if (*quantity == valBefore)
         {
@@ -265,8 +265,8 @@ bool8 AdjustQuantityAccordingToDPadInput(s16 *quantity, u16 max)
     else if (JOY_REPEAT(L_BUTTON))
     {
         *quantity -= 100;
-        if (*quantity <= 0)
-            *quantity = max;
+        if (*quantity <= 1)
+            *quantity = 1;
 
         if (*quantity == valBefore)
         {
@@ -290,7 +290,7 @@ bool8 AdjustQuantityAccordingToDPadInputZero(s16 *quantity, u16 max)
     {
         (*quantity)++;
         if (*quantity > max)
-            *quantity = 0;
+            *quantity = max;
 
         if (*quantity == valBefore)
         {
@@ -306,7 +306,7 @@ bool8 AdjustQuantityAccordingToDPadInputZero(s16 *quantity, u16 max)
     {
         (*quantity)--;
         if (*quantity < 0)
-            *quantity = max;
+            *quantity = 0;
 
         if (*quantity == valBefore)
         {
@@ -322,7 +322,7 @@ bool8 AdjustQuantityAccordingToDPadInputZero(s16 *quantity, u16 max)
     {
         *quantity += 10;
         if (*quantity > max)
-            *quantity = 0;
+            *quantity = max;
 
         if (*quantity == valBefore)
         {
@@ -339,7 +339,7 @@ bool8 AdjustQuantityAccordingToDPadInputZero(s16 *quantity, u16 max)
     {
         *quantity -= 10;
         if (*quantity < 0)
-            *quantity = max;
+            *quantity = 0;
 
         if (*quantity == valBefore)
         {
@@ -355,7 +355,7 @@ bool8 AdjustQuantityAccordingToDPadInputZero(s16 *quantity, u16 max)
     {
         *quantity += 100;
         if (*quantity > max)
-            *quantity = 0;
+            *quantity = max;
 
         if (*quantity == valBefore)
         {
@@ -372,7 +372,7 @@ bool8 AdjustQuantityAccordingToDPadInputZero(s16 *quantity, u16 max)
     {
         *quantity -= 100;
         if (*quantity < 0)
-            *quantity = max;
+            *quantity = 0;
 
         if (*quantity == valBefore)
         {

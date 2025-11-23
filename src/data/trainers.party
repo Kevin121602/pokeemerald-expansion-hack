@@ -250,27 +250,28 @@ Clamperl @ Deep Sea Scale
 Level: 13
 Nature: Timid
 Ability: Rattled
--Brine
--Icy Wind
--Mud Sport
--Confuse Ray
+- Brine
+- Icy Wind
+- Mud Sport
+- Confuse Ray
 
 Yanma @ Hard Stone
 Level: 13
 Nature: Modest
 Ability: Speed Boost
--Mega Drain
--Air Cutter
--Ancient Power
--Detect
+- Mega Drain
+- Air Cutter
+- Ancient Power
+- Detect
 
 Poipole @ Lum Berry
 Level: 14
 Nature: Timid
 Ability: Beast Boost
--Venoshock
--Round
--Toxic
+- Venoshock
+- Round
+- Substitute
+- Toxic
 
 === TRAINER_MARCEL ===
 Name: MARCEL
@@ -7550,6 +7551,7 @@ Ability: Speed Boost
 -Incinerate
 -Aerial Ace
 -Rock Smash
+-Work Up
 
 === TRAINER_TIMMY ===
 Name: TIMMY
@@ -13149,28 +13151,28 @@ Butterfree @ Charti Berry
 Level: 14
 Nature: Timid
 Ability: Compound Eyes
--Silver Wind
--Air Cutter
--Psybeam
--Sleep Powder
+- Silver Wind
+- Air Cutter
+- Psybeam
+- Sleep Powder
 
-Cutiefly @ Flying Gem
+Dottler @ Light Clay
 Level: 14
-Nature: Naughty
-Ability: Shield Dust
--Struggle Bug
--Draining Kiss
--Infestation
--Acrobatics
+Nature: Bold
+Ability: Swarm
+- Confusion
+- Struggle Bug
+- Light Screen
+- Reflect
 
 Beedrill @ Scope Lens
 Level: 14
 Nature: Jolly
-Ability: Swarm
--Twineedle
--Drill Run
--Aerial Ace
--Focus Energy
+Ability: Sniper
+- Twineedle
+- Drill Run
+- Aerial Ace
+- Focus Energy
 
 === TRAINER_DOUG ===
 Name: DOUG
@@ -13250,7 +13252,7 @@ Kricketune @ Occa Berry
 Level: 12
 Nature: Jolly
 Ability: Technician
--Fury Cutter
+-Bug Bite
 -Trailblaze
 -Aerial Ace
 -Sing

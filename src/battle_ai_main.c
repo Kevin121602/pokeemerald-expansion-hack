@@ -648,6 +648,8 @@ static void CalcBattlerAiMovesData(struct AiLogicData *aiData, u32 battlerAtk, u
         }
         if (gMovesInfo[move].effect == EFFECT_EXPLOSION || gMovesInfo[move].effect == EFFECT_MISTY_EXPLOSION)
             aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum = 0;
+        if (IsTwoTurnNotSemiInvulnerableMove(battlerAtk, move))
+            aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex].minimum = 0;
         aiData->effectiveness[battlerAtk][battlerDef][moveIndex] = effectiveness;
     }
 }
