@@ -715,13 +715,15 @@ static bool32 MonHasRelevantStatsRaised(u32 battler)
         }
     }
 
-    if(!anyStatIsRaised){
+    if(!anyStatIsRaised)
         return FALSE;
-    }
 
-    if(gBattleMons[battler].hp == gBattleMons[battler].maxHP){
+    if(HasMoveWithEffect(battler, EFFECT_BATON_PASS))
         return FALSE;
-    }
+
+    //returns false if mon is at full hp
+    if(gBattleMons[battler].hp == gBattleMons[battler].maxHP)
+        return FALSE;
 
     //if ai mon has raised its speed, would be slower without the boosts but is faster with them
     if(gBattleMons[battler].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE && (gBattleMons[battler].speed < gAiLogicData->speedStats[opposingBattler])
@@ -845,9 +847,11 @@ bool32 ShouldSwitch(u32 battler)
 
     bool32 canPivot = FALSE;
     bool32 canTeleport = FALSE;
+    bool32 canBatonPass = FALSE;
 
     u8 pivot = MAX_MON_MOVES;
     u8 teleport = MAX_MON_MOVES;
+    u8 batonPass = MAX_MON_MOVES;
 
     if(gBattleMons[battler].hp*5 <= gBattleMons[battler].maxHP)
         return FALSE;
@@ -922,6 +926,16 @@ bool32 ShouldSwitch(u32 battler)
             canTeleport = TRUE;
             teleport = l;
         }
+        if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_PARTING_SHOT && gAiThinkingStruct->score[l] >= 100 && !IsBattlerIncapacitated(battler, battlerAbility)){
+            canPivot = TRUE;
+            pivot = l;
+        }
+        if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_BATON_PASS && gAiThinkingStruct->score[l] >= 100){
+            canPivot = TRUE;
+            canBatonPass = TRUE;
+            pivot = l;
+            batonPass = l;
+        }
     }
 
     if (gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]] == MOVE_FAKE_OUT)
@@ -940,10 +954,6 @@ bool32 ShouldSwitch(u32 battler)
         gAiLogicData->mostSuitableMonId[battler] = bestCandidate;
         return TRUE;
     }
-
-    //all other switch functions require a score of +2, return false here if none found
-    if(bestMonSwitchScore < SCORE_SLOW_THREATEN)
-        return FALSE;
     
     // Get best move for AI to use on player
     for (j = 0; j < MAX_MON_MOVES; j++)
@@ -1004,6 +1014,15 @@ bool32 ShouldSwitch(u32 battler)
             }
         }
     }
+
+    if(AnyStatIsRaised(battler) && canBatonPass && (GetBattleMovePriority(battler, battlerAbility, gBattleMons[battler].moves[batonPass]) > GetBattleMovePriority(opposingBattler, playerAbility, bestPlayerMove) || battlerSpeed >= playerSpeed)){
+        gAiBattleData->chosenMoveIndex[battler] = batonPass;
+        return FALSE;
+    }
+
+    //all other switch functions require a score of +2, return false here if none found
+    if(bestMonSwitchScore < SCORE_SLOW_THREATEN)
+        return FALSE;
 
     //represents whether or not the AI is faster
     if(GetBattleMovePriority(battler, battlerAbility, gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]) > GetBattleMovePriority(opposingBattler, playerAbility, bestPlayerMove)){

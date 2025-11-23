@@ -4067,8 +4067,6 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         //todo - check z splash, z celebrate, z happy hour (lol)
         break;
     case EFFECT_BATON_PASS:
-        if (AnyStatIsRaised(battlerAtk))
-            ADJUST_SCORE(BEST_EFFECT);
         break;
     case EFFECT_DISABLE:
         if (GetActiveGimmick(battlerDef) == GIMMICK_DYNAMAX)
