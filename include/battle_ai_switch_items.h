@@ -53,6 +53,12 @@ enum SwitchType
     SWITCH_MID_BATTLE,
 };
 
+struct MostSuitableCandidate
+{
+    u8 candidate;
+    u8 score; 
+};
+
 void GetAIPartyIndexes(u32 battlerId, s32 *firstId, s32 *lastId);
 void AI_TrySwitchOrUseItem(u32 battler);
 void InitializeSwitchinCandidate(struct Pokemon *mon);
