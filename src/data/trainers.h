@@ -20201,22 +20201,22 @@ F_TRAINER_FEMALE |
         {
             {
 #line 7838
-            .species = SPECIES_MAGIKARP,
+            .species = SPECIES_MEW,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7838
-            .heldItem = ITEM_PUNCHING_GLOVE,
+            .heldItem = ITEM_SITRUS_BERRY,
 #line 7842
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 7840
-            .ability = ABILITY_RATTLED,
+            .ability = ABILITY_SYNCHRONIZE,
 #line 7841
-            .lvl = 1,
+            .lvl = 40,
 #line 7839
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 7842
-                MOVE_TACKLE,
+                MOVE_ZEN_HEADBUTT,
             },
             },
         },

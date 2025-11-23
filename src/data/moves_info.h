@@ -11805,8 +11805,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Defend Order"),
         .description = COMPOUND_STRING(
-            "Evades attack, but may fail\n"
-            "if used in succession."),
+            "Protects itself, consuming\n"
+            "the foe's berry on contact."),
         .effect = EFFECT_PROTECT,
         .power = 0,
         .type = TYPE_BUG,
@@ -11815,6 +11815,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = MOVE_TARGET_USER,
         .priority = B_UPDATED_MOVE_DATA >= GEN_5 ? 4 : 3,
         .category = DAMAGE_CATEGORY_STATUS,
+        .argument = { .protectMethod = PROTECT_DEFEND_ORDER },
         .zMove = { .effect = Z_EFFECT_EVSN_UP_1 },
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,

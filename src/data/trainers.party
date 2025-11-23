@@ -7835,11 +7835,11 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Magikarp @ Punching Glove
+Mew @ Sitrus Berry
 Nature: Jolly
-Ability: Rattled
-Level: 1
-- Tackle
+Ability: Synchronize
+Level: 40
+- Zen Headbutt
 
 === TRAINER_WADE ===
 Name: WADE

@@ -1986,10 +1986,8 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         }
 
         //if can take direct damage on switch, ignore air balloon
-        //if player has move of resist berry param type, ignore resist berry
         calcHP = (battleMon.hp - highestDmgtoSwitchIn);
-        if(calcHP < battleMon.hp && (aiMonHoldEffect == HOLD_EFFECT_AIR_BALLOON || (aiMonHoldEffect == HOLD_EFFECT_RESIST_BERRY 
-        && HasDamagingMoveOfType(opposingBattler, GetItemHoldEffectParam(battleMon.item))))){
+        if(calcHP < battleMon.hp && (aiMonHoldEffect == HOLD_EFFECT_AIR_BALLOON)){
             aiMonHoldEffect == HOLD_EFFECT_NONE;
             ignoreItem = TRUE;
         }

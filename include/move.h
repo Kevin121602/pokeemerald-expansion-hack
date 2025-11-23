@@ -59,6 +59,7 @@ enum ProtectMethod
     PROTECT_CRAFTY_SHIELD,
     PROTECT_MAT_BLOCK,
     PROTECT_FLOWER_SHIELD,
+    PROTECT_DEFEND_ORDER,
 };
 
 struct MoveInfo
