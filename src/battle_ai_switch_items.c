@@ -718,9 +718,6 @@ static bool32 MonHasRelevantStatsRaised(u32 battler)
     if(!anyStatIsRaised)
         return FALSE;
 
-    if(HasMoveWithEffect(battler, EFFECT_BATON_PASS))
-        return FALSE;
-
     //returns false if mon is at full hp
     if(gBattleMons[battler].hp == gBattleMons[battler].maxHP)
         return FALSE;
@@ -931,9 +928,7 @@ bool32 ShouldSwitch(u32 battler)
             pivot = l;
         }
         if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_BATON_PASS && gAiThinkingStruct->score[l] >= 100){
-            canPivot = TRUE;
             canBatonPass = TRUE;
-            pivot = l;
             batonPass = l;
         }
     }
