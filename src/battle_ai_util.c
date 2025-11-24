@@ -5612,6 +5612,43 @@ u32 IncreaseStatLoweringScore(u32 battlerAtk, u32 battlerDef, u32 statId, u32 st
     u32 bestDmg = GetBestDmgFromBattler(battlerDef, battlerAtk, AI_DEFENDING);
     u32 bestDmgMove = GetBestDmgMoveFromBattler(battlerDef, battlerAtk, AI_DEFENDING);
 
+    bool32 partyMonHasPhysMove = FALSE;
+    bool32 partyMonHasSpecMove = FALSE;
+
+    struct Pokemon *party;
+    party = GetBattlerParty(battlerAtk);
+    u8 i, j;
+
+    u32 battlerOnField1, battlerOnField2;
+
+    if (HasPartner(battlerAtk))
+    {
+        battlerOnField1 = gBattlerPartyIndexes[battlerAtk];
+        battlerOnField2 = gBattlerPartyIndexes[GetPartnerBattler(battlerAtk)];
+    }
+    else // In singles there's only one battlerId by side.
+    {
+        battlerOnField1 = gBattlerPartyIndexes[battlerAtk];
+        battlerOnField2 = gBattlerPartyIndexes[battlerAtk];
+    }
+
+    //dont bother checking if not neccessary
+    if(statId == STAT_CHANGE_DEF || statId == STAT_CHANGE_SPDEF){
+        for (i = 0; i < PARTY_SIZE; i++)
+        {
+            if (i == battlerOnField1 || i == battlerOnField2)
+                continue;
+            if(GetMonData(&party[i], MON_DATA_HP) == 0)
+                continue;
+            for(j = 0; j < MAX_MON_MOVES; j++){
+                if(GetMoveCategory(GetMonData(&party[i], MON_DATA_MOVE1 + j)) == DAMAGE_CATEGORY_PHYSICAL)
+                    partyMonHasPhysMove = TRUE;
+                if(GetMoveCategory(GetMonData(&party[i], MON_DATA_MOVE1 + j)) == DAMAGE_CATEGORY_SPECIAL)
+                    partyMonHasSpecMove = TRUE;
+            }
+        }
+    }
+
     u32 playerSpeedAfterDrop = GetSpeedStatAfterBoost(battlerDef, gAiLogicData->speedStats[battlerDef], stages, FALSE);
 
     if (gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_CLEAR_AMULET
@@ -5638,7 +5675,9 @@ u32 IncreaseStatLoweringScore(u32 battlerAtk, u32 battlerDef, u32 statId, u32 st
             return NO_INCREASE;
         if(gMovesInfo[bestDmgMove].category == DAMAGE_CATEGORY_SPECIAL)
             return NO_INCREASE;
-        if(bestDmg*2 > gBattleMons[battlerAtk].hp && gAiLogicData->speedStats[battlerDef] > gAiLogicData->speedStats[battlerAtk])
+        if(bestDmg >= gBattleMons[battlerAtk].hp)
+            return NO_INCREASE;
+        if(bestDmg*2 >= gBattleMons[battlerAtk].hp && gAiLogicData->speedStats[battlerDef] > gAiLogicData->speedStats[battlerAtk])
             return NO_INCREASE;
         tempScore += WEAK_EFFECT;
         if(stages >= 2 && Random() % 100 < 50)
@@ -5647,6 +5686,10 @@ u32 IncreaseStatLoweringScore(u32 battlerAtk, u32 battlerDef, u32 statId, u32 st
     case STAT_CHANGE_DEF:
         //score of +1, 50% score of +2 if lowering stages by 2 or more
         if (gBattleMons[battlerDef].statStages[STAT_DEF] <= MIN_STAT_STAGE)
+            return NO_INCREASE;
+        if(bestDmg >= gBattleMons[battlerAtk].hp && !partyMonHasPhysMove)
+            return NO_INCREASE;
+        if(bestDmg*2 >= gBattleMons[battlerAtk].hp && gAiLogicData->speedStats[battlerDef] > gAiLogicData->speedStats[battlerAtk] && !partyMonHasPhysMove)
             return NO_INCREASE;
         tempScore += WEAK_EFFECT;
         if(stages >= 2 && Random() % 100 < 50)
@@ -5659,8 +5702,7 @@ u32 IncreaseStatLoweringScore(u32 battlerAtk, u32 battlerDef, u32 statId, u32 st
             return NO_INCREASE;
         if(gAiLogicData->speedStats[battlerAtk] < playerSpeedAfterDrop)
             return NO_INCREASE;
-        tempScore += DECENT_EFFECT;
-        tempScore += WEAK_EFFECT;
+        tempScore += GOOD_EFFECT;
         break;
     case STAT_CHANGE_SPATK:
         if (gBattleMons[battlerDef].statStages[STAT_SPATK] <= MIN_STAT_STAGE)
@@ -5669,7 +5711,9 @@ u32 IncreaseStatLoweringScore(u32 battlerAtk, u32 battlerDef, u32 statId, u32 st
             return NO_INCREASE;
         if(gMovesInfo[bestDmgMove].category == DAMAGE_CATEGORY_PHYSICAL)
             return NO_INCREASE;
-        if(bestDmg*2 > gBattleMons[battlerAtk].hp && gAiLogicData->speedStats[battlerDef] > gAiLogicData->speedStats[battlerAtk])
+        if(bestDmg >= gBattleMons[battlerAtk].hp)
+            return NO_INCREASE;
+        if(bestDmg*2 >= gBattleMons[battlerAtk].hp && gAiLogicData->speedStats[battlerDef] > gAiLogicData->speedStats[battlerAtk])
             return NO_INCREASE;
         tempScore += WEAK_EFFECT;
         if(stages >= 2 && Random() % 100 < 50)
@@ -5678,6 +5722,10 @@ u32 IncreaseStatLoweringScore(u32 battlerAtk, u32 battlerDef, u32 statId, u32 st
     case STAT_CHANGE_SPDEF:
         //score of +1, 50% score of +2 if lowering stages by 2 or more
         if (gBattleMons[battlerDef].statStages[STAT_SPDEF] <= MIN_STAT_STAGE)
+            return NO_INCREASE;
+        if(bestDmg >= gBattleMons[battlerAtk].hp && !partyMonHasSpecMove)
+            return NO_INCREASE;
+        if(bestDmg*2 >= gBattleMons[battlerAtk].hp && gAiLogicData->speedStats[battlerDef] > gAiLogicData->speedStats[battlerAtk] && !partyMonHasSpecMove)
             return NO_INCREASE;
         tempScore += WEAK_EFFECT;
         if(stages >= 2 && Random() % 100 < 50)
