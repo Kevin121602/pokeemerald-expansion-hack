@@ -5260,109 +5260,200 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     switch (statId)
     {
     case STAT_CHANGE_ATK:
+        if (gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+            tempScore += DECENT_EFFECT;
+        if (gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE - 4)
+            tempScore -= WEAK_EFFECT;
+        break;
     case STAT_CHANGE_ATK_2:
-    case STAT_CHANGE_ATK_DEF:
-    case STAT_CHANGE_ATK_DEF_2:
-        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
+        if (gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE)
             return NO_INCREASE;
         if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp){
-            tempScore += DECENT_EFFECT;
-        }
-        break;
-    case STAT_CHANGE_ATK_SPATK:
-        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
-            return NO_INCREASE;
-        if (shouldSetUp){
-            tempScore += DECENT_EFFECT;
-        }
-        break; 
-    case STAT_CHANGE_CURSE:
-        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
-            return NO_INCREASE;
-        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp){
-            tempScore += DECENT_EFFECT;
-        }
-        break;
-    case STAT_CHANGE_DEF:
-        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_DEF] >= MAX_STAT_STAGE)
-            return NO_INCREASE;
-        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
-        {
-            tempScore += DECENT_EFFECT;
-        }
-        break;
-    //add caveat where AI needs to be faster after speed control
-    case STAT_CHANGE_SPEED:
-        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPEED] >= MAX_STAT_STAGE)
-            return NO_INCREASE;
-        if (speedBattler > speedBattlerAI && aiIsFaster){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
                 tempScore += WEAK_EFFECT;
+        }
+        if (gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE - 4)
+            tempScore -= WEAK_EFFECT;
+        break;
+    case STAT_CHANGE_CURSE:
+    case STAT_CHANGE_ATK_DEF:
+        if (gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp){
+            tempScore += DECENT_EFFECT;
+            if(Random() % 100 < 50)
+                tempScore += WEAK_EFFECT;
+        }
+        if (gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE - 4 || gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE - 4)
+            tempScore -= WEAK_EFFECT;
+        break;
+    case STAT_CHANGE_ATK_DEF_2:
+        if (gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+            tempScore += GOOD_EFFECT;
+        if (gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE - 4 || gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE - 4)
+            tempScore -= WEAK_EFFECT;
+        break;
+    case STAT_CHANGE_ATK_SPATK:
+        if (gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        if ((HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) || HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL)) && shouldSetUp){
+            tempScore += DECENT_EFFECT;
+            if(Random() % 100 < 50)
+                tempScore += WEAK_EFFECT;
+        }
+        if (gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE - 4 || gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE - 4)
+            tempScore -= WEAK_EFFECT;
+        break;
+    case STAT_CHANGE_DEF:
+        if (gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+            tempScore += DECENT_EFFECT;
+        if (gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE - 4)
+            tempScore -= WEAK_EFFECT;
+        break;
+    case STAT_CHANGE_SPEED_2:
+    case STAT_CHANGE_SPEED:
+        if (gBattleMons[battlerAtk].statStages[STAT_SPEED] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        if (speedBattler > speedBattlerAI && aiIsFaster){
+            tempScore += GOOD_EFFECT;
         }
         break;
     case STAT_CHANGE_ATK_DEF_SPEED:
-    case STAT_CHANGE_ATK_SPEED:
-    case STAT_CHANGE_SPEED_DEF_2:
-        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
+        if (gBattleMons[battlerAtk].statStages[STAT_SPEED] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (shouldSetUp){
-            tempScore += DECENT_EFFECT;
-            if(Random() % 100 < 50)
-                tempScore += WEAK_EFFECT;
+        if (speedBattler > speedBattlerAI && aiIsFaster){
+            tempScore += GOOD_EFFECT;
+        } else {
+            if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp){
+                tempScore += DECENT_EFFECT;
+                if(Random() % 100 < 50)
+                    tempScore += WEAK_EFFECT;
+            }
+            if (gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE - 4 || gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE - 4)
+                tempScore -= WEAK_EFFECT;
+        }
+        break;
+    case STAT_CHANGE_ATK_SPEED:
+    case STAT_CHANGE_ATK_SPEED_2:
+        if (gBattleMons[battlerAtk].statStages[STAT_SPEED] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        if (speedBattler > speedBattlerAI && aiIsFaster){
+            tempScore += GOOD_EFFECT;
+        } else {
+            if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+                tempScore += DECENT_EFFECT;
+            if (gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE - 4)
+                tempScore -= WEAK_EFFECT;
+        }
+        break;
+    case STAT_CHANGE_SPEED_DEF_2:
+        if (gBattleMons[battlerAtk].statStages[STAT_SPEED] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        if (speedBattler > speedBattlerAI && aiIsFaster){
+            tempScore += GOOD_EFFECT;
+        } else {
+            if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp){
+                tempScore += DECENT_EFFECT;
+                if(Random() % 100 < 50)
+                    tempScore += WEAK_EFFECT;
+            }
+            if (gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE - 4)
+                tempScore -= WEAK_EFFECT;
         }
         break;
     case STAT_CHANGE_SPATK_SPDEF_SPEED:
-        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPATK] >= MAX_STAT_STAGE)
+        if (gBattleMons[battlerAtk].statStages[STAT_SPEED] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (shouldSetUp){
-            tempScore += DECENT_EFFECT;
-            if(Random() % 100 < 50)
-                tempScore += WEAK_EFFECT;
+        if (speedBattler > speedBattlerAI && aiIsFaster){
+            tempScore += GOOD_EFFECT;
+        } else {
+            if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp){
+                tempScore += DECENT_EFFECT;
+                if(Random() % 100 < 50)
+                    tempScore += WEAK_EFFECT;
+            }
+            if (gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE - 4 || gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE - 4)
+                tempScore -= WEAK_EFFECT;
         }
         break;
     case STAT_CHANGE_SHELL_SMASH:
-        if ((gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPATK] >= MAX_STAT_STAGE - 4) || (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE - 4) || (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPEED] >= MAX_STAT_STAGE - 4))
+        if (gBattleMons[battlerAtk].statStages[STAT_SPEED] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (shouldSetUp){
-            tempScore += DECENT_EFFECT + WEAK_EFFECT;
-            if(Random() % 100 < 50)
-                tempScore += WEAK_EFFECT;
-        }
-        break;
-    case STAT_CHANGE_ATK_SPEED_2:
-        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_ATK] >= MAX_STAT_STAGE)
-            return NO_INCREASE;
-        if (shouldSetUp){
-            tempScore += DECENT_EFFECT;
-            if(Random() % 100 < 50)
-                tempScore += WEAK_EFFECT;
+        if (speedBattler > speedBattlerAI && aiIsFaster){
+            tempScore += GOOD_EFFECT + WEAK_EFFECT;
+        } else {
+            if ((HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) || HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL)) && shouldSetUp){
+                tempScore += GOOD_EFFECT;
+                if(Random() % 100 < 50)
+                    tempScore += WEAK_EFFECT;
+            }
+            if (gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE - 4 || gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE - 4)
+                tempScore -= WEAK_EFFECT;
         }
         break;
     case STAT_CHANGE_SPATK:
-    case STAT_CHANGE_SPATK_2:
-    case STAT_CHANGE_SPATK_SPDEF:
-    case STAT_CHANGE_SPATK_DEF_2:
-        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPATK] >= MAX_STAT_STAGE)
+        if (gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE)
             return NO_INCREASE;
         if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
             tempScore += DECENT_EFFECT;
+        if (gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE - 4)
+            tempScore -= WEAK_EFFECT;
+        break;
+    case STAT_CHANGE_SPATK_2:
+        if (gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp){
+            tempScore += DECENT_EFFECT;
+            if(Random() % 100 < 50)
+                tempScore += WEAK_EFFECT;
+        }
+        if (gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE - 4)
+            tempScore -= WEAK_EFFECT;
+        break;
+    case STAT_CHANGE_SPATK_SPDEF:
+        if (gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp){
+            tempScore += DECENT_EFFECT;
+            if(Random() % 100 < 50)
+                tempScore += WEAK_EFFECT;
+        }
+        if (gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE - 4 || gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE - 4)
+            tempScore -= WEAK_EFFECT;
+        break;
+    case STAT_CHANGE_SPATK_DEF_2:
+        if (gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
+            tempScore += GOOD_EFFECT;
+        if (gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE - 4 || gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE - 4)
+            tempScore -= WEAK_EFFECT;
         break;
     case STAT_CHANGE_SPDEF:
-        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPDEF] >= MAX_STAT_STAGE)
+        if (gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE)
             return NO_INCREASE;
         if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
-        {
             tempScore += DECENT_EFFECT;
-        }
+        if (gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE - 4)
+            tempScore -= WEAK_EFFECT;
         break;
     case STAT_CHANGE_DEF_SPDEF:
-        if ((gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPDEF] >= MAX_STAT_STAGE) && (gBattleMons[battlerAtk].statStages[STAT_CHANGE_DEF] >= MAX_STAT_STAGE))
+        if (gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if ((HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) || HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL)) && shouldSetUp)
-        {
+        if ((HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) || HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL)) && shouldSetUp){
             tempScore += DECENT_EFFECT;
+            if(Random() % 100 < 50)
+                tempScore += WEAK_EFFECT;
         }
+        if (gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE - 4 || gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE - 4)
+            tempScore -= WEAK_EFFECT;
         break;
     case STAT_CHANGE_CRIT_RATE:
         if (shouldSetUp)
@@ -5372,41 +5463,40 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
                 tempScore += WEAK_EFFECT;
         }
         break;
-    //add caveat where if AI is faster and could live hit with defensive setup, its 80% to go for it
     case STAT_CHANGE_DEF_2:
-        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_DEF] >= MAX_STAT_STAGE)
+        if (gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
-        {
-            tempScore += DECENT_EFFECT;
-        }
-        break;
-    case STAT_CHANGE_SPEED_2:
-        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPEED] >= MAX_STAT_STAGE)
-            return NO_INCREASE;
-        if (speedBattler > speedBattlerAI && aiIsFaster){
+        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
                 tempScore += WEAK_EFFECT;
         }
+        if (gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE - 4)
+            tempScore -= WEAK_EFFECT;
         break;
     case STAT_CHANGE_SPDEF_2:
-        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPDEF] >= MAX_STAT_STAGE)
+        if (gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
-        {
+        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp){
             tempScore += DECENT_EFFECT;
+            if(Random() % 100 < 50)
+                tempScore += WEAK_EFFECT;
         }
+        if (gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE - 4)
+            tempScore -= WEAK_EFFECT;
         break;
+    //i dont believe this is ever accessed, hone claws uses the attack function
     case STAT_CHANGE_ACC:
-        //if (gBattleMons[battlerAtk].statStages[STAT_ACC] <= 3) // Increase only if necessary
             tempScore += DECENT_EFFECT;
         break;
     case STAT_CHANGE_EVASION:
-        if (gBattleMons[battlerAtk].statStages[STAT_CHANGE_SPDEF] >= MAX_STAT_STAGE)
+        if (gBattleMons[battlerAtk].statStages[STAT_EVASION] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        else
-            tempScore += DECENT_EFFECT;
+        tempScore += DECENT_EFFECT;
+            if(Random() % 100 < 50)
+                tempScore += WEAK_EFFECT;
+        if (gBattleMons[battlerAtk].statStages[STAT_EVASION] >= MAX_STAT_STAGE - 4)
+            tempScore -= WEAK_EFFECT;
         break;
     }
 
