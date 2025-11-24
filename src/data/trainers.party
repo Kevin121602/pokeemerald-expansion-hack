@@ -7832,14 +7832,21 @@ Class: Fisherman
 Pic: Fisherman
 Gender: Male
 Music: Hiker
-Double Battle: No
+Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
+
+Zacian @ Sitrus Berry
+Nature: Jolly
+Ability: Intrepid Sword
+Level: 40
+- Tackle
 
 Mew @ Sitrus Berry
 Nature: Jolly
 Ability: Synchronize
 Level: 40
 - Zen Headbutt
+- Psych Up
 
 === TRAINER_WADE ===
 Name: WADE

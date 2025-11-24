@@ -2357,19 +2357,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
               || ((aiData->abilities[battlerDef] == ABILITY_CONTRARY) && !IsTargetingPartner(battlerAtk, battlerDef))) // don't want to raise target stats unless its your partner
                 ADJUST_SCORE(-10);
             break;
-        case EFFECT_PSYCH_UP:   // haze stats check
-            {
-                for (i = STAT_ATK; i < NUM_BATTLE_STATS; i++)
-                {
-                    if (gBattleMons[battlerAtk].statStages[i] > DEFAULT_STAT_STAGE || gBattleMons[BATTLE_PARTNER(battlerAtk)].statStages[i] > DEFAULT_STAT_STAGE)
-                        ADJUST_SCORE(-10);  // Don't want to reset our boosted stats
-                }
-                for (i = STAT_ATK; i < NUM_BATTLE_STATS; i++)
-                {
-                    if (gBattleMons[battlerDef].statStages[i] < DEFAULT_STAT_STAGE || gBattleMons[BATTLE_PARTNER(battlerDef)].statStages[i] < DEFAULT_STAT_STAGE)
-                        ADJUST_SCORE(-10); //Don't want to copy enemy lowered stats
-                }
-            }
+        case EFFECT_PSYCH_UP:
             break;
         case EFFECT_SEMI_INVULNERABLE:
             if (BattlerWillFaintFromSecondaryDamage(battlerAtk, aiData->abilities[battlerAtk])
@@ -3090,12 +3078,6 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             ADJUST_SCORE(DECENT_EFFECT);
         break;
     case EFFECT_MAGNET_RISE:
-        if (IsBattlerGrounded(battlerAtk)
-          && (HasMoveWithEffect(battlerAtkPartner, EFFECT_EARTHQUAKE) || HasMoveWithEffect(battlerAtkPartner, EFFECT_MAGNITUDE))
-          && (AI_GetMoveEffectiveness(MOVE_EARTHQUAKE, battlerAtk, battlerAtkPartner) != UQ_4_12(0.0))) // Doesn't resist ground move
-        {
-            RETURN_SCORE_PLUS(DECENT_EFFECT);   // partner has earthquake or magnitude -> good idea to use magnet rise
-        }
         break;
     case EFFECT_DRAGON_CHEER:
         if (gBattleMons[battlerAtkPartner].volatiles.dragonCheer
@@ -3390,6 +3372,10 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                         break; // These moves need to go last
                     RETURN_SCORE_PLUS(DECENT_EFFECT);
                 }
+                break;
+            case EFFECT_PSYCH_UP:
+                if(AI_ShouldCopyPartnerStatChanges(battlerAtk, battlerAtkPartner))
+                    ADJUST_SCORE(GOOD_EFFECT);
                 break;
             default:
                 break;
@@ -4232,7 +4218,11 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(GOOD_EFFECT);
         break;
     case EFFECT_PSYCH_UP:
-        score += AI_ShouldCopyStatChanges(battlerAtk, battlerDef);
+        if(AI_ShouldCopyStatChanges(battlerAtk, battlerDef)){
+            ADJUST_SCORE(DECENT_EFFECT);
+            if(Random() % 100 < 60)
+                ADJUST_SCORE(WEAK_EFFECT);
+        }
         break;
     //create use case for rollout if doesnt already exist
     case EFFECT_DEFENSE_CURL:
@@ -4600,12 +4590,11 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             ADJUST_SCORE(DECENT_EFFECT);
         break;
     case EFFECT_POWER_SWAP:
-        if (gBattleMons[battlerDef].statStages[STAT_ATK] > gBattleMons[battlerAtk].statStages[STAT_ATK]
-          && gBattleMons[battlerDef].statStages[STAT_SPATK] >= gBattleMons[battlerAtk].statStages[STAT_SPATK])
+        if(AI_ShouldCopyStatChanges(battlerAtk, battlerDef)){
             ADJUST_SCORE(DECENT_EFFECT);
-        else if (gBattleMons[battlerDef].statStages[STAT_SPATK] > gBattleMons[battlerAtk].statStages[STAT_SPATK]
-          && gBattleMons[battlerDef].statStages[STAT_ATK] >= gBattleMons[battlerAtk].statStages[STAT_ATK])
-            ADJUST_SCORE(DECENT_EFFECT);
+            if(Random() % 100 < 60)
+                ADJUST_SCORE(WEAK_EFFECT);
+        }
         break;
     case EFFECT_POWER_TRICK:
         if (!gBattleMons[battlerAtk].volatiles.powerTrick

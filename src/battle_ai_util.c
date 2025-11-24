@@ -6022,6 +6022,12 @@ s32 AI_TryToClearStats(u32 battlerAtk, u32 battlerDef, bool32 isDoubleBattle)
 bool32 AI_ShouldCopyStatChanges(u32 battlerAtk, u32 battlerDef)
 {
     u8 i;
+    u32 noOfHitsToFaint = NoOfHitsForTargetToFaintBattler(battlerDef, battlerAtk);
+    u32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, MOVE_NONE, 0, DONT_CONSIDER_PRIORITY);
+
+    if ((CanTargetFaintAi(battlerDef, battlerAtk) && aiIsFaster) || (noOfHitsToFaint <= 2 && !aiIsFaster))
+        return FALSE;    // return false if AI mon would die before getting to take advantage of psych up
+
     // Want to copy positive stat changes
     for (i = STAT_ATK; i < NUM_BATTLE_STATS; i++)
     {
@@ -6030,17 +6036,50 @@ bool32 AI_ShouldCopyStatChanges(u32 battlerAtk, u32 battlerDef)
             switch (i)
             {
             case STAT_ATK:
-                return (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL));
+                if(HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL));
+                    return TRUE;
             case STAT_SPATK:
-                return (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL));
-            case STAT_ACC:
-                return (HasLowAccuracyMove(battlerAtk, battlerDef));
-            case STAT_EVASION:
-            case STAT_SPEED:
-                return TRUE;
+                if(HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL));
+                    return TRUE;
             case STAT_DEF:
+                if(HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL));
+                    return TRUE;
             case STAT_SPDEF:
-                return (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_STALL);
+                if(HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL));
+                    return TRUE;
+            }
+        }
+    }
+
+    return FALSE;
+}
+
+bool32 AI_ShouldCopyPartnerStatChanges(u32 battlerAtk, u32 battlerPartner)
+{
+    u8 i;
+
+    if (CanTargetFaintAi(GetOppositeBattler(battlerAtk), battlerAtk) || CanTargetFaintAi(GetOppositeBattler(battlerPartner), battlerAtk))
+        return FALSE;    // return false if AI mon would die to either mon
+
+    // Want to copy positive stat changes
+    for (i = STAT_ATK; i < NUM_BATTLE_STATS; i++)
+    {
+        if (gBattleMons[battlerPartner].statStages[i] > gBattleMons[battlerAtk].statStages[i])
+        {
+            switch (i)
+            {
+            case STAT_ATK:
+                if(HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL));
+                    return TRUE;
+            case STAT_SPATK:
+                if(HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL));
+                    return TRUE;
+            case STAT_DEF:
+                if(HasMoveWithCategory(battlerPartner, DAMAGE_CATEGORY_PHYSICAL));
+                    return TRUE;
+            case STAT_SPDEF:
+                if(HasMoveWithCategory(battlerPartner, DAMAGE_CATEGORY_SPECIAL));
+                    return TRUE;
             }
         }
     }
