@@ -45388,7 +45388,7 @@ F_TRAINER_FEMALE |
                 MOVE_EARTH_POWER,
                 MOVE_STORED_POWER,
                 MOVE_ANCIENT_POWER,
-                MOVE_COSMIC_POWER,
+                MOVE_CALM_MIND,
             },
             },
             {
