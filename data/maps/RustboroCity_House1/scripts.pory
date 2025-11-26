@@ -55,7 +55,7 @@ RustboroCity_House1_Text_IllTradeIfYouWant:
 	.string "Because the crux of the biscuit\n"
 	.string "is the apostrophe.\p"
 	.string "I'll trade you my {STR_VAR_2} for\n"
-	.string "a {STR_VAR_1} if you want.$"
+	.string "your {STR_VAR_1} if you want.$"
 
 RustboroCity_House1_Text_PleaseBeGoodToMyPokemon:
 	.string "Eheheh…\n"

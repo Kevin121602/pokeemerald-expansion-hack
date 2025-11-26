@@ -113,7 +113,7 @@ RustboroCity_House1_Text_IllTradeIfYouWant:
 # 57 "data/maps/RustboroCity_House1/scripts.pory"
 	.string "I'll trade you my {STR_VAR_2} for\n"
 # 58 "data/maps/RustboroCity_House1/scripts.pory"
-	.string "a {STR_VAR_1} if you want.$"
+	.string "your {STR_VAR_1} if you want.$"
 # 59 "data/maps/RustboroCity_House1/scripts.pory"
 
 # 60 "data/maps/RustboroCity_House1/scripts.pory"

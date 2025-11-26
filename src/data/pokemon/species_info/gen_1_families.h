@@ -15620,7 +15620,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .teachableLearnset = sMrMimeGalarTeachableLearnset,
         .eggMoveLearnset = sMrMimeGalarEggMoveLearnset,
         .formSpeciesIdTable = sMrMimeFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_LEVEL, 42, SPECIES_MR_RIME}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_MR_RIME}),
     },
 
     [SPECIES_MR_RIME] =

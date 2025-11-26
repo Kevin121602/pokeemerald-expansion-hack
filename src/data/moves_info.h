@@ -8896,6 +8896,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 80,
         .type = TYPE_DRAGON,
         .accuracy = 100,
+        .criticalHitStage = 1,
         .pp = 15,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
