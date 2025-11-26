@@ -996,58 +996,58 @@ static const struct InGameTrade sIngameTrades[] =
         .personality = 0x84,
         .heldItem = ITEM_RARE_BONE,
         .mailNum = -1,
-        .otName = _("Cobra"),
+        .otName = _("Remus"),
         .otGender = MALE,
         .sheen = 10,
         .requestedSpecies = SPECIES_FARFETCHD
     },
-    [INGAME_TRADE_PLUSLE] =
+    [INGAME_TRADE_GALARIAN_CORSOLA] =
     {
-        .nickname = _("PLUSES"),
-        .species = SPECIES_PLUSLE,
+        .nickname = _("Perona"),
+        .species = SPECIES_CORSOLA_GALAR,
         .ivs = {4, 4, 4, 5, 5, 4},
         .abilityNum = 0,
         .otId = 73996,
         .conditions = {5, 5, 30, 5, 5},
         .personality = 0x6F,
-        .heldItem = ITEM_WOOD_MAIL,
+        .heldItem = ITEM_BIG_NUGGET,
         .mailNum = 0,
-        .otName = _("ROMAN"),
+        .otName = _("Reeve"),
         .otGender = MALE,
         .sheen = 10,
-        .requestedSpecies = SPECIES_VOLBEAT
+        .requestedSpecies = SPECIES_CORSOLA
     },
-    [INGAME_TRADE_HORSEA] =
+    [INGAME_TRADE_WYNAUT] =
     {
-        .nickname = _("SEASOR"),
-        .species = SPECIES_HORSEA,
+        .nickname = _("Bartolomeo"),
+        .species = SPECIES_WYNAUT,
         .ivs = {5, 4, 4, 4, 5, 4},
         .abilityNum = 0,
         .otId = 46285,
         .conditions = {5, 5, 5, 5, 30},
         .personality = 0x7F,
-        .heldItem = ITEM_WAVE_MAIL,
+        .heldItem = ITEM_COMET_SHARD,
         .mailNum = 1,
-        .otName = _("SKYLAR"),
+        .otName = _("Barry"),
         .otGender = MALE,
         .sheen = 10,
-        .requestedSpecies = SPECIES_BAGON
+        .requestedSpecies = SPECIES_UNOWN
     },
-    [INGAME_TRADE_MEOWTH] =
+    [INGAME_TRADE_GALARIAN_WEEZING] =
     {
-        .nickname = _("MEOWOW"),
-        .species = SPECIES_MEOWTH,
+        .nickname = _("Smoker"),
+        .species = SPECIES_WEEZING_GALAR,
         .ivs = {4, 5, 4, 5, 4, 4},
         .abilityNum = 0,
         .otId = 91481,
         .conditions = {5, 5, 5, 30, 5},
         .personality = 0x8B,
-        .heldItem = ITEM_RETRO_MAIL,
+        .heldItem = ITEM_BIG_PEARL,
         .mailNum = 2,
-        .otName = _("ISIS"),
-        .otGender = FEMALE,
+        .otName = _("Devon"),
+        .otGender = MALE,
         .sheen = 10,
-        .requestedSpecies = SPECIES_SKITTY
+        .requestedSpecies = SPECIES_WEEZING
     }
 };
 

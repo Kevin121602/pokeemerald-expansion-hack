@@ -15,7 +15,7 @@ BattleFrontier_Lounge6_EventScript_Trader::
 # 8 "data/maps/BattleFrontier_Lounge6/scripts.pory"
 	goto_if_set FLAG_BATTLE_FRONTIER_TRADE_DONE, BattleFrontier_Lounge6_EventScript_TradeCompleted
 # 9 "data/maps/BattleFrontier_Lounge6/scripts.pory"
-	setvar VAR_0x8008, INGAME_TRADE_MEOWTH
+	setvar VAR_0x8008, INGAME_TRADE_GALARIAN_WEEZING
 # 10 "data/maps/BattleFrontier_Lounge6/scripts.pory"
 	copyvar VAR_0x8004, VAR_0x8008
 # 11 "data/maps/BattleFrontier_Lounge6/scripts.pory"

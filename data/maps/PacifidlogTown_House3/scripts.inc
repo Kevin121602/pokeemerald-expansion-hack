@@ -15,7 +15,7 @@ PacifidlogTown_House3_EventScript_Trader::
 # 8 "data/maps/PacifidlogTown_House3/scripts.pory"
 	goto_if_set FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED, PacifidlogTown_House3_EventScript_TradeCompleted
 # 9 "data/maps/PacifidlogTown_House3/scripts.pory"
-	setvar VAR_0x8008, INGAME_TRADE_HORSEA
+	setvar VAR_0x8008, INGAME_TRADE_WYNAUT
 # 10 "data/maps/PacifidlogTown_House3/scripts.pory"
 	copyvar VAR_0x8004, VAR_0x8008
 # 11 "data/maps/PacifidlogTown_House3/scripts.pory"

@@ -1169,7 +1169,7 @@
 #define FLAG_ITEM_WOODS_CAVE_EVERSTONE                              0x45A
 #define FLAG_ITEM_ROUTE_104_X_ACCURACY                              0x45B
 #define FLAG_ITEM_MAUVILLE_CITY_X_SPEED                             0x45C
-#define FLAG_ITEM_PETALBURG_WOODS_TM_SWIFT                          0x45D
+#define FLAG_ITEM_PETALBURG_WOODS_TM_DISARMING_VOICE                0x45D
 #define FLAG_ITEM_ROUTE_115_SILK_SCARF                              0x45E
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_CALCIUM                         0x45F
 #define FLAG_ITEM_MT_PYRE_3F_SUPER_REPEL                            0x460

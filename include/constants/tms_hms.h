@@ -19,6 +19,7 @@
     F(DAZZLING_GLEAM) \
     F(DEFOG) \
     F(DIG) \
+    F(DISARMING_VOICE) \
     F(DRAGON_CLAW) \
     F(DRAGON_PULSE) \
     F(DRAIN_PUNCH) \
@@ -88,7 +89,6 @@
     F(SOLAR_BLADE) \
     F(STRUGGLE_BUG) \
     F(SUPERCELL_SLAM) \
-    F(SWIFT) \
     F(TAILWIND) \
     F(TELEPORT) \
     F(THROAT_CHOP)\

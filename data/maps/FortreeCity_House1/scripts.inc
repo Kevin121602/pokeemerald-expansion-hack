@@ -15,7 +15,7 @@ FortreeCity_House1_EventScript_Trader::
 # 8 "data/maps/FortreeCity_House1/scripts.pory"
 	goto_if_set FLAG_FORTREE_NPC_TRADE_COMPLETED, FortreeCity_House1_EventScript_TradeCompleted
 # 9 "data/maps/FortreeCity_House1/scripts.pory"
-	setvar VAR_0x8008, INGAME_TRADE_PLUSLE
+	setvar VAR_0x8008, INGAME_TRADE_GALARIAN_CORSOLA
 # 10 "data/maps/FortreeCity_House1/scripts.pory"
 	copyvar VAR_0x8004, VAR_0x8008
 # 11 "data/maps/FortreeCity_House1/scripts.pory"
