@@ -3998,7 +3998,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         break;
     case EFFECT_MEAN_LOOK:
         if (ShouldTrap(battlerAtk, battlerDef, move)){
-            ADJUST_SCORE(DECENT_EFFECT);
+            ADJUST_SCORE(WEAK_EFFECT);
+                if(Random() % 100 < 60)
+                    ADJUST_SCORE(WEAK_EFFECT);
             if(NoOfHitsForTargetToFaintBattler(battlerDef, battlerAtk) > 3)
                 ADJUST_SCORE(WEAK_EFFECT);
         }
@@ -4097,7 +4099,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         //TODO - predicted move
         break;
     case EFFECT_WISH:
-        if(ShouldRecover(battlerAtk, battlerDef, move, 50) && (HasMoveWithEffect(battlerAtk, EFFECT_PROTECT) || GetBestNoOfHitsToKO(battlerDef, battlerAtk, AI_DEFENDING) > 2)){
+        if(ShouldRecover(battlerAtk, battlerDef, move, 50) && (HasMoveWithEffect(battlerAtk, EFFECT_PROTECT) || GetBestNoOfHitsToKO(battlerDef, battlerAtk, AI_DEFENDING) > 2 || IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))){
             ADJUST_SCORE(BEST_EFFECT);
         }
         break;
@@ -4453,27 +4455,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         if (IsBattleMoveStatus(predictedMove) && GetBattlerMoveTargetType(battlerDef, predictedMove) & (MOVE_TARGET_SELECTED | MOVE_TARGET_OPPONENTS_FIELD | MOVE_TARGET_BOTH))
             ADJUST_SCORE(DECENT_EFFECT);
         break;
-    //implement more specific ai when i design more fights w/ recycle. Right now theres just the air balloon spikes garbodor
     case EFFECT_RECYCLE:
-        if (GetUsedHeldItem(battlerAtk) != ITEM_NONE){
-            ADJUST_SCORE(WEAK_EFFECT);
-            if(Random() % 100 < 50)
-                ADJUST_SCORE(WEAK_EFFECT);
-        }
-        /*if (IsRecycleEncouragedItem(GetUsedHeldItem(battlerAtk)))
-            ADJUST_SCORE(WEAK_EFFECT);
-        if (aiData->abilities[battlerAtk] == ABILITY_RIPEN)
-        {
-            u32 item = GetUsedHeldItem(battlerAtk);
-            u32 toHeal = (GetItemHoldEffectParam(item) == 10) ? 10 : gBattleMons[battlerAtk].maxHP / GetItemHoldEffectParam(item);
-
-            if (IsStatBoostingBerry(item) && aiData->hpPercents[battlerAtk] > 60)
-                ADJUST_SCORE(WEAK_EFFECT);
-            else if (ShouldRestoreHpBerry(battlerAtk, item) && !CanAIFaintTarget(battlerAtk, battlerDef, 0)
-              && ((GetWhichBattlerFasterOrTies(battlerAtk, battlerDef, TRUE) == 1 && CanTargetFaintAiWithMod(battlerDef, battlerAtk, 0, 0))
-               || !CanTargetFaintAiWithMod(battlerDef, battlerAtk, toHeal, 0)))
-                ADJUST_SCORE(WEAK_EFFECT);    // Recycle healing berry if we can't otherwise faint the target and the target wont kill us after we activate the berry
-        }*/
         break;
     case EFFECT_PAIN_SPLIT:
         if (!AI_IsFaster(battlerAtk, battlerDef, move, 0, DONT_CONSIDER_PRIORITY) && (gBattleMons[battlerDef].hp > gBattleMons[battlerAtk].hp)){

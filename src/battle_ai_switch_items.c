@@ -718,10 +718,6 @@ static bool32 MonHasRelevantStatsRaised(u32 battler)
     if(!anyStatIsRaised)
         return FALSE;
 
-    //returns false if mon is at full hp
-    if(gBattleMons[battler].hp == gBattleMons[battler].maxHP)
-        return FALSE;
-
     //if ai mon has raised its speed, would be slower without the boosts but is faster with them
     if(gBattleMons[battler].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE && (gBattleMons[battler].speed < gAiLogicData->speedStats[opposingBattler])
         && (gAiLogicData->speedStats[battler] >= gAiLogicData->speedStats[opposingBattler])){
@@ -849,8 +845,6 @@ bool32 ShouldSwitch(u32 battler)
     u8 teleport = MAX_MON_MOVES;
     u8 batonPass = MAX_MON_MOVES;
 
-    if(gBattleMons[battler].hp*5 <= gBattleMons[battler].maxHP)
-        return FALSE;
     if(!CanMonSurviveHazardSwitchin(battler))
         return FALSE;
 
@@ -1013,6 +1007,9 @@ bool32 ShouldSwitch(u32 battler)
         return FALSE;
     }
 
+    if(gBattleMons[battler].hp*5 <= gBattleMons[battler].maxHP)
+        return FALSE;
+
     //all other switch functions require a score of +2, return false here if none found
     if(bestCandidate.score < SCORE_SLOW_THREATEN)
         return FALSE;
@@ -1036,7 +1033,7 @@ bool32 ShouldSwitch(u32 battler)
         }
     }
 
-    if(bestHitsToKOPlayer == 1 && !IsBattlerIncapacitated(battler, battlerAbility))
+    if(gAiLogicData->simulatedDmg[battler][opposingBattler][gAiBattleData->chosenMoveIndex[battler]].minimum >= gBattleMons[opposingBattler].hp && !IsBattlerIncapacitated(battler, battlerAbility))
         battlerCanKOPlayerMon = TRUE;
 
     if(battlerAbility == ABILITY_NATURAL_CURE && gBattleMons[battler].status1 & STATUS1_ANY && !battlerCanKOPlayerMon){

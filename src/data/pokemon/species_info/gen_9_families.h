@@ -4242,7 +4242,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-        .abilities = { ABILITY_OVERCOAT, ABILITY_OVERCOAT, ABILITY_SLOW_START },
+        .abilities = { ABILITY_OVERCOAT, ABILITY_NONE, ABILITY_SLOW_START },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Varoom"),
         .cryId = CRY_VAROOM,
@@ -4287,7 +4287,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .levelUpLearnset = sVaroomLevelUpLearnset,
         .teachableLearnset = sVaroomTeachableLearnset,
         .eggMoveLearnset = sVaroomEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 33, SPECIES_REVAVROOM}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_REVAVROOM}),
     },
 
     [SPECIES_REVAVROOM] =

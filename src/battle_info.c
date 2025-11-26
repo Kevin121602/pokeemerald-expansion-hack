@@ -270,6 +270,7 @@ static const u8 sText_Rain[] = _("(Rain)");
 static const u8 sText_Sand[] = _("(Sand)");
 static const u8 sText_Snow[] = _("(Snow)");
 static const u8 sText_Hail[] = _("(Hail)");
+static const u8 sText_Zero[] = _("0");
 
 static const struct BgTemplate sBgTemplates[] =
 {

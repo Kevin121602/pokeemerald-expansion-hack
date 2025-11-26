@@ -2508,6 +2508,7 @@ bool32 IsMoveEncouragedKill(u32 battlerAtk, u32 battlerDef, u32 move){
                 case MOVE_EFFECT_SP_DEF_MINUS_2:
                 case MOVE_EFFECT_ACC_MINUS_2:
                 case MOVE_EFFECT_EVS_MINUS_2:
+                case MOVE_EFFECT_WRAP:
                         return TRUE;
                     break;
                 default:
@@ -3927,7 +3928,7 @@ bool32 ShouldTrap(u32 battlerAtk, u32 battlerDef, u32 move)
     if (IsBattlerTrapped(battlerAtk, battlerDef))
         return FALSE;
 
-    if(gSpeciesInfo[battlerDef].types[0] == TYPE_GHOST || gSpeciesInfo[battlerDef].types[1] == TYPE_GHOST)
+    if(IsSpeciesOfType(gBattleMons[battlerDef].species, TYPE_GHOST))
         return FALSE;
 
     if ((noOfHitsToFaint >= 2 && aiIsFaster) || (noOfHitsToFaint >= 3 && !aiIsFaster))

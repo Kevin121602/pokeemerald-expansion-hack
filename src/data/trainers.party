@@ -4686,6 +4686,15 @@ Level: 30
 - Heat Wave
 - Roost
 
+Gligar @ Yache Berry
+Nature: Jolly
+Ability: Hyper Cutter
+Level: 30
+- Dual Wingbeat
+- Stomping Tantrum
+- Quick Attack
+- Hone Claws
+
 Pidgeot @ Wacan Berry
 Nature: Naive
 Ability: Keen Eye
@@ -6161,7 +6170,7 @@ Ability: Chlorophyll
 Ariados @ Black Sludge
 Level: 16
 Nature: Jolly
-Ability: Swarm
+Ability: Insomnia
 -Bug Bite
 -Poison Fang
 -Baneful Bunker
@@ -13909,8 +13918,8 @@ Nature: Jolly
 Ability: Weak Armor
 Level: 32
 - Poison Jab
+- Self-Destruct
 - Drain Punch
-- Recycle
 - Toxic Spikes
 
 Lycanroc Midnight @ Lum Berry
@@ -14002,13 +14011,13 @@ Level: 32
 - Glare
 
 Magmar @ Eviolite
-Nature: Hasty
+Nature: Timid
 Ability: Flame Body
 Level: 33
 - Lava Plume
 - Psychic
 - Scorching Sands
-- Mach Punch
+- Sunny Day
 
 Leafeon @ Lum Berry
 Nature: Adamant
