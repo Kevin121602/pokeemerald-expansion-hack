@@ -1031,12 +1031,12 @@ static const struct InGameTrade sIngameTrades[] =
         .otName = _("Alex"),
         .otGender = MALE,
         .sheen = 10,
-        .requestedSpecies = SPECIES_CORSOLA
+        .requestedSpecies = SPECIES_GROWLITHE
     },
     [INGAME_TRADE_HISUIAN_ARCANINE] =
     {
         .nickname = _("Akainu"),
-        .species = SPECIES_CORSOLA_GALAR,
+        .species = SPECIES_ARCANINE_HISUI,
         .ivs = {4, 4, 4, 5, 5, 4},
         .abilityNum = 0,
         .otId = 73996,
@@ -1047,7 +1047,7 @@ static const struct InGameTrade sIngameTrades[] =
         .otName = _("Alex"),
         .otGender = MALE,
         .sheen = 10,
-        .requestedSpecies = SPECIES_CORSOLA
+        .requestedSpecies = SPECIES_ARCANINE
     },
     [INGAME_TRADE_HISUIAN_VOLTORB] =
     {
