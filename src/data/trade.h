@@ -994,7 +994,7 @@ static const struct InGameTrade sIngameTrades[] =
         .otId = 38726,
         .conditions = {30, 5, 5, 5, 5},
         .personality = 0x84,
-        .heldItem = ITEM_RARE_BONE,
+        .heldItem = ITEM_DEEP_SEA_TOOTH,
         .mailNum = -1,
         .otName = _("Remus"),
         .otGender = MALE,
@@ -1010,12 +1010,76 @@ static const struct InGameTrade sIngameTrades[] =
         .otId = 73996,
         .conditions = {5, 5, 30, 5, 5},
         .personality = 0x6F,
-        .heldItem = ITEM_BIG_NUGGET,
+        .heldItem = ITEM_DEEP_SEA_SCALE,
         .mailNum = 0,
         .otName = _("Reeve"),
         .otGender = MALE,
         .sheen = 10,
         .requestedSpecies = SPECIES_CORSOLA
+    },
+    [INGAME_TRADE_HISUIAN_GROWLITHE] =
+    {
+        .nickname = _("Ace"),
+        .species = SPECIES_GROWLITHE_HISUI,
+        .ivs = {4, 4, 4, 5, 5, 4},
+        .abilityNum = 0,
+        .otId = 73996,
+        .conditions = {5, 5, 30, 5, 5},
+        .personality = 0x6F,
+        .heldItem = ITEM_RARE_BONE,
+        .mailNum = 0,
+        .otName = _("Alex"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_CORSOLA
+    },
+    [INGAME_TRADE_HISUIAN_ARCANINE] =
+    {
+        .nickname = _("Akainu"),
+        .species = SPECIES_CORSOLA_GALAR,
+        .ivs = {4, 4, 4, 5, 5, 4},
+        .abilityNum = 0,
+        .otId = 73996,
+        .conditions = {5, 5, 30, 5, 5},
+        .personality = 0x6F,
+        .heldItem = ITEM_RARE_BONE,
+        .mailNum = 0,
+        .otName = _("Alex"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_CORSOLA
+    },
+    [INGAME_TRADE_HISUIAN_VOLTORB] =
+    {
+        .nickname = _("Enel"),
+        .species = SPECIES_VOLTORB_HISUI,
+        .ivs = {4, 4, 4, 5, 5, 4},
+        .abilityNum = 0,
+        .otId = 73996,
+        .conditions = {5, 5, 30, 5, 5},
+        .personality = 0x6F,
+        .heldItem = ITEM_BIG_NUGGET,
+        .mailNum = 0,
+        .otName = _("Don"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_VOLTORB
+    },
+    [INGAME_TRADE_HISUIAN_ELECTRODE] =
+    {
+        .nickname = _("Kizaru"),
+        .species = SPECIES_ELECTRODE_HISUI,
+        .ivs = {4, 4, 4, 5, 5, 4},
+        .abilityNum = 0,
+        .otId = 73996,
+        .conditions = {5, 5, 30, 5, 5},
+        .personality = 0x6F,
+        .heldItem = ITEM_BIG_NUGGET,
+        .mailNum = 0,
+        .otName = _("Don"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_ELECTRODE
     },
     [INGAME_TRADE_WYNAUT] =
     {
@@ -1026,12 +1090,60 @@ static const struct InGameTrade sIngameTrades[] =
         .otId = 46285,
         .conditions = {5, 5, 5, 5, 30},
         .personality = 0x7F,
-        .heldItem = ITEM_COMET_SHARD,
+        .heldItem = ITEM_LUCKY_EGG,
         .mailNum = 1,
         .otName = _("Barry"),
         .otGender = MALE,
         .sheen = 10,
         .requestedSpecies = SPECIES_UNOWN
+    },
+    [INGAME_TRADE_PALDEAN_TAUROS_COMBAT] =
+    {
+        .nickname = _("Pluton"),
+        .species = SPECIES_TAUROS_PALDEA_COMBAT,
+        .ivs = {4, 4, 4, 5, 5, 4},
+        .abilityNum = 0,
+        .otId = 73996,
+        .conditions = {5, 5, 30, 5, 5},
+        .personality = 0x6F,
+        .heldItem = ITEM_LUCKY_PUNCH,
+        .mailNum = 0,
+        .otName = _("Gatz"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_TAUROS
+    },
+    [INGAME_TRADE_PALDEAN_TAUROS_BLAZE] =
+    {
+        .nickname = _("Uranus"),
+        .species = SPECIES_TAUROS_PALDEA_BLAZE,
+        .ivs = {4, 4, 4, 5, 5, 4},
+        .abilityNum = 0,
+        .otId = 73996,
+        .conditions = {5, 5, 30, 5, 5},
+        .personality = 0x6F,
+        .heldItem = ITEM_LUCKY_PUNCH,
+        .mailNum = 0,
+        .otName = _("Gatz"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_TAUROS
+    },
+    [INGAME_TRADE_PALDEAN_TAUROS_AQUA] =
+    {
+        .nickname = _("Poseidon"),
+        .species = SPECIES_TAUROS_PALDEA_AQUA,
+        .ivs = {4, 4, 4, 5, 5, 4},
+        .abilityNum = 0,
+        .otId = 73996,
+        .conditions = {5, 5, 30, 5, 5},
+        .personality = 0x6F,
+        .heldItem = ITEM_LUCKY_PUNCH,
+        .mailNum = 0,
+        .otName = _("Gatz"),
+        .otGender = MALE,
+        .sheen = 10,
+        .requestedSpecies = SPECIES_TAUROS
     },
     [INGAME_TRADE_GALARIAN_WEEZING] =
     {
@@ -1042,7 +1154,7 @@ static const struct InGameTrade sIngameTrades[] =
         .otId = 91481,
         .conditions = {5, 5, 5, 30, 5},
         .personality = 0x8B,
-        .heldItem = ITEM_BIG_PEARL,
+        .heldItem = ITEM_LUCKY_PUNCH,
         .mailNum = 2,
         .otName = _("Devon"),
         .otGender = MALE,

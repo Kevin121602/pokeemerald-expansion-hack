@@ -471,14 +471,6 @@
       "script": "Route113_EventScript_TrainerTipsRegisterKeyItems"
     },
     {
-      "type": "sign",
-      "x": 31,
-      "y": 5,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Route113_EventScript_GlassWorkshopSign"
-    },
-    {
       "type": "secret_base",
       "x": 49,
       "y": 8,
