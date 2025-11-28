@@ -7841,21 +7841,22 @@ Class: Fisherman
 Pic: Fisherman
 Gender: Male
 Music: Hiker
-Double Battle: Yes
+Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Zacian @ Sitrus Berry
+Sceptile @ Terrain Extender
 Nature: Jolly
-Ability: Intrepid Sword
+Ability: Overgrow
 Level: 40
 - Tackle
+- Grassy Terrain
 
-Mew @ Sitrus Berry
-Nature: Jolly
-Ability: Synchronize
+Aromatisse @ Heat Rock
+Nature: Quiet
+Ability: Aroma Veil
 Level: 40
-- Zen Headbutt
-- Psych Up
+- Trick room
+- Draining Kiss
 
 === TRAINER_WADE ===
 Name: WADE

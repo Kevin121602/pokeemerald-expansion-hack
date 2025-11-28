@@ -860,56 +860,92 @@ static void PrintOnBattleTimersWindow(u8 windowId)
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_AI, 140, 19, 0, NULL);
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Tailwind, 15, 44, 0, NULL);
-    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].tailwindTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-    *txtPtr = EOS;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 44, 0, NULL);
-    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].tailwindTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-    *txtPtr = EOS;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 44, 0, NULL);
+    if(gSideStatuses[B_SIDE_PLAYER] & SIDE_STATUS_TAILWIND){
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].tailwindTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        *txtPtr = EOS;
+        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 44, 0, NULL);
+    } else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 112, 44, 0, NULL);
+    if(gSideStatuses[B_SIDE_OPPONENT] & SIDE_STATUS_TAILWIND){
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].tailwindTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        *txtPtr = EOS;
+        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 44, 0, NULL);
+    } else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 145, 44, 0, NULL);
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Reflect, 15, 59, 0, NULL);
-    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].reflectTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-    *txtPtr = EOS;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 59, 0, NULL);
-    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].reflectTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-    *txtPtr = EOS;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 59, 0, NULL);
+    if(gSideStatuses[B_SIDE_PLAYER] & SIDE_STATUS_REFLECT){
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].reflectTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        *txtPtr = EOS;
+        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 59, 0, NULL);
+    } else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 112, 59, 0, NULL);
+    if(gSideStatuses[B_SIDE_OPPONENT] & SIDE_STATUS_REFLECT){
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].reflectTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        *txtPtr = EOS;
+        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 59, 0, NULL);
+    } else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 145, 59, 0, NULL);
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_LightScreen, 15, 74, 0, NULL);
-    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].lightscreenTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-    *txtPtr = EOS;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 74, 0, NULL);
-    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].lightscreenTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-    *txtPtr = EOS;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 74, 0, NULL);
+    if(gSideStatuses[B_SIDE_PLAYER] & SIDE_STATUS_LIGHTSCREEN){
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].lightscreenTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        *txtPtr = EOS;
+        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 74, 0, NULL);
+    } else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 112, 74, 0, NULL);
+    if(gSideStatuses[B_SIDE_OPPONENT] & SIDE_STATUS_LIGHTSCREEN){
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].lightscreenTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        *txtPtr = EOS;
+        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 74, 0, NULL);
+    } else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 145, 74, 0, NULL);
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_AuroraVeil, 15, 89, 0, NULL);
-    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].auroraVeilTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-    *txtPtr = EOS;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 89, 0, NULL);
-    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].auroraVeilTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-    *txtPtr = EOS;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 89, 0, NULL);
+    if(gSideStatuses[B_SIDE_PLAYER] & SIDE_STATUS_AURORA_VEIL){
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].auroraVeilTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        *txtPtr = EOS;
+        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 89, 0, NULL);
+    } else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 112, 89, 0, NULL);
+    if(gSideStatuses[B_SIDE_OPPONENT] & SIDE_STATUS_AURORA_VEIL){
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].auroraVeilTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        *txtPtr = EOS;
+        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 89, 0, NULL);
+    } else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 145, 89, 0, NULL);
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_TrickRoom, 15, 114, 0, NULL);
-    txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.trickRoomTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-    *txtPtr = EOS;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 70, 114, 0, NULL);
+    if(gFieldStatuses & STATUS_FIELD_TRICK_ROOM){
+        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.trickRoomTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        *txtPtr = EOS;
+        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 70, 114, 0, NULL);
+    } else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 70, 114, 0, NULL);
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Terrain, 15, 129, 0, NULL);
-    txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.terrainTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-    *txtPtr = EOS;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 70, 129, 0, NULL);
+    if(gFieldStatuses & STATUS_FIELD_TERRAIN_ANY){
+        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.terrainTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        *txtPtr = EOS;
+        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 70, 129, 0, NULL);
+    } else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 70, 129, 0, NULL);
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_MagicRoom, 87, 114, 0, NULL);
-    txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.magicRoomTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-    *txtPtr = EOS;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 114, 0, NULL);
+    if(gFieldStatuses & STATUS_FIELD_MAGIC_ROOM){
+        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.magicRoomTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        *txtPtr = EOS;
+        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 114, 0, NULL);
+    } else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 145, 114, 0, NULL);
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_WonderRoom, 162, 114, 0, NULL);
-    txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.wonderRoomTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-    *txtPtr = EOS;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 222, 114, 0, NULL);
+    if(gFieldStatuses & STATUS_FIELD_WONDER_ROOM){
+        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.wonderRoomTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        *txtPtr = EOS;
+        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 222, 114, 0, NULL);
+    } else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 222, 114, 0, NULL);
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Weather, 87, 129, 0, NULL);
     if(gBattleWeather & B_WEATHER_RAIN)
