@@ -931,7 +931,7 @@ bool32 ShouldSwitch(u32 battler)
     if (gMovesInfo[gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]].effect == EFFECT_DESTINY_BOND)
         willDestinyBond = TRUE;
         
-    if (IsHazardMove(gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]))
+    if (IsHazardMove(gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]) && gAiLogicData->shouldSetHazards)
         willSetHazards = TRUE;
 
     if (IsHealingMove(gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]))

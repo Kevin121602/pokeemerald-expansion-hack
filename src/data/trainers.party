@@ -7844,19 +7844,18 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Sceptile @ Terrain Extender
+Kleavor @ Terrain Extender
 Nature: Jolly
-Ability: Overgrow
-Level: 40
-- Tackle
-- Grassy Terrain
+Ability: Swarm
+Level: 35
+- Stone Axe
+- Ember
 
-Aromatisse @ Heat Rock
-Nature: Quiet
-Ability: Aroma Veil
-Level: 40
-- Trick room
-- Draining Kiss
+Ferrothorn @ Assault Vest
+Nature: Impish
+Ability: Iron Barbs
+Level: 100
+- Seed Bomb
 
 === TRAINER_WADE ===
 Name: WADE

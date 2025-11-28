@@ -6232,11 +6232,19 @@ bool32 AI_ShouldSetUpHazards(u32 battlerAtk, u32 battlerDef, u32 move, struct Ai
      || CountUsablePartyMons(battlerAtk) == 0)
         return FALSE;
 
+    if((gMovesInfo[move].effect == EFFECT_STEALTH_ROCK || gMovesInfo[move].effect == EFFECT_STONE_AXE) && IsHazardOnSide(GetBattlerSide(battlerDef), HAZARDS_STEALTH_ROCK))
+        return FALSE;
+
+    if((gMovesInfo[move].effect == EFFECT_SPIKES || gMovesInfo[move].effect == EFFECT_CEASELESS_EDGE) && gSideTimers[GetBattlerSide(battlerDef)].spikesAmount >= 3)
+        return FALSE;
+
+    if(gMovesInfo[move].effect == EFFECT_TOXIC_SPIKES && gSideTimers[GetBattlerSide(battlerDef)].toxicSpikesAmount >= 2)
+        return FALSE;
+
     if (IsBattleMoveStatus(move))
     {
-        if (HasMoveWithEffect(battlerDef, EFFECT_MAGIC_COAT))
-            return FALSE;
         if (DoesBattlerIgnoreAbilityChecks(battlerAtk, aiData->abilities[battlerAtk], move))
+            gAiLogicData->shouldSetHazards = TRUE;
             return TRUE;
         if (aiData->abilities[battlerDef] == ABILITY_MAGIC_BOUNCE)
             return FALSE;
@@ -6244,10 +6252,12 @@ bool32 AI_ShouldSetUpHazards(u32 battlerAtk, u32 battlerDef, u32 move, struct Ai
     else
     {
         if (DoesBattlerIgnoreAbilityChecks(battlerAtk, aiData->abilities[battlerAtk], move))
+            gAiLogicData->shouldSetHazards = TRUE;
             return TRUE;
         if (aiData->abilities[battlerDef] == ABILITY_SHIELD_DUST)
             return FALSE;
     }
+    gAiLogicData->shouldSetHazards = TRUE;
     return TRUE;
 }
 
