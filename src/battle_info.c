@@ -40,6 +40,7 @@
 #include "constants/items.h"
 #include "constants/rgb.h"
 #include "constants/hold_effects.h"
+#include "party_menu.h"
 
 enum
 {   // Corresponds to gHealthboxElementsGfxTable (and the tables after it) in graphics.c
@@ -88,6 +89,66 @@ static s32 CalcInfoBarValue(s32, s32, s32, s32 *, u8, u16);
 static u8 CalcBarFilledPixels(s32, s32, s32, s32 *, u8 *, u8);
 static void SwitchToTimerViewFromAiParty(u8 taskId);
 static void SwitchToPartyViewFromTimers(u8 taskId);
+
+#define TAG_HELD_ITEM 55120
+
+static const u32 sHeldItemInfoGfx[] = INCBIN_U32("graphics/battle_interface/info_item_sprite.4bpp");
+
+static const struct OamData sOamData_HeldItem =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(8x8),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(8x8),
+    .tileNum = 0,
+    .priority = 1,
+    .paletteNum = 0,
+    .affineParam = 0,
+};
+
+static const union AnimCmd sSpriteAnim_HeldItem[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_HeldMail[] =
+{
+    ANIMCMD_FRAME(1, 1),
+    ANIMCMD_END
+};
+
+static const union AnimCmd *const sSpriteAnimTable_HeldItem[] =
+{
+    sSpriteAnim_HeldItem,
+    sSpriteAnim_HeldMail,
+};
+
+const struct SpriteSheet gSpriteSheet_HeldItemInfo =
+{
+    .data = sHeldItemInfoGfx, .size = sizeof(sHeldItemInfoGfx), .tag = TAG_HELD_ITEM
+};
+
+const struct SpritePalette sSpritePalettes_BattleInfoHealthBar =
+{
+    gBattleInterface_BallDisplayPal, TAG_HEALTHBAR_PAL
+};
+
+static const struct SpriteTemplate sSpriteTemplate_HeldItem =
+{
+    .tileTag = TAG_HELD_ITEM,
+    .paletteTag = TAG_HEALTHBAR_PAL,
+    .oam = &sOamData_HeldItem,
+    .anims = sSpriteAnimTable_HeldItem,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
+};
 
 static const struct OamData sOamData_Healthbar =
 {
@@ -218,11 +279,6 @@ static const struct CompressedSpriteSheet sSpriteSheets_BattleInfoHealthBar[PART
     {gBlankGfxCompressed, 0x0120, TAG_HEALTHBAR_INFO_4},
     {gBlankGfxCompressed, 0x0100, TAG_HEALTHBAR_INFO_5},
     {gBlankGfxCompressed, 0x0120, TAG_HEALTHBAR_INFO_6}
-};
-
-const struct SpritePalette sSpritePalettes_BattleInfoHealthBar =
-{
-    gBattleInterface_BallDisplayPal, TAG_HEALTHBAR_PAL
 };
 
 static struct BattleInfo *GetStructPtr(u8 taskId)
@@ -488,6 +544,7 @@ static u8 CalcBarFilledPixels(s32 maxValue, s32 oldValue, s32 receivedValue, s32
 
 #define sConditionSpriteId data[1]
 #define sHealthBarId data[2]
+#define sItemSpriteId data[3]
 
 static void Task_ShowAiPartyIcons(u8 taskId)
 {
@@ -512,6 +569,7 @@ static void Task_ShowAiPartyIcons(u8 taskId)
         LoadMonIconPalettes();
         LoadPartyMenuAilmentGfx();
         LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
+        LoadSpriteSheet(&gSpriteSheet_HeldItemInfo);
         data->battlerId = B_POSITION_OPPONENT_LEFT;
         if(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS){
             aiMons = gAiPartyData->mons[GetBattlerSide(data->battlerId)];
@@ -542,6 +600,12 @@ static void Task_ShowAiPartyIcons(u8 taskId)
 
                 gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_StatusIcons, xOffset + 6, yOffset, 0);
                 gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
+
+                if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+                    gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+                    gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                }
+
 
                 if (aiMons[i].isFainted)
                     ailment = AILMENT_FNT;
@@ -621,6 +685,12 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_StatusIcons, xOffset + 6, yOffset, 0);
                 gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
 
+                if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+                    gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+                    gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                }
+
+
                 if (aiMons[i].isFainted)
                     ailment = AILMENT_FNT;
                 else
@@ -695,6 +765,11 @@ static void Task_ShowAiPartyIcons(u8 taskId)
 
                 gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_StatusIcons, xOffset + 6, yOffset, 0);
                 gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
+
+                if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+                    gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+                    gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                }
 
                 if (aiMons[i].isFainted)
                     ailment = AILMENT_FNT;
@@ -788,6 +863,7 @@ static void SwitchToTimerViewFromAiParty(u8 taskId)
 
 #undef sConditionSpriteId
 #undef sHealthBarId
+#undef sItemSpriteId
 
 static void Task_ShowBattleTimers(u8 taskId)
 {
@@ -1002,8 +1078,6 @@ static void SwitchToPartyViewFromTimers(u8 taskId)
     gTasks[taskId].func = Task_BattleInfoFadeIn;
 }
 
-#define sConditionSpriteId data[1]
-
 void CB2_BattleInfo(void)
 {
     u8 taskId;
@@ -1063,6 +1137,3 @@ void CB2_BattleInfo(void)
         return;
     }
 }
-
-
-#undef sConditionSpriteId

@@ -7844,6 +7844,15 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
+Turtonator @ Power Herb
+Level: 33
+Nature: Relaxed
+Ability: Shell Armor
+- Flamethrower
+- Dragon Claw
+- Solar Beam
+- Body Press
+
 Slowbro @ Slowbronite
 Level: 35
 Nature: Calm
@@ -7852,6 +7861,42 @@ Ability: Regenerator
 - Psybeam
 - Slack Off
 - Thunder Wave
+
+Bewear @ Lum Berry
+Level: 33
+Nature: Jolly
+Ability: Fluffy
+- Body Slam
+- Drain Punch
+- Darkest Lariat
+- Stomping Tantrum
+
+Sylveon @ Throat Spray
+Level: 34
+Nature: Hasty
+Ability: Pixilate
+- Round
+- Quick Attack
+- Psyshock
+- Mystical Fire
+
+Virizion @ Focus Sash
+Level: 34
+Nature: Jolly
+Ability: Justified
+- Leaf Blade
+- Sacred Sword
+- Stone Edge
+- Zen Headbutt
+
+Claydol @ Hard Stone
+Level: 35
+Nature: Timid
+Ability: Levitate
+- Earth Power
+- Stored Power
+- Ancient Power
+- Calm Mind
 
 === TRAINER_WADE ===
 Name: WADE
