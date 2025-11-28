@@ -7844,18 +7844,14 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Kleavor @ Terrain Extender
-Nature: Jolly
-Ability: Swarm
+Slowbro @ Slowbronite
 Level: 35
-- Stone Axe
-- Ember
-
-Ferrothorn @ Assault Vest
-Nature: Impish
-Ability: Iron Barbs
-Level: 100
-- Seed Bomb
+Nature: Calm
+Ability: Regenerator
+- Scald
+- Psybeam
+- Slack Off
+- Thunder Wave
 
 === TRAINER_WADE ===
 Name: WADE

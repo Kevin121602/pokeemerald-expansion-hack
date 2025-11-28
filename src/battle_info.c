@@ -531,7 +531,7 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
                     species = GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_SPECIES); 
                 } else {
-                    species = aiMons[i].species;  
+                    species = GetMonData(mon, MON_DATA_SPECIES);  
                 }
 
                 if (aiMons[i].species == SPECIES_NONE)
@@ -609,7 +609,7 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
                     species = GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_SPECIES); 
                 } else {
-                    species = aiMons[i].species;  
+                    species = GetMonData(mon, MON_DATA_SPECIES); 
                 }
 
                 if (aiMons[i].species == SPECIES_NONE)
@@ -688,7 +688,7 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
                     species = GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_SPECIES); 
                 } else {
-                    species = aiMons[i].species;  
+                    species = GetMonData(mon, MON_DATA_SPECIES);  
                 }
                 data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
                 gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
