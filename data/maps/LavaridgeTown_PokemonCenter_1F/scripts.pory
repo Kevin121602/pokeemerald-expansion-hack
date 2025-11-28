@@ -31,6 +31,119 @@ LavaridgeTown_PokemonCenter_1F_EventScript_Gentleman::
 	msgbox LavaridgeTown_PokemonCenter_1F_Text_TrainersShouldRestToo, MSGBOX_NPC
 	end
 
+LavaridgeTown_PokemonCenter_1F_EventScript_Trader::
+	lock
+	faceplayer
+	goto_if_unset FLAG_BADGE04_GET, LavaridgeTown_PokemonCenter_1F_EventScript_NeedHeatBadge
+	goto_if_set FLAG_LAVARIDGE_NPC_TRADE_COMPLETED, LavaridgeTown_PokemonCenter_1F_EventScript_TradeCompleted
+	setvar VAR_0x8008, INGAME_TRADE_HISUIAN_GROWLITHE
+	copyvar VAR_0x8004, VAR_0x8008
+	specialvar VAR_RESULT, GetInGameTradeSpeciesInfo
+	copyvar VAR_0x8009, VAR_RESULT
+	msgbox LavaridgeTown_PokemonCenter_1F_Text_IllTradeIfYouWant, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, LavaridgeTown_PokemonCenter_1F_EventScript_ArcanineTrade
+	special ChoosePartyMon
+	waitstate
+	copyvar VAR_0x800A, VAR_0x8004
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, LavaridgeTown_PokemonCenter_1F_EventScript_DeclineTrade
+	copyvar VAR_0x8005, VAR_0x800A
+	specialvar VAR_RESULT, GetTradeSpecies
+	copyvar VAR_0x800B, VAR_RESULT
+	goto_if_ne VAR_RESULT, VAR_0x8009, LavaridgeTown_PokemonCenter_1F_EventScript_NotRequestedMon1
+	copyvar VAR_0x8004, VAR_0x8008
+	copyvar VAR_0x8005, VAR_0x800A
+	special CreateInGameTradePokemon
+	special DoInGameTradeScene
+	waitstate
+	msgbox LavaridgeTown_PokemonCenter_1F_Text_PleaseBeGoodToMyPokemon, MSGBOX_DEFAULT
+	setflag FLAG_LAVARIDGE_NPC_TRADE_COMPLETED
+	release
+	end
+
+LavaridgeTown_PokemonCenter_1F_EventScript_ArcanineTrade::
+	setvar VAR_0x8008, INGAME_TRADE_HISUIAN_ARCANINE
+	copyvar VAR_0x8004, VAR_0x8008
+	specialvar VAR_RESULT, GetInGameTradeSpeciesInfo
+	copyvar VAR_0x8009, VAR_RESULT
+	msgbox LavaridgeTown_PokemonCenter_1F_Text_HowAboutArcanine, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, LavaridgeTown_PokemonCenter_1F_EventScript_DeclineTrade
+	special ChoosePartyMon
+	waitstate
+	copyvar VAR_0x800A, VAR_0x8004
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, LavaridgeTown_PokemonCenter_1F_EventScript_DeclineTrade
+	copyvar VAR_0x8005, VAR_0x800A
+	specialvar VAR_RESULT, GetTradeSpecies
+	copyvar VAR_0x800B, VAR_RESULT
+	goto_if_ne VAR_RESULT, VAR_0x8009, LavaridgeTown_PokemonCenter_1F_EventScript_NotRequestedMon2
+	copyvar VAR_0x8004, VAR_0x8008
+	copyvar VAR_0x8005, VAR_0x800A
+	special CreateInGameTradePokemon
+	special DoInGameTradeScene
+	waitstate
+	msgbox LavaridgeTown_PokemonCenter_1F_Text_PleaseBeGoodToMyPokemon, MSGBOX_DEFAULT
+	setflag FLAG_LAVARIDGE_NPC_TRADE_COMPLETED
+	release
+	end
+
+LavaridgeTown_PokemonCenter_1F_EventScript_NeedHeatBadge::
+	msgbox LavaridgeTown_PokemonCenter_1F_Text_LookingForHeatBadge, MSGBOX_DEFAULT
+	release
+	end
+
+LavaridgeTown_PokemonCenter_1F_EventScript_DeclineTrade::
+	msgbox LavaridgeTown_PokemonCenter_1F_Text_YouDontWantToThatsOkay, MSGBOX_DEFAULT
+	release
+	end
+
+LavaridgeTown_PokemonCenter_1F_EventScript_NotRequestedMon1::
+	msgbox LavaridgeTown_PokemonCenter_1F_Text_DoesntLookLikeGrowlitheToMe, MSGBOX_DEFAULT
+	release
+	end
+
+LavaridgeTown_PokemonCenter_1F_EventScript_NotRequestedMon2::
+	msgbox LavaridgeTown_PokemonCenter_1F_Text_DoesntLookLikeArcanineToMe, MSGBOX_DEFAULT
+	release
+	end
+
+LavaridgeTown_PokemonCenter_1F_EventScript_TradeCompleted::
+	msgbox LavaridgeTown_PokemonCenter_1F_Text_AnyPokemonCanBeCute, MSGBOX_DEFAULT
+	release
+	end
+
+LavaridgeTown_PokemonCenter_1F_Text_IllTradeIfYouWant:
+	.string "I'm looking for someone to trade my\n"
+	.string "Growlithe with.\p"
+	.string "Are you interested? I'm looking for a\n"
+	.string "Growlithe of your own.$"
+
+LavaridgeTown_PokemonCenter_1F_Text_HowAboutArcanine:
+	.string "How about an Arcanine?$"
+
+LavaridgeTown_PokemonCenter_1F_Text_PleaseBeGoodToMyPokemon:
+	.string "My Pokémon looks very happy to be\n"
+	.string "with you!$"
+
+LavaridgeTown_PokemonCenter_1F_Text_DoesntLookLikeGrowlitheToMe:
+	.string "Huh? That doesn't look anything like\n"
+	.string "a Growltihe to me.$"
+
+LavaridgeTown_PokemonCenter_1F_Text_DoesntLookLikeArcanineToMe:
+	.string "Huh? That doesn't look anything like\n"
+	.string "an Arcanine to me.$"
+
+LavaridgeTown_PokemonCenter_1F_Text_LookingForHeatBadge:
+	.string "I'm looking for someone to trade my\n"
+	.string "Growlithe with.\p"
+	.string "But not just any Trainer will do, I'm\n"
+	.string "looking for someone with the Heat Badge.$"
+
+LavaridgeTown_PokemonCenter_1F_Text_YouDontWantToThatsOkay:
+	.string "That's a shame…$"
+
+LavaridgeTown_PokemonCenter_1F_Text_AnyPokemonCanBeCute:
+	.string "My Pokémon looks very happy to be\n"
+	.string "with you!$"
+
 LavaridgeTown_PokemonCenter_1F_Text_TrainersPokemonSpendTimeTogether:
 	.string "I think Pokémon get closer to their\n"
 	.string "Trainers if they spend time together.\p"

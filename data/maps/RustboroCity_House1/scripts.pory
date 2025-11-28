@@ -54,8 +54,8 @@ RustboroCity_House1_Text_IllTradeIfYouWant:
 	.string "Why do I love Farfetch'd so much?\p"
 	.string "Because the crux of the biscuit\n"
 	.string "is the apostrophe.\p"
-	.string "I'll trade you my {STR_VAR_2} for\n"
-	.string "your {STR_VAR_1} if you want.$"
+	.string "I'll trade you my Farfetch'd-G for\n"
+	.string "your Farfetch'd if you want.$"
 
 RustboroCity_House1_Text_PleaseBeGoodToMyPokemon:
 	.string "Eheheh…\n"
@@ -63,7 +63,7 @@ RustboroCity_House1_Text_PleaseBeGoodToMyPokemon:
 
 RustboroCity_House1_Text_DoesntLookLikeMonToMe:
 	.string "Huh? That doesn't look anything like\n"
-	.string "a {STR_VAR_1} to me.$"
+	.string "a Farfetch'd to me.$"
 
 RustboroCity_House1_Text_YouDontWantToThatsOkay:
 	.string "Oh, if you don't want to, that's okay.\n"

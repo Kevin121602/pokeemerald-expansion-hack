@@ -111,9 +111,9 @@ RustboroCity_House1_Text_IllTradeIfYouWant:
 # 56 "data/maps/RustboroCity_House1/scripts.pory"
 	.string "is the apostrophe.\p"
 # 57 "data/maps/RustboroCity_House1/scripts.pory"
-	.string "I'll trade you my {STR_VAR_2} for\n"
+	.string "I'll trade you my Farfetch'd-G for\n"
 # 58 "data/maps/RustboroCity_House1/scripts.pory"
-	.string "your {STR_VAR_1} if you want.$"
+	.string "your Farfetch'd if you want.$"
 # 59 "data/maps/RustboroCity_House1/scripts.pory"
 
 # 60 "data/maps/RustboroCity_House1/scripts.pory"
@@ -129,7 +129,7 @@ RustboroCity_House1_Text_DoesntLookLikeMonToMe:
 # 65 "data/maps/RustboroCity_House1/scripts.pory"
 	.string "Huh? That doesn't look anything like\n"
 # 66 "data/maps/RustboroCity_House1/scripts.pory"
-	.string "a {STR_VAR_1} to me.$"
+	.string "a Farfetch'd to me.$"
 # 67 "data/maps/RustboroCity_House1/scripts.pory"
 
 # 68 "data/maps/RustboroCity_House1/scripts.pory"

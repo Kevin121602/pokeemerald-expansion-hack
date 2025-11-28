@@ -13,7 +13,7 @@ PacifidlogTown_House3_EventScript_Trader::
 # 7 "data/maps/PacifidlogTown_House3/scripts.pory"
 	faceplayer
 # 8 "data/maps/PacifidlogTown_House3/scripts.pory"
-	goto_if_set FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED, PacifidlogTown_House3_EventScript_TradeCompleted
+	goto_if_set FLAG_LAVARIDGE_NPC_TRADE_COMPLETED, PacifidlogTown_House3_EventScript_TradeCompleted
 # 9 "data/maps/PacifidlogTown_House3/scripts.pory"
 	setvar VAR_0x8008, INGAME_TRADE_WYNAUT
 # 10 "data/maps/PacifidlogTown_House3/scripts.pory"
@@ -57,7 +57,7 @@ PacifidlogTown_House3_EventScript_Trader::
 # 29 "data/maps/PacifidlogTown_House3/scripts.pory"
 	msgbox PacifidlogTown_House3_Text_ItsSubtlyDifferentThankYou, MSGBOX_DEFAULT
 # 30 "data/maps/PacifidlogTown_House3/scripts.pory"
-	setflag FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED
+	setflag FLAG_LAVARIDGE_NPC_TRADE_COMPLETED
 # 31 "data/maps/PacifidlogTown_House3/scripts.pory"
 	release
 # 32 "data/maps/PacifidlogTown_House3/scripts.pory"

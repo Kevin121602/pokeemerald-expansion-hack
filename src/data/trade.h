@@ -1017,7 +1017,7 @@ static const struct InGameTrade sIngameTrades[] =
         .abilityNum = 0,
         .otId = 82624,
         .heldItem = ITEM_RARE_BONE,
-        .otName = _("Alex"),
+        .otName = _("Milton"),
         .otGender = MALE,
         .requestedSpecies = SPECIES_GROWLITHE
     },
@@ -1029,7 +1029,7 @@ static const struct InGameTrade sIngameTrades[] =
         .abilityNum = 0,
         .otId = 82624,
         .heldItem = ITEM_RARE_BONE,
-        .otName = _("Alex"),
+        .otName = _("Milton"),
         .otGender = MALE,
         .requestedSpecies = SPECIES_ARCANINE
     },
