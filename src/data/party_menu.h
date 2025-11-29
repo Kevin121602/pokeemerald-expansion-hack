@@ -834,7 +834,7 @@ struct
     [MENU_EXP] = {COMPOUND_STRING("EXP"), CursorCb_Exp},
     [MENU_BURN] = {COMPOUND_STRING("BRN"), CursorCb_Burn},
     [MENU_FROSTBITE] = {COMPOUND_STRING("FRB"), CursorCb_Frostbite},
-    [MENU_PARALYZE] = {COMPOUND_STRING("PRZ"), CursorCb_Paralyze},
+    [MENU_PARALYZE] = {COMPOUND_STRING("PAR"), CursorCb_Paralyze},
     [MENU_POISON] = {COMPOUND_STRING("PSN"), CursorCb_Poison},
     [MENU_SLEEP] = {COMPOUND_STRING("SLP"), CursorCb_Sleep},
     [MENU_SPLICER_SMALL] = {COMPOUND_STRING("Small"), CursorCb_SplicerSmall},

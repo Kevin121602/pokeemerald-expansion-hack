@@ -91,8 +91,108 @@ static void SwitchToTimerViewFromAiParty(u8 taskId);
 static void SwitchToPartyViewFromTimers(u8 taskId);
 
 #define TAG_HELD_ITEM 55120
+#define TAG_INFO_STATUS_ICONS 55121
 
 static const u32 sHeldItemInfoGfx[] = INCBIN_U32("graphics/battle_interface/info_item_sprite.4bpp");
+static const u32 gStatusGfx_InfoIcons[] = INCBIN_U32("graphics/battle_interface/info_status_indicators.4bpp");
+
+static const struct OamData sOamData_StatusCondition =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(32x8),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(32x8),
+    .tileNum = 0,
+    .priority = 1,
+    .paletteNum = 0,
+    .affineParam = 0
+};
+
+static const union AnimCmd sSpriteAnim_StatusPoison[] =
+{
+    ANIMCMD_FRAME(0, 0),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_StatusParalyzed[] =
+{
+    ANIMCMD_FRAME(4, 0),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_StatusSleep[] =
+{
+    ANIMCMD_FRAME(8, 0),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_StatusFrozen[] =
+{
+    ANIMCMD_FRAME(12, 0),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_StatusBurn[] =
+{
+    ANIMCMD_FRAME(16, 0),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_StatusPokerus[] =
+{
+    ANIMCMD_FRAME(20, 0),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_StatusFaint[] =
+{
+    ANIMCMD_FRAME(24, 0),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_StatusFrostbite[] =
+{
+    ANIMCMD_FRAME(28, 0),
+    ANIMCMD_END
+};
+
+static const union AnimCmd *const sSpriteTemplate_StatusCondition[] =
+{
+    sSpriteAnim_StatusPoison,
+    sSpriteAnim_StatusParalyzed,
+    sSpriteAnim_StatusSleep,
+    sSpriteAnim_StatusFrozen,
+    sSpriteAnim_StatusBurn,
+    sSpriteAnim_StatusPokerus,
+    sSpriteAnim_StatusFaint,
+    sSpriteAnim_StatusFrostbite
+};
+
+const struct SpriteSheet sSpriteSheet_InfoStatusIcons =
+{
+    .data = gStatusGfx_InfoIcons, .size = sizeof(gStatusGfx_InfoIcons), .tag = TAG_INFO_STATUS_ICONS
+};
+
+static const struct SpritePalette sSpritePalettes_BattleInfoHealthBar =
+{
+    gBattleInterface_InfoPal, TAG_HEALTHBAR_PAL
+};
+
+static const struct SpriteTemplate gSpriteTemplate_InfoStatusIcons =
+{
+    .tileTag = TAG_INFO_STATUS_ICONS,
+    .paletteTag = TAG_HEALTHBAR_PAL,
+    .oam = &sOamData_StatusCondition,
+    .anims = sSpriteTemplate_StatusCondition,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
 
 static const struct OamData sOamData_HeldItem =
 {
@@ -132,11 +232,6 @@ static const union AnimCmd *const sSpriteAnimTable_HeldItem[] =
 const struct SpriteSheet gSpriteSheet_HeldItemInfo =
 {
     .data = sHeldItemInfoGfx, .size = sizeof(sHeldItemInfoGfx), .tag = TAG_HELD_ITEM
-};
-
-const struct SpritePalette sSpritePalettes_BattleInfoHealthBar =
-{
-    gBattleInterface_BallDisplayPal, TAG_HEALTHBAR_PAL
 };
 
 static const struct SpriteTemplate sSpriteTemplate_HeldItem =
@@ -567,7 +662,7 @@ static void Task_ShowAiPartyIcons(u8 taskId)
         //ShowBg(1);
 
         LoadMonIconPalettes();
-        LoadPartyMenuAilmentGfx();
+        LoadSpriteSheet(&sSpriteSheet_InfoStatusIcons);
         LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
         LoadSpriteSheet(&gSpriteSheet_HeldItemInfo);
         data->battlerId = B_POSITION_OPPONENT_LEFT;
@@ -598,7 +693,7 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
                 gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
 
-                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_StatusIcons, xOffset + 6, yOffset, 0);
+                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 17, yOffset - 5, 0);
                 gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
 
                 if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
@@ -682,7 +777,7 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
                 gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
 
-                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_StatusIcons, xOffset + 6, yOffset, 0);
+                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 17, yOffset - 5, 0);
                 gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
 
                 if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
@@ -763,7 +858,7 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
                 gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
 
-                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_StatusIcons, xOffset + 6, yOffset, 0);
+                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 17, yOffset - 5, 0);
                 gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
 
                 if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
@@ -852,6 +947,7 @@ static void SwitchToTimerViewFromAiParty(u8 taskId)
         {
             DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId]);
             DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId]);
+            DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId]);
             FreeAndDestroyMonIconSprite(&gSprites[data->spriteIds.aiPartyIcons[i]]);
         }
     }

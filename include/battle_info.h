@@ -9,5 +9,6 @@
 #define TAG_HEALTHBAR_INFO_6 0xD796
 
 void CB2_BattleInfo(void);
+void LoadBattleInfoAilmentGfx(void);
 
 #endif // GUARD_BATTLE_INFO_H
