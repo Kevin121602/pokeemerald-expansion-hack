@@ -83,12 +83,18 @@ static const u8 *GetHealthbarElementGfxPtr(u8);
 static void Task_BattleInfoFadeOut(u8 taskId);
 static void Task_BattleInfoFadeIn(u8 taskId);
 static void Task_ShowBattleTimers(u8 taskId);
+static void Task_ShowBattlerStats(u8 taskId);
 static void PrintOnBattleInfoWindow(u8 windowId);
 static void PrintOnBattleTimersWindow(u8 windowId);
 static s32 CalcInfoBarValue(s32, s32, s32, s32 *, u8, u16);
 static u8 CalcBarFilledPixels(s32, s32, s32, s32 *, u8 *, u8);
-static void SwitchToTimerViewFromAiParty(u8 taskId);
+static void SwitchToTimersViewFromAiParty(u8 taskId);
+static void SwitchToTimersViewFromStats(u8 taskId);
 static void SwitchToPartyViewFromTimers(u8 taskId);
+static void SwitchToPartyViewFromStats(u8 taskId);
+static void SwitchToStatsViewFromTimers(u8 taskId);
+static void SwitchToStatsViewFromAiParty(u8 taskId);
+static void Task_ShowAiPartyIcons(u8 taskId);
 
 #define TAG_HELD_ITEM 55120
 #define TAG_INFO_STATUS_ICONS 55121
@@ -401,8 +407,8 @@ static const u8 *GetHealthbarElementGfxPtr(u8 elementId)
 
 static const u8 sText_AIParty[] = _("AI Party");
 static const u8 sText_B_Back[] = _("{B_BUTTON} Back");
-static const u8 sText_Right_Battle_Info[] = _("{DPAD_RIGHT} Battle Info");
-static const u8 sText_Left_AIParty[] = _("{DPAD_LEFT} AI Party");
+static const u8 sText_SwitchPages[] = _("{DPAD_LEFTRIGHT} Switch Pages");
+//static const u8 sText_Left_AIParty[] = _("{DPAD_LEFT} AI Party");
 static const u8 sText_BattleInfo[] = _("Battle Info");
 static const u8 sText_Player[] = _("Player");
 static const u8 sText_AI[] = _("AI");
@@ -467,15 +473,26 @@ static const struct WindowTemplate sBattleTimersWindowTemplate =
     .baseBlock = 0x1B5
 };
 
+static const struct WindowTemplate sBattlerStatsWindowTemplate =
+{
+    .bg = 0,
+    .tilemapLeft = 0,
+    .tilemapTop = 0,
+    .width = 31,
+    .height = 18,
+    .paletteNum = 0xF,
+    .baseBlock = 0x1B5
+};
+
 struct BattleInfo
 {
     u8 battlerId:2;
 
-    u8 AIPartyWindowID;
+    u8 buttonControlWindow;
 
-    u8 BattleTimersWindowID;
+    u8 battleTimersWindow;
 
-    u8 activeWindow;
+    u8 battlerStatsWindow;
 
     u8 aiViewState;
 
@@ -483,7 +500,6 @@ struct BattleInfo
     {
         u8 aiIconSpriteIds[MAX_BATTLERS_COUNT];
         u8 aiPartyIcons[PARTY_SIZE];
-        //u8 healthBarSprites[PARTY_SIZE];
     } spriteIds;
 
     s32 hpBarValue[PARTY_SIZE];
@@ -493,7 +509,8 @@ struct BattleInfo
 enum
 {
     ACTIVE_WIN_PARTY,
-    ACTIVE_WIN_INFO
+    ACTIVE_WIN_TIMERS,
+    ACTIVE_WIN_STATS
 };
 
 static const u16 sBgColor[] = {RGB_WHITE};
@@ -918,7 +935,7 @@ static void Task_ShowAiPartyIcons(u8 taskId)
         break;
     // Input
     case 1:
-        if (JOY_NEW(R_BUTTON | B_BUTTON))
+        if (JOY_NEW(B_BUTTON))
         {
             BeginNormalPaletteFade(-1, 0, 0, 0x10, 0);
             gTasks[taskId].func = Task_BattleInfoFadeOut;
@@ -926,7 +943,14 @@ static void Task_ShowAiPartyIcons(u8 taskId)
         }
         if (JOY_NEW(DPAD_RIGHT))
         {
-            SwitchToTimerViewFromAiParty(taskId);
+            SwitchToTimersViewFromAiParty(taskId);
+            //HideBg(1);
+            //ShowBg(0);
+            return;
+        }
+        if (JOY_NEW(DPAD_LEFT))
+        {
+            SwitchToStatsViewFromAiParty(taskId);
             //HideBg(1);
             //ShowBg(0);
             return;
@@ -935,10 +959,11 @@ static void Task_ShowAiPartyIcons(u8 taskId)
     }
 }
 
-static void SwitchToTimerViewFromAiParty(u8 taskId)
+static void SwitchToTimersViewFromAiParty(u8 taskId)
 {
     u32 i;
     struct BattleInfo *data = GetStructPtr(taskId);
+    data->aiViewState = 0;
 
     FreeMonIconPalettes();
     for (i = 0; i < PARTY_SIZE; i++)
@@ -951,22 +976,66 @@ static void SwitchToTimerViewFromAiParty(u8 taskId)
             FreeAndDestroyMonIconSprite(&gSprites[data->spriteIds.aiPartyIcons[i]]);
         }
     }
-    ClearWindowTilemap(data->AIPartyWindowID);
-    RemoveWindow(data->AIPartyWindowID);
+    ClearWindowTilemap(data->buttonControlWindow);
+    RemoveWindow(data->buttonControlWindow);
 
     gTasks[taskId].func = Task_ShowBattleTimers;
+}
+
+static void SwitchToStatsViewFromAiParty(u8 taskId)
+{
+    u32 i;
+    struct BattleInfo *data = GetStructPtr(taskId);
+    data->aiViewState = 0;
+
+    FreeMonIconPalettes();
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (data->spriteIds.aiPartyIcons[i] != 0xFF)
+        {
+            DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId]);
+            DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId]);
+            DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId]);
+            FreeAndDestroyMonIconSprite(&gSprites[data->spriteIds.aiPartyIcons[i]]);
+        }
+    }
+    ClearWindowTilemap(data->buttonControlWindow);
+    RemoveWindow(data->buttonControlWindow);
+
+    gTasks[taskId].func = Task_ShowBattlerStats;
 }
 
 #undef sConditionSpriteId
 #undef sHealthBarId
 #undef sItemSpriteId
 
+static void SwitchToTimersViewFromStats(u8 taskId)
+{
+    u32 i;
+    struct BattleInfo *data = GetStructPtr(taskId);
+    data->aiViewState = 0;
+
+    FreeMonIconPalettes();
+    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+    {
+        if (data->spriteIds.aiIconSpriteIds[i] != 0xFF)
+        {
+            FreeAndDestroyMonIconSprite(&gSprites[data->spriteIds.aiIconSpriteIds[i]]);
+        }
+    }
+
+    ClearWindowTilemap(data->battlerStatsWindow);
+    RemoveWindow(data->battlerStatsWindow);
+
+    gTasks[taskId].func = Task_ShowBattleTimers;
+}
+
 static void Task_ShowBattleTimers(u8 taskId)
 {
     u32 i, count;
     struct WindowTemplate winTemplate;
     struct BattleInfo *data = GetStructPtr(taskId);
-    struct Pokemon *mon;
+    //struct Pokemon *mon;
 
     switch (data->aiViewState)
     {
@@ -978,15 +1047,15 @@ static void Task_ShowBattleTimers(u8 taskId)
         break;
     // Put text
     case 1:
-        data->BattleTimersWindowID = AddWindow(&sBattleTimersWindowTemplate);
-        PutWindowTilemap(data->BattleTimersWindowID);
-        PrintOnBattleTimersWindow(data->BattleTimersWindowID);
+        data->battleTimersWindow = AddWindow(&sBattleTimersWindowTemplate);
+        PutWindowTilemap(data->battleTimersWindow);
+        PrintOnBattleTimersWindow(data->battleTimersWindow);
 
         data->aiViewState++;
         break;
     // Input
     case 2:
-        if (JOY_NEW(R_BUTTON | B_BUTTON))
+        if (JOY_NEW(B_BUTTON))
         {
             BeginNormalPaletteFade(-1, 0, 0, 0x10, 0);
             gTasks[taskId].func = Task_BattleInfoFadeOut;
@@ -995,6 +1064,72 @@ static void Task_ShowBattleTimers(u8 taskId)
         if (JOY_NEW(DPAD_LEFT))
         {
             SwitchToPartyViewFromTimers(taskId);
+            //HideBg(1);
+            //ShowBg(0);
+            return;
+        }
+        if (JOY_NEW(DPAD_RIGHT))
+        {
+            SwitchToStatsViewFromTimers(taskId);
+            //HideBg(1);
+            //ShowBg(0);
+            return;
+        }
+        break;
+    }
+}
+
+static void Task_ShowBattlerStats(u8 taskId)
+{
+    u32 i, count;
+    struct WindowTemplate winTemplate;
+    struct BattleInfo *data = GetStructPtr(taskId);
+    struct Pokemon *mon;
+
+    switch (data->aiViewState)
+    {
+    case 0:
+        //HideBg(0);
+        //ShowBg(1);
+        data->battlerStatsWindow = AddWindow(&sBattlerStatsWindowTemplate);
+        PutWindowTilemap(data->battlerStatsWindow);
+        PrintOnBattleInfoWindow(data->battlerStatsWindow);
+        data->aiViewState++;
+        break;
+    // Put mon
+    case 1:
+        LoadMonIconPalettes();
+        data->battlerId = 0;
+
+        u16 species = SPECIES_NONE;
+        if (gBattleMons[data->battlerId].ability == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
+            species = GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_SPECIES); 
+        } else {
+            species = gBattleMons[data->battlerId].species;  
+        }
+
+        data->spriteIds.aiIconSpriteIds[data->battlerId] = CreateMonIcon(species, SpriteCallbackDummy, 26, 30, 1, 0);
+
+        data->aiViewState++;
+        break;
+    // Input
+    case 2:
+        if (JOY_NEW(B_BUTTON))
+        {
+            BeginNormalPaletteFade(-1, 0, 0, 0x10, 0);
+            gTasks[taskId].func = Task_BattleInfoFadeOut;
+            return;
+        }
+        if (JOY_NEW(DPAD_LEFT))
+        {
+            SwitchToTimersViewFromStats(taskId);
+            //HideBg(1);
+            //ShowBg(0);
+            return;
+        }
+        if (JOY_NEW(DPAD_RIGHT))
+        {
+            SwitchToPartyViewFromStats(taskId);
             //HideBg(1);
             //ShowBg(0);
             return;
@@ -1014,7 +1149,7 @@ static void PrintOnBattleInfoWindow(u8 windowId)
 
     FillWindowPixelBuffer(windowId, 0x11);
     AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_B_Back, 15, 3, 0, NULL);
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_Right_Battle_Info, 152, 3, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_SwitchPages, 148, 3, 0, NULL);
     CopyWindowToVram(windowId, COPYWIN_FULL);
 }
 
@@ -1027,7 +1162,7 @@ static void PrintOnBattleTimersWindow(u8 windowId)
 
     FillWindowPixelBuffer(windowId, 0x11);
     AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_B_Back, 15, 3, 0, NULL);
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_Left_AIParty, 169, 3, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_SwitchPages, 148, 3, 0, NULL);
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Player, 87, 19, 0, NULL);
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_AI, 140, 19, 0, NULL);
 
@@ -1162,16 +1297,61 @@ static void SwitchToPartyViewFromTimers(u8 taskId)
     struct BattleInfo *data = GetStructPtr(taskId);
     data->aiViewState = 0;
 
-    ClearWindowTilemap(data->BattleTimersWindowID);
-    RemoveWindow(data->BattleTimersWindowID);
+    ClearWindowTilemap(data->battleTimersWindow);
+    RemoveWindow(data->battleTimersWindow);
 
-    data->AIPartyWindowID = AddWindow(&sButtonControlWindowTemplate);
-    PutWindowTilemap(data->AIPartyWindowID);
-    PrintOnBattleInfoWindow(data->AIPartyWindowID);
+    data->buttonControlWindow = AddWindow(&sButtonControlWindowTemplate);
+    PutWindowTilemap(data->buttonControlWindow);
+    PrintOnBattleInfoWindow(data->buttonControlWindow);
 
     LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
 
-    gTasks[taskId].func = Task_BattleInfoFadeIn;
+    gTasks[taskId].func = Task_ShowAiPartyIcons;
+}
+
+static void SwitchToPartyViewFromStats(u8 taskId)
+{
+    u32 i;
+    struct BattleInfo *data = GetStructPtr(taskId);
+    data->aiViewState = 0;
+
+    ClearWindowTilemap(data->battlerStatsWindow);
+    RemoveWindow(data->battlerStatsWindow);
+
+    FreeMonIconPalettes();
+    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+    {
+        if (data->spriteIds.aiIconSpriteIds[i] != 0xFF)
+        {
+            FreeAndDestroyMonIconSprite(&gSprites[data->spriteIds.aiIconSpriteIds[i]]);
+        }
+    }
+
+    data->buttonControlWindow = AddWindow(&sButtonControlWindowTemplate);
+    PutWindowTilemap(data->buttonControlWindow);
+    PrintOnBattleInfoWindow(data->buttonControlWindow);
+
+    LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
+
+    gTasks[taskId].func = Task_ShowAiPartyIcons;
+}
+
+static void SwitchToStatsViewFromTimers(u8 taskId)
+{
+    u32 i;
+    struct BattleInfo *data = GetStructPtr(taskId);
+    data->aiViewState = 0;
+
+    ClearWindowTilemap(data->battleTimersWindow);
+    RemoveWindow(data->battleTimersWindow);
+
+    //data->buttonControlWindow = AddWindow(&sButtonControlWindowTemplate);
+    //PutWindowTilemap(data->buttonControlWindow);
+    //PrintOnBattleInfoWindow(data->buttonControlWindow);
+
+    //LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
+
+    gTasks[taskId].func = Task_ShowBattlerStats;
 }
 
 void CB2_BattleInfo(void)
@@ -1218,9 +1398,9 @@ void CB2_BattleInfo(void)
         data = AllocZeroed(sizeof(struct BattleInfo));
         SetStructPtr(taskId, data);
 
-        data->AIPartyWindowID = AddWindow(&sButtonControlWindowTemplate);
-        PutWindowTilemap(data->AIPartyWindowID);
-        PrintOnBattleInfoWindow(data->AIPartyWindowID);
+        data->buttonControlWindow = AddWindow(&sButtonControlWindowTemplate);
+        PutWindowTilemap(data->buttonControlWindow);
+        PrintOnBattleInfoWindow(data->buttonControlWindow);
 
         //data->activeWindow = ACTIVE_WIN_PARTY;
         gMain.state++;

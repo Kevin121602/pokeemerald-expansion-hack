@@ -7841,27 +7841,62 @@ Class: Fisherman
 Pic: Fisherman
 Gender: Male
 Music: Hiker
-Double Battle: Yes
+Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Perrserker @ Lum Berry
-Nature: Jolly
-Ability: Battle Armor
-Level: 35
-- Fake Out
-- Metal Claw
+Turtonator @ Power Herb
+Level: 33
+Nature: Relaxed
+Ability: Shell Armor
+- Flamethrower
+- Dragon Claw
+- Solar Beam
+- Body Press
 
-Mew @ Lum Berry
+Bewear @ Lum Berry
+Level: 33
 Nature: Jolly
-Ability: Synchronize
-Level: 35
-- Tackle
+Ability: Fluffy
+- Body Slam
+- Drain Punch
+- Darkest Lariat
+- Stomping Tantrum
 
-Arceus @ Never-Melt Ice
+Sylveon @ Throat Spray
+Level: 34
+Nature: Hasty
+Ability: Pixilate
+- Round
+- Quick Attack
+- Psyshock
+- Mystical Fire
+
+Virizion @ Focus Sash
+Level: 34
 Nature: Jolly
-Ability: Iron Barbs
-Level: 100
-- Extreme Speed
+Ability: Justified
+- Leaf Blade
+- Sacred Sword
+- Stone Edge
+- Zen Headbutt
+
+Claydol @ Hard Stone
+Level: 35
+Nature: Timid
+Ability: Levitate
+- Earth Power
+- Stored Power
+- Ancient Power
+- Calm Mind
+
+Slowbro @ Slowbronite
+Level: 35
+Nature: Calm
+Ability: Regenerator
+- Scald
+- Psybeam
+- Slack Off
+- Thunder Wave
 
 === TRAINER_WADE ===
 Name: WADE
