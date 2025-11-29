@@ -693,7 +693,7 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
                 gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
 
-                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 17, yOffset - 5, 0);
+                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 16, yOffset - 5, 0);
                 gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
 
                 if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
@@ -777,7 +777,7 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
                 gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
 
-                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 17, yOffset - 5, 0);
+                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 16, yOffset - 5, 0);
                 gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
 
                 if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
@@ -858,7 +858,7 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
                 gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
 
-                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 17, yOffset - 5, 0);
+                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 16, yOffset - 5, 0);
                 gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
 
                 if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){

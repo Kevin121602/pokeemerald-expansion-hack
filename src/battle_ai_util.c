@@ -6244,7 +6244,6 @@ bool32 AI_ShouldSetUpHazards(u32 battlerAtk, u32 battlerDef, u32 move, struct Ai
     if (IsBattleMoveStatus(move))
     {
         if (DoesBattlerIgnoreAbilityChecks(battlerAtk, aiData->abilities[battlerAtk], move))
-            gAiLogicData->shouldSetHazards = TRUE;
             return TRUE;
         if (aiData->abilities[battlerDef] == ABILITY_MAGIC_BOUNCE)
             return FALSE;
@@ -6252,12 +6251,10 @@ bool32 AI_ShouldSetUpHazards(u32 battlerAtk, u32 battlerDef, u32 move, struct Ai
     else
     {
         if (DoesBattlerIgnoreAbilityChecks(battlerAtk, aiData->abilities[battlerAtk], move))
-            gAiLogicData->shouldSetHazards = TRUE;
             return TRUE;
         if (aiData->abilities[battlerDef] == ABILITY_SHIELD_DUST)
             return FALSE;
     }
-    gAiLogicData->shouldSetHazards = TRUE;
     return TRUE;
 }
 

@@ -378,7 +378,7 @@ void ComputeBattlerDecisions(u32 battler)
         // AI's own switching data
         if (isAiBattler)
         {
-            gAiLogicData->mostSuitableMonId[battler] = GetMostSuitableMonToSwitchInto(battler, FALSE).mon;
+            gAiLogicData->mostSuitableMonId[battler] = PARTY_SIZE;
             if (ShouldSwitch(battler))
                 gAiLogicData->shouldSwitch |= (1u << battler);
             gBattleStruct->prevTurnSpecies[battler] = gBattleMons[battler].species;
@@ -906,6 +906,12 @@ static u32 ChooseMoveOrAction_Doubles(u32 battler, u32 doublesTargeting)
         {
             actionOrMoveIndex[i] = 0xFF;
             bestMovePointsForTarget[i] = -1;
+        } else if(doublesTargeting == PARALLEL_TARGETING && i == opposingPosition){
+            actionOrMoveIndex[i] = 0xFF;
+            bestMovePointsForTarget[i] = -1;
+        } else if(doublesTargeting == DIAGONAL_TARGETING && i == parallelPosition){
+            actionOrMoveIndex[i] = 0xFF;
+            bestMovePointsForTarget[i] = -1;
         }
         else
         {
@@ -963,6 +969,9 @@ static u32 ChooseMoveOrAction_Doubles(u32 battler, u32 doublesTargeting)
             actionOrMoveIndex[i] = mostViableMovesIndices[Random() % mostViableMovesNo];
             bestMovePointsForTarget[i] = mostViableMovesScores[0];
 
+            if(bestMovePointsForTarget[i] > 100)
+                gAiLogicData->hasViableMoveDoubles = TRUE;
+
             // Don't use a move against ally if it has less than 100 points.
             if (i == BATTLE_PARTNER(battler) && bestMovePointsForTarget[i] < AI_SCORE_DEFAULT)
             {
@@ -996,17 +1005,8 @@ static u32 ChooseMoveOrAction_Doubles(u32 battler, u32 doublesTargeting)
     }
 
     gBattlerTarget = mostViableTargetsArray[Random() % mostViableTargetsNo];
-    //gBattleStruct->aiChosenTarget[battlerAi] = gBattlerTarget;
-    if(doublesTargeting == PARALLEL_TARGETING && gBattlerTarget != partnerPosition){
-        gAiBattleData->chosenTarget[battler] = parallelPosition;
-        return actionOrMoveIndex[parallelPosition];
-    } else if (doublesTargeting == DIAGONAL_TARGETING && gBattlerTarget != partnerPosition){
-        gAiBattleData->chosenTarget[battler] = opposingPosition;
-        return actionOrMoveIndex[opposingPosition];
-    } else {
-        gAiBattleData->chosenTarget[battler] = gBattlerTarget;
-        return actionOrMoveIndex[gBattlerTarget];
-    }
+    gAiBattleData->chosenTarget[battler] = gBattlerTarget;
+    return actionOrMoveIndex[gBattlerTarget];
 }
 
 static inline bool32 ShouldConsiderMoveForBattler(u32 battlerAi, u32 battlerDef, u32 move)

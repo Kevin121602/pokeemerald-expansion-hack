@@ -829,6 +829,7 @@ bool32 ShouldSwitch(u32 battler)
     u8 j, k, l;
     s32 dmg, bestDmg = 0;
     u32 aiHighestDmg = MAX_MON_MOVES;
+    struct AiLogicData *aiData = gAiLogicData;
 
     bool32 canFakeOut = FALSE;
     bool32 willSetHazards = FALSE;
@@ -858,7 +859,15 @@ bool32 ShouldSwitch(u32 battler)
     //will only be used for encored into ineffectual moves or perish song
     if (IsDoubleBattle())
     {
-        return FALSE;
+        battlerIn1 = battler;
+        if (gAbsentBattlerFlags & (1u << GetPartnerBattler(battler)))
+            battlerIn2 = battler;
+        else
+            battlerIn2 = GetPartnerBattler(battler);
+
+        opposingBattler = BATTLE_OPPOSITE(battlerIn1);
+        if (gAbsentBattlerFlags & (1u << opposingBattler))
+            opposingBattler ^= BIT_FLANK;
     }
     else
     {
@@ -896,6 +905,30 @@ bool32 ShouldSwitch(u32 battler)
     bestCandidate = GetMostSuitableMonToSwitchInto(battler, FALSE);
     InitializeSwitchinCandidate(&party[bestCandidate.mon]);
 
+    if(IsDoubleBattle()){
+        if(bestCandidate.score < (SCORE_DEFAULT + SCORE_DEFAULT)){
+            return FALSE;
+        }
+        else if (gBattleMons[battler].volatiles.wrapped
+                    || gBattleMons[battler].volatiles.escapePrevention
+                    || gBattleMons[battler].volatiles.root
+                    || IsAbilityPreventingEscape(battler)){
+            return FALSE;
+        } 
+        else if (gBattleMons[battler].volatiles.perishSong
+        && gDisableStructs[battler].perishSongTimer == 0
+        && battlerAbility != ABILITY_SOUNDPROOF){
+            gAiLogicData->mostSuitableMonId[battler] = bestCandidate.mon;
+            return TRUE;
+        }
+        else if(gAiLogicData->hasViableMoveDoubles)
+            return FALSE;
+        else{
+            gAiLogicData->mostSuitableMonId[battler] = bestCandidate.mon;
+            return TRUE;
+        }
+    }
+
     //returns false if score -5 or lower, wont switch even if all moves have negative score or will faint to perish song
     if(bestCandidate.score <= SCORE_FASTER_BUT_KOD)
         return FALSE;
@@ -931,7 +964,7 @@ bool32 ShouldSwitch(u32 battler)
     if (gMovesInfo[gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]].effect == EFFECT_DESTINY_BOND)
         willDestinyBond = TRUE;
         
-    if (IsHazardMove(gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]) && gAiLogicData->shouldSetHazards)
+    if (IsHazardMove(gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]) && AI_ShouldSetUpHazards(battler, opposingBattler, gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]], aiData))
         willSetHazards = TRUE;
 
     if (IsHealingMove(gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]))
