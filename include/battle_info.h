@@ -11,4 +11,10 @@
 void CB2_BattleInfo(void);
 void LoadBattleInfoAilmentGfx(void);
 
+struct VolatileIndex
+{
+    u8 name[13];
+    s32 id;
+};
+
 #endif // GUARD_BATTLE_INFO_H
