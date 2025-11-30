@@ -1237,22 +1237,20 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
         {
             txtPtr = text;
             if (gBattleMons[data->battlerId].statStages[STAT_ATK + i] == DEFAULT_STAT_STAGE){
-                txtPtr[0] = CHAR_SPACE;
-                txtPtr[1] = CHAR_SPACE;
-                txtPtr[2] = CHAR_HYPHEN;
-                txtPtr[3] = EOS;
+                txtPtr[0] = CHAR_0;
+                txtPtr[1] = EOS;
+                AddTextPrinterParameterized(windowId, FONT_SMALL, text, 221, (19 + i*15), 0, NULL); 
             } else if (gBattleMons[data->battlerId].statStages[STAT_ATK + i] >= DEFAULT_STAT_STAGE){
                 txtPtr[0] = CHAR_PLUS;
                 txtPtr[1] = CHAR_0 + (gBattleMons[data->battlerId].statStages[STAT_ATK + i] - DEFAULT_STAT_STAGE);
                 txtPtr[2] = EOS;
+                AddTextPrinterParameterized(windowId, FONT_SMALL, text, 213, (19 + i*15), 0, NULL); 
             } else {
-                txtPtr[0] = CHAR_SPACE;
-                txtPtr[1] = CHAR_HYPHEN;
-                txtPtr[2] = CHAR_6 - (gBattleMons[data->battlerId].statStages[STAT_ATK + i]);
-                txtPtr[3] = EOS;
+                txtPtr[0] = CHAR_HYPHEN;
+                txtPtr[1] = CHAR_6 - (gBattleMons[data->battlerId].statStages[STAT_ATK + i]);
+                txtPtr[2] = EOS;
+                AddTextPrinterParameterized(windowId, FONT_SMALL, text, 216, (19 + i*15), 0, NULL); 
             }
-            
-            AddTextPrinterParameterized(windowId, FONT_SMALL, text, 214, (19 + i*15), 0, NULL);   
         }
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Placeholder4, 25, 64, 0, NULL);
