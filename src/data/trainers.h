@@ -20224,25 +20224,25 @@ F_TRAINER_FEMALE |
         {
             {
 #line 7847
-            .species = SPECIES_TURTONATOR,
+            .species = SPECIES_STANTLER,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7847
-            .heldItem = ITEM_POWER_HERB,
+            .heldItem = ITEM_WHITE_HERB,
 #line 7851
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 7850
-            .ability = ABILITY_SHELL_ARMOR,
-#line 7848
-            .lvl = 33,
 #line 7849
-            .nature = NATURE_RELAXED,
+            .ability = ABILITY_INTIMIDATE,
+#line 7850
+            .lvl = 35,
+#line 7848
+            .nature = NATURE_HASTY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 7851
-                MOVE_FLAMETHROWER,
-                MOVE_DRAGON_CLAW,
-                MOVE_SOLAR_BEAM,
-                MOVE_BODY_PRESS,
+                MOVE_GIGA_IMPACT,
+                MOVE_PSYSHIELD_BASH,
+                MOVE_EARTH_POWER,
+                MOVE_SKILL_SWAP,
             },
             },
             {

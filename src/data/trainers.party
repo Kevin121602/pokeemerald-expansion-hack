@@ -7844,14 +7844,14 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Turtonator @ Power Herb
-Level: 33
-Nature: Relaxed
-Ability: Shell Armor
-- Flamethrower
-- Dragon Claw
-- Solar Beam
-- Body Press
+Stantler @ White Herb
+Nature: Hasty
+Ability: Intimidate
+Level: 35
+- Giga Impact
+- Psyshield Bash
+- Earth Power
+- Skill Swap
 
 Bewear @ Lum Berry
 Level: 33

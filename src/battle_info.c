@@ -86,6 +86,7 @@ static void Task_ShowBattleTimers(u8 taskId);
 static void Task_ShowBattlerStats(u8 taskId);
 static void PrintOnBattleInfoWindow(u8 windowId);
 static void PrintOnBattleTimersWindow(u8 windowId);
+static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId);
 static s32 CalcInfoBarValue(s32, s32, s32, s32 *, u8, u16);
 static u8 CalcBarFilledPixels(s32, s32, s32, s32 *, u8 *, u8);
 static void SwitchToTimersViewFromAiParty(u8 taskId);
@@ -405,11 +406,11 @@ static const u8 *GetHealthbarElementGfxPtr(u8 elementId)
     return gBattleInfoHpBar_Gfx[elementId];
 }
 
-static const u8 sText_AIParty[] = _("AI Party");
+//control
 static const u8 sText_B_Back[] = _("{B_BUTTON} Back");
 static const u8 sText_SwitchPages[] = _("{DPAD_LEFTRIGHT} Switch Pages");
-//static const u8 sText_Left_AIParty[] = _("{DPAD_LEFT} AI Party");
-static const u8 sText_BattleInfo[] = _("Battle Info");
+
+//battle timers
 static const u8 sText_Player[] = _("Player");
 static const u8 sText_AI[] = _("AI");
 static const u8 sText_Tailwind[] = _("Tailwind");
@@ -428,6 +429,28 @@ static const u8 sText_Sand[] = _("(Sand)");
 static const u8 sText_Snow[] = _("(Snow)");
 static const u8 sText_Hail[] = _("(Hail)");
 static const u8 sText_Zero[] = _("0");
+
+//
+static const u8 sText_Ability[] =   _("Ability");
+static const u8 sText_Item[] =      _("Item");
+static const u8 sText_Attack[] =    _("Attack");
+static const u8 sText_Defense[] =   _("Defense");
+static const u8 sText_SpAttack[] =  _("Sp. Atk");
+static const u8 sText_SpDefense[] = _("Sp. Def");
+static const u8 sText_Speed[] =     _("Speed");
+static const u8 sText_Evasion[] =   _("Evasion");
+static const u8 sText_Accuracy[] =  _("Accuracy");
+static const u8 sText_CritRate[] =  _("Crit Rate");
+static const u8 sText_Dash[] =      _("-");
+static const u8 sText_UpArrow[] =   _("{UP_ARROW}");
+static const u8 sText_None2[] =     _("None");
+static const u8 sText_X[] =         _("{BIG_MULT_X}");
+static const u8 sText_NextMon[] =   _("{A_BUTTON} Next Mon");
+
+static const u8 sText_Placeholder1[] =   _("Fatal Precision");
+static const u8 sText_Placeholder2[] =   _("Weakness Policy");
+static const u8 sText_Placeholder3[] =   _("+1");
+static const u8 sText_Placeholder4[] =   _("Prismatic Laser");
 
 static const struct BgTemplate sBgTemplates[] =
 {
@@ -987,6 +1010,7 @@ static void SwitchToStatsViewFromAiParty(u8 taskId)
     u32 i;
     struct BattleInfo *data = GetStructPtr(taskId);
     data->aiViewState = 0;
+    data->battlerId = 0;
 
     FreeMonIconPalettes();
     for (i = 0; i < PARTY_SIZE; i++)
@@ -1093,13 +1117,12 @@ static void Task_ShowBattlerStats(u8 taskId)
         //ShowBg(1);
         data->battlerStatsWindow = AddWindow(&sBattlerStatsWindowTemplate);
         PutWindowTilemap(data->battlerStatsWindow);
-        PrintOnBattleInfoWindow(data->battlerStatsWindow);
+        PrintOnBattlerStatsWindow(data->battlerStatsWindow, taskId);
         data->aiViewState++;
         break;
     // Put mon
     case 1:
         LoadMonIconPalettes();
-        data->battlerId = 0;
 
         u16 species = SPECIES_NONE;
         if (gBattleMons[data->battlerId].ability == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
@@ -1108,7 +1131,7 @@ static void Task_ShowBattlerStats(u8 taskId)
             species = gBattleMons[data->battlerId].species;  
         }
 
-        data->spriteIds.aiIconSpriteIds[data->battlerId] = CreateMonIcon(species, SpriteCallbackDummy, 26, 30, 1, 0);
+        data->spriteIds.aiIconSpriteIds[data->battlerId] = CreateMonIcon(species, SpriteCallbackDummy, 33, 35, 1, 0);
 
         data->aiViewState++;
         break;
@@ -1150,6 +1173,100 @@ static void PrintOnBattleInfoWindow(u8 windowId)
     FillWindowPixelBuffer(windowId, 0x11);
     AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_B_Back, 15, 3, 0, NULL);
     AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_SwitchPages, 148, 3, 0, NULL);
+    CopyWindowToVram(windowId, COPYWIN_FULL);
+}
+
+static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
+{
+    struct BattleInfo *data = GetStructPtr(taskId);
+    u8 *text = Alloc(0x50), *txtPtr;
+    u8 i;
+
+    FillWindowPixelBuffer(windowId, 0x11);
+    AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_B_Back, 15, 3, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_SwitchPages, 148, 3, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Ability, 51, 19, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Item, 51, 34, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_CritRate, 51, 49, 0, NULL);
+
+    u16 ability = ABILITY_NONE;
+        if (gBattleMons[data->battlerId].ability == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF && BattlerHasAi(data->battlerId)){
+            ability = GetSpeciesAbility(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_SPECIES), GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_ABILITY_NUM));
+        } else {
+            ability = AI_DecideKnownAbilityForTurn(data->battlerId);  
+        }
+    if(ability == ABILITY_NONE){
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_None2, 90, 19, 0, NULL);
+    } else {
+        txtPtr = StringCopyN(text, gAbilitiesInfo[ability].name, 15); // limit string at 15 chars, dont think its relevant
+        *txtPtr = EOS;
+        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 90, 19, 0, NULL);
+    }
+
+    u16 item = ITEM_NONE;
+        if (gBattleMons[data->battlerId].ability == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF && BattlerHasAi(data->battlerId)){
+            item = GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_HELD_ITEM);
+        } else {
+            item = gBattleMons[data->battlerId].item;  
+        }
+
+    if(item == ITEM_NONE){
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_None2, 90, 34, 0, NULL);
+    } else {
+        txtPtr = StringCopyN(text, GetItemName(item), 15); // limit string at 15 chars, dont think its relevant
+        *txtPtr = EOS;
+        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 90, 34, 0, NULL);
+    }
+
+    if (gBattleMons[data->battlerId].volatiles.dragonCheer || gBattleMons[data->battlerId].volatiles.focusEnergy || gBattleMons[data->battlerId].volatiles.laserFocus)
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_UpArrow, 99, 49, 0, NULL);
+    else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Dash, 99, 49, 0, NULL);
+
+    //214 for stat vals
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Attack, 167, 19, 0, NULL);   
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Defense, 167, 34, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Speed, 167, 49, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_SpAttack, 167, 64, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_SpDefense, 167, 79, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Accuracy, 167, 94, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Evasion, 167, 109, 0, NULL);
+
+    for (i = 0; i < NUM_BATTLE_STATS - 1; i++)
+        {
+            txtPtr = text;
+            if (gBattleMons[data->battlerId].statStages[STAT_ATK + i] == DEFAULT_STAT_STAGE){
+                txtPtr[0] = CHAR_SPACE;
+                txtPtr[1] = CHAR_SPACE;
+                txtPtr[2] = CHAR_HYPHEN;
+                txtPtr[3] = EOS;
+            } else if (gBattleMons[data->battlerId].statStages[STAT_ATK + i] >= DEFAULT_STAT_STAGE){
+                txtPtr[0] = CHAR_PLUS;
+                txtPtr[1] = CHAR_0 + (gBattleMons[data->battlerId].statStages[STAT_ATK + i] - DEFAULT_STAT_STAGE);
+                txtPtr[2] = EOS;
+            } else {
+                txtPtr[0] = CHAR_SPACE;
+                txtPtr[1] = CHAR_HYPHEN;
+                txtPtr[2] = CHAR_6 - (gBattleMons[data->battlerId].statStages[STAT_ATK + i]);
+                txtPtr[3] = EOS;
+            }
+            
+            AddTextPrinterParameterized(windowId, FONT_SMALL, text, 214, (19 + i*15), 0, NULL);   
+        }
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Placeholder4, 25, 64, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Placeholder4, 25, 79, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Placeholder4, 25, 94, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Placeholder4, 25, 109, 0, NULL);
+
+    //AddTextPrinterParameterized(windowId, FONT_SMALL, sText_X, 115, 64, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_X, 115, 79, 0, NULL);
+    //AddTextPrinterParameterized(windowId, FONT_SMALL, sText_X, 115, 94, 0, NULL);
+    //AddTextPrinterParameterized(windowId, FONT_SMALL, sText_X, 115, 109, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_NextMon, 95, 129, 0, NULL);
+
     CopyWindowToVram(windowId, COPYWIN_FULL);
 }
 
@@ -1341,6 +1458,7 @@ static void SwitchToStatsViewFromTimers(u8 taskId)
     u32 i;
     struct BattleInfo *data = GetStructPtr(taskId);
     data->aiViewState = 0;
+    data->battlerId = 0;
 
     ClearWindowTilemap(data->battleTimersWindow);
     RemoveWindow(data->battleTimersWindow);

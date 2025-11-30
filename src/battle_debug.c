@@ -997,16 +997,6 @@ static void PutAiPartyText(struct BattleDebugMenu *data)
         txtPtr = StringCopyN(text, GetHoldEffectName(aiMons[i].heldEffect), 7);
         *txtPtr = EOS;
         AddTextPrinterParameterized5(data->aiMovesWindowId, FONT_SMALL_NARROW, text, i * 41, 35 + j * 15, 0, NULL, 0, 0);
-
-        InitializeSwitchinCandidate(&gEnemyParty[gBattlerPartyIndexes[i]]);
-
-        txtPtr = ConvertIntToDecimalStringN(text, GetMonSwitchScore(gAiLogicData->switchinCandidate.battleMon, opposingBattler, data->aiBattlerId, TRUE), STR_CONV_MODE_LEFT_ALIGN, 4);
-        *txtPtr = EOS;
-        AddTextPrinterParameterized5(data->aiMovesWindowId, FONT_SMALL_NARROW, text, i * 41, 35 + (j + 1) * 15, 0, NULL, 0, 0);
-
-        //txtPtr = ConvertIntToDecimalStringN(text, aiMons[i].switchInCount, STR_CONV_MODE_LEFT_ALIGN, 3);
-        //*txtPtr = EOS;
-        //AddTextPrinterParameterized5(data->aiMovesWindowId, FONT_SMALL_NARROW, text, i * 41, 35 + (j + 2) * 15, 0, NULL, 0, 0);
     }
 
     CopyWindowToVram(data->aiMovesWindowId, COPYWIN_FULL);
