@@ -7841,17 +7841,17 @@ Class: Fisherman
 Pic: Fisherman
 Gender: Male
 Music: Hiker
-Double Battle: No
+Double Battle: Yes
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Stantler @ White Herb
-Nature: Hasty
-Ability: Intimidate
-Level: 35
-- Giga Impact
-- Psyshield Bash
-- Earth Power
-- Skill Swap
+Turtonator @ Power Herb
+Level: 33
+Nature: Relaxed
+Ability: Shell Armor
+- Flamethrower
+- Dragon Claw
+- Solar Beam
+- Body Press
 
 Bewear @ Lum Berry
 Level: 33

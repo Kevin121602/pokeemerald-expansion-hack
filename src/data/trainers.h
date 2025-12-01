@@ -20214,7 +20214,7 @@ F_TRAINER_FEMALE |
 #line 7843
             TRAINER_ENCOUNTER_MUSIC_HIKER,
 #line 7844
-        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+        .battleType = TRAINER_BATTLE_TYPE_DOUBLES,
 #line 7845
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
 #line 0
@@ -20224,25 +20224,25 @@ F_TRAINER_FEMALE |
         {
             {
 #line 7847
-            .species = SPECIES_STANTLER,
+            .species = SPECIES_TURTONATOR,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7847
-            .heldItem = ITEM_WHITE_HERB,
+            .heldItem = ITEM_POWER_HERB,
 #line 7851
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 7849
-            .ability = ABILITY_INTIMIDATE,
 #line 7850
-            .lvl = 35,
+            .ability = ABILITY_SHELL_ARMOR,
 #line 7848
-            .nature = NATURE_HASTY,
+            .lvl = 33,
+#line 7849
+            .nature = NATURE_RELAXED,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 7851
-                MOVE_GIGA_IMPACT,
-                MOVE_PSYSHIELD_BASH,
-                MOVE_EARTH_POWER,
-                MOVE_SKILL_SWAP,
+                MOVE_FLAMETHROWER,
+                MOVE_DRAGON_CLAW,
+                MOVE_SOLAR_BEAM,
+                MOVE_BODY_PRESS,
             },
             },
             {

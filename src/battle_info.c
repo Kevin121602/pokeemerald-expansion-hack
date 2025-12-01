@@ -776,11 +776,17 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 16, yOffset - 5, 0);
                 gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
 
-                if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
-                    gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
-                    gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
+                    if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                    } 
+                } else {
+                    if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                    }  
                 }
-
 
                 if (aiMons[i].isFainted)
                     ailment = AILMENT_FNT;
@@ -860,11 +866,17 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 16, yOffset - 5, 0);
                 gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
 
-                if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
-                    gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
-                    gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
+                    if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                    } 
+                } else {
+                    if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                    }  
                 }
-
 
                 if (aiMons[i].isFainted)
                     ailment = AILMENT_FNT;
@@ -941,9 +953,16 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 16, yOffset - 5, 0);
                 gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
 
-                if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
-                    gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
-                    gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
+                    if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                    } 
+                } else {
+                    if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                    }  
                 }
 
                 if (aiMons[i].isFainted)
@@ -1050,7 +1069,10 @@ static void SwitchToStatsViewFromAiParty(u8 taskId)
     u32 i;
     struct BattleInfo *data = GetStructPtr(taskId);
     data->aiViewState = 0;
-    data->battlerId = 0;
+    if(gBattleMons[0].hp == 0)
+        data->battlerId = 2;
+    else
+        data->battlerId = 0;
 
     FreeMonIconPalettes();
     for (i = 0; i < PARTY_SIZE; i++)
@@ -1226,7 +1248,7 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
     struct BattleInfo *data = GetStructPtr(taskId);
     u8 *text = Alloc(0x50), *txtPtr;
     u8 i, j, k;
-    u32 unusable = CheckMoveLimitations(data->battlerId, 0, MOVE_LIMITATIONS_ALL);
+    u32 unusable;
     u8 volatileOffset = 0;
 
     FillWindowPixelBuffer(windowId, 0x11);
@@ -1304,6 +1326,7 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
         }
 
     if (gBattleMons[data->battlerId].ability == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF && BattlerHasAi(data->battlerId)){
+        unusable = CheckMoveLimitations(data->battlerId, 0, MOVE_LIMITATIONS_ALL, TRUE);
         for (j = 0; j < MAX_MON_MOVES; j++)
         {
             if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_MOVE1 + j) == MOVE_NONE)
@@ -1312,8 +1335,12 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
             txtPtr = StringCopyN(text, GetMoveName(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_MOVE1 + j)), 15);
             *txtPtr = EOS;
             AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 25, 64 + j * 15, 0, NULL);
+
+            if (IsMoveUnusable(j, GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_MOVE1 + j), unusable))
+                AddTextPrinterParameterized(windowId, FONT_SMALL, sText_X, 15, 64 + j * 15, 0, NULL);
         }
     } else {
+        unusable = CheckMoveLimitations(data->battlerId, 0, MOVE_LIMITATIONS_ALL, FALSE);
         for (j = 0; j < MAX_MON_MOVES; j++)
         {
             if(gBattleMons[data->battlerId].moves[j] == MOVE_NONE)
@@ -1575,6 +1602,11 @@ static void SwitchStatsMon(u8 taskId)
     if (data->battlerId++ == gBattlersCount - 1)
         data->battlerId = 0;
 
+    while(gBattleMons[data->battlerId].hp == 0){
+        if (data->battlerId++ == gBattlersCount - 1)
+            data->battlerId = 0;
+    }
+
     gTasks[taskId].func = Task_ShowBattlerStats;
 }
 
@@ -1583,7 +1615,11 @@ static void SwitchToStatsViewFromTimers(u8 taskId)
     u32 i;
     struct BattleInfo *data = GetStructPtr(taskId);
     data->aiViewState = 0;
-    data->battlerId = 0;
+
+    if(gBattleMons[0].hp == 0)
+        data->battlerId = 2;
+    else
+        data->battlerId = 0;
 
     ClearWindowTilemap(data->battleTimersWindow);
     RemoveWindow(data->battleTimersWindow);

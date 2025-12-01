@@ -1575,11 +1575,13 @@ u32 TrySetCantSelectMoveBattleScript(u32 battler)
     return limitations;
 }
 
-u32 CheckMoveLimitations(u32 battler, u8 unusableMoves, u16 check)
+u32 CheckMoveLimitations(u32 battler, u8 unusableMoves, u16 check, bool8 illusion)
 {
     u32 move;
     enum BattleMoveEffects moveEffect;
     enum ItemHoldEffect holdEffect = GetBattlerHoldEffect(battler, TRUE);
+    if(illusion)
+        holdEffect = GetBattlerHoldEffectIllusion(battler);
     u16 *choicedMove = &gBattleStruct->choicedMove[battler];
     s32 i;
 
@@ -1588,6 +1590,9 @@ u32 CheckMoveLimitations(u32 battler, u8 unusableMoves, u16 check)
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
         move = gBattleMons[battler].moves[i];
+        if(illusion)
+            move =  GetMonData(gBattleStruct->illusion[battler].mon, MON_DATA_MOVE1 + i);
+
         moveEffect = GetMoveEffect(move);
         // No move
         if (check & MOVE_LIMITATION_ZEROMOVE && move == MOVE_NONE)
@@ -1647,7 +1652,7 @@ u32 CheckMoveLimitations(u32 battler, u8 unusableMoves, u16 check)
 #define ALL_MOVES_MASK ((1 << MAX_MON_MOVES) - 1)
 bool32 AreAllMovesUnusable(u32 battler)
 {
-    u32 unusable = CheckMoveLimitations(battler, 0, MOVE_LIMITATIONS_ALL);
+    u32 unusable = CheckMoveLimitations(battler, 0, MOVE_LIMITATIONS_ALL, FALSE);
 
     if (unusable == ALL_MOVES_MASK) // All moves are unusable.
     {
@@ -7443,7 +7448,7 @@ u8 GetAttackerObedienceForAction()
     calc = (levelReferenced + obedienceLevel) * ((rnd >> 8) & 255) >> 8;
     if (calc < obedienceLevel)
     {
-        calc = CheckMoveLimitations(gBattlerAttacker, 1u << gCurrMovePos, MOVE_LIMITATIONS_ALL);
+        calc = CheckMoveLimitations(gBattlerAttacker, 1u << gCurrMovePos, MOVE_LIMITATIONS_ALL, FALSE);
         if (calc == ALL_MOVES_MASK) // all moves cannot be used
             return DISOBEYS_LOAFS;
         else // use a random move
@@ -7503,6 +7508,16 @@ enum ItemHoldEffect GetBattlerHoldEffectInternal(u32 battler, bool32 checkNegati
         return gEnigmaBerries[battler].holdEffect;
     else
         return GetItemHoldEffect(gBattleMons[battler].item);
+}
+
+enum ItemHoldEffect GetBattlerHoldEffectIllusion(u32 battler)
+{
+    if (gBattleMons[battler].volatiles.embargo)
+        return HOLD_EFFECT_NONE;
+    if (gFieldStatuses & STATUS_FIELD_MAGIC_ROOM)
+        return HOLD_EFFECT_NONE;
+
+    return GetItemHoldEffect(GetMonData(gBattleStruct->illusion[battler].mon, MON_DATA_HELD_ITEM));
 }
 
 static u32 GetBattlerItemHoldEffectParam(u32 battler, u32 item)
