@@ -855,14 +855,14 @@ static const u8 sPartyMenuAction_EnterSummaryCancel[] = {MENU_ENTER, MENU_SUMMAR
 static const u8 sPartyMenuAction_NoEntrySummaryCancel[] = {MENU_NO_ENTRY, MENU_SUMMARY, MENU_CANCEL1};
 static const u8 sPartyMenuAction_StoreSummaryCancel[] = {MENU_STORE, MENU_SUMMARY, MENU_CANCEL1};
 static const u8 sPartyMenuAction_GiveTakeItemCancel[] = {MENU_GIVE, MENU_TAKE_ITEM, MENU_MOVE_ITEM, MENU_CANCEL2};
-static const u8 sPartyMenuAction_ReadTakeMailCancel[] = {MENU_READ, MENU_TAKE_MAIL, MENU_CANCEL2};
+static const u8 sPartyMenuAction_ReadTakeMailCancel[] = {MENU_READ, MENU_TAKE_MAIL, MENU_CANCEL1};
 static const u8 sPartyMenuAction_RegisterSummaryCancel[] = {MENU_REGISTER, MENU_SUMMARY, MENU_CANCEL1};
 static const u8 sPartyMenuAction_TradeSummaryCancel1[] = {MENU_TRADE1, MENU_SUMMARY, MENU_CANCEL1};
 static const u8 sPartyMenuAction_TradeSummaryCancel2[] = {MENU_TRADE2, MENU_SUMMARY, MENU_CANCEL1};
 static const u8 sPartyMenuAction_TakeItemTossCancel[] = {MENU_TAKE_ITEM, MENU_TOSS, MENU_CANCEL1};
 static const u8 sPartyMenuAction_RotomCatalog[] = {MENU_CATALOG_BULB, MENU_CATALOG_OVEN, MENU_CATALOG_WASHING, MENU_CATALOG_FRIDGE, MENU_CATALOG_FAN, MENU_CATALOG_MOWER, MENU_CANCEL1};
 static const u8 sPartyMenuAction_ZygardeCube[] = {MENU_CHANGE_FORM, MENU_CHANGE_ABILITY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_InflictStatus[] = {MENU_HP, MENU_EXP, MENU_BURN, MENU_FROSTBITE, MENU_PARALYZE, MENU_POISON, MENU_SLEEP, MENU_CANCEL1};
+static const u8 sPartyMenuAction_InflictStatus[] = {MENU_HP, MENU_EXP, MENU_BURN, MENU_FROSTBITE, MENU_PARALYZE, MENU_POISON, MENU_SLEEP, MENU_CANCEL2};
 static const u8 sPartyMenuAction_GourdSplicer[] = {MENU_SPLICER_SMALL, MENU_SPLICER_AVERAGE, MENU_SPLICER_LARGE, MENU_SPLICER_SUPER, MENU_CANCEL1};
 static const u8 sPartyMenuAction_RainbowNectar[] = {MENU_NECTAR_BAILE, MENU_NECTAR_POM_POM, MENU_NECTAR_PAU, MENU_NECTAR_SENSU, MENU_CANCEL1};
 
