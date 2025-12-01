@@ -97,7 +97,7 @@ script LittlerootTown_ProfessorBirchsLab_EventScript_GameInfo{
 					"Once you complete a puzzle, you will be\n"
 					"able to take the reward at any time.\p"
 					"However, if you do not complete a puzzle\n"
-					"by the time the next one is unlocked,\l"
+					"by the time you have the next Gym Badge,\l"
 					"you will not be able to attempt it.\p"
 					"Would you like to know about anything\n"
 					"else?$", MSGBOX_YESNO)
@@ -114,9 +114,6 @@ script LittlerootTown_ProfessorBirchsLab_EventScript_GameInfo{
 					"for each Gym Badge you obtain.\p"
 					"They can be spent using the L menu on\n"
 					"various consumable items.\p"
-					"Defeating certain Gym Leaders will\n"
-					"increase the amount of items you can\l"
-					"buy with Bottle Caps.\p"
 					"Would you like to know about anything\n"
 					"else?$", MSGBOX_YESNO)
 					if(var(VAR_RESULT) == NO){
