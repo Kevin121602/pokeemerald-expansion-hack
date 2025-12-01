@@ -104,9 +104,9 @@ Nature: Timid
 Ability: Plus
 Level: 29
 - Thunderbolt
+- Charge Beam
 - Alluring Voice
 - Grass Knot
-- Charge Beam
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_1 ===
 Name: GRUNT
@@ -821,10 +821,10 @@ Shedinja @ Focus Sash
 Level: 23
 Nature: Adamant
 Ability: Wonder Guard
-- Bug Bite
 - Shadow Claw
-- Will O Wisp
+- Bug Bite
 - Confuse Ray
+- Will O Wisp
 
 Lucario @ Muscle Band
 Level: 21
@@ -1059,8 +1059,8 @@ Nature: Bold
 Ability: Natural Cure
 - Hyper Voice
 - Counter
-- Toxic
 - Soft-Boiled
+- Toxic
 
 === TRAINER_DUSTY_3 ===
 Name: DUSTY
@@ -2670,8 +2670,8 @@ Rhydon @ Lum Berry
 Nature: Jolly
 Ability: Lightning Rod
 Level: 30
-- Rock Slide
 - Drill Run
+- Rock Slide
 - Counter
 - Stealth Rock
 
@@ -2679,7 +2679,7 @@ Seviper @ Wise Glasses
 Nature: Timid
 Ability: Infiltrator
 Level: 30
-- Venoshock
+- Sludge Bomb
 - Flamethrower
 - Giga Drain
 - Glare
@@ -3702,28 +3702,28 @@ Nature: Jolly
 Ability: Anger Shell
 Level: 20
 - Rock Tomb
-- Bulldoze
 - Body Slam
+- Bulldoze
 - Sleep Talk
 
 Sableye @ Leftovers
 Nature: Sassy
 Ability: Prankster
 Level: 21
-- Brick Break
 - Hex
-- Will O Wisp
+- Brick Break
 - Protect
+- Will-O-Wisp
 
 Ferroseed @ Occa Berry
 Nature: Sassy
 Ability: Iron Barbs
 IVs: 0 Spe
 Level: 22
-- Gyro Ball
 - Seed Bomb
-- Toxic
+- Gyro Ball
 - Leech Seed
+- Toxic
 
 === TRAINER_NOB_1 ===
 Name: Nob
@@ -3738,18 +3738,18 @@ Geodude-Alola @ Shuca Berry
 Nature: Adamant
 Ability: Galvanize
 Level: 20
-- Rock Slide
+- Self-Destruct
 - Body Slam
+- Rock Slide
 - Stomping Tantrum
-- Self Destruct
 
 Spidops @ Fighting Gem
 Nature: Jolly
 Ability: Stakeout
 Level: 19
 - Bug Bite
-- Circle Throw
 - Headbutt
+- Circle Throw
 - Silk Trap
 
 Honedge @ Eviolite
@@ -3766,8 +3766,8 @@ Nature: Careful
 Ability: Steadfast
 Level: 20
 - Low Sweep
-- Rock Tomb
 - Bulldoze
+- Rock Tomb
 - Bullet Punch
 
 === TRAINER_NOB_2 ===
@@ -4151,8 +4151,8 @@ Nature: Adamant
 Ability: Sand Rush
 Level: 32
 - Drill Run
-- Rock Slide
 - Pin Missile
+- Rock Slide
 - Agility
 
 === TRAINER_JEFF ===
@@ -4188,8 +4188,8 @@ Ability: Wind Rider
 Level: 34
 - Seed Bomb
 - Knock Off
-- Swagger
 - Power Swap
+- Swagger
 
 Houndoom @ Charcoal
 Nature: Hasty
@@ -4250,9 +4250,9 @@ Nature: Careful
 Ability: Steam Engine
 Level: 32
 - Rock Slide
+- Fire Spin
 - Heat Crash
 - High Horsepower
-- Fire Spin
 
 === TRAINER_JACE ===
 Name: Jace
@@ -4312,8 +4312,8 @@ Toucannon @ Sharp Beak
 Nature: Naive
 Ability: Sheer Force
 Level: 32
-- Beak Blast
 - Return
+- Beak Blast
 - Heat Wave
 - Steel Wing
 
@@ -4386,8 +4386,8 @@ Ability: Steam Engine
 Level: 24
 - Heat Wave
 - Ancient Power
-- Scald
 - Fire Spin
+- Scald
 
 === TRAINER_BERNIE_2 ===
 Name: BERNIE
@@ -4686,7 +4686,7 @@ Level: 30
 - Heat Wave
 - Roost
 
-Gligar @ Yache Berry
+Gligar @ Eviolite
 Nature: Jolly
 Ability: Hyper Cutter
 Level: 30
@@ -4695,7 +4695,7 @@ Level: 30
 - Quick Attack
 - Hone Claws
 
-Pidgeot @ Wacan Berry
+Pidgeot @ Yache Berry
 Nature: Naive
 Ability: Keen Eye
 IVs: 30 HP / 30 Atk / 31 Def / 30 SpA / 30 SpD / 30 Spe
@@ -6825,17 +6825,17 @@ Morgrem @ Fairy Feather
 Nature: Jolly
 Ability: Prankster
 Level: 20
-- Fake Out
 - Bite
 - Covet
+- Fake Out
 - Scary Face
 
 Frogadier @ Wise Glasses
 Nature: Timid
 Ability: Protean
 Level: 19
-- Water Pulse
 - Round
+- Water Pulse
 - Icy Wind
 
 Hattrem @ Berry Juice
@@ -6843,8 +6843,8 @@ Nature: Bold
 Ability: Magic Bounce
 Level: 21
 - Psybeam
-- Draining Kiss
 - Mystical Fire
+- Draining Kiss
 - Nuzzle
 
 Farfetch'd @ Leek
@@ -6955,8 +6955,8 @@ Nature: Bold
 Ability: Cotton Down
 Level: 30
 - Leaf Tornado
-- Pollen Puff
 - Hyper Voice
+- Pollen Puff
 - Sing
 
 Perrserker @ Lum Berry
@@ -6981,8 +6981,8 @@ Raticate-Alola @ Chople Berry
 Nature: Jolly
 Ability: Thick Fat
 Level: 30
-- Hyper Fang
 - Crunch
+- Hyper Fang
 - Quick Attack
 - Super Fang
 
@@ -7490,8 +7490,8 @@ Ability: Reckless
 Level: 32
 - Volt Tackle
 - Flamethrower
-- Low Kick
 - Pursuit
+- Low Kick
 
 Barbaracle @ Muscle Band
 Nature: Jolly
@@ -7506,8 +7506,8 @@ Flamigo @ Choice Scarf
 Nature: Adamant
 Ability: Scrappy
 Level: 31
-- Flying Press
 - Close Combat
+- Flying Press
 
 Salazzle @ Black Sludge
 Nature: Timid
@@ -7522,8 +7522,8 @@ Cacturne @ Focus Sash
 Nature: Brave
 Ability: Sand Veil
 Level: 33
-- Payback
 - Horn Leech
+- Payback
 - Drain Punch
 - Leech Seed
 
@@ -7709,8 +7709,8 @@ Nature: Sassy
 Ability: Sticky Hold
 Level: 24
 - Sludge
-- Giga Drain
 - Fire Punch
+- Giga Drain
 - Block
 
 Octillery @ Loaded Dice
@@ -7727,8 +7727,8 @@ Nature: Naive
 Ability: Sniper
 Level: 24
 - Octazooka
-- Signal Beam
 - Take Down
+- Signal Beam
 - Focus Energy
 
 === TRAINER_ELLIOT_1 ===
@@ -7803,8 +7803,8 @@ Qwilfish @ Focus Sash
 Nature: Jolly
 Ability: Intimidate
 Level: 24
-- Waterfall
 - Poison Jab
+- Waterfall
 - Flail
 - Toxic Spikes
 
@@ -7830,9 +7830,9 @@ Croconaw @ Never-Melt Ice
 Nature: Jolly
 Ability: Sheer Force
 Level: 25
-- Bite
-- Ice Fang
 - Aqua Jet
+- Ice Fang
+- Bite
 - Roar
 
 === TRAINER_BARNY ===
@@ -8620,8 +8620,8 @@ Pupitar @ Choice Band
 Nature: Jolly
 Ability: Shed Skin
 Level: 21
-- Stomping Tantrum
 - Rock Slide
+- Stomping Tantrum
 - Pursuit
 
 Shelgon @ Leftovers
@@ -9461,9 +9461,9 @@ Nature: Naive
 Ability: Damp
 Level: 27
 - Aqua Tail
+- Aqua Jet
 - Zen Headbutt
 - Signal Beam
-- Aqua Jet
 
 Tangela @ Leftovers
 Nature: Timid
@@ -9481,8 +9481,8 @@ Ability: Magma Armor
 Level: 27
 - Lava Plume
 - Scorching Sands
-- Rock Slide
 - Self-Destruct
+- Rock Slide
 
 === TRAINER_CLARISSA ===
 Name: CLARISSA
@@ -10106,8 +10106,8 @@ Nature: Jolly
 Ability: Skill Link
 Level: 29
 - Tail Slap
-- Triple Axel
 - Rock Blast
+- Triple Axel
 - Endure
 
 Clefable @ Life Orb
@@ -10141,8 +10141,8 @@ Shiinotic @ Kebia Berry
 Nature: Bold
 Ability: Effect Spore
 Level: 23
-- Giga Drain
 - Dazzling Gleam
+- Giga Drain
 - Dream Eater
 - Spore
 
@@ -10792,8 +10792,8 @@ Ability: Magnet Pull
 Level: 32
 - Wild Charge
 - Rock Slide
-- Fire Punch
 - Self-Destruct
+- Fire Punch
 
 === TRAINER_ANNIKA ===
 Name: ANNIKA
@@ -10997,8 +10997,8 @@ Taillow @ Flame Orb
 Nature: Jolly
 Ability: Guts
 Level: 19
-- Facade
 - Dual Wingbeat
+- Facade
 - Steel Wing
 - Protect
 
@@ -11015,8 +11015,8 @@ Roselia @ Poison Barb
 Nature: Timid
 Ability: Poison Point
 Level: 20
-- Magical Leaf
 - Venoshock
+- Magical Leaf
 - Extrasensory
 - Synthesis
 
@@ -12166,8 +12166,8 @@ Nature: Brave
 Ability: Electric Surge
 Level: 31
 - Zing Zap
-- Scald
 - Poison Jab
+- Scald
 - Recover
 
 Electrode @ Leftovers
@@ -12974,10 +12974,10 @@ Veluza @ Muscle Band
 Nature: Jolly
 Ability: Sharpness
 Level: 32
-- Psyblade
 - Liquidation
-- Night Slash
+- Psyblade
 - Aqua Jet
+- Night Slash
 
 Banette @ Power Herb
 Nature: Jolly
@@ -13450,8 +13450,8 @@ Ability: Overcoat
 Level: 22
 - Bug Bite
 - Bulldoze
-- Rock Blast
 - Infestation
+- Rock Blast
 
 Hakamo-o @ Eviolite
 Nature: Jolly
@@ -13495,8 +13495,8 @@ Nature: Careful
 Ability: Solid Rock
 Level: 22
 - Rock Slide
-- Stomping Tantrum
 - Body Press
+- Stomping Tantrum
 - Iron Defense
 
 Marshtomp @ Rindo Berry
@@ -13588,9 +13588,9 @@ Nature: Brave
 Ability: Mold Breaker
 Level: 30
 - Storm Throw
-- Payback
 - Zen Headbutt
 - Rock Slide
+- Payback
 
 Dugtrio-Alola @ Dark Gem
 Nature: Jolly
@@ -14769,8 +14769,8 @@ Nature: Hasty
 Ability: Intimidate
 Level: 26
 - Headbutt
-- Psyshield Bash
 - Earth Power
+- Psyshield Bash
 - Skill Swap
 
 Primeape @ Adrenaline Orb
@@ -14796,8 +14796,8 @@ Nature: Timid
 Ability: Competitive
 Level: 26
 - Psyshock
-- Shadow Ball
 - Thunderbolt
+- Shadow Ball
 - Fake Out
 
 === TRAINER_KIM_AND_IRIS ===
@@ -14917,17 +14917,17 @@ Mienfoo @ Muscle Band
 Nature: Jolly
 Ability: Inner Focus
 Level: 22
-- Fake Out
 - Force Palm
 - Rock Tomb
+- Fake Out
 - Detect
 
 Vivillon @ Leftovers
 Nature: Timid
 Ability: Friend Guard
 Level: 21
-- Struggle Bug
 - Air Cutter
+- Struggle Bug
 - Electroweb
 - Protect
 
@@ -14937,8 +14937,8 @@ Ability: Water Compaction
 Level: 22
 - Scorching Sands
 - Hex
-- Ancient Power
 - Giga Drain
+- Ancient Power
 
 === TRAINER_JOHN_AND_JAY_2 ===
 Name: JOHN & JAY
@@ -15506,8 +15506,8 @@ Nature: Adamant
 Ability: Quick Feet
 Level: 25
 - Facade
-- Stomping Tantrum
 - Seed Bomb
+- Stomping Tantrum
 - Fling
 
 === TRAINER_COBY ===
@@ -15625,8 +15625,8 @@ Ability: Water Absorb
 Level: 27
 - Poison Jab
 - Stomping Tantrum
-- Toxic
 - Recover
+- Toxic
 
 Spinda @ Chople Berry
 Nature: Naive
@@ -15660,16 +15660,16 @@ Nature: Jolly
 Ability: Own Tempo
 Level: 22
 - Play Rough
-- Rock Smash
 - Rock Slide
+- Rock Smash
 - Swords Dance
 
 Vibrava @ Yache Berry
 Nature: Jolly
 Ability: Levitate
 Level: 23
-- Stomping Tantrum
 - Dragon Rush
+- Stomping Tantrum
 - U-Turn
 - Supersonic
 
@@ -15695,8 +15695,8 @@ Pelipper @ Lum Berry
 Nature: Timid
 Ability: Drizzle
 Level: 23
-- Chilling Water
 - Air Cutter
+- Chilling Water
 - Icy Wind
 - Roost
 
@@ -16257,8 +16257,8 @@ Quilava @ Charcoal
 Nature: Naive
 Ability: Blaze
 Level: 28
-- Fire Pledge
 - Heat Wave
+- Fire Pledge
 - Extrasensory
 - Quick Attack
 
@@ -16324,19 +16324,19 @@ Level: 21
 
 Furret @ Leftovers
 Nature: Jolly
-Ability: Adaptability
+Ability: Run Away
 Level: 20
 - Headbutt
-- Ice Punch
 - Quick Attack
+- Seed Bomb
 - Charm
 
 Combusken @ Charcoal
 Nature: Naive
 Ability: Speed Boost
 Level: 21
-- Incinerate
 - Low Sweep
+- Incinerate
 - Thunder Punch
 - Seismic Toss
 
@@ -16373,8 +16373,8 @@ Ability: Levitate
 Level: 21
 - Hex
 - Venoshock
-- Hypnosis
 - Dream Eater
+- Hypnosis
 
 === TRAINER_ALIX ===
 Name: Alix
@@ -16398,8 +16398,8 @@ Drifloon @ Flame Orb
 Nature: Timid
 Ability: Flare Boost
 Level: 21
-- Ominous Wind
 - Air Cutter
+- Ominous Wind
 - Charge Beam
 - Destiny Bond
 
@@ -16425,8 +16425,8 @@ Pawmo @ Black Belt
 Nature: Jolly
 Ability: Iron Fist
 Level: 21
-- Thunder Punch
 - Brick Break
+- Thunder Punch
 - Play Rough
 - Super Fang
 
@@ -16446,7 +16446,7 @@ Level: 20
 - Temper Flare
 - Thunder Punch
 - Ancient Power
-- Will O Wisp
+- Will-O-Wisp
 
 === TRAINER_MARLENE ===
 Name: Marlene
