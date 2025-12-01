@@ -259,9 +259,9 @@ Yanma @ Hard Stone
 Level: 13
 Nature: Modest
 Ability: Speed Boost
-- Mega Drain
 - Air Cutter
 - Ancient Power
+- Mega Drain
 - Detect
 
 Poipole @ Lum Berry
@@ -365,37 +365,37 @@ Crabrawler @ Focus Sash
 Level: 16
 Nature: Jolly
 Ability: Hyper Cutter
--Power-Up Punch
--Reversal
--Brutal Swing
--Dizzy Punch
+- Power-Up Punch
+- Reversal
+- Dizzy Punch
+- Brutal Swing
 
 Quilladin @ Leftovers
 Level: 16
 Nature: Jolly
 Ability: Overgrow
--Bullet Seed
--Brick Break
--Rock Tomb
--Synthesis
+- Bullet Seed
+- Brick Break
+- Rock Tomb
+- Synthesis
 
 Stunfisk-Galar @ Lum Berry
 Level: 15
 Nature: Careful
 Ability: Filter
--Bulldoze
--Metal Claw
--Rock Tomb
--Thunder Wave
+- Bulldoze
+- Metal Claw
+- Rock Tomb
+- Thunder Wave
 
 Phione @ Power Herb
 Level: 17
 Nature: Jolly
 Ability: Hydration
--Dive
--Zen Headbutt
--U-Turn
--Heal Bell
+- Dive
+- Zen Headbutt
+- U-Turn
+- Heal Bell
 
 
 === TRAINER_GRUNT_WEATHER_INST_1 ===
@@ -2446,28 +2446,28 @@ Luvdisc @ Damp Rock
 Level: 12
 Nature: Modest
 Ability: Swift Swim
--Scald
--Icy Wind
--Attract
--Rain Dance
+- Scald
+- Icy Wind
+- Attract
+- Rain Dance
 
 Lotad @ Leftovers
 Level: 12
 Nature: Bold
 Ability: Rain Dish
--Mega Drain
--Bubble Beam
--Teeter Dance
--Protect
+- Bubble Beam
+- Mega Drain
+- Teeter Dance
+- Protect
 
 Mantyke @ Lum Berry
 Level: 12
 Nature: Modest
 Ability: Swift Swim
--Water Pulse
--Air Cutter
--Confuse Ray
--Rain Dance
+- Water Pulse
+- Air Cutter
+- Confuse Ray
+- Rain Dance
 
 === TRAINER_DAPHNE ===
 Name: DAPHNE
@@ -2960,27 +2960,27 @@ Vulpix @ Eviolite
 Level: 13
 Nature: Timid
 Ability: Drought
--Incinerate
--Extrasensory
--Hex
--Confuse Ray
+- Incinerate
+- Extrasensory
+- Hex
+- Confuse Ray
 
 Sunkern @ Life Orb
 Level: 13
 Nature: Timid
 Ability: Chlorophyll
--Solar Beam
--Weather Ball
--Earth Power
--Growth
+- Solar Beam
+- Weather Ball
+- Earth Power
+- Growth
 
 Cubone @ Thick Club
 Level: 13
 Nature: Adamant
 Ability: Battle Armor
--Bone Club
--Headbutt
--Rock Tomb
+- Bone Club
+- Headbutt
+- Rock Tomb
 
 === TRAINER_MOLLIE ===
 Name: MOLLIE
@@ -4843,10 +4843,10 @@ Beautifly @ Lum Berry
 Level: 14
 Nature: Timid
 Ability: Swarm
--Silver Wind
--Air Cutter
--Mega Drain
--Morning Sun
+- Silver Wind
+- Air Cutter
+- Mega Drain
+- Morning Sun
 
 Dustox @ Black Sludge
 Level: 14
@@ -5725,55 +5725,55 @@ Tyrunt @ Expert Belt
 Level: 18
 Nature: Jolly
 Ability: Sturdy
--Rock Slide
--Dragon Tail
--Brick Break
--Aerial Ace
+- Rock Slide
+- Dragon Tail
+- Brick Break
+- Aerial Ace
 
 Minior @ Liechi Berry
 Level: 17
 Nature: Jolly
 Ability: Shields Down
--Rock Tomb
--Acrobatics
--Bulldoze
+- Rock Tomb
+- Acrobatics
+- Bulldoze
 
 Magcargo @ Passho Berry
 Level: 18
 Nature: Calm
 Ability: Flame Body
 IVs: 31 HP / 30 Atk / 31 Def / 30 SpA / 31 SpD / 31 Spe
--Ancient Power
--Incinerate
--Hidden Power
--Recover
+- Ancient Power
+- Incinerate
+- Hidden Power
+- Recover
 
 Diggersby @ Lum Berry
 Level: 17
 Nature: Jolly
 Ability: Huge Power
--Bulldoze
--Quick Attack
--Fire Punch
--Smack Down
+- Bulldoze
+- Quick Attack
+- Fire Punch
+- Smack Down
 
 Grotle @ Sitrus Berry
 Level: 19
 Nature: Careful
 Ability: Overgrow
--Seed Bomb
--Bulldoze
--Crunch
--Curse
+- Seed Bomb
+- Crunch
+- Bulldoze
+- Curse
 
 Meltan @ Eviolite
 Level: 19
 Nature: Sassy
 Ability: Magnet Pull
--Flash Cannon
--Thunderbolt
--Facade
--Thunder Wave
+- Flash Cannon
+- Thunderbolt
+- Facade
+- Thunder Wave
 
 === TRAINER_BRAWLY_1 ===
 Name: BRAWLY
@@ -6090,19 +6090,19 @@ Elekid @ Berry Juice
 Level: 14
 Nature: Jolly
 Ability: Static
--Thunder Punch
--Brick Break
--Thunder Wave
--Helping Hand
+- Thunder Punch
+- Brick Break
+- Helping Hand
+- Thunder Wave
 
 Magby @ Eviolite
 Level: 15
 Nature: Naive
 Ability: Flame Body
--Flame Burst
--Dual Chop
--Confuse Ray
--Follow Me
+- Flame Burst
+- Dual Chop
+- Confuse Ray
+- Follow Me
 
 === TRAINER_TED ===
 Name: Ted
@@ -6117,28 +6117,28 @@ Pachirisu @ Liechi Berry
 Level: 17
 Nature: Jolly
 Ability: Volt Absorb
--Thunder Punch
--Seed Bomb
--Aerial Ace
--Stuff Cheeks
+- Thunder Punch
+- Seed Bomb
+- Aerial Ace
+- Stuff Cheeks
 
 Bibarel @ Lum Berry
 Level: 16
 Nature: Jolly
 Ability: Simple
--Aqua Step
--Headbutt
--Aqua Jet
--Super Fang
+- Aqua Step
+- Headbutt
+- Aqua Jet
+- Super Fang
 
 Larvesta @ Expert Belt
 Level: 17
 Nature: Jolly
 Ability: Flame Body
--Fire Lash
--Pounce
--Skitter Smack
--Wild Charge
+- Fire Lash
+- Skitter Smack
+- Pounce
+- Wild Charge
 
 === TRAINER_PAUL ===
 Name: Paul
@@ -6153,37 +6153,37 @@ Ledian @ Lum Berry
 Level: 16
 Nature: Timid
 Ability: Rattled
--Signal Beam
--Aeroblast
--Light Screen
--Reflect
+- Aeroblast
+- Signal Beam
+- Light Screen
+- Reflect
 
 Sunflora @ Berry Juice
 Level: 16
 Nature: Timid
 Ability: Chlorophyll
--Giga Drain
--Sludge Bomb
--Leech Seed
--Spiky Shield
+- Giga Drain
+- Sludge Bomb
+- Leech Seed
+- Spiky Shield
 
 Ariados @ Black Sludge
 Level: 16
 Nature: Jolly
 Ability: Insomnia
--Bug Bite
--Poison Fang
--Baneful Bunker
--Night Shade
+- Bug Bite
+- Poison Fang
+- Night Shade
+- Baneful Bunker
 
 Unown @ Wise Glasses
 Level: 16
 Nature: Timid
 Ability: Levitate
 IVs: 31 HP / 31 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
--Psyshock
--Shadow Ball
--Hidden Power
+- Psyshock
+- Shadow Ball
+- Hidden Power
 
 === TRAINER_JERRY_2 ===
 Name: JERRY
@@ -6270,27 +6270,27 @@ Cleffa @ Life Orb
 Level: 15
 Nature: Timid
 Ability: Magic Guard
--Psybeam
--Draining Kiss
--Water Pulse
--Sing
+- Draining Kiss
+- Psybeam
+- Water Pulse
+- Sing
 
 Gible @ Rocky Helmet
 Level: 14
 Nature: Naive
 Ability: Rough Skin
--Bulldoze
--Dragon Breath
--Bite
+- Bulldoze
+- Dragon Breath
+- Bite
 
 Amaura @ Never-Melt Ice
 Level: 15
 Nature: Timid
 Ability: Refrigerate
--Round
--Ancient Power
--Mud Shot
--Thunder Wave
+- Round
+- Ancient Power
+- Mud Shot
+- Thunder Wave
 
 === TRAINER_GEORGIA ===
 Name: Georgia
@@ -6305,28 +6305,28 @@ Mankey @ Focus Sash
 Level: 16
 Nature: Jolly
 Ability: Defiant
--Karate Chop
--Reversal
--Rock Tomb
--Rage Fist
+- Karate Chop
+- Reversal
+- Rock Tomb
+- Rage Fist
 
 Deino @ Fighting Gem
 Level: 16
 Nature: Hasty
 Ability: Hustle
--Feint Attack
--Dragon Breath
--Rock Smash
--Headbutt
+- Feint Attack
+- Dragon Breath
+- Headbutt
+- Rock Smash
 
 Numel @ Passho Berry
 Level: 17
 Nature: Naive
 Ability: Simple
--Fiery Dance
--Flame Charge
--Bulldoze
--Ancient Power
+- Fiery Dance
+- Bulldoze
+- Flame Charge
+- Ancient Power
 
 === TRAINER_KAREN_2 ===
 Name: KAREN
@@ -7067,28 +7067,28 @@ Surskit @ Silver Powder
 Level: 14
 Nature: Timid
 Ability: Swift Swim
--Bubble Beam
--Struggle Bug
--Icy Wind
--Sticky Web
+- Bubble Beam
+- Struggle Bug
+- Icy Wind
+- Sticky Web
 
 Shroomish @ Loaded Dice
 Level: 14
 Nature: Jolly
 Ability: Quick Feet
--Bullet Seed
--Drain Punch
--Headbutt
--Spore
+- Bullet Seed
+- Drain Punch
+- Headbutt
+- Spore
 
 Aron @ Lum Berry
 Level: 15
 Nature: Jolly
 Ability: Sturdy
--Iron Head
--Rock Tomb
--Aerial Ace
--Bulldoze
+- Iron Head
+- Rock Tomb
+- Aerial Ace
+- Bulldoze
 
 === TRAINER_BILLY ===
 Name: Billy
@@ -7103,26 +7103,26 @@ Goldeen @ Focus Sash
 Level: 11
 Nature: Jolly
 Ability: Lightning Rod
--Waterfall
--Poison Jab
--Flail
+- Waterfall
+- Poison Jab
+- Flail
 
 Grubbin @ Ground Gem
 Level: 11
 Nature: Lonely
 Ability: Swarm
--Bug Bite
--Spark
--Mud Shot
+- Bug Bite
+- Spark
+- Mud Shot
 
 Shinx @ Berry Juice
 Level: 12
 Nature: Jolly
 Ability: Intimidate
--Spark
--Bite
--Double Kick
--Howl
+- Spark
+- Bite
+- Double Kick
+- Howl
 
 === TRAINER_JOSH ===
 Name: Josh
@@ -7137,35 +7137,35 @@ Parasect @ Coba Berry
 Level: 16
 Nature: Sassy
 Ability: Effect Spore
--Bug Bite
--Giga Drain
--Slash
--Rototiller
+- Giga Drain
+- Bug Bite
+- Slash
+- Rototiller
 
 Corsola @ Mystic Water
 Level: 17
 Nature: Calm
 Ability: Regenerator
--Brine
--Ancient Power
--Aurora Beam
--Recover
+- Brine
+- Ancient Power
+- Aurora Beam
+- Recover
 
 Diglett @ Soft Sand
 Level: 17
 Nature: Jolly
 Ability: Arena Trap
--Stomping Tantrum
--Rock Tomb
+- Stomping Tantrum
+- Rock Tomb
 
 Corvisquire @ Steel Gem
 Level: 17
 Nature: Jolly
 Ability: Unnerve
--Pluck
--Steel Wing
--Power Trip
--Roost
+- Pluck
+- Steel Wing
+- Power Trip
+- Roost
 
 === TRAINER_TOMMY ===
 Name: Tommy
@@ -7180,37 +7180,37 @@ Hippopotas @ Leftovers
 Level: 16
 Nature: Careful
 Ability: Sand Stream
--Bulldoze
--Rock Tomb
--Fire Fang
--Slack Off
+- Bulldoze
+- Fire Fang
+- Rock Tomb
+- Slack Off
 
 Solosis @ Custap Berry
 Level: 18
 Nature: Modest
 Ability: Magic Guard
--Psybeam
--Night Shade
--Endure
--Endeavor
+- Psybeam
+- Night Shade
+- Endeavor
+- Endure
 
 Shellos @ Berry Juice
 Level: 17
 Nature: Bold
 Ability: Sand Force
--Water Pulse
--Mud Bomb
--Icy Wind
--Recover
+- Water Pulse
+- Mud Bomb
+- Icy Wind
+- Recover
 
 Cacnea @ Eviolite
 Level: 17
 Nature: Hardy
 Ability: Sand Rush
--Magical Leaf
--Aerial Ace
--Drain Punch
--Leech Seed
+- Magical Leaf
+- Drain Punch
+- Aerial Ace
+- Leech Seed
 
 === TRAINER_CALVIN_1 ===
 Name: Calvin
@@ -7225,23 +7225,23 @@ Bidoof @ Berry Juice
 Level: 10
 Nature: Adamant
 Ability: Simple
--Defense Curl
--Rollout
+- Rollout
+- Defense Curl
 
 Rattata @ Focus Sash
 Level: 10
 Nature: Adamant
 Ability: Guts
--Endeavor
--Quick Attack
+- Quick Attack
+- Endeavor
 
 Rattata Alola @ Salac Berry
 Level: 10
 Nature: Adamant
 Ability: Gluttony
--Headbutt
--Bite
--Pursuit
+- Headbutt
+- Bite
+- Pursuit
 
 === TRAINER_BEN ===
 Name: BEN
@@ -7540,27 +7540,27 @@ Starly @ Berry Juice
 Level: 10
 Nature: Adamant
 Ability: Keen Eye
--Aerial Ace
--Take Down
--Quick Attack
+- Take Down
+- Aerial Ace
+- Quick Attack
 
 Hoppip @ Power Herb
 Level: 11
 Nature: Hasty
 Ability: Infiltrator
--Mega Drain
--Bounce
--Leech Seed
--Synthesis
+- Bounce
+- Mega Drain
+- Leech Seed
+- Synthesis
 
 Torchic @ Fighting Gem
 Level: 11
 Nature: Rash
 Ability: Speed Boost
--Incinerate
--Aerial Ace
--Rock Smash
--Work Up
+- Incinerate
+- Aerial Ace
+- Rock Smash
+- Work Up
 
 === TRAINER_TIMMY ===
 Name: TIMMY
@@ -10417,8 +10417,8 @@ Level: 13
 IVs: 28 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 Nature: Adamant
 Ability: Own Tempo
--Belly Drum
 -Extreme Speed
+-Belly Drum
 
 === TRAINER_MIU_AND_YUKI ===
 Name: MIU & YUKI
@@ -11535,10 +11535,10 @@ Pineco @ Custap Berry
 Level: 13
 Nature: Careful
 Ability: Sturdy
--Bug Bite
--Payback
--Self Destruct
--Spikes
+- Bug Bite
+- Self-Destruct
+- Payback
+- Spikes
 
 Karrablast @ Salac Berry
 Level: 13
@@ -12270,35 +12270,35 @@ Geodude @ Red Card
 Level: 18
 Nature: Careful
 Ability: Sturdy
--Stealth Rock
--Explosion
+- Explosion
+- Stealth Rock
 
 Lileep @ Miracle Seed
 Level: 17
 Nature: Bold
 Ability: Storm Drain
--Ancient Power
--Mega Drain
--Sludge
--Recover
+- Ancient Power
+- Mega Drain
+- Sludge
+- Recover
 
 Anorith @ Lum Berry
 Level: 18
 Nature: Jolly
 Ability: Battle Armor
--Bug Bite
--Rock Tomb
--Metal Claw
--Aqua Jet
+- Bug Bite
+- Rock Tomb
+- Metal Claw
+- Aqua Jet
 
 Sudowoodo @ Liechi Berry
 Level: 17
 Nature: Adamant
 Ability: Sturdy
--Rock Throw
--Stomping Tantrum
--Thunder Punch
--Flail
+- Rock Throw
+- Stomping Tantrum
+- Thunder Punch
+- Flail
 
 === TRAINER_BRENDEN ===
 Name: BRENDEN
@@ -12789,22 +12789,22 @@ Rowlet @ Oran Berry
 Level: 11
 Nature: Jolly
 Ability: Overgrow
--Razor Leaf
--Pluck
--Shadow Sneak
+- Pluck
+- Razor Leaf
+- Shadow Sneak
 
 Hoothoot @ Throat Spray
 Level: 11
 Nature: Modest
 Ability: Insomnia
--Echoed Voice
--Hypnosis
+- Echoed Voice
+- Hypnosis
 
 Munchlax @ Custap Berry
 Level: 11
 Nature: Adamant
 Ability: Gluttony
--Metronome
+- Metronome
 
 === TRAINER_HALEY_1 ===
 Name: Haley
@@ -12828,18 +12828,18 @@ Spheal @ Leftovers
 Level: 13
 Nature: Bold
 Ability: Ice Body
--Brine
--Aurora Beam
--Rest
--Snore
+- Aurora Beam
+- Brine
+- Snore
+- Rest
 
 Sandshrew-Alola @ Focus Sash
 Level: 14
 Nature: Adamant
 Ability: Slush Rush
--Ice Punch
--Metal Claw
--Rollout
+- Ice Punch
+- Metal Claw
+- Rollout
 
 === TRAINER_JANICE ===
 Name: Janice
@@ -12854,19 +12854,19 @@ Smoochum @ Focus Sash
 Level: 14
 Nature: Timid
 Ability: Oblivious
--Fake Out
--Psybeam
--Icy Wind
--Lovely Kiss
+- Psybeam
+- Icy Wind
+- Fake Out
+- Lovely Kiss
 
 Marill @ Muscle Band
 Level: 15
 Nature: Adamant
 Ability: Huge Power
--Covet
--Aqua Jet
--Trailblaze
--Protect
+- Covet
+- Aqua Jet
+- Trailblaze
+- Protect
 
 === TRAINER_VIVI ===
 Name: VIVI
@@ -13103,25 +13103,25 @@ Tarountula @ Red Card
 Level: 10
 Nature: Adamant
 Ability: Stakeout
--Bug Bite
--Headbutt
+- Bug Bite
+- Headbutt
 
 Nymble @ Liechi Berry
 Level: 10
 Nature: Jolly
 Ability: Swarm
--Pounce
--Assurance
--Endure
+- Pounce
+- Assurance
+- Endure
 
 Rellor @ Leftovers
 Level: 11
 Nature: Bold
 Ability: Shed Skin
--Struggle Bug
--Mud Shot
--Cosmic Power
--Rest
+- Struggle Bug
+- Mud Shot
+- Cosmic Power
+- Rest
 
 === TRAINER_LYLE ===
 Name: Lyle
@@ -13136,28 +13136,28 @@ Pineco @ Custap Berry
 Level: 12
 Nature: Careful
 Ability: Sturdy
--Bug Bite
--Payback
--Self Destruct
--Spikes
+- Bug Bite
+- Self-Destruct
+- Payback
+- Spikes
 
 Karrablast @ Assault Vest
 Level: 12
 Nature: Adamant
 Ability: Swarm
--Bug Bite
--Drill Run
--Knock Off
--Facade
+- Bug Bite
+- Drill Run
+- Facade
+- Knock Off
 
 Dwebble @ Salac Berry
 Level: 13
 Nature: Jolly
 Ability: Sturdy
--Fury Cutter
--Smack Down
--Flail
--Counter
+- Smack Down
+- Fury Cutter
+- Flail
+- Counter
 
 === TRAINER_JOSE ===
 Name: Jose
@@ -13172,12 +13172,12 @@ Butterfree @ Charti Berry
 Level: 14
 Nature: Timid
 Ability: Compound Eyes
-- Silver Wind
 - Air Cutter
+- Silver Wind
 - Psybeam
 - Sleep Powder
 
-Dottler @ Light Clay
+Dottler @ Weakness Policy
 Level: 14
 Nature: Bold
 Ability: Swarm
@@ -13255,28 +13255,28 @@ Beautifly @ Coba Berry
 Level: 13
 Nature: Timid
 Ability: Swarm
--Silver Wind
--Air Cutter
--Mega Drain
--Morning Sun
+- Air Cutter
+- Silver Wind
+- Mega Drain
+- Morning Sun
 
 Dustox @ Black Sludge
 Level: 13
 Nature: Bold
 Ability: Shield Dust
--Struggle Bug
--Venoshock
--Toxic
--Moonlight
+- Venoshock
+- Struggle Bug
+- Toxic
+- Moonlight
 
 Kricketune @ Occa Berry
 Level: 12
 Nature: Jolly
 Ability: Technician
--Bug Bite
--Trailblaze
--Aerial Ace
--Sing
+- Fury Cutter
+- Aerial Ace
+- Trailblaze
+- Sing
 
 === TRAINER_JAMES_2 ===
 Name: JAMES
@@ -13542,37 +13542,37 @@ Archen @ Berry Juice
 Level: 14
 Nature: Jolly
 Ability: Defeatist
--Acrobatics
--Rock Throw
--Steel Wing
--Quick Attack
+- Acrobatics
+- Rock Throw
+- Steel Wing
+- Quick Attack
 
 Sandshrew @ Focus Sash
 Level: 14
 Nature: Jolly
 Ability: Sand Rush
--Bulldoze
--Night Slash
--Aerial Ace
--Rollout
+- Bulldoze
+- Night Slash
+- Aerial Ace
+- Rollout
 
 Yamask @ Leftovers
 Level: 15
 Nature: Calm
 Ability: Mummy
--Hex
--Infestation
--Will O Wisp
--Night Shade
+- Hex
+- Night Shade
+- Infestation
+- Will-O-Wisp
 
 Tirtouga @ Rindo Berry
 Level: 15
 Nature: Sassy
 Ability: Solid Rock
--Brine
--Ancient Power
--Zen Headbutt
--Aqua Jet
+- Brine
+- Ancient Power
+- Aqua Jet
+- Zen Headbutt
 
 === TRAINER_ERIC ===
 Name: Eric
@@ -15197,28 +15197,28 @@ Spritzee @ Lum Berry
 Level: 15
 Nature: Bold
 Ability: Aroma Veil
--Draining Kiss
--Round
--Charge Beam
--Attract
+- Draining Kiss
+- Round
+- Charge Beam
+- Attract
 
 Buneary @ Black Belt
 Level: 15
 Nature: Jolly
 Ability: Cute Charm
--Fake Out
--Quick Attack
--Triple Axel
--Focus Punch
+- Fake Out
+- Quick Attack
+- Focus Punch
+- Triple Axel
 
 Vullaby @ Leftovers
 Level: 15
 Nature: Careful
 Ability: Overcoat
--Feint Attack
--Pluck
--Roost
--Attract
+- Feint Attack
+- Pluck
+- Attract
+- Roost
 
 === TRAINER_SARAH ===
 Name: Sarah
@@ -15233,37 +15233,37 @@ Pichu @ Eviolite
 Level: 14
 Nature: Hasty
 Ability: Static
--Volt Tackle
--Surf
--Grass Knot
--Iron Tail
+- Volt Tackle
+- Iron Tail
+- Surf
+- Grass Knot
 
 Bulbasaur @ Black Sludge
 Level: 15
 Nature: Timid
 Ability: Overgrow
--Venoshock
--Magical Leaf
--Toxic
--Leech Seed
+- Venoshock
+- Magical Leaf
+- Leech Seed
+- Toxic
 
 Charmander @ Lum Berry
 Level: 14
 Nature: Naive
 Ability: Blaze
--Incinerate
--Thunder Punch
--Breaking Swipe
--Scary Face
+- Incinerate
+- Thunder Punch
+- Breaking Swipe
+- Scary Face
 
 Squirtle @ Power Herb
 Level: 15
 Nature: Hasty
 Ability: Torrent
--Water Pulse
--Aqua Jet
--Skull Bash
--Icy Wind
+- Water Pulse
+- Aqua Jet
+- Skull Bash
+- Icy Wind
 
 === TRAINER_DARIAN ===
 Name: Darian
@@ -15274,32 +15274,41 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
+Wimpod @ Berry Juice
+Level: 11
+Nature: Jolly
+Ability: Wimp Out
+- Leech Life
+- Waterfall
+- Aqua Jet
+- Spikes
+
 Wishiwashi @ Expert Belt
 Level: 11
 Nature: Hasty
 Ability: Schooling
--Surf
--Ice Beam
--Earthquake
--Scale Shot
+- Surf
+- Earthquake
+- Ice Beam
+- Scale Shot
 
 Magikarp @ Focus Sash
 Level: 12
 Nature: Naive
 Ability: Rattled
--Hydro Pump
--Bounce
--Tackle
--Flail
+- Hydro Pump
+- Bounce
+- Tackle
+- Flail
 
 Feebas @ Leftovers
 Level: 12
 Nature: Bold
 Ability: Adaptability
--Water Pulse
--Icy Wind
--Whirlpool
--Hypnosis
+- Water Pulse
+- Whirlpool
+- Icy Wind
+- Hypnosis
 
 === TRAINER_HAILEY ===
 Name: HAILEY
@@ -16454,8 +16463,8 @@ Nature: Bold
 Ability: Shadow Tag
 - Counter
 - Mirror Coat
-- Safeguard
 - Destiny Bond
+- Safeguard
 
 Braixen @ Berry Juice
 Level: 19
@@ -16488,37 +16497,37 @@ Shieldon @ Chople Berry
 Level: 15
 Nature: Sassy
 Ability: Sturdy
--Power Gem
--Iron Head
--Screech
--Metal Sound
+- Iron Head
+- Power Gem
+- Metal Sound
+- Screech
 
 Kabuto @ Scope Lens
 Level: 16
 Nature: Jolly
 Ability: Shell Armor
--Rock Tomb
--Aqua Jet
--Aerial Ace
--Leech Life
+- Rock Tomb
+- Aqua Jet
+- Leech Life
+- Aerial Ace
 
 Cranidos @ Dark Gem
 Level: 15
 Nature: Jolly
 Ability: Mold Breaker
--Rock Tomb
--Thunder Punch
--Bulldoze
--Pursuit
+- Rock Tomb
+- Thunder Punch
+- Bulldoze
+- Pursuit
 
 Omanyte @ Focus Sash
 Level: 16
 Nature: Timid
 Ability: Weak Armor
--Bubble Beam
--Ancient Power
--Aurora Beam
--Mud Shot
+- Bubble Beam
+- Ancient Power
+- Aurora Beam
+- Mud Shot
 
 === TRAINER_JOHNSON ===
 Name: Johnson
@@ -16533,28 +16542,28 @@ Delibird @ Sharp Beak
 Level: 15
 Nature: Jolly
 Ability: Vital Spirit
--Fake Out
--Ice Punch
--Aerial Ace
--Ice Shard
+- Ice Punch
+- Aerial Ace
+- Ice Shard
+- Fake Out
 
 Farfetch'd-Galar @ Leek
 Level: 16
 Nature: Jolly
 Ability: Scrappy
--Rock Smash
--Brutal Swing
--Steel Wing
--Focus Energy
+- Rock Smash
+- Steel Wing
+- Brutal Swing
+- Focus Energy
 
 Nidorino @ Muscle Band
 Level: 15
 Nature: Jolly
 Ability: Poison Point
--Poison Tail
--Double Kick
--Sucker Punch
--Sand Attack
+- Poison Tail
+- Sucker Punch
+- Double Kick
+- Sand Attack
 
 === TRAINER_MELINA ===
 Name: MELINA
