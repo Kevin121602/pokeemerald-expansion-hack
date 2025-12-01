@@ -1202,7 +1202,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     SetTypeBeforeUsingMove(move, battlerAtk);
     moveType = GetBattleMoveType(move);
 
-    if (IsPowderMove(move) && !IsAffectedByPowder(battlerDef, aiData->abilities[battlerDef], aiData->holdEffects[battlerDef]))
+    if (IsPowderMove(move) && !IsAffectedByPowderMove(battlerDef, aiData->abilities[battlerDef], aiData->holdEffects[battlerDef]))
         RETURN_SCORE_MINUS(20);
 
     if (atkPriority < 0 && CanTargetFaintAi(battlerDef, battlerAtk))
@@ -3689,7 +3689,7 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     bool32 isBattle1v1 = IsBattle1v1();
     bool32 hasTwoOpponents = HasTwoOpponents(battlerAtk);
     bool32 hasPartner = HasPartner(battlerAtk);
-    bool32 moveTargetsBothOpponents = hasTwoOpponents && (gMovesInfo[move].target & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_ALL_BATTLERS));
+    bool32 moveTargetsBothOpponents = hasTwoOpponents && (GetMoveTarget(move) & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY | MOVE_TARGET_ALL_BATTLERS));
 
     // The AI should understand that while Dynamaxed, status moves function like Protect.
     if (GetActiveGimmick(battlerAtk) == GIMMICK_DYNAMAX && GetMoveCategory(move) == DAMAGE_CATEGORY_STATUS)
@@ -4320,10 +4320,11 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
     case EFFECT_TORMENT:
         break;
     case EFFECT_FOLLOW_ME:
-        if (isDoubleBattle
-          && move != MOVE_SPOTLIGHT
-          && (move != MOVE_RAGE_POWDER || IsAffectedByPowder(battlerDef, aiData->abilities[battlerDef], aiData->holdEffects[battlerDef])) // Rage Powder doesn't affect powder immunities
-          && IsBattlerAlive(BATTLE_PARTNER(battlerAtk)))
+        if (hasPartner
+          && GetMoveTarget(move) == MOVE_TARGET_USER
+          && !IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef])
+          && (!IsPowderMove(move) || IsAffectedByPowderMove(battlerDef, aiData->abilities[battlerDef], aiData->holdEffects[battlerDef])))
+          // Rage Powder doesn't affect powder immunities
         {
             ADJUST_SCORE(IncreaseFollowMeScore(battlerAtk, battlerDef));
         }
@@ -4967,6 +4968,9 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
         }
         else // consider move effects that hinder the target
         {
+            if (IsAdditionalEffectBlocked(battlerAtk, aiData->abilities[battlerAtk], battlerDef, aiData->abilities[battlerDef]))
+                continue;
+
             switch (additionalEffect->moveEffect)
             {
                 //case MOVE_EFFECT_FLINCH:

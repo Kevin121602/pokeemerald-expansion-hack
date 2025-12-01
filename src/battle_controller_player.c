@@ -226,8 +226,9 @@ static u16 GetPrevBall(u16 ballId)
 
 static u32 GetNextBall(u32 ballId)
 {
-    u32 ballNext = ITEM_NONE;
     s32 i;
+    u32 ballNext = ITEM_POKE_BALL;
+
     CompactItemsInBagPocket(POCKET_GEMS);
     for (i = 1; i < gBagPockets[POCKET_GEMS].capacity; i++)
     {

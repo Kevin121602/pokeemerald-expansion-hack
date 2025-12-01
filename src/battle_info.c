@@ -111,7 +111,6 @@ static const struct VolatileIndex sVolatileStatusListItems[] =
     {_("Torment"),            VOLATILE_TORMENT},
     {_("Powder"),             VOLATILE_POWDER},
     {_("DefenseCurl"),       VOLATILE_DEFENSE_CURL},
-    {_("Recharge"),           VOLATILE_RECHARGE},
     {_("Rage"),               VOLATILE_RAGE},
     {_("DestinyBond"),       VOLATILE_DESTINY_BOND},
     {_("Trapped"),            VOLATILE_ESCAPE_PREVENTION},
