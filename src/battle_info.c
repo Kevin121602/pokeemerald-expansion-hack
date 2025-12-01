@@ -129,7 +129,7 @@ static const struct VolatileIndex sVolatileStatusListItems[] =
     {_("LockOn"),            VOLATILE_LOCK_ON},
     {_("PerishSong"),        VOLATILE_PERISH_SONG},
     {_("Minimize"),           VOLATILE_MINIMIZE},
-    {_("Charge"),             VOLATILE_CHARGE},
+    {_("Charge"),             VOLATILE_CHARGE_TIMER},
     {_("Root"),               VOLATILE_ROOT},
     {_("Yawn"),               VOLATILE_YAWN},
     {_("Imprison"),           VOLATILE_IMPRISON},
@@ -1395,8 +1395,6 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
             volatileOffset++;
         }
     }
-
-    //AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Volatiles, 105, 64, 0, NULL);
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_NextMon, 95, 129, 0, NULL);
 

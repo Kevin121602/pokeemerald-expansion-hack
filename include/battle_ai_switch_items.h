@@ -50,7 +50,8 @@ enum ShouldSwitchScenario
 enum SwitchType
 {
     SWITCH_AFTER_KO,
-    SWITCH_MID_BATTLE,
+    SWITCH_MID_BATTLE_FORCED,
+    SWITCH_MID_BATTLE_OPTIONAL,
 };
 
 struct MostSuitableCandidate
@@ -70,7 +71,7 @@ bool32 ShouldSwitchIfBadMatchup(u32 battler, bool32 emitResult);
 bool32 ShouldSwitchIfStatusedNaturalCure(u32 battler, bool32 emitResult);
 u32 GetSwitchInSpeedStatArgs(struct BattlePokemon battleMon, u32 battler, u32 ability, u32 holdEffect);
 u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingBattler, bool32 switchAfterMonKOd);
-bool32 IsMonGrounded(u16 heldItemEffect, u32 ability, u8 type1, u8 type2);
+bool32 IsMonGrounded(enum HoldEffect heldItemEffect, enum Ability ability, enum Type type1, enum Type type2);
 void ModifySwitchAfterMoveScoring(u32 battler);
 
 #endif // GUARD_BATTLE_AI_SWITCH_ITEMS_H
