@@ -1185,7 +1185,7 @@ static void Task_ShowBattlerStats(u8 taskId)
         LoadMonIconPalettes();
 
         u16 species = SPECIES_NONE;
-        if (gBattleMons[data->battlerId].ability == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
+        if (gBattleMons[data->battlerId].ability == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF && BattlerHasAi(data->battlerId)){
             species = GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_SPECIES); 
         } else {
             species = gBattleMons[data->battlerId].species;  

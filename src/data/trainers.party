@@ -7854,49 +7854,13 @@ Ability: Shell Armor
 - Body Press
 
 Bewear @ Lum Berry
-Level: 33
+Level: 1
 Nature: Jolly
 Ability: Fluffy
 - Body Slam
 - Drain Punch
 - Darkest Lariat
 - Stomping Tantrum
-
-Sylveon @ Throat Spray
-Level: 34
-Nature: Hasty
-Ability: Pixilate
-- Round
-- Quick Attack
-- Psyshock
-- Mystical Fire
-
-Virizion @ Focus Sash
-Level: 34
-Nature: Jolly
-Ability: Justified
-- Leaf Blade
-- Sacred Sword
-- Stone Edge
-- Zen Headbutt
-
-Claydol @ Hard Stone
-Level: 35
-Nature: Timid
-Ability: Levitate
-- Earth Power
-- Stored Power
-- Ancient Power
-- Calm Mind
-
-Slowbro @ Slowbronite
-Level: 35
-Nature: Calm
-Ability: Regenerator
-- Scald
-- Psybeam
-- Slack Off
-- Thunder Wave
 
 === TRAINER_WADE ===
 Name: WADE
