@@ -106,9 +106,9 @@ static const u32 gStatusGfx_InfoIcons[] = INCBIN_U32("graphics/battle_interface/
 
 static const struct VolatileIndex sVolatileStatusListItems[] =
 {
-    {_("Confusion"),          VOLATILE_CONFUSION},
+    {_("Confused"),          VOLATILE_CONFUSION},
     {_("Flinched"),           VOLATILE_FLINCHED},
-    {_("Torment"),            VOLATILE_TORMENT},
+    {_("Tormented"),            VOLATILE_TORMENT},
     {_("Powder"),             VOLATILE_POWDER},
     {_("DefenseCurl"),       VOLATILE_DEFENSE_CURL},
     {_("Rage"),               VOLATILE_RAGE},
@@ -775,18 +775,6 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 16, yOffset - 5, 0);
                 gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
 
-                if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
-                    if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
-                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
-                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
-                    } 
-                } else {
-                    if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
-                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
-                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
-                    }  
-                }
-
                 if (aiMons[i].isFainted)
                     ailment = AILMENT_FNT;
                 else
@@ -799,6 +787,18 @@ static void Task_ShowAiPartyIcons(u8 taskId)
 
                 if (aiMons[i].isFainted)
                     continue;
+
+                if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
+                    if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                    } 
+                } else {
+                    if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                    }  
+                }
 
                 gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId = CreateSprite(&gSpriteTemplate_Healthbar[i], xOffset - 15, yOffset + 19, 0);
                 SetSubspriteTables(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId], &sHealthBar_SubspriteTables[B_SIDE_OPPONENT]);
@@ -865,18 +865,6 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 16, yOffset - 5, 0);
                 gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
 
-                if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
-                    if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
-                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
-                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
-                    } 
-                } else {
-                    if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
-                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
-                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
-                    }  
-                }
-
                 if (aiMons[i].isFainted)
                     ailment = AILMENT_FNT;
                 else
@@ -889,6 +877,18 @@ static void Task_ShowAiPartyIcons(u8 taskId)
 
                 if (aiMons[i].isFainted)
                     continue;
+
+                if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
+                    if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                    } 
+                } else {
+                    if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                    }  
+                }
 
                 gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId = CreateSprite(&gSpriteTemplate_Healthbar[i], xOffset - 15, yOffset + 19, 0);
                 SetSubspriteTables(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId], &sHealthBar_SubspriteTables[B_SIDE_OPPONENT]);
@@ -952,18 +952,6 @@ static void Task_ShowAiPartyIcons(u8 taskId)
                 gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 16, yOffset - 5, 0);
                 gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
 
-                if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
-                    if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
-                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
-                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
-                    } 
-                } else {
-                    if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
-                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
-                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
-                    }  
-                }
-
                 if (aiMons[i].isFainted)
                     ailment = AILMENT_FNT;
                 else
@@ -976,6 +964,18 @@ static void Task_ShowAiPartyIcons(u8 taskId)
 
                 if (aiMons[i].isFainted)
                     continue;
+
+                if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
+                    if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                    } 
+                } else {
+                    if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+                    }  
+                }
 
                 gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId = CreateSprite(&gSpriteTemplate_Healthbar[i], xOffset - 15, yOffset + 19, 0);
                 SetSubspriteTables(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId], &sHealthBar_SubspriteTables[B_SIDE_OPPONENT]);
@@ -1057,6 +1057,7 @@ static void SwitchToTimersViewFromAiParty(u8 taskId)
             FreeAndDestroyMonIconSprite(&gSprites[data->spriteIds.aiPartyIcons[i]]);
         }
     }
+    
     ClearWindowTilemap(data->buttonControlWindow);
     RemoveWindow(data->buttonControlWindow);
 
@@ -1084,6 +1085,7 @@ static void SwitchToStatsViewFromAiParty(u8 taskId)
             FreeAndDestroyMonIconSprite(&gSprites[data->spriteIds.aiPartyIcons[i]]);
         }
     }
+
     ClearWindowTilemap(data->buttonControlWindow);
     RemoveWindow(data->buttonControlWindow);
 
@@ -1416,13 +1418,13 @@ static void PrintOnBattleTimersWindow(u8 windowId)
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Tailwind, 15, 44, 0, NULL);
     if(gSideStatuses[B_SIDE_PLAYER] & SIDE_STATUS_TAILWIND){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].tailwindTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].tailwindTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
         *txtPtr = EOS;
         AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 44, 0, NULL);
     } else
         AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 112, 44, 0, NULL);
     if(gSideStatuses[B_SIDE_OPPONENT] & SIDE_STATUS_TAILWIND){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].tailwindTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].tailwindTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
         *txtPtr = EOS;
         AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 44, 0, NULL);
     } else
@@ -1430,13 +1432,13 @@ static void PrintOnBattleTimersWindow(u8 windowId)
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Reflect, 15, 59, 0, NULL);
     if(gSideStatuses[B_SIDE_PLAYER] & SIDE_STATUS_REFLECT){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].reflectTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].reflectTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
         *txtPtr = EOS;
         AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 59, 0, NULL);
     } else
         AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 112, 59, 0, NULL);
     if(gSideStatuses[B_SIDE_OPPONENT] & SIDE_STATUS_REFLECT){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].reflectTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].reflectTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
         *txtPtr = EOS;
         AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 59, 0, NULL);
     } else
@@ -1444,13 +1446,13 @@ static void PrintOnBattleTimersWindow(u8 windowId)
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_LightScreen, 15, 74, 0, NULL);
     if(gSideStatuses[B_SIDE_PLAYER] & SIDE_STATUS_LIGHTSCREEN){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].lightscreenTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].lightscreenTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
         *txtPtr = EOS;
         AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 74, 0, NULL);
     } else
         AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 112, 74, 0, NULL);
     if(gSideStatuses[B_SIDE_OPPONENT] & SIDE_STATUS_LIGHTSCREEN){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].lightscreenTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].lightscreenTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
         *txtPtr = EOS;
         AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 74, 0, NULL);
     } else
@@ -1458,13 +1460,13 @@ static void PrintOnBattleTimersWindow(u8 windowId)
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_AuroraVeil, 15, 89, 0, NULL);
     if(gSideStatuses[B_SIDE_PLAYER] & SIDE_STATUS_AURORA_VEIL){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].auroraVeilTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].auroraVeilTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
         *txtPtr = EOS;
         AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 89, 0, NULL);
     } else
         AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 112, 89, 0, NULL);
     if(gSideStatuses[B_SIDE_OPPONENT] & SIDE_STATUS_AURORA_VEIL){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].auroraVeilTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].auroraVeilTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
         *txtPtr = EOS;
         AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 89, 0, NULL);
     } else
@@ -1472,7 +1474,7 @@ static void PrintOnBattleTimersWindow(u8 windowId)
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_TrickRoom, 15, 114, 0, NULL);
     if(gFieldStatuses & STATUS_FIELD_TRICK_ROOM){
-        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.trickRoomTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.trickRoomTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
         *txtPtr = EOS;
         AddTextPrinterParameterized(windowId, FONT_SMALL, text, 70, 114, 0, NULL);
     } else
@@ -1480,7 +1482,7 @@ static void PrintOnBattleTimersWindow(u8 windowId)
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Terrain, 15, 129, 0, NULL);
     if(gFieldStatuses & STATUS_FIELD_TERRAIN_ANY){
-        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.terrainTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.terrainTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
         *txtPtr = EOS;
         AddTextPrinterParameterized(windowId, FONT_SMALL, text, 70, 129, 0, NULL);
     } else
@@ -1488,7 +1490,7 @@ static void PrintOnBattleTimersWindow(u8 windowId)
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_MagicRoom, 87, 114, 0, NULL);
     if(gFieldStatuses & STATUS_FIELD_MAGIC_ROOM){
-        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.magicRoomTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.magicRoomTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
         *txtPtr = EOS;
         AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 114, 0, NULL);
     } else
@@ -1496,7 +1498,7 @@ static void PrintOnBattleTimersWindow(u8 windowId)
 
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_WonderRoom, 162, 114, 0, NULL);
     if(gFieldStatuses & STATUS_FIELD_WONDER_ROOM){
-        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.wonderRoomTimer - gBattleTurnCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.wonderRoomTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
         *txtPtr = EOS;
         AddTextPrinterParameterized(windowId, FONT_SMALL, text, 222, 114, 0, NULL);
     } else

@@ -1940,7 +1940,7 @@
               {
                 "min_level": 8,
                 "max_level": 9,
-                "species": "SPECIES_RHYHORN"
+                "species": "SPECIES_GEODUDE_ALOLA"
               },
               {
                 "min_level": 8,
@@ -1965,7 +1965,7 @@
               {
                 "min_level": 8,
                 "max_level": 9,
-                "species": "SPECIES_GEODUDE_ALOLA"
+                "species": "SPECIES_RHYHORN"
               },
               {
                 "min_level": 8,

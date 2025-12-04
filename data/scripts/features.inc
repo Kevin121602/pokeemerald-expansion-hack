@@ -671,15 +671,15 @@ Text_NoBottleCaps::
     .string "You don't have any Bottle Caps!$"
 
 Text_CannotIncreaseLevelCap::
-    .string "Level Cap cannot be increased past\n"
-	.string "100.$"
+    .string "Obedience cannot be raised any\n"
+	.string "further.$"
 
 Text_IncreaseLevelCap::
-	.string "Increase {STR_VAR_1}'s level cap?$"
+	.string "Raise {STR_VAR_1}'s obedience?$"
 
 Text_LevelCapIncreased::
-	.string "{STR_VAR_1}'s level cap has been\n"
-	.string "increased by {STR_VAR_2}!$"
+	.string "{STR_VAR_1}'s obedience has been\n"
+	.string "raised by {STR_VAR_2} level!$"
 
 Text_SpentHeartScale::
 	.string "{PLAYER} spent one Heart Scale.$"

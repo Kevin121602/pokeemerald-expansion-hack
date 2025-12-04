@@ -206,7 +206,7 @@ static const u8 sFeaturesText_HeartScales_MoveReminder[] =      _("Move Reminder
 static const u8 sFeaturesText_HeartScales_ChangeIV[] =          _("Change IV");
 static const u8 sFeaturesText_HeartScales_ChangeNature[] =      _("Change Nature");
 static const u8 sFeaturesText_HeartScales_ChangeAbility[] =     _("Change Ability");
-static const u8 sFeaturesText_HeartScales_IncreaseLevelCap[] =  _("Increase Level Cap");
+static const u8 sFeaturesText_HeartScales_IncreaseLevelCap[] =  _("Raise Obedience");
 static const u8 sFeaturesText_Exit[] =                          _("Exit");
 //Items Menu
 static const u8 sFeaturesText_Items_SwitchItems[] =             _("Switch Items");

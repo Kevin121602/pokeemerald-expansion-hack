@@ -641,7 +641,7 @@ u8 AddFeaturesMenuWindow(u8 numActions)
 u8 AddHeartScalesMenuWindow(void)
 {
     if (sHeartScalesMenuWindowId == WINDOW_NONE)
-        sHeartScalesMenuWindowId = AddWindowParameterized(0, 1, 1, 14, 14, 15, 1);
+        sHeartScalesMenuWindowId = AddWindowParameterized(0, 1, 1, 12, 14, 15, 1);
     return sHeartScalesMenuWindowId;
 }
 

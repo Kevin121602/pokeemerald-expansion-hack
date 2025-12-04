@@ -637,7 +637,7 @@ static void CalcBattlerAiMovesData(struct AiLogicData *aiData, u32 battlerAtk, u
             continue;
 
         // Also get effectiveness of status moves
-        dmg = AI_CalcDamage(move, battlerAtk, battlerDef, &effectiveness, USE_GIMMICK, NO_GIMMICK, weather);
+        dmg = AI_CalcDamage(move, battlerAtk, battlerDef, &effectiveness, USE_GIMMICK, NO_GIMMICK, weather, FALSE);
         aiData->moveAccuracy[battlerAtk][battlerDef][moveIndex] = Ai_SetMoveAccuracy(aiData, battlerAtk, battlerDef, move);
 
         aiData->simulatedDmg[battlerAtk][battlerDef][moveIndex] = dmg;
@@ -3811,7 +3811,7 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
         break;
     case EFFECT_MISTY_EXPLOSION:
     case EFFECT_EXPLOSION:
-        if((AI_CalcDamage(move, battlerAtk, battlerDef, &effectiveness, USE_GIMMICK, NO_GIMMICK, AI_GetWeather()).minimum * 2) > GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING)){
+        if((AI_CalcDamage(move, battlerAtk, battlerDef, &effectiveness, USE_GIMMICK, NO_GIMMICK, AI_GetWeather(), FALSE).minimum * 2) > GetBestDmgFromBattler(battlerAtk, battlerDef, AI_ATTACKING)){
             if (aiData->hpPercents[battlerAtk] > 70){
                 if(Random() % 100 < 40)
                     ADJUST_SCORE(WEAK_EFFECT);
@@ -5212,6 +5212,7 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
 
     //if(!CanAIFaintTarget(battlerAtk, battlerDef, 0)){
         ADJUST_SCORE(AI_CalcMoveEffectScore(battlerAtk, battlerDef, move, aiData));
+        ADJUST_SCORE(AI_CalcAdditionalEffectScore(battlerAtk, battlerDef, move, aiData));
     //}
 
     statusScore = score - (initialScore + damageScore);

@@ -845,11 +845,11 @@ static void Task_ShowAiPoints(u8 taskId)
 
         // Swap battler if it's player mon
         data->aiBattlerId = data->battlerId;
-        while (!BattlerHasAi(data->aiBattlerId))
-        {
-            if (++data->aiBattlerId >= gBattlersCount)
-                data->aiBattlerId = 0;
-        }
+        //while (!BattlerHasAi(data->aiBattlerId))
+        //{
+        //    if (++data->aiBattlerId >= gBattlersCount)
+        //        data->aiBattlerId = 0;
+        //}
         data->battlerId = data->aiBattlerId;
 
         LoadMonIconPalettes();
@@ -888,15 +888,6 @@ static void Task_ShowAiPoints(u8 taskId)
         break;
     // Input
     case 2:
-        if (JOY_NEW(A_BUTTON))
-        {
-            CleanUpAiInfoWindow(taskId);
-            winTemplate = CreateWindowTemplate(1, 0, 4, 30, 14, 15, 0x200);
-            data->aiMovesWindowId = AddWindow(&winTemplate);
-            PutWindowTilemap(data->aiMovesWindowId);
-            PutAIMovesPointsText(data);
-            data->aiViewState = 0;
-        }
         if (JOY_NEW(R_BUTTON) && IsDoubleBattle())
         {
             CleanUpAiInfoWindow(taskId);

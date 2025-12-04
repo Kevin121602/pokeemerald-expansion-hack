@@ -3903,6 +3903,10 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
                     effect = TRUE;
                 }
                 break;
+            case FIELD_EFFECT_RICH_SEDIMENT:
+                gFieldStatuses = STATUS_FIELD_RICH_SEDIMENT;
+                gBattleScripting.animArg1 = B_ANIM_RICH_SEDIMENT;
+                effect = TRUE;
             }
         }
         if (effect)
@@ -6972,6 +6976,8 @@ static inline u32 CalcMoveBasePower(struct DamageContext *ctx)
     u32 battlerAtk = ctx->battlerAtk;
     u32 battlerDef = ctx->battlerDef;
     u32 move = ctx->move;
+    bool8 isAiCalc = ctx->isAiCalc;
+    bool8 isSwitchCalc = ctx->isSwitchCalc;
 
     u32 i;
     u32 basePower = GetMovePower(move);
@@ -7057,6 +7063,8 @@ static inline u32 CalcMoveBasePower(struct DamageContext *ctx)
         basePower = gBattleMons[battlerDef].hp * basePower / gBattleMons[battlerDef].maxHP;
         break;
     case EFFECT_ASSURANCE:
+        if(isAiCalc)
+            break;
         if (gProtectStructs[battlerDef].assuranceDoubled)
             basePower *= 2;
         break;
@@ -7134,12 +7142,22 @@ static inline u32 CalcMoveBasePower(struct DamageContext *ctx)
         }
         break;
     case EFFECT_PAYBACK:
-        if (HasBattlerActedThisTurn(battlerDef)
+        if(isSwitchCalc)
+            break;
+        if(isAiCalc){
+            if(GetBattlerTotalSpeedStat(battlerDef, ctx->abilityDef, ctx->holdEffectDef) > GetBattlerTotalSpeedStat(battlerAtk, ctx->abilityAtk, ctx->holdEffectAtk))
+                basePower *= 2;
+        }
+        else if (HasBattlerActedThisTurn(battlerDef)
             && (B_PAYBACK_SWITCH_BOOST < GEN_5 || gDisableStructs[battlerDef].isFirstTurn != 2))
             basePower *= 2;
         break;
     case EFFECT_BOLT_BEAK:
-        if (!HasBattlerActedThisTurn(battlerDef)
+        if(isAiCalc){
+            if(GetBattlerTotalSpeedStat(battlerDef, ctx->abilityDef, ctx->holdEffectDef) > GetBattlerTotalSpeedStat(battlerAtk, ctx->abilityAtk, ctx->holdEffectAtk) || isSwitchCalc)
+                basePower *= 2;
+        }
+        else if (!HasBattlerActedThisTurn(battlerDef)
             || gDisableStructs[battlerDef].isFirstTurn == 2)
             basePower *= 2;
         break;
@@ -7360,7 +7378,11 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageContext *ctx)
             modifier = uq4_12_multiply(modifier, UQ_4_12(0.75));
         break;
     case ABILITY_ANALYTIC:
-        if (GetBattlerTurnOrderNum(battlerAtk) == gBattlersCount - 1 && move != MOVE_FUTURE_SIGHT && move != MOVE_DOOM_DESIRE)
+        if(ctx->isAiCalc){
+            if(ctx -> isSwitchCalc || GetBattlerTotalSpeedStat(battlerDef, ctx->abilityDef, ctx->holdEffectDef) > GetBattlerTotalSpeedStat(battlerAtk, ctx->abilityAtk, ctx->holdEffectAtk))
+                modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
+        }
+        else if (GetBattlerTurnOrderNum(battlerAtk) == gBattlersCount - 1 && move != MOVE_FUTURE_SIGHT && move != MOVE_DOOM_DESIRE)
            modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
         break;
     case ABILITY_TOUGH_CLAWS:

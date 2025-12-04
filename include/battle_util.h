@@ -174,6 +174,8 @@ struct DamageContext
     enum Ability abilityDef;
     enum HoldEffect holdEffectAtk;
     enum HoldEffect holdEffectDef;
+    bool8 isAiCalc;
+    bool8 isSwitchCalc;
 };
 
 struct BattleContext

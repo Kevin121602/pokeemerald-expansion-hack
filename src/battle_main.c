@@ -4314,7 +4314,7 @@ static void HandleTurnActionSelectionState(void)
                     }
                     break;
                 case B_ACTION_USE_ITEM:
-                    if ((ShouldBattleRestrictionsApply(battler) && !IsAllowedToUseBag()) || FlagGet(FLAG_DISABLE_BAG))
+                    if ((ShouldBattleRestrictionsApply(battler) && !IsAllowedToUseBag()))
                     {
                         RecordedBattle_ClearBattlerAction(battler, 1);
                         gSelectionBattleScripts[battler] = BattleScript_ActionSelectionItemsCantBeUsed;
