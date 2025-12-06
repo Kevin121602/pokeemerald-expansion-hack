@@ -3144,7 +3144,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .levelUpLearnset = sMorelullLevelUpLearnset,
         .teachableLearnset = sMorelullTeachableLearnset,
         .eggMoveLearnset = sMorelullEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 24, SPECIES_SHIINOTIC}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 26, SPECIES_SHIINOTIC}),
     },
 
     [SPECIES_SHIINOTIC] =

@@ -7841,26 +7841,17 @@ Class: Fisherman
 Pic: Fisherman
 Gender: Male
 Music: Hiker
-Double Battle: Yes
+Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Turtonator @ Power Herb
-Level: 33
-Nature: Relaxed
-Ability: Shell Armor
-- Flamethrower
-- Dragon Claw
-- Solar Beam
-- Body Press
-
-Bewear @ Lum Berry
-Level: 1
-Nature: Jolly
-Ability: Fluffy
-- Body Slam
-- Drain Punch
-- Darkest Lariat
+Whiscash @ Power Herb
+Nature: Naive
+Ability: Oblivious
+Level: 29
+- Scald
 - Stomping Tantrum
+- Bounce
+- Dragon Dance
 
 === TRAINER_WADE ===
 Name: WADE

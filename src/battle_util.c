@@ -2556,6 +2556,9 @@ static enum MoveCanceler CancelerPPDeduction(struct BattleContext *ctx)
     if (ctx->currentMove != gLastResultingMoves[ctx->battlerAtk] || WasUnableToUseMove(ctx->battlerAtk))
         gDisableStructs[ctx->battlerAtk].metronomeItemCounter = 0;
 
+    if(BattlerHasAi(ctx->battlerAtk))
+        ppToDeduct = 0;
+
     if (gBattleMons[ctx->battlerAtk].pp[movePosition] > ppToDeduct)
         gBattleMons[ctx->battlerAtk].pp[movePosition] -= ppToDeduct;
     else

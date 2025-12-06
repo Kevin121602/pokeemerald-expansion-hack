@@ -67,7 +67,7 @@ Route113_GlassWorkshop_Text_DoesntLookLikeMonToMe:
 	.string "a {STR_VAR_1} to me.$"
 
 Route113_GlassWorkshop_Text_YouDontWantToThatsOkay:
-	.string "If you don't want to, that's fine,\n"
+	.string "If you don't want to, that's fine.\n"
 	.string "But this Corsola is really bringing\l"
 	.string "down the atmosphere around here…$"
 

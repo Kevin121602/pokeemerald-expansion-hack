@@ -137,7 +137,7 @@ Route113_GlassWorkshop_Text_DoesntLookLikeMonToMe:
 # 69 "data/maps/Route113_GlassWorkshop/scripts.pory"
 Route113_GlassWorkshop_Text_YouDontWantToThatsOkay:
 # 70 "data/maps/Route113_GlassWorkshop/scripts.pory"
-	.string "If you don't want to, that's fine,\n"
+	.string "If you don't want to, that's fine.\n"
 # 71 "data/maps/Route113_GlassWorkshop/scripts.pory"
 	.string "But this Corsola is really bringing\l"
 # 72 "data/maps/Route113_GlassWorkshop/scripts.pory"
