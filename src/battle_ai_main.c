@@ -3765,7 +3765,7 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
     {
         if(move == MOVE_FAKE_OUT){
             if(gDisableStructs[battlerAtk].isFirstTurn){
-                RETURN_SCORE_PLUS(LAST_CHANCE);
+                RETURN_SCORE_PLUS(POWERFUL_STATUS_MOVE);
             }
             else{
                 RETURN_SCORE_MINUS(20);
