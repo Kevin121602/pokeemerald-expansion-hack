@@ -367,7 +367,7 @@ LavaridgeTown_Gym_1F_Text_FlanneryPostBattle:
 	.string "brother Flint!$"
 
 LavaridgeTown_Gym_1F_Text_GymStatue:
-	.string "Lavaridge Town Pokémon GYM$"
+	.string "Lavaridge Town Pokémon Gym$"
 
 LavaridgeTown_Gym_1F_Text_GymStatueCertified:
 	.string "Lavaridge Town Pokémon Gym\p"

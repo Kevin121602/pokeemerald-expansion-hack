@@ -395,10 +395,7 @@ static bool32 HandleEndTurnFirstEventBlock(u32 battler)
          && !IsBattlerAtMaxHp(battler)
          && !gBattleMons[battler].volatiles.healBlock)
         {
-            gBattlerAttacker = battler;
-            gBattleStruct->moveDamage[battler] = -(GetBattlerHighestDefenseStat(battler) / 12);
-            if (gBattleStruct->moveDamage[battler] == 0)
-                gBattleStruct->moveDamage[battler] = -1;
+            SetHealAmount(battler, GetBattlerHighestDefenseStat(battler) / 12);
             BattleScriptExecute(BattleScript_SoothingSteamHeals);
             effect = TRUE;
         }

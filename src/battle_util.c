@@ -3910,6 +3910,12 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
                 gFieldStatuses = STATUS_FIELD_RICH_SEDIMENT;
                 gBattleScripting.animArg1 = B_ANIM_RICH_SEDIMENT;
                 effect = TRUE;
+                break;
+            case FIELD_EFFECT_SOOTHING_STEAM:
+                gFieldStatuses = STATUS_FIELD_SOOTHING_STEAM;
+                gBattleScripting.animArg1 = B_ANIM_SOOTHING_STEAM;
+                effect = TRUE;
+                break;
             }
         }
         if (effect)
@@ -7172,7 +7178,7 @@ static inline u32 CalcMoveBasePower(struct DamageContext *ctx)
         // don't double power due to previous turn's Round/Fusion move
         if (gCurrentTurnActionNumber != 0
          && gActionsByTurnOrder[gCurrentTurnActionNumber - 1] == B_ACTION_USE_MOVE
-         && GetMoveEffect(gLastUsedMove) == moveEffect)
+         && GetMoveEffect(gLastUsedMove) == moveEffect && !isAiCalc)
             basePower *= 2;
         break;
     case EFFECT_LASH_OUT:
@@ -9168,7 +9174,7 @@ u16 GetBattleFormChangeTargetSpecies(u32 battler, enum FormChanges method)
     u32 targetSpecies = species;
     const struct FormChange *formChanges = GetSpeciesFormChanges(species);
     struct Pokemon *mon = GetBattlerMon(battler);
-    u16 heldItem = gBattleMons[battler].item;
+    u16 heldItem = GetMonData(mon, MON_DATA_HELD_ITEM);
 
     for (i = 0; formChanges != NULL && formChanges[i].method != FORM_CHANGE_TERMINATOR; i++)
     {
@@ -10087,8 +10093,8 @@ void CopyMonLevelAndBaseStatsToBattleMon(u32 battler, struct Pokemon *mon)
 void CopyMonAbilityAndTypesToBattleMon(u32 battler, struct Pokemon *mon)
 {
     gBattleMons[battler].ability = GetMonAbility(mon);
-    gBattleMons[battler].types[0] = GetSpeciesType(gBattleMons[battler].species, 0);
-    gBattleMons[battler].types[1] = GetSpeciesType(gBattleMons[battler].species, 1);
+    gBattleMons[battler].types[0] = GetSpeciesType(GetMonData(mon, MON_DATA_SPECIES), 0);
+    gBattleMons[battler].types[1] = GetSpeciesType(GetMonData(mon, MON_DATA_SPECIES), 1);
     gBattleMons[battler].types[2] = TYPE_MYSTERY;
 }
 

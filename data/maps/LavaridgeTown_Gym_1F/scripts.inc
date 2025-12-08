@@ -729,7 +729,7 @@ LavaridgeTown_Gym_1F_Text_FlanneryPostBattle:
 # 369 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
 LavaridgeTown_Gym_1F_Text_GymStatue:
 # 370 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
-	.string "Lavaridge Town Pokémon GYM$"
+	.string "Lavaridge Town Pokémon Gym$"
 # 371 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"
 
 # 372 "data/maps/LavaridgeTown_Gym_1F/scripts.pory"

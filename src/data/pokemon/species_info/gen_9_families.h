@@ -3767,7 +3767,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         )
         .levelUpLearnset = sTinkatuffLevelUpLearnset,
         .teachableLearnset = sTinkatuffTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 38, SPECIES_TINKATON}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_TINKATON}),
     },
 
     [SPECIES_TINKATON] =

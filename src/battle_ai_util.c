@@ -5581,14 +5581,14 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     case STAT_CHANGE_SPEED:
         if (gBattleMons[battlerAtk].statStages[STAT_SPEED] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (speedBattler > speedBattlerAI && aiIsFaster){
+        if (speedBattler > speedBattlerAI && aiIsFaster && shouldSetUp){
             tempScore += GOOD_EFFECT;
         }
         break;
     case STAT_CHANGE_ATK_DEF_SPEED:
         if (gBattleMons[battlerAtk].statStages[STAT_SPEED] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (speedBattler > speedBattlerAI && aiIsFaster){
+        if (speedBattler > speedBattlerAI && aiIsFaster && shouldSetUp){
             tempScore += GOOD_EFFECT;
         } else {
             if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp){
@@ -5604,7 +5604,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     case STAT_CHANGE_ATK_SPEED_2:
         if (gBattleMons[battlerAtk].statStages[STAT_SPEED] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (speedBattler > speedBattlerAI && aiIsFaster){
+        if (speedBattler > speedBattlerAI && aiIsFaster && shouldSetUp){
             tempScore += GOOD_EFFECT;
         } else {
             if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
@@ -5616,7 +5616,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     case STAT_CHANGE_SPEED_DEF_2:
         if (gBattleMons[battlerAtk].statStages[STAT_SPEED] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (speedBattler > speedBattlerAI && aiIsFaster){
+        if (speedBattler > speedBattlerAI && aiIsFaster && shouldSetUp){
             tempScore += GOOD_EFFECT;
         } else {
             if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp){
@@ -5631,7 +5631,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     case STAT_CHANGE_SPATK_SPDEF_SPEED:
         if (gBattleMons[battlerAtk].statStages[STAT_SPEED] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (speedBattler > speedBattlerAI && aiIsFaster){
+        if (speedBattler > speedBattlerAI && aiIsFaster && shouldSetUp){
             tempScore += GOOD_EFFECT;
         } else {
             if (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp){
@@ -5646,7 +5646,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     case STAT_CHANGE_SHELL_SMASH:
         if (gBattleMons[battlerAtk].statStages[STAT_SPEED] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_SPATK] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_ATK] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (speedBattler > speedBattlerAI && aiIsFaster){
+        if (speedBattler > speedBattlerAI && aiIsFaster && shouldSetUp){
             tempScore += GOOD_EFFECT + WEAK_EFFECT;
         } else {
             if ((HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL) || HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL)) && shouldSetUp){
