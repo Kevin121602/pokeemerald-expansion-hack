@@ -4231,7 +4231,7 @@ Level: 33
 - Earthquake
 - Dragon Dance
 
-Coalossal @ Lum Berry
+Coalossal @ Weakness Policy
 Nature: Careful
 Ability: Steam Engine
 Level: 32
@@ -4294,7 +4294,7 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Toucannon @ Sharp Beak
+Toucannon @ Focus Sash
 Nature: Naive
 Ability: Sheer Force
 Level: 32
@@ -7821,14 +7821,11 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Whiscash @ Power Herb
+Chansey @ Power Herb
 Nature: Naive
 Ability: Oblivious
-Level: 29
-- Scald
-- Stomping Tantrum
-- Bounce
-- Dragon Dance
+Level: 60
+- Seismic Toss
 
 === TRAINER_WADE ===
 Name: WADE

@@ -1389,14 +1389,6 @@ static u32 GetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId, u8 *
     u32 data32;
     s32 size = 0;
 
-    struct Pokemon megaSanitizedMon = party[monId];
-
-    if(BattlerHasAi(battler)){
-        u32 megaSpecies = GetMegaEvolutionTargetSpecies(&megaSanitizedMon);
-        SetMonData(&megaSanitizedMon, MON_DATA_SPECIES, &megaSpecies);
-        CalculateMonStats(&megaSanitizedMon);
-    }
-
     switch (gBattleResources->bufferA[battler][1])
     {
     case REQUEST_ALL_BATTLE:
@@ -1421,11 +1413,11 @@ static u32 GetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId, u8 *
         battleMon.level = GetMonData(&party[monId], MON_DATA_LEVEL);
         battleMon.hp = GetMonData(&party[monId], MON_DATA_HP);
         battleMon.maxHP = GetMonData(&party[monId], MON_DATA_MAX_HP);
-        battleMon.attack = GetMonData(&megaSanitizedMon, MON_DATA_ATK);
-        battleMon.defense = GetMonData(&megaSanitizedMon, MON_DATA_DEF);
-        battleMon.speed = GetMonData(&megaSanitizedMon, MON_DATA_SPEED);
-        battleMon.spAttack = GetMonData(&megaSanitizedMon, MON_DATA_SPATK);
-        battleMon.spDefense = GetMonData(&megaSanitizedMon, MON_DATA_SPDEF);
+        battleMon.attack = GetMonData(&party[monId], MON_DATA_ATK);
+        battleMon.defense = GetMonData(&party[monId], MON_DATA_DEF);
+        battleMon.speed = GetMonData(&party[monId], MON_DATA_SPEED);
+        battleMon.spAttack = GetMonData(&party[monId], MON_DATA_SPATK);
+        battleMon.spDefense = GetMonData(&party[monId], MON_DATA_SPDEF);
         battleMon.abilityNum = GetMonData(&party[monId], MON_DATA_ABILITY_NUM);
         battleMon.otId = GetMonData(&party[monId], MON_DATA_OT_ID);
         battleMon.metLevel = GetMonData(&party[monId], MON_DATA_MET_LEVEL);

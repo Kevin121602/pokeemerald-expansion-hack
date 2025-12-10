@@ -7259,7 +7259,7 @@ static inline u32 CalcMoveBasePower(struct DamageContext *ctx)
     {
     case MOVE_WATER_SHURIKEN:
         if (gBattleMons[battlerAtk].species == SPECIES_GRENINJA_ASH)
-            basePower = 20;
+            basePower = 25;
         break;
     }
 
