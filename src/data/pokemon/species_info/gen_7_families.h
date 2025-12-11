@@ -1127,7 +1127,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .levelUpLearnset = sGrubbinLevelUpLearnset,
         .teachableLearnset = sGrubbinTeachableLearnset,
         .eggMoveLearnset = sGrubbinEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_CHARJABUG}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 16, SPECIES_CHARJABUG}),
     },
 
     [SPECIES_CHARJABUG] =

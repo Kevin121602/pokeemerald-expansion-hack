@@ -10804,11 +10804,6 @@ bool32 CanMoveSkipAccuracyCalc(u32 battlerAtk, u32 battlerDef, enum Ability abil
         effect = TRUE;
         ability = ABILITY_FATAL_PRECISION;
     }
-    else if(abilityAtk == ABILITY_SWEET_DREAMS && move == MOVE_HYPNOSIS)
-    {
-        effect = TRUE;
-        ability = ABILITY_SWEET_DREAMS;
-    }
     // If the attacker has the ability No Guard and they aren't targeting a Pokemon involved in a Sky Drop with the move Sky Drop, move hits.
     else if (abilityAtk == ABILITY_NO_GUARD
           && gBattleMons[battlerDef].volatiles.semiInvulnerable != STATE_COMMANDER
@@ -11008,6 +11003,9 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, enum Ability atkA
 
     if (HasWeatherEffect() && gBattleWeather & B_WEATHER_FOG)
         calc = (calc * 60) / 100; // modified by 3/5
+
+    if (gBattleMons[battlerAtk].species == SPECIES_HYPNO && move == MOVE_HYPNOSIS)
+            calc = (calc * (100 + 120)) / 100;
 
     return calc;
 }
