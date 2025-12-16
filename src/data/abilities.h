@@ -2437,11 +2437,4 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Special moves drop speed."),
         .aiRating = 10,
     },
-
-    [ABILITY_SWEET_DREAMS] =
-    {
-        .name = _("Sweet Dreams"),
-        .description = COMPOUND_STRING("Drains sleeping foes."),
-        .aiRating = 10,
-    },
 };

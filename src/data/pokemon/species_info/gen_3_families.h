@@ -8399,7 +8399,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .levelUpLearnset = sCorphishLevelUpLearnset,
         .teachableLearnset = sCorphishTeachableLearnset,
         .eggMoveLearnset = sCorphishEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_CRAWDAUNT}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 26, SPECIES_CRAWDAUNT}),
     },
 
     [SPECIES_CRAWDAUNT] =
@@ -8697,7 +8697,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .levelUpLearnset = sLileepLevelUpLearnset,
         .teachableLearnset = sLileepTeachableLearnset,
         .eggMoveLearnset = sLileepEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_CRADILY}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_CRADILY}),
     },
 
     [SPECIES_CRADILY] =
@@ -8856,7 +8856,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .levelUpLearnset = sAnorithLevelUpLearnset,
         .teachableLearnset = sAnorithTeachableLearnset,
         .eggMoveLearnset = sAnorithEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_ARMALDO}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_ARMALDO}),
     },
 
     [SPECIES_ARMALDO] =

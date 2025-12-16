@@ -1026,7 +1026,7 @@ Drifblim @ Iapapa Berry
 Level: 24
 Nature: Naughty
 Ability: Unburden
-- Hex
+- Shadow Ball
 - Acrobatics
 - Shock Wave
 - Destiny Bond
@@ -9412,7 +9412,7 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Floette @ Lum Berry
+Floette @ Throat Spray
 Nature: Bold
 Ability: Flower Veil
 Level: 26
@@ -10122,7 +10122,7 @@ Level: 23
 
 Hypno @ Leftovers
 Nature: Jolly
-Ability: Sweet Dreams
+Ability: Bad Dreams
 Level: 24
 - Zen Headbutt
 - Brick Break
@@ -16288,7 +16288,7 @@ Level: 21
 
 Furret @ Leftovers
 Nature: Jolly
-Ability: Run Away
+Ability: Adaptability
 Level: 20
 - Headbutt
 - Quick Attack

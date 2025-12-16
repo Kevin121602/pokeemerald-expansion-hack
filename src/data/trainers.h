@@ -2530,7 +2530,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 1029
-                MOVE_HEX,
+                MOVE_SHADOW_BALL,
                 MOVE_ACROBATICS,
                 MOVE_SHOCK_WAVE,
                 MOVE_DESTINY_BOND,
@@ -24407,7 +24407,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_FLOETTE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 9415
-            .heldItem = ITEM_LUM_BERRY,
+            .heldItem = ITEM_THROAT_SPRAY,
 #line 9419
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 9417
@@ -26306,7 +26306,7 @@ F_TRAINER_FEMALE |
 #line 10127
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10125
-            .ability = ABILITY_SWEET_DREAMS,
+            .ability = ABILITY_BAD_DREAMS,
 #line 10126
             .lvl = 24,
 #line 10124
@@ -42458,7 +42458,7 @@ F_TRAINER_FEMALE |
 #line 16293
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 16291
-            .ability = ABILITY_RUN_AWAY,
+            .ability = ABILITY_ADAPTABILITY,
 #line 16292
             .lvl = 20,
 #line 16290

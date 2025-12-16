@@ -4848,11 +4848,6 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, u32 battler, enum Ability ab
                     gDisableStructs[battler].cudChew = TRUE;
                 }
                 break;
-            case ABILITY_SWEET_DREAMS:
-                gBattleScripting.animArg1 = gBattlerAttacker;
-                BattleScriptPushCursorAndCallback(BattleScript_SweetDreamsActivates);
-                effect++;
-                break;
             default:
                 break;
             }
@@ -11005,7 +11000,7 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, enum Ability atkA
         calc = (calc * 60) / 100; // modified by 3/5
 
     if (gBattleMons[battlerAtk].species == SPECIES_HYPNO && move == MOVE_HYPNOSIS)
-            calc = (calc * (100 + 120)) / 100;
+        calc = (calc * 143) / 100;
 
     return calc;
 }

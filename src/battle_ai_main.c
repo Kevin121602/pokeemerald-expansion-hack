@@ -971,7 +971,7 @@ static u32 ChooseMoveOrAction_Doubles(u32 battler, u32 doublesTargeting)
             actionOrMoveIndex[i] = mostViableMovesIndices[Random() % mostViableMovesNo];
             bestMovePointsForTarget[i] = mostViableMovesScores[0];
 
-            if(bestMovePointsForTarget[i] > 100)
+            if(bestMovePointsForTarget[i] >= 100)
                 gAiLogicData->hasViableMoveDoubles = TRUE;
 
             // Don't use a move against ally if it has less than 100 points.

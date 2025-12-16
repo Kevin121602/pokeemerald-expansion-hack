@@ -5387,6 +5387,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     bestOverallDmg = (bestPhysicalDmg > bestSpecialDmg) ? bestPhysicalDmg : bestSpecialDmg;
     bestPrioDmg = (bestPhysPrioDmg > bestSpecialPrioDmg) ? bestPhysPrioDmg : bestSpecialPrioDmg;
     bestMultiHitDmg = (bestPhysMultiHitDmg > bestSpecialMultiHitDmg) ? bestPhysMultiHitDmg : bestSpecialMultiHitDmg;
+    bestOverallMove = (bestPhysicalDmg > bestSpecialDmg) ? bestPhysicalMove : bestSpecialMove;
 
     u32 bestPhysicalDmgAfterBoosts = bestPhysicalDmg;
     u32 bestSpecialDmgAfterBoosts = bestSpecialDmg;
@@ -5572,7 +5573,9 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     case STAT_CHANGE_DEF:
         if (gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp)
+        if (bestOverallDmg * 3 < gBattleMons[battlerAtk].hp)
+            return NO_INCREASE;
+        if (gMovesInfo[moves[bestOverallMove]].category == DAMAGE_CATEGORY_PHYSICAL && shouldSetUp)
             tempScore += DECENT_EFFECT;
         if (gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE - 4)
             tempScore -= WEAK_EFFECT;
@@ -5699,13 +5702,17 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     case STAT_CHANGE_SPDEF:
         if (gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp)
+        if (bestOverallDmg * 3 < gBattleMons[battlerAtk].hp)
+            return NO_INCREASE;
+        if (gMovesInfo[moves[bestOverallMove]].category == DAMAGE_CATEGORY_SPECIAL && shouldSetUp)
             tempScore += DECENT_EFFECT;
         if (gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE - 4)
             tempScore -= WEAK_EFFECT;
         break;
     case STAT_CHANGE_DEF_SPDEF:
         if (gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE && gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE)
+            return NO_INCREASE;
+        if (bestOverallDmg * 3 < gBattleMons[battlerAtk].hp)
             return NO_INCREASE;
         if ((HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) || HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL)) && shouldSetUp){
             tempScore += DECENT_EFFECT;
@@ -5726,7 +5733,9 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     case STAT_CHANGE_DEF_2:
         if (gBattleMons[battlerAtk].statStages[STAT_DEF] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL) && shouldSetUp){
+        if (bestOverallDmg * 3 < gBattleMons[battlerAtk].hp)
+            return NO_INCREASE;
+        if (gMovesInfo[moves[bestOverallMove]].category == DAMAGE_CATEGORY_PHYSICAL && shouldSetUp){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
                 tempScore += WEAK_EFFECT;
@@ -5737,7 +5746,9 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     case STAT_CHANGE_SPDEF_2:
         if (gBattleMons[battlerAtk].statStages[STAT_SPDEF] >= MAX_STAT_STAGE)
             return NO_INCREASE;
-        if (HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) && shouldSetUp){
+        if (bestOverallDmg * 3 < gBattleMons[battlerAtk].hp)
+            return NO_INCREASE;
+        if (gMovesInfo[moves[bestOverallMove]].category == DAMAGE_CATEGORY_SPECIAL && shouldSetUp){
             tempScore += DECENT_EFFECT;
             if(Random() % 100 < 50)
                 tempScore += WEAK_EFFECT;

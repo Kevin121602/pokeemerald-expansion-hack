@@ -938,7 +938,7 @@ bool32 ShouldSwitch(u32 battler)
     }
 
     for(l= 0; l < MAX_MON_MOVES; l++){
-        if (gAiThinkingStruct->score[l] > 100){
+        if (gAiThinkingStruct->score[l] >= 100){
             hasNoGoodMoves = FALSE;
         }
         if (gMovesInfo[gBattleMons[battler].moves[l]].effect == EFFECT_TELEPORT && gAiThinkingStruct->score[l] >= 100 && !IsBattlerIncapacitated(battler, battlerAbility)){
