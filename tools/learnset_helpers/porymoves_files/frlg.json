@@ -1183,7 +1183,7 @@
     ],
     "EggMoves": [
       "MOVE_AIR_CUTTER",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_FORESIGHT",
       "MOVE_PURSUIT",
       "MOVE_STEEL_WING"
@@ -1262,7 +1262,7 @@
     ],
     "EggMoves": [
       "MOVE_AIR_CUTTER",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_FORESIGHT",
       "MOVE_PURSUIT",
       "MOVE_STEEL_WING"
@@ -1346,7 +1346,7 @@
     ],
     "EggMoves": [
       "MOVE_AIR_CUTTER",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_FORESIGHT",
       "MOVE_PURSUIT",
       "MOVE_STEEL_WING"
@@ -1589,7 +1589,7 @@
     "EggMoves": [
       "MOVE_ASTONISH",
       "MOVE_FALSE_SWIPE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_QUICK_ATTACK",
       "MOVE_SCARY_FACE",
       "MOVE_SKY_ATTACK",
@@ -1669,7 +1669,7 @@
     "EggMoves": [
       "MOVE_ASTONISH",
       "MOVE_FALSE_SWIPE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_QUICK_ATTACK",
       "MOVE_SCARY_FACE",
       "MOVE_SKY_ATTACK",
@@ -3051,7 +3051,7 @@
     ],
     "EggMoves": [
       "MOVE_DISABLE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_FLAIL",
       "MOVE_HEAT_WAVE",
       "MOVE_HOWL",
@@ -3120,7 +3120,7 @@
     ],
     "EggMoves": [
       "MOVE_DISABLE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_FLAIL",
       "MOVE_HEAT_WAVE",
       "MOVE_HOWL",
@@ -3222,7 +3222,7 @@
     ],
     "EggMoves": [
       "MOVE_FAKE_TEARS",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_PERISH_SONG",
       "MOVE_PRESENT",
       "MOVE_WISH"
@@ -3307,7 +3307,7 @@
     ],
     "EggMoves": [
       "MOVE_FAKE_TEARS",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_PERISH_SONG",
       "MOVE_PRESENT",
       "MOVE_WISH"
@@ -3394,7 +3394,7 @@
     ],
     "EggMoves": [
       "MOVE_CURSE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_GUST",
       "MOVE_PURSUIT",
       "MOVE_QUICK_ATTACK",
@@ -3488,7 +3488,7 @@
     ],
     "EggMoves": [
       "MOVE_CURSE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_GUST",
       "MOVE_PURSUIT",
       "MOVE_QUICK_ATTACK",
@@ -4129,7 +4129,7 @@
     "EggMoves": [
       "MOVE_ANCIENT_POWER",
       "MOVE_BEAT_UP",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_PURSUIT",
       "MOVE_ROCK_SLIDE",
       "MOVE_SCREECH",
@@ -4224,7 +4224,7 @@
     "EggMoves": [
       "MOVE_ANCIENT_POWER",
       "MOVE_BEAT_UP",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_PURSUIT",
       "MOVE_ROCK_SLIDE",
       "MOVE_SCREECH",
@@ -4258,7 +4258,7 @@
       },
       {
         "Level": 25,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 31,
@@ -4350,7 +4350,7 @@
       },
       {
         "Level": 25,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 34,
@@ -7186,7 +7186,7 @@
     ],
     "EggMoves": [
       "MOVE_ENDEAVOR",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_FLAIL",
       "MOVE_HAZE",
       "MOVE_QUICK_ATTACK",
@@ -7269,7 +7269,7 @@
     ],
     "EggMoves": [
       "MOVE_ENDEAVOR",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_FLAIL",
       "MOVE_HAZE",
       "MOVE_QUICK_ATTACK",
@@ -11136,7 +11136,7 @@
     ],
     "EggMoves": [
       "MOVE_FALSE_SWIPE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_FLAIL",
       "MOVE_FURY_ATTACK"
     ],
@@ -14242,7 +14242,7 @@
     ],
     "EggMoves": [
       "MOVE_FEATHER_DANCE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_MIRROR_MOVE",
       "MOVE_SKY_ATTACK",
       "MOVE_SUPERSONIC",
@@ -14329,7 +14329,7 @@
     ],
     "EggMoves": [
       "MOVE_FEATHER_DANCE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_MIRROR_MOVE",
       "MOVE_SKY_ATTACK",
       "MOVE_SUPERSONIC",
@@ -14760,7 +14760,7 @@
     ],
     "EggMoves": [
       "MOVE_CURSE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_GUST",
       "MOVE_PURSUIT",
       "MOVE_QUICK_ATTACK",
@@ -15133,7 +15133,7 @@
     ],
     "EggMoves": [
       "MOVE_FAKE_TEARS",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_PERISH_SONG",
       "MOVE_PRESENT",
       "MOVE_WISH"
@@ -15438,7 +15438,7 @@
     "EggMoves": [
       "MOVE_DRILL_PECK",
       "MOVE_FEATHER_DANCE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_HAZE",
       "MOVE_PSYCH_UP",
       "MOVE_QUICK_ATTACK",
@@ -15520,7 +15520,7 @@
     "EggMoves": [
       "MOVE_DRILL_PECK",
       "MOVE_FEATHER_DANCE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_HAZE",
       "MOVE_PSYCH_UP",
       "MOVE_QUICK_ATTACK",
@@ -16074,7 +16074,7 @@
       },
       {
         "Level": 41,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 49,
@@ -17116,7 +17116,7 @@
       },
       {
         "Level": 36,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 42,
@@ -17201,7 +17201,7 @@
       },
       {
         "Level": 35,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 40,
@@ -17868,7 +17868,7 @@
       },
       {
         "Level": 28,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 36,
@@ -18102,7 +18102,7 @@
     ],
     "EggMoves": [
       "MOVE_CRUNCH",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_HEAL_BELL",
       "MOVE_METRONOME",
       "MOVE_PRESENT",
@@ -18207,7 +18207,7 @@
     ],
     "EggMoves": [
       "MOVE_CRUNCH",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_HEAL_BELL",
       "MOVE_METRONOME",
       "MOVE_PRESENT",
@@ -18581,7 +18581,7 @@
       },
       {
         "Level": 22,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 29,
@@ -18683,7 +18683,7 @@
       },
       {
         "Level": 25,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 31,
@@ -18785,7 +18785,7 @@
       },
       {
         "Level": 25,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 31,
@@ -19682,7 +19682,7 @@
       },
       {
         "Level": 37,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 43,
@@ -19775,7 +19775,7 @@
       },
       {
         "Level": 43,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 51,
@@ -23610,7 +23610,7 @@
       },
       {
         "Level": 31,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 37,
@@ -23700,7 +23700,7 @@
       "MOVE_EXPLOSION",
       "MOVE_EXTRASENSORY",
       "MOVE_FAKE_OUT",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_RAZOR_WIND",
       "MOVE_SUNNY_DAY",
       "MOVE_SWAGGER",
@@ -24747,7 +24747,7 @@
       },
       {
         "Level": 19,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 25,
@@ -24873,7 +24873,7 @@
     "PreEvoMoves": [
       "MOVE_AMNESIA",
       "MOVE_COVET",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_FLAIL",
       "MOVE_SLACK_OFF",
       "MOVE_YAWN"
@@ -24961,7 +24961,7 @@
       },
       {
         "Level": 19,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 25,
@@ -25115,7 +25115,7 @@
     ],
     "EggMoves": [
       "MOVE_ENDURE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_GUST",
       "MOVE_SILVER_WIND"
     ],
@@ -25219,7 +25219,7 @@
     ],
     "EggMoves": [
       "MOVE_ENDURE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_GUST",
       "MOVE_SILVER_WIND"
     ],
@@ -25303,7 +25303,7 @@
     ],
     "EggMoves": [
       "MOVE_ENDURE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_GUST",
       "MOVE_SILVER_WIND"
     ],
@@ -25710,7 +25710,7 @@
       "MOVE_CROSS_CHOP",
       "MOVE_DETECT",
       "MOVE_DYNAMIC_PUNCH",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_FORESIGHT",
       "MOVE_HELPING_HAND",
       "MOVE_REVENGE"
@@ -25821,7 +25821,7 @@
       "MOVE_CROSS_CHOP",
       "MOVE_DETECT",
       "MOVE_DYNAMIC_PUNCH",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_FORESIGHT",
       "MOVE_HELPING_HAND",
       "MOVE_REVENGE"
@@ -26019,7 +26019,7 @@
       },
       {
         "Level": 27,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 31,
@@ -26105,7 +26105,7 @@
       "MOVE_CHARM",
       "MOVE_COVET",
       "MOVE_DOUBLE_EDGE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_HEAL_BELL",
       "MOVE_TACKLE",
       "MOVE_TAIL_WHIP"
@@ -26195,7 +26195,7 @@
       },
       {
         "Level": 29,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 33,
@@ -26288,7 +26288,7 @@
       },
       {
         "Level": 26,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 31,
@@ -28587,7 +28587,7 @@
       },
       {
         "Level": 12,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 16,
@@ -28689,7 +28689,7 @@
       },
       {
         "Level": 17,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 25,
@@ -28760,7 +28760,7 @@
       },
       {
         "Level": 1,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 1,
@@ -28772,7 +28772,7 @@
       },
       {
         "Level": 17,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 25,
@@ -28851,7 +28851,7 @@
       },
       {
         "Level": 1,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 1,
@@ -28863,7 +28863,7 @@
       },
       {
         "Level": 17,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 25,
@@ -28970,7 +28970,7 @@
       },
       {
         "Level": 29,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 33,
@@ -29080,7 +29080,7 @@
       },
       {
         "Level": 29,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 35,
@@ -30846,7 +30846,7 @@
       },
       {
         "Level": 7,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 12,
@@ -30958,7 +30958,7 @@
       },
       {
         "Level": 37,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 44,
@@ -31056,7 +31056,7 @@
       },
       {
         "Level": 39,
-        "Move": "MOVE_FAINT_ATTACK"
+        "Move": "MOVE_FEINT_ATTACK"
       },
       {
         "Level": 48,
@@ -31191,7 +31191,7 @@
     ],
     "EggMoves": [
       "MOVE_DESTINY_BOND",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_GRUDGE",
       "MOVE_IMPRISON",
       "MOVE_MEMENTO",
@@ -31298,7 +31298,7 @@
     ],
     "EggMoves": [
       "MOVE_DESTINY_BOND",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_GRUDGE",
       "MOVE_IMPRISON",
       "MOVE_MEMENTO",
@@ -31588,7 +31588,7 @@
       "MOVE_BATON_PASS",
       "MOVE_CURSE",
       "MOVE_DOUBLE_EDGE",
-      "MOVE_FAINT_ATTACK",
+      "MOVE_FEINT_ATTACK",
       "MOVE_MAGIC_COAT",
       "MOVE_SUBSTITUTE"
     ],

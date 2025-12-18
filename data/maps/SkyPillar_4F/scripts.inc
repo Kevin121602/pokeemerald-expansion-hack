@@ -16,11 +16,9 @@ SkyPillar_4F_MapScripts::
 SkyPillar_4F_OnTransition:
 # 9 "data/maps/SkyPillar_4F/scripts.pory"
 	call_if_lt VAR_SKY_PILLAR_STATE, 2, SkyPillar_4F_EventScript_CleanFloor
-#ifdef UBFIX
-	setvar VAR_ICE_STEP_COUNT, 1
-#else
-	copyvar VAR_ICE_STEP_COUNT, 1, warn=FALSE
-#endif
+# 10 "data/maps/SkyPillar_4F/scripts.pory"
+	copyvar VAR_ICE_STEP_COUNT, 1
+# 11 "data/maps/SkyPillar_4F/scripts.pory"
 	end
 # 12 "data/maps/SkyPillar_4F/scripts.pory"
 

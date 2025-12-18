@@ -3616,7 +3616,7 @@ F_TRAINER_FEMALE |
 #line 1450
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 1449
-            .ability = ABILITY_ICE_BODY,
+            .ability = ABILITY_SNOW_CLOAK,
 #line 1447
             .lvl = 31,
 #line 1448
@@ -15772,7 +15772,7 @@ F_TRAINER_FEMALE |
 #line 6142
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 6141
-            .ability = ABILITY_CHLOROPHYLL,
+            .ability = ABILITY_FLOWER_VEIL,
 #line 6139
             .lvl = 16,
 #line 6140
@@ -23556,7 +23556,7 @@ F_TRAINER_FEMALE |
 #line 9092
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 9090
-            .ability = ABILITY_INFILTRATOR,
+            .ability = ABILITY_COTTON_DOWN,
 #line 9091
             .lvl = 26,
 #line 9089
@@ -40245,7 +40245,7 @@ F_TRAINER_FEMALE |
 #line 15454
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 15452
-            .ability = ABILITY_CHLOROPHYLL,
+            .ability = ABILITY_FLOWER_VEIL,
 #line 15453
             .lvl = 24,
 #line 15451
@@ -40475,7 +40475,7 @@ F_TRAINER_FEMALE |
 #line 15544
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 15542
-            .ability = ABILITY_INTIMIDATE,
+            .ability = ABILITY_UNNERVE,
 #line 15543
             .lvl = 26,
 #line 15541

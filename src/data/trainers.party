@@ -1446,7 +1446,7 @@ Ability: Levitate
 Glaceon @ Lum Berry
 Level: 31
 Nature: Naive
-Ability: Ice Body
+Ability: Snow Cloak
 - Freeze-Dry
 - Ice Shard
 - Mud Shot
@@ -6138,7 +6138,7 @@ Ability: Rattled
 Sunflora @ Berry Juice
 Level: 16
 Nature: Timid
-Ability: Chlorophyll
+Ability: Flower Veil
 - Giga Drain
 - Sludge Bomb
 - Leech Seed
@@ -9087,7 +9087,7 @@ Level: 27
 
 Jumpluff @ Leftovers
 Nature: Timid
-Ability: Infiltrator
+Ability: Cotton Down
 Level: 26
 - Air Slash
 - Giga Drain
@@ -15449,7 +15449,7 @@ Level: 24
 
 Sunflora @ Sitrus Berry
 Nature: Bold
-Ability: Chlorophyll
+Ability: Flower Veil
 Level: 24
 - Giga Drain
 - Earth Power
@@ -15539,7 +15539,7 @@ Level: 27
 
 Arbok @ Lum Berry
 Nature: Jolly
-Ability: Intimidate
+Ability: Unnerve
 Level: 26
 - Poison Jab
 - Crunch

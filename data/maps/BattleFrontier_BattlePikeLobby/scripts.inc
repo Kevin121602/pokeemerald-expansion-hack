@@ -352,8 +352,7 @@ BattleFrontier_BattlePikeLobby_EventScript_NotEnoughValidMons::
 BattleFrontier_BattlePikeLobby_EventScript_NotEnoughValidMonsLv50::
 # 177 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	msgbox BattleFrontier_BattlePikeLobby_Text_NotEnoughValidMonsLv50, MSGBOX_DEFAULT
-	call BattleFrontier_ShowCaughtBannedSpecies
-	msgbox BattleFrontier_BattlePikeLobby_Text_NotEnoughValidMonsEnd, MSGBOX_DEFAULT
+# 178 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	goto BattleFrontier_BattlePikeLobby_EventScript_EndCancelChallenge
 # 179 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 
@@ -361,8 +360,7 @@ BattleFrontier_BattlePikeLobby_EventScript_NotEnoughValidMonsLv50::
 BattleFrontier_BattlePikeLobby_EventScript_NotEnoughValidMonsLvOpen::
 # 181 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	msgbox BattleFrontier_BattlePikeLobby_Text_NotEnoughValidMonsLvOpen, MSGBOX_DEFAULT
-	call BattleFrontier_ShowCaughtBannedSpecies
-	msgbox BattleFrontier_BattlePikeLobby_Text_NotEnoughValidMonsEnd, MSGBOX_DEFAULT
+# 182 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	goto BattleFrontier_BattlePikeLobby_EventScript_EndCancelChallenge
 # 183 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 
@@ -640,9 +638,9 @@ BattleFrontier_BattlePikeLobby_Text_NotEnoughValidMonsLv50:
 	.string "They also must be holding different\n"
 # 320 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	.string "kinds of items.\p"
-	.string "EGGS{STR_VAR_1}.$"
-
-BattleFrontier_BattlePikeLobby_Text_NotEnoughValidMonsEnd:
+# 321 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
+	.string "EGGS{STR_VAR_1} ineligible.\p"
+# 322 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	.string "Please come see me when\n"
 # 323 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	.string "you are ready…$"
@@ -664,7 +662,13 @@ BattleFrontier_BattlePikeLobby_Text_NotEnoughValidMonsLvOpen:
 	.string "They also must be holding different\n"
 # 332 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 	.string "kinds of items.\p"
-	.string "EGGS{STR_VAR_1}.$"
+# 333 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
+	.string "EGGS{STR_VAR_1} ineligible.\p"
+# 334 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
+	.string "Please come see me when\n"
+# 335 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
+	.string "you are ready…$"
+# 336 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 
 # 337 "data/maps/BattleFrontier_BattlePikeLobby/scripts.pory"
 BattleFrontier_BattlePikeLobby_Text_PleaseChooseThreeMons:

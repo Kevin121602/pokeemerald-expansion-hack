@@ -378,8 +378,7 @@ BattleFrontier_BattlePyramidLobby_EventScript_NotEnoughValidMons::
 BattleFrontier_BattlePyramidLobby_EventScript_NotEnoughValidMonsLv50::
 # 190 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
 	msgbox BattleFrontier_BattlePyramidLobby_Text_NotEnoughValidMonsLv50, MSGBOX_DEFAULT
-	call BattleFrontier_ShowCaughtBannedSpecies
-	msgbox BattleFrontier_BattlePyramidLobby_Text_NotEnoughValidMonsEnd, MSGBOX_DEFAULT
+# 191 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
 	goto BattleFrontier_BattlePyramidLobby_EventScript_EndCancelChallenge
 # 192 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
 
@@ -387,8 +386,7 @@ BattleFrontier_BattlePyramidLobby_EventScript_NotEnoughValidMonsLv50::
 BattleFrontier_BattlePyramidLobby_EventScript_NotEnoughValidMonsLvOpen::
 # 194 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
 	msgbox BattleFrontier_BattlePyramidLobby_Text_NotEnoughValidMonsLvOpen, MSGBOX_DEFAULT
-	call BattleFrontier_ShowCaughtBannedSpecies
-	msgbox BattleFrontier_BattlePyramidLobby_Text_NotEnoughValidMonsEnd, MSGBOX_DEFAULT
+# 195 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
 	goto BattleFrontier_BattlePyramidLobby_EventScript_EndCancelChallenge
 # 196 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
 
@@ -1156,8 +1154,15 @@ BattleFrontier_BattlePyramidLobby_Text_NotEnoughValidMonsLvOpen:
 	.string "Pokémon qualified for the challenge.\p"
 # 578 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
 	.string "Please also remember to take all\n"
-	.string "items from your POKéMON.\p"
-	.string "EGGS{STR_VAR_1}.$"
+# 579 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
+	.string "items from your Pokémon.\p"
+# 580 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
+	.string "EGGS{STR_VAR_1} ineligible.\p"
+# 581 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
+	.string "When you are ready, please have\n"
+# 582 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
+	.string "a word with me.$"
+# 583 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
 
 # 584 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
 BattleFrontier_BattlePyramidLobby_Text_NotEnoughValidMonsLv50:
@@ -1173,10 +1178,11 @@ BattleFrontier_BattlePyramidLobby_Text_NotEnoughValidMonsLv50:
 	.string "and each no higher than Level 50.\p"
 # 590 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
 	.string "Please also remember to take all\n"
-	.string "items from your POKéMON.\p"
-	.string "EGGS{STR_VAR_1}.$"
-
-BattleFrontier_BattlePyramidLobby_Text_NotEnoughValidMonsEnd:
+# 591 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
+	.string "items from your Pokémon.\p"
+# 592 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
+	.string "EGGS{STR_VAR_1} ineligible.\p"
+# 593 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
 	.string "When you are ready, please have\n"
 # 594 "data/maps/BattleFrontier_BattlePyramidLobby/scripts.pory"
 	.string "a word with me.$"
