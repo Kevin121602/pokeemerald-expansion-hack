@@ -323,12 +323,12 @@
               {
                 "min_level": 5,
                 "max_level": 6,
-                "species": "SPECIES_TAILLOW"
+                "species": "SPECIES_FLETCHLING"
               },
               {
                 "min_level": 5,
                 "max_level": 6,
-                "species": "SPECIES_CHATOT"
+                "species": "SPECIES_FLETCHLING"
               }
             ]
           },
