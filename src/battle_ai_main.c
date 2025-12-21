@@ -699,6 +699,23 @@ void SetAiLogicDataForTurn(struct AiLogicData *aiData)
     gAiLogicData->aiCalcInProgress = TRUE;
     if (DEBUG_AI_DELAY_TIMER)
         CycleCountStart();
+
+    struct BattlePokemon *savedBattleMons = AllocSaveBattleMons();
+
+    for (battlerAtk = 0; battlerAtk < battlersCount; battlerAtk++)
+    {
+        if (!BattlerHasAi(battlerAtk))
+            continue;
+
+        struct Pokemon *mon = GetBattlerMon(battlerAtk);
+        u32 originalSpecies = gBattleMons[battlerAtk].species;
+        u32 targetSpecies = GetBattleFormChangeTargetSpecies(battlerAtk, FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM);
+
+        SetMonData(mon, MON_DATA_SPECIES, &targetSpecies);
+        RecalcBattlerStats(battlerAtk, mon, FALSE);
+        SetMonData(mon, MON_DATA_SPECIES, &originalSpecies);
+    }
+
     for (battlerAtk = 0; battlerAtk < battlersCount; battlerAtk++)
     {
         if (!IsBattlerAlive(battlerAtk))
@@ -725,6 +742,8 @@ void SetAiLogicDataForTurn(struct AiLogicData *aiData)
                 aiData->targetingCase = DIAGONAL_TARGETING;
         }
     }
+
+    FreeRestoreBattleMons(savedBattleMons);
 
     if (DEBUG_AI_DELAY_TIMER)
         // We add to existing to compound multiple calls
@@ -1397,7 +1416,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
 
     // primal weather check
     weather = AI_GetWeather();
-    if (weather & B_WEATHER_PRIMAL_ANY)
+    if (weather & B_WEATHER_PRIMAL_ANY || gAiLogicData->abilities[battlerDef] == ABILITY_CLOUD_NINE || gAiLogicData->abilities[BATTLE_PARTNER(battlerDef)] == ABILITY_CLOUD_NINE)
     {
         switch (moveEffect)
         {

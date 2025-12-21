@@ -10855,7 +10855,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_SLURPUFF,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 4207
-            .heldItem = ITEM_AGUAV_BERRY,
+            .heldItem = ITEM_SITRUS_BERRY,
 #line 4211
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 4209
@@ -10867,8 +10867,8 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 4211
-                MOVE_DAZZLING_GLEAM,
-                MOVE_ENERGY_BALL,
+                MOVE_PLAY_ROUGH,
+                MOVE_PSYCHIC,
                 MOVE_FIRE_PUNCH,
                 MOVE_STICKY_WEB,
             },
@@ -10882,7 +10882,7 @@ F_TRAINER_FEMALE |
 #line 4220
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 4218
-            .ability = ABILITY_WATER_VEIL,
+            .ability = ABILITY_INTIMIDATE,
 #line 4219
             .lvl = 32,
 #line 4217
@@ -10932,7 +10932,7 @@ F_TRAINER_FEMALE |
 #line 4237
             .lvl = 32,
 #line 4235
-            .nature = NATURE_CAREFUL,
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 4238
@@ -33846,7 +33846,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_LUNATONE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 12965
-            .heldItem = ITEM_LUM_BERRY,
+            .heldItem = ITEM_FAIRY_GEM,
 #line 12969
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 12967
@@ -33921,7 +33921,7 @@ F_TRAINER_FEMALE |
 #line 12996
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 12994
-            .ability = ABILITY_SWIFT_SWIM,
+            .ability = ABILITY_DAZZLING,
 #line 12995
             .lvl = 31,
 #line 12993
@@ -36430,7 +36430,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_VOLBEAT,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 13955
-            .heldItem = ITEM_EJECT_BUTTON,
+            .heldItem = ITEM_HEAT_ROCK,
 #line 13959
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 13957
@@ -36442,7 +36442,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 13959
-                MOVE_LUNGE,
+                MOVE_U_TURN,
                 MOVE_ZEN_HEADBUTT,
                 MOVE_MOONLIGHT,
                 MOVE_SUNNY_DAY,
@@ -36450,25 +36450,25 @@ F_TRAINER_FEMALE |
             },
             {
 #line 13964
-            .species = SPECIES_SUDOWOODO,
+            .species = SPECIES_MUDSDALE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 13964
             .heldItem = ITEM_ASSAULT_VEST,
 #line 13968
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 13966
-            .ability = ABILITY_ROCK_HEAD,
+            .ability = ABILITY_STAMINA,
 #line 13967
             .lvl = 33,
 #line 13965
-            .nature = NATURE_JOLLY,
+            .nature = NATURE_CAREFUL,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 13968
+                MOVE_HIGH_HORSEPOWER,
+                MOVE_BODY_PRESS,
                 MOVE_ROCK_SLIDE,
-                MOVE_WOOD_HAMMER,
-                MOVE_FIRE_PUNCH,
-                MOVE_ICE_PUNCH,
+                MOVE_HEAVY_SLAM,
             },
             },
             {
@@ -36522,7 +36522,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_LEAFEON,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 13991
-            .heldItem = ITEM_LUM_BERRY,
+            .heldItem = ITEM_FIRE_GEM,
 #line 13995
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 13993
@@ -36530,14 +36530,14 @@ F_TRAINER_FEMALE |
 #line 13994
             .lvl = 34,
 #line 13992
-            .nature = NATURE_ADAMANT,
+            .nature = NATURE_NAIVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 13995
                 MOVE_SOLAR_BLADE,
                 MOVE_LEAF_BLADE,
                 MOVE_RETURN,
-                MOVE_SUNNY_DAY,
+                MOVE_WEATHER_BALL,
             },
             },
         },

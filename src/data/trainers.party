@@ -4204,18 +4204,18 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Slurpuff @ Aguav Berry
+Slurpuff @ Sitrus Berry
 Nature: Hasty
 Ability: Unburden
 Level: 32
-- Dazzling Gleam
-- Energy Ball
+- Play Rough
+- Psychic
 - Fire Punch
 - Sticky Web
 
 Huntail @ Mystic Water
 Nature: Jolly
-Ability: Water Veil
+Ability: Intimidate
 Level: 32
 - Waterfall
 - Crunch
@@ -4232,7 +4232,7 @@ Level: 33
 - Dragon Dance
 
 Coalossal @ Weakness Policy
-Nature: Careful
+Nature: Jolly
 Ability: Steam Engine
 Level: 32
 - Rock Slide
@@ -12962,7 +12962,7 @@ Level: 32
 - Moonblast
 - Sleep Powder
 
-Lunatone @ Lum Berry
+Lunatone @ Fairy Gem
 Nature: Timid
 Ability: Levitate
 Level: 32
@@ -12991,7 +12991,7 @@ Level: 32
 
 Gorebyss @ Throat Spray
 Nature: Timid
-Ability: Swift Swim
+Ability: Dazzling
 Level: 31
 - Sparkling Aria
 - Psychic
@@ -13952,23 +13952,23 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Volbeat @ Eject Button
+Volbeat @ Heat Rock
 Nature: Jolly
 Ability: Prankster
 Level: 33
-- Lunge
+- U-Turn
 - Zen Headbutt
 - Moonlight
 - Sunny Day
 
-Sudowoodo @ Assault Vest
-Nature: Jolly
-Ability: Rock Head
+Mudsdale @ Assault Vest
+Nature: Careful
+Ability: Stamina
 Level: 33
+- High Horsepower
+- Body Press
 - Rock Slide
-- Wood Hammer
-- Fire Punch
-- Ice Punch
+- Heavy Slam
 
 Druddigon @ Muscle Band
 Nature: Jolly
@@ -13988,14 +13988,14 @@ Level: 33
 - Scorching Sands
 - Sunny Day
 
-Leafeon @ Lum Berry
-Nature: Adamant
+Leafeon @ Fire Gem
+Nature: Naive
 Ability: Chlorophyll
 Level: 34
 - Solar Blade
 - Leaf Blade
 - Return
-- Sunny Day
+- Weather Ball
 
 
 === TRAINER_HIDEO ===
