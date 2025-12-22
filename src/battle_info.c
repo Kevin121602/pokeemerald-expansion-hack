@@ -465,13 +465,20 @@ static const u8 sText_Terrain[] = _("Terrain");
 static const u8 sText_MagicRoom[] = _("Magic Room");
 static const u8 sText_WonderRoom[] = _("Wonder Room");
 static const u8 sText_Weather[] = _("Weather");
+static const u8 sText_Spikes[] = _("Spikes");
+static const u8 sText_ToxicSpikes[] = _("Toxic Spikes");
+static const u8 sText_StealthRock[] = _("Stealth Rock");
+static const u8 sText_StickyWeb[] = _("Sticky Web");
 static const u8 sText_None[] = _("(None)");
 static const u8 sText_Sun[] = _("(Sun)");
 static const u8 sText_Rain[] = _("(Rain)");
 static const u8 sText_Sand[] = _("(Sand)");
 static const u8 sText_Snow[] = _("(Snow)");
 static const u8 sText_Hail[] = _("(Hail)");
-static const u8 sText_Zero[] = _("0");
+static const u8 sText_Yes[] = _("Y");
+static const u8 sText_No[] = _("N");
+static const u8 sText_MudSport[] = _("Mud Sport");
+static const u8 sText_WaterSport[] = _("Water Sport");
 
 //
 static const u8 sText_Ability[] =   _("Ability");
@@ -1413,114 +1420,126 @@ static void PrintOnBattleTimersWindow(u8 windowId)
     FillWindowPixelBuffer(windowId, 0x11);
     AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_B_Back, 15, 3, 0, NULL);
     AddTextPrinterParameterized(windowId, FONT_NORMAL, sText_SwitchPages, 148, 3, 0, NULL);
-    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Player, 87, 19, 0, NULL);
-    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_AI, 140, 19, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Player, 62, 19, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_AI, 110, 19, 0, NULL);
 
-    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Tailwind, 15, 44, 0, NULL);
-    if(gSideStatuses[B_SIDE_PLAYER] & SIDE_STATUS_TAILWIND){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].tailwindTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-        *txtPtr = EOS;
-        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 44, 0, NULL);
-    } else
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 112, 44, 0, NULL);
-    if(gSideStatuses[B_SIDE_OPPONENT] & SIDE_STATUS_TAILWIND){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].tailwindTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-        *txtPtr = EOS;
-        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 44, 0, NULL);
-    } else
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 145, 44, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Tailwind, 15, 34, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].tailwindTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 87, 34, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].tailwindTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 115, 34, 0, NULL);
 
-    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Reflect, 15, 59, 0, NULL);
-    if(gSideStatuses[B_SIDE_PLAYER] & SIDE_STATUS_REFLECT){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].reflectTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-        *txtPtr = EOS;
-        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 59, 0, NULL);
-    } else
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 112, 59, 0, NULL);
-    if(gSideStatuses[B_SIDE_OPPONENT] & SIDE_STATUS_REFLECT){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].reflectTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-        *txtPtr = EOS;
-        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 59, 0, NULL);
-    } else
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 145, 59, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Reflect, 15, 47, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].reflectTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 87, 47, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].reflectTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 115, 47, 0, NULL);
 
-    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_LightScreen, 15, 74, 0, NULL);
-    if(gSideStatuses[B_SIDE_PLAYER] & SIDE_STATUS_LIGHTSCREEN){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].lightscreenTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-        *txtPtr = EOS;
-        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 74, 0, NULL);
-    } else
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 112, 74, 0, NULL);
-    if(gSideStatuses[B_SIDE_OPPONENT] & SIDE_STATUS_LIGHTSCREEN){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].lightscreenTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-        *txtPtr = EOS;
-        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 74, 0, NULL);
-    } else
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 145, 74, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_LightScreen, 15, 60, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].lightscreenTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 87, 60, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].lightscreenTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 115, 60, 0, NULL);
 
-    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_AuroraVeil, 15, 89, 0, NULL);
-    if(gSideStatuses[B_SIDE_PLAYER] & SIDE_STATUS_AURORA_VEIL){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].auroraVeilTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-        *txtPtr = EOS;
-        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 112, 89, 0, NULL);
-    } else
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 112, 89, 0, NULL);
-    if(gSideStatuses[B_SIDE_OPPONENT] & SIDE_STATUS_AURORA_VEIL){
-        txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].auroraVeilTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-        *txtPtr = EOS;
-        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 89, 0, NULL);
-    } else
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 145, 89, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_AuroraVeil, 15, 73, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].auroraVeilTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 87, 73, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].auroraVeilTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 115, 73, 0, NULL);
 
-    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_TrickRoom, 15, 114, 0, NULL);
-    if(gFieldStatuses & STATUS_FIELD_TRICK_ROOM){
-        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.trickRoomTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-        *txtPtr = EOS;
-        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 70, 114, 0, NULL);
-    } else
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 70, 114, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Spikes, 15, 86, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].spikesAmount, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 87, 86, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].spikesAmount, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 115, 86, 0, NULL);
 
-    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Terrain, 15, 129, 0, NULL);
-    if(gFieldStatuses & STATUS_FIELD_TERRAIN_ANY){
-        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.terrainTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-        *txtPtr = EOS;
-        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 70, 129, 0, NULL);
-    } else
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 70, 129, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_ToxicSpikes, 15, 99, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_PLAYER].toxicSpikesAmount, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 87, 99, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[B_SIDE_OPPONENT].toxicSpikesAmount, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 115, 99, 0, NULL);
 
-    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_MagicRoom, 87, 114, 0, NULL);
-    if(gFieldStatuses & STATUS_FIELD_MAGIC_ROOM){
-        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.magicRoomTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-        *txtPtr = EOS;
-        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 145, 114, 0, NULL);
-    } else
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 145, 114, 0, NULL);
-
-    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_WonderRoom, 162, 114, 0, NULL);
-    if(gFieldStatuses & STATUS_FIELD_WONDER_ROOM){
-        txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.wonderRoomTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-        *txtPtr = EOS;
-        AddTextPrinterParameterized(windowId, FONT_SMALL, text, 222, 114, 0, NULL);
-    } else
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Zero, 222, 114, 0, NULL);
-
-    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Weather, 87, 129, 0, NULL);
-    if(gBattleWeather & B_WEATHER_RAIN)
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Rain, 123, 129, 0, NULL);
-    else if(gBattleWeather & B_WEATHER_SUN)
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Sun, 123, 129, 0, NULL);
-    else if(gBattleWeather & B_WEATHER_SANDSTORM)
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Sand, 123, 129, 0, NULL);
-    else if(gBattleWeather & B_WEATHER_SNOW)
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Snow, 123, 129, 0, NULL);
-    else if(gBattleWeather & B_WEATHER_HAIL)
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Hail, 123, 129, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_StealthRock, 15, 112, 0, NULL);
+    if (IsHazardOnSide(B_SIDE_PLAYER, HAZARDS_STEALTH_ROCK))
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Yes, 87, 112, 0, NULL);
     else
-        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_None, 123, 129, 0, NULL);
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_No, 87, 112, 0, NULL);
+
+    if (IsHazardOnSide(B_SIDE_OPPONENT, HAZARDS_STEALTH_ROCK))
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Yes, 115, 112, 0, NULL);
+    else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_No, 115, 112, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_StickyWeb, 15, 125, 0, NULL);
+    if (IsHazardOnSide(B_SIDE_PLAYER, HAZARDS_STICKY_WEB))
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Yes, 87, 125, 0, NULL);
+    else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_No, 87, 125, 0, NULL);
+
+    if (IsHazardOnSide(B_SIDE_OPPONENT, HAZARDS_STICKY_WEB))
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Yes, 115, 125, 0, NULL);
+    else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_No, 115, 125, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_TrickRoom, 148, 34, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.trickRoomTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 223, 34, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_MagicRoom, 148, 49, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.magicRoomTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 223, 49, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_WonderRoom, 148, 64, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.wonderRoomTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 223, 64, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Terrain, 148, 79, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.terrainTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 223, 79, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Weather, 148, 94, 0, NULL);
+    if(gBattleWeather & B_WEATHER_RAIN)
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Rain, 184, 94, 0, NULL);
+    else if(gBattleWeather & B_WEATHER_SUN)
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Sun, 184, 94, 0, NULL);
+    else if(gBattleWeather & B_WEATHER_SANDSTORM)
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Sand, 184, 94, 0, NULL);
+    else if(gBattleWeather & B_WEATHER_SNOW)
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Snow, 184, 94, 0, NULL);
+    else if(gBattleWeather & B_WEATHER_HAIL)
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_Hail, 184, 94, 0, NULL);
+    else
+        AddTextPrinterParameterized(windowId, FONT_SMALL, sText_None, 184, 94, 0, NULL);
 
     txtPtr = ConvertIntToDecimalStringN(text, gWishFutureKnock.weatherDuration, STR_CONV_MODE_LEFT_ALIGN, 1);
     *txtPtr = EOS;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 162, 129, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 223, 94, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_MudSport, 148, 110, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.mudSportTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 223, 110, 0, NULL);
+
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_WaterSport, 148, 125, 0, NULL);
+    txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.waterSportTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+    *txtPtr = EOS;
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 223, 125, 0, NULL);
 
     CopyWindowToVram(windowId, COPYWIN_FULL);
 }
