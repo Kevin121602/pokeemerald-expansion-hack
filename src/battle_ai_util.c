@@ -4823,7 +4823,7 @@ static void SetBattlerFieldStatusForSwitchin(u32 battler)
 
 void CalcPartyMonMegaStats(struct BattlePokemon battleMon, u32 battler)
 {
-    u32 targetSpecies = GetBattleFormChangeTargetSpecies(battler, FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM);
+    u32 targetSpecies = GetPartyMonFormChangeTargetSpecies(battleMon, FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM);
 
     if(battleMon.species == targetSpecies)
         return; 

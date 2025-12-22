@@ -7821,11 +7821,23 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Chansey @ Power Herb
-Nature: Naive
-Ability: Oblivious
-Level: 60
-- Seismic Toss
+Turtonator @ Power Herb
+Level: 1
+Nature: Relaxed
+Ability: Shell Armor
+- Flamethrower
+- Dragon Claw
+- Solar Beam
+- Body Press
+
+Slowbro @ Slowbronite
+Level: 35
+Nature: Calm
+Ability: Regenerator
+- Scald
+- Psybeam
+- Slack Off
+- Thunder Wave
 
 === TRAINER_WADE ===
 Name: WADE
