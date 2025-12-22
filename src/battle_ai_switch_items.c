@@ -1324,7 +1324,10 @@ void AI_TrySwitchOrUseItem(u32 battler)
 }
 
 u32 GetSwitchInSpeedStatArgs(struct BattlePokemon battleMon, u32 battler, u32 ability, u32 holdEffect){
-    u32 speed = battleMon.speed;
+    struct BattlePokemon *savedBattleMons = AllocSaveBattleMons();
+    gBattleMons[battler] = battleMon;
+    CalcPartyMonMegaStats(battleMon, battler);
+    u32 speed = gBattleMons[battler].speed;
 
     // weather abilities
     if (HasWeatherEffect())
@@ -1370,6 +1373,7 @@ u32 GetSwitchInSpeedStatArgs(struct BattlePokemon battleMon, u32 battler, u32 ab
     if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_SWAMP)
         speed /= 4;
 
+    FreeRestoreBattleMons(savedBattleMons);
     return speed;
 }
 

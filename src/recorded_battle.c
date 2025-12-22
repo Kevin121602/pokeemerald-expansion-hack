@@ -748,11 +748,11 @@ void RecordedBattle_CheckMovesetChanges(u8 mode)
                         gBattleMons[battler].moves[j] = movePp.moves[j];
                         gBattleMons[battler].pp[j] = movePp.currentPp[j];
                     }
-                    //gBattleMons[battler].ppBonuses = 0;
+                    gBattleMons[battler].ppBonuses = 0;
                     gDisableStructs[battler].mimickedMoves = 0;
                     for (j = 0; j < MAX_MON_MOVES; j++)
                     {
-                        //gBattleMons[battler].ppBonuses |= movePp.maxPp[j] << (j << 1);
+                        gBattleMons[battler].ppBonuses |= movePp.maxPp[j] << (j << 1);
                         gDisableStructs[battler].mimickedMoves |= mimickedMoveSlots[j] << j;
                     }
 

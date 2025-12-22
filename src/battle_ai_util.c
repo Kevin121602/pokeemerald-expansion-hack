@@ -4821,6 +4821,47 @@ static void SetBattlerFieldStatusForSwitchin(u32 battler)
     }
 }
 
+void CalcPartyMonMegaStats(struct BattlePokemon battleMon, u32 battler)
+{
+    u32 targetSpecies = GetBattleFormChangeTargetSpecies(battler, FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM);
+
+    if(battleMon.species == targetSpecies)
+        return; 
+
+    s32 level = battleMon.level;
+    u8 nature = battleMon.personality % NUM_NATURES;
+
+    s32 iv[NUM_STATS];
+    s32 newStats[NUM_STATS];
+    iv[STAT_ATK] = battleMon.attackIV;
+    iv[STAT_DEF] = battleMon.defenseIV;
+    iv[STAT_SPEED] = battleMon.speedIV;
+    iv[STAT_SPATK] = battleMon.spAttackIV;
+    iv[STAT_SPDEF] = battleMon.spDefenseIV;
+
+    //evs have been removed so evs are removed from this formula
+    for (u32 i = STAT_ATK; i < NUM_STATS; i++)
+    {
+        u8 baseStat = GetSpeciesBaseStat(targetSpecies, i);
+
+        s32 n = (((2 * baseStat + iv[i] / 4) * level) / 100) + 5;
+        n = ModifyStatByNature(nature, n, i);
+        newStats[i] = n;
+    }
+
+    gBattleMons[battler].attack = newStats[STAT_ATK];
+    gBattleMons[battler].defense = newStats[STAT_DEF];
+    gBattleMons[battler].speed = newStats[STAT_SPEED];
+    gBattleMons[battler].spAttack = newStats[STAT_SPATK];
+    gBattleMons[battler].spDefense = newStats[STAT_SPDEF];
+
+    //all megas have only one possible ability so no reason to check slot
+    gBattleMons[battler].ability = GetAbilityBySpecies(targetSpecies, 0);
+    gBattleMons[battler].types[0] = GetSpeciesType(targetSpecies, 0);
+    gBattleMons[battler].types[1] = GetSpeciesType(targetSpecies, 1);
+    gBattleMons[battler].types[2] = TYPE_MYSTERY;
+}
+
 // party logic
 s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct BattlePokemon switchinCandidate, uq4_12_t *effectiveness, enum DamageCalcContext calcContext, bool32 ignoreItem, bool32 ignoreAbility, bool8 isSwitchCalc)
 {
@@ -4830,6 +4871,8 @@ s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct Battl
     if (calcContext == AI_ATTACKING)
     {
         gBattleMons[battlerAtk] = switchinCandidate;
+        if(!isSwitchCalc)
+            CalcPartyMonMegaStats(switchinCandidate, battlerAtk);
         gAiThinkingStruct->saved[battlerDef].saved = TRUE;
         SetBattlerAiData(battlerAtk, gAiLogicData); // set known opposing battler data
         SetBattlerFieldStatusForSwitchin(battlerAtk);
@@ -4842,6 +4885,8 @@ s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct Battl
         if(ignoreAbility)
             switchinCandidate.ability = ABILITY_NONE;
         gBattleMons[battlerDef] = switchinCandidate;
+        if(!isSwitchCalc)
+            CalcPartyMonMegaStats(switchinCandidate, battlerDef);
         gAiThinkingStruct->saved[battlerAtk].saved = TRUE;
         SetBattlerAiData(battlerDef, gAiLogicData); // set known opposing battler data
         SetBattlerFieldStatusForSwitchin(battlerDef);

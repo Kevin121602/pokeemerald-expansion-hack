@@ -1338,7 +1338,7 @@ void CreateBattleTowerMon(struct Pokemon *mon, struct BattleTowerPokemon *src)
     for (i = 0; i < MAX_MON_MOVES; i++)
         SetMonMoveSlot(mon, src->moves[i], i);
 
-    //SetMonData(mon, MON_DATA_PP_BONUSES, &src->ppBonuses);
+    SetMonData(mon, MON_DATA_PP_BONUSES, &src->ppBonuses);
     SetMonData(mon, MON_DATA_HELD_ITEM, &src->heldItem);
     SetMonData(mon, MON_DATA_FRIENDSHIP, &src->friendship);
 
@@ -1400,7 +1400,7 @@ void CreateBattleTowerMon_HandleLevel(struct Pokemon *mon, struct BattleTowerPok
     for (i = 0; i < MAX_MON_MOVES; i++)
         SetMonMoveSlot(mon, src->moves[i], i);
 
-    //SetMonData(mon, MON_DATA_PP_BONUSES, &src->ppBonuses);
+    SetMonData(mon, MON_DATA_PP_BONUSES, &src->ppBonuses);
     SetMonData(mon, MON_DATA_HELD_ITEM, &src->heldItem);
     SetMonData(mon, MON_DATA_FRIENDSHIP, &src->friendship);
 
@@ -1525,7 +1525,7 @@ void ConvertPokemonToBattleTowerPokemon(struct Pokemon *mon, struct BattleTowerP
         dest->moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
 
     dest->level = GetMonData(mon, MON_DATA_LEVEL, NULL);
-    //dest->ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES, NULL);
+    dest->ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES, NULL);
     dest->otId = GetMonData(mon, MON_DATA_OT_ID, NULL);
     dest->hpEV = GetMonData(mon, MON_DATA_HP_EV, NULL);
     dest->attackEV = GetMonData(mon, MON_DATA_ATK_EV, NULL);
@@ -2010,7 +2010,7 @@ void DeleteFirstMoveAndGiveMoveToMon(struct Pokemon *mon, u16 move)
         SetMonData(mon, MON_DATA_PP1 + i, &pp[i]);
     }
 
-    //SetMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
+    SetMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
 }
 
 void DeleteFirstMoveAndGiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move)
@@ -2037,7 +2037,7 @@ void DeleteFirstMoveAndGiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move)
         SetBoxMonData(boxMon, MON_DATA_PP1 + i, &pp[i]);
     }
 
-    //SetBoxMonData(boxMon, MON_DATA_PP_BONUSES, &ppBonuses);
+    SetBoxMonData(boxMon, MON_DATA_PP_BONUSES, &ppBonuses);
 }
 
 u8 CountAliveMonsInBattle(u8 caseId, u32 battler)
@@ -2459,9 +2459,9 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
         case MON_DATA_EXP:
             retVal = GetSubstruct0(boxMon)->experience;
             break;
-        //case MON_DATA_PP_BONUSES:
-        //    retVal = substruct0->ppBonuses;
-        //    break;
+        case MON_DATA_PP_BONUSES:
+            //retVal = GetSubstruct0(boxMon)->ppBonuses;
+            break;
         case MON_DATA_FRIENDSHIP:
             retVal = GetSubstruct0(boxMon)->friendship;
             break;
@@ -2973,9 +2973,9 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         case MON_DATA_EXP:
             SET32(GetSubstruct0(boxMon)->experience);
             break;
-        //case MON_DATA_PP_BONUSES:
-        //    SET8(substruct0->ppBonuses);
-        //    break;
+        case MON_DATA_PP_BONUSES:
+            //SET8(GetSubstruct0(boxMon)->ppBonuses);
+            break;
         case MON_DATA_FRIENDSHIP:
             SET8(GetSubstruct0(boxMon)->friendship);
             break;
@@ -3674,7 +3674,7 @@ void RemoveMonPPBonus(struct Pokemon *mon, u8 moveIndex)
 
 void RemoveBattleMonPPBonus(struct BattlePokemon *mon, u8 moveIndex)
 {
-    //mon->ppBonuses &= gPPUpClearMask[moveIndex];
+    mon->ppBonuses &= gPPUpClearMask[moveIndex];
     return;
 }
 
@@ -3691,7 +3691,7 @@ void PokemonToBattleMon(struct Pokemon *src, struct BattlePokemon *dst)
 
     dst->species = GetMonData(src, MON_DATA_SPECIES, NULL);
     dst->item = GetMonData(src, MON_DATA_HELD_ITEM, NULL);
-    //dst->ppBonuses = GetMonData(src, MON_DATA_PP_BONUSES, NULL);
+    dst->ppBonuses = GetMonData(src, MON_DATA_PP_BONUSES, NULL);
     dst->friendship = GetMonData(src, MON_DATA_FRIENDSHIP, NULL);
     dst->experience = GetMonData(src, MON_DATA_EXP, NULL);
     dst->hpIV = GetMonData(src, MON_DATA_HP_IV, NULL);

@@ -162,7 +162,7 @@ static EWRAM_DATA struct PokemonSummaryScreenData
         u16 friendship; // 0x30
         u8 OTGender; // 0x32
         u8 nature; // 0x33
-        //u8 ppBonuses; // 0x34
+        u8 ppBonuses; // 0x34
         u8 sanity; // 0x35
         u8 OTName[17]; // 0x36
         u32 OTID; // 0x48
@@ -1515,7 +1515,7 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
             sum->moves[i] = GetMonData(mon, MON_DATA_MOVE1+i);
             sum->pp[i] = GetMonData(mon, MON_DATA_PP1+i);
         }
-        //sum->ppBonuses = 0;
+        sum->ppBonuses = 0;
         break;
     case 2:
         ExtractMonSkillStatsData(mon, sum);
@@ -2661,7 +2661,7 @@ static void SwapMonMoves(struct Pokemon *mon, u8 moveIndex1, u8 moveIndex2)
     SetMonData(mon, MON_DATA_MOVE1 + moveIndex2, &move1);
     SetMonData(mon, MON_DATA_PP1 + moveIndex1, &move2pp);
     SetMonData(mon, MON_DATA_PP1 + moveIndex2, &move1pp);
-    //SetMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
+    SetMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
 
     summary->moves[moveIndex1] = move2;
     summary->moves[moveIndex2] = move1;
@@ -2669,7 +2669,7 @@ static void SwapMonMoves(struct Pokemon *mon, u8 moveIndex1, u8 moveIndex2)
     summary->pp[moveIndex1] = move2pp;
     summary->pp[moveIndex2] = move1pp;
 
-    //summary->ppBonuses = ppBonuses;
+    summary->ppBonuses = ppBonuses;
 }
 
 static void SwapBoxMonMoves(struct BoxPokemon *mon, u8 moveIndex1, u8 moveIndex2)
@@ -2696,7 +2696,7 @@ static void SwapBoxMonMoves(struct BoxPokemon *mon, u8 moveIndex1, u8 moveIndex2
     SetBoxMonData(mon, MON_DATA_MOVE1 + moveIndex2, &move1);
     SetBoxMonData(mon, MON_DATA_PP1 + moveIndex1, &move2pp);
     SetBoxMonData(mon, MON_DATA_PP1 + moveIndex2, &move1pp);
-    //SetBoxMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
+    SetBoxMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
 
     summary->moves[moveIndex1] = move2;
     summary->moves[moveIndex2] = move1;
@@ -2704,7 +2704,7 @@ static void SwapBoxMonMoves(struct BoxPokemon *mon, u8 moveIndex1, u8 moveIndex2
     summary->pp[moveIndex1] = move2pp;
     summary->pp[moveIndex2] = move1pp;
 
-    //summary->ppBonuses = ppBonuses;
+    summary->ppBonuses = ppBonuses;
 }
 
 static void Task_SetHandleReplaceMoveInput(u8 taskId)

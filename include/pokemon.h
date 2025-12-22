@@ -139,6 +139,7 @@ struct PokemonSubstruct0
     u32 experience:21;
     u32 nickname11:8; // 11th character of nickname.
     u32 unused_04:3;
+    //u8 ppBonuses;
     u8 levelCap;
     u8 friendship;
     u16 pokeball:6; // 63 balls.
@@ -383,7 +384,7 @@ struct BattlePokemon
     /*0x2D*/ u16 maxHP;
     /*0x2F*/ u16 item;
     /*0x31*/ u8 nickname[POKEMON_NAME_LENGTH + 1];
-    /*0x3C*/ //u8 ppBonuses;
+    /*0x3C*/ u8 ppBonuses;
     /*0x3D*/ u8 otName[PLAYER_NAME_LENGTH + 1];
     /*0x45*/ u32 experience;
     /*0x49*/ u32 personality;

@@ -2599,8 +2599,8 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 1056
-                MOVE_HYPER_VOICE,
                 MOVE_COUNTER,
+                MOVE_SEISMIC_TOSS,
                 MOVE_SOFT_BOILED,
                 MOVE_TOXIC,
             },

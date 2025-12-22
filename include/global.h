@@ -349,7 +349,7 @@ struct BattleTowerPokemon
     u16 heldItem;
     u16 moves[MAX_MON_MOVES];
     u8 level;
-    //u8 ppBonuses;
+    u8 ppBonuses;
     u8 hpEV;
     u8 attackEV;
     u8 defenseEV;
