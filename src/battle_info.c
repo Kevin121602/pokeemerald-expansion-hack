@@ -123,7 +123,7 @@ static const struct VolatileIndex sVolatileStatusListItems[] =
     {_("WaterSport"),        VOLATILE_WATER_SPORT},
     {_("Infinite Cfs"),       VOLATILE_INFINITE_CONFUSION},
     {_("SaltCure"),          VOLATILE_SALT_CURE},
-    {_("SyrupBomb"),         VOLATILE_SYRUP_BOMB},
+    {_("SyrpBomb"),         VOLATILE_SYRUP_BOMB},
     {_("GlaiveRush"),        VOLATILE_GLAIVE_RUSH},
     {_("LeechSeed"),         VOLATILE_LEECH_SEED},
     {_("LockOn"),            VOLATILE_LOCK_ON},
@@ -137,13 +137,14 @@ static const struct VolatileIndex sVolatileStatusListItems[] =
     {_("GastroAcid"),        VOLATILE_GASTRO_ACID},
     {_("Embargo"),            VOLATILE_EMBARGO},
     {_("SmackDown"),         VOLATILE_SMACK_DOWN},
-    {_("Telekinesis"),        VOLATILE_TELEKINESIS},
+    {_("Telekine"),        VOLATILE_TELEKINESIS},
     {_("MiracleEye"),        VOLATILE_MIRACLE_EYE},
-    {_("MagnetRise"),        VOLATILE_MAGNET_RISE},
-    {_("HealBlock"),         VOLATILE_HEAL_BLOCK},
+    {_("Magnet"),        VOLATILE_MAGNET_RISE},
+    {_("HealBloc"),         VOLATILE_HEAL_BLOCK},
     {_("AquaRing"),          VOLATILE_AQUA_RING},
     {_("LaserFocus"),        VOLATILE_LASER_FOCUS},
     {_("PowerTrick"),        VOLATILE_POWER_TRICK},
+    {_("Wrapped"),           VOLATILE_WRAPPED},
 };
 
 static const struct OamData sOamData_StatusCondition =
@@ -506,6 +507,21 @@ static const u8 sText_BoostDef[] =   _("Def Boost");
 static const u8 sText_BoostSpAtk[] = _("SpA Boost");
 static const u8 sText_BoostSpDef[] = _("SpD Boost");
 static const u8 sText_BoostSpeed[] = _("Spe Boost");
+
+static const u8 sText_RollingOut[] =    _("RollingOut");
+static const u8 sText_FuryCutter[] =    _("FuryCutter");
+static const u8 sText_Metronome[] =     _("Metronome");
+static const u8 sText_Recharge[] =      _("Recharging");
+static const u8 sText_Autotomize[] =    _("Nimble");
+static const u8 sText_SlowStart[] =     _("SlowStart");
+static const u8 sText_ThroatChop[] =    _("ThrtChop");
+static const u8 sText_Truant[] =        _("Truant");
+static const u8 sText_TarShot[] =       _("TarShot");
+static const u8 sText_Octolock[] =      _("Octolock");
+static const u8 sText_CudChew[] =       _("CudChew");
+static const u8 sText_FlashFire[] =     _("FlashFire");
+static const u8 sText_Unburden[] =      _("Unburden");
+static const u8 sText_ProtectCount[] =  _("Protect");
 
 static const struct BgTemplate sBgTemplates[] =
 {
@@ -1422,7 +1438,7 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
         }
     }
 
-    if(gDisableStructs[data->battlerId].disabledMove != MOVE_NONE){
+    if(gDisableStructs[data->battlerId].disabledMove != MOVE_NONE && volatileOffset < 4){
             AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_Disable, 100, 64 + volatileOffset * 15, 0, NULL);
             txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].disableTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
             *txtPtr = EOS;
@@ -1430,7 +1446,7 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
             volatileOffset++;
     }
 
-    if(gDisableStructs[data->battlerId].encoredMove != MOVE_NONE){
+    if(gDisableStructs[data->battlerId].encoredMove != MOVE_NONE && volatileOffset < 4){
             AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_Encore, 100, 64 + volatileOffset * 15, 0, NULL);
             txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].encoreTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
             *txtPtr = EOS;
@@ -1438,9 +1454,100 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
             volatileOffset++;
     }
 
-    if(gDisableStructs[data->battlerId].tauntTimer != 0){
+    if(gDisableStructs[data->battlerId].tauntTimer != 0 && volatileOffset < 4){
             AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_Taunt, 100, 64 + volatileOffset * 15, 0, NULL);
             txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].tauntTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+            *txtPtr = EOS;
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].rolloutTimer != 0 && volatileOffset < 4){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_RollingOut, 100, 64 + volatileOffset * 15, 0, NULL);
+            txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].rolloutTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+            *txtPtr = EOS;
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].furyCutterCounter != 0 && volatileOffset < 4){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_FuryCutter, 100, 64 + volatileOffset * 15, 0, NULL);
+            txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].furyCutterCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+            *txtPtr = EOS;
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
+    }
+
+    if(GetItemHoldEffect(gBattleMons[data->battlerId].item) == HOLD_EFFECT_METRONOME && gDisableStructs[data->battlerId].metronomeItemCounter != 0 && volatileOffset < 4){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_Metronome, 100, 64 + volatileOffset * 15, 0, NULL);
+            txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].metronomeItemCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+            *txtPtr = EOS;
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].rechargeTimer != 0 && volatileOffset < 4){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_Recharge, 100, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].autotomizeCount != 0 && volatileOffset < 4){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_Autotomize, 100, 64 + volatileOffset * 15, 0, NULL);
+            txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].autotomizeCount, STR_CONV_MODE_LEFT_ALIGN, 1);
+            *txtPtr = EOS;
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].slowStartTimer != 0 && volatileOffset < 4){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_SlowStart, 100, 64 + volatileOffset * 15, 0, NULL);
+            txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].slowStartTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+            *txtPtr = EOS;
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].throatChopTimer != 0 && volatileOffset < 4){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_ThroatChop, 100, 64 + volatileOffset * 15, 0, NULL);
+            txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].throatChopTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+            *txtPtr = EOS;
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].truantCounter && volatileOffset < 4){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_Truant, 100, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].tarShot && volatileOffset < 4){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_TarShot, 100, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].octolock && volatileOffset < 4){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_Octolock, 100, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].cudChew && volatileOffset < 4){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_CudChew, 100, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].flashFireBoosted && volatileOffset < 4){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_FlashFire, 100, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].unburdenActive && volatileOffset < 4){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_Unburden, 100, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].protectUses != 0 && volatileOffset < 4){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_ProtectCount, 100, 64 + volatileOffset * 15, 0, NULL);
+            txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].protectUses, STR_CONV_MODE_LEFT_ALIGN, 1);
             *txtPtr = EOS;
             AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
             volatileOffset++;
@@ -1457,6 +1564,36 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
             AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 100, 64 + volatileOffset * 15, 0, NULL);
             if(sVolatileStatusListItems[k].id == VOLATILE_PERISH_SONG){
                 txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].perishSongTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+                *txtPtr = EOS;
+                AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
+            } 
+            if(sVolatileStatusListItems[k].id == VOLATILE_EMBARGO){
+                txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].embargoTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+                *txtPtr = EOS;
+                AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
+            } 
+            if(sVolatileStatusListItems[k].id == VOLATILE_MAGNET_RISE){
+                txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].magnetRiseTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+                *txtPtr = EOS;
+                AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
+            } 
+            if(sVolatileStatusListItems[k].id == VOLATILE_TELEKINESIS){
+                txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].telekinesisTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+                *txtPtr = EOS;
+                AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
+            } 
+            if(sVolatileStatusListItems[k].id == VOLATILE_HEAL_BLOCK){
+                txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].healBlockTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+                *txtPtr = EOS;
+                AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
+            } 
+            if(sVolatileStatusListItems[k].id == VOLATILE_WRAPPED){
+                txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].wrapTurns, STR_CONV_MODE_LEFT_ALIGN, 1);
+                *txtPtr = EOS;
+                AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
+            } 
+            if(sVolatileStatusListItems[k].id == VOLATILE_SYRUP_BOMB){
+                txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].syrupBombTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
                 *txtPtr = EOS;
                 AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
             } 
