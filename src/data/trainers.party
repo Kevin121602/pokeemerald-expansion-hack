@@ -7821,21 +7821,17 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Rabsca @ Wise Glasses
-Nature: Modest
-Ability: Synchronize
-Level: 31
-- Struggle Bug
-- Speed Swap
+Torkoal @ Lum Berry
+Level: 1
+Nature: Timid
+Ability: Drought
+- Tackle
 
-Slowbro @ Slowbronite
+Walking Wake @ Lum Berry
 Level: 35
-Nature: Calm
-Ability: Regenerator
-- Scald
-- Psybeam
-- Slack Off
-- Thunder Wave
+Nature: Timid
+Ability: Protosynthesis
+- Hydro Steam
 
 === TRAINER_WADE ===
 Name: WADE

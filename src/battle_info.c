@@ -501,6 +501,12 @@ static const u8 sText_SpeedSwap[] = _("SpeedSwap");
 static const u8 sText_GuardSplit[] = _("GuardSplit");
 static const u8 sText_PowerSplit[] = _("PowerSplit");
 
+static const u8 sText_BoostAtk[] =   _("Atk Boost");
+static const u8 sText_BoostDef[] =   _("Def Boost");
+static const u8 sText_BoostSpAtk[] = _("SpA Boost");
+static const u8 sText_BoostSpDef[] = _("SpD Boost");
+static const u8 sText_BoostSpeed[] = _("Spe Boost");
+
 static const struct BgTemplate sBgTemplates[] =
 {
    {
@@ -1376,23 +1382,44 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
 
     if(gDisableStructs[data->battlerId].speedSwap){
             AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_SpeedSwap, 100, 64 + volatileOffset * 15, 0, NULL);
-            txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].disableTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-            *txtPtr = EOS;
             volatileOffset++;
     }
 
     if(gDisableStructs[data->battlerId].guardSplit){
             AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_GuardSplit, 100, 64 + volatileOffset * 15, 0, NULL);
-            txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].disableTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-            *txtPtr = EOS;
             volatileOffset++;
     }
 
     if(gDisableStructs[data->battlerId].powerSplit){
             AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_PowerSplit, 100, 64 + volatileOffset * 15, 0, NULL);
-            txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].disableTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
-            *txtPtr = EOS;
             volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].boosterEnergyActivated 
+        || (gBattleMons[data->battlerId].ability == ABILITY_PROTOSYNTHESIS && (gBattleWeather & B_WEATHER_SUN && HasWeatherEffect()))
+        || (gBattleMons[data->battlerId].ability == ABILITY_QUARK_DRIVE && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN)){
+        switch(GetParadoxBoostedStatId(data->battlerId)){
+            case STAT_ATK:
+                AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_BoostAtk, 100, 64 + volatileOffset * 15, 0, NULL);
+                volatileOffset++; 
+                break;
+            case STAT_DEF:
+                AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_BoostDef, 100, 64 + volatileOffset * 15, 0, NULL);
+                volatileOffset++; 
+                break;
+            case STAT_SPATK:
+                AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_BoostSpAtk, 100, 64 + volatileOffset * 15, 0, NULL);
+                volatileOffset++; 
+                break;
+            case STAT_SPDEF:
+                AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_BoostSpDef, 100, 64 + volatileOffset * 15, 0, NULL);
+                volatileOffset++; 
+                break;
+            case STAT_SPEED:
+                AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_BoostSpeed, 100, 64 + volatileOffset * 15, 0, NULL);
+                volatileOffset++; 
+                break;
+        }
     }
 
     if(gDisableStructs[data->battlerId].disabledMove != MOVE_NONE){
