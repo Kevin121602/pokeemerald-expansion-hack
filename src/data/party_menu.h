@@ -834,7 +834,7 @@ struct
     [MENU_HP] = {COMPOUND_STRING("HP"), CursorCb_HP},
     [MENU_EXP] = {COMPOUND_STRING("EXP"), CursorCb_Exp},
     [MENU_BURN] = {COMPOUND_STRING("BRN"), CursorCb_Burn},
-    [MENU_FROSTBITE] = {COMPOUND_STRING("FRB"), CursorCb_Frostbite},
+    [MENU_FREEZE] = {COMPOUND_STRING("FRZ"), CursorCb_Freeze},
     [MENU_PARALYZE] = {COMPOUND_STRING("PAR"), CursorCb_Paralyze},
     [MENU_POISON] = {COMPOUND_STRING("PSN"), CursorCb_Poison},
     [MENU_SLEEP] = {COMPOUND_STRING("SLP"), CursorCb_Sleep},
@@ -863,7 +863,7 @@ static const u8 sPartyMenuAction_TradeSummaryCancel2[] = {MENU_TRADE2, MENU_SUMM
 static const u8 sPartyMenuAction_TakeItemTossCancel[] = {MENU_TAKE_ITEM, MENU_TOSS, MENU_CANCEL1};
 static const u8 sPartyMenuAction_RotomCatalog[] = {MENU_CATALOG_BULB, MENU_CATALOG_OVEN, MENU_CATALOG_WASHING, MENU_CATALOG_FRIDGE, MENU_CATALOG_FAN, MENU_CATALOG_MOWER, MENU_CANCEL1};
 static const u8 sPartyMenuAction_ZygardeCube[] = {MENU_CHANGE_FORM, MENU_CHANGE_ABILITY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_InflictStatus[] = {MENU_HP, MENU_EXP, MENU_BURN, MENU_FROSTBITE, MENU_PARALYZE, MENU_POISON, MENU_SLEEP, MENU_CANCEL2};
+static const u8 sPartyMenuAction_InflictStatus[] = {MENU_HP, MENU_EXP, MENU_BURN, MENU_FREEZE, MENU_PARALYZE, MENU_POISON, MENU_SLEEP, MENU_CANCEL2};
 static const u8 sPartyMenuAction_GourdSplicer[] = {MENU_SPLICER_SMALL, MENU_SPLICER_AVERAGE, MENU_SPLICER_LARGE, MENU_SPLICER_SUPER, MENU_CANCEL1};
 static const u8 sPartyMenuAction_RainbowNectar[] = {MENU_NECTAR_BAILE, MENU_NECTAR_POM_POM, MENU_NECTAR_PAU, MENU_NECTAR_SENSU, MENU_CANCEL1};
 

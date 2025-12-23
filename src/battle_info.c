@@ -497,6 +497,9 @@ static const u8 sText_NextMon[] =   _("{A_BUTTON} Next Mon");
 static const u8 sText_Disable[] =   _("Disabled");
 static const u8 sText_Taunt[] =     _("Taunted");
 static const u8 sText_Encore[] =    _("Encored");
+static const u8 sText_SpeedSwap[] = _("SpeedSwap");
+static const u8 sText_GuardSplit[] = _("GuardSplit");
+static const u8 sText_PowerSplit[] = _("PowerSplit");
 
 static const struct BgTemplate sBgTemplates[] =
 {
@@ -1340,9 +1343,13 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
             if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_MOVE1 + j) == MOVE_NONE)
                 continue;
 
-            txtPtr = StringCopyN(text, GetMoveName(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_MOVE1 + j)), 15);
+            txtPtr = StringCopyN(text, GetMoveName(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_MOVE1 + j)), 12);
             *txtPtr = EOS;
             AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 25, 64 + j * 15, 0, NULL);
+
+            txtPtr = ConvertIntToDecimalStringN(text, (GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_PP1 + j)), STR_CONV_MODE_LEFT_ALIGN, 2);
+            *txtPtr = EOS;
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 85, 64 + j * 15, 0, NULL);
 
             if (IsMoveUnusable(j, GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_MOVE1 + j), unusable))
                 AddTextPrinterParameterized(windowId, FONT_SMALL, sText_X, 15, 64 + j * 15, 0, NULL);
@@ -1354,13 +1361,38 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
             if(gBattleMons[data->battlerId].moves[j] == MOVE_NONE)
                 continue;
 
-            txtPtr = StringCopyN(text, GetMoveName(gBattleMons[data->battlerId].moves[j]), 15);
+            txtPtr = StringCopyN(text, GetMoveName(gBattleMons[data->battlerId].moves[j]), 12);
             *txtPtr = EOS;
             AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 25, 64 + j * 15, 0, NULL);
+
+            txtPtr = ConvertIntToDecimalStringN(text, gBattleMons[data->battlerId].pp[j], STR_CONV_MODE_LEFT_ALIGN, 2);
+            *txtPtr = EOS;
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 85, 64 + j * 15, 0, NULL);
 
             if (IsMoveUnusable(j, gBattleMons[data->battlerId].moves[j], unusable))
                 AddTextPrinterParameterized(windowId, FONT_SMALL, sText_X, 15, 64 + j * 15, 0, NULL);
         }
+    }
+
+    if(gDisableStructs[data->battlerId].speedSwap){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_SpeedSwap, 100, 64 + volatileOffset * 15, 0, NULL);
+            txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].disableTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+            *txtPtr = EOS;
+            volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].guardSplit){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_GuardSplit, 100, 64 + volatileOffset * 15, 0, NULL);
+            txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].disableTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+            *txtPtr = EOS;
+            volatileOffset++;
+    }
+
+    if(gDisableStructs[data->battlerId].powerSplit){
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_PowerSplit, 100, 64 + volatileOffset * 15, 0, NULL);
+            txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].disableTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+            *txtPtr = EOS;
+            volatileOffset++;
     }
 
     if(gDisableStructs[data->battlerId].disabledMove != MOVE_NONE){

@@ -120,7 +120,7 @@ enum {
     MENU_HP,
     MENU_EXP,
     MENU_BURN,
-    MENU_FROSTBITE,
+    MENU_FREEZE,
     MENU_PARALYZE,
     MENU_POISON,
     MENU_SLEEP,
@@ -494,7 +494,7 @@ static void CursorCb_Status(u8);
 static void CursorCb_Burn(u8);
 static void CursorCb_Paralyze(u8);
 static void CursorCb_Sleep(u8);
-static void CursorCb_Frostbite(u8);
+static void CursorCb_Freeze(u8);
 static void CursorCb_Poison(u8);
 static void CursorCb_HP(u8);
 static void PrintHPQuantity(u8, s16);
@@ -3567,7 +3567,7 @@ static void CursorCb_Sleep(u8 taskId)
     gTasks[taskId].func = Task_HandleChooseMonInput;
 }
 
-static void CursorCb_Frostbite(u8 taskId)
+static void CursorCb_Freeze(u8 taskId)
 {
     u32 status1 = 0;
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
@@ -3575,8 +3575,8 @@ static void CursorCb_Frostbite(u8 taskId)
     u16 species = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_SPECIES);
     if (species != SPECIES_NONE && species != SPECIES_EGG && GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_HP) != 0){
         PlaySE(SE_SELECT);
-        if(GetAilmentFromStatus(GetMonData(mon, MON_DATA_STATUS)) != AILMENT_FRB){
-            status1 = STATUS1_FROSTBITE;
+        if(GetAilmentFromStatus(GetMonData(mon, MON_DATA_STATUS)) != AILMENT_FRZ){
+            status1 = STATUS1_FREEZE;
         }  
         SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_STATUS, &status1);
     }

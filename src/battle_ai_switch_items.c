@@ -699,17 +699,34 @@ bool32 ShouldSwitchIfStatusedNaturalCure(u32 battler, bool32 emitResult){
 
 static bool32 MonHasRelevantStatsRaised(u32 battler)
 {
-    //If mon has raised relevant stats and isnt at full hp, this function returns True
+    //If mon has raised relevant stats this function returns True
 
     u8 i;
     u32 opposingPosition = BATTLE_OPPOSITE(GetBattlerPosition(battler));
     u32 opposingBattler = GetBattlerAtPosition(opposingPosition);
+    
+
+    u32 battlerSpeed = GetBattlerTotalSpeedStat(battler, gBattleMons[battler].ability, GetItemHoldEffect(gBattleMons[battler].item));
+    u32 playerSpeed = GetBattlerTotalSpeedStat(opposingBattler, gBattleMons[opposingBattler].ability, GetItemHoldEffect(gBattleMons[opposingBattler].item));
 
     bool8 anyStatIsRaised = FALSE;
     for(i = 0; i < STAT_EVASION; i ++){
         if(gBattleMons[battler].statStages[i] > DEFAULT_STAT_STAGE){
             anyStatIsRaised = TRUE;
         }
+    }
+
+    //if ai has used speed swap, gained speed from it, and is faster than player while being slower without it
+    if(gDisableStructs[battler].speedSwap && gBattleMons[battler].speed > gDisableStructs[battler].originalSpeed
+        && battlerSpeed >= playerSpeed){
+            if(gDisableStructs[opposingBattler].speedSwap){
+                if(gDisableStructs[battler].originalSpeed < gDisableStructs[opposingBattler].originalSpeed)
+                    return TRUE;
+            }
+            else{
+                if(gDisableStructs[battler].originalSpeed < playerSpeed)
+                    return TRUE;
+            }
     }
 
     if(!anyStatIsRaised)

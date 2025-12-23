@@ -14292,6 +14292,16 @@ static void Cmd_averagestats(void)
 {
     CMD_ARGS(u8 stat);
 
+    if(cmd->stat == STAT_ATK){
+        gDisableStructs[gBattlerAttacker].powerSplit = TRUE;
+        gDisableStructs[gBattlerTarget].powerSplit = TRUE;
+    }
+
+    if(cmd->stat == STAT_DEF){
+        gDisableStructs[gBattlerAttacker].guardSplit = TRUE;
+        gDisableStructs[gBattlerTarget].guardSplit = TRUE;
+    }
+
     u16 *stat1 = GetBattlerStat(&gBattleMons[gBattlerAttacker], cmd->stat);
     u16 *stat2 = GetBattlerStat(&gBattleMons[gBattlerTarget], cmd->stat);
     u16 avg = (*stat1 + *stat2) / 2;
@@ -16072,6 +16082,14 @@ void BS_SwapStats(void)
         SWAP(gBattleMons[gBattlerAttacker].defense, gBattleMons[gBattlerTarget].defense, temp);
         break;
     case STAT_SPEED:
+        if(!gDisableStructs[gBattlerAttacker].speedSwap){
+            gDisableStructs[gBattlerAttacker].originalSpeed = gBattleMons[gBattlerAttacker].speed;
+            gDisableStructs[gBattlerAttacker].speedSwap = TRUE;
+        }
+        if(!gDisableStructs[gBattlerTarget].speedSwap){
+            gDisableStructs[gBattlerTarget].originalSpeed = gBattleMons[gBattlerTarget].speed;
+            gDisableStructs[gBattlerTarget].speedSwap = TRUE;
+        }
         SWAP(gBattleMons[gBattlerAttacker].speed, gBattleMons[gBattlerTarget].speed, temp);
         break;
     case STAT_SPATK:

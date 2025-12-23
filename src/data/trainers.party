@@ -7821,14 +7821,12 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Turtonator @ Power Herb
-Level: 1
-Nature: Relaxed
-Ability: Shell Armor
-- Flamethrower
-- Dragon Claw
-- Solar Beam
-- Body Press
+Rabsca @ Wise Glasses
+Nature: Modest
+Ability: Synchronize
+Level: 31
+- Struggle Bug
+- Speed Swap
 
 Slowbro @ Slowbronite
 Level: 35

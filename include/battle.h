@@ -139,6 +139,12 @@ struct DisableStruct
     u8 tryEjectPack:1;
     u8 octolockedBy:3;
     u8 paradoxBoostedStat:4;
+    u8 speedSwap:1;
+    u16 originalSpeed;
+    u8 guardSplit:1;
+    u8 powerSplit:1;
+    u16 originalAtk;
+    u16 originalSpatk;
     u8 padding2:1;
 };
 
