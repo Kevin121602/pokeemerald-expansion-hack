@@ -716,6 +716,12 @@ static bool32 MonHasRelevantStatsRaised(u32 battler)
         }
     }
 
+    if(gDisableStructs[battler].boosterEnergyActivated)
+        anyStatIsRaised = TRUE;
+
+    if(gBattleMons[battler].ability == ABILITY_UNBURDEN && gDisableStructs[battler].unburdenActive)
+        anyStatIsRaised = TRUE;
+
     //if ai has used speed swap, gained speed from it, and is faster than player while being slower without it
     if(gDisableStructs[battler].speedSwap && gBattleMons[battler].speed > gDisableStructs[battler].originalSpeed
         && battlerSpeed >= playerSpeed){
@@ -733,7 +739,10 @@ static bool32 MonHasRelevantStatsRaised(u32 battler)
         return FALSE;
 
     //if ai mon has raised its speed, would be slower without the boosts but is faster with them
-    if(gBattleMons[battler].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE && (gBattleMons[battler].speed < gAiLogicData->speedStats[opposingBattler])
+    if((gBattleMons[battler].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE 
+        || (gBattleMons[battler].ability == ABILITY_UNBURDEN && gDisableStructs[battler].unburdenActive) 
+        || (gDisableStructs[battler].boosterEnergyActivated && GetParadoxBoostedStatId(battler) == STAT_SPEED))
+        && (gBattleMons[battler].speed < gAiLogicData->speedStats[opposingBattler])
         && (gAiLogicData->speedStats[battler] >= gAiLogicData->speedStats[opposingBattler])){
         return TRUE;
     }
@@ -742,19 +751,27 @@ static bool32 MonHasRelevantStatsRaised(u32 battler)
         return FALSE;
     }
 
-    if(gBattleMons[battler].statStages[STAT_ATK] > DEFAULT_STAT_STAGE && HasMoveWithCategory(battler, DAMAGE_CATEGORY_PHYSICAL)){
+    if((gBattleMons[battler].statStages[STAT_ATK] > DEFAULT_STAT_STAGE 
+        || (gDisableStructs[battler].boosterEnergyActivated && GetParadoxBoostedStatId(battler) == STAT_ATK)) 
+        && HasMoveWithCategory(battler, DAMAGE_CATEGORY_PHYSICAL)){
         return TRUE;
     }
 
-    if(gBattleMons[battler].statStages[STAT_SPATK] > DEFAULT_STAT_STAGE && HasMoveWithCategory(battler, DAMAGE_CATEGORY_SPECIAL)){
+    if((gBattleMons[battler].statStages[STAT_SPATK] > DEFAULT_STAT_STAGE 
+        || (gDisableStructs[battler].boosterEnergyActivated && GetParadoxBoostedStatId(battler) == STAT_SPATK))  
+        && HasMoveWithCategory(battler, DAMAGE_CATEGORY_SPECIAL)){
         return TRUE;
     }
 
-    if(gBattleMons[battler].statStages[STAT_DEF] > DEFAULT_STAT_STAGE && HasMoveWithCategory(opposingBattler, DAMAGE_CATEGORY_PHYSICAL)){
+    if((gBattleMons[battler].statStages[STAT_DEF] > DEFAULT_STAT_STAGE 
+        || (gDisableStructs[battler].boosterEnergyActivated && GetParadoxBoostedStatId(battler) == STAT_DEF))  
+        && HasMoveWithCategory(opposingBattler, DAMAGE_CATEGORY_PHYSICAL)){
         return TRUE;
     }
 
-    if(gBattleMons[battler].statStages[STAT_SPDEF] > DEFAULT_STAT_STAGE && HasMoveWithCategory(opposingBattler, DAMAGE_CATEGORY_SPECIAL)){
+    if((gBattleMons[battler].statStages[STAT_SPDEF] > DEFAULT_STAT_STAGE 
+        || (gDisableStructs[battler].boosterEnergyActivated && GetParadoxBoostedStatId(battler) == STAT_SPDEF)) 
+        && HasMoveWithCategory(opposingBattler, DAMAGE_CATEGORY_SPECIAL)){
         return TRUE;
     }
 

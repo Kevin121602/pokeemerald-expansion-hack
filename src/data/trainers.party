@@ -7821,17 +7821,17 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Torkoal @ Lum Berry
+Pincurchin @ Lum Berry
 Level: 1
 Nature: Timid
-Ability: Drought
+Ability: Electric Surge
 - Tackle
 
-Walking Wake @ Lum Berry
+Iron Leaves @ Lum Berry
 Level: 35
 Nature: Timid
-Ability: Protosynthesis
-- Hydro Steam
+Ability: Quark Drive
+- Psyblade
 
 === TRAINER_WADE ===
 Name: WADE

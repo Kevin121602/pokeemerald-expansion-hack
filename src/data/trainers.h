@@ -20173,14 +20173,14 @@ F_TRAINER_FEMALE |
         {
             {
 #line 7824
-            .species = SPECIES_TORKOAL,
+            .species = SPECIES_PINCURCHIN,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7824
             .heldItem = ITEM_LUM_BERRY,
 #line 7828
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 7827
-            .ability = ABILITY_DROUGHT,
+            .ability = ABILITY_ELECTRIC_SURGE,
 #line 7825
             .lvl = 1,
 #line 7826
@@ -20193,14 +20193,14 @@ F_TRAINER_FEMALE |
             },
             {
 #line 7830
-            .species = SPECIES_WALKING_WAKE,
+            .species = SPECIES_IRON_LEAVES,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7830
             .heldItem = ITEM_LUM_BERRY,
 #line 7834
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 7833
-            .ability = ABILITY_PROTOSYNTHESIS,
+            .ability = ABILITY_QUARK_DRIVE,
 #line 7831
             .lvl = 35,
 #line 7832
@@ -20208,7 +20208,7 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 7834
-                MOVE_HYDRO_STEAM,
+                MOVE_PSYBLADE,
             },
             },
         },
