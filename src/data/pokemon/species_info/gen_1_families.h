@@ -2409,7 +2409,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             gOverworldPalette_RaticateAlola,
             gShinyOverworldPalette_RaticateAlola
         )
-        .isTotem = TRUE,
+        // .isTotem = TRUE,
         .isAlolanForm = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sRaticateAlolaLevelUpLearnset,
@@ -13585,7 +13585,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             gOverworldPalette_MarowakAlola,
             gShinyOverworldPalette_MarowakAlola
         )
-        .isTotem = TRUE,
+        // .isTotem = TRUE,
         .isAlolanForm = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sMarowakAlolaLevelUpLearnset,

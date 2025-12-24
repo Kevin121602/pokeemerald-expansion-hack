@@ -134,8 +134,8 @@ struct PokemonSubstruct0
     u16 species:11; // 2047 species.
     enum Type teraType:5; // 30 types.
     u16 heldItem:10; // 1023 items.
-    u16 hiddenNatureModifier:5;
-    u16 unused_02:1;
+    //u16 hiddenNatureModifier:5;
+    u16 unused_02:6;
     u32 experience:21;
     u32 nickname11:8; // 11th character of nickname.
     u32 unused_04:3;
@@ -440,7 +440,7 @@ struct SpeciesInfo /*0xC4*/
     u8 eggGroups[2];
     enum Ability abilities[NUM_ABILITY_SLOTS]; // 3 abilities, no longer u8 because we have over 255 abilities now.
     u8 safariZoneFleeRate;
-    bool8 availableHidden;
+    //bool8 availableHidden;
 
     // Pokédex data
     u8 categoryName[13];
@@ -498,7 +498,7 @@ struct SpeciesInfo /*0xC4*/
     u32 isMythical:1;
     u32 isUltraBeast:1;
     u32 isParadox:1;
-    u32 isTotem:1;
+    u32 availableHidden:1;
     u32 isMegaEvolution:1;
     u32 isPrimalReversion:1;
     u32 isUltraBurst:1;
