@@ -5507,6 +5507,9 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
         aiIsFaster = FALSE;
     }
 
+    if(abilityPlayer == ABILITY_SPEED_BOOST)
+        aiIsFaster = FALSE;
+
     if(AI_BattlerAtMaxHp(battlerAtk) && abilityPlayer != ABILITY_PARENTAL_BOND && holdEffectAI == HOLD_EFFECT_FOCUS_SASH){
         intactFocusSashOrSturdyAI = TRUE;
     } else if (AI_BattlerAtMaxHp(battlerAtk) && abilityPlayer != ABILITY_PARENTAL_BOND && !IsMoldBreakerTypeAbility(battlerDef, gBattleMons[battlerDef].ability) && abilityAI == ABILITY_STURDY){
@@ -6068,6 +6071,9 @@ u32 IncreaseStatLoweringScore(u32 battlerAtk, u32 battlerDef, u32 statId, u32 st
          || gAiLogicData->abilities[battlerDef] == ABILITY_WHITE_SMOKE
          || gAiLogicData->abilities[battlerDef] == ABILITY_FULL_METAL_BODY)
             return NO_INCREASE;
+
+    if(statId == STAT_CHANGE_SPEED && gAiLogicData->abilities[battlerDef] == ABILITY_SPEED_BOOST)
+        return NO_INCREASE;
 
     if(statId == STAT_CHANGE_ATK && gAiLogicData->abilities[battlerDef] == ABILITY_HYPER_CUTTER)
         return NO_INCREASE;
