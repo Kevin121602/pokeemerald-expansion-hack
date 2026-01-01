@@ -1529,7 +1529,7 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
         sum->metLocation = GetMonData(mon, MON_DATA_MET_LOCATION);
         sum->metLevel = GetMonData(mon, MON_DATA_MET_LEVEL);
         sum->metGame = GetMonData(mon, MON_DATA_MET_GAME);
-        sum->friendship = GetMonData(mon, MON_DATA_FRIENDSHIP);
+        sum->friendship = GetMonData(mon, MON_DATA_PP_BONUSES);
         sum->levelCap = GetMonData(mon, MON_DATA_LEVEL_CAP);
         break;
     default:

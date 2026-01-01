@@ -2460,10 +2460,10 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = GetSubstruct0(boxMon)->experience;
             break;
         case MON_DATA_PP_BONUSES:
-            //retVal = GetSubstruct0(boxMon)->ppBonuses;
+            retVal = GetSubstruct0(boxMon)->ppBonuses;
             break;
         case MON_DATA_FRIENDSHIP:
-            retVal = GetSubstruct0(boxMon)->friendship;
+            //retVal = GetSubstruct0(boxMon)->friendship;
             break;
         case MON_DATA_LEVEL_CAP:
             retVal = GetSubstruct0(boxMon)->levelCap;
@@ -2974,10 +2974,10 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             SET32(GetSubstruct0(boxMon)->experience);
             break;
         case MON_DATA_PP_BONUSES:
-            //SET8(GetSubstruct0(boxMon)->ppBonuses);
+            SET8(GetSubstruct0(boxMon)->ppBonuses);
             break;
         case MON_DATA_FRIENDSHIP:
-            SET8(GetSubstruct0(boxMon)->friendship);
+            //SET8(GetSubstruct0(boxMon)->friendship);
             break;
         case MON_DATA_LEVEL_CAP:
             SET8(GetSubstruct0(boxMon)->levelCap);
