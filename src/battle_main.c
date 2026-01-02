@@ -1861,7 +1861,10 @@ u32 GeneratePersonalityForGender(u32 gender, u32 species)
 void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon *partyEntry)
 {
     bool32 noMoveSet = TRUE;
-    u32 j;
+    u32 j, k;
+    u32 ppBonuses;
+    u32 dataUnsigned;
+    u32 temp2;
 
     for (j = 0; j < MAX_MON_MOVES; ++j)
     {
@@ -1873,12 +1876,48 @@ void CustomTrainerPartyAssignMoves(struct Pokemon *mon, const struct TrainerMon 
         // TODO: Figure out a default strategy when moves are not set, to generate a good moveset
         return;
     }
+                        /*u32 ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES, NULL);
+                        dataUnsigned = (ppBonuses & gPPUpGetMask[moveIndex]) >> (moveIndex * 2);
+                        temp2 = CalculatePPWithBonus(GetMonData(mon, MON_DATA_MOVE1 + moveIndex, NULL), ppBonuses, moveIndex);
+
+                        // Check if 3 PP Ups have been applied already, and that the move has a total PP of at least 5 (excludes Sketch)
+                        if (dataUnsigned < 3 && temp2 >= 5)
+                        {
+                            dataUnsigned = ppBonuses;
+                            dataUnsigned &= gPPUpClearMask[moveIndex];
+                            dataUnsigned += gPPUpAddValues[moveIndex] * 3; // Apply 3 PP Ups (max)
+
+                            SetMonData(mon, MON_DATA_PP_BONUSES, &dataUnsigned);
+                            dataUnsigned = CalculatePPWithBonus(GetMonData(mon, MON_DATA_MOVE1 + moveIndex, NULL), dataUnsigned, moveIndex) - temp2;
+                            dataUnsigned = GetMonData(mon, MON_DATA_PP1 + moveIndex, NULL) + dataUnsigned;
+                            SetMonData(mon, MON_DATA_PP1 + moveIndex, &dataUnsigned);
+                            retVal = FALSE;
+                        }*/
 
     for (j = 0; j < MAX_MON_MOVES; ++j)
     {
         u32 pp = GetMovePP(partyEntry->moves[j]);
         SetMonData(mon, MON_DATA_MOVE1 + j, &partyEntry->moves[j]);
         SetMonData(mon, MON_DATA_PP1 + j, &pp);
+    }
+
+    for (k = 0; k < MAX_MON_MOVES; k++)
+    {
+        u32 pp = GetMovePP(partyEntry->moves[k]);
+
+        ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES, NULL);
+        dataUnsigned = (ppBonuses & gPPUpGetMask[k]) >> (k * 2);
+        if (dataUnsigned < 3 && pp >= 5)
+        {
+            dataUnsigned = ppBonuses;
+            dataUnsigned &= gPPUpClearMask[k];
+            dataUnsigned += gPPUpAddValues[k] * 3; // Apply 3 PP Ups (max)
+            SetMonData(mon, MON_DATA_PP_BONUSES, &dataUnsigned);
+
+            dataUnsigned = CalculatePPWithBonus(partyEntry->moves[k], dataUnsigned, k) - pp;
+            dataUnsigned = GetMonData(mon, MON_DATA_PP1 + k, NULL) + dataUnsigned;
+            SetMonData(mon, MON_DATA_PP1 + k, &dataUnsigned);
+        }
     }
 }
 
@@ -4305,7 +4344,7 @@ static void HandleTurnActionSelectionState(void)
                             moveInfo.currentPp[i] = gBattleMons[battler].pp[i];
                             moveInfo.maxPp[i] = CalculatePPWithBonus(
                                                             gBattleMons[battler].moves[i],
-                                                            0,
+                                                            gBattleMons[battler].ppBonuses,
                                                             i);
                         }
 

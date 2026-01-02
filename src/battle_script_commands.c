@@ -17059,7 +17059,7 @@ void BS_RestoreMovePp(void)
     u32 data[MAX_MON_MOVES + 1];
     for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
-        gBattleMons[gBattlerAttacker].pp[moveIndex] = CalculatePPWithBonus(gBattleMons[gBattlerAttacker].moves[moveIndex], 0, moveIndex);
+        gBattleMons[gBattlerAttacker].pp[moveIndex] = CalculatePPWithBonus(gBattleMons[gBattlerAttacker].moves[moveIndex], gBattleMons[gBattlerAttacker].ppBonuses, moveIndex);
         data[moveIndex] = gBattleMons[gBattlerAttacker].pp[moveIndex];
     }
     data[moveIndex] = 0;

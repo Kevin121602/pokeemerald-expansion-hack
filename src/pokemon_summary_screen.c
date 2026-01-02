@@ -1515,7 +1515,7 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
             sum->moves[i] = GetMonData(mon, MON_DATA_MOVE1+i);
             sum->pp[i] = GetMonData(mon, MON_DATA_PP1+i);
         }
-        sum->ppBonuses = 0;
+        sum->ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES);
         break;
     case 2:
         ExtractMonSkillStatsData(mon, sum);
@@ -2645,7 +2645,7 @@ static void SwapMonMoves(struct Pokemon *mon, u8 moveIndex1, u8 moveIndex2)
     u16 move2 = summary->moves[moveIndex2];
     u8 move1pp = summary->pp[moveIndex1];
     u8 move2pp = summary->pp[moveIndex2];
-    u8 ppBonuses = 0;
+    u8 ppBonuses = summary->ppBonuses;
 
     // Calculate PP bonuses
     u8 ppUpMask1 = gPPUpGetMask[moveIndex1];
@@ -4131,7 +4131,7 @@ static void PrintMoveNameAndPP(u8 moveIndex)
 
     if (move != 0)
     {
-        pp = CalculatePPWithBonus(move, 0, moveIndex);
+        pp = CalculatePPWithBonus(move, summary->ppBonuses, moveIndex);
         PrintTextOnWindowToFit(moveNameWindowId, GetMoveName(move), 0, moveIndex * 16 + 1, 0, 1);
         ConvertIntToDecimalStringN(gStringVar1, summary->pp[moveIndex], STR_CONV_MODE_RIGHT_ALIGN, 2);
         ConvertIntToDecimalStringN(gStringVar2, pp, STR_CONV_MODE_RIGHT_ALIGN, 2);

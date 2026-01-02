@@ -1859,7 +1859,7 @@ void SetMonMoveSlot(struct Pokemon *mon, u16 move, u8 slot)
 
 static void SetMonMoveSlot_KeepPP(struct Pokemon *mon, u16 move, u8 slot)
 {
-    u8 ppBonuses = 0;
+    u8 ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES, NULL);
     u8 currPP = GetMonData(mon, MON_DATA_PP1 + slot, NULL);
     u8 newPP = CalculatePPWithBonus(move, ppBonuses, slot);
     u16 finalPP = min(currPP, newPP);
