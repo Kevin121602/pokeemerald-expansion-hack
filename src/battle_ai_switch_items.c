@@ -742,8 +742,8 @@ static bool32 MonHasRelevantStatsRaised(u32 battler)
     if((gBattleMons[battler].statStages[STAT_SPEED] > DEFAULT_STAT_STAGE 
         || (gBattleMons[battler].ability == ABILITY_UNBURDEN && gDisableStructs[battler].unburdenActive) 
         || (gDisableStructs[battler].boosterEnergyActivated && GetParadoxBoostedStatId(battler) == STAT_SPEED))
-        && (gBattleMons[battler].speed < gAiLogicData->speedStats[opposingBattler])
-        && (gAiLogicData->speedStats[battler] >= gAiLogicData->speedStats[opposingBattler])){
+        && (gBattleMons[battler].speed < playerSpeed)
+        && (battlerSpeed >= playerSpeed)){
         return TRUE;
     }
 
@@ -1079,9 +1079,9 @@ bool32 ShouldSwitch(u32 battler)
         return FALSE;
 
     //represents whether or not the AI is faster
-    if(GetBattleMovePriority(battler, battlerAbility, gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]) > GetBattleMovePriority(opposingBattler, playerAbility, bestPlayerMove)){
+    if(GetBattleMovePriority(battler, battlerAbility, bestBattlerMove) > GetBattleMovePriority(opposingBattler, playerAbility, bestPlayerMove)){
         aiIsFaster = TRUE;
-    } else if (GetBattleMovePriority(opposingBattler, playerAbility, bestPlayerMove) > GetBattleMovePriority(battler, battlerAbility, gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]])){
+    } else if (GetBattleMovePriority(opposingBattler, playerAbility, bestPlayerMove) > GetBattleMovePriority(battler, battlerAbility, bestBattlerMove)){
         aiIsFaster = FALSE;
     } else if (battlerSpeed >= playerSpeed){
         //move prios are tied
@@ -1119,8 +1119,15 @@ bool32 ShouldSwitch(u32 battler)
     if (bestHitsToKOBattler == 1 && !canFakeOut)
     {
         if(!aiIsFaster){
-            gAiLogicData->mostSuitableMonId[battler] = bestCandidate.mon;
-            return TRUE;
+            if (gBattleMons[battler].volatiles.wrapped
+                    || gBattleMons[battler].volatiles.escapePrevention
+                    || gBattleMons[battler].volatiles.root
+                    || IsAbilityPreventingEscape(battler)){
+                return FALSE;
+            } else {
+                gAiLogicData->mostSuitableMonId[battler] = bestCandidate.mon;
+                return TRUE;
+            }
         } else if (aiIsFaster && !willSetHazards && !willHeal && !willDestinyBond && !battlerCanKOPlayerMon && !MonHasRelevantStatsRaised(battler)){
             if(canPivot){
                 gAiBattleData->chosenMoveIndex[battler] = pivot;
@@ -2683,11 +2690,11 @@ struct MostSuitableCandidate GetMostSuitableMonToSwitchInto(u32 battler, bool32 
     s32 lastId = 0; // + 1
     struct Pokemon *party;
     u32 numberOfBestMons = 1;
-    u32 maxSwitchScore = 0;
-    u32 switchScore = 0;
+    s32 maxSwitchScore = -1;
+    s32 switchScore = -1;
     u32 highestSwitchScore = 0;
-    u8 consideredMonArray[PARTY_SIZE];
-    u8 currentMonArray[PARTY_SIZE];
+    s8 consideredMonArray[PARTY_SIZE];
+    s8 currentMonArray[PARTY_SIZE];
     int i;
     s32 j = 0;
     u32 aiMove = 0;
@@ -2727,8 +2734,8 @@ struct MostSuitableCandidate GetMostSuitableMonToSwitchInto(u32 battler, bool32 
         return bestCandidate;
     }
 
-    currentMonArray[0] = 0;
-    consideredMonArray[0] = 0;
+    currentMonArray[0] = -1;
+    consideredMonArray[0] = -1;
 
     if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
     {

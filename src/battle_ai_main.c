@@ -4906,10 +4906,11 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
         break;
     case EFFECT_METAL_BURST:
         if ((!IsBattlerIncapacitated(battlerDef, aiData->abilities[battlerDef]))
-         && !CanTargetFaintAi(battlerDef, battlerAtk))
+         && !CanTargetFaintAi(battlerDef, battlerAtk)){
             ADJUST_SCORE(WEAK_EFFECT);
-        if(Random() % 100 < 60)
-            ADJUST_SCORE(WEAK_EFFECT);
+            if(Random() % 100 < 60)
+                ADJUST_SCORE(WEAK_EFFECT);
+        }
         break;
     case EFFECT_SHORE_UP:
         if ((AI_GetWeather() & B_WEATHER_SANDSTORM) && ShouldRecover(battlerAtk, battlerDef, move, 67))
