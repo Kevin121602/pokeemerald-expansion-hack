@@ -33810,8 +33810,8 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 12949
-                MOVE_LIQUIDATION,
                 MOVE_PSYBLADE,
+                MOVE_AQUA_CUTTER,
                 MOVE_AQUA_JET,
                 MOVE_NIGHT_SLASH,
             },
@@ -33867,7 +33867,7 @@ F_TRAINER_FEMALE |
             .species = SPECIES_LUNATONE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 12972
-            .heldItem = ITEM_FAIRY_GEM,
+            .heldItem = ITEM_COLBUR_BERRY,
 #line 12976
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 12974
@@ -33882,7 +33882,7 @@ F_TRAINER_FEMALE |
                 MOVE_LUMINA_CRASH,
                 MOVE_DAZZLING_GLEAM,
                 MOVE_EARTH_POWER,
-                MOVE_MOONLIGHT,
+                MOVE_CALM_MIND,
             },
             },
         },

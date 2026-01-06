@@ -677,7 +677,7 @@ PetalburgWoods_Text_HaveYouSeenShroomish:
 # 341 "data/maps/PetalburgWoods/scripts.pory"
 	.string "Hello, have you seen any Pokémon\n"
 # 342 "data/maps/PetalburgWoods/scripts.pory"
-	.string "called Smoliv around here?\p"
+	.string "called Shroomish around here?\p"
 # 343 "data/maps/PetalburgWoods/scripts.pory"
 	.string "I really love that Pokémon.$"
 # 344 "data/maps/PetalburgWoods/scripts.pory"

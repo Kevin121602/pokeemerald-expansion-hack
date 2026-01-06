@@ -711,6 +711,9 @@ void SetAiLogicDataForTurn(struct AiLogicData *aiData)
         u32 originalSpecies = gBattleMons[battlerAtk].species;
         u32 targetSpecies = GetBattleFormChangeTargetSpecies(battlerAtk, FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM);
 
+        if(originalSpecies == targetSpecies)
+            continue;
+
         SetMonData(mon, MON_DATA_SPECIES, &targetSpecies);
         RecalcBattlerStats(battlerAtk, mon, FALSE);
         SetMonData(mon, MON_DATA_SPECIES, &originalSpecies);
