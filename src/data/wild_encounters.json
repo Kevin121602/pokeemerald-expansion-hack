@@ -13909,7 +13909,7 @@
           "map": "MAP_FALLARBOR_TOWN",
           "base_label": "gFallarborTown",
           "land_mons": {
-            "encounter_rate": 30,
+            "encounter_rate": 50,
             "mons": [
               {
                 "min_level": 11,

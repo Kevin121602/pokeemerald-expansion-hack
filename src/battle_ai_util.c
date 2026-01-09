@@ -5551,7 +5551,7 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
     if (considerContrary && gAiLogicData->abilities[battlerAtk] == ABILITY_CONTRARY)
         return NO_INCREASE;
 
-    if(gAiLogicData->abilities[battlerDef] == ABILITY_UNAWARE && (AISpeedAfterBoosts < speedBattler || speedBattler > speedBattlerAI))
+    if(gAiLogicData->abilities[battlerDef] == ABILITY_UNAWARE && (!aiIsFaster || speedBattlerAI >= speedBattler) && statId != STAT_CHANGE_CRIT_RATE)
         return NO_INCREASE;
 
     // Don't increase stat if AI is at +4
