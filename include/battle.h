@@ -98,7 +98,7 @@ struct DisableStruct
     u8 rolloutTimer;
     u16 tauntTimer;
     u8 furyCutterCounter;
-    u8 metronomeItemCounter;
+    //u8 metronomeItemCounter;
     u8 battlerPreventingEscape;
     u8 battlerWithSureHit;
     u8 isFirstTurn;
@@ -178,7 +178,8 @@ struct ProtectStruct
     u16 helpingHand:3;
     u16 assuranceDoubled:1;
     u16 myceliumMight:1;
-    u16 padding:11;
+    u16 revengeDoubled:4;
+    u16 padding:7;
     // End of 16-bit bitfield
     u16 physicalDmg;
     u16 specialDmg;
@@ -598,7 +599,7 @@ struct BattlerState
     u32 wasAboveHalfHp:1; // For Berserk, Emergency Exit, Wimp Out and Anger Shell.
     u32 commanderSpecies:11;
     u32 selectionScriptFinished:1;
-    u32 lastMoveTarget:3; // The last target on which each mon used a move, for the sake of Instruct
+    u32 padding:3; // The last target on which each mon used a move, for the sake of Instruct
     // End of Word
 };
 
@@ -729,10 +730,12 @@ struct BattleStruct
     struct BattleGimmickData gimmick;
     const u8 *trainerSlideMsg;
     u8 stolenStats[NUM_BATTLE_STATS]; // hp byte is used for which stats to raise, other inform about by how many stages
+    u8 lastMoveTarget[MAX_BATTLERS_COUNT];
     enum Ability tracedAbility[MAX_BATTLERS_COUNT];
     struct Illusion illusion[MAX_BATTLERS_COUNT];
     u8 soulheartBattlerId;
     u8 friskedBattler; // Frisk needs to identify 2 battlers in double battles.
+    u8 metronomeItemCounter[MAX_BATTLERS_COUNT];
     u8 quickClawBattlerId;
     struct LostItem itemLost[NUM_BATTLE_SIDES][PARTY_SIZE];  // Pokemon that had items consumed or stolen (two bytes per party member per side)
     u8 blunderPolicy:1; // should blunder policy activate
@@ -753,7 +756,6 @@ struct BattleStruct
     u8 pledgeMove:1;
     u8 effectsBeforeUsingMoveDone:1; // Mega Evo and Focus Punch/Shell Trap effects.
     u8 spriteIgnore0Hp:1;
-    u8 bonusCritStages[MAX_BATTLERS_COUNT]; // G-Max Chi Strike boosts crit stages of allies.
     u8 itemPartyIndex[MAX_BATTLERS_COUNT];
     u8 itemMoveIndex[MAX_BATTLERS_COUNT];
     s32 aiDelayTimer; // Counts number of frames AI takes to choose an action.

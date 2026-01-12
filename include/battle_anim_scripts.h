@@ -1008,6 +1008,8 @@ extern const u8 gBattleAnimGeneral_PowerConstruct[];
 extern const u8 gBattleAnimGeneral_RichSediment[];
 extern const u8 gBattleAnimGeneral_SoothingSteam[];
 extern const u8 gBattleAnimGeneral_SweetDreamsDrain[];
+extern const u8 gBattleAnimGeneral_SwapToSubstitute[];
+extern const u8 gBattleAnimGeneral_SwapFromSubstitute[];
 
 // special animations
 extern const u8 gBattleAnimSpecial_LevelUp[];

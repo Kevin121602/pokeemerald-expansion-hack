@@ -26456,7 +26456,7 @@ F_TRAINER_FEMALE |
                 MOVE_FIRST_IMPRESSION,
                 MOVE_IRON_HEAD,
                 MOVE_X_SCISSOR,
-                MOVE_AERIAL_ACE,
+                MOVE_THUNDER_FANG,
             },
             },
             {

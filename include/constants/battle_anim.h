@@ -595,8 +595,10 @@
 #define B_ANIM_RICH_SEDIMENT            54
 #define B_ANIM_SOOTHING_STEAM           55
 #define B_ANIM_SWEET_DREAMS_DRAIN       56
+#define B_ANIM_SWAP_TO_SUBSTITUTE       57
+#define B_ANIM_SWAP_FROM_SUBSTITUTE     58
 
-#define NUM_B_ANIMS_GENERAL             57
+#define NUM_B_ANIMS_GENERAL             59
 
 // special animations table (sBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

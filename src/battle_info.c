@@ -1478,9 +1478,9 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
             volatileOffset++;
     }
 
-    if(GetItemHoldEffect(gBattleMons[data->battlerId].item) == HOLD_EFFECT_METRONOME && gDisableStructs[data->battlerId].metronomeItemCounter != 0 && volatileOffset < 4){
+    if(GetItemHoldEffect(gBattleMons[data->battlerId].item) == HOLD_EFFECT_METRONOME && gBattleStruct->metronomeItemCounter[data->battlerId] != 0 && volatileOffset < 4){
             AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_Metronome, 100, 64 + volatileOffset * 15, 0, NULL);
-            txtPtr = ConvertIntToDecimalStringN(text, gDisableStructs[data->battlerId].metronomeItemCounter, STR_CONV_MODE_LEFT_ALIGN, 1);
+            txtPtr = ConvertIntToDecimalStringN(text, gBattleStruct->metronomeItemCounter[data->battlerId], STR_CONV_MODE_LEFT_ALIGN, 1);
             *txtPtr = EOS;
             AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
             volatileOffset++;
