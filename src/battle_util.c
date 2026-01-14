@@ -8298,7 +8298,7 @@ static inline uq4_12_t GetScreensModifier(struct DamageContext *ctx)
     bool32 reflect = (sideStatus & SIDE_STATUS_REFLECT) && IsBattleMovePhysical(ctx->move);
     bool32 auroraVeil = sideStatus & SIDE_STATUS_AURORA_VEIL;
 
-    if (gProtectStructs[ctx->battlerAtk].confusionSelfDmg)
+    if (gProtectStructs[ctx->battlerAtk].confusionSelfDmg || gMovesInfo[ctx->move].effect == EFFECT_BRICK_BREAK)
     {
         return UQ_4_12(1.0);
     }

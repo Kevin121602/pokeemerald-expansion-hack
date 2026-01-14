@@ -6164,7 +6164,7 @@ u32 IncreaseStatLoweringScore(u32 battlerAtk, u32 battlerDef, u32 statId, u32 st
         if (gBattleMons[battlerDef].statStages[STAT_ACC] <= MIN_STAT_STAGE)
             return NO_INCREASE;
         tempScore += WEAK_EFFECT;
-        if(stages >= 2 && Random() % 100 < 50)
+        if(gBattleMons[battlerDef].statStages[STAT_ACC] - 4 > MIN_STAT_STAGE && Random() % 100 < 50)
             tempScore += WEAK_EFFECT;
         break;
     }

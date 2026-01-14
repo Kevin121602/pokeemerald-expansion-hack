@@ -8,6 +8,10 @@
 #define TAG_HEALTHBAR_INFO_5 0xD795
 #define TAG_HEALTHBAR_INFO_6 0xD796
 
+#define SCREEN_PARTY    0
+#define SCREEN_TIMERS   1
+#define SCREEN_STATS    2
+
 void CB2_BattleInfo(void);
 void LoadBattleInfoAilmentGfx(void);
 

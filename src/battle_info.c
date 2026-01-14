@@ -89,14 +89,19 @@ static void PrintOnBattleTimersWindow(u8 windowId);
 static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId);
 static s32 CalcInfoBarValue(s32, s32, s32, s32 *, u8, u16);
 static u8 CalcBarFilledPixels(s32, s32, s32, s32 *, u8 *, u8);
-static void SwitchToTimersViewFromAiParty(u8 taskId);
-static void SwitchToTimersViewFromStats(u8 taskId);
-static void SwitchToPartyViewFromTimers(u8 taskId);
-static void SwitchToPartyViewFromStats(u8 taskId);
-static void SwitchToStatsViewFromTimers(u8 taskId);
-static void SwitchToStatsViewFromAiParty(u8 taskId);
-static void SwitchStatsMon(u8 taskId);
+//static void SwitchToTimersViewFromAiParty(u8 taskId);
+//static void SwitchToTimersViewFromStats(u8 taskId);
+//static void SwitchToPartyViewFromTimers(u8 taskId);
+//static void SwitchToPartyViewFromStats(u8 taskId);
+//static void SwitchToStatsViewFromTimers(u8 taskId);
+//static void SwitchToStatsViewFromAiParty(u8 taskId);
+//static void SwitchStatsMon(u8 taskId);
 static void Task_ShowAiPartyIcons(u8 taskId);
+static void PrintAiMonAndHealthbar(u8 monNum, u8 xOffset, u8 yOffset, u8 taskId);
+
+static void DestroyAiPartyViewSwitchPage(u8 taskId, u8 newPage);
+static void DestroyTimersViewSwitchPage(u8 taskId, u8 newPage);
+static void DestroyStatsViewSwitchPage(u8 taskId, u8 newPage);
 
 #define TAG_HELD_ITEM 55120
 #define TAG_INFO_STATUS_ICONS 55121
@@ -752,12 +757,96 @@ static u8 CalcBarFilledPixels(s32 maxValue, s32 oldValue, s32 receivedValue, s32
 #define sHealthBarId data[2]
 #define sItemSpriteId data[3]
 
+static void PrintAiMonAndHealthbar(u8 i, u8 xOffset, u8 yOffset, u8 taskId){
+    struct BattleInfo *data = GetStructPtr(taskId);
+    struct Pokemon *mon;
+    struct AiPartyMon *aiMons = gAiPartyData->mons[GetBattlerSide(data->battlerId)];
+    u8 barElementId;
+    u8 array[8];
+    u8 j;
+    u32 ailment;
+
+    LoadCompressedSpriteSheet(&sSpriteSheets_BattleInfoHealthBar[i]);
+
+    mon = &gEnemyParty[i];
+    u16 species = SPECIES_NONE;
+    if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
+        species = GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_SPECIES); 
+    } else {
+        species = GetMonData(mon, MON_DATA_SPECIES);  
+    }
+
+    if (aiMons[i].species == SPECIES_NONE)
+        return;
+
+    data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
+    gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
+
+    gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 16, yOffset - 5, 0);
+    gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
+
+    if (aiMons[i].isFainted)
+        ailment = AILMENT_FNT;
+    else
+        ailment = GetAilmentFromStatus(mon->status);
+
+    if (ailment != AILMENT_NONE)
+        StartSpriteAnim(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId], ailment - 1);
+    else
+        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].invisible = TRUE;
+
+    if (aiMons[i].isFainted)
+        return;
+
+    if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
+        if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+            gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+            gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+        } 
+    } else {
+        if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
+            gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
+            gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
+        }  
+    }
+
+    gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId = CreateSprite(&gSpriteTemplate_Healthbar[i], xOffset - 15, yOffset + 19, 0);
+    SetSubspriteTables(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId], &sHealthBar_SubspriteTables[B_SIDE_OPPONENT]);
+    gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.priority = 0;
+
+    CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_START), (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
+
+    data->hpBarValue[i] = -32768;
+    CalcInfoBarValue(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], 6, 1);
+
+    data->pixelsCount[i] = CalcBarFilledPixels(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], array, 6);
+
+    if (data->pixelsCount[i] > 24) // more than 50 % hp
+        barElementId = HEALTHBOX_GFX_HP_BAR_GREEN;
+    else if (data->pixelsCount[i] > 9) // more than 20% hp
+        barElementId = HEALTHBOX_GFX_HP_BAR_YELLOW;
+    else
+        barElementId = HEALTHBOX_GFX_HP_BAR_RED; // 20 % or less
+
+    for (j = 0; j < 6; j++)
+    {
+        if (j < 2)
+            CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
+                (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + 1 + j) * TILE_SIZE_4BPP), 32);
+        else
+            CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
+                (void *)(OBJ_VRAM0 + 64 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + j - 1) * TILE_SIZE_4BPP), 32);
+    }
+
+    CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_END),
+        (void *)(OBJ_VRAM0 + 64 + (5 + gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
+    
+}
+
 static void Task_ShowAiPartyIcons(u8 taskId)
 {
     u32 i, ailment;
     struct WindowTemplate winTemplate;
-    struct AiPartyMon *aiMons;
-    struct Pokemon *mon;
     struct BattleInfo *data = GetStructPtr(taskId);
     u8 xOffset;
     u8 yOffset;
@@ -778,268 +867,34 @@ static void Task_ShowAiPartyIcons(u8 taskId)
         LoadSpriteSheet(&gSpriteSheet_HeldItemInfo);
         data->battlerId = B_POSITION_OPPONENT_LEFT;
         if(gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS){
-            aiMons = gAiPartyData->mons[GetBattlerSide(data->battlerId)];
             for (i = 0; i < gAiPartyData->count[GetBattlerSide(data->battlerId)]; i++)
             {
-                u8 barElementId;
-                u8 array[8];
-                u8 j;
-
-                LoadCompressedSpriteSheet(&sSpriteSheets_BattleInfoHealthBar[i]);
-
                 xOffset = 39 + (i % 3) * 80;
                 yOffset = 40;
-
-                mon = &gEnemyParty[i];
-                u16 species = SPECIES_NONE;
-                if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
-                    species = GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_SPECIES); 
-                } else {
-                    species = GetMonData(mon, MON_DATA_SPECIES);  
-                }
-
-                if (aiMons[i].species == SPECIES_NONE)
-                    continue;
-
-                data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
-                gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
-
-                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 16, yOffset - 5, 0);
-                gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
-
-                if (aiMons[i].isFainted)
-                    ailment = AILMENT_FNT;
-                else
-                    ailment = GetAilmentFromStatus(mon->status);
-
-                if (ailment != AILMENT_NONE)
-                    StartSpriteAnim(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId], ailment - 1);
-                else
-                    gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].invisible = TRUE;
-
-                if (aiMons[i].isFainted)
-                    continue;
-
-                if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
-                    if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
-                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
-                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
-                    } 
-                } else {
-                    if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
-                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
-                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
-                    }  
-                }
-
-                gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId = CreateSprite(&gSpriteTemplate_Healthbar[i], xOffset - 15, yOffset + 19, 0);
-                SetSubspriteTables(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId], &sHealthBar_SubspriteTables[B_SIDE_OPPONENT]);
-                gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.priority = 0;
-
-                CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_START), (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
-
-                data->hpBarValue[i] = -32768;
-                CalcInfoBarValue(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], 6, 1);
-
-                data->pixelsCount[i] = CalcBarFilledPixels(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], array, 6);
-
-                if (data->pixelsCount[i] > 24) // more than 50 % hp
-                    barElementId = HEALTHBOX_GFX_HP_BAR_GREEN;
-                else if (data->pixelsCount[i] > 9) // more than 20% hp
-                    barElementId = HEALTHBOX_GFX_HP_BAR_YELLOW;
-                else
-                    barElementId = HEALTHBOX_GFX_HP_BAR_RED; // 20 % or less
-
-                for (j = 0; j < 6; j++)
-                {
-                    if (j < 2)
-                        CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
-                            (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + 1 + j) * TILE_SIZE_4BPP), 32);
-                    else
-                        CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
-                            (void *)(OBJ_VRAM0 + 64 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + j - 1) * TILE_SIZE_4BPP), 32);
-                }
-
-                CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_END),
-                            (void *)(OBJ_VRAM0 + 64 + (5 + gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
-
+                PrintAiMonAndHealthbar(i, xOffset, yOffset, taskId);
             }
             for (; i < 3; i++)
                 data->spriteIds.aiPartyIcons[i] = 0xFF;
 
             data->battlerId = B_POSITION_OPPONENT_RIGHT;
-            aiMons = gAiPartyData->mons[GetBattlerSide(data->battlerId)];
             for (i = 2; i < PARTY_SIZE; i++)
             {
-                u8 barElementId;
-                u8 array[8];
-                u8 j;
-
-                LoadCompressedSpriteSheet(&sSpriteSheets_BattleInfoHealthBar[i]);
-
                 xOffset = 39 + (i % 3) * 80;
                 yOffset = 100;
-
-                mon = &gEnemyParty[i];
-                u16 species = SPECIES_NONE; // Question mark
-                if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
-                    species = GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_SPECIES); 
-                } else {
-                    species = GetMonData(mon, MON_DATA_SPECIES); 
-                }
-
-                if (aiMons[i].species == SPECIES_NONE)
-                    continue;
-                
-                data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
-                gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
-
-                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 16, yOffset - 5, 0);
-                gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
-
-                if (aiMons[i].isFainted)
-                    ailment = AILMENT_FNT;
-                else
-                    ailment = GetAilmentFromStatus(mon->status);
-
-                if (ailment != AILMENT_NONE)
-                    StartSpriteAnim(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId], ailment - 1);
-                else
-                    gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].invisible = TRUE;
-
-                if (aiMons[i].isFainted)
-                    continue;
-
-                if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
-                    if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
-                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
-                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
-                    } 
-                } else {
-                    if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
-                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
-                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
-                    }  
-                }
-
-                gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId = CreateSprite(&gSpriteTemplate_Healthbar[i], xOffset - 15, yOffset + 19, 0);
-                SetSubspriteTables(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId], &sHealthBar_SubspriteTables[B_SIDE_OPPONENT]);
-                gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.priority = 0;
-
-                CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_START), (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
-
-                data->hpBarValue[i] = -32768;
-                CalcInfoBarValue(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], 6, 1);
-
-                data->pixelsCount[i] = CalcBarFilledPixels(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], array, 6);
-
-                if (data->pixelsCount[i] > 24) // more than 50 % hp
-                    barElementId = HEALTHBOX_GFX_HP_BAR_GREEN;
-                else if (data->pixelsCount[i] > 9) // more than 20% hp
-                    barElementId = HEALTHBOX_GFX_HP_BAR_YELLOW;
-                else
-                    barElementId = HEALTHBOX_GFX_HP_BAR_RED; // 20 % or less
-
-                for (j = 0; j < 6; j++)
-                {
-                    if (j < 2)
-                        CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
-                            (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + 1 + j) * TILE_SIZE_4BPP), 32);
-                    else
-                        CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
-                            (void *)(OBJ_VRAM0 + 64 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + j - 1) * TILE_SIZE_4BPP), 32);
-                }
-
-                CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_END),
-                            (void *)(OBJ_VRAM0 + 64 + (5 + gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
-
+                PrintAiMonAndHealthbar(i, xOffset, yOffset, taskId);
             }
             for (; i < 3; i++)
                 data->spriteIds.aiPartyIcons[i] = 0xFF;
         } else {
-            aiMons = gAiPartyData->mons[GetBattlerSide(data->battlerId)];
             for (i = 0; i < gAiPartyData->count[GetBattlerSide(data->battlerId)]; i++)
             {
-                u8 barElementId;
-                u8 array[8];
-                u8 j;
-
-                LoadCompressedSpriteSheet(&sSpriteSheets_BattleInfoHealthBar[i]);
-
                 xOffset = 39 + (i % 3) * 80;
                 if(i < 3)
                     yOffset = 40;
                 else
                     yOffset = 100;
-                mon = &gEnemyParty[i];
-                u16 species = SPECIES_NONE; // Question mark
-                if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
-                    species = GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_SPECIES); 
-                } else {
-                    species = GetMonData(mon, MON_DATA_SPECIES);  
-                }
-                data->spriteIds.aiPartyIcons[i] = CreateMonIcon(species, SpriteCallbackDummy, xOffset, yOffset, 1, 0);
-                gSprites[data->spriteIds.aiPartyIcons[i]].oam.priority = 0;
-
-                gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId = CreateSprite(&gSpriteTemplate_InfoStatusIcons, xOffset + 16, yOffset - 5, 0);
-                gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].oam.priority = 0;
-
-                if (aiMons[i].isFainted)
-                    ailment = AILMENT_FNT;
-                else
-                    ailment = GetAilmentFromStatus(mon->status);
-
-                if (ailment != AILMENT_NONE)
-                    StartSpriteAnim(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId], ailment - 1);
-                else
-                    gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId].invisible = TRUE;
-
-                if (aiMons[i].isFainted)
-                    continue;
-
-                if (GetMonAbility(mon) == ABILITY_ILLUSION && gBattleStruct->illusion[data->battlerId].state != ILLUSION_OFF){
-                    if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
-                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
-                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
-                    } 
-                } else {
-                    if(GetMonData(mon, MON_DATA_HELD_ITEM) != ITEM_NONE){
-                        gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, xOffset + 6, yOffset + 12, 0);
-                        gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId].oam.priority = 0;
-                    }  
-                }
-
-                gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId = CreateSprite(&gSpriteTemplate_Healthbar[i], xOffset - 15, yOffset + 19, 0);
-                SetSubspriteTables(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId], &sHealthBar_SubspriteTables[B_SIDE_OPPONENT]);
-                gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.priority = 0;
-
-                CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_START), (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
-
-                data->hpBarValue[i] = -32768;
-                CalcInfoBarValue(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], 6, 1);
-
-                data->pixelsCount[i] = CalcBarFilledPixels(GetMonData(mon, MON_DATA_MAX_HP), GetMonData(mon, MON_DATA_HP), 0, &data->hpBarValue[i], array, 6);
-
-                if (data->pixelsCount[i] > 24) // more than 50 % hp
-                    barElementId = HEALTHBOX_GFX_HP_BAR_GREEN;
-                else if (data->pixelsCount[i] > 9) // more than 20% hp
-                    barElementId = HEALTHBOX_GFX_HP_BAR_YELLOW;
-                else
-                    barElementId = HEALTHBOX_GFX_HP_BAR_RED; // 20 % or less
-
-                for (j = 0; j < 6; j++)
-                {
-                    if (j < 2)
-                        CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
-                            (void *)(OBJ_VRAM0 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + 1 + j) * TILE_SIZE_4BPP), 32);
-                    else
-                        CpuCopy32(GetHealthbarElementGfxPtr(barElementId) + array[j] * 32,
-                            (void *)(OBJ_VRAM0 + 64 + (gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum + j - 1) * TILE_SIZE_4BPP), 32);
-                }
-
-                CpuCopy32(GetHealthbarElementGfxPtr(HEALTHBOX_GFX_END),
-                            (void *)(OBJ_VRAM0 + 64 + (5 + gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId].oam.tileNum) * TILE_SIZE_4BPP), 32);
-
+                
+                PrintAiMonAndHealthbar(i, xOffset, yOffset, taskId);
             }
             for (; i < PARTY_SIZE; i++)
                 data->spriteIds.aiPartyIcons[i] = 0xFF;
@@ -1056,14 +911,14 @@ static void Task_ShowAiPartyIcons(u8 taskId)
         }
         if (JOY_NEW(DPAD_RIGHT))
         {
-            SwitchToTimersViewFromAiParty(taskId);
+            DestroyAiPartyViewSwitchPage(taskId, SCREEN_TIMERS);
             //HideBg(1);
             //ShowBg(0);
             return;
         }
         if (JOY_NEW(DPAD_LEFT))
         {
-            SwitchToStatsViewFromAiParty(taskId);
+            DestroyAiPartyViewSwitchPage(taskId, SCREEN_STATS);
             //HideBg(1);
             //ShowBg(0);
             return;
@@ -1072,7 +927,7 @@ static void Task_ShowAiPartyIcons(u8 taskId)
     }
 }
 
-static void SwitchToTimersViewFromAiParty(u8 taskId)
+/*static void SwitchToTimersViewFromAiParty(u8 taskId)
 {
     u32 i;
     struct BattleInfo *data = GetStructPtr(taskId);
@@ -1122,13 +977,49 @@ static void SwitchToStatsViewFromAiParty(u8 taskId)
     RemoveWindow(data->buttonControlWindow);
 
     gTasks[taskId].func = Task_ShowBattlerStats;
+}*/
+
+static void DestroyAiPartyViewSwitchPage(u8 taskId, u8 newPage)
+{
+    u32 i;
+    struct BattleInfo *data = GetStructPtr(taskId);
+    data->aiViewState = 0;
+    FreeMonIconPalettes();
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (data->spriteIds.aiPartyIcons[i] != 0xFF)
+        {
+            DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId]);
+            DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId]);
+            DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId]);
+            FreeAndDestroyMonIconSprite(&gSprites[data->spriteIds.aiPartyIcons[i]]);
+        }
+    }
+
+    ClearWindowTilemap(data->buttonControlWindow);
+    RemoveWindow(data->buttonControlWindow);
+
+    switch(newPage){
+        case SCREEN_TIMERS:
+            gTasks[taskId].func = Task_ShowBattleTimers;
+            break;
+        case SCREEN_STATS:
+            if(gBattleMons[0].hp == 0)
+                data->battlerId = 2;
+            else
+                data->battlerId = 0;
+            gTasks[taskId].func = Task_ShowBattlerStats;
+            break;
+        default:
+            break;
+    }
 }
 
 #undef sConditionSpriteId
 #undef sHealthBarId
 #undef sItemSpriteId
 
-static void SwitchToTimersViewFromStats(u8 taskId)
+/*static void SwitchToTimersViewFromStats(u8 taskId)
 {
     u32 i;
     struct BattleInfo *data = GetStructPtr(taskId);
@@ -1145,7 +1036,7 @@ static void SwitchToTimersViewFromStats(u8 taskId)
     RemoveWindow(data->battlerStatsWindow);
 
     gTasks[taskId].func = Task_ShowBattleTimers;
-}
+}*/
 
 static void Task_ShowBattleTimers(u8 taskId)
 {
@@ -1180,14 +1071,14 @@ static void Task_ShowBattleTimers(u8 taskId)
         }
         if (JOY_NEW(DPAD_LEFT))
         {
-            SwitchToPartyViewFromTimers(taskId);
+            DestroyTimersViewSwitchPage(taskId, SCREEN_PARTY);
             //HideBg(1);
             //ShowBg(0);
             return;
         }
         if (JOY_NEW(DPAD_RIGHT))
         {
-            SwitchToStatsViewFromTimers(taskId);
+            DestroyTimersViewSwitchPage(taskId, SCREEN_STATS);
             //HideBg(1);
             //ShowBg(0);
             return;
@@ -1238,21 +1129,21 @@ static void Task_ShowBattlerStats(u8 taskId)
         }
         if (JOY_NEW(DPAD_LEFT))
         {
-            SwitchToTimersViewFromStats(taskId);
+            DestroyStatsViewSwitchPage(taskId, SCREEN_TIMERS);
             //HideBg(1);
             //ShowBg(0);
             return;
         }
         if (JOY_NEW(DPAD_RIGHT))
         {
-            SwitchToPartyViewFromStats(taskId);
+            DestroyStatsViewSwitchPage(taskId, SCREEN_PARTY);
             //HideBg(1);
             //ShowBg(0);
             return;
         }
         if (JOY_NEW(A_BUTTON))
         {
-            SwitchStatsMon(taskId);
+            DestroyStatsViewSwitchPage(taskId, SCREEN_STATS);
             //HideBg(1);
             //ShowBg(0);
             return;
@@ -1756,7 +1647,7 @@ static void VBlankCB(void)
     TransferPlttBuffer();
 }
 
-static void SwitchToPartyViewFromTimers(u8 taskId)
+/*static void SwitchToPartyViewFromTimers(u8 taskId)
 {
     u32 i;
     struct BattleInfo *data = GetStructPtr(taskId);
@@ -1772,9 +1663,38 @@ static void SwitchToPartyViewFromTimers(u8 taskId)
     LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
 
     gTasks[taskId].func = Task_ShowAiPartyIcons;
+}*/
+
+static void DestroyTimersViewSwitchPage(u8 taskId, u8 newPage)
+{
+    u32 i;
+    struct BattleInfo *data = GetStructPtr(taskId);
+    data->aiViewState = 0;
+
+    ClearWindowTilemap(data->battleTimersWindow);
+    RemoveWindow(data->battleTimersWindow);
+
+    switch(newPage){
+        case SCREEN_PARTY:
+            data->buttonControlWindow = AddWindow(&sButtonControlWindowTemplate);
+            PutWindowTilemap(data->buttonControlWindow);
+            PrintOnBattleInfoWindow(data->buttonControlWindow);
+            LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
+            gTasks[taskId].func = Task_ShowAiPartyIcons;
+            break;
+        case SCREEN_STATS:
+            if(gBattleMons[0].hp == 0)
+                data->battlerId = 2;
+            else
+                data->battlerId = 0;
+            gTasks[taskId].func = Task_ShowBattlerStats;
+            break;
+        default:
+            break;
+    }
 }
 
-static void SwitchToPartyViewFromStats(u8 taskId)
+/*static void SwitchToPartyViewFromStats(u8 taskId)
 {
     u32 i;
     struct BattleInfo *data = GetStructPtr(taskId);
@@ -1796,9 +1716,50 @@ static void SwitchToPartyViewFromStats(u8 taskId)
     LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
 
     gTasks[taskId].func = Task_ShowAiPartyIcons;
+}*/
+
+static void DestroyStatsViewSwitchPage(u8 taskId, u8 newPage){
+    u32 i;
+    struct BattleInfo *data = GetStructPtr(taskId);
+    data->aiViewState = 0;
+
+    ClearWindowTilemap(data->battlerStatsWindow);
+    RemoveWindow(data->battlerStatsWindow);
+
+    FreeMonIconPalettes();
+    if (data->spriteIds.aiIconSpriteId != 0xFF)
+    {
+        FreeAndDestroyMonIconSprite(&gSprites[data->spriteIds.aiIconSpriteId]);
+    }
+
+    switch(newPage){
+        case SCREEN_PARTY:
+            data->buttonControlWindow = AddWindow(&sButtonControlWindowTemplate);
+            PutWindowTilemap(data->buttonControlWindow);
+            PrintOnBattleInfoWindow(data->buttonControlWindow);
+            LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
+            gTasks[taskId].func = Task_ShowAiPartyIcons;
+            break;
+        case SCREEN_TIMERS:
+            gTasks[taskId].func = Task_ShowBattleTimers;
+            break;
+        case SCREEN_STATS:
+            if (data->battlerId++ == gBattlersCount - 1)
+                data->battlerId = 0;
+
+            while(gBattleMons[data->battlerId].hp == 0){
+                if (data->battlerId++ == gBattlersCount - 1)
+                    data->battlerId = 0;
+            }
+
+            gTasks[taskId].func = Task_ShowBattlerStats;
+            break;
+        default:
+            break;
+    }
 }
 
-static void SwitchStatsMon(u8 taskId)
+/*static void SwitchStatsMon(u8 taskId)
 {
     u32 i;
     struct BattleInfo *data = GetStructPtr(taskId);
@@ -1822,9 +1783,9 @@ static void SwitchStatsMon(u8 taskId)
     }
 
     gTasks[taskId].func = Task_ShowBattlerStats;
-}
+}*/
 
-static void SwitchToStatsViewFromTimers(u8 taskId)
+/*static void SwitchToStatsViewFromTimers(u8 taskId)
 {
     u32 i;
     struct BattleInfo *data = GetStructPtr(taskId);
@@ -1845,7 +1806,7 @@ static void SwitchToStatsViewFromTimers(u8 taskId)
     //LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
 
     gTasks[taskId].func = Task_ShowBattlerStats;
-}
+}*/
 
 void CB2_BattleInfo(void)
 {

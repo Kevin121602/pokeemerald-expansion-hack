@@ -62,6 +62,7 @@
     F(PIN_MISSILE)\
     F(PLAY_ROUGH) \
     F(POISON_JAB) \
+    F(POLTERGEIST) \
     F(POUNCE) \
     F(POWER_GEM) \
     F(PROTECT) \
@@ -79,7 +80,6 @@
     F(SEED_BOMB) \
     F(SEISMIC_TOSS) \
     F(SHADOW_BALL) \
-    F(SHADOW_PUNCH) \
     F(SHOCK_WAVE) \
     F(SKILL_SWAP) \
     F(SLUDGE_BOMB) \
