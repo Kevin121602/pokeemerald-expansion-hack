@@ -89,13 +89,6 @@ static void PrintOnBattleTimersWindow(u8 windowId);
 static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId);
 static s32 CalcInfoBarValue(s32, s32, s32, s32 *, u8, u16);
 static u8 CalcBarFilledPixels(s32, s32, s32, s32 *, u8 *, u8);
-//static void SwitchToTimersViewFromAiParty(u8 taskId);
-//static void SwitchToTimersViewFromStats(u8 taskId);
-//static void SwitchToPartyViewFromTimers(u8 taskId);
-//static void SwitchToPartyViewFromStats(u8 taskId);
-//static void SwitchToStatsViewFromTimers(u8 taskId);
-//static void SwitchToStatsViewFromAiParty(u8 taskId);
-//static void SwitchStatsMon(u8 taskId);
 static void Task_ShowAiPartyIcons(u8 taskId);
 static void PrintAiMonAndHealthbar(u8 monNum, u8 xOffset, u8 yOffset, u8 taskId);
 
@@ -927,58 +920,6 @@ static void Task_ShowAiPartyIcons(u8 taskId)
     }
 }
 
-/*static void SwitchToTimersViewFromAiParty(u8 taskId)
-{
-    u32 i;
-    struct BattleInfo *data = GetStructPtr(taskId);
-    data->aiViewState = 0;
-
-    FreeMonIconPalettes();
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        if (data->spriteIds.aiPartyIcons[i] != 0xFF)
-        {
-            DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId]);
-            DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId]);
-            DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId]);
-            FreeAndDestroyMonIconSprite(&gSprites[data->spriteIds.aiPartyIcons[i]]);
-        }
-    }
-    
-    ClearWindowTilemap(data->buttonControlWindow);
-    RemoveWindow(data->buttonControlWindow);
-
-    gTasks[taskId].func = Task_ShowBattleTimers;
-}
-
-static void SwitchToStatsViewFromAiParty(u8 taskId)
-{
-    u32 i;
-    struct BattleInfo *data = GetStructPtr(taskId);
-    data->aiViewState = 0;
-    if(gBattleMons[0].hp == 0)
-        data->battlerId = 2;
-    else
-        data->battlerId = 0;
-
-    FreeMonIconPalettes();
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        if (data->spriteIds.aiPartyIcons[i] != 0xFF)
-        {
-            DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sConditionSpriteId]);
-            DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sHealthBarId]);
-            DestroySpriteAndFreeResources(&gSprites[gSprites[data->spriteIds.aiPartyIcons[i]].sItemSpriteId]);
-            FreeAndDestroyMonIconSprite(&gSprites[data->spriteIds.aiPartyIcons[i]]);
-        }
-    }
-
-    ClearWindowTilemap(data->buttonControlWindow);
-    RemoveWindow(data->buttonControlWindow);
-
-    gTasks[taskId].func = Task_ShowBattlerStats;
-}*/
-
 static void DestroyAiPartyViewSwitchPage(u8 taskId, u8 newPage)
 {
     u32 i;
@@ -1018,25 +959,6 @@ static void DestroyAiPartyViewSwitchPage(u8 taskId, u8 newPage)
 #undef sConditionSpriteId
 #undef sHealthBarId
 #undef sItemSpriteId
-
-/*static void SwitchToTimersViewFromStats(u8 taskId)
-{
-    u32 i;
-    struct BattleInfo *data = GetStructPtr(taskId);
-    data->aiViewState = 0;
-
-    FreeMonIconPalettes();
-
-    if (data->spriteIds.aiIconSpriteId != 0xFF)
-    {
-        FreeAndDestroyMonIconSprite(&gSprites[data->spriteIds.aiIconSpriteId]);
-    }
-
-    ClearWindowTilemap(data->battlerStatsWindow);
-    RemoveWindow(data->battlerStatsWindow);
-
-    gTasks[taskId].func = Task_ShowBattleTimers;
-}*/
 
 static void Task_ShowBattleTimers(u8 taskId)
 {
@@ -1618,7 +1540,7 @@ static void PrintOnBattleTimersWindow(u8 windowId)
     *txtPtr = EOS;
     AddTextPrinterParameterized(windowId, FONT_SMALL, text, 223, 94, 0, NULL);
 
-    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_MudSport, 148, 110, 0, NULL);
+    /*AddTextPrinterParameterized(windowId, FONT_SMALL, sText_MudSport, 148, 110, 0, NULL);
     txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.mudSportTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
     *txtPtr = EOS;
     AddTextPrinterParameterized(windowId, FONT_SMALL, text, 223, 110, 0, NULL);
@@ -1626,7 +1548,7 @@ static void PrintOnBattleTimersWindow(u8 windowId)
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_WaterSport, 148, 125, 0, NULL);
     txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.waterSportTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
     *txtPtr = EOS;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 223, 125, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 223, 125, 0, NULL);*/
 
     CopyWindowToVram(windowId, COPYWIN_FULL);
 }
@@ -1646,24 +1568,6 @@ static void VBlankCB(void)
     ProcessSpriteCopyRequests();
     TransferPlttBuffer();
 }
-
-/*static void SwitchToPartyViewFromTimers(u8 taskId)
-{
-    u32 i;
-    struct BattleInfo *data = GetStructPtr(taskId);
-    data->aiViewState = 0;
-
-    ClearWindowTilemap(data->battleTimersWindow);
-    RemoveWindow(data->battleTimersWindow);
-
-    data->buttonControlWindow = AddWindow(&sButtonControlWindowTemplate);
-    PutWindowTilemap(data->buttonControlWindow);
-    PrintOnBattleInfoWindow(data->buttonControlWindow);
-
-    LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
-
-    gTasks[taskId].func = Task_ShowAiPartyIcons;
-}*/
 
 static void DestroyTimersViewSwitchPage(u8 taskId, u8 newPage)
 {
@@ -1694,29 +1598,6 @@ static void DestroyTimersViewSwitchPage(u8 taskId, u8 newPage)
     }
 }
 
-/*static void SwitchToPartyViewFromStats(u8 taskId)
-{
-    u32 i;
-    struct BattleInfo *data = GetStructPtr(taskId);
-    data->aiViewState = 0;
-
-    ClearWindowTilemap(data->battlerStatsWindow);
-    RemoveWindow(data->battlerStatsWindow);
-
-    FreeMonIconPalettes();
-    if (data->spriteIds.aiIconSpriteId != 0xFF)
-    {
-        FreeAndDestroyMonIconSprite(&gSprites[data->spriteIds.aiIconSpriteId]);
-    }
-
-    data->buttonControlWindow = AddWindow(&sButtonControlWindowTemplate);
-    PutWindowTilemap(data->buttonControlWindow);
-    PrintOnBattleInfoWindow(data->buttonControlWindow);
-
-    LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
-
-    gTasks[taskId].func = Task_ShowAiPartyIcons;
-}*/
 
 static void DestroyStatsViewSwitchPage(u8 taskId, u8 newPage){
     u32 i;
@@ -1759,55 +1640,6 @@ static void DestroyStatsViewSwitchPage(u8 taskId, u8 newPage){
     }
 }
 
-/*static void SwitchStatsMon(u8 taskId)
-{
-    u32 i;
-    struct BattleInfo *data = GetStructPtr(taskId);
-    data->aiViewState = 0;
-
-    ClearWindowTilemap(data->battlerStatsWindow);
-    RemoveWindow(data->battlerStatsWindow);
-
-    FreeMonIconPalettes();
-    if (data->spriteIds.aiIconSpriteId != 0xFF)
-    {
-        FreeAndDestroyMonIconSprite(&gSprites[data->spriteIds.aiIconSpriteId]);
-    }
-
-    if (data->battlerId++ == gBattlersCount - 1)
-        data->battlerId = 0;
-
-    while(gBattleMons[data->battlerId].hp == 0){
-        if (data->battlerId++ == gBattlersCount - 1)
-            data->battlerId = 0;
-    }
-
-    gTasks[taskId].func = Task_ShowBattlerStats;
-}*/
-
-/*static void SwitchToStatsViewFromTimers(u8 taskId)
-{
-    u32 i;
-    struct BattleInfo *data = GetStructPtr(taskId);
-    data->aiViewState = 0;
-
-    if(gBattleMons[0].hp == 0)
-        data->battlerId = 2;
-    else
-        data->battlerId = 0;
-
-    ClearWindowTilemap(data->battleTimersWindow);
-    RemoveWindow(data->battleTimersWindow);
-
-    //data->buttonControlWindow = AddWindow(&sButtonControlWindowTemplate);
-    //PutWindowTilemap(data->buttonControlWindow);
-    //PrintOnBattleInfoWindow(data->buttonControlWindow);
-
-    //LoadSpritePalette(&sSpritePalettes_BattleInfoHealthBar);
-
-    gTasks[taskId].func = Task_ShowBattlerStats;
-}*/
-
 void CB2_BattleInfo(void)
 {
     u8 taskId;
@@ -1840,6 +1672,7 @@ void CB2_BattleInfo(void)
         ScanlineEffect_Stop();
         ResetTasks();
         ResetSpriteData();
+        FreeSpritePaletteByTag(TAG_HEALTHBAR_PAL);
         gMain.state++;
         break;
     case 3:
@@ -1856,7 +1689,6 @@ void CB2_BattleInfo(void)
         PutWindowTilemap(data->buttonControlWindow);
         PrintOnBattleInfoWindow(data->buttonControlWindow);
 
-        //data->activeWindow = ACTIVE_WIN_PARTY;
         gMain.state++;
         break;
     case 5:
