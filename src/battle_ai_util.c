@@ -2551,6 +2551,10 @@ bool32 IsMoveEncouragedKill(u32 battlerAtk, u32 battlerDef, u32 move){
         return TRUE;
     }
 
+    if(IsSoundMove(move) && gAiLogicData->holdEffects[battlerAtk] == HOLD_EFFECT_THROAT_SPRAY){
+        return TRUE;
+    }
+
     for (i = 0; i < gMovesInfo[move].numAdditionalEffects; i++){
         if (!MoveEffectIsGuaranteed(battlerAtk, gAiLogicData->abilities[battlerAtk], &gMovesInfo[move].additionalEffects[i]))
             continue;
@@ -2676,7 +2680,8 @@ bool32 HasMoveWithCategory(u32 battler, enum DamageCategory category)
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
-        if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE && GetBattleMoveCategory(moves[i]) == category)
+        if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE && GetBattleMoveCategory(moves[i]) == category
+            && !IsMoveUnusable(i, moves[i], gAiLogicData->moveLimitations[battler]))
             return TRUE;
     }
     return FALSE;

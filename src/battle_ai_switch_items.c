@@ -952,7 +952,7 @@ bool32 ShouldSwitch(u32 battler)
             gAiLogicData->mostSuitableMonId[battler] = bestCandidate.mon;
             return TRUE;
         }
-        else if(gAiLogicData->hasViableMoveDoubles)
+        else if(gAiLogicData->hasViableMoveDoubles[battler])
             return FALSE;
         else{
             gAiLogicData->mostSuitableMonId[battler] = bestCandidate.mon;

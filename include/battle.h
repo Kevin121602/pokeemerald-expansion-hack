@@ -349,7 +349,7 @@ struct AiLogicData
     u8 shouldSwitch:4; // Stores result of ShouldSwitch, which decides whether a mon should be switched out
     u8 padding2:4;
     u16 predictedMove[MAX_BATTLERS_COUNT];
-    bool8 hasViableMoveDoubles;
+    bool8 hasViableMoveDoubles[MAX_BATTLERS_COUNT];
 };
 
 struct AiThinkingStruct
