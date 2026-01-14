@@ -4410,6 +4410,12 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, u32 battler, enum Ability ab
                 break;
         // Fallthrough
         case ABILITY_ZEN_MODE:
+            if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_SWITCH))
+            {
+                BattleScriptPushCursorAndCallback(BattleScript_BattlerFormChangeEnd3);
+                effect++;
+            }
+            break;
         case ABILITY_SHIELDS_DOWN:
             if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT))
             {
@@ -4810,6 +4816,13 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, u32 battler, enum Ability ab
                     break;
             // Fallthrough
             case ABILITY_ZEN_MODE:
+                if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_SWITCH))
+                {
+                    gBattleScripting.battler = battler;
+                    BattleScriptExecute(BattleScript_BattlerFormChangeEnd2);
+                    effect++;
+                }
+                break;
             case ABILITY_SHIELDS_DOWN:
                 if (TryBattleFormChange(battler, FORM_CHANGE_BATTLE_HP_PERCENT))
                 {
