@@ -106,7 +106,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_TWISTED_SPOON",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_113_MAX_ETHER"
+      "flag": "FLAG_ITEM_ROUTE_113_TWISTED_SPOON"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -119,7 +119,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_SPELL_TAG",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_113_SUPER_REPEL"
+      "flag": "FLAG_ITEM_ROUTE_113_SPELL_TAG"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
@@ -275,7 +275,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_POISON_BARB",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_113_ETHER"
+      "flag": "FLAG_ITEM_ROUTE_113_POISON_BARB"
     }
   ],
   "warp_events": [

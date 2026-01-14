@@ -547,9 +547,9 @@
 #define FLAG_ITEM_ROUTE_114_TM_POUNCE             (FLAG_HIDDEN_ITEMS_START + 0x00)
 #define FLAG_ITEM_ROUTE_114_TM_STRUGGLE_BUG                  (FLAG_HIDDEN_ITEMS_START + 0x01)
 #define FLAG_ITEM_ROUTE_114_TM_ELECTROWEB                  (FLAG_HIDDEN_ITEMS_START + 0x02)
-#define FLAG_HIDDEN_ITEM_ROUTE_113_ETHER                     (FLAG_HIDDEN_ITEMS_START + 0x03)
+#define FLAG_HIDDEN_ITEM_DESERT_UNDERPASS_BIG_NUGGET                     (FLAG_HIDDEN_ITEMS_START + 0x03)
 #define FLAG_ITEM_ROUTE_114_SHARP_BEAK                    (FLAG_HIDDEN_ITEMS_START + 0x04)
-#define FLAG_HIDDEN_ITEM_ROUTE_119_CALCIUM                   (FLAG_HIDDEN_ITEMS_START + 0x05)
+#define FLAG_ITEM_ROUTE_113_POISON_BARB                   (FLAG_HIDDEN_ITEMS_START + 0x05)
 #define FLAG_HIDDEN_ITEM_ROUTE_119_ULTRA_BALL                (FLAG_HIDDEN_ITEMS_START + 0x06)
 #define FLAG_HIDDEN_ITEM_ROUTE_123_SUPER_REPEL               (FLAG_HIDDEN_ITEMS_START + 0x07)
 #define FLAG_HIDDEN_ITEM_UNDERWATER_124_CARBOS               (FLAG_HIDDEN_ITEMS_START + 0x08)
@@ -1064,8 +1064,8 @@
 #define FLAG_ITEM_ROUTE_111_STARDUST                                0x3F1
 #define FLAG_ITEM_ROUTE_111_HP_UP                                   0x3F2
 #define FLAG_ITEM_ROUTE_112_TM_SMART_STRIKE                                  0x3F3
-#define FLAG_ITEM_ROUTE_113_MAX_ETHER                               0x3F4
-#define FLAG_ITEM_ROUTE_113_SUPER_REPEL                             0x3F5
+#define FLAG_ITEM_ROUTE_113_TWISTED_SPOON                               0x3F4
+#define FLAG_ITEM_ROUTE_113_SPELL_TAG                             0x3F5
 #define FLAG_ITEM_ROUTE_114_RARE_CANDY                              0x3F6
 #define FLAG_ITEM_ROUTE_114_HARD_STONE                                 0x3F7
 #define FLAG_ITEM_ROUTE_115_MYSTIC_WATER                            0x3F8
