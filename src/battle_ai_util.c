@@ -3818,8 +3818,7 @@ bool32 AI_CanPutToSleep(u32 battlerAtk, u32 battlerDef, enum Ability defAbility,
 
     if((gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_CURE_SLP
       || gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS)
-        && gAiLogicData->abilities[battlerAtk] != ABILITY_UNNERVE 
-        && gAiLogicData->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE
+        && !IsUnnerveOnOpposingSide(battlerDef)
         && !CanUseStatusMoveTwice(battlerAtk, battlerDef, move))
         return FALSE;
 
@@ -3938,8 +3937,7 @@ bool32 AI_CanPoison(u32 battlerAtk, u32 battlerDef, enum Ability defAbility, u32
 
     if((gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_CURE_PSN
       || gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS)
-        && gAiLogicData->abilities[battlerAtk] != ABILITY_UNNERVE 
-        && gAiLogicData->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE
+        && !IsUnnerveOnOpposingSide(battlerDef)
         && !CanUseStatusMoveTwice(battlerAtk, battlerDef, move))
         return FALSE;
 
@@ -3956,8 +3954,7 @@ bool32 AI_CanParalyze(u32 battlerAtk, u32 battlerDef, enum Ability defAbility, u
 
     if((gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_CURE_PAR
       || gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS)
-        && gAiLogicData->abilities[battlerAtk] != ABILITY_UNNERVE 
-        && gAiLogicData->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE
+        && !IsUnnerveOnOpposingSide(battlerDef)
         && !CanUseStatusMoveTwice(battlerAtk, battlerDef, move))
         return FALSE;
     return TRUE;
@@ -3987,8 +3984,7 @@ bool32 AI_CanConfuse(u32 battlerAtk, u32 battlerDef, enum Ability defAbility, u3
 
     if((gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_CURE_CONFUSION
       || gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS)
-        && gAiLogicData->abilities[battlerAtk] != ABILITY_UNNERVE 
-        && gAiLogicData->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE
+        && !IsUnnerveOnOpposingSide(battlerDef)
         && !CanUseStatusMoveTwice(battlerAtk, battlerDef, move))
         return FALSE;
 
@@ -4008,8 +4004,7 @@ bool32 AI_CanBurn(u32 battlerAtk, u32 battlerDef, enum Ability defAbility, u32 b
 
     if((gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_CURE_BRN
       || gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_CURE_STATUS)
-        && gAiLogicData->abilities[battlerAtk] != ABILITY_UNNERVE 
-        && gAiLogicData->abilities[BATTLE_PARTNER(battlerAtk)] != ABILITY_UNNERVE
+        && !IsUnnerveOnOpposingSide(battlerDef)
         && !CanUseStatusMoveTwice(battlerAtk, battlerDef, move))
         return FALSE;
 
@@ -5238,7 +5233,7 @@ bool32 ShouldBellyDrum(u32 battlerAtk, u32 battlerDef){
         return FALSE;
     }
 
-    if(abilityPlayer == ABILITY_UNNERVE){
+    if(IsUnnerveOnOpposingSide(battlerAtk)){
         battlerHP = gBattleMons[battlerAtk].hp;
     } else {
         battlerHP = GetHPWithBerry(battlerAtk);
@@ -7456,5 +7451,30 @@ bool32 IsNaturalEnemy(u32 speciesAttacker, u32 speciesTarget)
     default:
         return FALSE;
     }
+    return FALSE;
+}
+
+bool32 IsUnnerveOnOpposingSide(u32 battler)
+{
+    for (u32 battlerDef = 0; battlerDef < gBattlersCount; battlerDef++)
+    {
+        if (battler == battlerDef || IsBattlerAlly(battler, battlerDef))
+            continue;
+
+        if (!IsBattlerAlive(battlerDef))
+            continue;
+
+        enum Ability ability = GetBattlerAbility(battlerDef);
+        switch (ability)
+        {
+        case ABILITY_UNNERVE:
+        case ABILITY_AS_ONE_ICE_RIDER:
+        case ABILITY_AS_ONE_SHADOW_RIDER:
+            return TRUE;
+        default:
+            break;
+        }
+    }
+
     return FALSE;
 }

@@ -7821,18 +7821,11 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Iron Leaves @ Lum Berry
+Golem @ Custap Berry
 Level: 35
 Nature: Adamant
-Ability: Quark Drive
-- Psyblade
-- Leaf Blade
-
-Arceus @ Lum Berry
-Level: 100
-Nature: Timid
-Ability: Multitype
-- Judgment
+Ability: Sturdy
+- Rock Slide
 
 === TRAINER_WADE ===
 Name: WADE

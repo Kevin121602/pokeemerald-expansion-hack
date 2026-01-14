@@ -152,6 +152,7 @@ void SetAIUsingGimmick(u32 battler, enum AIConsiderGimmick use);
 bool32 IsAIUsingGimmick(u32 battler);
 void DecideTerastal(u32 battler);
 bool32 CanEndureHit(u32 battler, u32 battlerTarget, u32 move);
+bool32 IsUnnerveOnOpposingSide(u32 battler);
 
 // stat stage checks
 bool32 AnyStatIsRaised(u32 battlerId);

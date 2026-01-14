@@ -4283,9 +4283,22 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
     case EFFECT_ENDURE:
         if (CanTargetFaintAi(battlerDef, battlerAtk))
         {
-            if (gBattleMons[battlerAtk].hp > gBattleMons[battlerAtk].maxHP / 4 // Pinch berry couldn't have activated yet
-             && IsPinchBerryItemEffect(aiData->holdEffects[battlerAtk]))
-                ADJUST_SCORE(GOOD_EFFECT);
+            if (gBattleMons[battlerAtk].hp > gBattleMons[battlerAtk].maxHP / 4 && !IsUnnerveOnOpposingSide(battlerAtk)){ // Pinch berry couldn't have activated yet
+                if(aiData->holdEffects[battlerAtk] == HOLD_EFFECT_ATTACK_UP && AI_IsFaster(battlerAtk, battlerDef, move, 0, DONT_CONSIDER_PRIORITY) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL))
+                    ADJUST_SCORE(GOOD_EFFECT);
+
+                if(aiData->holdEffects[battlerAtk] == HOLD_EFFECT_SP_ATTACK_UP && AI_IsFaster(battlerAtk, battlerDef, move, 0, DONT_CONSIDER_PRIORITY) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL))
+                    ADJUST_SCORE(GOOD_EFFECT);
+
+                if(aiData->holdEffects[battlerAtk] == HOLD_EFFECT_SPEED_UP)
+                    IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED);
+
+                if(aiData->holdEffects[battlerAtk] == HOLD_EFFECT_CUSTAP_BERRY && !AI_IsFaster(battlerAtk, battlerDef, move, 0, DONT_CONSIDER_PRIORITY))
+                    ADJUST_SCORE(GOOD_EFFECT);
+
+                if(aiData->holdEffects[battlerAtk] == HOLD_EFFECT_RANDOM_STAT_UP)
+                    ADJUST_SCORE(GOOD_EFFECT);
+            }
         }
         break;
     case EFFECT_CEASELESS_EDGE:
