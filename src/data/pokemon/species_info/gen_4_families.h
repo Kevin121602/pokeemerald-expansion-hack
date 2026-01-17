@@ -5058,7 +5058,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .levelUpLearnset = sCroagunkLevelUpLearnset,
         .teachableLearnset = sCroagunkTeachableLearnset,
         .eggMoveLearnset = sCroagunkEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_TOXICROAK}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 27, SPECIES_TOXICROAK}),
     },
 
     [SPECIES_TOXICROAK] =

@@ -866,7 +866,6 @@ bool32 ShouldSwitch(u32 battler)
     bool32 willSetHazards = FALSE;
     bool32 willDestinyBond = FALSE;
     bool32 battlerCanKOPlayerMon = FALSE;
-    bool32 willHeal = FALSE;
     bool32 hasNoGoodMoves = TRUE;
 
     bool32 canPivot = FALSE;
@@ -998,9 +997,6 @@ bool32 ShouldSwitch(u32 battler)
     if (IsHazardMove(gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]) && AI_ShouldSetUpHazards(battler, opposingBattler, gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]], aiData))
         willSetHazards = TRUE;
 
-    if (IsHealingMove(gBattleMons[battler].moves[gAiBattleData->chosenMoveIndex[battler]]))
-        willHeal = TRUE;
-
     if(hasNoGoodMoves){
         gAiLogicData->mostSuitableMonId[battler] = bestCandidate.mon;
         return TRUE;
@@ -1128,7 +1124,7 @@ bool32 ShouldSwitch(u32 battler)
                 gAiLogicData->mostSuitableMonId[battler] = bestCandidate.mon;
                 return TRUE;
             }
-        } else if (aiIsFaster && !willSetHazards && !willHeal && !willDestinyBond && !battlerCanKOPlayerMon && !MonHasRelevantStatsRaised(battler)){
+        } else if (aiIsFaster && !willSetHazards && !willDestinyBond && !battlerCanKOPlayerMon && !MonHasRelevantStatsRaised(battler)){
             if(canPivot){
                 gAiBattleData->chosenMoveIndex[battler] = pivot;
                 return FALSE;

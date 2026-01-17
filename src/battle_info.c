@@ -614,6 +614,7 @@ static void Task_BattleInfoFadeOut(u8 taskId)
         struct BattleInfo *data = GetStructPtr(taskId);
 
         FreeAllWindowBuffers();
+        Free(data);
         DestroyTask(taskId);
         SetMainCallback2(ReshowBattleScreenAfterMenu);
     }

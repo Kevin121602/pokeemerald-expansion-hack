@@ -1776,6 +1776,8 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_METAL_BURST:
             if(gAiLogicData->speedStats[battlerAtk] >= gAiLogicData->speedStats[battlerDef])
                 ADJUST_SCORE(-10);
+            if (!HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_SPECIAL) && !HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL)) 
+                ADJUST_SCORE(-10); 
             break;
         case EFFECT_ROAR:
             if (CountUsablePartyMons(battlerDef) == 0)
@@ -3013,7 +3015,7 @@ static s32 AI_TryToFaint(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         RETURN_SCORE_PLUS(ENCOURAGED_KILL);
     }
     else if ((CanIndexMoveFaintTarget(battlerAtk, battlerDef, movesetIndex, 0) && GetBattleMovePriority(battlerAtk, abilityAI, move) > 0) 
-        && speedBattlerAI < speedBattler)
+        && (speedBattlerAI < speedBattler || HasPriorityMove(battlerDef)))
     {
             RETURN_SCORE_PLUS(FAST_KILL);
     }
@@ -4267,7 +4269,7 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
             if (aiData->abilities[battlerAtk] == ABILITY_STANCE_CHANGE //Special logic for Aegislash
              && gBattleMons[battlerAtk].species == SPECIES_AEGISLASH_BLADE)
             {
-                if(CanAIFaintTarget(battlerAtk, battlerDef, 0) && AI_IsFaster(battlerAtk, battlerDef, move, 0, DONT_CONSIDER_PRIORITY)){
+                if(CanAIFaintTarget(battlerAtk, battlerDef, 0) && AI_IsFaster(battlerAtk, battlerDef, 0, 0, DONT_CONSIDER_PRIORITY)){
                     break;
                 }
                 else
@@ -4284,16 +4286,16 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
         if (CanTargetFaintAi(battlerDef, battlerAtk))
         {
             if (gBattleMons[battlerAtk].hp > gBattleMons[battlerAtk].maxHP / 4 && !IsUnnerveOnOpposingSide(battlerAtk)){ // Pinch berry couldn't have activated yet
-                if(aiData->holdEffects[battlerAtk] == HOLD_EFFECT_ATTACK_UP && AI_IsFaster(battlerAtk, battlerDef, move, 0, DONT_CONSIDER_PRIORITY) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL))
+                if(aiData->holdEffects[battlerAtk] == HOLD_EFFECT_ATTACK_UP && AI_IsFaster(battlerAtk, battlerDef, 0, 0, DONT_CONSIDER_PRIORITY) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_PHYSICAL))
                     ADJUST_SCORE(GOOD_EFFECT);
 
-                if(aiData->holdEffects[battlerAtk] == HOLD_EFFECT_SP_ATTACK_UP && AI_IsFaster(battlerAtk, battlerDef, move, 0, DONT_CONSIDER_PRIORITY) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL))
+                if(aiData->holdEffects[battlerAtk] == HOLD_EFFECT_SP_ATTACK_UP && AI_IsFaster(battlerAtk, battlerDef, 0, 0, DONT_CONSIDER_PRIORITY) && HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL))
                     ADJUST_SCORE(GOOD_EFFECT);
 
                 if(aiData->holdEffects[battlerAtk] == HOLD_EFFECT_SPEED_UP)
                     IncreaseStatUpScore(battlerAtk, battlerDef, STAT_CHANGE_SPEED);
 
-                if(aiData->holdEffects[battlerAtk] == HOLD_EFFECT_CUSTAP_BERRY && !AI_IsFaster(battlerAtk, battlerDef, move, 0, DONT_CONSIDER_PRIORITY))
+                if(aiData->holdEffects[battlerAtk] == HOLD_EFFECT_CUSTAP_BERRY && !AI_IsFaster(battlerAtk, battlerDef, 0, 0, DONT_CONSIDER_PRIORITY))
                     ADJUST_SCORE(GOOD_EFFECT);
 
                 if(aiData->holdEffects[battlerAtk] == HOLD_EFFECT_RANDOM_STAT_UP)
@@ -4606,7 +4608,7 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
     case EFFECT_RECYCLE:
         break;
     case EFFECT_PAIN_SPLIT:
-        if (!AI_IsFaster(battlerAtk, battlerDef, move, 0, DONT_CONSIDER_PRIORITY) && (gBattleMons[battlerDef].hp > gBattleMons[battlerAtk].hp)){
+        if (!AI_IsFaster(battlerAtk, battlerDef, move, 0, DONT_CONSIDER_PRIORITY) && ((gBattleMons[battlerDef].hp + gBattleMons[battlerAtk].hp) / 2 > gBattleMons[battlerAtk].hp * 5 / 4)){
             ADJUST_SCORE(WEAK_EFFECT);
             if(Random() % 100 < 50)
                 ADJUST_SCORE(WEAK_EFFECT);

@@ -5555,9 +5555,13 @@ static u32 IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, enum Stat
             shouldSetUp = TRUE;
     }
 
-    if(intactFocusSashOrSturdyPlayer && bestAIDmgOnPlayer*2 >= gBattleMons[battlerDef].hp && (AISpeedAfterBoosts < speedBattler || speedBattler > speedBattlerAI) ){
+    if(intactFocusSashOrSturdyPlayer && bestAIDmgOnPlayer*2 >= gBattleMons[battlerDef].hp && (!aiIsFaster || speedBattlerAI >= speedBattler)){
         shouldSetUp = FALSE;
     }
+
+    if(IsBattlerIncapacitated(battlerDef, abilityPlayer))
+        shouldSetUp = TRUE;
+
 
     if (considerContrary && gAiLogicData->abilities[battlerAtk] == ABILITY_CONTRARY)
         return NO_INCREASE;

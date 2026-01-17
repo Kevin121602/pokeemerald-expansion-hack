@@ -7033,73 +7033,6 @@ BattleScript_BadDreams_HidePopUp:
 	tryfaintmon BS_TARGET
 	goto BattleScript_BadDreamsIncrement
 
-BattleScript_SweetDreamsActivates::
-	setbyte gBattlerTarget, 0
-	setbyte sB_ANIM_ARG2, 0
-BattleScript_SweetDreamsLoop:
-	jumpiftargetally BattleScript_SweetDreamsIncrement
-	jumpifability BS_TARGET, ABILITY_MAGIC_GUARD, BattleScript_SweetDreamsIncrement
-	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_SweetDreams_Dmg
-	jumpifstatus BS_TARGET, STATUS1_SLEEP, BattleScript_SweetDreams_Dmg
-	goto BattleScript_SweetDreamsIncrement
-BattleScript_SweetDreams_Dmg:
-	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_SweetDreams_ShowPopUp
-BattleScript_SweetDreams_DmgAfterPopUp:
-	printstring STRINGID_SWEETDREAMSDMG
-	waitmessage B_WAIT_TIME_LONG
-	destroyabilitypopup
-	tryfaintmon BS_TARGET
-	dmg_1_12_targethp
-	call BattleScript_SweetDreamsTurnDrain
-	waitmessage B_WAIT_TIME_LONG
-	jumpifhasnohp BS_TARGET, BattleScript_SweetDreamsIncrement
-	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_SweetDreamsManipulateDmg
-	jumpifvolatile BS_ATTACKER, VOLATILE_HEAL_BLOCK, BattleScript_SweetDreamsIncrement
-	jumpiffullhp BS_ATTACKER, BattleScript_SweetDreamsIncrement
-BattleScript_SweetDreamsManipulateDmg:
-	getsweetdreamsdrain
-	manipulatedamage DMG_BIG_ROOT
-	jumpifability BS_TARGET, ABILITY_LIQUID_OOZE, BattleScript_SweetDreamsLiquidOoze
-	healthbarupdate BS_ATTACKER, PASSIVE_HP_UPDATE
-	datahpupdate BS_ATTACKER, PASSIVE_HP_UPDATE
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_SweetDreamsIncrement
-BattleScript_SweetDreamsLiquidOoze:
-	call BattleScript_AbilityPopUpTarget
-	manipulatedamage DMG_CHANGE_SIGN
-	setbyte cMULTISTRING_CHOOSER, B_MSG_ABSORB_OOZE
-	healthbarupdate BS_ATTACKER, PASSIVE_HP_UPDATE
-	datahpupdate BS_ATTACKER, PASSIVE_HP_UPDATE
-	printfromtable gAbsorbDrainStringIds
-	waitmessage B_WAIT_TIME_LONG
-	tryfaintmon BS_ATTACKER
-	goto BattleScript_SweetDreamsIncrement
-BattleScript_SweetDreamsIncrement:
-	addbyte gBattlerTarget, 1
-	addbyte sB_ANIM_ARG2, 1
-	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_SweetDreamsLoop
-	jumpifbyteequal sFIXED_ABILITY_POPUP, sZero, BattleScript_SweetDreamsEnd
-	destroyabilitypopup
-	pause 15
-BattleScript_SweetDreamsEnd:
-	end3
-BattleScript_SweetDreams_ShowPopUp:
-	copybyte gBattlerAbility, gBattlerAttacker
-	call BattleScript_AbilityPopUp
-	setbyte sFIXED_ABILITY_POPUP, TRUE
-	goto BattleScript_SweetDreams_DmgAfterPopUp
-BattleScript_SweetDreams_HidePopUp:
-	destroyabilitypopup
-	tryfaintmon BS_TARGET
-	goto BattleScript_SweetDreamsIncrement
-
-BattleScript_SweetDreamsTurnDrain:
-	playanimation BS_TARGET, B_ANIM_SWEET_DREAMS_DRAIN, sB_ANIM_ARG1
-	healthbarupdate BS_TARGET, PASSIVE_HP_UPDATE
-	datahpupdate BS_TARGET, PASSIVE_HP_UPDATE
-	tryfaintmon BS_TARGET
-	return
-
 BattleScript_TookAttack::
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_PKMNSXTOOKATTACK
@@ -7236,13 +7169,6 @@ BattleScript_MoveUsedPsychicTerrainPrevents::
 
 BattleScript_GrassyTerrainHeals::
 	printstring STRINGID_GRASSYTERRAINHEALS
-	waitmessage B_WAIT_TIME_LONG
-	healthbarupdate BS_ATTACKER, PASSIVE_HP_UPDATE
-	datahpupdate BS_ATTACKER, PASSIVE_HP_UPDATE
-	end2
-
-BattleScript_SoothingSteamHeals::
-	printstring STRINGID_SOOTHINGSTEAMHEALS
 	waitmessage B_WAIT_TIME_LONG
 	healthbarupdate BS_ATTACKER, PASSIVE_HP_UPDATE
 	datahpupdate BS_ATTACKER, PASSIVE_HP_UPDATE

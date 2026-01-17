@@ -389,18 +389,6 @@ static bool32 HandleEndTurnFirstEventBlock(u32 battler)
         }
         gBattleStruct->eventState.endTurnBlock++;
         break;
-    case FIRST_EVENT_BLOCK_SOOTHING_STEAM:
-        if (gFieldStatuses & STATUS_FIELD_SOOTHING_STEAM
-         && IsBattlerAlive(battler)
-         && !IsBattlerAtMaxHp(battler)
-         && !gBattleMons[battler].volatiles.healBlock)
-        {
-            SetHealAmount(battler, GetBattlerHighestDefenseStat(battler) / 12);
-            BattleScriptExecute(BattleScript_SoothingSteamHeals);
-            effect = TRUE;
-        }
-        gBattleStruct->eventState.endTurnBlock++;
-        break;
     case FIRST_EVENT_BLOCK_ABILITIES:
     {
         enum Ability ability = GetBattlerAbility(battler);

@@ -1953,10 +1953,6 @@
 	.byte \stat
 	.endm
 
-	.macro getsweetdreamsdrain
-	callnative BS_GetSweetDreamsDrain
-	.endm
-
 	.macro jumpiffullhp battler:req, jumpInstr:req
 	callnative BS_JumpIfFullHp
 	.byte \battler

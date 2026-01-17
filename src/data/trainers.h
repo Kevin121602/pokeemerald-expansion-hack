@@ -6947,14 +6947,14 @@ F_TRAINER_FEMALE |
             },
             {
 #line 2709
-            .species = SPECIES_BASCULIN_BLUE_STRIPED,
+            .species = SPECIES_LOPUNNY,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 2709
-            .heldItem = ITEM_NORMAL_GEM,
+            .heldItem = ITEM_FLYING_GEM,
 #line 2713
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 2711
-            .ability = ABILITY_ROCK_HEAD,
+            .ability = ABILITY_CUTE_CHARM,
 #line 2712
             .lvl = 29,
 #line 2710
@@ -6962,10 +6962,10 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 2713
-                MOVE_WATERFALL,
-                MOVE_AQUA_JET,
-                MOVE_TAKE_DOWN,
-                MOVE_CRUNCH,
+                MOVE_RETURN,
+                MOVE_RETALIATE,
+                MOVE_SKY_UPPERCUT,
+                MOVE_ACROBATICS,
             },
             },
             {
