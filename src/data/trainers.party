@@ -2665,7 +2665,7 @@ Seviper @ Wise Glasses
 Nature: Timid
 Ability: Infiltrator
 Level: 30
-- Sludge Bomb
+- Venoshock
 - Flamethrower
 - Giga Drain
 - Glare
@@ -4130,7 +4130,7 @@ Level: 32
 - Lava Plume
 - Body Press
 - Ancient Power
-- Protect
+- Will-O-Wisp
 
 Sandslash @ Loaded Dice
 Nature: Adamant
@@ -7821,11 +7821,23 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Golem @ Custap Berry
+Turtonator @ Power Herb
+Level: 1
+Nature: Relaxed
+Ability: Shell Armor
+- Flamethrower
+- Dragon Claw
+- Solar Beam
+- Body Press
+
+Slowbro @ Slowbronite
 Level: 35
-Nature: Adamant
-Ability: Sturdy
-- Rock Slide
+Nature: Calm
+Ability: Regenerator
+- Scald
+- Psybeam
+- Slack Off
+- Thunder Wave
 
 === TRAINER_WADE ===
 Name: WADE

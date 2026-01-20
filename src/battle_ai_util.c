@@ -4836,26 +4836,26 @@ void CalcPartyMonMegaStats(struct BattlePokemon battleMon, u32 battler)
 {
     u32 targetSpecies = GetPartyMonFormChangeTargetSpecies(battleMon, FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM);
 
-    if(battleMon.species == targetSpecies)
+    if(gBattleMons[battler].species == targetSpecies)
         return; 
 
-    s32 level = battleMon.level;
-    u8 nature = battleMon.personality % NUM_NATURES;
+    s32 level = gBattleMons[battler].level;
+    u8 nature = gBattleMons[battler].personality % NUM_NATURES;
 
     s32 iv[NUM_STATS];
     s32 newStats[NUM_STATS];
-    iv[STAT_ATK] = battleMon.attackIV;
-    iv[STAT_DEF] = battleMon.defenseIV;
-    iv[STAT_SPEED] = battleMon.speedIV;
-    iv[STAT_SPATK] = battleMon.spAttackIV;
-    iv[STAT_SPDEF] = battleMon.spDefenseIV;
+    iv[STAT_ATK] = gBattleMons[battler].attackIV;
+    iv[STAT_DEF] = gBattleMons[battler].defenseIV;
+    iv[STAT_SPEED] = gBattleMons[battler].speedIV;
+    iv[STAT_SPATK] = gBattleMons[battler].spAttackIV;
+    iv[STAT_SPDEF] = gBattleMons[battler].spDefenseIV;
 
     //evs have been removed so evs are removed from this formula
     for (u32 i = STAT_ATK; i < NUM_STATS; i++)
     {
         u8 baseStat = GetSpeciesBaseStat(targetSpecies, i);
 
-        s32 n = (((2 * baseStat + iv[i] / 4) * level) / 100) + 5;
+        s32 n = (((2 * baseStat + iv[i]) * level) / 100) + 5;
         n = ModifyStatByNature(nature, n, i);
         newStats[i] = n;
     }
@@ -4907,28 +4907,6 @@ s32 AI_CalcPartyMonDamage(u32 move, u32 battlerAtk, u32 battlerDef, struct Battl
     dmg = AI_CalcDamage(move, battlerAtk, battlerDef, effectiveness, NO_GIMMICK, NO_GIMMICK, AI_GetSwitchinWeather(switchinCandidate), isSwitchCalc);
     // restores original gBattleMon struct
     FreeRestoreBattleMons(savedBattleMons);
-
-    /*if (calcContext == AI_ATTACKING)
-    {
-        SetBattlerAiData(battlerAtk, gAiLogicData);
-        if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_RISKY && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_CONSERVATIVE))
-            return dmg.maximum;
-        else if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_CONSERVATIVE && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_RISKY))
-            return dmg.minimum;
-        else
-            return dmg.minimum;
-    }
-
-    else if (calcContext == AI_DEFENDING)
-    {
-        SetBattlerAiData(battlerDef, gAiLogicData);
-        if (gAiThinkingStruct->aiFlags[battlerDef] & AI_FLAG_RISKY && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_CONSERVATIVE))
-            return dmg.minimum;
-        else if (gAiThinkingStruct->aiFlags[battlerDef] & AI_FLAG_CONSERVATIVE && !(gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_RISKY))
-            return dmg.maximum;
-        else
-            return dmg.minimum;
-    }*/
 
     return dmg.minimum;
 }

@@ -2183,6 +2183,9 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
         }
     }
 
+    //if(bestAIDmg == 40)
+    //    return SCORE_FAST_KO;
+
     //whether or not ai is faster
     if(GetPartyMovePriority(battleMon, bestAIMove, aiMonAbility) > GetBattleMovePriority(opposingBattler, playerAbility, bestPlayerMove)){
         aiIsFaster = TRUE;

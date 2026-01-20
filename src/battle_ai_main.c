@@ -2925,6 +2925,9 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             ADJUST_SCORE(-5);
         break;
     case MOVE_EFFECT_SLEEP:
+        //additional check to account for mycelium might spore interaction
+        if(aiData->abilities[battlerDef] == ABILITY_INSOMNIA)
+            ADJUST_SCORE(-10);
         if (!AI_CanPutToSleep(battlerAtk, battlerDef, abilityDef, move, aiData->partnerMove))
             ADJUST_SCORE(-10);
         if (PartnerMoveActivatesSleepClause(aiData->partnerMove))

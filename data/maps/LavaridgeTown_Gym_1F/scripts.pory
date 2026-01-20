@@ -196,10 +196,8 @@ LavaridgeTown_Gym_1F_Text_GymGuideAdvice:
 	.string "Pokémon with high defenses.\p"
 	.string "Theraputic steam is pumped directly\n"
 	.string "from the Hot Springs into this Gym.\p"
-	.string "It heals a bit of all Pokémon's HP\n"
-	.string "at the end of each turn.\p"
-	.string "The higher your Pokémon's defenses\n"
-	.string "are, the more it will heal.\p"
+	.string "It shrouds all Pokémon and gives a 20%\n"
+	.string "boost to their weakest defense stat.\p"
 	.string "Now go for it!$"
 
 LavaridgeTown_Gym_1F_Text_GymGuidePostVictory:

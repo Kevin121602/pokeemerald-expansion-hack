@@ -8082,6 +8082,12 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
     if (ctx->isSelfInflicted)
         return uq4_12_multiply_by_int_half_down(ApplyDefensiveBadgeBoost(modifier, battlerDef, move), defStat);
 
+    //lavaridge field effect mod
+    if(gFieldStatuses & STATUS_FIELD_SOOTHING_STEAM && 
+        ((gBattleMons[battlerDef].spDefense >= gBattleMons[battlerDef].defense && usesDefStat) ||
+        (gBattleMons[battlerDef].defense > gBattleMons[battlerDef].spDefense && !usesDefStat)))
+        modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.2));
+
     // target's abilities
     switch (ctx->abilityDef)
     {
