@@ -4290,10 +4290,15 @@ bool32 ShouldRecover(u32 battlerAtk, u32 battlerDef, u32 move, u32 healPercent)
     if (gAiLogicData->hpPercents[battlerAtk] < 80){
         for (i = 0; i < MAX_MON_MOVES; i++)
         {
-            if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE && !IsMoveUnusable(i, moves[i], moveLimitations)
-                && gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].median >= healAmount)
-            {
-                return FALSE;
+            if (moves[i] != MOVE_NONE && moves[i] != MOVE_UNAVAILABLE && !IsMoveUnusable(i, moves[i], moveLimitations)){
+                //if ai mon takes more damage than it can recover
+                if(gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].median + GetBattlerSecondaryDamage(battlerAtk) >= healAmount)
+                    return FALSE;
+
+                //if ai mon is faster and will take more damage after recovering than it currently has
+                if(AI_IsFaster(battlerAtk, battlerDef, move, 0, DONT_CONSIDER_PRIORITY) 
+                    && gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].minimum + GetBattlerSecondaryDamage(battlerAtk) >= gBattleMons[battlerAtk].maxHP - gBattleMons[battlerAtk].hp)
+                    return FALSE;
             }
         }
     if (gBattleMons[battlerAtk].volatiles.healBlock)

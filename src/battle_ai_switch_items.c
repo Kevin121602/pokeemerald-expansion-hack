@@ -1352,11 +1352,12 @@ void AI_TrySwitchOrUseItem(u32 battler)
     BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_USE_MOVE, BATTLE_OPPOSITE(battler) << 8);
 }
 
-u32 GetSwitchInSpeedStatArgs(struct BattlePokemon battleMon, u32 battler, u32 ability, u32 holdEffect){
+u32 GetSwitchInSpeedStatArgs(struct BattlePokemon battleMon, u32 battler, u32 holdEffect){
     struct BattlePokemon *savedBattleMons = AllocSaveBattleMons();
     gBattleMons[battler] = battleMon;
     CalcPartyMonMegaStats(battleMon, battler);
     u32 speed = gBattleMons[battler].speed;
+    u32 ability = gBattleMons[battler].ability;
 
     // weather abilities
     if (HasWeatherEffect())
@@ -2019,7 +2020,7 @@ u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingB
     s32 aiMonAbility = battleMon.ability;
     s32 aiMonHoldEffect = GetItemHoldEffect(battleMon.item);
     u32 playerMonSpeed = GetBattlerTotalSpeedStat(opposingBattler, playerAbility, playerHoldEffect);
-    u32 aiMonSpeed = GetSwitchInSpeedStatArgs(battleMon, battler, aiMonAbility, aiMonHoldEffect);
+    u32 aiMonSpeed = GetSwitchInSpeedStatArgs(battleMon, battler, aiMonHoldEffect);
     s32 aiMovePriority = 0, playerMovePriority = 0, maxDamageDealt = 0, damageDealt = 0;
     u8 i = 0, j = 0;
     u32 bestPlayerMove = 0, bestAIMove = 0;

@@ -69,7 +69,7 @@ bool32 ShouldSwitchIfOutspedAndKOd(u32 battler, bool32 emitResult);
 bool32 ShouldSwitchIfFasterButKOd(u32 battler, bool32 emitResult);
 bool32 ShouldSwitchIfBadMatchup(u32 battler, bool32 emitResult);
 bool32 ShouldSwitchIfStatusedNaturalCure(u32 battler, bool32 emitResult);
-u32 GetSwitchInSpeedStatArgs(struct BattlePokemon battleMon, u32 battler, u32 ability, u32 holdEffect);
+u32 GetSwitchInSpeedStatArgs(struct BattlePokemon battleMon, u32 battler, u32 holdEffect);
 u32 GetMonSwitchScore(struct BattlePokemon battleMon, u32 battler, u32 opposingBattler, bool32 switchAfterMonKOd);
 bool32 IsMonGrounded(enum HoldEffect heldItemEffect, enum Ability ability, enum Type type1, enum Type type2);
 void ModifySwitchAfterMoveScoring(u32 battler);
