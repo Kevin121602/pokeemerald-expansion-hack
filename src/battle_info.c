@@ -520,6 +520,8 @@ static const u8 sText_CudChew[] =       _("CudChew");
 static const u8 sText_FlashFire[] =     _("FlashFire");
 static const u8 sText_Unburden[] =      _("Unburden");
 static const u8 sText_ProtectCount[] =  _("Protect");
+static const u8 sText_Safeguard[] =     _("Safeguard");
+static const u8 sText_Mist[] =          _("Mist");
 
 static const struct BgTemplate sBgTemplates[] =
 {
@@ -1179,7 +1181,7 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
             if(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_MOVE1 + j) == MOVE_NONE)
                 continue;
 
-            txtPtr = StringCopyN(text, GetMoveName(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_MOVE1 + j)), 12);
+            txtPtr = StringCopyN(text, GetMoveName(GetMonData(gBattleStruct->illusion[data->battlerId].mon, MON_DATA_MOVE1 + j)), 11);
             *txtPtr = EOS;
             AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 25, 64 + j * 15, 0, NULL);
 
@@ -1197,7 +1199,7 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
             if(gBattleMons[data->battlerId].moves[j] == MOVE_NONE)
                 continue;
 
-            txtPtr = StringCopyN(text, GetMoveName(gBattleMons[data->battlerId].moves[j]), 12);
+            txtPtr = StringCopyN(text, GetMoveName(gBattleMons[data->battlerId].moves[j]), 11);
             *txtPtr = EOS;
             AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 25, 64 + j * 15, 0, NULL);
 
@@ -1250,6 +1252,22 @@ static void PrintOnBattlerStatsWindow(u8 windowId, u8 taskId)
                 volatileOffset++; 
                 break;
         }
+    }
+
+    if(gSideStatuses[GetBattlerSide(data->battlerId)] & SIDE_STATUS_SAFEGUARD && volatileOffset < 4){
+        AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_Safeguard, 100, 64 + volatileOffset * 15, 0, NULL);
+            txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[GetBattlerSide(data->battlerId)].safeguardTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+            *txtPtr = EOS;
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
+    }
+
+    if(gSideStatuses[GetBattlerSide(data->battlerId)] & SIDE_STATUS_MIST && volatileOffset < 4){
+        AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, sText_Mist, 100, 64 + volatileOffset * 15, 0, NULL);
+            txtPtr = ConvertIntToDecimalStringN(text, gSideTimers[GetBattlerSide(data->battlerId)].mistTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
+            *txtPtr = EOS;
+            AddTextPrinterParameterized(windowId, FONT_SMALL_NARROW, text, 153, 64 + volatileOffset * 15, 0, NULL);
+            volatileOffset++;
     }
 
     if(gDisableStructs[data->battlerId].disabledMove != MOVE_NONE && volatileOffset < 4){
@@ -1541,7 +1559,7 @@ static void PrintOnBattleTimersWindow(u8 windowId)
     *txtPtr = EOS;
     AddTextPrinterParameterized(windowId, FONT_SMALL, text, 223, 94, 0, NULL);
 
-    /*AddTextPrinterParameterized(windowId, FONT_SMALL, sText_MudSport, 148, 110, 0, NULL);
+    AddTextPrinterParameterized(windowId, FONT_SMALL, sText_MudSport, 148, 110, 0, NULL);
     txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.mudSportTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
     *txtPtr = EOS;
     AddTextPrinterParameterized(windowId, FONT_SMALL, text, 223, 110, 0, NULL);
@@ -1549,7 +1567,7 @@ static void PrintOnBattleTimersWindow(u8 windowId)
     AddTextPrinterParameterized(windowId, FONT_SMALL, sText_WaterSport, 148, 125, 0, NULL);
     txtPtr = ConvertIntToDecimalStringN(text, gFieldTimers.waterSportTimer, STR_CONV_MODE_LEFT_ALIGN, 1);
     *txtPtr = EOS;
-    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 223, 125, 0, NULL);*/
+    AddTextPrinterParameterized(windowId, FONT_SMALL, text, 223, 125, 0, NULL);
 
     CopyWindowToVram(windowId, COPYWIN_FULL);
 }

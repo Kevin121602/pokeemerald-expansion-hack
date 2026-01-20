@@ -7821,23 +7821,12 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Check Viability
 
-Turtonator @ Power Herb
-Level: 1
-Nature: Relaxed
-Ability: Shell Armor
-- Flamethrower
-- Dragon Claw
-- Solar Beam
-- Body Press
-
-Slowbro @ Slowbronite
-Level: 35
-Nature: Calm
-Ability: Regenerator
-- Scald
-- Psybeam
-- Slack Off
-- Thunder Wave
+Mew @ Sitrus Berry
+Nature: Jolly
+Ability: Synchronize
+Level: 23
+- Safeguard
+- Mist
 
 === TRAINER_WADE ===
 Name: WADE
