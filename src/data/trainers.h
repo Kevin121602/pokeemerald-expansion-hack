@@ -4261,7 +4261,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 1706
                 MOVE_HYPER_VOICE,
-                MOVE_DUAL_WINGBEAT,
+                MOVE_AIR_SLASH,
                 MOVE_HEAT_WAVE,
                 MOVE_STEEL_WING,
             },
