@@ -14312,7 +14312,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sRhyhornLevelUpLearnset,
         .teachableLearnset = sRhyhornTeachableLearnset,
         .eggMoveLearnset = sRhyhornEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_RHYDON}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_RHYDON}),
     },
 
     [SPECIES_RHYDON] =
