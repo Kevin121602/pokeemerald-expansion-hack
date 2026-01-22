@@ -4297,7 +4297,7 @@ bool32 ShouldRecover(u32 battlerAtk, u32 battlerDef, u32 move, u32 healPercent)
 
                 //if ai mon is faster and will take more damage after recovering than it currently has
                 if(AI_IsFaster(battlerAtk, battlerDef, move, 0, DONT_CONSIDER_PRIORITY) 
-                    && gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].minimum + GetBattlerSecondaryDamage(battlerAtk) >= gBattleMons[battlerAtk].maxHP - gBattleMons[battlerAtk].hp)
+                    && gAiLogicData->simulatedDmg[battlerDef][battlerAtk][i].maximum + GetBattlerSecondaryDamage(battlerAtk) >= gBattleMons[battlerAtk].maxHP - gBattleMons[battlerAtk].hp)
                     return FALSE;
             }
         }
