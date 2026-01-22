@@ -3549,7 +3549,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         )
         .levelUpLearnset = sVigorothLevelUpLearnset,
         .teachableLearnset = sVigorothTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 50, SPECIES_SLAKING}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 45, SPECIES_SLAKING}),
     },
 
     [SPECIES_SLAKING] =

@@ -4093,7 +4093,7 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
     case EFFECT_AURORA_VEIL:
         if (ShouldSetScreen(battlerAtk, battlerDef, moveEffect) && aiData->abilities[battlerDef] != ABILITY_INFILTRATOR)
         {
-            if(!HasMoveWithEffect(battlerDef, EFFECT_BRICK_BREAK) && !HasMoveWithEffect(battlerDef, EFFECT_DEFOG))
+            if(!HasMoveWithEffect(battlerDef, EFFECT_BRICK_BREAK) && !HasMoveWithEffect(battlerDef, EFFECT_RAGING_BULL) && !HasMoveWithEffect(battlerDef, EFFECT_DEFOG))
                 ADJUST_SCORE(WEAK_EFFECT);
             if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_LIGHT_CLAY)
                 ADJUST_SCORE(WEAK_EFFECT);
