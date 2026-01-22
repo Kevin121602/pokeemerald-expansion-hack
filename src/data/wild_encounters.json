@@ -12364,22 +12364,22 @@
               {
                 "min_level": 11,
                 "max_level": 12,
-                "species": "SPECIES_THROH"
-              },
-              {
-                "min_level": 11,
-                "max_level": 12,
-                "species": "SPECIES_SAWK"
-              },
-              {
-                "min_level": 11,
-                "max_level": 12,
                 "species": "SPECIES_GIRAFARIG"
               },
               {
                 "min_level": 11,
                 "max_level": 12,
                 "species": "SPECIES_STANTLER"
+              },
+              {
+                "min_level": 11,
+                "max_level": 12,
+                "species": "SPECIES_THROH"
+              },
+              {
+                "min_level": 11,
+                "max_level": 12,
+                "species": "SPECIES_SAWK"
               },
               {
                 "min_level": 11,

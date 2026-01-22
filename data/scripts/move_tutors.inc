@@ -463,13 +463,3 @@ Route112_EventScript_ThunderPunchTutor::
 	release
 	end
 
-LavaridgeTown_EventScript_HealBlockTutor::
-	lock
-	faceplayer
-	msgbox MoveTutor_Text_HealBlock, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_HelpingHandDeclined
-	setvar VAR_0x8005, MOVE_HEAL_BLOCK
-	call MoveTutor_EventScript_OpenPartyMenu
-	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_HelpingHandDeclined
-	release
-	end
