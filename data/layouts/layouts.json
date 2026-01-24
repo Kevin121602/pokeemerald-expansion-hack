@@ -4074,8 +4074,8 @@
     {
       "id": "LAYOUT_TERRA_CAVE_ENTRANCE",
       "name": "TerraCave_Entrance_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 40,
+      "height": 80,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/TerraCave_Entrance/border.bin",

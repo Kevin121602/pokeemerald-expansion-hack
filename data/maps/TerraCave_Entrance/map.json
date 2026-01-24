@@ -16,15 +16,15 @@
   "object_events": [],
   "warp_events": [
     {
-      "x": 8,
-      "y": 18,
+      "x": 28,
+      "y": 78,
       "elevation": 0,
       "dest_map": "MAP_DYNAMIC",
       "dest_warp_id": "WARP_ID_DYNAMIC"
     },
     {
-      "x": 14,
-      "y": 1,
+      "x": 34,
+      "y": 61,
       "elevation": 3,
       "dest_map": "MAP_TERRA_CAVE_END",
       "dest_warp_id": "0"

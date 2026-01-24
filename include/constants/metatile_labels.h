@@ -403,9 +403,6 @@
 #define METATILE_PetalburgGym_SlidingDoor_Frame3  0x21B
 #define METATILE_PetalburgGym_SlidingDoor_Frame4  0x21C
 
-// gTileset_PlayerHouse
-#define METATILE_PlayerHouse_TV_Off  0x225
-
 // gTileset_PokemonCenter
 #define METATILE_PokemonCenter_CounterBarrier            0x25D
 #define METATILE_PokemonCenter_Door_CableClub            0x264
@@ -783,6 +780,7 @@
 #define METATILE_Underwater_RockWall     0x21E
 
 // Other
+#define METATILE_PlayerHouse_TV_Off            0x225
 #define METATILE_RSMossdeepGym_RedArrow_Down   0x205
 #define METATILE_RSMossdeepGym_RedArrow_Left   0x20C
 #define METATILE_RSMossdeepGym_RedArrow_Right  0x204
