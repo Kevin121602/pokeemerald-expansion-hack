@@ -23,11 +23,11 @@
       "dest_warp_id": "WARP_ID_DYNAMIC"
     },
     {
-      "x": 34,
-      "y": 61,
+      "x": 5,
+      "y": 4,
       "elevation": 3,
-      "dest_map": "MAP_TERRA_CAVE_END",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_ROUTE111",
+      "dest_warp_id": "5"
     }
   ],
   "coord_events": [],
