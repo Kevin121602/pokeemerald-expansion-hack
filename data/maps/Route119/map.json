@@ -586,19 +586,6 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
       "flag": "FLAG_HIDE_ROUTE_119_SCOTT"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
-      "x": 31,
-      "y": 57,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "BERRY_TREE_ROUTE_119_SITRUS_2",
-      "script": "BerryTreeScript",
-      "flag": "0"
     }
   ],
   "warp_events": [
@@ -856,14 +843,6 @@
       "y": 28,
       "elevation": 0,
       "secret_base_id": "SECRET_BASE_BLUE_CAVE4_3"
-    },
-    {
-      "type": "hidden_item",
-      "x": 38,
-      "y": 63,
-      "elevation": 3,
-      "item": "ITEM_ULTRA_BALL",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_119_ULTRA_BALL"
     },
     {
       "type": "secret_base",

@@ -2,7 +2,7 @@
   "id": "MAP_TERRA_CAVE_ENTRANCE",
   "name": "TerraCave_Entrance",
   "layout": "LAYOUT_TERRA_CAVE_ENTRANCE",
-  "music": "MUS_PETALBURG_WOODS",
+  "music": "MUS_DP_OREBURGH_GATE",
   "region_map_section": "MAPSEC_TERRA_CAVE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -13,14 +13,28 @@
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 17,
+      "y": 11,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_FLAME_ORB",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_TERRA_CAVE_FLAME_ORB"
+    }
+  ],
   "warp_events": [
     {
       "x": 28,
       "y": 78,
       "elevation": 0,
-      "dest_map": "MAP_DYNAMIC",
-      "dest_warp_id": "WARP_ID_DYNAMIC"
+      "dest_map": "MAP_ROUTE118",
+      "dest_warp_id": "1"
     },
     {
       "x": 5,
