@@ -37,7 +37,7 @@ static const struct CoordEventWeather sCoordEventWeatherFuncs[] =
     { COORD_EVENT_WEATHER_SHADE,             CoordEventWeather_Shade },
     { COORD_EVENT_WEATHER_DROUGHT,           CoordEventWeather_Drought },
     { COORD_EVENT_WEATHER_ROUTE119_CYCLE,    CoordEventWeather_Route119Cycle },
-    { COORD_EVENT_WEATHER_ROUTE123_CYCLE,    CoordEventWeather_Rain },
+    { COORD_EVENT_WEATHER_ROUTE123_CYCLE,    CoordEventWeather_Route123Cycle },
 };
 
 static void CoordEventWeather_Clouds(void)
