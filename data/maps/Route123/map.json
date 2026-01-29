@@ -234,19 +234,6 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
-      "x": 101,
-      "y": 13,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_CutTree",
-      "flag": "FLAG_TEMP_11"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 31,
       "y": 8,
@@ -261,8 +248,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
-      "x": 139,
-      "y": 15,
+      "x": 12,
+      "y": 1,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
       "movement_range_x": 0,
@@ -505,6 +492,45 @@
       "trainer_sight_or_berry_tree_id": "ITEM_REVIVAL_HERB",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROUTE_123_REVIVAL_HERB"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "x": 107,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_TREE_DISGUISE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "Route123_EventScript_Jonas",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",
+      "x": 57,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Route123_EventScript_Cameron",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "x": 121,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "Route123_EventScript_Kayley",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -554,43 +580,29 @@
     },
     {
       "type": "weather",
-      "x": 34,
-      "y": 13,
-      "elevation": 3,
-      "weather": "COORD_EVENT_WEATHER_ROUTE123_CYCLE"
-    },
-    {
-      "type": "weather",
-      "x": 108,
+      "x": 102,
       "y": 14,
       "elevation": 3,
       "weather": "COORD_EVENT_WEATHER_SUNNY"
     },
     {
       "type": "weather",
-      "x": 109,
+      "x": 101,
       "y": 15,
       "elevation": 3,
       "weather": "COORD_EVENT_WEATHER_SUNNY"
     },
     {
       "type": "weather",
-      "x": 110,
+      "x": 100,
       "y": 16,
       "elevation": 3,
       "weather": "COORD_EVENT_WEATHER_SUNNY"
     },
     {
       "type": "weather",
-      "x": 111,
+      "x": 99,
       "y": 17,
-      "elevation": 3,
-      "weather": "COORD_EVENT_WEATHER_SUNNY"
-    },
-    {
-      "type": "weather",
-      "x": 112,
-      "y": 18,
       "elevation": 3,
       "weather": "COORD_EVENT_WEATHER_SUNNY"
     },
